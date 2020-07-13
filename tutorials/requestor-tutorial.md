@@ -4,7 +4,7 @@ description: Developing and deployment of golem network requestor
 
 # Requestor tutorial
 
-## What is golem network?
+## What is golem network ?
 
 ## What does requestor do?
 
