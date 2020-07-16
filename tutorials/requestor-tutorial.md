@@ -83,6 +83,12 @@ To proceed with this, quite focused tutorial, you'll first need to ensure the fo
 * as we'll be using the Blender renderer in this tutorial, you'll need a Blender scene file that the providers will render for you. You can use the scene we've been using for our tests: [https://github.com/golemfactory/golem/raw/develop/scripts/node\_integration\_tests/tasks/cubes/cubes.blend](https://github.com/golemfactory/golem/raw/develop/scripts/node_integration_tests/tasks/cubes/cubes.blend) **\[ possibly, replace with a link to a scene accompanying the example code in the `yapapi` repo \]** 
 * finally, some familiarity with `asyncio` is a plus as `yapapi` is written to make heavy use of Python's `asyncio` library.
 
+#### Running \`yagna\` daemon
+
+**\[ PROVIDE INSTRUCTIONS ON RUNNING THE YAGNA DAEMON FROM BINARIES \(ON LINUX?\) \]**
+
+\*\*\*\*
+
 #### Running `yagna` daemon from sources
 
 To run `yagna` from sources, you'll need to have `rust` development environment installed - it will be needed to run the `yagna` daemon itself. If you don't have it, please refer to the official docs to install it: [https://www.rust-lang.org/learn/get-started](https://www.rust-lang.org/learn/get-started) 
@@ -109,6 +115,8 @@ This will build the `yagna` using the Rust compiler \(which can take a considera
 
 Once the daemon launches, it will start emitting some debug messages among which one of the first ones will look like: `[2020-07-16T12:11:33Z INFO yagna] Starting yagna service!` .  There you go! Leave the shell with the yagna service running and you're ready for the following steps.
 
+
+
 #### Generate the app key
 
 With the daemon running, enter the daemon's directory using another shell and generate the `yagna` app key that will be used by your requestor agent to access yagna's REST API.
@@ -127,6 +135,8 @@ cargo run app-key list
 
 the value in the `key` column is the key you need.
 
+
+
 #### Build the `gftp` binary
 
 If you're running `yagna` from sources, you won't have the `gftp` binary around and you need to also build it yourself. To do so, once again, go to your `yagna` source directory and execute:
@@ -138,11 +148,15 @@ cargo install --path .
 
 This will build and install the `gftp` binary for you.
 
+
+
 #### Ensure you have some ETH and GNT tokens ready
 
 ```text
 cargo run payment init -r
 ```
+
+
 
 and allow a few minutes for the faucet to do its job.
 
@@ -153,6 +167,8 @@ cargo run payment status
 ```
 
 If it doesn't succeed after a few minutes, re-run the `payment init` command above and check again after a few more minutes.
+
+
 
 ### Requestor agent code
 
@@ -220,11 +236,13 @@ if __name__ == "__main__":
 
 ```
 
+### 
+
 ### How does it work?
 
 
 
-**TE OBRAZKI TO TU RACZEJ NIE PASUJĄ: ... CHYBA, ŻE TEN DRUGI...** 
+**\[ TE OBRAZKI TO TU RACZEJ NIE PASUJĄ: ... CHYBA, ŻE TEN DRUGI... \]**
 
 
 
