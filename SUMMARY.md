@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [Golem SDK documentation](README.md)
 
 ## Requestor reference
 
