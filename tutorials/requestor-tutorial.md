@@ -81,7 +81,7 @@ To proceed with this, quite focused tutorial, you'll first need to ensure the fo
 * you have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now.
 * you have `python` &gt;= 3.6 installed and a virtual environment created - it's needed to run our example here.
 * as we'll be using the Blender renderer in this tutorial, you'll need a Blender scene file that the providers will render for you. You can use the scene we've been using for our tests: [https://github.com/golemfactory/golem/raw/develop/scripts/node\_integration\_tests/tasks/cubes/cubes.blend](https://github.com/golemfactory/golem/raw/develop/scripts/node_integration_tests/tasks/cubes/cubes.blend) **\[ possibly, replace with a link to a scene accompanying the example code in the `yapapi` repo \]** 
-* finally, some familiarity with `asyncio` is a plus as `yapapi` is written to make heavy use of `asyncio` 
+* finally, some familiarity with `asyncio` is a plus as `yapapi` is written to make heavy use of Python's `asyncio` library.
 
 #### Running `yagna` daemon from sources
 
