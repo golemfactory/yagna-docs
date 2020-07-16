@@ -222,9 +222,31 @@ if __name__ == "__main__":
 
 ### How does it work?
 
+
+
+TE OBRAZKI TO TU RACZEJ NIE PASUJĄ: ... CHYBA, ŻE TEN DRUGI... 
+
+
+
+
+
 ![golem network - details](../.gitbook/assets/requestor-tutorial-details.png)
 
 ![requestor agent - sequential diagram](../.gitbook/assets/requestor-tutorial-sequence.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Okay, we'll skip over the imports at the top and `asyncio` boilerplate code at the bottom of the example and we'll jump straight into the body of the `main()` routine.
 
