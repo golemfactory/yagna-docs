@@ -250,6 +250,8 @@ TE OBRAZKI TO TU RACZEJ NIE PASUJĄ: ... CHYBA, ŻE TEN DRUGI...
 
 Okay, we'll skip over the imports at the top and `asyncio` boilerplate code at the bottom of the example and we'll jump straight into the body of the `main()` routine.
 
+
+
 #### Specify your demand
 
 Normally, you'd need to adapt your docker image to golem using `gvmkit` **\[LINK TO GMVKIT\]**  but for the purpose of this tutorial, we're using the pre-converted image containing the Blender renderer.
@@ -267,6 +269,8 @@ So, first, we need to specify which image we'll be using and what its memory and
 As you can see, we're pointing to an image within our GVM repository using the hash of the Blender image and we're indicating that it requires half a gigabyte of RAM and 2 gigabytes of disk space.
 
 This, effectively creates a `Demand` for the market to respond to. In other words, it communicates to the market that our requestor wants to have the specified image executed with at least the specified amounts of RAM and disk space. 
+
+
 
 #### Define your task's steps
 
@@ -368,6 +372,8 @@ And, if the queue is empty and thus the loop is ended, we can finalize the work 
         ctx.log("no more frames to render")
 ```
 
+
+
 #### Time to call the runner Engine
 
 With our task \(fragment\) steps defined, we can finally call the `Engine` that will orchestrate first the negotiation of our computational `Demand` against the `Offer`s from the providers in the network to reach agreements with each of them and subsequently will use those agreements to launch specific computational activities to complete the task we have specified. **\[ WHAT ABOUT THE PAYMENTS? \]**
@@ -387,6 +393,14 @@ The last parameter means that if we do specify the subnet - each and every provi
 
 With the `Engine` in place, we can finally tell it what we want to execute and also _how_ we want to define each fragment.
 
+
+
+
+
+
+
+
+
 ```text
         async for progress in engine.map(worker, [Task(data=frame) for frame in range(0, 60, 10)]):
             print("progress=", progress)
@@ -396,6 +410,8 @@ With the `Engine` in place, we can finally tell it what we want to execute and a
 As has been mentioned previously, the first parameter to `map` is the worker routine that defines our task's steps and the second parameter is an iterable defining all the fragments of our whole task that we desire to be executed.
 
 Here we're passing it the specifc `frame` from the scene that we'd like our Blender container to render but it can essentially be any parameter or set of parameters that can accurately describe the job to be executed and it is up for our `worker` routine and - through it - for our containerized payload to make sense of what that set of parameters is.
+
+
 
 #### YAY!
 
