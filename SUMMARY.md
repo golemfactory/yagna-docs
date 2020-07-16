@@ -12,6 +12,7 @@
 
 ## Tutorials
 
-* [Requestor tutorial](tutorials/requestor-tutorial.md)
+* [Requestor development tutorial](tutorials/requestor-tutorial.md)
+* [Developing a Golem network based product](tutorials/developing-a-golem-network-based-product.md)
 * [Provider tutorial](tutorials/provider-tutorial.md)
 
