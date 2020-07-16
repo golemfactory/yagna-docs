@@ -393,14 +393,6 @@ The last parameter means that if we do specify the subnet - each and every provi
 
 With the `Engine` in place, we can finally tell it what we want to execute and also _how_ we want to define each fragment.
 
-
-
-
-
-
-
-
-
 ```text
         async for progress in engine.map(worker, [Task(data=frame) for frame in range(0, 60, 10)]):
             print("progress=", progress)
