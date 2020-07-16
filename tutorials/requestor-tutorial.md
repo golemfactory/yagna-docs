@@ -446,3 +446,9 @@ To run the above code:
 
 ## Next steps
 
+* running your own test network \(provider+requestor\)
+* providing your own Docker image / using GVMKIT to build and push the image to our repo
+* writing your own market strategy
+* writing a non-batching requestor \(?\)
+* ?
+
