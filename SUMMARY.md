@@ -16,3 +16,9 @@
 * [Developing a Golem network based product](tutorials/developing-a-golem-network-based-product.md)
 * [Provider tutorial](tutorials/provider-tutorial.md)
 
+## Other golem related
+
+---
+
+* [Golem SDK documentation](https://golem-network.gitbook.io/golem-sdk-docs-test/)
+
