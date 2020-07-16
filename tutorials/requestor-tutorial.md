@@ -224,7 +224,7 @@ if __name__ == "__main__":
 
 
 
-TE OBRAZKI TO TU RACZEJ NIE PASUJĄ: ... CHYBA, ŻE TEN DRUGI... 
+**TE OBRAZKI TO TU RACZEJ NIE PASUJĄ: ... CHYBA, ŻE TEN DRUGI...** 
 
 
 
