@@ -49,7 +49,7 @@ If you have Internet-connected hardware that supports running Linux, you can ins
 ## Golem is open source
 
 {% hint style="info" %}
-The Golem is open-source software. All the code base is avaiable under the GPL license.
+The Golem is open-source software. All the code base is available under the GPL license.
 
 [https://github.com/golemfactory/yagna](https://github.com/golemfactory/yagna)
 {% endhint %}
