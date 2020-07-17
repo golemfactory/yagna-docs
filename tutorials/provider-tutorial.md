@@ -148,7 +148,7 @@ To change the provider's disk usage limit, type:
 golem settings set --disk [number]
 ```
 
-
+### Complete configuration guide
 
 The complete configuration guide, please check following:
 

@@ -165,7 +165,6 @@ if __name__ == "__main__":
         print(e)
         task.cancel()
         asyncio.get_event_loop().run_until_complete(asyncio.sleep(0.3))
-
 ```
 
 ### How does it work?
@@ -181,11 +180,11 @@ Normally, you'd need to adapt your docker image to golem using `gvmkit` **\[LINK
 So, first, we need to specify which image we'll be using and what its memory and disk space requirements are:
 
 ```python
-    package = await vm.repo(
-        image_hash="9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae",
-        min_mem_gib=0.5,
-        min_storage_gib=2.0,
-    )
+package = await vm.repo(
+    image_hash="9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae",
+    min_mem_gib=0.5,
+    min_storage_gib=2.0,
+)
 ```
 
 As you can see, we're pointing to an image within our GVM repository using the hash of the Blender image and we're indicating that it requires half a gigabyte of RAM and 2 gigabytes of disk space.
@@ -208,40 +207,39 @@ The routine is called with a `ctx` object that contains the work context for a s
 
 In this example, we're using a single scene file which all task fragments use so it only needs to be sent and attached to the provider when the container is first deployed on provider's end:
 
-```text
-        ctx.send_file("./cubes.blend", "/golem/resource/scene.blend")
+```python
+ctx.send_file("./cubes.blend", "/golem/resource/scene.blend")
 ```
 
  The first parameter to `send_file()` here is the local path of the file and the second one is the path within the _container_ on provider's end to which this file should be copied once the container is deployed.
 
 Then, there is a sequence of steps that needs to be executed for each of the fragments that this provider receives wrapped with this asynchronous loop:
 
-```text
-        async for task in tasks:
+```python
+async for task in tasks:
 ```
 
 The next few lines are very specific to the Blender use case and the vm image we're using to render each piece of the output. There are a lot of parameters that can be defined here which are mostly irrelevant in the context of a general requestor development tutorial so we'll just go throught what's most important.
 
 ```python
-            frame = task.data
-            ctx.begin()
-            crops = [{"outfilebasename": "out", "borders_x": [0.0, 1.0], "borders_y": [0.0, 1.0]}]
-            ctx.send_json(
-                "/golem/work/params.json",
-                {
-                    "scene_file": "/golem/resource/scene.blend",
-                    "resolution": (800, 600),
-                    "use_compositing": False,
-                    "crops": crops,
-                    "samples": 100,
-                    "frames": [frame],
-                    "output_format": "PNG",
-                    "RESOURCES_DIR": "/golem/resources",
-                    "WORK_DIR": "/golem/work",
-                    "OUTPUT_DIR": "/golem/output",
-                },
-            )
-
+frame = task.data
+ctx.begin()
+crops = [{"outfilebasename": "out", "borders_x": [0.0, 1.0], "borders_y": [0.0, 1.0]}]
+ctx.send_json(
+    "/golem/work/params.json",
+    {
+        "scene_file": "/golem/resource/scene.blend",
+        "resolution": (800, 600),
+        "use_compositing": False,
+        "crops": crops,
+        "samples": 100,
+        "frames": [frame],
+        "output_format": "PNG",
+        "RESOURCES_DIR": "/golem/resources",
+        "WORK_DIR": "/golem/work",
+        "OUTPUT_DIR": "/golem/output",
+    },
+)
 ```
 
 For the sake of simplicity, we have decided to render whole frames of the scene so that the output of each task fragment is a single frame and no subsequent merging of pieces of images is required. The output of a whole task then is just a sequence of images, the merging of which into e.g. a movie file is beyond the scope of this tutorial.
@@ -299,10 +297,9 @@ With our task \(fragment\) steps defined, we can finally call the `Engine` that 
 The `Engine` is first instantiated as a context manager:
 
 ```python
-    async with Engine(
-        package=package, max_workers=10, budget=10.0, timeout=timedelta(minutes=15), subnet_tag="demo-1"
-    ) as engine:
-
+async with Engine(
+    package=package, max_workers=10, budget=10.0, timeout=timedelta(minutes=15), subnet_tag="demo-1"
+) as engine:
 ```
 
 The `package` here is effectively our `Demand` that we have created above, `max_workers` specifies the maximum number of providers we want to be working on our task, `budget` specifies the maximum budget \(in GNT\) that this task may utilize **\[ ENSURE IT'S THE BUDGET FOR THE WHOLE THING AND NOT PER-FRAGMENT \],** `timeout` is the time after which we absolutely want our whole task to be finished by and after which we'll treat it as failed unless it's already finished and finally, the `subnet_tag` serves to select a subset of the network that our requestor node wants to limit its communications to.
@@ -312,9 +309,8 @@ The last parameter means that if we do specify the subnet - each and every provi
 With the `Engine` in place, we can finally tell it what we want to execute and also _how_ we want to define each fragment.
 
 ```python
-        async for progress in engine.map(worker, [Task(data=frame) for frame in range(0, 60, 10)]):
-            print("progress=", progress)
-
+async for progress in engine.map(worker, [Task(data=frame) for frame in range(0, 60, 10)]):
+    print("progress=", progress)
 ```
 
 As has been mentioned previously, the first parameter to `map` is the worker routine that defines our task's steps and the second parameter is an iterable defining all the fragments of our whole task that we desire to be executed.
