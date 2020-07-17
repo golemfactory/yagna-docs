@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Golem SDK documentation](README.md)
+* [The Golem Network SDK documentation](README.md)
 
 ## Introduction
 
