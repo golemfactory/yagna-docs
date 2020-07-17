@@ -7,10 +7,7 @@ description: Golem Provider command line interface
 ## CLI response
 
 {% hint style="info" %}
-Please check for feedback while interacting with all the commands below
-{% endhint %}
-
- For example when user types
+Please check for feedback while interacting with all the commands below. For example when user types
 
 ```text
 golem settings set node_name
@@ -20,12 +17,13 @@ golem settings set node_name
 
 1. Node name changed to or
 2. Prompt info what went wrong
+{% endhint %}
 
 ##  CLI commands
 
-* `golem status` [Display general status, state, latest jobs and wallet info](https://www.notion.so/golemnetwork/e831890ea6dd4202b48e066cdccee227?v=68d534179cbb4d3dba39100e4a207b74)
+* `golem status` Display general status, state, latest jobs and wallet info
 * `golem settings` Manage settings
-  * SUBCOMMANDS:
+  * _subcommands:_
     * `show` Show current settings
     * `set` Change settings
     * `help` Prints this message or the help of the given subcommand\(s\)
@@ -35,9 +33,9 @@ golem settings set node_name
         * `golem settings set --cores` Set number of shared CPU cores \[≥1\]
         * `golem settings set --memory` Set number of shared RAM \[GB\]
         * `golem settings set --disk` Set number of disk space \[GB\]
-        * `golem settings set --starting_fee` \(**default** 0\) Set a price for starting a task
-        * `golem settings set --env_per_hour` \(**default** X\) Set a price for working environment per hour
-        * `golem settings set --cpu_per_hour` \(**default** X\) Set a price for CPU per hour
+        * `golem settings set --starting_fee` \(_default 0_\) Set a price for starting a task
+        * `golem settings set --env_per_hour` \(_default X_\) Set a price for working environment per hour
+        * `golem settings set --cpu_per_hour` \(_default X_\) Set a price for CPU per hour
       * `golem settigs env` Manage environments
         * `golem settings env show` Show environments
         * `golem settings env enable` Enable environment \(WASM, VM enabled by default\)

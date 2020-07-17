@@ -30,7 +30,36 @@ golem start
 
  in your command line.
 
-First time use
+## First time use
+
+{% hint style="info" %}
+If you are running your Golem node for the first time you will be asked to set up a few simple things. You will be able to change those settings later on in your Golem settings.
+{% endhint %}
+
+**After starting golem for the first time, the following questions are displayed at the console** 
+
+1. _**To continue using Golem please accept our Terms and conditions**_**:**
+   * `Y` - accept the terms
+   * `N` - decline the terms. You will not be able to use the Golem Node
+   * `View` - view the T&C
+2. _**Please paste your Ethereum address that will be used in Golem to collect your earnings. You will be able to change this address later on in your Golem settings**_**.**
+   * Paste external Ethereum address
+   * Confirm
+     * `Y`
+     * `N`
+3. _**Set the name of your Golem Node that will be visible to other users**_
+   * Set new name of your node and press ENTER \(warning about public name\)
+
+_You can start using the Golem Provider!_ 
+
+_Your Golem Node will start with the Default config:_
+
+* CPU - 2 cores
+* RAM - 2 GB
+* Disk - 200 MB
+* Market: GNT value
+
+_You can change those settings in the settings menu later on. To check the logs type `golem logs` in the new terminal window._
 
 ## Getting the job status
 
