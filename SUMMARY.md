@@ -27,5 +27,5 @@
 
 ---
 
-* [Golem SDK documentation](https://golem-network.gitbook.io/golem-sdk-docs-test/)
+* [Golem infrastructure documentation](https://golem-network.gitbook.io/golem-sdk-docs-test/)
 
