@@ -1,2 +1,2 @@
-# Developing a Golem network based product
+# Developing a Golem based product
 

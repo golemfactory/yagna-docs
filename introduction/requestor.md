@@ -1,12 +1,22 @@
 ---
-description: The requestor actor in the golem network
+description: The requestor actor in the Golem
 ---
 
 # Requestor
 
 ## What is a requestor?
 
-Technically speaking the requestor in golem network is some code running on Internet connected hardware.
+Technically speaking the Golem requestor is some code running on Internet-connected hardware.
+
+The characteristic that describes the requestor agent is the need to use hardware resources that are available in the Golem being shared by providers. 
+
+{% hint style="info" %}
+Because local hardware resources on the mobile device or even server machine are always limited, there is always some task that local, requestor's hardware can not perform in a reasonable time frame or not at all \(for example becouse of memory limit\).
+
+There is no limit on the resources available in Golem. Requestor can use as much resources he needs.  In parallel.
+{% endhint %}
+
+
 
 ## What does a requestor do?
 
