@@ -38,7 +38,7 @@ The typical resources usage scenario is as follows: after receiving input data, 
 
 It is that simple.
 
-![Typical golem network use case](../.gitbook/assets/provider-tutorial-benefit.png)
+![Typical Golem use case](../.gitbook/assets/provider-tutorial-benefit.png)
 
 ## How I can become a Golem provider?
 

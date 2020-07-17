@@ -48,13 +48,37 @@ There are many possible scenarios defining the actual form and shape of the prod
 
 ### User's device based requestor
 
-![](../.gitbook/assets/requestor-tutorial-basic-usage.png)
+The simplest scenario is when the requestor binary is running on the device that end-user has physical access:
 
-### Web server based requestor
+* mobile device \(phone/tablet\)
+* laptop
+* desktop box
+
+In this scenario, your product front-end layer and requestor can be integrated into one binary package.
+
+![User&apos;s device based requestor](../.gitbook/assets/requestor-tutorial-basic-usage%20%284%29.png)
+
+### Webserver based requestor
+
+The webserver based scenario is the user's local device independent. The user only needs access to a web browser.
+
+Here, your application code is running in the webserver and the front-end layer is a web browser based.
+
+![Webserver based requestor](../.gitbook/assets/requestor-tutorial-web-based%20%281%29.png)
+
+{% hint style="info" %}
+To write a fully functional requestor you need to write just a few lines of code. 
+
+The rest is done by Golem infrastructure.
+{% endhint %}
+
+The basic requestor development tutorial is here:
+
+{% page-ref page="../tutorials/requestor-tutorial.md" %}
 
 ## How can I benefit from being a requestor?
 
-The typical benefit for the requestor is being able to have instant access to a very large pool of computational hardware.  Instead of using local hardware, the requestor is able to use IT resources available on the decentralized market. 
+The typical benefit for the requestor is to have instant access to a very large pool of hardware. Instead of using local hardware, the requestor is able to use IT resources available on the decentralized market. 
 
 {% hint style="info" %}
 Remember that one requestor can use hardware from many providers at the same time. 
@@ -68,10 +92,14 @@ Think about training a large ML model in seconds instead of hours. This is just 
 
 For the basic computations scenario the details of the resource usage are as follows:
 
-* Specify what docker image to use/create a custom docker image.
-* For each of the used providers \(there is no limit here on the number :\) define the files containing the input data for the computations.
+* Specify what docker image to use:
+  * existing one, for example from the [docker hub](https://hub.docker.com/)
+  * create a custom docker image
+* For each of the used providers \(there is no limit on the number\) define the files containing the input data for the computations.
 * For each of the docker containers being created on the provider's hardware:
   * Input files are transferred to the docker container file system.
-  * Execution of the "run task" command.
+  * Execution of the "run task" command \(actual command string is defined in the requestor agent code\)
   * Output files are transferred from the docker container file system to the requestor.
+
+![Logical data flow](../.gitbook/assets/requestor-tutorial-data-flow%20%282%29.png)
 
