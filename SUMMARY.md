@@ -2,11 +2,19 @@
 
 * [Golem SDK documentation](README.md)
 
+## Introduction
+
+* [The golem network](introduction/the-golem-network.md)
+* [Provider](introduction/provider.md)
+* [Requestor](introduction/requestor.md)
+* [Decentralized market](introduction/decentralized-market.md)
+* [Golem's details](introduction/golems-details.md)
+
 ## Tutorials
 
 * [Requestor development tutorial](tutorials/requestor-tutorial.md)
 * [Developing a Golem network based product](tutorials/developing-a-golem-network-based-product.md)
-* [Provider tutorial](tutorials/provider-tutorial.md)
+* [Becoming a provider tutorial](tutorials/provider-tutorial.md)
 
 ## Requestor reference
 

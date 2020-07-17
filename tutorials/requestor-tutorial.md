@@ -4,42 +4,6 @@ description: Developing and deployment of golem network requestor
 
 # Requestor development tutorial
 
-## What is golem network ?
-
-Golem network is decentralized marketplace where IT resources such as computation hardware are bought and sold. The network consists of two types of actors:
-
-* **Requestor**
-
-Has a need to use some IT resources such as computation hardware. Those resources are purchased in the decentralized market. Also the actual usage of the resources is backed by the golem network decentralized infrastructure.  
-
-* **Provider**
-
-Has IT resources that can be shared with other actors in the network. Those resources are sold in the decentralized market.
-
-![golem network](../.gitbook/assets/requestor-tutorial-high-level.png)
-
-Both requestors and providers may be launched on different types of hardware. Those can be laptops, desktop computers, servers and cloud environments. For the requestors it is also feasible to be executed on mobile devices.
-
-## What does a requestor do?
-
-Typical use case for the requestor is as follows:
-
-* **Define the need**
-
-Define the IT resources it needs. Those needs \(for example CPU and memory requirements\) would be than by the golem infrastructure published in the decentralized network in a form of so called Order. 
-
-* **Buy the resources**
-
-If in the decentralized market there are Offers that match requirements of the Order, the resources offered by the provider are both to be used by the requestor.
-
-* **Use the resources**
-
-The actual usage depends on the resources. For now most common scenario is performing computations, but golem network is not limited to this use case.
-
-* **Pay for the resources usage**
-
-The last step is to pay for the usage of the resources \(unless the provider is offering them for free :\). There are many possible payment scenarios, but Ethereum based payment is default one.
-
 ## How can I benefit?
 
 Typical benefit for the requestor is being able to have instant access to very large pool of computational hardware.  Instead of using local hardware, the requestor is able to use IT resources available on the decentralized market. 
