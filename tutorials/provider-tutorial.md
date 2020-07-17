@@ -12,25 +12,23 @@ Download the installation pack from \[TO DO: provide the installation link\].
 
 ## Installation
 
-Open your terminal and paste
+Open your terminal and type
 
 ```text
-dpkg - i <link to downloaded pack>
+dpkg -i <link to downloaded pack>
 ```
 
 press enter and wait for Golem to install on your machine.
 
 ## Running the provider
 
-To run Golem type 
+To run Golem type in the terminal:
 
 ```text
 golem start
 ```
 
- in your command line.
-
-## First time use
+## First-time use
 
 {% hint style="info" %}
 If you are running your Golem node for the first time you will be asked to set up a few simple things. You will be able to change those settings later on in your Golem settings.
@@ -61,7 +59,7 @@ Golem settings.
 Set the name of your Golem Node that will be visible to other users
 ```
 
-Set new name of your node and press ENTER \(warning about public name\)
+Set the new name of your node and press ENTER \(warning about the public name\)
 
 {% hint style="success" %}
 Congratulations! Now you can start using the Golem Provider! 
@@ -75,32 +73,90 @@ Your Golem Node will start with the _Default config_:
 * Disk - 200 MB
 * Market: GNT value
 
-
-
 You can change those settings in the settings menu later on.
 {% endhint %}
 
-
-
 {% hint style="info" %}
-You can change those settings in the settings menu later on. To check the logs, type the following in the new terminal window:
+To check the logs, type:
 
 ```text
 golem logs
 ```
 {% endhint %}
 
-You can change those settings in the settings menu later on. To check the logs, type the following in the new terminal window:
-
-```text
-golem logs
-```
-
- `golem logs` in the new terminal window.
-
 ## Getting the job status
 
+To display general status, state, latest jobs and wallet info, type the following in the new terminal window:
+
+```text
+golem status
+```
+
+## Changing the run state
+
+### Stopping the provider
+
+To stop the provider daemon, type:
+
+```text
+golem stop
+```
+
+### Pausing the provider
+
+To pause the provider daemon, type:
+
+```text
+golem pause
+```
+
+### Resuming the provider
+
+To resume the provider daemon that is in pause mode, type:
+
+```text
+golem resume
+```
+
 ## Provider configuration
+
+To get the current configuration, type the following in the new terminal window:
+
+```text
+golem settings show
+```
+
+### CPU usage limit
+
+To change the provider's CPU usage limit, type:
+
+```text
+golem settings set --cores [number]
+```
+
+### Memory usage limit
+
+To change the provider's memory usage limit, type:
+
+```text
+golem settings set --memory [number]
+```
+
+### Disk usage limit
+
+To change the provider's disk usage limit, type:
+
+```text
+golem settings set --disk [number]
+```
+
+
+
+The complete configuration guide, please check following:
+
+{% page-ref page="../provider-reference/provider-cli.md" %}
+
+
 
 ## Next steps
 
