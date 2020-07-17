@@ -1,5 +1,5 @@
 ---
-description: Golem SDK documentation
+description: Introducing Golem Network
 ---
 
 # The Golem Network SDK documentation
