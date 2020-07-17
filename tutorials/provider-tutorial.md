@@ -4,7 +4,18 @@ description: 'Golem network provider installation, configuration and usage'
 
 # Provider tutorial
 
-## How can I benefit from running the provider?
+## How can I benefit from running the provider on mine hardware?
+
+After installing and running the golem provider you will benefit in the following way:
+
+* serving other actors in the golem network that are in need of IT resources that your hardware is not using
+* payments for the resources your share
+
+The payments are done through [ethereum](https://ethereum.org/), so the whole process is very simple!
+
+The typical use case is as follows: after receiving input data, the processing is done by your hardware, output data being sent back to the requestor, the ethereum payment is done. It is that simple.
+
+![Typical golem network use case](../.gitbook/assets/provider-tutorial-benefit%20%281%29.png)
 
 ## Installation prerequisites
 
