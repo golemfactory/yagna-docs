@@ -64,19 +64,39 @@ Set the name of your Golem Node that will be visible to other users
 Set new name of your node and press ENTER \(warning about public name\)
 
 {% hint style="success" %}
-
+Congratulations! Now you can start using the Golem Provider! 
 {% endhint %}
 
-_You can start using the Golem Provider!_ 
-
-_Your Golem Node will start with the Default config:_
+{% hint style="info" %}
+Your Golem Node will start with the _Default config_:
 
 * CPU - 2 cores
 * RAM - 2 GB
 * Disk - 200 MB
 * Market: GNT value
 
-_You can change those settings in the settings menu later on. To check the logs type `golem logs` in the new terminal window._
+
+
+You can change those settings in the settings menu later on.
+{% endhint %}
+
+
+
+{% hint style="info" %}
+You can change those settings in the settings menu later on. To check the logs, type the following in the new terminal window:
+
+```text
+golem logs
+```
+{% endhint %}
+
+You can change those settings in the settings menu later on. To check the logs, type the following in the new terminal window:
+
+```text
+golem logs
+```
+
+ `golem logs` in the new terminal window.
 
 ## Getting the job status
 
