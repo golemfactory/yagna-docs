@@ -17,7 +17,7 @@
 
 ## Requestor reference
 
-* [Provider High Level API](requestor-reference/untitled.md)
+* [Requestor High Level API](requestor-reference/untitled.md)
 
 ## Provider reference
 
