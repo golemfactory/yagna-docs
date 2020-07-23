@@ -74,7 +74,7 @@ The rest is done by Golem infrastructure.
 
 The basic requestor development tutorial is here:
 
-{% page-ref page="../tutorials/requestor-tutorial.md" %}
+{% page-ref page="../tutorials/flash-tutorial-of-requestor-development.md" %}
 
 ## How can I benefit from being a requestor?
 
@@ -86,7 +86,7 @@ Remember that one requestor can use hardware from many providers at the same tim
 
 Think about training a large ML model in seconds instead of hours. This is just an example, as there are many interesting business use cases described in the:
 
-{% page-ref page="../tutorials/developing-a-golem-network-based-product.md" %}
+{% page-ref page="../product-tutorials/developing-a-golem-network-based-product.md" %}
 
 ## How does a Requestor work?
 

@@ -38,13 +38,13 @@ Making Golem based product development being super easy is our core business.
 
  And there are no licensing fees. The details are described here:
 
-{% page-ref page="tutorials/developing-a-golem-network-based-product.md" %}
+{% page-ref page="product-tutorials/developing-a-golem-network-based-product.md" %}
 
 ### **Become a Golem provider**
 
 If you have Internet-connected hardware that supports running Linux, you can install a Golem Network provider package, share your hardware resources, and **have a passive income stream straight to your** [**ethereum**](https://ethereum.org/) **address**. Just follow this link:
 
-{% page-ref page="tutorials/provider-tutorial.md" %}
+{% page-ref page="provider-tutorials/provider-tutorial.md" %}
 
 ## Golem is open source
 

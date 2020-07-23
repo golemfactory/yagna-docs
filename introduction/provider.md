@@ -44,7 +44,7 @@ It is that simple.
 
 Becoming a Golem network provider is open to anyone. The installation and configuration are super easy. The details are described in the:
 
-{% page-ref page="../tutorials/provider-tutorial.md" %}
+{% page-ref page="../provider-tutorials/provider-tutorial.md" %}
 
 
 

@@ -9,11 +9,18 @@
 * [Decentralized market](introduction/decentralized-market.md)
 * [Golem's details](introduction/golems-details.md)
 
-## Tutorials
+## product tutorials
 
-* [Requestor development tutorial](tutorials/requestor-tutorial.md)
-* [Developing a Golem based product](tutorials/developing-a-golem-network-based-product.md)
-* [Becoming a provider tutorial](tutorials/provider-tutorial.md)
+* [Developing a Golem based product](product-tutorials/developing-a-golem-network-based-product.md)
+
+## Requestor Tutorials <a id="tutorials"></a>
+
+* [Flash tutorial of requestor development](tutorials/flash-tutorial-of-requestor-development.md)
+* ["How does it work" tutorial of requestor development](tutorials/requestor-tutorial.md)
+
+## PROVIDER TUTORIALS
+
+* [Becoming a provider tutorial](provider-tutorials/provider-tutorial.md)
 
 ## Requestor reference
 
