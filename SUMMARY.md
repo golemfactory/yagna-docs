@@ -15,12 +15,12 @@
 
 ## Requestor Tutorials <a id="tutorials"></a>
 
-* [Flash tutorial of requestor development](tutorials/flash-tutorial-of-requestor-development.md)
+* [A quick primer into the requestor development](tutorials/flash-tutorial-of-requestor-development.md)
 * ["How does it work" tutorial of requestor development](tutorials/requestor-tutorial.md)
 
 ## PROVIDER TUTORIALS
 
-* [Becoming a provider tutorial](provider-tutorials/provider-tutorial.md)
+* [Becoming a provider](provider-tutorials/provider-tutorial.md)
 
 ## Requestor reference
 

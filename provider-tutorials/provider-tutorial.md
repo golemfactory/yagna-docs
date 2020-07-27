@@ -2,7 +2,7 @@
 description: 'Golem network provider installation, configuration and usage'
 ---
 
-# Becoming a provider tutorial
+# Becoming a provider
 
 {% hint style="danger" %}
 This documentation section is under development.

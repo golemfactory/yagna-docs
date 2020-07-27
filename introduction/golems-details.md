@@ -22,11 +22,11 @@ Golem daemon is the default implementation of the Golem network protocol.
 The difference between requestor and provider is the use of requestor or provider agent.
 {% endhint %}
 
-As the role of the provider is to serve IT resources, the actual provider agent logic is pretty universal to all the business cases. This is why we provide provider binaries as a pre-build Linux installation package.
+As the role of the provider is to serve IT resources, the actual provider agent logic is universal to all business cases. This is why we provide provider binaries as a pre-built Linux installation package.
 
-![Golem deamon and the agents. Components to be developed by 3rd party marked yellow.](../.gitbook/assets/requestor-tutorial-details%20%281%29.png)
+![Golem deamon and the agents. Components to be developed by a third party are marked yellow.](../.gitbook/assets/requestor-tutorial-details%20%281%29.png)
 
-When building a product on Golem, there two areas that require custom development \(market yellow on the above diagram\):
+When building a product on Golem, there two areas that require custom development \(marked yellow on the diagram above\):
 
 * **Requestor agent**
 

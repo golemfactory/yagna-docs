@@ -2,11 +2,11 @@
 description: Copy and paste quick tutorial
 ---
 
-# Flash tutorial of requestor development
+# A quick primer into the requestor development
 
-This is complete creating and running golem requestor tutorial.
+This is complete tutorial describing the creation and execution of a Golem requestor agent.
 
-The tutorial shows how to create requestor that is doing [Blender](https://www.blender.org/) rendering in parallel in multiple requestors with the use of Blender's docker image. 
+The tutorial shows how to create a requestor agent that performs [Blender](https://www.blender.org/) rendering in parallel on multiple providers with the use of Blender's docker image. 
 
 TO DO: 
 
@@ -20,7 +20,7 @@ testnet support in python code
 
 To run `yagna` from sources, you'll need to have `rust` development environment installed - it will be needed to run the `yagna` daemon itself. If you don't have it, please refer to the official docs to install it: [https://www.rust-lang.org/learn/get-started](https://www.rust-lang.org/learn/get-started) 
 
-Afterward, you'll need to launch the `yagna` service.
+Afterwards, you'll need to launch the `yagna` service.
 
 First, clone the `yagna` repository from: [https://github.com/golemfactory/yagna/](https://github.com/golemfactory/yagna/releases/tag/vm-poc)
 
@@ -40,7 +40,7 @@ cp .env-template .env
 cargo run service run
 ```
 
-This will build the `yagna` using the Rust compiler \(which can take a considerable time unless you're working on a really fast machine\) and subsequently launch it.
+This command will build `yagna` using the Rust compiler \(which can take a considerable time unless you're working on a really fast machine\) and once it's built, will subsequently launch it.
 
 Once the daemon launches, it will start emitting some debug messages among which one of the first ones will look like: `[2020-07-16T12:11:33Z INFO yagna] Starting yagna service!` .  There you go! Leave the shell with the yagna service running and you're ready for the following steps.
 
@@ -156,7 +156,7 @@ if __name__ == "__main__":
         asyncio.get_event_loop().run_until_complete(asyncio.sleep(0.3))
 ```
 
-You do not need to copy and paste it as it is allready in repo. The detailed description of how it works is here:
+You do not need to copy and paste it as it is already in repo. The detailed description of how it works is here:
 
 {% page-ref page="requestor-tutorial.md" %}
 
