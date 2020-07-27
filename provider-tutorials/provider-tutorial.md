@@ -4,6 +4,10 @@ description: 'Golem network provider installation, configuration and usage'
 
 # Becoming a provider tutorial
 
+{% hint style="danger" %}
+This documentation section is under development.
+{% endhint %}
+
 ## Installation prerequisites
 
 Download the installation pack from \[TO DO: provide the installation link\].

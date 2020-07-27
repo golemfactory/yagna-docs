@@ -4,6 +4,10 @@ description: Golem Provider command line interface
 
 # Provider CLI reference
 
+{% hint style="danger" %}
+This documentation section is under development.
+{% endhint %}
+
 ## CLI response
 
 {% hint style="info" %}

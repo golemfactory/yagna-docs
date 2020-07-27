@@ -4,6 +4,10 @@ description: Internal details
 
 # Golem's details
 
+{% hint style="danger" %}
+This documentation section is under development.
+{% endhint %}
+
 ## Golem daemon and the agents
 
 The Golem is defined mainly by the Golem network protocol. 
