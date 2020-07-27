@@ -8,6 +8,14 @@ This is complete creating and running golem requestor tutorial.
 
 The tutorial shows how to create requestor that is doing [Blender](https://www.blender.org/) rendering in parallel in multiple requestors with the use of Blender's docker image. 
 
+TO DO: 
+
+binary instead of cargo
+
+show gvmkit usage
+
+testnet support in python code
+
 ### Running `yagna` daemon from sources
 
 To run `yagna` from sources, you'll need to have `rust` development environment installed - it will be needed to run the `yagna` daemon itself. If you don't have it, please refer to the official docs to install it: [https://www.rust-lang.org/learn/get-started](https://www.rust-lang.org/learn/get-started) 
