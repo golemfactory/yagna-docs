@@ -36,124 +36,39 @@ Important: After you launch the daemon, leave it running in the background while
 
 You can now proceed to [Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key).
 
-### Running `yagna` daemon from sources
-
-Alternatively, especially if you're an adventurous type, you might want to run `yagna` from sources. For this, you'll need to have `rust` development environment installed - it will be needed to run the `yagna` daemon itself. If you don't have it, please refer to the official docs to install it: [https://www.rust-lang.org/learn/get-started](https://www.rust-lang.org/learn/get-started) 
-
-Afterwards, you'll need to launch the `yagna` service.
-
-First, clone the `yagna` repository from: [https://github.com/golemfactory/yagna/](https://github.com/golemfactory/yagna/releases/tag/vm-poc)
-
-```python
-git clone https://github.com/golemfactory/yagna.git
-```
-
-Once you have it cloned and checked out, enter its directory and: first, copy the template environment file onto a proper .env file:
-
-```bash
-cp .env-template .env
-```
-
- then run:
-
-```text
-cargo run service run
-```
-
-This command will build `yagna` using the Rust compiler \(which can take a considerable time unless you're working on a really fast machine\) and once it's built, will subsequently launch it.
-
-Once the daemon launches, it will start emitting some debug messages among which one of the first ones will look like: 
-
-`[2020-07-16T12:11:33Z INFO yagna] Starting yagna service!` .  
-
-There you go! Leave the shell with the yagna service running and you're ready for the following steps.
-
-#### Build the `gftp` binary
-
-If you're running `yagna` from sources, you won't have the `gftp` binary around and you need to also build it yourself. To do so, once again, go to your `yagna` source directory and execute:
-
-```bash
-cd core/gftp
-cargo install --path .
-```
-
-This will build and install the `gftp` binary for you.
-
 ## Generate the app key
 
 With the daemon running, enter the daemon's directory using another shell and generate the `yagna` app key that will be used by your requestor agent to access yagna's REST API.
 
-{% tabs %}
-{% tab title="binaries" %}
-```bash
+```text
 yagna app-key create requestor
 ```
-{% endtab %}
-
-{% tab title="source" %}
-```
-cargo run app-key create requestor
-```
-{% endtab %}
-{% endtabs %}
 
 This should produce a 32-character-long hexadecimal app key that you need to note down as it will be needed to run the requestor agent.
 
 In case you lose your app key, you can retrieve it with:
 
-{% tabs %}
-{% tab title="binaries" %}
-```bash
+```text
 yagna app-key list
 ```
-{% endtab %}
-
-{% tab title="source" %}
-```
-cargo run app-key list
-```
-{% endtab %}
-{% endtabs %}
 
 the value in the `key` column is the key you need.
 
 ### Ensure you have some ETH and GNT tokens ready
 
-{% tabs %}
-{% tab title="binaries" %}
-```bash
+```text
 yagna payment init -r
 ```
-{% endtab %}
-
-{% tab title="source" %}
-```
-cargo run payment init -r
-```
-{% endtab %}
-{% endtabs %}
 
 and allow a few minutes for the faucet to do its job.
 
 You can verify whether you already have the funds with:
 
-{% tabs %}
-{% tab title="binaries" %}
 ```text
 yagna payment status
 ```
-{% endtab %}
-
-{% tab title="source" %}
-```
-cargo run payment status
-```
-{% endtab %}
-{% endtabs %}
 
 If it doesn't succeed after a few minutes, re-run the `payment init` command above and check again after a few more minutes.
-
-### 
 
 ## Running the requestor
 
