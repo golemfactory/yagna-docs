@@ -54,7 +54,7 @@ yagna app-key list
 
 the value in the `key` column is the key you need.
 
-### Ensure you have some ETH and GNT tokens ready
+### Ensure you have some ETH and nGNT tokens ready
 
 ```text
 yagna payment init -r
@@ -72,33 +72,62 @@ If it doesn't succeed after a few minutes, re-run the `payment init` command abo
 
 ## Running the requestor
 
-To run the above code:
+Now you have the `yagna` daemon running, you may proceed with running a task as a requestor.
 
-* prepare virtual environment for the tutorial script, e.g. with `virtualenvwrapper`:
+### Get the environment set up
+
+Ensure you're running python &gt;= 3.6
+
+Prepare a virtual environment for the tutorial script, e.g. with `virtualenvwrapper`:
 
 ```text
 mkvirtualenv -p python3 yagna-python-tutorial
 ```
 
-* and install the dependencies:
+Install the dependencies:
 
 ```text
 pip install yapapi certifi
 ```
 
-* copy the above example python requestor code and place it as `example.py` in the same directory as your blender scene file
-* if you're using a scene file with a different name than `cubes.blend` above make sure that your example code refers to your scene file
-* set the `YAGNA_APPKEY` to the app key that you received after you have created the yagna app key
+### Get the requestor agent's code
+
+Check out or download the `yapapi` repository:
+
+```text
+git clone https://github.com/golemfactory/yapapi.git
+```
+
+### Set the yagna app key
+
+In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key)" step above:
 
 ```text
 export YAGNA_APPKEY=insert-your-32-char-app-key-here
 ```
 
-* and run the requestor agent:
+The example we're showcasing here resides in the `examples/blender` directory within `yapapi`'s codebase so, ensure that you're in the checked-out repository's directory and run:
 
-```text
-python3 ./example.py
+```bash
+cd examples/blender
+python3 ./blender.py
 ```
 
+If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet which will look something like:  
+  
+`('agr', 'create', '1a68db7e-b11b-45b0-872d-8b4f28f2c492', {'provider_idn': Identification(name='2rec-ubuntu', subnet_tag='testnet')})`
 
+Afterwards, you should see the work dispatched to providers with lines starting with `new batch !!!` and subsequently confirmations of tasks getting accepted by our example requestor agent:
+
+`('task', 'accept', None, {'result': None})`
+
+The example in question generates six discrete jobs for providers to execute so after those six activities are completed and results returned, the whole task is finished.
+
+`progress= {'done': True}`
+
+{% hint style="success" %}
+Yay! With this, you have completed your first job as a requestor in the new Golem network!
+{% endhint %}
+
+You can verify that it's indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation.
 
