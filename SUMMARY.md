@@ -35,4 +35,5 @@
 ---
 
 * [Golem infrastructure documentation](https://golem-network.gitbook.io/golem-internal-documentation-test)
+* [Terms](terms.md)
 
