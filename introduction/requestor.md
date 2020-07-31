@@ -56,7 +56,7 @@ The simplest scenario is when the requestor binary is running on a device that t
 
 In this scenario, your product front-end layer and the requestor can be integrated into one binary package.
 
-![User&apos;s device based requestor](../.gitbook/assets/requestor-tutorial-basic-usage%20%284%29.png)
+![](../.gitbook/assets/tnm-docs-infographics-04.jpg)
 
 ### Webserver-based requestor
 
@@ -64,7 +64,7 @@ In this scenario, it doesn't matter what the end user's local device is, as long
 
 Here, your application code is running inside a web server and the front-end layer is accessed through a browser.
 
-![Webserver-based requestor](../.gitbook/assets/requestor-tutorial-web-based%20%281%29.png)
+![](../.gitbook/assets/tnm-docs-infographics-05.jpg)
 
 {% hint style="info" %}
 To write a fully functional requestor you need to write just a few lines of code. 
@@ -101,5 +101,5 @@ For the basic computations scenario the details of the resource usage are as fol
   * execute the "run task" command \(actual command string is defined in the requestor agent code\)
   * transfer the output files from the docker container's volume to the requestor.
 
-![Logical data flow](../.gitbook/assets/requestor-tutorial-data-flow%20%282%29.png)
+![](../.gitbook/assets/tnm-docs-infographics-06.jpg)
 

@@ -38,7 +38,7 @@ The typical resource usage scenario is as follows: after receiving the input dat
 
 It is that simple.
 
-![Typical Golem use case](../.gitbook/assets/provider-tutorial-benefit.png)
+![](../.gitbook/assets/tnm-docs-infographics-02.jpg)
 
 ## How I can become a Golem provider?
 

@@ -20,7 +20,7 @@ Has a need to use IT resources such as computation hardware. Those resources are
 
 Has free IT resources that can be shared with other actors in the network. Those resources are sold in the decentralized market.
 
-![The Golem](.gitbook/assets/requestor-tutorial-high-level%20%283%29.png)
+![](.gitbook/assets/tnm-docs-infographics-01.jpg)
 
 Both requestors and providers may be launched on different types of hardware. Those can be laptops, desktop computers, servers, and cloud environments. In case of requestors, it is also feasible for them to be executed on mobile devices.
 
