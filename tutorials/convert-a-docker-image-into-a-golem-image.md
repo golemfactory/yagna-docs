@@ -5,7 +5,7 @@ description: >-
   within Docker containers to Golem.
 ---
 
-# How to convert a docker image into a Golem image?
+# How to convert a Docker image into a Golem image?
 
 ### Prerequisites
 
