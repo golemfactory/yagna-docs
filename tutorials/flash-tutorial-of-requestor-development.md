@@ -50,11 +50,17 @@ the value in the `key` column is the key you need.
 
 ### Ensure you have some ETH and nGNT tokens ready
 
+Instruct the yagna daemon to contact the faucet which issues some ETH and nGNT tokens to the node:
+
 ```text
 yagna payment init -r
 ```
 
-and allow a few minutes for the faucet to do its job.
+and allow some time until it completes its job.
+
+{% hint style="warning" %}
+Due to the fact that our example uses the Rinkeby Ethereum testnet, the transactions that add ETH and nGNT to the requestor node's address need to be mined and confirmed there. It may take several minutes until that's completed.
+{% endhint %}
 
 You can verify whether you already have the funds with:
 
