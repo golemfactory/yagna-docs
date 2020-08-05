@@ -132,3 +132,7 @@ Yay! With this, you have completed your first job as a requestor in the new Gole
 
 You can verify that it's indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation.
 
+Here is an example rendered frame, provided here for reference:
+
+![](../.gitbook/assets/output_0.png)
+
