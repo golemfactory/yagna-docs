@@ -6,11 +6,7 @@ description: Copy and paste quick tutorial
 
 This is complete tutorial describing the creation and execution of a Golem requestor agent.
 
-The tutorial shows how to create a requestor agent that performs [Blender](https://www.blender.org/) rendering in parallel on multiple providers with the use of Blender's docker image. 
-
-TO DO: 
-
-show gvmkit usage
+The tutorial shows how to run a requestor agent that performs [Blender](https://www.blender.org/) rendering in parallel on multiple providers with the use of Blender's docker image. 
 
 ## Running `yagna` daemon
 
