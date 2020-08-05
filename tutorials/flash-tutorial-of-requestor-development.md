@@ -1,12 +1,11 @@
 ---
-description: Copy and paste quick tutorial
+description: >-
+  The tutorial shows how to run a requestor agent that performs Blender
+  rendering in parallel on multiple providers with the use of Blender's docker
+  image.
 ---
 
 # A quick primer into the requestor development
-
-This is complete tutorial describing the creation and execution of a Golem requestor agent.
-
-The tutorial shows how to run a requestor agent that performs [Blender](https://www.blender.org/) rendering in parallel on multiple providers with the use of Blender's docker image. 
 
 ## Running `yagna` daemon
 

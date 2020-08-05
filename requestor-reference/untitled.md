@@ -1,5 +1,5 @@
 ---
-description: Write the provider agent code. Simply.
+description: Write the requestor agent code. Simply.
 ---
 
 # Requestor High Level API
