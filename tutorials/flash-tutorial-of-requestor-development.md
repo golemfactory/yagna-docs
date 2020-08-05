@@ -12,8 +12,6 @@ TO DO:
 
 show gvmkit usage
 
-testnet support in python code
-
 ## Running `yagna` daemon
 
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon. 
