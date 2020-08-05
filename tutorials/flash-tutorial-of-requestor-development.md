@@ -78,10 +78,11 @@ Now you have the `yagna` daemon running, you may proceed with running a task as 
 
 Ensure you're running python &gt;= 3.6
 
-Prepare a virtual environment for the tutorial script, e.g. with `virtualenvwrapper`:
+Prepare a virtual environment for the tutorial script:
 
 ```text
-mkvirtualenv -p python3 yagna-python-tutorial
+python3 -m venv ~/.envs/yagna-python-tutorial
+source ~/.envs/yagna-python-tutorial/bin/activate
 ```
 
 Install the dependencies:
