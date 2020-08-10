@@ -7,11 +7,24 @@ description: >-
 
 # A quick primer into the requestor development
 
+### Prerequisites
+
+To follow this tutorial, you'll need one of the following platforms:
+
+* OS X 10.14+
+* Ubuntu 18.04 or 20.04
+* Windows 10
+
+Apart from that, you'll need the following installed:
+
+* Python &gt;=3.6 with `venv` module
+* Git
+
 ## Running `yagna` daemon
 
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon. 
 
-First, download the package appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.3.0a](https://github.com/golemfactory/yagna/releases/tag/v0.3.0a)
+First, download the package appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.3.1a](https://github.com/golemfactory/yagna/releases/tag/v0.3.1a)
 
 Unpack it and put `gftp` and `yagna` binaries somewhere in your PATH \(e.g. copy them to `/usr/local/bin` on unix-like systems\).
 
@@ -75,7 +88,17 @@ Now you have the `yagna` daemon running, you may proceed with running a task as 
 
 ### Get the environment set up
 
-Ensure you're running python &gt;= 3.6
+Ensure you're running python &gt;= 3.6 and you have the `venv` module installed.
+
+To install `venv` run:
+
+{% tabs %}
+{% tab title="Ubuntu" %}
+```text
+sudo apt install python3-venv
+```
+{% endtab %}
+{% endtabs %}
 
 Prepare a virtual environment for the tutorial script:
 
@@ -109,7 +132,7 @@ export YAGNA_APPKEY=insert-your-32-char-app-key-here
 The example we're showcasing here resides in the `examples/blender` directory within `yapapi`'s codebase so, ensure that you're in the checked-out repository's directory and run:
 
 ```bash
-cd examples/blender
+cd yapapi/examples/blender
 python3 ./blender.py
 ```
 
