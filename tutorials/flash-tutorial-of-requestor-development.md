@@ -90,16 +90,6 @@ Now you have the `yagna` daemon running, you may proceed with running a task as 
 
 Ensure you're running python &gt;= 3.6 and you have the `venv` module installed.
 
-To install `venv` run:
-
-{% tabs %}
-{% tab title="Ubuntu" %}
-```text
-sudo apt install python3-venv
-```
-{% endtab %}
-{% endtabs %}
-
 Prepare a virtual environment for the tutorial script:
 
 ```text
