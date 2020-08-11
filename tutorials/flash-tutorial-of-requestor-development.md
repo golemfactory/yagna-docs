@@ -44,7 +44,7 @@ You can now proceed to [Generate the app key](flash-tutorial-of-requestor-develo
 #### Warning! Construction zone: errors ahead
 
 {% hint style="danger" %}
-You may notice errors while running the yagna daemon or the example script. Some of those errors will be silenced, prevented or handled more gracefully in the future production version. For now, you can usually ignore them, unless of course they make the daemon or the example script crash - or - prevent the task from being completed.
+You may notice errors while running the yagna daemon or the example script. Some of those errors will be silenced, prevented or handled more gracefully in the future production version. For now, you can usually ignore them, unless of course they make the daemon or the example script crash - or - cause the task itself to fail before completion.
 {% endhint %}
 
 Some of the errors you may encounter are:
