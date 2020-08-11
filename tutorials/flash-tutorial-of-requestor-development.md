@@ -41,6 +41,20 @@ Important: After you launch the daemon, leave it running in the background while
 
 You can now proceed to [Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key).
 
+#### Warning! Construction zone: errors ahead
+
+{% hint style="danger" %}
+You may notice errors while running the yagna daemon or the example script. Some of those errors will be silenced, prevented or handled more gracefully in the future production version. For now, you can usually ignore them, unless of course they make the daemon or the example script crash - or - prevent the task from being completed.
+{% endhint %}
+
+Some of the errors you may encounter are:
+
+`[2020-08-11T10:49:17Z ERROR ya_service_bus::remote_router] bind error: already registered: Service ID [... url ... ] already registered`
+
+`('prop', 'fail', [...], {'reason': "(500)\nReason: Internal Server Error\nHTTP response headers: \n"})`
+
+`Task exception was never retrieved [... several lines of stack trace ...] {"message":"GSB error: bad request: No service registered under given address"}`    
+
 ## Generate the app key
 
 With the daemon running, enter the daemon's directory using another shell and generate the `yagna` app key that will be used by your requestor agent to access yagna's REST API.
