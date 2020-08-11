@@ -9,13 +9,12 @@ description: >-
 
 ### Prerequisites
 
-To follow this tutorial, you'll need one of the following platforms:
+At this moment, we support a limited list of platforms. Thus, you'll need one of the following:
 
 * OS X 10.14+
 * Ubuntu 18.04 or 20.04
-* Windows 10
 
-Apart from that, you'll need the following installed:
+Apart from that, we'll need you to have:
 
 * Python &gt;=3.6 with `venv` module
 * Git
