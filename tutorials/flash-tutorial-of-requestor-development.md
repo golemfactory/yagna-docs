@@ -22,6 +22,8 @@ To verify your currently installed version of python, please run:
 python3 --version
 ```
 
+If you have an older version of python and you'd like to keep that version in your system, consider using [pyenv](https://github.com/pyenv/pyenv). You can use [pyenv-installer](https://github.com/pyenv/pyenv-installer) to facilitate the process.
+
 #### Git
 
 You'll also need the `git` versioning system client so you can clone our repositories. Ensure you have it available with:
