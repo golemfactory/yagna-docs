@@ -14,10 +14,21 @@ At this moment, we support a limited list of platforms. Thus, you'll need one of
 * OS X 10.14+
 * Ubuntu 18.04 or 20.04
 
-Apart from that, we'll need you to have:
+#### Python 3.6+
 
-* Python &gt;=3.6 with `venv` module
-* Git
+To verify your currently installed version of python, please run:
+
+```text
+python3 --version
+```
+
+#### Git
+
+You'll also need the `git` versioning system client so you can clone our repositories. Ensure you have it available with:
+
+```text
+git --version
+```
 
 ## Running `yagna` daemon
 
