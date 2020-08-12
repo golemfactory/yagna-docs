@@ -4,6 +4,10 @@ description: Introducing Golem Network
 
 # The Golem SDK documentation
 
+{% hint style="info" %}
+Looking for quickstart? \[ link \]
+{% endhint %}
+
 ## What is Golem?
 
 {% hint style="info" %}
@@ -40,7 +44,7 @@ Ensuring that the development of products based on Golem is smooth and effortles
 
 ### **Become a Golem provider**
 
-If you have Internet-connected device running Linux, you can install a Golem Network provider package, share your hardware resources, and **have a passive income stream straight to your** [**ethereum**](https://ethereum.org/) **address**. Just follow this link:
+In the future if you have Internet-connected device running Linux, you can install a Golem Network provider package, share your hardware resources, and **have a passive income stream straight to your** [**ethereum**](https://ethereum.org/) **address**. 
 
 ## Golem is free and open source
 
@@ -49,10 +53,6 @@ Golem is open-source software. All the code is available under the GPL license.
 
 [https://github.com/golemfactory/yagna](https://github.com/golemfactory/yagna)
 {% endhint %}
-
-## Documentation
-
-This is Golem SDK documentation. These documentation resources are aimed at developers working on products based on Golem.
 
 The documentation aimed at developers working on developing Golem infrastructure codebase itself is here:
 
