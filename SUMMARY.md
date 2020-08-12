@@ -6,12 +6,7 @@
 
 * [Provider](introduction/provider.md)
 * [Requestor](introduction/requestor.md)
-* [Decentralized market](introduction/decentralized-market.md)
 * [Golem's details](introduction/golems-details.md)
-
-## product tutorials
-
-* [Developing a Golem based product](product-tutorials/developing-a-golem-network-based-product.md)
 
 ## Requestor Tutorials <a id="tutorials"></a>
 
@@ -19,21 +14,8 @@
 * [How does it work? A more in-depth look at an example requestor agent](tutorials/requestor-tutorial.md)
 * [How to convert a Docker image into a Golem image?](tutorials/convert-a-docker-image-into-a-golem-image.md)
 
-## PROVIDER TUTORIALS
 
-* [Becoming a provider](provider-tutorials/provider-tutorial.md)
-
-## Requestor reference
-
-* [Requestor High Level API](requestor-reference/untitled.md)
-
-## Provider reference
-
-* [Provider CLI reference](provider-reference/provider-cli.md)
-
-## Other golem related
-
----
+## See also
 
 * [Golem infrastructure documentation](https://golem-network.gitbook.io/golem-internal-documentation-test)
 * [Running yagna daemon from sources](running-yagna-from-sources.md)
