@@ -14,10 +14,9 @@
 * [How does it work? A more in-depth look at an example requestor agent](tutorials/requestor-tutorial.md)
 * [How to convert a Docker image into a Golem image?](tutorials/convert-a-docker-image-into-a-golem-image.md)
 
-
 ## See also
 
 * [Golem infrastructure documentation](https://golem-network.gitbook.io/golem-internal-documentation-test)
-* [Running yagna daemon from sources](running-yagna-from-sources.md)
-* [Terms](terms.md)
+* [Running yagna daemon from sources](see-also/running-yagna-from-sources.md)
+* [Terms](see-also/terms.md)
 

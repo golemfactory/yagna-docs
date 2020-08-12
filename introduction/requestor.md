@@ -86,8 +86,6 @@ Remember that one requestor can use hardware from many providers at the same tim
 
 Think about training a large ML model in seconds instead of hours. This is just an example, as there are many interesting business use cases described in the:
 
-{% page-ref page="../product-tutorials/developing-a-golem-network-based-product.md" %}
-
 ## How does a Requestor work?
 
 For the basic computations scenario the details of the resource usage are as follows:
