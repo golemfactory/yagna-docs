@@ -36,7 +36,7 @@ git --version
 
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon. 
 
-First, download the package appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.3.1a](https://github.com/golemfactory/yagna/releases/tag/v0.3.1a)
+First, download the package appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.3.3-alpha.0](https://github.com/golemfactory/yagna/releases/tag/v0.3.3-alpha.0)
 
 Unpack it and put `gftp` and `yagna` binaries somewhere in your PATH \(e.g. copy them to `/usr/local/bin` on unix-like systems\).
 
