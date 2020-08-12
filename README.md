@@ -14,7 +14,7 @@ Under the hood, Golem is a decentralized marketplace where IT resources such as 
 
 * **Requestor**
 
-Has a need to use IT resources such as computation hardware. Those resources are purchased in the decentralized market. The actual usage of the resources is backed by Golem's decentralized infrastructure.  
+Has a need to use IT resources such as computation hardware. Those resources are purchased in the decentralized market. The actual usage of the resources is backed by Golem's decentralized infrastructure.
 
 * **Provider**
 
@@ -30,13 +30,13 @@ There are two ways you can benefit from Golem:
 
 ### **Develop a Golem-based product**
 
-Our decentralized stacks form a unique business value proposition your product can be based on. 
+Our decentralized stacks form a unique business value proposition your product can be based on.
 
 {% hint style="info" %}
 Ensuring that the development of products based on Golem is smooth and effortless is our core business.
 {% endhint %}
 
- Plus, there are no licensing fees. The details are described here:
+Plus, there are no licensing fees. The details are described here:
 
 {% page-ref page="product-tutorials/developing-a-golem-network-based-product.md" %}
 
@@ -61,6 +61,4 @@ This is Golem SDK documentation. These documentation resources are aimed at deve
 The documentation aimed at developers working on developing Golem infrastructure codebase itself is here:
 
 [https://golem-network.gitbook.io/golem-internal-documentation-test/](https://golem-network.gitbook.io/golem-internal-documentation-test/)
-
-
 

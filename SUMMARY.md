@@ -33,9 +33,7 @@
 
 ## Other golem related
 
----
-
 * [Golem infrastructure documentation](https://golem-network.gitbook.io/golem-internal-documentation-test)
-* [Running yagna daemon from sources](running-yagna-from-sources.md)
-* [Terms](terms.md)
+* [Running yagna daemon from sources](other-golem-related/running-yagna-from-sources.md)
+* [Terms](other-golem-related/terms.md)
 

@@ -17,13 +17,13 @@ Please check for feedback while interacting with all the commands below. For exa
 golem settings set node_name
 ```
 
- CLI should respond either:
+CLI should respond either:
 
 1. Node name changed to or
 2. Prompt info what went wrong
 {% endhint %}
 
-##  CLI commands
+## CLI commands
 
 * `golem status` Display general status, state, latest jobs and wallet info
 * `golem settings` Manage settings

@@ -8,5 +8,3 @@ description: The place where demands and offers match.
 This documentation section is under development.
 {% endhint %}
 
-
-
