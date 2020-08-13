@@ -1,8 +1,7 @@
 ---
 description: >-
-  The tutorial shows how to run a requestor agent that performs Blender
-  rendering in parallel on multiple providers with the use of Blender's docker
-  image.
+  This tutorial shows how to use the new Golem to run an app inside a custom
+  Docker image in parallel on multiple providers.
 ---
 
 # A quick primer into the requestor development
@@ -31,6 +30,12 @@ You'll also need the `git` versioning system client so you can clone our reposit
 ```text
 git --version
 ```
+
+#### You don't need any crypto assets
+
+{% hint style="info" %}
+You don't need any real ETH or nGNT tokens to start this tutorial. The alpha release works on the Rinkeby testnet and the needed assets are acquired by the daemon in one of the steps below.
+{% endhint %}
 
 ## Running `yagna` daemon
 
@@ -86,7 +91,7 @@ yagna app-key list
 
 the value in the `key` column is the key you need.
 
-### Ensure you have some ETH and nGNT tokens ready
+### Acquire some testnet ETH and nGNT tokens
 
 Instruct the yagna daemon to contact the faucet which issues some ETH and nGNT tokens to the node:
 

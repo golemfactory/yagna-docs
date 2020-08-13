@@ -45,8 +45,8 @@ This will pull the image if needed and then proceed with re-packing it into our 
 
 Once the image is built, it can be placed in our the repository.
 
-{% hint style="warning" %}
-At this moment, during development, we're using a freely-accessible repository that everybody can push into without any special requirements but this will change in the future and we'll most likely require some pre-authorization.
+{% hint style="info" %}
+In this alpha release, for the sake of simplicity, we're using a freely-accessible repository that everybody can push into without any special requirements to make the image available to all providers. This is likely to change in the future when we add an appropriate whitelisting mechanism.
 {% endhint %}
 
 To push the image:
