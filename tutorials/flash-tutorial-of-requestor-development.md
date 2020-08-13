@@ -37,6 +37,12 @@ git --version
 You don't need any real ETH or nGNT tokens to start this tutorial. The alpha release works on the Rinkeby testnet and the needed assets are acquired by the daemon in one of the steps below.
 {% endhint %}
 
+### Feedback? Help needed?
+
+{% hint style="success" %}
+If you'd like to give us feedback, suggestions, have some errors to report or if you got stuck and need help while following our tutorials, please don't hesitate to reach out to us on our Golem Discord: [https://chat.golem.network](https://chat.golem.network)
+{% endhint %}
+
 ## Running `yagna` daemon
 
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon. 
@@ -173,7 +179,7 @@ The example in question generates six discrete jobs for providers to execute so 
 Yay! With this, you have completed your first job as a requestor in the new Golem network!
 {% endhint %}
 
-You can verify that it's indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation.
+You can verify that it's indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation that should appear in the directory from which you ran the example script.
 
 Here is an example rendered frame, provided here for reference:
 

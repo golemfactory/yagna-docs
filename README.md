@@ -5,7 +5,11 @@ description: Introducing Golem Network
 # The Golem SDK documentation
 
 {% hint style="info" %}
-Lookig for quick start? [Dive into our requestor development primer!](tutorials/flash-tutorial-of-requestor-development.md)
+Looking for quick start? [Dive into our requestor development primer!](tutorials/flash-tutorial-of-requestor-development.md)
+{% endhint %}
+
+{% hint style="warning" %}
+The current Alpha release of the new Golem is aimed at requestors. We'll be adding an ability to become a provider in one of the next reveals. If you'd like to provide computing power to Golem Network, [our Clay Golem Beta implementation](https://golem.network/products/clay-beta/) allows this.
 {% endhint %}
 
 ## What is Golem?
