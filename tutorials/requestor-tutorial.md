@@ -138,7 +138,7 @@ This effectively creates a `Demand` for the market to respond to. In other words
 
 After you have specified the image to run, you need to define the steps that need to be executed by the providers in order to perform your task successfully.
 
-Our high level API abstracts the minute details of the operations that need to take place between the requestor agent and the providers' end during the execution of the task and its fragments and provides a convenient way specify the needed steps in a routine that is to be performed for each provider which executes the task fragments assigned to it.
+Our high-level API abstracts the minute details of the operations that need to take place between the requestor agent and the providers' end during the execution of the task. It fragments and provides a convenient way to specify the needed steps in a routine that is to be performed for each provider, which executes the task fragments assigned to it.
 
 We'll now take the `worker` routine apart, to understand what's happening:
 
@@ -146,23 +146,25 @@ We'll now take the `worker` routine apart, to understand what's happening:
 async def worker(ctx: WorkContext, tasks):
 ```
 
-The routine is called with a `ctx` object that contains the work context for a single provider who executes the fragments of the task assigned to them. `tasks` is a generator that provides tasks from a common queue in an asynchronous way so that each provider can take another task from the queue as soon as they finish the previous one. The execution continues for as long as there are tasks in the queue.
+The routine is called with a `ctx` object that contains the work context for a single provider who executes the fragments of the task assigned to them. 
 
-In this example, we're using a single scene file which all task fragments use so it only needs to be sent and attached to the provider when the container is first deployed on provider's end:
+`tasks` is a generator that provides tasks from a common queue in an asynchronous way, so that each provider can take another task from the queue as soon as they finish the previous one. The execution continues for as long as there are tasks in the queue.
+
+In this example, we're using a single scene file which all task fragments use, so it only needs to be sent and attached to the provider when the container is first deployed on the  provider's end:
 
 ```python
 ctx.send_file("./cubes.blend", "/golem/resource/scene.blend")
 ```
 
- The first parameter to `send_file()` here is the local path of the file and the second one is the path within the _container_ on provider's end to which this file should be copied once the container is deployed.
+ The first parameter to `send_file()` here is the local path of the file. The second one is the path within the _container_ on the provider's end, to which this file should be copied once the container is deployed.
 
-Then, there is a sequence of steps that needs to be executed for each of the fragments that this provider receives wrapped with this asynchronous loop:
+Then, there is a sequence of steps that needs to be executed for each of the fragments, that this provider receives wrapped with this asynchronous loop:
 
 ```python
 async for task in tasks:
 ```
 
-The next few lines are very specific to the Blender use case and the vm image we're using to render each piece of the output. There are a lot of parameters that can be defined here which are mostly irrelevant in the context of a general requestor development tutorial so we'll just go throught what's most important.
+The next few lines are very specific to the Blender use case and the vm image we're using to render each piece of the output. There are a lot of parameters that can be defined here, which are mostly irrelevant in the context of a general requestor development tutorial, so we'll just go through what's most important.
 
 ```python
 frame = task.data
@@ -189,11 +191,11 @@ For the sake of simplicity, we have decided to render whole frames of the scene 
 
 Thus, the `crops` parameter \(which can be used to specify a part of a frame\) stays the same between the tasks and what varies is the `frames` parameter that specifies the frame range to render within each task fragment.
 
-We're using `ctx.begin()` to start the sequence of commands for this specific fragment and then`ctx.send_json()` to wrap the provided dictionary of parameters into a JSON file, the destination path of which is passed as the first parameter. Note that this destination path is again a location within the container that's executed on provider's end.
+We're using `ctx.begin()` to start the sequence of commands for this specific fragment,  then`ctx.send_json()` to wrap the provided dictionary of parameters into a JSON file, the destination path of which is passed as the first parameter. Note that this destination path is again a location within the container that's executed on the provider's end.
 
-As you can see, the `frame` parameter comes from the `data` field of the `Task` objects that are passed into the `Engine`'s `map` function later on in the code. We could have just as well filled the `data` with e.g. a dictionary containing crop parameters for each fragment - if we wanted to render different parts of images on each fragment's execution. Or we could fill it with names of different scene files if e.g. we wanted each task to render a completely different scene file. Of course, in this latter case, we'd also need to use `ctx.send_file()` to send a new scene file for each new task fragment.
+As you can see, the `frame` parameter comes from the `data` field of the `Task` objects that are passed into the `Engine`'s `map` function later on in the code. We could have just as well filled the `data` with e.g. a dictionary containing crop parameters for each fragment - if we wanted to render different parts of images on each fragment's execution. Or we could fill it with names of different scene files, if e.g. we wanted each task to render a completely different scene file. Of course, in this latter case, we'd also need to use `ctx.send_file()` to send a new scene file for each new task fragment.
 
-**TLDR**, the most important take-away here is that `send_json` provides an easy way to pass a dictionary of parameters into the execution container and that you pass parameters for each task fragment in the `data` field of the `Task` objects passed to the `map` function. 
+**TLDR**, the most important take-away here is that `send_json` provides an easy way to pass a dictionary of parameters into the execution container, and that you pass parameters for each task fragment in the `data` field of the `Task` objects passed to the `map` function. 
 
 Okay, next we have the most important step:
 
@@ -201,7 +203,7 @@ Okay, next we have the most important step:
 ctx.run("/golem/entrypoints/run-blender.sh")
 ```
 
-which, of course, causes a specific `run` command to be executed by the Docker container on provider's end. Again, in this case, this script is pretty specific to the use case at hand and knows that it needs to take the `params.json` file and use it to call `Blender` in such a way as to render the desired content.
+Which, of course, causes a specific `run` command to be executed by the Docker container on the provider's end. Again, in this case, this script is pretty specific to the use case at hand, and knows that it needs to take the `params.json` file and use it to call `Blender` in such a way as to render the desired content.
 
 Still, you could just as well run any other command in the container's shell, by also providing its arguments as subsequent parameters to the `run()` function.
 
@@ -211,9 +213,9 @@ After the command finishes its execution, it's time to pass the results back to 
 ctx.download_file(f"/golem/output/out{frame:04d}.png", f"output_{frame}.png")
 ```
 
-The first parameter here is the source path - which refers to a path within the container on provider's end - and the second one is the local path on our requestor machine to which the output should be written.
+The first parameter here is the source path - which refers to a path within the container on the provider's end - and the second one is the local path on the requestor machine to which the output should be written.
 
-Finally - or _almost_ finally - we issue a `commit()` call which combines all the steps together and we pass them using `yield` to the `Engine` which, in turn, passes them for execution and allows the flows for other providers to be executed on our requestor while this provider works on this task fragment.
+Finally - or _almost_ finally - we issue a `commit()` call which combines all the steps together and we pass them using `yield` to the `Engine.` The Engine, in turn, passes them for execution and allows the flows for other providers to be executed on the requestor while this provider works on this task fragment.
 
 ```python
 yield ctx.commit()
@@ -221,7 +223,7 @@ yield ctx.commit()
 
 Eventually, when the execution returns to our routine and to the work context of the specific provider, we should already have the results available in the desired location.
 
-Ordinarily, you'd most likely want to run some verification of the result to make sure that the provider has done a proper job but here, again, for simplicity's sake, we'll just accept the task as it is.
+Ordinarily, you'd most likely want to run some verification of the result to make sure that the provider has done a proper job. Here, for simplicity's sake, we'll just accept the task as it is.
 
 ```python
 task.accept_task()
@@ -235,7 +237,7 @@ ctx.log("no more frames to render")
 
 ### Time to call the runner Engine
 
-With our task \(fragment\) steps defined, we can finally call the `Engine` that will orchestrate first the negotiation of our computational `Demand` against the `Offer`s from the providers in the network to reach agreements with each of them and subsequently will use those agreements to launch specific computational activities to complete the task we have specified. **\[ WHAT ABOUT THE PAYMENTS? \]**
+With our task \(fragment\) steps defined, we can finally call the `Engine` , that will orchestrate first the negotiation of our computational `Demand` against the `Offer` from the providers in the network, to reach agreements with each of them and subsequently, will use those agreements to launch specific computational activities to complete the task we have specified. **\[ WHAT ABOUT THE PAYMENTS? \]**
 
 The `Engine` is first instantiated as a context manager:
 
