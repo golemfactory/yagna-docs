@@ -20,12 +20,12 @@ There are a couple of assumptions we'll be making here, in order to do this tuto
 To proceed with this tutorial, you'll first need to ensure the following prerequisites are met:
 
 * You have the `yagna` daemon running - this is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network. It exposes its REST API to allow both the provider and the requestor agents to connect to it.
-* you have the `yagna` app key generated and noted down so you can use it while running the requestor agent.
-* you have the `gftp` binary used to transport files over golem network
-* you have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now. For details on how to do that with any Docker images, please have a look at: [How to convert a Docker image into a Golem image](convert-a-docker-image-into-a-golem-image.md)
-* you have `python` &gt;= 3.6 installed and a virtual environment created - it's needed to run our example here.
-* as we'll be using the Blender renderer in this tutorial, you'll need a Blender scene file that the providers will render for you. We have provided an example scene - `cubes.blend` in the example's directory.
-* finally, some familiarity with `asyncio` is a plus as `yapapi` is written to make heavy use of Python's `asyncio` library.
+* You have the `yagna` app key generated and noted down so you can use it while running the requestor agent.
+* You have the `gftp` binary used to transport files over golem network
+* You have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over the New Golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now. For details on how to do that with any Docker images, please have a look at this tutorial:  __[_How to convert a Docker image into a Golem image_](convert-a-docker-image-into-a-golem-image.md)\_\_
+* You have `python` &gt;= 3.6 installed and a virtual environment created - it's needed to run our example here.
+* As we'll be using the Blender renderer in this tutorial, you'll need a Blender scene file that the providers will render for you. We have provided an example scene - `cubes.blend` in the example's directory.
+* Finally, some familiarity with `asyncio` is a plus as `yapapi` is written to make heavy use of Python's `asyncio` library.
 
 ## Requestor agent code
 
