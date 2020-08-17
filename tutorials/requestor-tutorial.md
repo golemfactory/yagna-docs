@@ -21,15 +21,15 @@ To proceed with this tutorial, you'll first need to ensure the following prerequ
 
 * You have the `yagna` daemon running - this is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network. It exposes its REST API to allow both the provider and the requestor agents to connect to it.
 * You have the `yagna` app key generated and noted down so you can use it while running the requestor agent.
-* You have the `gftp` binary used to transport files over golem network
+* You have the `gftp` binary used to transport files over the New Golem network
 * You have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over the New Golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now. For details on how to do that with any Docker images, please have a look at this tutorial:  __[_How to convert a Docker image into a Golem image_](convert-a-docker-image-into-a-golem-image.md)\_\_
-* You have `python` &gt;= 3.6 installed and a virtual environment created - it's needed to run our example here.
-* As we'll be using the Blender renderer in this tutorial, you'll need a Blender scene file that the providers will render for you. We have provided an example scene - `cubes.blend` in the example's directory.
-* Finally, some familiarity with `asyncio` is a plus as `yapapi` is written to make heavy use of Python's `asyncio` library.
+* You have `python` &gt;= 3.6 installed and a virtual environment created. You need this to run our example here.
+* As we'll be using the Blender renderer in this tutorial, you'll need a Blender scene file that the "providers" will render for you. We have provided an example scene - `cubes.blend` in the example's directory.
+* Finally, some familiarity with `asyncio` is a plus, as `yapapi` is written to make heavy use of Python's `asyncio` library.
 
 ## Requestor agent code
 
-The complete code of the requestor agent is:
+The complete code of the requestor agent \(no worries, you do not need to copy and paste it as it is already in repo\) is:
 
 ```python
 from yapapi.runner import Engine, Task, vm
@@ -104,11 +104,11 @@ if __name__ == "__main__":
         asyncio.get_event_loop().run_until_complete(asyncio.sleep(0.3))
 ```
 
-You do not need to copy and paste it as it is already in repo. Now the question:
+Now to the question:
 
 ### How does it work?
 
-Here's the flow diagram of all the interactions that need to happen between the requestor and the provider\(s\) in order for our task to be completed:
+Here's the flow diagram of all the interactions that need to happen between the requestor and the provider\(s\) in order for the task to be completed:
 
 ![requestor agent - sequential diagram](../.gitbook/assets/requestor-tutorial-sequence.png)
 
@@ -118,7 +118,7 @@ All right, we'll skip over the imports at the top and `asyncio` boilerplate code
 
 ### Specify your demand
 
-Normally, you'd need to adapt your docker image to golem using the [gvmkit-build](https://pypi.org/project/gvmkit-build/) tool ****but for the purpose of this tutorial, we're using the pre-converted image containing the Blender renderer.
+Normally, you'd need to adapt your docker image to Golem using the [gvmkit-build](https://pypi.org/project/gvmkit-build/) tool ****but for the purpose of this tutorial, we're using the pre-converted image containing the Blender renderer.
 
 So, first, we need to specify which image we'll be using and what its memory and disk space requirements are:
 
@@ -273,7 +273,7 @@ Here we're passing it the specifc `frame` from the scene that we'd like our Blen
 ### YAY!
 
 {% hint style="success" %}
-With this, our requestor agent is complete and we can use it to run our computational payload on the new golem network.
+With this, our requestor agent is complete and we can use it to run our computational payload on the New Golem network.
 {% endhint %}
 
 ## Next steps
