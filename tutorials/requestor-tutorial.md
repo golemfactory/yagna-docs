@@ -254,7 +254,7 @@ The `Engine` is first instantiated as a context manager:
     ) as engine:
 ```
 
-The `package` here is effectively our `Demand` that we have created above, `max_workers` specifies the maximum number of providers we want to be working on our task, `budget` specifies the maximum budget \(in nGNT\) that this task may utilize**,** `timeout` is the time after which we absolutely want our whole task to be finished by and after which we'll treat it as failed unless it's already finished and finally, the `subnet_tag` serves to select a subset of the network that our requestor node wants to limit its communications to.
+The `package` here is effectively our `Demand` that we have created above. `max_workers` specifies the maximum number of providers we want to be working on our task, `budget` specifies the maximum budget \(in nGNT\) that this task may utilize**,** `timeout` is the time after which we absolutely want our whole task to be finished by and after which we'll treat it as failed unless it's already finished. Finally, the `subnet_tag` serves to select a subset of the network that our requestor node wants to limit its communications to.
 
 The last parameter means that if we do specify the subnet - each and every provider who wants to execute our tasks must be running with the same `subnet` parameter. 
 
@@ -268,9 +268,9 @@ With the `Engine` in place, we can finally tell it what we want to execute and a
             print("progress=", progress)
 ```
 
-As has been mentioned previously, the first parameter to `map` is the worker routine that defines our task's steps and the second parameter is an iterable defining all the fragments of our whole task that we desire to be executed.
+As has been mentioned previously, the first parameter to `map` is the worker routine that defines our task's steps. The second parameter is an iterable defining all the fragments of our whole task that we desire to be executed.
 
-Here we're passing it the specifc `frame` from the scene that we'd like our Blender container to render but it can essentially be any parameter or set of parameters that can accurately describe the job to be executed and it is up for our `worker` routine and - through it - for our containerized payload to make sense of what that set of parameters is.
+Here we're passing the specifIc `frame` from the scene that we'd like our Blender container to render. However,  it can essentially be any parameter or set of parameters that can accurately describe the job to be executed and it is up for our `worker` routine and - through it - for our containerized payload to make sense of what that set of parameters is.
 
 ### YAY!
 
@@ -280,7 +280,7 @@ With this, our requestor agent is complete and we can use it to run our computat
 
 ## Next steps
 
-If we've succeeded in hooking you up, go ahead and follow up with our tutorial on using your own - or generally any other - Docker image and using our `gvmkit-builder` tool to build and push the image to our repository:
+Are you hooked up? then go ahead and follow up with our tutorial on using your own - or generally any other - Docker image and using our `gvmkit-builder` tool to build and push the image to our repository:
 
 {% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
 
