@@ -47,6 +47,8 @@ If you'd like to give us feedback, suggestions, have some errors to report or if
 
 ## Running the `yagna` daemon
 
+_Yagna is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network._
+
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon. 
 
 First, download the package appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.3.3-alpha.2](https://github.com/golemfactory/yagna/releases/tag/v0.3.3-alpha.2)
