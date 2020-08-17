@@ -6,14 +6,14 @@ description: The requestor actor in the Golem
 
 ## What is a requestor?
 
-Technically speaking, Golem requestor is a specific piece of code running on an Internet-connected device.
+Technically speaking, a New Golem requestor is a specific piece of code running on an Internet-connected device.
 
-The characteristic that describes the requestor agent is the need to use hardware resources that are available in the Golem network, shared by its providers. 
+**The characteristic that describes the requestor agent is the need to use hardware resources that are available in the Golem network, shared by its providers.** 
 
 {% hint style="info" %}
 Because local hardware resources on your desktop, mobile device, or even server machine are always limited, there is always some task that local, requestor's hardware can not perform in a reasonable time frame or not at all \(for example because of memory limit\).
 
-There are no set limits on the resources available in Golem. Requestors can use as much of resources as they need. All of those hardware resources can be used at the same time thus reducing hour- or days-long computations to seconds.
+There are no set limits on the resources available in Golem. Requestors can use as much resources as they need. All of those hardware resources can be used at the same time thus reducing _**hour- or day-long computations to seconds.**_
 {% endhint %}
 
 ## What does a requestor do?
@@ -22,7 +22,7 @@ The typical use case for the requestor is as follows:
 
 * **Define the need**
 
-Define the IT resources it needs. Those needs \(for example CPU and memory requirements\) are then published in a form of a Demand in Golem's decentralized market.
+Define the IT resources it needs. Those needs \(for example CPU and memory requirements\) are then published in the form of a Demand in Golem's decentralized market.
 
 * **Buy the resources**
 
@@ -41,7 +41,7 @@ The last step is to pay for the usage of the resources \(unless the provider is 
 As requestors are based on some specific business need there is no single requestor agent that fits all the use cases.
 
 {% hint style="info" %}
-We do not provide any predefined requestor binary, as it is up to third parties to develop products that are based on Golem's unique value proposition. 
+We do not provide any predefined requestor binary, as it is up to third parties to develop products on top of New Golem. 
 {% endhint %}
 
 There are many possible scenarios defining the actual form and shape of a product that is based on Golem.
