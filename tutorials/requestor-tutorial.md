@@ -4,7 +4,7 @@ description: Development and deployment of a golem network requestor agent
 
 # How does it work? A more in-depth look at an example requestor agent
 
-## How can I run my job over the Golem?
+## How can I run my job over the New Golem network?
 
 In order to run your own payload over the Golem, you need to write a requestor agent suited to the work you'd like to have executed by the network's providers.
 
