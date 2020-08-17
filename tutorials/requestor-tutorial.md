@@ -6,22 +6,20 @@ description: Development and deployment of a New Golem network requestor agent
 
 ## How can I run my tasks over the New Golem network?
 
-## How can I run my job over the New Golem network?
-
-In order to run your own payload over the New Golem Network, you need to write a requestor agent suited to the work you'd like to have executed by the network's providers.
+In order to run your own payload over the New Golem network, you need to write a requestor agent suited to the work you'd like to have executed by the network's providers.
 
 In this tutorial, we'll show you how to do that.
 
 There are a couple of assumptions we'll be making here, in order to do this tutorial:
 
-* your task is easily splittable and follows a simple map-reduce model in which the input for the whole task is known beforehand, and the result is constructed directly from the singular outputs produced from each subset of the input. In other words,  the input of each split task does not depend on an output of another split task 
-* your payload can be executed inside an isolated container and doesn't - by itself - need to access the outside world. This is a temporary limitation of this alpha release and we intend to support network connectivity in the future.
+* Your task is easily splittable and follows a simple map-reduce model in which the input for the whole task is known beforehand, and the result is constructed directly from the singular outputs produced from each subset of the input. In other words,  the input of each split task does not depend on an output of another split task. 
+* Your payload can be executed inside an isolated container and doesn't - by itself - need to access the outside world. **This is a temporary limitation of this Alpha release** and we intend to support network connectivity in the future.
 
 ## Prerequisites
 
-To proceed with this, quite focused tutorial, you'll first need to ensure the following prerequisites are met:
+To proceed with this tutorial, you'll first need to ensure the following prerequisites are met:
 
-* you have `yagna` daemon running - this is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network. It exposes its REST API to allow both the provider and the requestor agents to connect to it.
+* You have the `yagna` daemon running - this is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network. It exposes its REST API to allow both the provider and the requestor agents to connect to it.
 * you have the `yagna` app key generated and noted down so you can use it while running the requestor agent.
 * you have the `gftp` binary used to transport files over golem network
 * you have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now. For details on how to do that with any Docker images, please have a look at: [How to convert a Docker image into a Golem image](convert-a-docker-image-into-a-golem-image.md)
