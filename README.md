@@ -51,7 +51,13 @@ Ensuring that the development of products based on Golem is smooth and effortles
 
 ### **Become a Golem provider**
 
-In the future if you have Internet-connected device running Linux, you can install a Golem Network provider package, share your hardware resources, and **have a passive income stream straight to your** [**ethereum**](https://ethereum.org/) **address**.
+We will be enabling the providers to leverage New Golem soon. 
+
+Those wishing to take this role, will be able to install a Golem Network provider package, share their hardware resources, and **have a passive income stream straight to their** [**ethereum**](https://ethereum.org/) **addresses**.
+
+Please note that New Golem is in its very first stages. At first, support will be quite limited, probably to Linux. In the future, we will be adding wider support. 
+
+While you wait, you could start earning passive income now via [our Clay Golem Beta implementation](https://golem.network/products/clay-beta/) \(Legacy Golem\), which is on mainnet.
 
 ## Golem's mission - free, open source, censorship resistant, and democratized access to computing power for all:  
 
