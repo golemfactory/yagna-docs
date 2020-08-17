@@ -9,7 +9,10 @@ Looking for the quick start? [Dive into our requestor development primer!](tutor
 {% endhint %}
 
 {% hint style="warning" %}
-The current Alpha reveal of The Next Milestone \(New Golem\) is aimed at requestors. We'll be adding an ability to become a provider in one of the next reveals. If you'd like to provide computing power to Golem Network, [our Clay Golem Beta implementation](https://golem.network/products/clay-beta/) allows this.
+The current Alpha release of The Next Milestone, the first New Golem iteration, is aimed at requestors.   
+Providers, don't despair!   
+We'll be adding the ability to become a provider in one of the upcoming reveals.   
+Moreover, if you'd like to provide computing power to the Golem Network now, and get rewarded in GNT, [our Clay Golem Beta implementation](https://golem.network/products/clay-beta/) allows this.
 {% endhint %}
 
 ## What is Golem?
@@ -18,7 +21,7 @@ The current Alpha reveal of The Next Milestone \(New Golem\) is aimed at request
 Golem is a global, open source, decentralized supercomputer that anyone can use. It is made up of the combined computing power of the users' machines, from PCs to entire data centers.
 {% endhint %}
 
-Under the hood, Golem is a decentralized marketplace where IT resources such as computation hardware are bought and sold. The actors in this decentralized network can assume one of the two nonexclusive profiles:
+Under the hood, Golem is a decentralized marketplace where IT resources such as computation hardware are rented out. The actors in this decentralized network can assume one of the two non-exclusive roles:
 
 * **Requestor**
 
@@ -30,27 +33,27 @@ Has free IT resources that can be shared with other actors in the network. Those
 
 ![](.gitbook/assets/tnm-docs-infographics-01.jpg)
 
-Both requestors and providers may be launched on different types of hardware. Those can be laptops, desktop computers, servers, and cloud environments. In case of requestors, it is also feasible for them to be executed on mobile devices.
+Both requestors and providers may be launched on different types of hardware. Those can be laptops, desktop computers, servers, and cloud environments. In the requestors' case, it is also feasible for them to be executed on mobile devices.
 
-## How can I benefit?
+## How can I benefit from Golem?
 
-There are two ways you can benefit from Golem:
+There are two ways to leverage the platform: 
 
 ### **Develop a Golem-based product**
 
-Our decentralized stacks form a unique business value proposition your product can be based on. 
+Our decentralized stacks offer a unique business value proposition for your product.
 
 {% hint style="info" %}
 Ensuring that the development of products based on Golem is smooth and effortless is our core business.
 {% endhint %}
 
- Plus, there are no licensing fees. The details are described here:
+ **Plus, there are no licensing fees.**  
 
 ### **Become a Golem provider**
 
-In the future if you have Internet-connected device running Linux, you can install a Golem Network provider package, share your hardware resources, and **have a passive income stream straight to your** [**ethereum**](https://ethereum.org/) **address**. 
+In the future if you have Internet-connected device running Linux, you can install a Golem Network provider package, share your hardware resources, and **have a passive income stream straight to your** [**ethereum**](https://ethereum.org/) **address**.
 
-## Golem is free and open source
+## Golem's mission - free, open source, censorship resistant, and democratized access to computing power for all:  
 
 {% hint style="info" %}
 Golem is open-source software. All the code is available under the GPL license.
@@ -58,9 +61,13 @@ Golem is open-source software. All the code is available under the GPL license.
 [https://github.com/golemfactory/yagna](https://github.com/golemfactory/yagna)
 {% endhint %}
 
-The documentation aimed at developers working on developing Golem infrastructure codebase itself is here:
+## Developers' area: 
 
-[https://golem-network.gitbook.io/golem-internal-documentation-test/](https://golem-network.gitbook.io/golem-internal-documentation-test/)
+This documentation aimed at developers working on developing Golem infrastructure codebase itself is here:
+
+{% embed url="https://golem-network.gitbook.io/golem-internal-documentation-test/" %}
+
+\*\*\*\*
 
 
 

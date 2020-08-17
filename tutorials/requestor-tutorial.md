@@ -1,18 +1,20 @@
 ---
-description: Development and deployment of a golem network requestor agent
+description: Development and deployment of a New Golem network requestor agent
 ---
 
 # How does it work? A more in-depth look at an example requestor agent
 
+## How can I run my tasks over the New Golem network?
+
 ## How can I run my job over the New Golem network?
 
-In order to run your own payload over the Golem, you need to write a requestor agent suited to the work you'd like to have executed by the network's providers.
+In order to run your own payload over the New Golem Network, you need to write a requestor agent suited to the work you'd like to have executed by the network's providers.
 
-In this tutorial, we'll show you how to do just that.
+In this tutorial, we'll show you how to do that.
 
-There are a couple of assumptions we'll be making here:
+There are a couple of assumptions we'll be making here, in order to do this tutorial:
 
-* your task is easily splittable and follows a simple map-reduce model in which the input for the whole task is known beforehand and the result is constructed directly from the singular outputs produced from each subset of the input - in other words, that the input of each split task does not depend on an output of another split task 
+* your task is easily splittable and follows a simple map-reduce model in which the input for the whole task is known beforehand, and the result is constructed directly from the singular outputs produced from each subset of the input. In other words,  the input of each split task does not depend on an output of another split task 
 * your payload can be executed inside an isolated container and doesn't - by itself - need to access the outside world. This is a temporary limitation of this alpha release and we intend to support network connectivity in the future.
 
 ## Prerequisites

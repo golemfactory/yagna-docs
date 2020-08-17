@@ -4,7 +4,7 @@
 
 ## Tutorials
 
-* [A quick primer into the requestor development](tutorials/flash-tutorial-of-requestor-development.md)
+* [Requestor development: a quick primer](tutorials/flash-tutorial-of-requestor-development.md)
 * [How does it work? A more in-depth look at an example requestor agent](tutorials/requestor-tutorial.md)
 * [How to convert a Docker image into a Golem image?](tutorials/convert-a-docker-image-into-a-golem-image.md)
 

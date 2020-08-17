@@ -4,11 +4,13 @@ description: >-
   Docker image in parallel on multiple providers.
 ---
 
-# A quick primer into the requestor development
+# Requestor development: a quick primer
 
 ### Prerequisites
 
-At this moment, we support a limited list of platforms. Thus, you'll need one of the following:
+#### Platforms
+
+This is our very first Alpha reveal. Therefore, temporarily, Golem only supports a limited list of platforms. These are those: 
 
 * OS X 10.14+
 * Ubuntu 18.04 or 20.04
@@ -31,19 +33,19 @@ You'll also need the `git` versioning system client so you can clone our reposit
 git --version
 ```
 
-#### You don't need any crypto assets
+#### No crypto assets needed \(for now!\)
 
 {% hint style="info" %}
-You don't need any real ETH or nGNT tokens to start this tutorial. The alpha release works on the Rinkeby testnet and the needed assets are acquired by the daemon in one of the steps below.
+Alpha lives on the Rinkeby Testnet. You don't need any real ETH or GNT tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets are acquired by the daemon in one of the steps below.
 {% endhint %}
 
-### Feedback? Help needed?
+### Can we help you? Do you have feedback for Golem? 
 
 {% hint style="success" %}
 If you'd like to give us feedback, suggestions, have some errors to report or if you got stuck and need help while following our tutorials, please don't hesitate to reach out to us on our Golem Discord: [https://chat.golem.network](https://chat.golem.network)
 {% endhint %}
 
-## Running `yagna` daemon
+## Running the `yagna` daemon
 
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon. 
 
@@ -57,7 +59,7 @@ Now, you can run the daemon:
 yagna service run
 ```
 
-You'll be asked to confirm the Alpha release's ToS and once you accept them, the daemon will launch. You can skip the confirmation on subsequent runs by adding the `--accept-terms` parameter to the command above.
+You'll be asked to confirm the **Alpha release's ToS** and once you accept them, the daemon will launch. You can skip the confirmation on subsequent runs by adding the `--accept-terms` parameter to the command above.
 
 Once the terms are accepted, the daemon will emit a bunch of log messages confirming its own startup and the startup of several of yagna's components.
 
@@ -67,10 +69,10 @@ Important: After you launch the daemon, leave it running in the background while
 
 You can now proceed to [Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key).
 
-#### Warning! Construction zone: errors ahead
+#### Warning! Construction zone: errors ahead 
 
 {% hint style="danger" %}
-You may notice errors while running the yagna daemon or the example script. Some of those errors will be silenced, prevented, or handled more gracefully in the future production version. For now, you can usually ignore them, unless of course they make the daemon or the example script crash - or - cause the task itself to fail before completion.
+You may notice errors while running the yagna daemon or the example script. **Some of those errors will be silenced, prevented or handled more gracefully in the future production version.** For now, you can usually ignore them, unless of course, they make the daemon or the example script crash - or - cause the task itself to fail before completion.
 {% endhint %}
 
 Some of the errors you may encounter are:
@@ -119,9 +121,9 @@ You can verify whether you already have the funds with:
 yagna payment status
 ```
 
-If it doesn't succeed after a few minutes, re-run the `payment init` command above and check again after a few more minutes.
+If, after a few minutes, you can't see the assets, re-run the `payment init` command above and check again after a few more minutes.
 
-## Running the requestor
+## Running the requestor and your first task on the New Golem Network
 
 Now you have the `yagna` daemon running, you may proceed with running a task as a requestor.
 
@@ -178,7 +180,7 @@ The example in question generates six discrete jobs for providers to execute so 
 `progress= {'done': True}`
 
 {% hint style="success" %}
-Yay! With this, you have completed your first job as a requestor in the new Golem network!
+**Yay! With this, you have completed your first job as a requestor in the new Golem network!**
 {% endhint %}
 
 You can verify that it's indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation that should appear in the directory from which you ran the example script.
@@ -189,7 +191,7 @@ Here is an example rendered frame, provided here for reference:
 
 ## Next steps
 
-So, you have successfully completed your first task as a requestor on the new Golem network and would like to know and do more?
+So, you have successfully completed your first task as a requestor on the new Golem network. Are you curious to learn more? Wanna do more stuff?
 
 If you'd like to understand, extend and play around with our example, please consult:
 
