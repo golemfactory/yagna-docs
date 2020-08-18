@@ -5,7 +5,7 @@ description: Introducing Golem Network
 # The Golem SDK documentation
 
 {% hint style="info" %}
-Looking for the quick start? [Dive into our requestor development primer!](tutorials/flash-tutorial-of-requestor-development.md)
+Looking for a quick start? [Dive into our requestor development primer!](tutorials/flash-tutorial-of-requestor-development.md)
 {% endhint %}
 
 {% hint style="warning" %}
@@ -41,7 +41,7 @@ There are two ways to leverage the platform:
 
 ### **Develop a Golem-based product**
 
-Our decentralized stacks offer a unique business value proposition for your product.
+Our decentralized stacks offer a unique opportunity for software developers. 
 
 {% hint style="info" %}
 Ensuring that the development of products based on Golem is smooth and effortless is our core business.
