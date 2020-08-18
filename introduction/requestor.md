@@ -13,7 +13,7 @@ Technically speaking, a New Golem requestor is a specific piece of code running 
 {% hint style="info" %}
 Because local hardware resources on your desktop, mobile device, or even server machine are always limited, there is always some task that local, requestor's hardware can not perform in a reasonable time frame or not at all \(for example because of memory limit\).
 
-There are no set limits on the resources available in Golem. Requestors can use as much resources as they need. All of those hardware resources can be used at the same time thus reducing _**hour- or day-long computations to seconds.**_
+There are no set limits on the resources available in Golem. Requestors can use as many resources as they need. All of those hardware resources can be used at the same time thus reducing _**hour- or day-long computations to seconds.**_
 {% endhint %}
 
 ## What does a requestor do?
@@ -38,7 +38,7 @@ The last step is to pay for the usage of the resources \(unless the provider is 
 
 ## How requestors are made and used?
 
-As requestors are based on some specific business need there is no single requestor agent that fits all the use cases.
+As requestors are based on each specific business need there is no single requestor agent that fits all the use cases.
 
 {% hint style="info" %}
 We do not provide any predefined requestor binary, as it is up to third parties to develop products on top of New Golem. 
@@ -69,7 +69,7 @@ Here, your application code is running inside a web server and the front-end lay
 {% hint style="info" %}
 To write a fully functional requestor you need to write just a few lines of code. 
 
-The rest is done by Golem's infrastructure.
+Golem's infrastructure takes care of the rest. 
 {% endhint %}
 
 The basic requestor development tutorial is here:
@@ -78,13 +78,13 @@ The basic requestor development tutorial is here:
 
 ## How can I benefit from being a requestor?
 
-The typical benefit for the requestor is to have instant access to a very large pool of hardware. Instead of using local hardware, the requestor is able to use IT resources available on the decentralized market. 
+The main or most typical benefit for the requestor is to have instant access to a very large pool of hardware. Instead of using local hardware, the requestor is able to use the IT resources available on the decentralized market. 
 
 {% hint style="info" %}
-Remember that one requestor can use hardware from many providers at the same time. 
+Remember that one requestor can use the hardware from many providers at the same time. 
 {% endhint %}
 
-Think about training a large ML model in seconds instead of hours. This is just an example, as there are many interesting business use cases described in the:
+For instance, you could think of training a large ML model in seconds instead of hours, there are many interesting business use cases described in the:
 
 ## How does a Requestor work?
 
