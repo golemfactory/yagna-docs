@@ -55,7 +55,7 @@ async def main():
                 "/golem/work/params.json",
                 {
                     "scene_file": "/golem/resource/scene.blend",
-                    "resolution": (800, 600),
+                    "resolution": (400, 300),
                     "use_compositing": False,
                     "crops": crops,
                     "samples": 100,
@@ -83,7 +83,7 @@ async def main():
 
     async with Engine(
         package=package,
-        max_workers=10,
+        max_workers=3,
         budget=10.0,
         timeout=init_overhead + timedelta(minutes=len(frames) * 2),
         subnet_tag="testnet",
