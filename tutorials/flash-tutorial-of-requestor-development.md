@@ -201,7 +201,7 @@ Finally, you can verify that the providers have been paid for the work they cont
 yagna app-key list
 ```
 
-again but this time it's the value in the `id` column that you're interested in. This is your the Ethereum address of your yagna node on the Rinkeby testnet. Once you have that address, head to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) and put the value in the address field there. Afterwards, switch to the "Erc20 Token Txns" tag and you should be able to see your outgoing payments there.
+again but this time it's the value in the `id` column that you're interested in. This is your the Ethereum address of your yagna node on the Rinkeby testnet. Once you have that address, head to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) and put the value in the address field there. Afterwards, switch to the "Erc20 Token Txns" tab and you should be able to see your outgoing payments there.
 
 ## Next steps
 
