@@ -185,11 +185,23 @@ The example in question generates six discrete jobs for providers to execute so 
 **Yay! With this, you have completed your first job as a requestor in the new Golem network!**
 {% endhint %}
 
-You can verify that it's indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation that should appear in the directory from which you ran the example script.
+#### Output
+
+You can verify that the task is indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation that should appear in the directory from which you ran the example script.
 
 Here is an example rendered frame, provided here for reference:
 
 ![](../.gitbook/assets/output_0.png)
+
+#### Payments
+
+Finally, you can verify that the providers have been paid for the work they contributed to get that output to you. First, acquire your Ethereum address - you can do that by running:
+
+```text
+yagna app-key list
+```
+
+again but this time it's the value in the `id` column that you're interested in. This is your the Ethereum address of your yagna node on the Rinkeby testnet. Once you have that address, head to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) and put the value in the address field there. Afterwards, switch to the "Erc20 Token Txns" tag and you should be able to see your outgoing payments there.
 
 ## Next steps
 
