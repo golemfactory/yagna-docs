@@ -15,5 +15,7 @@ Discourse: [https://golem.discourse.group/](https://golem.discourse.group/)
 
 Reddit: [https://www.reddit.com/r/GolemProject/](https://www.reddit.com/r/GolemProject/)
 
+Twitter: [https://twitter.com/golemproject](https://twitter.com/golemproject)
+
 
 
