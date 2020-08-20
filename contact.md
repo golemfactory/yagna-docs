@@ -7,7 +7,7 @@ description: >-
 
 # Contact
 
-Email: contact@golem.network
+Email: [contact@golem.network](mailto:contact@golem.network)
 
 Reddit: [https://www.reddit.com/r/GolemProject/](https://www.reddit.com/r/GolemProject/)
 
