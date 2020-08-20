@@ -108,10 +108,12 @@ the value in the `key` column is the key you need.
 Instruct the yagna daemon to contact the faucet which issues some ETH and nGNT tokens to the node:
 
 ```text
-yagna payment init -r
+yagna payment init ngnt -r
 ```
 
 and allow some time until it completes its job.
+
+NOTE: in the example above - the `ngnt` payment driver \(Rinkeby Ethereum testnet\) has been selected to initialize.
 
 {% hint style="warning" %}
 Due to the fact that our example uses the Rinkeby Ethereum testnet, the transactions that add ETH and nGNT to the requestor node's address need to be mined and confirmed there. It may take several minutes until that's completed.
