@@ -15,6 +15,6 @@
 
 ## See also
 
-* [Running yagna daemon from sources](see-also/running-yagna-from-sources.md)
+* [Running the yagna daemon from sources](see-also/running-yagna-from-sources.md)
 * [Terms](see-also/terms.md)
 
