@@ -6,7 +6,7 @@ description: The provider actor in the Golem
 
 ## What is a provider?
 
-Technically speaking, a provider agent is a specific piece of code running on an Internet-connected device. The code implements the Golem network protocol, thus the machine running it acts as an actor in Golem. 
+A provider agent - as understood in the context of the Golem network is a specific piece of code running on an Internet-connected device. The code implements the Golem network protocol, thus the machine running it acts as an actor in Golem. 
 
 The characteristic that describes the provider agent is the fact of sharing hardware resources to the Golem network. In practice, almost any computer might act as a provider. It can be a laptop, desktop, or a server machine. The particular resource details \(for example, the number of CPUs or its memory limit\) that are subject to sharing can be configured by the hardware owner.
 

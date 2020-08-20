@@ -55,11 +55,11 @@ We will be enabling the providers to leverage New Golem soon.
 
 Those wishing to take this role, will be able to install a Golem Network provider package, share their hardware resources, and **have a passive income stream straight to their** [**ethereum**](https://ethereum.org/) **addresses**.
 
-Please note that New Golem is in its very first stages. At first, support will be quite limited, probably to Linux. In the future, we will be adding wider support. 
+Please note that New Golem is in its very first stag**es. At first, support will be quite limited, probably to Linux. In the future, we will be adding wider support.** 
 
 While you wait, you could start earning passive income now via [our Clay Golem Beta implementation](https://golem.network/products/clay-beta/) \(Legacy Golem\), which is on mainnet.
 
-## Golem's mission - free, open source, censorship resistant, and democratized access to computing power for all:  
+## Golem's mission - free, open-source, censorship-resistant, and democratized access to computing power for all:  
 
 {% hint style="info" %}
 Golem is open-source software. All the code is available under the GPL license.
@@ -69,7 +69,7 @@ Golem is open-source software. All the code is available under the GPL license.
 
 ## Developers' area: 
 
-This documentation aimed at developers working on developing Golem infrastructure codebase itself is here:
+This is the documentation that's aimed at developers contributing to the Golem infrastructure codebase::
 
 {% embed url="https://golem-network.gitbook.io/golem-internal-documentation-test/" %}
 
