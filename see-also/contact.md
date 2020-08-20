@@ -9,6 +9,10 @@ description: >-
 
 Email: [contact@golem.network](mailto:contact@golem.network)
 
+Chat: [http://chat.golem.network/](http://chat.golem.network/)
+
+Discourse: [https://golem.discourse.group/](https://golem.discourse.group/)
+
 Reddit: [https://www.reddit.com/r/GolemProject/](https://www.reddit.com/r/GolemProject/)
 
 
