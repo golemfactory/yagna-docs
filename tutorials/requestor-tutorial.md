@@ -237,7 +237,7 @@ ctx.log("no more frames to render")
 
 ### Time to call the runner Engine
 
-With our task \(fragment\) steps defined, we can finally call the `Engine` , that will orchestrate first the negotiation of our computational `Demand` against the `Offer` from the providers in the network, to reach agreements with each of them and subsequently, will use those agreements to launch specific computational activities to complete the task we have specified. **\[ WHAT ABOUT THE PAYMENTS? \]**
+With our task \(fragment\) steps defined, we can finally call the `Engine` , that will orchestrate first the negotiation of our computational `Demand` against the `Offer` from the providers in the network, to reach agreements with each of them and subsequently, will use those agreements to launch specific computational activities to complete the task we have specified. Finally, the runner Engine will make ensure that payment transactions are triggered for invoices sent from the providers to remunerate them for the work they provided for your task.
 
 The `Engine` is first instantiated as a context manager:
 
