@@ -143,7 +143,7 @@ source ~/.envs/yagna-python-tutorial/bin/activate
 Install the dependencies:
 
 ```text
-pip install yapapi certifi
+pip3 install yapapi certifi
 ```
 
 ### Get the requestor agent's code
