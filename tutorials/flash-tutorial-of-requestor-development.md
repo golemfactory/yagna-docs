@@ -154,6 +154,12 @@ Check out or download the `yapapi` repository:
 git clone https://github.com/golemfactory/yapapi.git
 ```
 
+and make sure you're working on the version corresponding with the latest release:
+
+```text
+git checkout 0.1.5
+```
+
 ### Set the yagna app key
 
 In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key)" step above:
