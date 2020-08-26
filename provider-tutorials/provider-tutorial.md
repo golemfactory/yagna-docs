@@ -36,7 +36,7 @@ golem start
 If you are running your Golem node for the first time you will be asked to set up a few simple things. You will be able to change those settings later on in your Golem settings.
 {% endhint %}
 
-After starting golem for the first time, the following questions are displayed at the console: ****
+After starting golem for the first time, the following questions are displayed at the console: _\*\*_
 
 ```text
 To continue using Golem please accept our Terms and conditions:
@@ -64,7 +64,7 @@ Set the name of your Golem Node that will be visible to other users
 Set the new name of your node and press ENTER \(warning about the public name\)
 
 {% hint style="success" %}
-Congratulations! Now you can start using the Golem Provider! 
+Congratulations! Now you can start using the Golem Provider!
 {% endhint %}
 
 {% hint style="info" %}
@@ -158,11 +158,5 @@ The complete configuration guide, please check following:
 
 {% page-ref page="../provider-reference/provider-cli.md" %}
 
-
-
 ## Next steps
-
-
-
-
 

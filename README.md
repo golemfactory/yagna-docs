@@ -25,7 +25,7 @@ Under the hood, Golem is a decentralized marketplace where IT resources such as 
 
 * **Requestor**
 
-Has a need to use IT resources such as computation hardware. Those resources are purchased in the decentralized market. The actual usage of the resources is backed by Golem's decentralized infrastructure.  
+Has a need to use IT resources such as computation hardware. Those resources are purchased in the decentralized market. The actual usage of the resources is backed by Golem's decentralized infrastructure.
 
 * **Provider**
 
@@ -48,6 +48,9 @@ Ensuring that the development of products based on Golem is smooth and effortles
 {% endhint %}
 
  **Plus, there are no licensing fees.**  
+
+If you're interested, please have a look at: 
+{% page-ref page="product-tutorials/developing-a-golem-network-based-product.md" %}
 
 ### **Become a Golem provider**
 
@@ -74,6 +77,4 @@ This is the documentation that's aimed at developers contributing to the Golem i
 {% embed url="https://golem-network.gitbook.io/golem-internal-documentation-test/" %}
 
 \*\*\*\*
-
-
 

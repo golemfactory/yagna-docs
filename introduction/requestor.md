@@ -67,7 +67,7 @@ Here, your application code is running inside a web server and the front-end lay
 ![](../.gitbook/assets/tnm-docs-infographics-05.jpg)
 
 {% hint style="info" %}
-To write a fully functional requestor you need to write just a few lines of code. 
+To write a fully functional requestor you need to write just a few lines of code.
 
 Golem's infrastructure takes care of the rest. 
 {% endhint %}

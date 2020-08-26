@@ -40,5 +40,5 @@ The typical resource usage scenario is as follows: after receiving the input dat
 
 Becoming a Golem network provider is open to anyone. The installation and configuration are simple and straightforward. The details are described in the:
 
-
+{% page-ref page="../provider-tutorials/provider-tutorial.md" %}
 

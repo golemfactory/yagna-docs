@@ -10,13 +10,13 @@ This documentation section is under development.
 
 ## Golem daemon and the agents
 
-The Golem is defined mainly by the Golem network protocol. 
+The Golem is defined mainly by the Golem network protocol.
 
 {% hint style="info" %}
-Golem daemon is the default implementation of the Golem network protocol. 
+Golem daemon is the default implementation of the Golem network protocol.
 {% endhint %}
 
- The same Golem daemon binary is used both by the requestor and provider. 
+The same Golem daemon binary is used both by the requestor and provider.
 
 {% hint style="info" %}
 The difference between requestor and provider is the use of requestor or provider agent.
@@ -39,7 +39,7 @@ Defines the actual code that performs the tasks on the provider's hardware
 ## Being requestor and provider at the same time
 
 {% hint style="info" %}
- Golem daemon can act as requestor and provider at the same time.
+Golem daemon can act as requestor and provider at the same time.
 {% endhint %}
 
 Although the Golem code base allows Golem demon to act as a requestor and provider at the same time, we currently do not support this scenario configuration by any dedicated tutorials.

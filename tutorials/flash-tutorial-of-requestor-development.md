@@ -49,7 +49,7 @@ If you'd like to give us feedback, suggestions, have some errors to report or if
 
 _Yagna is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network._
 
-In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon. 
+In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon.
 
 First, download the package appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.3.3-alpha.5](https://github.com/golemfactory/yagna/releases/tag/v0.3.3-alpha.5)
 
@@ -83,7 +83,7 @@ Some of the errors you may encounter are:
 
 `('prop', 'fail', [...], {'reason': "(500)\nReason: Internal Server Error\nHTTP response headers: \n"})`
 
-`Task exception was never retrieved [... several lines of stack trace ...] {"message":"GSB error: bad request: No service registered under given address"}`    
+`Task exception was never retrieved [... several lines of stack trace ...] {"message":"GSB error: bad request: No service registered under given address"}`
 
 ## Generate the app key
 
@@ -175,8 +175,8 @@ cd yapapi/examples/blender
 python3 ./blender.py
 ```
 
-If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet which will look something like:  
-  
+If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet which will look something like:
+
 `('agr', 'create', '1a68db7e-b11b-45b0-872d-8b4f28f2c492', {'provider_idn': Identification(name='2rec-ubuntu', subnet_tag='testnet')})`
 
 Afterwards, you should see the work dispatched to providers with lines starting with `new batch !!!` and subsequently confirmations of tasks getting accepted by our example requestor agent:
