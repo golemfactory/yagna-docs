@@ -156,7 +156,7 @@ In this example, we're using a single scene file which all task fragments use, s
 ctx.send_file("./cubes.blend", "/golem/resource/scene.blend")
 ```
 
- The first parameter to `send_file()` here is the local path of the file. The second one is the path within the _container_ on the provider's end, to which this file should be copied once the container is deployed.
+The first parameter to `send_file()` here is the local path of the file. The second one is the path within the _container_ on the provider's end, to which this file should be copied once the container is deployed.
 
 Then, there is a sequence of steps that needs to be executed for each of the fragments, that this provider receives wrapped with this asynchronous loop:
 
