@@ -22,7 +22,7 @@ To proceed with this tutorial, you'll first need to ensure the following prerequ
 * You have the `yagna` daemon running - this is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network. It exposes its REST API to allow both the provider and the requestor agents to connect to it.
 * You have the `yagna` app key generated and noted down so you can use it while running the requestor agent.
 * You have the `gftp` binary used to transport files over the New Golem network
-* You have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over the New Golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now. For details on how to do that with any Docker images, please have a look at this tutorial:  __[_How to convert a Docker image into a Golem image_](convert-a-docker-image-into-a-golem-image.md)\_\_
+* You have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over the New Golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now. For details on how to do that with any Docker images, please have a look at this tutorial:  _\_\[\_How to convert a Docker image into a Golem image_\]\(convert-a-docker-image-into-a-golem-image.md\)\_\_
 * You have `python` &gt;= 3.6 installed and a virtual environment created. You need this to run our example here.
 * As we'll be using the Blender renderer in this tutorial, you'll need a Blender scene file that the "providers" will render for you. We have provided an example scene - `cubes.blend` in the example's directory.
 * Finally, some familiarity with `asyncio` is a plus, as `yapapi` is written to make heavy use of Python's `asyncio` library.
@@ -118,7 +118,7 @@ All right, we'll skip over the imports at the top and `asyncio` boilerplate code
 
 ### Specify your demand
 
-Normally, you'd need to adapt your docker image to Golem using the [gvmkit-build](https://pypi.org/project/gvmkit-build/) tool ****but for the purpose of this tutorial, we're using the pre-converted image containing the Blender renderer.
+Normally, you'd need to adapt your docker image to Golem using the [gvmkit-build](https://pypi.org/project/gvmkit-build/) tool _\*\*_but for the purpose of this tutorial, we're using the pre-converted image containing the Blender renderer.
 
 So, first, we need to specify which image we'll be using and what its memory and disk space requirements are:
 
@@ -132,13 +132,13 @@ package = await vm.repo(
 
 As you can see, we're pointing to an image within our GVM repository using the hash of the Blender image and we're indicating that it requires half a gigabyte of RAM and 2 gigabytes of disk space.
 
-This effectively creates a `Demand` for the market to respond to. In other words, it communicates to the market that our requestor wants to have the specified image executed with at least the specified amounts of RAM and disk space. 
+This effectively creates a `Demand` for the market to respond to. In other words, it communicates to the market that our requestor wants to have the specified image executed with at least the specified amounts of RAM and disk space.
 
 ### Define your task's steps
 
 After you have specified the image to run, you need to define the steps that need to be executed by the providers in order to perform your task successfully.
 
-Our high-level API abstracts the minute details of the operations that need to take place between the requestor agent and the providers' end during the execution of the task. It fragments and provides a convenient way to specify the needed steps in a routine that is to be performed for each provider, which executes the task fragments assigned to it.
+Our high-level API abstracts the minute details of the operations that need to take place between the requestor agent and the providers' end during the execution of the task and its fragments. It also provides a convenient way to specify the needed steps in a routine that is to be performed for each provider, which executes the task fragments assigned to it.
 
 We'll now take the `worker` routine apart, to understand what's happening:
 
@@ -146,11 +146,11 @@ We'll now take the `worker` routine apart, to understand what's happening:
 async def worker(ctx: WorkContext, tasks):
 ```
 
-The routine is called with a `ctx` object that contains the work context for a single provider who executes the fragments of the task assigned to them. 
+The routine is called with a `ctx` object that contains the work context for a single provider who executes the fragments of the task assigned to them.
 
 `tasks` is a generator that provides tasks from a common queue in an asynchronous way, so that each provider can take another task from the queue as soon as they finish the previous one. The execution continues for as long as there are tasks in the queue.
 
-In this example, we're using a single scene file which all task fragments use, so it only needs to be sent and attached to the provider when the container is first deployed on the  provider's end:
+In this example, we're using a single scene file which all task fragments use, so it only needs to be sent and attached to the provider when the container is first deployed on the provider's end:
 
 ```python
 ctx.send_file("./cubes.blend", "/golem/resource/scene.blend")
@@ -191,11 +191,11 @@ For the sake of simplicity, we have decided to render whole frames of the scene 
 
 Thus, the `crops` parameter \(which can be used to specify a part of a frame\) stays the same between the tasks and what varies is the `frames` parameter that specifies the frame range to render within each task fragment.
 
-We're using `ctx.begin()` to start the sequence of commands for this specific fragment,  then`ctx.send_json()` to wrap the provided dictionary of parameters into a JSON file, the destination path of which is passed as the first parameter. Note that this destination path is again a location within the container that's executed on the provider's end.
+We're using `ctx.begin()` to start the sequence of commands for this specific fragment, then`ctx.send_json()` to wrap the provided dictionary of parameters into a JSON file, the destination path of which is passed as the first parameter. Note that this destination path is again a location within the container that's executed on the provider's end.
 
 As you can see, the `frame` parameter comes from the `data` field of the `Task` objects that are passed into the `Engine`'s `map` function later on in the code. We could have just as well filled the `data` with e.g. a dictionary containing crop parameters for each fragment - if we wanted to render different parts of images on each fragment's execution. Or we could fill it with names of different scene files, if e.g. we wanted each task to render a completely different scene file. Of course, in this latter case, we'd also need to use `ctx.send_file()` to send a new scene file for each new task fragment.
 
-**TLDR**, the most important take-away here is that `send_json` provides an easy way to pass a dictionary of parameters into the execution container, and that you pass parameters for each task fragment in the `data` field of the `Task` objects passed to the `map` function. 
+**TLDR**, the most important take-away here is that `send_json` provides an easy way to pass a dictionary of parameters into the execution container, and that you pass parameters for each task fragment in the `data` field of the `Task` objects passed to the `map` function.
 
 Okay, next we have the most important step:
 
@@ -256,7 +256,7 @@ The `Engine` is first instantiated as a context manager:
 
 The `package` here is effectively our `Demand` that we have created above. `max_workers` specifies the maximum number of providers we want to be working on our task, `budget` specifies the maximum budget \(in nGNT\) that this task may utilize**,** `timeout` is the time after which we absolutely want our whole task to be finished by and after which we'll treat it as failed unless it's already finished. Finally, the `subnet_tag` serves to select a subset of the network that our requestor node wants to limit its communications to.
 
-The last parameter means that if we do specify the subnet - each and every provider who wants to execute our tasks must be running with the same `subnet` parameter. 
+The last parameter means that if we do specify the subnet - each and every provider who wants to execute our tasks must be running with the same `subnet` parameter.
 
 With the `Engine` in place, we can finally tell it what we want to execute and also _how_ we want to define each fragment.
 
@@ -270,7 +270,7 @@ With the `Engine` in place, we can finally tell it what we want to execute and a
 
 As has been mentioned previously, the first parameter to `map` is the worker routine that defines our task's steps. The second parameter is an iterable defining all the fragments of our whole task that we desire to be executed.
 
-Here we're passing the specifIc `frame` from the scene that we'd like our Blender container to render. However,  it can essentially be any parameter or set of parameters that can accurately describe the job to be executed and it is up for our `worker` routine and - through it - for our containerized payload to make sense of what that set of parameters is.
+Here we're passing the specifIc `frame` from the scene that we'd like our Blender container to render. However, it can essentially be any parameter or set of parameters that can accurately describe the job to be executed and it is up for our `worker` routine and - through it - for our containerized payload to make sense of what that set of parameters is.
 
 ### YAY!
 
@@ -283,8 +283,4 @@ With this, our requestor agent is complete and we can use it to run our computat
 Are you hooked up? then go ahead and follow up with our tutorial on using your own - or generally any other - Docker image and using our `gvmkit-builder` tool to build and push the image to our repository:
 
 {% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
-
-
-
-
 
