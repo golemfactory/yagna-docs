@@ -2,7 +2,7 @@
 description: >-
   This tutorial will show you how to prepare your own Golem image based on just
   any Docker image. This will allow you to port any apps that are able to work
-  within Docker containers to Golem.
+  within Docker containers to New Golem.
 ---
 
 # How to convert a Docker image into a Golem image?
@@ -11,7 +11,7 @@ description: >-
 
 ### Docker
 
-Since you're interested in running your own dockerized apps on Golem, we're going to assume you're more or less familiar with Docker.
+Since you're interested in running your own dockerized apps on New Golem, we're going to assume you're more or less familiar with Docker.
 
 Obviously, you'll need Docker itself installed on your machine. If you don't have docker, visit: [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop) and download+install it.
 
@@ -39,14 +39,14 @@ There's just one command that suffices to build your Golem image. We're use our 
 gvmkit-build golemfactory/blender:demo
 ```
 
-This will pull the image if needed and then proceed with re-packing it into our custom image format.
+This will pull the image if needed and then proceed with re-packing it into New Golem's custom image format.
 
 ## Pushing the image to the repository
 
 Once the image is built, it can be placed in our the repository.
 
-{% hint style="warning" %}
-At this moment, during development, we're using a freely-accessible repository that everybody can push into without any special requirements but this will change in the future and we'll most likely require some pre-authorization.
+{% hint style="info" %}
+In this alpha release, for the sake of simplicity, we're using a freely-accessible repository that everybody can push into without any special requirements to make the image available to all providers. This is likely to change in the future when we add an appropriate whitelisting mechanism.
 {% endhint %}
 
 To push the image:
@@ -59,7 +59,7 @@ Once the image is pushed, the tool will output its hash, e.g.:
 
 `success. hash link 1a72390cbb08117b2d77373185e43701a747a3f7eb9a552c19aa5041`
 
-Please **note down that hash** as you'll need it in the definition of the payload you'll want to run on Golem.
+Please **note down that hash** as you'll need it in the definition of the payload you'll want to run on New Golem.
 
 {% hint style="warning" %}
 Important: if you use a newly-pushed image in your task, you'll need to give providers some additional time to pull those images before they'll be able to publish offers that are compatible with your demand.
