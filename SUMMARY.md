@@ -29,6 +29,7 @@
 
 * [Running the yagna daemon from sources](see-also/running-yagna-from-sources.md)
 * [Golem infrastructure documentation](https://golem-network.gitbook.io/golem-internal-documentation-test)
+* [Developing a Golem based product](product-tutorials/developing-a-golem-network-based-product.md)
 * [Terms](see-also/terms.md)
 * [Contact](see-also/contact.md)
 
