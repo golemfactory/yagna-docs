@@ -43,6 +43,8 @@ Alpha lives on the Rinkeby Testnet. You don't need any real ETH or GNT tokens to
 
 {% hint style="success" %}
 If you'd like to give us feedback, suggestions, have some errors to report or if you got stuck and need help while following our tutorials, please don't hesitate to reach out to us on our Golem Discord: [https://chat.golem.network](https://chat.golem.network)
+
+The Gitcoin alpha testing bounty can be found here: [https://gitcoin.co/issue/golemfactory/yagna/495/100023537](https://gitcoin.co/issue/golemfactory/yagna/495/100023537)
 {% endhint %}
 
 ## Running the `yagna` daemon
