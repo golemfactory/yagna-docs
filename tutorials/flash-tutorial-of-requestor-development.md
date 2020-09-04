@@ -157,6 +157,7 @@ git clone https://github.com/golemfactory/yapapi.git
 and make sure you're working on the version corresponding with the latest release:
 
 ```text
+cd yapapi
 git checkout 0.1.5
 ```
 
@@ -171,7 +172,7 @@ export YAGNA_APPKEY=insert-your-32-char-app-key-here
 The example we're showcasing here resides in the `examples/blender` directory within `yapapi`'s codebase so, ensure that you're in the checked-out repository's directory and run:
 
 ```bash
-cd yapapi/examples/blender
+cd examples/blender
 python3 ./blender.py
 ```
 
