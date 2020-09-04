@@ -118,7 +118,7 @@ All right, we'll skip over the imports at the top and `asyncio` boilerplate code
 
 ### Specify your demand
 
-Normally, you'd need to adapt your docker image to Golem using the [gvmkit-build](https://pypi.org/project/gvmkit-build/) tool _\*\*_but for the purpose of this tutorial, we're using the pre-converted image containing the Blender renderer.
+Normally, you'd need to adapt your docker image to Golem using the [gvmkit-build](https://pypi.org/project/gvmkit-build/) tool \_\*\*\_but for the purpose of this tutorial, we're using the pre-converted image containing the Blender renderer.
 
 So, first, we need to specify which image we'll be using and what its memory and disk space requirements are:
 

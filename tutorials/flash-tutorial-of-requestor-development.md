@@ -10,7 +10,7 @@ description: >-
 
 #### Platforms
 
-This is our very first Alpha reveal. Therefore, temporarily, Golem only supports a limited list of platforms. These are those: 
+This is our very first Alpha reveal. Therefore, temporarily, Golem only supports a limited list of platforms. These are those:
 
 * OS X 10.14+
 * Ubuntu 18.04 or 20.04
@@ -39,19 +39,17 @@ git --version
 Alpha lives on the Rinkeby Testnet. You don't need any real ETH or GNT tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets are acquired by the daemon in one of the steps below.
 {% endhint %}
 
-### Can we help you? Do you have feedback for Golem? 
+### Can we help you? Do you have feedback for Golem?
 
 {% hint style="success" %}
 If you'd like to give us feedback, suggestions, have some errors to report or if you got stuck and need help while following our tutorials, please don't hesitate to reach out to us on our Golem Discord: [https://chat.golem.network](https://chat.golem.network)
-
-The Gitcoin alpha testing bounty can be found here: [https://gitcoin.co/issue/golemfactory/yagna/495/100023537](https://gitcoin.co/issue/golemfactory/yagna/495/100023537)
 {% endhint %}
 
 ## Running the `yagna` daemon
 
 _Yagna is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network._
 
-In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon. 
+In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon.
 
 First, download the package appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.3.3-alpha.5](https://github.com/golemfactory/yagna/releases/tag/v0.3.3-alpha.5)
 
@@ -73,7 +71,7 @@ Important: After you launch the daemon, leave it running in the background while
 
 You can now proceed to [Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key).
 
-#### Warning! Construction zone: errors ahead 
+#### Warning! Construction zone: errors ahead
 
 {% hint style="danger" %}
 You may notice errors while running the yagna daemon or the example script. **Some of those errors will be silenced, prevented or handled more gracefully in the future production version.** For now, you can usually ignore them, unless of course, they make the daemon or the example script crash - or - cause the task itself to fail before completion.
@@ -85,7 +83,7 @@ Some of the errors you may encounter are:
 
 `('prop', 'fail', [...], {'reason': "(500)\nReason: Internal Server Error\nHTTP response headers: \n"})`
 
-`Task exception was never retrieved [... several lines of stack trace ...] {"message":"GSB error: bad request: No service registered under given address"}`    
+`Task exception was never retrieved [... several lines of stack trace ...] {"message":"GSB error: bad request: No service registered under given address"}`
 
 ## Generate the app key
 
@@ -177,8 +175,8 @@ cd yapapi/examples/blender
 python3 ./blender.py
 ```
 
-If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet which will look something like:  
-  
+If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet which will look something like:
+
 `('agr', 'create', '1a68db7e-b11b-45b0-872d-8b4f28f2c492', {'provider_idn': Identification(name='2rec-ubuntu', subnet_tag='testnet')})`
 
 Afterwards, you should see the work dispatched to providers with lines starting with `new batch !!!` and subsequently confirmations of tasks getting accepted by our example requestor agent:
