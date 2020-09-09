@@ -17,5 +17,3 @@ Reddit: [https://www.reddit.com/r/GolemProject/](https://www.reddit.com/r/GolemP
 
 Twitter: [https://twitter.com/golemproject](https://twitter.com/golemproject)
 
-
-

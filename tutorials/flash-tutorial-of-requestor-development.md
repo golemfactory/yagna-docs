@@ -10,7 +10,7 @@ description: >-
 
 #### Platforms
 
-This is our very first Alpha reveal. Therefore, temporarily, Golem only supports a limited list of platforms. These are those: 
+This is our very first Alpha reveal. Therefore, temporarily, Golem only supports a limited list of platforms. These are those:
 
 * OS X 10.14+
 * Ubuntu 18.04 or 20.04
@@ -39,7 +39,7 @@ git --version
 Alpha lives on the Rinkeby Testnet. You don't need any real ETH or GNT tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets are acquired by the daemon in one of the steps below.
 {% endhint %}
 
-### Can we help you? Do you have feedback for Golem? 
+### Can we help you? Do you have feedback for Golem?
 
 {% hint style="success" %}
 If you'd like to give us feedback, suggestions, have some errors to report or if you got stuck and need help while following our tutorials, please don't hesitate to reach out to us on our Golem Discord: [https://chat.golem.network](https://chat.golem.network)
@@ -71,7 +71,7 @@ Important: After you launch the daemon, leave it running in the background while
 
 You can now proceed to [Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key).
 
-#### Warning! Construction zone: errors ahead 
+#### Warning! Construction zone: errors ahead
 
 {% hint style="danger" %}
 You may notice errors while running the yagna daemon or the example script. **Some of those errors will be silenced, prevented or handled more gracefully in the future production version.** For now, you can usually ignore them, unless of course, they make the daemon or the example script crash - or - cause the task itself to fail before completion.
@@ -143,7 +143,7 @@ source ~/.envs/yagna-python-tutorial/bin/activate
 Install the dependencies:
 
 ```text
-pip3 install yapapi certifi
+pip3 install yapapi==0.1.5 certifi
 ```
 
 ### Get the requestor agent's code
@@ -157,6 +157,7 @@ git clone https://github.com/golemfactory/yapapi.git
 and make sure you're working on the version corresponding with the latest release:
 
 ```text
+cd yapapi
 git checkout 0.1.5
 ```
 
@@ -171,7 +172,7 @@ export YAGNA_APPKEY=insert-your-32-char-app-key-here
 The example we're showcasing here resides in the `examples/blender` directory within `yapapi`'s codebase so, ensure that you're in the checked-out repository's directory and run:
 
 ```bash
-cd yapapi/examples/blender
+cd examples/blender
 python3 ./blender.py
 ```
 
