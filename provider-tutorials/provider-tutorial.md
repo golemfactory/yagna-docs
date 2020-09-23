@@ -156,7 +156,7 @@ golem settings set --disk [number]
 
 The complete configuration guide, please check following:
 
-{% page-ref page="../provider-reference/provider-cli.md" %}
+{% page-ref page="../reference/provider-cli.md" %}
 
 ## Next steps
 

@@ -5,7 +5,7 @@ description: Introducing Golem Network
 # The Golem SDK documentation
 
 {% hint style="info" %}
-Looking for a quick start? [Dive into our requestor development primer!](tutorials/flash-tutorial-of-requestor-development.md)
+Looking for a quick start? [Dive into our requestor development primer!](requestor-tutorials/flash-tutorial-of-requestor-development.md)
 {% endhint %}
 
 {% hint style="warning" %}
@@ -49,8 +49,9 @@ Ensuring that the development of products based on Golem is smooth and effortles
 
 **Plus, there are no licensing fees.**
 
-If you're interested, please have a look at: 
-{% page-ref page="product-tutorials/developing-a-golem-network-based-product.md" %}
+If you're interested, please have a look at:
+
+{% page-ref page="see-also/developing-a-golem-network-based-product.md" %}
 
 ### **Become a Golem provider**
 
