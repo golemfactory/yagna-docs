@@ -46,6 +46,11 @@
       * [yapapi.storage.gftp](yapapi/yapapi/storage/gftp.md)
       * [yapapi.storage.webdav](yapapi/yapapi/storage/webdav.md)
 
+## yapapi / alternative - Python high-level API <a id="yapapi-alt"></a>
+
+* [Introduction](yapapi2/index.md)
+* [API Reference](yapapi2/api-documentation.md)
+
 ## Reference
 
 * [Provider CLI reference](reference/provider-cli.md)
