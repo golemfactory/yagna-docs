@@ -9,17 +9,11 @@
 * [Decentralized market](introduction/decentralized-market.md)
 * [Golem's details](introduction/golems-details.md)
 
-## Python requestor tutorials <a id="python-tutorials"></a>
+## Requestor tutorials <a id="requestor-tutorials-1"></a>
 
-* [How does it work? A more in-depth look at an example requestor agent](python-tutorials/requestor-tutorial.md)
-* [Requestor development: a quick primer](python-tutorials/flash-tutorial-of-requestor-development.md)
-* [How to convert a Docker image into a Golem image?](python-tutorials/convert-a-docker-image-into-a-golem-image.md)
-
-## JS requestor tutorial
-
-* [How does it work? A more in-depth look at an example requestor agent](js-requestor-tutorial/how-does-it-work-a-more-in-depth-look-at-an-example-requestor-agent.md)
-
-## Requestor Tutorials
+* [Requestor development: a quick primer](requestor-tutorials-1/flash-tutorial-of-requestor-development.md)
+* [How does it work? A more in-depth look at an example requestor agent](requestor-tutorials-1/requestor-tutorial.md)
+* [How to convert a Docker image into a Golem image?](requestor-tutorials-1/convert-a-docker-image-into-a-golem-image.md)
 
 ## Provider tutorials
 

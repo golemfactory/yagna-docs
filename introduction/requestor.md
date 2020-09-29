@@ -74,7 +74,7 @@ Golem's infrastructure takes care of the rest.
 
 The basic requestor development tutorial is here:
 
-{% page-ref page="../python-tutorials/flash-tutorial-of-requestor-development.md" %}
+{% page-ref page="../requestor-tutorials-1/flash-tutorial-of-requestor-development.md" %}
 
 ## How can I benefit from being a requestor?
 
