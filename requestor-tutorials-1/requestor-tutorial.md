@@ -210,7 +210,7 @@ Here's the flow diagram of all the interactions that need to happen between the 
 
 Having learned what is _about_ to happen, let's examine the code itself.
 
-All right, we'll skip over the imports at the top and `asyncio` boilerplate code at the bottom of the example and we'll jump straight into the body of the `main()` routine.
+All right, we'll skip over the imports at the top and boilerplate code at the bottom of the example and we'll jump straight into the body of the `main()` routine.
 
 ### Specify your demand
 
