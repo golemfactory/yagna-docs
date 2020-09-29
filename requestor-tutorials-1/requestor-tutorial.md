@@ -25,7 +25,7 @@ To proceed with this tutorial, you'll first need to ensure the following prerequ
 * You have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over the New Golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now. For details on how to do that with any Docker images, please have a look at this tutorial:  _\_\[\_How to convert a Docker image into a Golem image_\]\(convert-a-docker-image-into-a-golem-image.md\)\_\_
 
 {% hint style="info" %}
-If you are JS developer, please click to "NodeJS"
+If you are JS developer, please click to **NodeJS**
 {% endhint %}
 
 {% tabs %}

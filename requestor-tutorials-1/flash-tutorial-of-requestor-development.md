@@ -15,6 +15,10 @@ This is our very first Alpha reveal. Therefore, temporarily, Golem only supports
 * OS X 10.14+
 * Ubuntu 18.04 or 20.04
 
+{% hint style="info" %}
+If you are JS developer, please click to **NodeJS**
+{% endhint %}
+
 {% tabs %}
 {% tab title="Python" %}
 #### Python 3.6+
