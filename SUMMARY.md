@@ -9,11 +9,17 @@
 * [Decentralized market](introduction/decentralized-market.md)
 * [Golem's details](introduction/golems-details.md)
 
-## Requestor Tutorials
+## Python requestor tutorials <a id="python-tutorials"></a>
 
-* [Requestor development: a quick primer](requestor-tutorials/flash-tutorial-of-requestor-development.md)
-* [How does it work? A more in-depth look at an example requestor agent](requestor-tutorials/requestor-tutorial.md)
-* [How to convert a Docker image into a Golem image?](requestor-tutorials/convert-a-docker-image-into-a-golem-image.md)
+* [How does it work? A more in-depth look at an example requestor agent](python-tutorials/requestor-tutorial.md)
+* [Requestor development: a quick primer](python-tutorials/flash-tutorial-of-requestor-development.md)
+* [How to convert a Docker image into a Golem image?](python-tutorials/convert-a-docker-image-into-a-golem-image.md)
+
+## JS requestor tutorial
+
+* [How does it work? A more in-depth look at an example requestor agent](js-requestor-tutorial/how-does-it-work-a-more-in-depth-look-at-an-example-requestor-agent.md)
+
+## Requestor Tutorials
 
 ## Provider tutorials
 
@@ -21,35 +27,35 @@
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
-* [Introduction](yapapi/README.md)
-* [VM Tutorial](yapapi/docs/VM-Tutorial.md)
-* [Low-Level](yapapi/docs/Low-Level-Api.md)
-* [API Reference]
-  * [yapapi](yapapi/yapapi/index.md)
-    * [yapapi.props](yapapi/yapapi/props/index.md)
-      * [yapapi.props.base](yapapi/yapapi/props/base.md)
-      * [yapapi.props.builder](yapapi/yapapi/props/builder.md)
-      * [yapapi.props.com](yapapi/yapapi/props/com.md)
-      * [yapapi.props.inf](yapapi/yapapi/props/inf.md)
-    * [yapapi.rest](yapapi/yapapi/rest/index.md)
-      * [yapapi.rest.activity](yapapi/yapapi/rest/activity.md)
-      * [yapapi.rest.configuration](yapapi/yapapi/rest/configuration.md)
-      * [yapapi.rest.market](yapapi/yapapi/rest/market.md)
-      * [yapapi.rest.payment](yapapi/yapapi/rest/payment.md)
-      * [yapapi.rest.resource](yapapi/yapapi/rest/resource.md)
-    * [yapapi.runner](yapapi/yapapi/runner/index.md)
-      * [yapapi.runner.ctx](yapapi/yapapi/runner/ctx.md)
-      * [yapapi.runner.events](yapapi/yapapi/runner/events.md)
-      * [yapapi.runner.utils](yapapi/yapapi/runner/utils.md)
-      * [yapapi.runner.vm](yapapi/yapapi/runner/vm.md)
-    * [yapapi.storage](yapapi/yapapi/storage/index.md)
-      * [yapapi.storage.gftp](yapapi/yapapi/storage/gftp.md)
-      * [yapapi.storage.webdav](yapapi/yapapi/storage/webdav.md)
+* [Introduction](yapapi/yapapi.md)
+* [VM Tutorial](yapapi/vm-tutorial.md)
+* [Low-Level](yapapi/low-level-api.md)
+* [\[API Reference\]](yapapi/api-reference/README.md)
+  * [yapapi](yapapi/api-reference/index/README.md)
+    * [yapapi.props](yapapi/api-reference/index/index/README.md)
+      * [yapapi.props.base](yapapi/api-reference/index/index/base.md)
+      * [yapapi.props.builder](yapapi/api-reference/index/index/builder.md)
+      * [yapapi.props.com](yapapi/api-reference/index/index/com.md)
+      * [yapapi.props.inf](yapapi/api-reference/index/index/inf.md)
+    * [yapapi.rest](yapapi/api-reference/index/index-1/README.md)
+      * [yapapi.rest.activity](yapapi/api-reference/index/index-1/activity.md)
+      * [yapapi.rest.configuration](yapapi/api-reference/index/index-1/configuration.md)
+      * [yapapi.rest.market](yapapi/api-reference/index/index-1/market.md)
+      * [yapapi.rest.payment](yapapi/api-reference/index/index-1/payment.md)
+      * [yapapi.rest.resource](yapapi/api-reference/index/index-1/resource.md)
+    * [yapapi.runner](yapapi/api-reference/index/index-2/README.md)
+      * [yapapi.runner.ctx](yapapi/api-reference/index/index-2/ctx.md)
+      * [yapapi.runner.events](yapapi/api-reference/index/index-2/events.md)
+      * [yapapi.runner.utils](yapapi/api-reference/index/index-2/utils.md)
+      * [yapapi.runner.vm](yapapi/api-reference/index/index-2/vm.md)
+    * [yapapi.storage](yapapi/api-reference/index/index-3/README.md)
+      * [yapapi.storage.gftp](yapapi/api-reference/index/index-3/gftp.md)
+      * [yapapi.storage.webdav](yapapi/api-reference/index/index-3/webdav.md)
 
 ## yapapi / alternative - Python high-level API <a id="yapapi-alt"></a>
 
-* [Introduction](yapapi2/index.md)
-* [API Reference](yapapi2/api-documentation.md)
+* [Introduction](yapapi-alt/index.md)
+* [API Reference](yapapi-alt/api-documentation.md)
 
 ## Reference
 
