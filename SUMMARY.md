@@ -9,18 +9,17 @@
 * [Decentralized market](introduction/decentralized-market.md)
 * [Golem's details](introduction/golems-details.md)
 
-## Requestor Tutorials
+## Requestor tutorials <a id="requestor-tutorials-1"></a>
 
-* [Requestor development: a quick primer](requestor-tutorials/flash-tutorial-of-requestor-development.md)
-* [How does it work? A more in-depth look at an example requestor agent](requestor-tutorials/requestor-tutorial.md)
-* [How to convert a Docker image into a Golem image?](requestor-tutorials/convert-a-docker-image-into-a-golem-image.md)
+* [Requestor development: a quick primer](requestor-tutorials-1/flash-tutorial-of-requestor-development.md)
+* [How does it work? A more in-depth look at an example requestor agent](requestor-tutorials-1/requestor-tutorial.md)
+* [How to convert a Docker image into a Golem image?](requestor-tutorials-1/convert-a-docker-image-into-a-golem-image.md)
 
 ## Provider tutorials
 
 * [Becoming a provider](provider-tutorials/provider-tutorial.md)
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
-
 
 
 ## Reference

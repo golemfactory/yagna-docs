@@ -23,14 +23,67 @@ To proceed with this tutorial, you'll first need to ensure the following prerequ
 * You have the `yagna` app key generated and noted down so you can use it while running the requestor agent.
 * You have the `gftp` binary used to transport files over the New Golem network
 * You have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over the New Golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now. For details on how to do that with any Docker images, please have a look at this tutorial:  _\_\[\_How to convert a Docker image into a Golem image_\]\(convert-a-docker-image-into-a-golem-image.md\)\_\_
+
+{% hint style="danger" %}
+If you are JS developer, please click
+{% endhint %}
+
+{% tabs %}
+{% tab title="Python" %}
+
+{% endtab %}
+
+{% tab title="JS" %}
+
+
 * You have `python` &gt;= 3.6 installed and a virtual environment created. You need this to run our example here.
 * As we'll be using the Blender renderer in this tutorial, you'll need a Blender scene file that the "providers" will render for you. We have provided an example scene - `cubes.blend` in the example's directory.
 * Finally, some familiarity with `asyncio` is a plus, as `yapapi` is written to make heavy use of Python's `asyncio` library.
+{% endtab %}
+{% endtabs %}
+
+* You have `python` &gt;= 3.6 installed and a virtual environment created. You need this to run our example here.
+* As we'll be using the Blender renderer in this tutorial, you'll need a Blender scene file that the "providers" will render for you. We have provided an example scene - `cubes.blend` in the example's directory.
+* Finally, some familiarity with `asyncio` is a plus, as `yapapi` is written to make heavy use of Python's `asyncio` library.
+
+
+
+{% tabs %}
+{% tab title="Python" %}
+
+{% endtab %}
+
+{% tab title="JS" %}
+
+{% endtab %}
+{% endtabs %}
 
 ## Requestor agent code
 
 The complete code of the requestor agent \(no worries, you do not need to copy and paste it as it is already in repo\) is:
 
+{% tabs %}
+{% tab title="Python" %}
+```python
+
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```
+
+```
+{% endtab %}
+{% endtabs %}
+
+{% tabs %}
+{% tab title="Python" %}
+```
+
+```
+{% endtab %}
+
+{% tab title="JS" %}
 ```python
 from yapapi.runner import Engine, Task, vm
 from yapapi.runner.ctx import WorkContext
@@ -103,6 +156,8 @@ if __name__ == "__main__":
         task.cancel()
         asyncio.get_event_loop().run_until_complete(asyncio.sleep(0.3))
 ```
+{% endtab %}
+{% endtabs %}
 
 Now to the question:
 
