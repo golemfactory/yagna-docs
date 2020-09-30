@@ -67,13 +67,61 @@ If you'd like to give us feedback, suggestions, have some errors to report or if
 
 ## Running the `yagna` daemon
 
+{% hint style="info" %}
 _Yagna is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network._
+{% endhint %}
 
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon.
 
-First, download the package appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.3.3-alpha.5](https://github.com/golemfactory/yagna/releases/tag/v0.3.3-alpha.5)
+First, download the package appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.4.0-alpha.1](https://github.com/golemfactory/yagna/releases/tag/v0.4.0-alpha.1)
 
-Unpack it and put `gftp` and `yagna` binaries somewhere in your PATH \(e.g. copy them to `/usr/local/bin` on unix-like systems\).
+Unpack it and put the binaries contained within somewhere in your PATH \(e.g. copy them to `/usr/local/bin` on unix-like systems\).
+
+{% tabs %}
+{% tab title="Ubuntu" %}
+```text
+wget https://github.com/golemfactory/yagna/releases/download/v0.4.0-alpha.1/golem-linux-v0.4.0-alpha.1.tar.gz
+tar -zvxf golem-linux-v0.4.0-alpha.1.tar.gz
+sudo cp golem-linux-v0.4.0-alpha.1/* /usr/local/bin
+```
+{% endtab %}
+
+{% tab title="mac OS X" %}
+```text
+wget https://github.com/golemfactory/yagna/releases/download/v0.4.0-alpha.1/golem-osx-v0.4.0-alpha.1.tar.gz
+tar -zxvf golem-osx-v0.4.0-alpha.1.tar.gz
+sudo cp golem-osx-v0.4.0-alpha.1/* /usr/local/bin/
+```
+{% endtab %}
+{% endtabs %}
+
+Confirm that you're running the latest Golem release:
+
+```text
+yagna --version
+```
+
+It should output: `yagna 0.4.0-alpha.1-430e2d5b`
+
+#### Purge the stale working directories
+
+If you had run a previous version of `yagna` in the past, you'll need to purge its working directories since our newest version is incompatible with the previous database structure:
+
+{% tabs %}
+{% tab title="Ubuntu" %}
+```text
+rm -rf $HOME/.local/share/yagna
+```
+{% endtab %}
+
+{% tab title="mac OS X" %}
+```text
+rm -rf $HOME/Library/Application\ Support/GolemFactory.yagna
+```
+{% endtab %}
+{% endtabs %}
+
+#### Run the daemon
 
 Now, you can run the daemon:
 
@@ -166,7 +214,8 @@ source ~/.envs/yagna-python-tutorial/bin/activate
 Install the dependencies:
 
 ```text
-pip3 install yapapi==0.1.5 certifi
+pip3 install certifi
+pip3 install -i https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple/ yapapi==0.2.1a1
 ```
 
 ### Get the requestor agent's code
@@ -181,7 +230,7 @@ and make sure you're working on the version corresponding with the latest releas
 
 ```text
 cd yapapi
-git checkout 0.1.5
+git checkout b0.2
 ```
 
 ### Set the yagna app key
