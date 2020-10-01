@@ -32,9 +32,9 @@ For detailed human-readable output use the `log_event` function:
 ```
     Engine(..., event_emitter=yapapi.log.log_event)
 ```
-For even more detailed machine-readable output use `log_event_json`:
+For even more detailed machine-readable output use `log_event_repr`:
 ```
-    Engine(..., event_emitter=yapapi.log.log_event_json)
+    Engine(..., event_emitter=yapapi.log.log_event_repr)
 ```
 For summary human-readable output use `log_summary()`:
 ```
@@ -45,7 +45,7 @@ as an argument to `log_summary`:
 ```
     Engine(
         ...
-        event_emitter=yapapi.log.log_summary(yapapi.log.log_event_json)
+        event_emitter=yapapi.log.log_summary(yapapi.log.log_event_repr)
     )
 ```
 
@@ -67,14 +67,14 @@ log_event(event: events.Event) -> None
 
 Log an event in human-readable format.
 
-<a name="yapapi.log.log_event_json"></a>
-#### log\_event\_json
+<a name="yapapi.log.log_event_repr"></a>
+#### log\_event\_repr
 
 ```python
-log_event_json(event: events.Event) -> None
+log_event_repr(event: events.Event) -> None
 ```
 
-Log an event as a tag with attributes in JSON format.
+Log the result of calling `__repr__()` for the `event`.
 
 <a name="yapapi.log.SummaryLogger"></a>
 ## SummaryLogger Objects
@@ -94,10 +94,10 @@ emitters: each event logged with `log()` is first passed to
 `wrapped_emitter`.
 
 For example, with the following setup, each event emitted by `engine`
-will be logged by `log_event_json`, and additionally, certain events
+will be logged by `log_event_repr`, and additionally, certain events
 will cause summary messages to be logged.
 ```
-    detailed_logger = log_event_json
+    detailed_logger = log_event_repr
     summary_logger = SummaryLogger(wrapped_emitter=detailed_logger).log
     engine = Engine(..., event_emitter=summary_logger)
 ```
@@ -247,7 +247,7 @@ computation; by default it is a function that logs all events
 #### map
 
 ```python
- | async map(worker: Callable[[WorkContext, AsyncIterator["Task"]], AsyncIterator[Tuple["Task", Work]]], data: Iterable["Task"])
+ | async map(worker: Callable[[WorkContext, AsyncIterator[Task[D, R]]], AsyncGenerator[Work, None]], data: Iterable[Task[D, R]]) -> AsyncIterator[Task[D, R]]
 ```
 
 Run computations on providers.
@@ -262,11 +262,19 @@ adds commands to the context object and yields committed commands
 
 yields computation progress events
 
-<a name="yapapi.runner.Task"></a>
+<a name="yapapi.runner._smartq"></a>
+# yapapi.runner.\_smartq
+
+YAPAPI internal module. This is not a part of the public API. It can change at any time.
+
+<a name="yapapi.runner.task"></a>
+# yapapi.runner.task
+
+<a name="yapapi.runner.task.Task"></a>
 ## Task Objects
 
 ```python
-class Task(Generic[TaskData, TaskResult],  object)
+class Task(Generic[TaskData, TaskResult])
 ```
 
 One computation unit.
@@ -274,7 +282,7 @@ One computation unit.
 Represents one computation unit that will be run on the provider
 (e.g. rendering of one frame).
 
-<a name="yapapi.runner.Task.__init__"></a>
+<a name="yapapi.runner.task.Task.__init__"></a>
 #### \_\_init\_\_
 
 ```python
@@ -289,11 +297,11 @@ Create a new Task object.
 - `expires`: expiration datetime
 - `timeout`: timeout from now; overrides expires parameter if provided
 
-<a name="yapapi.runner.Task.accept_task"></a>
+<a name="yapapi.runner.task.Task.accept_task"></a>
 #### accept\_task
 
 ```python
- | accept_task(result: Optional[TaskResult] = None)
+ | accept_task(result: Optional[TaskResult] = None) -> None
 ```
 
 Accept task that was completed.
@@ -308,11 +316,11 @@ Must be called when the results of a task are correct and it shouldn't be retrie
 
 None
 
-<a name="yapapi.runner.Task.reject_task"></a>
+<a name="yapapi.runner.task.Task.reject_task"></a>
 #### reject\_task
 
 ```python
- | reject_task(reason: Optional[str] = None)
+ | reject_task(reason: Optional[str] = None, retry: bool = False) -> None
 ```
 
 Reject task.
@@ -358,6 +366,21 @@ class Event()
 ```
 
 An abstract base class for types of events emitted by `Engine.map()`.
+
+<a name="yapapi.runner.events.WorkerFinished"></a>
+## WorkerFinished Objects
+
+```python
+@dataclass
+class WorkerFinished(AgreementEvent)
+```
+
+<a name="yapapi.runner.events.WorkerFinished.exception"></a>
+#### exception
+
+Exception thrown by worker script.
+
+None if worker returns without error.
 
 <a name="yapapi.runner.utils"></a>
 # yapapi.runner.utils
@@ -481,18 +504,14 @@ None
 #### commit
 
 ```python
- | commit(task: "Task") -> Tuple["Task", Work]
+ | commit() -> Work
 ```
 
-End task-related command list definition.
-
-**Arguments**:
-
-- `task`: task related to the list of commands
+Creates sequence of commands to be send to provider.
 
 **Returns**:
 
-a tuple of Task and Work objects (the latter contains
+Work object (the latter contains
 sequence commands added before calling this method)
 
 <a name="yapapi.storage"></a>
@@ -626,7 +645,7 @@ After shutdown all generated urls will be unavailable.
 class Demand()
 ```
 
-Offer subscription managment.
+Offer subscription management.
 
 <a name="yapapi._cli.market.Demand.list"></a>
 #### list
@@ -664,7 +683,7 @@ By default removes all demands.
 class Allocation()
 ```
 
-Payment allocation managment.
+Payment allocation management.
 
 <a name="yapapi._cli.payment.Allocation.list"></a>
 #### list
@@ -693,7 +712,7 @@ Removes all active payment allocations
 class Invoices()
 ```
 
-Invoice managment.
+Invoice management.
 
 <a name="yapapi._cli.payment.Invoices.accept"></a>
 #### accept
