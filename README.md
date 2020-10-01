@@ -67,11 +67,3 @@ Golem is open-source software. All the code is available under the GPL license.
 [https://github.com/golemfactory/yagna](https://github.com/golemfactory/yagna)
 {% endhint %}
 
-## Developers' area:
-
-This is the documentation that's aimed at developers contributing to the Golem infrastructure codebase::
-
-{% embed url="https://golem-network.gitbook.io/golem-internal-documentation-test/" caption="" %}
-
-\*\*\*\*
-
