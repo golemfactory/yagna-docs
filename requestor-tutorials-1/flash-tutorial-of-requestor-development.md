@@ -73,24 +73,14 @@ _Yagna is the main service of the new Golem that's responsible for keeping conne
 
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon.
 
-First, download the package appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.4.0-alpha.1](https://github.com/golemfactory/yagna/releases/tag/v0.4.0-alpha.1)
+First, download the package appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-3](https://github.com/golemfactory/yagna/releases/tag/pre-rel-3)
 
 Unpack it and put the binaries contained within somewhere in your PATH \(e.g. copy them to `/usr/local/bin` on unix-like systems\).
 
 {% tabs %}
 {% tab title="Ubuntu" %}
 ```text
-wget https://github.com/golemfactory/yagna/releases/download/v0.4.0-alpha.1/golem-linux-v0.4.0-alpha.1.tar.gz
-tar -zvxf golem-linux-v0.4.0-alpha.1.tar.gz
-sudo cp golem-linux-v0.4.0-alpha.1/* /usr/local/bin
-```
-{% endtab %}
-
-{% tab title="mac OS X" %}
-```text
-wget https://github.com/golemfactory/yagna/releases/download/v0.4.0-alpha.1/golem-osx-v0.4.0-alpha.1.tar.gz
-tar -zxvf golem-osx-v0.4.0-alpha.1.tar.gz
-sudo cp golem-osx-v0.4.0-alpha.1/* /usr/local/bin/
+curl -sSf https://join.golem.network/as-requestor | bash -
 ```
 {% endtab %}
 {% endtabs %}
@@ -101,7 +91,7 @@ Confirm that you're running the latest Golem release:
 yagna --version
 ```
 
-It should output: `yagna 0.4.0-alpha.1-430e2d5b`
+It should output: `yagna 0.4.0-alpha.1-83402f6c`
 
 #### Purge the stale working directories
 
@@ -128,10 +118,6 @@ Now, you can run the daemon:
 ```text
 yagna service run
 ```
-
-You'll be asked to confirm the **Alpha release's ToS** and once you accept them, the daemon will launch. You can skip the confirmation on subsequent runs by adding the `--accept-terms` parameter to the command above.
-
-Once the terms are accepted, the daemon will emit a bunch of log messages confirming its own startup and the startup of several of yagna's components.
 
 {% hint style="warning" %}
 Important: After you launch the daemon, leave it running in the background while you proceed with the tutorial.
