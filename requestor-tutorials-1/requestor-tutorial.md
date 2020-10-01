@@ -22,7 +22,7 @@ To proceed with this tutorial, you'll first need to ensure the following prerequ
 * You have the `yagna` daemon running - this is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network. It exposes its REST API to allow both the provider and the requestor agents to connect to it.
 * You have the `yagna` app key generated and noted down so you can use it while running the requestor agent.
 * You have the `gftp` binary used to transport files over the New Golem network
-* You have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over the New Golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now. For details on how to do that with any Docker images, please have a look at this tutorial:  _\_\[\_How to convert a Docker image into a Golem image_\]\(convert-a-docker-image-into-a-golem-image.md\)\_\_
+* You have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over the New Golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now. For details on how to do that with any Docker images, please have a look at this tutorial:  [How to convert a Docker image into a Golem image?](convert-a-docker-image-into-a-golem-image.md)
 
 {% hint style="info" %}
 If you are JS developer, please click to **NodeJS**
