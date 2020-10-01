@@ -215,7 +215,7 @@ Install the dependencies:
 
 ```text
 pip3 install certifi
-pip3 install -i https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple/ yapapi==0.2.1a1
+pip3 install -i https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple/ yapapi==0.3.0a0
 ```
 
 ### Get the requestor agent's code
@@ -230,7 +230,7 @@ and make sure you're working on the version corresponding with the latest releas
 
 ```text
 cd yapapi
-git checkout b0.2
+git checkout b0.3
 ```
 
 ### Set the yagna app key
