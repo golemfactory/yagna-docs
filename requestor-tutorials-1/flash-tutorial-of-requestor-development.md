@@ -77,15 +77,13 @@ First, download the package appropriate for your platform from: [https://github.
 
 Unpack it and put the binaries contained within somewhere in your PATH \(e.g. copy them to `/usr/local/bin` on unix-like systems\).
 
-{% tabs %}
-{% tab title="Ubuntu" %}
+Alternatively, you can use our install script that does the above for you:
+
 ```text
 curl -sSf https://join.golem.network/as-requestor | bash -
 ```
-{% endtab %}
-{% endtabs %}
 
-Confirm that you're running the latest Golem release:
+Once binaries are installed, confirm that you're running the latest Golem release:
 
 ```text
 yagna --version
@@ -95,7 +93,7 @@ It should output: `yagna 0.4.0-alpha.1-83402f6c`
 
 #### Purge the stale working directories
 
-If you had run a previous version of `yagna` in the past, you'll need to purge its working directories since our newest version is incompatible with the previous database structure:
+If you had run a previous version of `yagna` in the past, you'll need to purge its working directories since our newest version is incompatible with the old database structure:
 
 {% tabs %}
 {% tab title="Ubuntu" %}
@@ -231,20 +229,19 @@ The example we're showcasing here resides in the `examples/blender` directory wi
 
 ```bash
 cd examples/blender
-python3 ./blender.py
+python3 ./blender.py --subnet-tag devnet-alpha.2
 ```
 
-If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet which will look something like:
-
-`('agr', 'create', '1a68db7e-b11b-45b0-872d-8b4f28f2c492', {'provider_idn': Identification(name='2rec-ubuntu', subnet_tag='testnet')})`
-
-Afterwards, you should see the work dispatched to providers with lines starting with `new batch !!!` and subsequently confirmations of tasks getting accepted by our example requestor agent:
-
-`('task', 'accept', None, {'result': None})`
+Once you launch the example, you should see some messages reflecting the progress of your task's execution - agreement confirmations, task dispatches and finally task completions.
 
 The example in question generates six discrete jobs for providers to execute so after those six activities are completed and results returned, the whole task is finished.
 
-`progress= {'done': True}`
+If everything goes right, after what could be anything from half-a-minute to a few minutes, you'll hopefully see the message announcing the successful completion of your assignment including a short summary of what had happened during the execution, which providers took part in the execution and the accumulated GNT cost of the whole task, e.g.:
+
+`Computation finished in 77.5s  
+Negotiated 1 agreements with 1 providers  
+Provider 'odra' computed 6 tasks  
+Total cost: 0.218290307253`
 {% endtab %}
 
 {% tab title="NodeJS" %}
@@ -291,8 +288,6 @@ The example in question generates six discrete jobs for providers to execute so 
 `progress= {'done': True}`
 {% endtab %}
 {% endtabs %}
-
-
 
 {% hint style="success" %}
 **Yay! With this, you have completed your first job as a requestor in the new Golem network!**
