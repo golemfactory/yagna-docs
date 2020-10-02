@@ -58,6 +58,15 @@ Some additional details can be found here:
 
 ## Let's get to work. Dockerfile
 
+{% hint style="info" %}
+This example is made of two files:
+
+* `yacat.Dockerfile` - the docker file used for provider's container images definition
+* `yacat.py` - the golem port of hashcat
+
+Those files can be found in `/examples/yacat` directory of [https://github.com/golemfactory/yapapi](https://github.com/golemfactory/yapapi)
+{% endhint %}
+
 Let's start with Dockerfile. We would need a dedicated one, to have [Hashcat](https://hashcat.net/hashcat/) ready to be used.
 
 ```text
@@ -131,6 +140,31 @@ VOLUME /golem/work
 
 This makes `/golem/work` a place we will use for in / out file transfer.
 
+We proceed with the `yacat.Dockerfile` with a standard docker build and publish:
+
+```python
+docker build . -f yacat.Dockerfile
+docker push rad9k/yacat
+```
+
+Now we need to convert the docker image to Golem \(`gvmkit`\) image. This will be done by:
+
+```python
+pip install gvmkit-build
+gvmkit-build rad9k/yacat
+gvmkit-build rad9k/yacat --push
+```
+
+The details of docker image conversion are described here:
+
+{% page-ref page="../requestor-tutorials-1/convert-a-docker-image-into-a-golem-image.md" %}
+
+The important fact is that in the end, we are getting the `gvmkit` image hash, that looks like this:
+
+```python
+15912976e9d8ef5c82f6c918a0491c43cf4fb7b84b443013b36dd3fb
+```
+
 ## The work to do
 
 The [_Hashcat_](https://hashcat.net/hashcat/) __is a very powerful tool. To make our example simple, we will use it in a very basic manner.
@@ -188,7 +222,7 @@ How to make hash cat work in parallel? The answer is very simple: the keyspace c
 hashcat --keyspace -a 3 ?a?a?a -m 400
 ```
 
-as a result, we will have an answer in the stdout. In our case it is `9025`.
+as a result, we will have an answer in the `stdout`. In our case it is `9025`.
 
 Now we can divide the `0..9025` space into separate parts. Assuming we want to use 3 providers, those parts would be:
 
@@ -206,7 +240,242 @@ The above call will process the `3009..6016t` part. If there is any result in th
 
 Now we just need to:
 
-provide each docker container with `in.hash` file \(the same for all providers\)
+* provide each docker container with `in.hash` file \(the same for all providers\)
+* execute a command that uses proper skip / limit values in each docker container
+* transfer `hashcat.potfile` from each docker container to the requestor
+* check if any of the potfiles contains password. If yes, present it to the user.
 
- execute  command that uses proper skip / limit values in each docker.
+## The requestor agent code
+
+The requestor agent is written in Python and uses Golem's High Level API. The details of the Python High Level API are described here:
+
+```python
+#!/usr/bin/env python3
+import asyncio
+import pathlib
+import sys
+
+from yapapi.log import enable_default_logger, log_summary, log_event_repr  # noqa
+from yapapi.runner import Engine, Task, vm
+from yapapi.runner.ctx import WorkContext
+from datetime import timedelta
+
+# For importing `utils.py`:
+script_dir = pathlib.Path(__file__).resolve().parent
+parent_directory = script_dir.parent
+sys.stderr.write(f"Adding {parent_directory} to sys.path.\n")
+sys.path.append(str(parent_directory))
+import utils  # noqa
+
+def write_hash(hash):
+    f = open(str(script_dir / "in.hash"), "w")
+    f.write(hash)
+    f.close()
+
+def write_keyspace_call(mask):
+    f = open(str(script_dir / "keyspace.sh"), "w")
+    f.write(f"hashcat --keyspace -a 3 {mask} -m 400 > keyspace.txt")
+    f.close()
+
+def read_keyspace():
+    f = open(str(script_dir / "keyspace.txt"),"r")
+    return int(f.readline())
+
+def read_password(ranges):
+    for r in ranges:
+        f = open(str(script_dir / f"hashcat_{r}.potfile"),"r")
+        line = f.readline()
+        split_liset = line.split(":")
+        if len(split_list) >= 2:
+            return split_list[2]
+    return None
+
+async def main(args):
+    package = await vm.repo(
+        image_hash = "15912976e9d8ef5c82f6c918a0491c43cf4fb7b84b443013b36dd3fb",
+        min_mem_gib = 0.5,
+        min_storage_gib = 2.0,
+    )
+
+    async def worker_first(ctx: WorkContext, tasks):
+        async for task in tasks:
+            keyspace_sh_filename = str(script_dir / "keyspace.sh")
+            ctx.send_file(keyspace_sh_filename, "/golem/work/keyspace.sh")
+            ctx.begin()
+            ctx.run("/bin/sh","/golem/work/keyspace.sh")
+            output_file = "keyspace.txt"
+            ctx.download_file("/golem/work/keyspace.txt", output_file)
+            yield ctx.commit()   
+            task.accept_task(result=output_file)
+
+    async def worker_second(ctx: WorkContext, tasks):
+        in_hash_filename = str(script_dir / "in.hash")
+        ctx.send_file(in_hash_filename, "/golem/work/in.hash")
+
+        async for task in tasks:
+            skip = task.data
+            limit = skip + step
+            ctx.begin()
+            ctx.run(f"hashcat -a 3 -m 400 in.hash --skip {skip} --limit {limit} {args.mask}")
+            output_file = f"hashcat_{skip}.potfile"
+            ctx.download_file(f"/golem/work/hashcat.potfile", output_file)
+            yield ctx.commit() 
+            task.accept_task(result=output_file)
+
+    # beginning of the main flow
+
+    write_hash(args.hash)
+    write_keyspace_call(args.mask)
+            
+    # By passing `event_emitter=log_summary()` we enable summary logging.
+    # See the documentation of the `yapapi.log` module on how to set
+    # the level of detail and format of the logged information.
+    async with Engine(
+        package = package,
+        max_workers = args.number_of_providers,
+        budget = 10.0,
+        # timeout should be keyspace / number of providers dependent
+        timeout = timedelta(minutes = 25),
+        subnet_tag = args.subnet_tag,
+        event_emitter = log_summary(),
+    ) as engine:
+
+        async for task in engine.map(worker_first, [Task(data = None)] ):
+            print(f"\033[36;1mTask computed: keyspace size count\033[0m")
+
+        keyspace = read_keyspace()
+        step = int(keyspace / args.number_of_providers)
+
+        ranges: range = range(0, keyspace, step)
+
+        async for task in engine.map(worker_second, [Task(data = range) for range in ranges]):
+            print(f"\033[36;1mTask computed: {task}, result: {task.output}\033[0m")
+
+        password = read_password()
+
+        if password == None:
+            print("\033[31;1mNo password found\033[0m")
+        else:
+            print(f"\033[32;1mPassword found: {password}\033[0m")  
+
+if __name__ == "__main__":
+    import pathlib
+    import sys
+
+    parser = utils.build_parser("yacat")
+
+    parser.add_argument("--numberOfProviders", dest = "number_of_providers", type = int, default = 3)
+    parser.add_argument("mask")
+    parser.add_argument("hash")
+
+    args = parser.parse_args()
+
+    enable_default_logger(level = args.log_level)
+
+    loop = asyncio.get_event_loop()
+    task = loop.create_task(main(args))
+
+    try:
+        asyncio.get_event_loop().run_until_complete(task)
+    except (Exception, KeyboardInterrupt) as e:
+        print(e)
+        task.cancel()
+        asyncio.get_event_loop().run_until_complete(task)
+```
+
+## How it does work?
+
+* To tell the Golem platform, that we want to use our image for the container, we use the hash received from the `gvmkit-build`
+
+```python
+ package = await vm.repo(
+        image_hash = "15912976e9d8ef5c82f6c918a0491c43cf4fb7b84b443013b36dd3fb",
+        min_mem_gib = 0.5,
+        min_storage_gib = 2.0,
+    )
+```
+
+* In order to proceed with the password cracking, first we need to determine what is the keyspace size. We will do it by executing
+
+```python
+hashcat --keyspace -a 3 {mask} -m 400 > keyspace.txt
+```
+
+as we need the `stdout` to be captured we are redirecting the command output to the `keyspace.txt` file
+
+* As we can not use `ctx.run` call directly to redirect stdout to `keyspace.txt`, we are preparing `keyspace.sh` file with the `hashcat --keyspace -a 3 {mask} -m 400 > keyspace.txt` content.
+* Now we need to send `keyspace.sh` to one of the providers running our image. And run
+
+```python
+ctx.run("/bin/sh","/golem/work/keyspace.sh")
+```
+
+* Now we can transfer the `keyspace.txt` back to the requestor
+
+```python
+output_file = "keyspace.txt"
+ctx.download_file(f"/golem/work/keyspace.txt", output_file)
+```
+
+* The above is done by `worker_first`
+* Now with the knowledge what is keyspace number, we can define range:
+
+```python
+step = int(keyspace / args.number_of_providers)
+ranges: range = range(0, keyspace, step)
+```
+
+* For each range in the keyspace we will run separate provider \(that is what `worked_second` does\):
+
+```python
+async def worker_second(ctx: WorkContext, tasks):
+    in_hash_filename = str(script_dir / "in.hash")
+    ctx.send_file(in_hash_filename, "/golem/work/in.hash")
+
+    async for task in tasks:
+        skip = task.data
+        limit = skip + step
+
+        ctx.begin()
+
+        ctx.run(f"hashcat -a 3 -m 400 in.hash --skip {skip} --limit {limit} {args.mask}")
+        output_file = f"hashcat_{skip}.potfile"
+        ctx.download_file(f"/golem/work/hashcat.potfile", output_file)
+
+        yield ctx.commit()
+  
+        task.accept_task(result=output_file)
+```
+
+* In the end, we need to iterate thorough all the \*.potfile and see if there is any password there:
+
+```python
+def read_password(ranges):
+    for r in ranges:
+        f = open(str(script_dir / f"hashcat_{r}.potfile"),"r")
+        line = f.readline()
+        split_liset = line.split(":")
+        if len(split_list) >= 2:
+            return split_list[2]
+    return None
+```
+
+* Finally, if something has been found, present it to the user.
+
+```python
+if password == None:
+    print("\033[31;1mNo password found\033[0m")
+else:
+    print(f"\033[32;1mPassword found: {password}\033[0m")  
+```
+
+## Example run
+
+```python
+python3 yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/ --subnet-tag devnet-alpha.2
+```
+
+## Closing words
+
+This is just a simple scenario example. The possibilities for our own Golem application are endless. We will provide more inspiring tutorials soon. 
 
