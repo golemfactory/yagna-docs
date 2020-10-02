@@ -63,9 +63,15 @@ golem run
 Your provider node is up and running!
 {% endhint %}
 
-### Complete configuration guide
+### Checking status
 
-The complete configuration guide, please check following:
+Now the remaining question is if your node is actually computing tasks from the network. To check its status open a new terminal window and type `golem status`
+
+{% hint style="info" %}
+``If the answer from the Golem is `computing: yes` then you have succesfully computed a task!``
+{% endhint %}
+
+To check additional commands available in CLI check the reference page:
 
 {% page-ref page="../reference/provider-cli.md" %}
 
