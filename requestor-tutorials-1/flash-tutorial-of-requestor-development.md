@@ -133,8 +133,6 @@ Some of the errors you may encounter are:
 
 `[2020-08-11T10:49:17Z ERROR ya_service_bus::remote_router] bind error: already registered: Service ID [... url ... ] already registered`
 
-`('prop', 'fail', [...], {'reason': "(500)\nReason: Internal Server Error\nHTTP response headers: \n"})`
-
 `Task exception was never retrieved [... several lines of stack trace ...] {"message":"GSB error: bad request: No service registered under given address"}`
 
 ## Generate the app key
