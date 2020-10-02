@@ -63,12 +63,16 @@ golem run
 Your provider node is up and running!
 {% endhint %}
 
-### Checking status
+### Checking node status
 
-Now the remaining question is if your node is actually computing tasks from the network. To check its status open a new terminal window and type `golem status`
+Now the question is if your node is actually computing tasks from the network. To check its status open a new terminal window and type:
+
+```text
+golem status
+```
 
 {% hint style="info" %}
-``If the answer from the Golem is `computing: yes` then you have succesfully computed a task!``
+If the answer from the Golem is **\`computing: yes\`** then you have successfully computed a task! If not, give it some time as there is still not many tasks in the test network - and then run the command again. 
 {% endhint %}
 
 To check additional commands available in CLI check the reference page:
