@@ -77,7 +77,7 @@ First, download the package appropriate for your platform from: [https://github.
 
 Unpack it and put the binaries contained within somewhere in your PATH \(e.g. copy them to `/usr/local/bin` on unix-like systems\).
 
-Alternatively, you can use our install script that does the above for you:
+Alternatively, you can use our install script that does the above for you \(although you need to handle PATH yourself\):
 
 ```text
 curl -sSf https://join.golem.network/as-requestor | bash -
