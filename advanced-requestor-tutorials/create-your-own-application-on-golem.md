@@ -168,6 +168,8 @@ The details of docker image conversion are described here:
 
 The [_Hashcat_](https://hashcat.net/hashcat/) __is a very powerful tool. To make our example simple, we will use it in a very basic manner.
 
+The problem with [_Hashcat_](https://hashcat.net/hashcat/) __is the fact it often needs a lot of processing time \(days, months\) to find passowrds, so this is a reason why we are going to make Golem Network version of Hashcat that will use computing power of many providers at the same time. Becouse of passoword finding  
+
 Let's assume we have hash made by processing an unknown password by phpass algorithm.
 
 {% hint style="info" %}
@@ -212,6 +214,10 @@ $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/:pas
 ```
 
 where `pas` is the password that was unknown to us and has been cracked by the cat. 
+
+{% hint style="info" %}
+
+{% endhint %}
 
 ## Doings things in parallel
 
