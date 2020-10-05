@@ -20,7 +20,7 @@ This tutorial shows typical own application development with the Golem port of [
 
 {% page-ref page="../requestor-tutorials-1/flash-tutorial-of-requestor-development.md" %}
 
-* Being familiar with Requestor and Provider concepts. Those are described here:
+* Being familiar with Requestor and Provider concepts. To proceed, please first check those pages:
 
 {% page-ref page="../introduction/requestor.md" %}
 
