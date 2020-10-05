@@ -153,15 +153,21 @@ yagna app-key list
 
 the value in the `key` column is the key you need.
 
-### Acquire some testnet ETH and nGNT tokens
+### Enable the daemon as a requestor
 
-Instruct the yagna daemon to contact the faucet which issues some ETH and nGNT tokens to the node:
+You need the following command to enable the daemon as a requestor.
+
+{% hint style="warning" %}
+It needs to be run  each time the daemon is started or restarted.
+{% endhint %}
+
+What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some ETH and nGNT tokens to the node:
 
 ```text
 yagna payment init -r
 ```
 
-and allow some time until it completes its job.
+Once you issue the command, allow some time until it completes its job.
 
 {% hint style="warning" %}
 Due to the fact that our example uses the Rinkeby Ethereum testnet, the transactions that add ETH and nGNT to the requestor node's address need to be mined and confirmed there. It may take several minutes until that's completed.
