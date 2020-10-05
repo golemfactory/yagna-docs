@@ -1,7 +1,7 @@
 ---
 description: >-
-  This tutorial shows how to run the new Golem Provider and play around with its
-  limited functionalities.
+  This tutorial shows how to run the new Golem Provider Sneak Peek release and
+  play around with its limited functionalities.
 ---
 
 # Becoming a provider
@@ -10,9 +10,8 @@ description: >-
 
 #### Platforms
 
-This is our very first Alpha reveal. Therefore, temporarily, Golem only supports a limited list of platforms. These are those:
+This is our very first Alpha Provider Sneak Peek reveal. Therefore, temporarily, Golem only supports:
 
-* OS X 10.14+
 * Ubuntu 18.04 or 20.04
 
 {% hint style="info" %}
@@ -53,10 +52,10 @@ And that is it! You will see that default preset was created based on your initi
 
 ## Running the provider
 
-To run Golem type in the terminal:
+To run Golem Sneak Peek type in the terminal:
 
 ```text
-golem run
+golemsp run
 ```
 
 {% hint style="success" %}
@@ -68,7 +67,7 @@ Your provider node is up and running!
 Now the question is if your node is actually computing tasks from the network. To check its status open a new terminal window and type:
 
 ```text
-golem status
+golemsp status
 ```
 
 {% hint style="info" %}
