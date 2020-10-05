@@ -251,7 +251,9 @@ Now we just need to:
 ## The requestor agent code
 
 {% hint style="info" %}
-The example requestor agent code is available in `/examples/yacat/yacat.py` of the [https://github.com/golemfactory/yapapi](https://github.com/golemfactory/yapapi) repository.
+Below we present an example of requestor agent code that makes Hashcat work in parallel.
+
+You do not need to copy and paste the code below as it is available in `/examples/yacat/yacat.py` of the [https://github.com/golemfactory/yapapi](https://github.com/golemfactory/yapapi) repository.  
 {% endhint %}
 
 The requestor agent is written in Python and uses Golem's Python High Level API \(YAPAPI\). The details of the YAPAPI are described here:
