@@ -268,11 +268,11 @@ Check out or download the `yajsapi` repository:
 git clone https://github.com/golemfactory/yajsapi.git
 ```
 
-### Install the dependencies
+### Install the dependencies and build the library
 
 ```text
 cd yajsapi
-yarn
+yarn && yarn build
 ```
 
 ### Set the yagna app key
@@ -286,8 +286,9 @@ export YAGNA_APPKEY=insert-your-32-char-app-key-here
 The example we're showcasing here resides in the `examples/blender` directory within `yajsapi`'s codebase so, ensure that you're in the checked-out repository's directory and run:
 
 ```bash
-cd examples/blender
-yarn start
+cd examples
+yarn
+npm run js:blender
 ```
 
 If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet which will look something like:
