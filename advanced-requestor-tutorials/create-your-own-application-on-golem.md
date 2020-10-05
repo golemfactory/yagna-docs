@@ -164,7 +164,7 @@ The details of docker image conversion are described here:
 
 {% page-ref page="../requestor-tutorials-1/convert-a-docker-image-into-a-golem-image.md" %}
 
-## The work to do
+## What we want to achieve in this example
 
 The [_Hashcat_](https://hashcat.net/hashcat/) __is a very powerful tool. To make our example simple, we will use it in a very basic manner.
 
