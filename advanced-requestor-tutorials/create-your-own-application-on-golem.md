@@ -260,6 +260,8 @@ The requestor agent is written in Python and uses Golem's Python High Level API 
 
 {% page-ref page="../yapapi/yapapi.md" %}
 
+The following code is described in detail in the next section of this tutorial.
+
 ```python
 #!/usr/bin/env python3
 import asyncio
