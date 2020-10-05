@@ -41,7 +41,17 @@ To verify your currently installed version of node, please run:
 node --version
 ```
 
-If you have an older version of node and you'd like to keep that version in your system, consider using [nvm](https://github.com/nvm-sh/nvm).
+If you have an older version of node and you'd like to keep that version in your system, consider using [nvm](https://github.com/nvm-sh/nvm).  
+  
+**Yarn 1.22.3+**
+
+Verify that with:
+
+```text
+yarn --version
+```
+
+If you don't have `yarn` or need to update, it, please go to: [https://classic.yarnpkg.com/en/docs/install/](https://classic.yarnpkg.com/en/docs/install/) and choose the version appropriate for your operating system.
 {% endtab %}
 {% endtabs %}
 
