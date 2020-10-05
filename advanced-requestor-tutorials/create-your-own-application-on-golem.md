@@ -143,8 +143,7 @@ This makes `/golem/work` a place we will use for in / out file transfer.
 We proceed with the `yacat.Dockerfile` with a standard docker build and publish:
 
 ```python
-docker build . -f yacat.Dockerfile
-docker push rad9k/yacat
+docker build . -f yacat.Dockerfile -name rad9k/yacat
 ```
 
 Now we need to convert the docker image to Golem \(`gvmkit`\) image. This will be done by:
