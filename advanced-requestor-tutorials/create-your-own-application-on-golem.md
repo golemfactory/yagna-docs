@@ -168,9 +168,9 @@ The details of docker image conversion are described here:
 
 The [_Hashcat_](https://hashcat.net/hashcat/) __is a very powerful tool. To make our example simple, we will use it in a very basic manner.
 
-The problem with [_Hashcat_](https://hashcat.net/hashcat/) __is the fact it often needs a lot of processing time \(days, months\) to find passowrds, so this is a reason why we are going to make Golem Network version of Hashcat that will use computing power of many providers at the same time. Becouse of passoword finding  
+The problem with [_Hashcat_](https://hashcat.net/hashcat/) __is the fact it often needs a lot of processing time \(days, months\) to find passowords, so this is a reason why we are going to make Golem Network version of Hashcat that will use computing power of many providers at the same time. Becouse passoword finding when done in parallel is much quickier, the parallel version will possibly run in hours and not days / months. 
 
-Let's assume we have hash made by processing an unknown password by phpass algorithm.
+But first we need to precisely define "finding password" problem. Let's assume we have hash made by processing an unknown password by phpass algorithm.
 
 {% hint style="info" %}
 Phpass is used as a hashing method by WordPress and Drupal. It is a public domain software and used with PHP applications.
@@ -215,13 +215,11 @@ $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/:pas
 
 where `pas` is the password that was unknown to us and has been cracked by the cat. 
 
-{% hint style="info" %}
-
-{% endhint %}
+Now let's try to make process of finding passwords to work in parallel.
 
 ## Doings things in parallel
 
-How to make hash cat work in parallel? The answer is very simple: the keyspace concept. We can ask the cat to tell us what is the size of the possibility space for given mask and alghorithm:
+How to make hash cat work in parallel? The answer is very simple: the keyspace concept. We can ask the cat to tell us what is the size of the possibility space for given mask and algorithm:
 
 ```text
 hashcat --keyspace -a 3 ?a?a?a -m 400
