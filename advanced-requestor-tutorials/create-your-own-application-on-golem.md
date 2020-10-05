@@ -254,7 +254,7 @@ Now we just need to:
 The example requestor agent code is available in `/examples/yacat/yacat.py` of the [https://github.com/golemfactory/yapapi](https://github.com/golemfactory/yapapi) repository.
 {% endhint %}
 
-The requestor agent is written in Python and uses Golem's High Level API. The details of the Python High Level API are described here:
+The requestor agent is written in Python and uses Golem's Python High Level API \(YAPAPI\). The details of the YAPAPI are described here:
 
 {% page-ref page="../yapapi/yapapi.md" %}
 
