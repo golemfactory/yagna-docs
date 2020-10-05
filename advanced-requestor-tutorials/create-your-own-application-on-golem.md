@@ -154,15 +154,15 @@ gvmkit-build rad9k/yacat
 gvmkit-build rad9k/yacat --push
 ```
 
-The details of docker image conversion are described here:
-
-{% page-ref page="../requestor-tutorials-1/convert-a-docker-image-into-a-golem-image.md" %}
-
-The important fact is that in the end, we are getting the `gvmkit` image hash, that looks like this:
+The important fact is that in the end, int the console out, we are getting the `gvmkit` image hash, that looks like this:
 
 ```python
 15912976e9d8ef5c82f6c918a0491c43cf4fb7b84b443013b36dd3fb
 ```
+
+The details of docker image conversion are described here:
+
+{% page-ref page="../requestor-tutorials-1/convert-a-docker-image-into-a-golem-image.md" %}
 
 ## The work to do
 
