@@ -25,7 +25,7 @@
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
-* [Introduction](yapapi/yapapi.md)
+* [Introduction to YAPAPI](yapapi/yapapi.md)
 * [VM Tutorial](yapapi/vm-tutorial.md)
 * [Low-Level](yapapi/low-level-api.md)
 * [API Reference](yapapi/api-reference/README.md)

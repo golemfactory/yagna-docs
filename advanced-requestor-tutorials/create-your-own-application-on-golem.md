@@ -250,7 +250,13 @@ Now we just need to:
 
 ## The requestor agent code
 
+{% hint style="info" %}
+The example requestor agent code is available in `/examples/yacat/yacat.py` of the [https://github.com/golemfactory/yapapi](https://github.com/golemfactory/yapapi) repository.
+{% endhint %}
+
 The requestor agent is written in Python and uses Golem's High Level API. The details of the Python High Level API are described here:
+
+{% page-ref page="../yapapi/yapapi.md" %}
 
 ```python
 #!/usr/bin/env python3
@@ -386,7 +392,7 @@ if __name__ == "__main__":
         asyncio.get_event_loop().run_until_complete(task)
 ```
 
-## How it does work?
+## How does it work?
 
 * To tell the Golem platform, that we want to use our image for the container, we use the hash received from the `gvmkit-build`
 
