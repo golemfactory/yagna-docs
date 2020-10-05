@@ -458,7 +458,7 @@ async def worker_second(ctx: WorkContext, tasks):
         task.accept_task(result=output_file)
 ```
 
-* In the end, we need to iterate thorough all the \*.potfile and see if there is any password there:
+* In the end, we need to iterate through all the \*.potfile and see if there is any password there:
 
 ```python
 def read_password(ranges):
