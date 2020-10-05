@@ -490,3 +490,13 @@ python3 yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/ --subnet-tag devnet-a
 
 This is just a simple scenario example. The possibilities for our own Golem application are endless. We will provide more inspiring tutorials soon. 
 
+{% hint style="info" %}
+In case of any doubts or problems, you can always contact us on discord.
+
+[https://discord.com/channels/684703559954333727/756161015493951600](https://discord.com/channels/684703559954333727/756161015493951600)
+{% endhint %}
+
+
+
+
+
