@@ -91,6 +91,8 @@ You can install it using our helper script like this:
 curl -sSf https://join.golem.network/as-requestor | bash -
 ```
 
+You might be asked to modify your PATH afterwards.
+
 #### Manual installation
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
