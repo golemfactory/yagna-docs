@@ -2,7 +2,7 @@
 description: Your own thing on golem.
 ---
 
-# Create your own application on golem
+# Create your own application on Golem
 
 ## Introduction
 
@@ -121,7 +121,7 @@ RUN apt clean
 
 WORKDIR /golem/work
 
-VOLUME /golem/work
+VOLUME /golem/work /golem/output /golem/resource
 ```
 
 This is pretty standard Dockerfile. The main takeaways are:
@@ -132,10 +132,10 @@ This is pretty standard Dockerfile. The main takeaways are:
 WORKDIR /golem/work
 ```
 
-* We also need to define a dedicated volume for the `/golem/work`
+* We also need to define a dedicated volume for the `/golem/work` and other helping directories for possible future use.
 
 ```text
-VOLUME /golem/work
+VOLUME /golem/work /golem/output /golem/resource
 ```
 
 This makes `/golem/work` a place we will use for in / out file transfer.

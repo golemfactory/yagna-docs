@@ -21,7 +21,7 @@
 
 ## Advanced  tutorials <a id="advanced-requestor-tutorials"></a>
 
-* [Create your own application on golem](advanced-requestor-tutorials/create-your-own-application-on-golem.md)
+* [Create your own application on Golem](advanced-requestor-tutorials/create-your-own-application-on-golem.md)
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
