@@ -81,17 +81,25 @@ If you'd like to give us feedback, suggestions, have some errors to report or if
 _Yagna is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network._
 {% endhint %}
 
-In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon.
+In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon. 
+
+#### Easy installation
+
+You can install it using our helper script like this:
+
+```text
+curl -sSf https://join.golem.network/as-requestor | bash -
+```
+
+#### Manual installation
+
+Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
 First, download the requestor package - prefixed `golem-req` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-49c52869](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-49c52869)
 
 Unpack it and put the binaries contained within somewhere in your PATH \(e.g. copy them to `/usr/local/bin` on unix-like systems\).
 
-Alternatively, you can use our install script that does the above for you \(although you may be asked to set the PATH manually anyway\):
-
-```text
-curl -sSf https://join.golem.network/as-requestor | bash -
-```
+### Confirm the installed daemon's version
 
 Once binaries are installed, confirm that you're running the latest Golem release:
 
@@ -101,7 +109,7 @@ yagna --version
 
 It should output: `yagna 0.4.0-49c52869`
 
-#### Purge the stale working directories
+### Purge the stale working directories
 
 If you had run a previous version of `yagna` in the past, you'll need to purge its working directories since our newest version is incompatible with the old database structure:
 
@@ -119,7 +127,7 @@ rm -rf $HOME/Library/Application\ Support/GolemFactory.yagna
 {% endtab %}
 {% endtabs %}
 
-#### Run the daemon
+### Run the daemon
 
 Now, you can run the daemon:
 
