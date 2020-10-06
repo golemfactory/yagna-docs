@@ -276,13 +276,13 @@ Check out or download the `yajsapi` repository:
 
 ```text
 git clone https://github.com/golemfactory/yajsapi.git
+cd yajsapi
 git checkout b0.1
 ```
 
 ### Install the dependencies and build the library
 
 ```text
-cd yajsapi
 yarn && yarn build
 ```
 
@@ -293,6 +293,8 @@ In order for the requestor agent to connect with the yagna daemon, you need to p
 ```text
 export YAGNA_APPKEY=insert-your-32-char-app-key-here
 ```
+
+### Run the example task
 
 The example we're showcasing here resides in the `examples/blender` directory within `yajsapi`'s codebase so, ensure that you're in the checked-out repository's directory and run:
 
@@ -315,6 +317,8 @@ The example in question generates six discrete jobs for providers to execute so 
 `progress= {'done': True}`
 {% endtab %}
 {% endtabs %}
+
+
 
 {% hint style="success" %}
 **Yay! With this, you have completed your first job as a requestor in the new Golem network!**
