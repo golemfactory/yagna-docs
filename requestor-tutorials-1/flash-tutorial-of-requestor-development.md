@@ -41,7 +41,7 @@ To verify your currently installed version of node, please run:
 node --version
 ```
 
-If you have an older version of node and you'd like to keep that version in your system, consider using [nvm](https://github.com/nvm-sh/nvm).  
+If you have an older version of node and you'd like to keep that version in your system, consider using [nvm](https://github.com/nvm-sh/nvm). You can install it using the instructions from: [https://github.com/nvm-sh/nvm\#install--update-script](https://github.com/nvm-sh/nvm#install--update-script)  
   
 **Yarn 1.22.3+**
 
