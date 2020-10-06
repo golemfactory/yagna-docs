@@ -276,6 +276,7 @@ Check out or download the `yajsapi` repository:
 
 ```text
 git clone https://github.com/golemfactory/yajsapi.git
+git checkout b0.1
 ```
 
 ### Install the dependencies and build the library
