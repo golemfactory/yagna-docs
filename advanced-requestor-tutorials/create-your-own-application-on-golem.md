@@ -488,6 +488,16 @@ else:
 python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --subnet-tag devnet-alpha.2
 ```
 
+The above execution should return "pas" as a guessed password being computed on the default number of providers being 3.
+
+A more computation-intensive example is:
+
+```python
+python3 yacat.py '?a?a?a?a' '$H$5ZDzPE45C.e3TjJ2Qi58Aaozha6cs30' --subnet-tag devnet-alpha.2 --numberOfProviders 8
+```
+
+The above command should execute computations on 8 providers and return "ABCD".
+
 ## Closing words
 
 This is just a simple scenario example. The possibilities for our own Golem application are endless. We will provide more inspiring tutorials soon. 
