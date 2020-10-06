@@ -83,7 +83,7 @@ _Yagna is the main service of the new Golem that's responsible for keeping conne
 
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon.
 
-First, download the package appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-3](https://github.com/golemfactory/yagna/releases/tag/pre-rel-3)
+First, download the requestor package - prefixed `golem-req` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-49c52869](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-49c52869)
 
 Unpack it and put the binaries contained within somewhere in your PATH \(e.g. copy them to `/usr/local/bin` on unix-like systems\).
 
@@ -99,7 +99,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.4.0-alpha.1-83402f6c`
+It should output: `yagna 0.4.0-49c52869`
 
 #### Purge the stale working directories
 
