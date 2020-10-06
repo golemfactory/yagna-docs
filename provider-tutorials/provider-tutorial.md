@@ -70,8 +70,21 @@ Now the question is if your node is actually computing tasks from the network. T
 golemsp status
 ```
 
+As an output you will get current information about your node state as seen below: 
+
+```text
+┌─────────────────────────┬───────────────────────────────────────────────────────┬────────────────────────────┐
+│  Status                 │  Wallet                                               │  Tasks                     │
+│                         │                                                       │                            │
+│  Service    is running  │  address  0x47c9a1ae6e29750b7e0ebdb0e85d8af0cb7161e4  │  last 1h processed    0    │
+│                         │  amount   1000.5566137729855557 NGNT                  │  last 1h in progress  1    │
+│  Node Name  node_name   │  pending  1.10569130799333359 NGNT                    │  total processed      0    │
+│  Subnet     comunity    │                                                       │                            │
+└─────────────────────────┴───────────────────────────────────────────────────────┴────────────────────────────┘
+```
+
 {% hint style="info" %}
-If the answer from the Golem is **\`computing: yes\`** then you have successfully computed a task! If not, give it some time as there is still not many tasks in the test network - and then run the command again. 
+If in the \(far to the right\) **Tasks** section of the table you will see either tasks in progress or processed then you have successfully computed a task! If not, give it some time as there is still not many tasks in the test network - and then run the command again. 
 {% endhint %}
 
 To check additional commands available in CLI check the reference page:
