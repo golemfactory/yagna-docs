@@ -167,11 +167,11 @@ the value in the `key` column is the key you need.
 
 You need the following command to enable the daemon as a requestor.
 
+What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some ETH and nGNT tokens to the node.
+
 {% hint style="warning" %}
 It needs to be run each time the daemon is started or restarted.
 {% endhint %}
-
-What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some ETH and nGNT tokens to the node:
 
 ```text
 yagna payment init -r
