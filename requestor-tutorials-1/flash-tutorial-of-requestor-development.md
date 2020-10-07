@@ -163,7 +163,7 @@ With the daemon running, enter the daemon's directory using another shell and ge
 yagna app-key create requestor
 ```
 
-This should produce a 32-character-long hexadecimal app key that you need to note down as it will be needed to run the requestor agent.
+This should produce a 32-character-long hexadecimal app key that **you need to note down** as it will be needed to run the requestor agent.
 
 In case you lose your app key, you can retrieve it with:
 
