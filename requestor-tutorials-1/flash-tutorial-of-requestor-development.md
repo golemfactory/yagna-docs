@@ -250,6 +250,8 @@ In order for the requestor agent to connect with the yagna daemon, you need to p
 export YAGNA_APPKEY=insert-your-32-char-app-key-here
 ```
 
+#### Run the example
+
 The example we're showcasing here resides in the `examples/blender` directory within `yapapi`'s codebase so, ensure that you're in the checked-out repository's directory and run:
 
 ```bash
