@@ -326,7 +326,7 @@ The example in question generates six discrete jobs for providers to execute so 
 
 #### Output
 
-You can verify that the task is indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation that should appear in the directory from which you ran the example script.
+You can verify that the task is indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation that should appear in the directory from which you ran the example script \(`examples/blender` within the cloned repository's path if you followed the tutorial precisely\) . 
 
 Here is an example rendered frame, provided here for reference:
 
