@@ -12,10 +12,10 @@ description: >-
 
 This is our very first Alpha Provider Sneak Peek reveal. Therefore, temporarily, Golem only supports:
 
-* Ubuntu 18.04 or 20.04
+* Ubuntu 18.04 and 20.04
 
 {% hint style="info" %}
-For this release we have prepared a dedicated and controlled subnetwork using Ethereums Rinkeby Testnet for payments. If you would like to earn real GNT's head over to our [Clay Golem Beta implementation](https://golem.network/download/clay-beta/). This release also features [the basic CLI](https://golem-network.gitbook.io/golem-sdk-develop/reference/provider-cli) with which you may interact with your node.
+For this release we have prepared a dedicated and controlled subnetwork using Ethereums Rinkeby Testnet for payments. **This means that all the tokens for your computing power will not have any value**. If you would like to earn real GNT's head over to our [Clay Golem Beta implementation](https://golem.network/download/clay-beta/). This release also features [the basic CLI](https://golem-network.gitbook.io/golem-sdk-develop/reference/provider-cli) with which you may interact with your node.
 {% endhint %}
 
 ## Installation
@@ -35,6 +35,8 @@ Open your terminal and type:
 ```text
 curl -sSf https://join.golem.network/as-provider | bash -
 ```
+
+You might be asked to modify your PATH afterwards: `PATH=$HOME/.local/bin:$PATH`
 
 #### Initial setup
 
