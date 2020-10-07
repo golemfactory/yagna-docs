@@ -8,7 +8,7 @@ description: Your own thing on golem.
 
 The use case for the Golem network is to be used by developers to create their own applications on Golem. The Golem platform and the Golem SDK are carefully crafted for this scenario.
 
-This tutorial shows typical own application development with the Golem port of [Hashcat](https://hashcat.net/hashcat/) open source password cracking tool.
+This tutorial shows typical own application development example. To show how things works, we use created yacat - Golem port of [Hashcat](https://hashcat.net/hashcat/) open source password cracking tool.
 
 ## Prerequisites
 
@@ -30,6 +30,16 @@ This tutorial shows typical own application development with the Golem port of [
 
 _Initially, you can start just by experimenting with our example yacat - Golem_ [_Hashcat_](https://hashcat.net/hashcat/) _port._
 
+## What is the Golem application?
+
+Golem application is just some docker containers \(Providers\) that are orchestrated by Pyhon or JavaScript code \(Requestor\). The orchestration is realized as three types of actions: 
+
+* sending input files to the docker container
+* running commands on the container
+* geting output files from the container 
+
+![](../.gitbook/assets/image%20%281%29.png)
+
 ## How does it work?
 
 Currently, Golem network supports the following application architecture:
@@ -41,16 +51,14 @@ Currently, Golem network supports the following application architecture:
 * The application creator prepares a dedicated dockerfile that describes the image. 
   * _If there \(for example on the docker hub\) exist image that can be used directly, there is no need to create a custom image._
 * The application starting point is the Requestor side, which runs the requestor agent.
-* The requestor agent gets the providers that meet its needs from the market.
+* The requestor agent gets the providers that meet its needs \(for example having enough RAM\) from the Golem's market. 
 * The providers are asked to load the appropriate image. 
-  * _If this is a subsequent run of the requestor, the image could already be cached by some of the providers._ 
+  * _If this is a subsequent run of the image, the image could already be cached by some of the providers._ 
 * For each of the providers, the requestor prepared input data. Those are sent from the memory or local requestor's file system into the docker container's file system.
 * One or several commands are executed on the provider's docker containers.
   * _It is expected that in the result of the command execution, in the docker container's file system there are some files that can be transferred to the requestor._
-* Requestor transfers needed files from the provider's docker container's file systems.
-* Requestor combines all the data from providers to form final output that can be consumed by the application user.
-
-![](../.gitbook/assets/tnm-docs-infographics-06.jpg)
+* Requestor transfers needed files from the provider's docker container's file systems to local file system.
+* Requestor combines all the data transferred from providers to form final output that can be consumed by the application user.
 
 Some additional details can be found here:
 
