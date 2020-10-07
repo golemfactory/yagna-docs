@@ -40,7 +40,7 @@ Golem application is just some docker containers \(Providers\) that are orchestr
 
 ![](../.gitbook/assets/image%20%281%29.png)
 
-## How does it work?
+## How does Golem application work?
 
 Currently, Golem network supports the following application architecture:
 
@@ -67,15 +67,17 @@ Some additional details can be found here:
 ## Let's get to work. Dockerfile
 
 {% hint style="info" %}
-This example is made of two files:
+This tutorial is aimed to teach you how to create your own application on Golem. You can work with your own code or use yacat - ready made example.
+
+yacat is made of two files:
 
 * `yacat.Dockerfile` - the docker file used for provider's container images definition
-* `yacat.py` - the golem port of hashcat
+* `yacat.py` - entry point. Orchestration of the containers.
 
-Those files can be found in `/examples/yacat` directory of [https://github.com/golemfactory/yapapi](https://github.com/golemfactory/yapapi)
+Those files can be found in `/examples/yacat`directory of  [https://github.com/golemfactory/yapapi/tree/b0.3](https://github.com/golemfactory/yapapi/tree/b0.3)
 {% endhint %}
 
-Let's start with Dockerfile. We would need a dedicated one, to have [Hashcat](https://hashcat.net/hashcat/) ready to be used.
+Let's start with Dockerfile. We would need a dedicated one, to have [Hashcat](https://hashcat.net/hashcat/) being executed in the containers.
 
 ```text
 FROM golemfactory/base:1.5
@@ -132,34 +134,26 @@ WORKDIR /golem/work
 VOLUME /golem/work /golem/output /golem/resource
 ```
 
-This is pretty standard Dockerfile. The main takeaways are:
-
-* The `/golem/work` is our working directory. This is done by
-
-```text
-WORKDIR /golem/work
-```
-
-* We also need to define a dedicated volume for the `/golem/work` and other helping directories for possible future use.
+This is pretty standard Dockerfile. The main take away is:
 
 ```text
 VOLUME /golem/work /golem/output /golem/resource
 ```
 
-This makes `/golem/work` a place we will use for in / out file transfer.
+This makes `/golem/work` a place we will use for in / out file transfer. We are defining other volumes for possible future usage also.
 
 We proceed with the `yacat.Dockerfile` with a standard docker build:
 
 ```python
-docker build . -f yacat.Dockerfile -name rad9k/yacat
+docker build . -f yacat.Dockerfile -t yacat
 ```
 
 As Golem Network can not use raw docker images and need to use `gvmkit` image format, we need to convert the docker image to Golem \(`gvmkit`\) image. This will be done by:
 
 ```python
 pip install gvmkit-build
-gvmkit-build rad9k/yacat
-gvmkit-build rad9k/yacat --push
+gvmkit-build yacat
+gvmkit-build yacat --push
 ```
 
 The important fact is that in the end, int the console out, we are getting the `gvmkit` image hash, that looks like this:
@@ -167,6 +161,8 @@ The important fact is that in the end, int the console out, we are getting the `
 ```python
 15912976e9d8ef5c82f6c918a0491c43cf4fb7b84b443013b36dd3fb
 ```
+
+This hash will identify our image when our application will run.
 
 The details of docker image conversion are described here:
 
@@ -176,9 +172,11 @@ The details of docker image conversion are described here:
 
 The [_Hashcat_](https://hashcat.net/hashcat/) __is a very powerful tool. To make our example simple, we will use it in a very basic manner.
 
-The problem with [_Hashcat_](https://hashcat.net/hashcat/) __is the fact it often needs a lot of processing time \(days, months\) to find passowords, so this is a reason why we are going to make Golem Network version of Hashcat that will use computing power of many providers at the same time. Becouse passoword finding when done in parallel is much quickier, the parallel version will possibly run in hours and not days / months. 
+{% hint style="info" %}
+The problem with [_Hashcat_](https://hashcat.net/hashcat/) __is the fact it often needs a lot of processing time \(days, months\) to find passowords, so this is a reason why we are going to make Golem Network version of Hashcat that will use the computing power of many providers at the same time. Because password finding when done in parallel is much quicker, the parallel version will possibly run in hours and not days / months. 
+{% endhint %}
 
-But first we need to precisely define "finding password" problem. Let's assume we have hash made by processing an unknown password by phpass algorithm.
+First, we need to precisely define the "finding password" problem. Let's assume we have hash made by processing an unknown password by phpass algorithm. There are 320 other hash algorithms supported by hashcat, but we will use phpass as an example. 
 
 {% hint style="info" %}
 Phpass is used as a hashing method by WordPress and Drupal. It is a public domain software and used with PHP applications.
@@ -206,13 +204,13 @@ Now we can try to find the password matching the given hash and mask, by calling
 
 The parameters used mean:
 
-* `a 3` - use brute force type of attack
-* `m 400` - password is hashed witch usage of phpass algorithm
+* `a 3` - use brute force type of attack. There are 5 other types of attacks.
+* `m 400` - password is hashed witch the usage of phpass algorithm. There are 320 others.
 * `in.hash` - name of a file containing the hashed password
 * `?a?a?a` - mask to use
 
 {% hint style="info" %}
-The complete hashcat parameters reference is aviaible here: [https://hashcat.net/wiki/doku.php?id=hashcat](https://hashcat.net/wiki/doku.php?id=hashcat) 
+The complete hashcat parameters reference is available here: [https://hashcat.net/wiki/doku.php?id=hashcat](https://hashcat.net/wiki/doku.php?id=hashcat) 
 {% endhint %}
 
 As a result of the above call, the `hashcat.potfile` will be created with the following content:
@@ -221,13 +219,13 @@ As a result of the above call, the `hashcat.potfile` will be created with the fo
 $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/:pas
 ```
 
-where `pas` is the password that was unknown to us and has been cracked by the cat. 
+where `pas` is the password that was unknown to us. It has been cracked by the cat. 
 
-Now let's try to make process of finding passwords to work in parallel.
+Now let's try to make the process of finding passwords to work in parallel.
 
 ## Doings things in parallel
 
-How to make hash cat work in parallel? The answer is very simple: the keyspace concept. We can ask the cat to tell us what is the size of the possibility space for given mask and algorithm:
+How to make hash cat work in parallel? The answer is very simple: the keyspace concept. We can ask the cat to tell us what is the size of the possibility space for the given mask and algorithm:
 
 ```text
 hashcat --keyspace -a 3 ?a?a?a -m 400
@@ -241,27 +239,49 @@ Now we can divide the `0..9025` space into separate parts. Assuming we want to u
 * `3009..6016`
 * `6017..9025`
 
-To process the exact part of the whole `0..9025` space, we use following hashcat options:
+To process the exact part of the whole `0..9025` space, we use the following hashcat options:
 
 ```text
 ./hashcat -a 3 -m 400 in.hash --skip 3009 --limit 6016  ?a?a?a
 ```
 
-The above call will process the `3009..6016t` part. If there is any result in that range it will be written to the `hashcat.potfile`.
+The above call will process the `3009..6016` part. If there is any result in that range it will be written to the `hashcat.potfile`.
 
 Now we just need to:
 
 * provide each docker container with `in.hash` file \(the same for all providers\)
-* execute a command that uses proper skip / limit values in each docker container
+* execute `hashcat` with proper `--skip` / `--limit` values in each docker container
 * transfer `hashcat.potfile` from each docker container to the requestor
 * check if any of the potfiles contains password. If yes, present it to the user.
+
+## yacat high level picture
+
+The first step is to **check the keyspace size**. This is done in 4 steps:
+
+* Preparing `keyspace.sh` script with contains given password mask. As the `hashcat --keyspace -a 3 ?a?a?a -m 400` command outputs the keyspace size to stdout, we need to redirect the command output to the `keyspace.txt` file. That is the job of `keyspace.sh` script.
+* Execute the `keyspace.sh` script on the container.
+* Transfer the `keyspace.txt` file back to the requestor.
+
+![](../.gitbook/assets/image%20%283%29.png)
+
+Knowing the keyspace size we can start looking for the password using many providers at the same time.
+
+For each of the providers we are:
+
+* Sending the `in.hash` file that contains password hash. Additionally, we are transferring `empty.txt` helper file.
+* Executing `hashcat` with proper `--skip` and `--limit` values
+* Getting the hashcat.potfile from the provider to the requestor
+
+![](../.gitbook/assets/image%20%282%29.png)
+
+The final action is to scan over all the `*.potfiles` received and if there is a password, display it to the user. 
 
 ## The requestor agent code
 
 {% hint style="info" %}
 Below we present an example of requestor agent code that makes Hashcat work in parallel.
 
-You do not need to copy and paste the code below as it is available in `/examples/yacat/yacat.py` of the [https://github.com/golemfactory/yapapi](https://github.com/golemfactory/yapapi) repository.  
+You do not need to copy and paste the code below as it is available in `/examples/yacat/yacat.py` of the [https://github.com/golemfactory/yapapi](https://github.com/golemfactory/yapapi/tree/b0.3) repository.  
 {% endhint %}
 
 The requestor agent is written in Python and uses Golem's Python High Level API \(YAPAPI\). The details of the YAPAPI are described here:
