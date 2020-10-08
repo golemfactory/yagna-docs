@@ -108,7 +108,7 @@ You might be asked to modify your PATH afterwards.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-req` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-49c52869](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-49c52869)
+First, download the requestor package - prefixed `golem-req` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-f4e85cd3](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-f4e85cd3)
 
 Unpack it and put the binaries contained within somewhere in your PATH \(e.g. copy them to `/usr/local/bin` on unix-like systems\).
 
@@ -120,7 +120,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.4.0-49c52869`
+It should output: `yagna 0.4.0-f4e85cd3`
 
 ### Purge the stale working directories
 
@@ -235,7 +235,7 @@ Install the dependencies:
 ```text
 pip3 install -U pip
 pip3 install certifi
-pip3 install -i https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple/ yapapi==0.3.0a1
+pip3 install -i https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple/ yapapi==0.3.0a2
 ```
 
 ### Get the requestor agent's code
