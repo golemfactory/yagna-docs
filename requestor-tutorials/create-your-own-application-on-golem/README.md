@@ -20,7 +20,7 @@ This tutorial shows typical own application development example. To show how thi
   * Windows 10
 * Python 3.6+, git and yagna daemon installed, as described in 
 
-{% page-ref page="../../requestor-tutorials-1/flash-tutorial-of-requestor-development.md" %}
+{% page-ref page="../flash-tutorial-of-requestor-development.md" %}
 
 * Being familiar with Requestor and Provider concepts. \[wywalic i dac nizej jako opconalne\] please first check those pages:
 
@@ -168,7 +168,7 @@ This hash will identify our image when our application will run.
 
 The details of docker image conversion are described here:
 
-{% page-ref page="../../requestor-tutorials-1/convert-a-docker-image-into-a-golem-image.md" %}
+{% page-ref page="../convert-a-docker-image-into-a-golem-image.md" %}
 
 ## The hashcat   bylo: What we want to accomplish in this example
 

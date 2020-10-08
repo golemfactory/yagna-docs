@@ -9,20 +9,17 @@
 * [Decentralized market](introduction/decentralized-market.md)
 * [Golem's details](introduction/golems-details.md)
 
-## Requestor tutorials <a id="requestor-tutorials-1"></a>
+## Requestor tutorials
 
-* [Requestor development: a quick primer](requestor-tutorials-1/flash-tutorial-of-requestor-development.md)
-* [How does it work? A more in-depth look at an example requestor agent](requestor-tutorials-1/requestor-tutorial.md)
-* [How to convert a Docker image into a Golem image?](requestor-tutorials-1/convert-a-docker-image-into-a-golem-image.md)
+* [Requestor development: a quick primer](requestor-tutorials/flash-tutorial-of-requestor-development.md)
+* [How does it work? A more in-depth look at an example requestor agent](requestor-tutorials/requestor-tutorial.md)
+* [How to convert a Docker image into a Golem image?](requestor-tutorials/convert-a-docker-image-into-a-golem-image.md)
+* [Create your own application on Golem](requestor-tutorials/create-your-own-application-on-golem/README.md)
+  * [The steps to do](requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do.md)
 
 ## Provider tutorials
 
 * [Becoming a provider](provider-tutorials/provider-tutorial.md)
-
-## Advanced  tutorials <a id="advanced-requestor-tutorials"></a>
-
-* [Create your own application on Golem](advanced-requestor-tutorials/create-your-own-application-on-golem/README.md)
-  * [The steps to do](advanced-requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do.md)
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
