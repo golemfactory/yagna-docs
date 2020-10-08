@@ -20,13 +20,13 @@ This tutorial shows typical own application development example. To show how thi
   * Windows 10
 * Python 3.6+, git and yagna daemon installed, as described in 
 
-{% page-ref page="../requestor-tutorials-1/flash-tutorial-of-requestor-development.md" %}
+{% page-ref page="../../requestor-tutorials-1/flash-tutorial-of-requestor-development.md" %}
 
 * Being familiar with Requestor and Provider concepts. \[wywalic i dac nizej jako opconalne\] please first check those pages:
 
-{% page-ref page="../introduction/requestor.md" %}
+{% page-ref page="../../introduction/requestor.md" %}
 
-{% page-ref page="../introduction/provider.md" %}
+{% page-ref page="../../introduction/provider.md" %}
 
 * Your own idea that maps to the map-reduce model and can be implemented as running multiple docker images on golem providers. 
 
@@ -40,7 +40,7 @@ Golem application is just some docker containers \(Providers\) that are orchestr
 * running commands on the container
 * getting output files from the container 
 
-![](../.gitbook/assets/image%20%281%29.png)
+![](../../.gitbook/assets/image%20%281%29.png)
 
 ## How does Golem application work?
 
@@ -64,22 +64,24 @@ Currently, Golem network supports the following application architecture:
 
 Some additional details can be found here:
 
-{% page-ref page="../introduction/golems-details.md" %}
+{% page-ref page="../../introduction/golems-details.md" %}
 
 ## Let's get to work. Dockerfile
 
 {% hint style="info" %}
-This tutorial is aimed to teach you how to create your own application on Golem. You can work with your own code or use yacat - ready made example.
+\[czy to wszystko jest info?\]This tutorial is aimed to teach you how to create your own application on Golem. You can work with your own code or use yacat - ready made example.
 
 yacat is made of two files:
 
 * `yacat.Dockerfile` - the docker file used for provider's container images definition
 * `yacat.py` - entry point. Orchestration of the containers.
 
-Those files can be found in `/examples/yacat`directory of  [https://github.com/golemfactory/yapapi/tree/b0.3](https://github.com/golemfactory/yapapi/tree/b0.3) \[TODO\]
+Those files can be found in `/examples/yacat`directory of  [https://github.com/golemfactory/yapapi/tree/b0.3](https://github.com/golemfactory/yapapi/tree/b0.3) \[TODO - podac komende - w jakim katalogu uruchamiac\]
 {% endhint %}
 
-Let's start with Dockerfile. We would need a dedicated one, to have [Hashcat](https://hashcat.net/hashcat/) being executed in the containers.
+Let's start with Dockerfile. We would need a dedicated one, to have [Hashcat](https://hashcat.net/hashcat/) being executed in the containers. \[po co to jest - bo moze ktos nie wie - czy to jest "standard" czy ddykowany i co musi zrobic czlowiek jak bedzie oribl swoja appke\]
+
+\[jakich elementow potrzeba zeby zrobic apke na golema\]
 
 ```text
 FROM golemfactory/base:1.5
@@ -134,7 +136,7 @@ WORKDIR /golem/work
 VOLUME /golem/work /golem/output /golem/resource
 ```
 
-This is pretty standard Dockerfile. The main take away is:
+This is pretty standard Dockerfile. The main take away is: \[musi by wiadomo ze rozpisuje powyzsze\]
 
 ```text
 VOLUME /golem/work /golem/output /golem/resource
@@ -166,17 +168,17 @@ This hash will identify our image when our application will run.
 
 The details of docker image conversion are described here:
 
-{% page-ref page="../requestor-tutorials-1/convert-a-docker-image-into-a-golem-image.md" %}
+{% page-ref page="../../requestor-tutorials-1/convert-a-docker-image-into-a-golem-image.md" %}
 
-## What we want to achieve in this example
+## The hashcat   bylo: What we want to accomplish in this example
 
 The [_Hashcat_](https://hashcat.net/hashcat/) __is a very powerful tool. To make our example simple, we will use it in a very basic manner.
 
 {% hint style="info" %}
-The problem with [_Hashcat_](https://hashcat.net/hashcat/) __is the fact it often needs a lot of processing time \(days, months\) to find passowords, so this is a reason why we are going to make Golem Network version of Hashcat that will use the computing power of many providers at the same time. Because password finding when done in parallel is much quicker, the parallel version will possibly run in hours and not days / months. 
+The problem with [_Hashcat_](https://hashcat.net/hashcat/) __is \[problem is - nie zaczynac tak \]the fact it often needs a lot of processing time \(days, months\) to find passwords, so this is a reason why we are going to make Golem Network version of Hashcat that will use the computing power of many providers at the same time. Because password finding when done in parallel is much quicker, the parallel version will possibly run in hours and not days / months. \[na koniec sekcji\]
 {% endhint %}
 
-First, we need to precisely define the "finding password" problem. Let's assume we have hash made by processing an unknown password by phpass algorithm. There are 320 other hash algorithms supported by hashcat, but we will use phpass as an example. 
+First, we need to precisely define the "finding password" problem. Let's assume we have hash made by processing an unknown password by phpass algorithm. There are 320 other hash algorithms supported by hashcat, but we will use phpass as an example.  \[nie wiadomo po co ten opis\]
 
 {% hint style="info" %}
 Phpass is used as a hashing method by WordPress and Drupal. It is a public domain software and used with PHP applications.
@@ -225,6 +227,8 @@ Now let's try to make the process of finding passwords to work in parallel.
 
 ## Doings things in parallel
 
+\[nie jest zrozumiale\] \[dodac obrazek\] czy to jest dla hashcata czy dla tutoriala ?
+
 How to make hash cat work in parallel? The answer is very simple: the keyspace concept. We can ask the cat to tell us what is the size of the possibility space for the given mask and algorithm:
 
 ```text
@@ -256,13 +260,15 @@ Now we just need to:
 
 ## yacat high level picture
 
+\[co to jest?\] \[nie slada sie w calosc czemu to sluzy\]\[ILE JESZCZE I PO CO TO??? patrze na suwak iWTF\]
+
 The first step is to **check the keyspace size**. This is done in 4 steps:
 
 * Preparing `keyspace.sh` script with contains given password mask. As the `hashcat --keyspace -a 3 ?a?a?a -m 400` command outputs the keyspace size to stdout, we need to redirect the command output to the `keyspace.txt` file. That is the job of `keyspace.sh` script.
 * Execute the `keyspace.sh` script on the container.
 * Transfer the `keyspace.txt` file back to the requestor.
 
-![](../.gitbook/assets/image%20%283%29.png)
+![](../../.gitbook/assets/image%20%283%29.png)
 
 Knowing the keyspace size we can start looking for the password using many providers at the same time.
 
@@ -272,7 +278,7 @@ For each of the providers we are:
 * Executing `hashcat` with proper `--skip` and `--limit` values
 * Getting the hashcat.potfile from the provider to the requestor
 
-![](../.gitbook/assets/image%20%282%29.png)
+![](../../.gitbook/assets/image%20%282%29.png)
 
 The final action is to scan over all the `*.potfiles` received and if there is a password, display it to the user. 
 
@@ -284,11 +290,11 @@ Below we present an example of requestor agent code that makes Hashcat work in p
 You do not need to copy and paste the code below as it is available in `/examples/yacat/yacat.py` of the [https://github.com/golemfactory/yapapi](https://github.com/golemfactory/yapapi/tree/b0.3) repository.  
 {% endhint %}
 
-The requestor agent is written in Python and uses Golem's Python High Level API \(YAPAPI\). The details of the YAPAPI are described here:
+The requestor agent is written in Python and uses Golem's Python High Level API \(YAPAPI\). The details of the YAPAPI are described here: \[dac nizej - next steps\]
 
-{% page-ref page="../yapapi/yapapi.md" %}
+{% page-ref page="../../yapapi/yapapi.md" %}
 
-The following code is described in detail in the next section of this tutorial.
+The following code is described in detail in the next section of this tutorial. \[a ten kod to poco?\] \[gdzies musi byc info ze zaraz bedzie opis \]
 
 ```python
 #!/usr/bin/env python3
@@ -512,6 +518,8 @@ else:
 
 ## Example run
 
+\[i tylko jedna linijka????\]
+
 ```python
 python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --subnet-tag devnet-alpha.2
 ```
@@ -528,7 +536,7 @@ The above command should execute computations on 8 providers and return "ABCD".
 
 ## Closing words
 
-This is just a simple scenario example. The possibilities for our own Golem application are endless. We will provide more inspiring tutorials soon. 
+This is just a simple scenario example. The possibilities for our own Golem application are endless. We will provide more inspiring tutorials soon. \[za malo emphasis ze mozesz robic swoje\]
 
 {% hint style="info" %}
 In case of any doubts or problems, you can always contact us on discord.
