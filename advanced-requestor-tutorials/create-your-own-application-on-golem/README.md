@@ -539,7 +539,7 @@ The above command should execute computations on 8 providers and return "ABCD".
 This is just a simple scenario example. The possibilities for our own Golem application are endless. We will provide more inspiring tutorials soon. \[za malo emphasis ze mozesz robic swoje\]
 
 {% hint style="info" %}
-In case of any doubts or problems, you can always contact us on discord.
+In case of any doubts or problems, you can always contact us on discord. \[dac na poczatku zeby sie nie bali\]
 
 [https://discord.com/channels/684703559954333727/756161015493951600](https://discord.com/channels/684703559954333727/756161015493951600)
 {% endhint %}
