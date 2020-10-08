@@ -6,7 +6,9 @@ description: Your own thing on golem.
 
 ## Introduction
 
-The use case for the Golem network is to be used by developers to create their own applications on Golem. The Golem platform and the Golem SDK are carefully crafted for this scenario.
+The use case for the Golem network is to be used by developers to create their own applications on Golem.\[brzmi dziwnie\] The Golem platform and the Golem SDK are carefully crafted for this scenario.
+
+\[nowe narzedzie dobudowania wlasnuch aplikacji i popatrz na to jak mozna to zrobic na przykladzie\] 
 
 This tutorial shows typical own application development example. To show how things works, we use created yacat - Golem port of [Hashcat](https://hashcat.net/hashcat/) open source password cracking tool.
 
@@ -20,7 +22,7 @@ This tutorial shows typical own application development example. To show how thi
 
 {% page-ref page="../requestor-tutorials-1/flash-tutorial-of-requestor-development.md" %}
 
-* Being familiar with Requestor and Provider concepts. To proceed, please first check those pages:
+* Being familiar with Requestor and Provider concepts. \[wywalic i dac nizej jako opconalne\] please first check those pages:
 
 {% page-ref page="../introduction/requestor.md" %}
 
@@ -32,11 +34,11 @@ _Initially, you can start just by experimenting with our example yacat - Golem_ 
 
 ## What is the Golem application?
 
-Golem application is just some docker containers \(Providers\) that are orchestrated by Pyhon or JavaScript code \(Requestor\). The orchestration is realized as three types of actions: 
+Golem application is just some docker containers \(Providers\) that are orchestrated by Python or JavaScript code \(Requestor\). The orchestration is realized as three types of actions: 
 
 * sending input files to the docker container
 * running commands on the container
-* geting output files from the container 
+* getting output files from the container 
 
 ![](../.gitbook/assets/image%20%281%29.png)
 
@@ -74,7 +76,7 @@ yacat is made of two files:
 * `yacat.Dockerfile` - the docker file used for provider's container images definition
 * `yacat.py` - entry point. Orchestration of the containers.
 
-Those files can be found in `/examples/yacat`directory of  [https://github.com/golemfactory/yapapi/tree/b0.3](https://github.com/golemfactory/yapapi/tree/b0.3)
+Those files can be found in `/examples/yacat`directory of  [https://github.com/golemfactory/yapapi/tree/b0.3](https://github.com/golemfactory/yapapi/tree/b0.3) \[TODO\]
 {% endhint %}
 
 Let's start with Dockerfile. We would need a dedicated one, to have [Hashcat](https://hashcat.net/hashcat/) being executed in the containers.
@@ -83,8 +85,6 @@ Let's start with Dockerfile. We would need a dedicated one, to have [Hashcat](ht
 FROM golemfactory/base:1.5
 
 MAINTAINER Radek Tereszczuk <radoslaw.tereszczuk@golem.network>
-
-RUN apt update
 
 RUN apt-get update && apt-get install -y alien clinfo
 
@@ -159,7 +159,7 @@ gvmkit-build yacat --push
 The important fact is that in the end, int the console out, we are getting the `gvmkit` image hash, that looks like this:
 
 ```python
-15912976e9d8ef5c82f6c918a0491c43cf4fb7b84b443013b36dd3fb
+2c17589f1651baff9b82aa431850e296455777be265c2c5446c902e9
 ```
 
 This hash will identify our image when our application will run.
