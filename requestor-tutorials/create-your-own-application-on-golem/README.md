@@ -529,7 +529,7 @@ The above execution should return "pas" as a guessed password being computed on 
 A more computation-intensive example is:
 
 ```python
-python3 yacat.py '?a?a?a?a' '$H$5ZDzPE45C.e3TjJ2Qi58Aaozha6cs30' --subnet-tag devnet-alpha.2 --numberOfProviders 8
+python3 yacat.py '?a?a?a?a' '$H$5ZDzPE45C.e3TjJ2Qi58Aaozha6cs30' --subnet-tag devnet-alpha.2 --number-of-providers 8
 ```
 
 The above command should execute computations on 8 providers and return "ABCD".
