@@ -314,16 +314,16 @@ The example we're showcasing here resides in the `examples/blender` directory wi
 ```bash
 cd examples
 yarn
-npm run js:blender
+yarn js:blender
 ```
 
 If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet which will look something like:
 
-`_tmp_log agr create 713a4497-8491-48c9-be5e-d4e86242fc07 (1) [Identification]`
+`[yajsapi] debug: [agr] [create] 6ea07e6b03979ddf31703627d590abc052d21d500c98b993a39088345ca81da0 ["provider: manchester"]`
 
 Afterwards, you should see the work dispatched to providers with lines starting with `new batch !!!` and subsequently confirmations of tasks getting accepted by our example requestor agent:
 
-`_tmp_log task accept null (1) [null]`
+`[yajsapi] debug: [task] [accept] null [null]`
 
 The example in question generates six discrete jobs for providers to execute so after those six activities are completed and results returned, the whole task is finished.
 
