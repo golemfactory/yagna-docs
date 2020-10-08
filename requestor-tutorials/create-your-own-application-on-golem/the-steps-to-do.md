@@ -1,2 +1,2 @@
-# The steps to do
+# Tutorial steps
 

@@ -15,7 +15,9 @@
 * [How does it work? A more in-depth look at an example requestor agent](requestor-tutorials/requestor-tutorial.md)
 * [How to convert a Docker image into a Golem image?](requestor-tutorials/convert-a-docker-image-into-a-golem-image.md)
 * [Create your own application on Golem](requestor-tutorials/create-your-own-application-on-golem/README.md)
-  * [The steps to do](requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do.md)
+  * [Golem application - how to](requestor-tutorials/create-your-own-application-on-golem/golem-application-how-to.md)
+  * [Hashcat](requestor-tutorials/create-your-own-application-on-golem/hashcat.md)
+  * [Tutorial steps](requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do.md)
 
 ## Provider tutorials
 
@@ -23,11 +25,11 @@
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
-* [Introduction to Golem's high-level Python API](yapapi/README.md)
-* [VM Tutorial](yapapi/docs/VM-Tutorial.md)
-* [Low-Level](yapapi/docs/Low-Level-Api.md)
-* API Reference
-  * [yapapi](yapapi/api-reference.md)
+* [Introduction to Golem's high-level Python API](yapapi/yapapi.md)
+* [VM Tutorial](yapapi/vm-tutorial.md)
+* [Low-Level](yapapi/low-level-api.md)
+* [API Reference](yapapi/api-reference/README.md)
+  * [yapapi](yapapi/api-reference/api-reference.md)
 
 ## Reference
 
