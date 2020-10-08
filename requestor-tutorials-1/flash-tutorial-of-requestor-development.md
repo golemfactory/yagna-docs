@@ -6,16 +6,7 @@ description: >-
 
 # Requestor development: a quick primer
 
-## Before we begin
-
-A quick word of introduction about what we're presenting here. Golem's requestor-side configuration consists of two separate components:
-
-*  the `yagna` daemon - your node in the new Golem network, responsible for communication with the other nodes, running the market and providing easy access to the payment mechanisms.
-* the requestor agent - this is the part **you** - the developer - are responsible for. It can be anything you write and here we're just showing you a single example, albeit in two variants - the first one utilizing `yapapi`, our high-level Python API, and the second one `yajsapi` its JavaScript/TypeScript sister API.
-
-The daemon and the agent communicate using three REST APIs which the high-level API aims to abstract to large extent to make the programmer's life - your life - easier so, hopefully, once properly launched, Golem Network will be flooded with your ingenious ideas.
-
-### Prerequisites
+## Prerequisites
 
 #### Platforms
 
