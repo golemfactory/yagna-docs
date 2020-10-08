@@ -1,8 +1,8 @@
-# Low-Level
+# Low Level API
 
 ## General Concept
 
-![](../.gitbook/assets/gc-nodes%20%283%29.svg)
+![](../art/gc-nodes.svg)
 
 ```python
 from yapapi.rest import Configuration, Market, Activity, Payment
@@ -32,5 +32,4 @@ async def list_offers(conf: Configuration):
 
 **Initialization Arguments**
 
-`app_key`: \(optional\) str : Defines access token to API Gateway
-
+`app_key`: (optional) str : Defines access token to API Gateway
