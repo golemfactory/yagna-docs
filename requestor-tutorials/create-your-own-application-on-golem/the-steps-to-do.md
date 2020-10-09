@@ -181,21 +181,20 @@ The details of docker image conversion are described here:
 Now let's look at the yacat core - the requestor agent. Please check the `yacat.py` file below.
 
 {% hint style="info" %}
-
+The critical fragments of the `yacat.py` will be described in the following sections of the tutorial. You can do just a quick scan over the below wall of code.
 {% endhint %}
 
-The following code is described in detail in the next section of this tutorial.
-
 ```python
-#!/usr/bin/env python3
+ #!/usr/bin/env python3
 import asyncio
+from datetime import timedelta
 import pathlib
 import sys
 
 from yapapi.log import enable_default_logger, log_summary, log_event_repr  # noqa
 from yapapi.runner import Engine, Task, vm
 from yapapi.runner.ctx import WorkContext
-from datetime import timedelta
+
 
 # For importing `utils.py`:
 script_dir = pathlib.Path(__file__).resolve().parent
@@ -204,132 +203,201 @@ sys.stderr.write(f"Adding {parent_directory} to sys.path.\n")
 sys.path.append(str(parent_directory))
 import utils  # noqa
 
-def write_hash(hash):
-    f = open(str(script_dir / "in.hash"), "w")
-    f.write(hash)
-    f.close()
 
-def write_keyspace_call(mask):
-    f = open(str(script_dir / "keyspace.sh"), "w")
-    f.write(f"hashcat --keyspace -a 3 {mask} -m 400 > keyspace.txt")
-    f.close()
+def write_hash(hash):
+    with open("in.hash", "w") as f:
+        f.write(hash)
+
+
+def write_keyspace_check_script(mask):
+    with open("keyspace.sh", "w") as f:
+        f.write(f"hashcat --keyspace -a 3 {mask} -m 400 > /golem/work/keyspace.txt")
+
 
 def read_keyspace():
-    f = open(str(script_dir / "keyspace.txt"),"r")
-    return int(f.readline())
+    with open("keyspace.txt", "r") as f:
+        return int(f.readline())
+
 
 def read_password(ranges):
     for r in ranges:
-        f = open(str(script_dir / f"hashcat_{r}.potfile"),"r")
-        line = f.readline()
-        split_liset = line.split(":")
+        with open(f"hashcat_{r}.potfile", "r") as f:
+            line = f.readline()
+        split_list = line.split(":")
         if len(split_list) >= 2:
-            return split_list[2]
+            return split_list[1]
     return None
+
 
 async def main(args):
     package = await vm.repo(
-        image_hash = "15912976e9d8ef5c82f6c918a0491c43cf4fb7b84b443013b36dd3fb",
-        min_mem_gib = 0.5,
-        min_storage_gib = 2.0,
+        image_hash="2c17589f1651baff9b82aa431850e296455777be265c2c5446c902e9",
+        min_mem_gib=0.5,
+        min_storage_gib=2.0,
     )
 
-    async def worker_first(ctx: WorkContext, tasks):
+    async def worker_check_keyspace(ctx: WorkContext, tasks):
         async for task in tasks:
-            keyspace_sh_filename = str(script_dir / "keyspace.sh")
+            keyspace_sh_filename = "keyspace.sh"
             ctx.send_file(keyspace_sh_filename, "/golem/work/keyspace.sh")
-            ctx.begin()
-            ctx.run("/bin/sh","/golem/work/keyspace.sh")
+            ctx.run("/bin/sh", "/golem/work/keyspace.sh")
             output_file = "keyspace.txt"
             ctx.download_file("/golem/work/keyspace.txt", output_file)
-            yield ctx.commit()   
-            task.accept_task(result=output_file)
+            yield ctx.commit()
+            task.accept_task()
 
-    async def worker_second(ctx: WorkContext, tasks):
-        in_hash_filename = str(script_dir / "in.hash")
-        ctx.send_file(in_hash_filename, "/golem/work/in.hash")
+    async def worker_find_password(ctx: WorkContext, tasks):
+        ctx.send_file("in.hash", "/golem/work/in.hash")
 
         async for task in tasks:
             skip = task.data
             limit = skip + step
-            ctx.begin()
-            ctx.run(f"hashcat -a 3 -m 400 in.hash --skip {skip} --limit {limit} {args.mask}")
+
+            # Commands to be run on the provider
+            commands = (
+                "touch /golem/work/hashcat.potfile; "
+                f"hashcat -a 3 -m 400 /golem/work/in.hash --skip {skip} --limit {limit} {args.mask} -o /golem/work/hashcat.potfile"
+            )
+            ctx.run(f"/bin/sh", "-c", commands)
+
             output_file = f"hashcat_{skip}.potfile"
             ctx.download_file(f"/golem/work/hashcat.potfile", output_file)
-            yield ctx.commit() 
+            yield ctx.commit()
             task.accept_task(result=output_file)
 
     # beginning of the main flow
 
     write_hash(args.hash)
-    write_keyspace_call(args.mask)
-            
+    write_keyspace_check_script(args.mask)
+
     # By passing `event_emitter=log_summary()` we enable summary logging.
     # See the documentation of the `yapapi.log` module on how to set
     # the level of detail and format of the logged information.
     async with Engine(
-        package = package,
-        max_workers = args.number_of_providers,
-        budget = 10.0,
+        package=package,
+        max_workers=args.number_of_providers,
+        budget=10.0,
         # timeout should be keyspace / number of providers dependent
-        timeout = timedelta(minutes = 25),
-        subnet_tag = args.subnet_tag,
-        event_emitter = log_summary(),
+        timeout=timedelta(minutes=25),
+        subnet_tag=args.subnet_tag,
+        event_emitter=log_summary(log_event_repr),
     ) as engine:
 
-        async for task in engine.map(worker_first, [Task(data = None)] ):
-            print(f"\033[36;1mTask computed: keyspace size count\033[0m")
+        # this is not typical use of engine.map as, there is only one task, with no data
+        async for task in engine.map(worker_check_keyspace, [Task(data=None)]):
+            pass
 
         keyspace = read_keyspace()
-        step = int(keyspace / args.number_of_providers)
 
-        ranges: range = range(0, keyspace, step)
+        print(
+            f"{utils.TEXT_COLOR_CYAN}"
+            f"Task computed: keyspace size count. The keyspace size is {keyspace}"
+            f"{utils.TEXT_COLOR_DEFAULT}"
+        )
 
-        async for task in engine.map(worker_second, [Task(data = range) for range in ranges]):
-            print(f"\033[36;1mTask computed: {task}, result: {task.output}\033[0m")
+        step = int(keyspace / args.number_of_providers) + 1
 
-        password = read_password()
+        ranges = range(0, keyspace, step)
 
-        if password == None:
-            print("\033[31;1mNo password found\033[0m")
+        async for task in engine.map(worker_find_password, [Task(data=range) for range in ranges]):
+            print(
+                f"{utils.TEXT_COLOR_CYAN}"
+                f"Task computed: {task}, result: {task.output}"
+                f"{utils.TEXT_COLOR_DEFAULT}"
+            )
+
+        password = read_password(ranges)
+
+        if password is None:
+            print(f"{utils.TEXT_COLOR_RED}No password found{utils.TEXT_COLOR_DEFAULT}")
         else:
-            print(f"\033[32;1mPassword found: {password}\033[0m")  
+            print(
+                f"{utils.TEXT_COLOR_GREEN}"
+                f"Password found: {password}"
+                f"{utils.TEXT_COLOR_DEFAULT}"
+            )
+
 
 if __name__ == "__main__":
-    import pathlib
-    import sys
-
     parser = utils.build_parser("yacat")
 
-    parser.add_argument("--numberOfProviders", dest = "number_of_providers", type = int, default = 3)
+    parser.add_argument("--number-of-providers", dest="number_of_providers", type=int, default=3)
     parser.add_argument("mask")
     parser.add_argument("hash")
 
     args = parser.parse_args()
 
-    enable_default_logger(level = args.log_level)
+    enable_default_logger(log_file=args.log_file)
+
+    sys.stderr.write(
+        f"Using subnet: {utils.TEXT_COLOR_YELLOW}{args.subnet_tag}{utils.TEXT_COLOR_DEFAULT}\n"
+    )
 
     loop = asyncio.get_event_loop()
     task = loop.create_task(main(args))
 
     try:
-        asyncio.get_event_loop().run_until_complete(task)
+        loop.run_until_complete(task)
     except (Exception, KeyboardInterrupt) as e:
         print(e)
         task.cancel()
-        asyncio.get_event_loop().run_until_complete(task)
+        loop.run_until_complete(task)
 ```
 
-## How does it work?
+## So what is happening here? yacat high level picture
 
-* To tell the Golem platform, that we want to use our image for the container, we use the hash received from the `gvmkit-build`
+### worker\_check\_keyspace
+
+The first step is to **check the keyspace size**. This is done in 3 steps, executed only once on one provider:
+
+1. Preparing `keyspace.sh` script with contains given password mask. As the `hashcat --keyspace -a 3 {mask} -m 400` command outputs the keyspace size to `stdout`, we need to redirect the command output to the `keyspace.txt` file. That is the job of `keyspace.sh` script that is just: `hashcat --keyspace -a 3 {mask} -m 400 > /golem/work/keyspace.txt`
+2. Execute the `keyspace.sh` script on the container.
+3. Transfer the `keyspace.txt` file back to the requestor.
+
+![](../../.gitbook/assets/image%20%283%29.png)
+
+Knowing the keyspace size we can start looking for the password using many providers at the same time.
+
+### worker\_find\_password
+
+In order to look for passwords in the given keyspace range, for each of the providers we are executing the following 3 steps:
+
+* Sending the `in.hash` file that contains password hash. 
+* Executing `hashcat` with proper `--skip` and `--limit` values
+* Getting the hashcat.potfile from the provider to the requestor
+
+![](../../.gitbook/assets/image%20%284%29.png)
+
+### read\_password
+
+The final action is to scan over all the `*.potfiles` received. If there is a password, it will be displayed to the user.
+
+## How does the code work?
+
+* To tell the Golem platform, what are our requirements for the providers we are going to get from the market, we are using the `package` structure. The `image_hash` parameter tells that we want to use our image for the container. Here we use the hash received from the `gvmkit-build`. The `min_mem_gib` and `min_storage_gib` parameters
 
 ```python
  package = await vm.repo(
-        image_hash = "15912976e9d8ef5c82f6c918a0491c43cf4fb7b84b443013b36dd3fb",
-        min_mem_gib = 0.5,
-        min_storage_gib = 2.0,
+        image_hash="2c17589f1651baff9b82aa431850e296455777be265c2c5446c902e9",
+        min_mem_gib=0.5,
+        min_storage_gib=2.0,
     )
+```
+
+* sss
+
+
+
+```python
+    async with Engine(
+        package=package,
+        max_workers=args.number_of_providers,
+        budget=10.0,
+        # timeout should be keyspace / number of providers dependent
+        timeout=timedelta(minutes=25),
+        subnet_tag=args.subnet_tag,
+        event_emitter=log_summary(log_event_repr),
+    ) as engine:
 ```
 
 * In order to proceed with the password cracking, first we need to determine what is the keyspace size. We will do it by executing
