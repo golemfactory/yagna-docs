@@ -36,6 +36,10 @@ Currently, Golem network supports the following application architecture:
 
 Some additional details can be found here:
 
+{% page-ref page="../../introduction/provider.md" %}
+
+{% page-ref page="../../introduction/requestor.md" %}
+
 {% page-ref page="../../introduction/golems-details.md" %}
 
 ## How do I start?
