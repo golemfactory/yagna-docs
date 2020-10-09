@@ -561,18 +561,28 @@ The yacat example is written in Python using Golem's Python High-Level API \([YA
 
 The complete reference of the Python High-Level API \(YAPAPI\) is available here:
 
+You can also check the Java Script / Type Script based development with YAJAPI: 
 
-
-
+[https://github.com/golemfactory/yajsapi](https://github.com/golemfactory/yajsapi)
 
 ## Closing words
 
-This is just a simple scenario example. The possibilities for our own Golem application are endless. We will provide more inspiring tutorials soon. \[za malo emphasis ze mozesz robic swoje\]
+{% hint style="success" %}
+Golem is waiting to serve your applications. The open to everyone, decentralized platform is here \(now in alpha\).
+
+We did our best to make developing Golem applications to be super easy.
+
+Now it is time for your move!
+{% endhint %}
+
+And remember:
 
 {% hint style="info" %}
-In case of any doubts or problems, you can always contact us on discord. \[dac na poczatku zeby sie nie bali\]
+In case of any doubts or problems, you can always contact us on discord. 
 
 [https://discord.com/channels/684703559954333727/756161015493951600](https://discord.com/channels/684703559954333727/756161015493951600)
+
+We speak English, Polish, Spanish, Danish and Swedish.
 {% endhint %}
 
 
