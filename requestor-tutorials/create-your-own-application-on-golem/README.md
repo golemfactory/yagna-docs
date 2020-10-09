@@ -168,8 +168,6 @@ This hash will identify our image when our application will run.
 
 The details of docker image conversion are described here:
 
-{% page-ref page="../convert-a-docker-image-into-a-golem-image.md" %}
-
 ## The hashcat   bylo: What we want to accomplish in this example
 
 The [_Hashcat_](https://hashcat.net/hashcat/) __is a very powerful tool. To make our example simple, we will use it in a very basic manner.

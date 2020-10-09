@@ -1,5 +1,5 @@
 ---
-description: How hashcat works and how to make it work in parallel
+description: How hashcat works and how to make it work in parallel.
 ---
 
 # Hashcat
