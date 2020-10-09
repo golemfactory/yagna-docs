@@ -75,7 +75,7 @@ Now we are done:
   * `yacat.py` - entry point. Orchestration of the containers.
 {% endhint %}
 
-## Lt's get to work. Dockerfile
+## Let's get to work. Dockerfile
 
 Let's start with Dockerfile \(`yacat.Dockerfile`\). But do we always need a dedicated dockerfile for our own Golem application?
 
@@ -344,7 +344,7 @@ if __name__ == "__main__":
         loop.run_until_complete(task)
 ```
 
-## So what is happening here? yacat high level picture
+## So what is happening here? yacat high-level picture
 
 ### worker\_check\_keyspace
 
@@ -374,105 +374,119 @@ The final action is to scan over all the `*.potfiles` received. If there is a pa
 
 ## How does the code work?
 
-* To tell the Golem platform, what are our requirements for the providers we are going to get from the market, we are using the `package` structure. The `image_hash` parameter tells that we want to use our image for the container. Here we use the hash received from the `gvmkit-build`. The `min_mem_gib` and `min_storage_gib` parameters
+### Package
+
+To tell the Golem platform, what are our requirements for the providers we are going to get from the market, we are using the `package` object. The `image_hash` parameter tells that we want to use our image for the container. Here we use the hash received from the `gvmkit-build`. The `min_mem_gib` and `min_storage_gib` parameters specify memory and storage requirements for the provider.
 
 ```python
  package = await vm.repo(
-        image_hash="2c17589f1651baff9b82aa431850e296455777be265c2c5446c902e9",
-        min_mem_gib=0.5,
-        min_storage_gib=2.0,
+     image_hash="2c17589f1651baff9b82aa431850e296455777be265c2c5446c902e9",
+     min_mem_gib=0.5,
+     min_storage_gib=2.0,
+ )
+```
+
+### Engine
+
+The `package` object is passed to the `engine` object with  several other options, such as:
+
+*  `budget`defines maximal spendings for executing all the tasks on Golem
+* `max_workers` defines maximal number of simultaneously running providers.
+* `timeout` defines the timeout. This one is important to be big enough to include the image download time plus the computation time.
+* `subnet_tag` specifies the providers net to be used. For example, you would not use mainnet network for tests.
+
+```python
+async with Engine(
+    package=package,
+    max_workers=args.number_of_providers,
+    budget=10.0,
+    # timeout should be keyspace / number of providers dependent
+    timeout=timedelta(minutes=25),
+    subnet_tag=args.subnet_tag,
+    event_emitter=log_summary(log_event_repr),
+) as engine:
+```
+
+### Main
+
+Golem high-level API that we use to interact with the Golem network uses asynchronous programming a lot. The asynchronous execution starting point is at line 152:
+
+```python
+loop = asyncio.get_event_loop()
+task = loop.create_task(main(args))
+
+try:
+    loop.run_until_complete(task)
+except (Exception, KeyboardInterrupt) as e:
+    print(e)
+    task.cancel()
+    loop.run_until_complete(task)
+```
+
+In the `main` function, the most important fragments begins in the 100 line:
+
+```python
+async for task in engine.map(worker_check_keyspace, [Task(data=None)]):
+    pass
+```
+
+This calls the `worker_check_keyspace` once with no additional task parameters. The next step is getting the `keyspace` variable from the `keyspace.txt` file:
+
+```python
+keyspace = read_keyspace()
+```
+
+Now we can split the whole `keyspace` by the `args.number_of_providers`:
+
+```python
+ step = int(keyspace / args.number_of_providers) + 1
+
+ ranges = range(0, keyspace, step)
+```
+
+Having the `ranges` list we can call the `worker_find_password` for each of the providers passing only given `range`:
+
+```python
+async for task in engine.map(worker_find_password, [Task(data=range) for range in ranges]):
+    print(
+        f"{utils.TEXT_COLOR_CYAN}"
+        f"Task computed: {task}, result: {task.output}"
+        f"{utils.TEXT_COLOR_DEFAULT}"
     )
 ```
 
-* sss
-
-
+After all the providers return its hashcat.potifle we need to scan over each of them, as one of them possibly contains the password we are looking for:
 
 ```python
-    async with Engine(
-        package=package,
-        max_workers=args.number_of_providers,
-        budget=10.0,
-        # timeout should be keyspace / number of providers dependent
-        timeout=timedelta(minutes=25),
-        subnet_tag=args.subnet_tag,
-        event_emitter=log_summary(log_event_repr),
-    ) as engine:
+password = read_password(ranges)
 ```
 
-* In order to proceed with the password cracking, first we need to determine what is the keyspace size. We will do it by executing
+### worker\_check\_keyspace
+
+The `worker_check_keyspace` is also interesting. Here we need to  execute the following command on only one of the providers:
 
 ```python
-hashcat --keyspace -a 3 {mask} -m 400 > keyspace.txt
+hashcat --keyspace -a 3 {mask} -m 400
 ```
 
-as we need the `stdout` to be captured we are redirecting the command output to the `keyspace.txt` file
+As this command is using `stdout` for the keyspace size information passing, we need the `stdout` to be captured. 
 
-* As we can not use `ctx.run` call directly to redirect stdout to `keyspace.txt`, we are preparing `keyspace.sh` file with the `hashcat --keyspace -a 3 {mask} -m 400 > keyspace.txt` content.
-* Now we need to send `keyspace.sh` to one of the providers running our image. And run
+As we can not use `ctx.run` call directly to redirect stdout to `keyspace.txt`, we are preparing `keyspace.sh` file with the `hashcat --keyspace -a 3 {mask} -m 400 > keyspace.txt` content.
+
+Now we need to send `keyspace.sh` to one of the providers running our image. And run
 
 ```python
 ctx.run("/bin/sh","/golem/work/keyspace.sh")
 ```
 
-* Now we can transfer the `keyspace.txt` back to the requestor
+Now we can transfer the `keyspace.txt` back to the requestor
 
 ```python
 output_file = "keyspace.txt"
-ctx.download_file(f"/golem/work/keyspace.txt", output_file)
+ctx.download_file(f"/golem/work/keyspace.txt", output_file) 
 ```
 
-* The above is done by `worker_first`
-* Now with the knowledge what is keyspace number, we can define range:
-
-```python
-step = int(keyspace / args.number_of_providers)
-ranges: range = range(0, keyspace, step)
-```
-
-* For each range in the keyspace we will run separate provider \(that is what `worked_second` does\):
-
-```python
-async def worker_second(ctx: WorkContext, tasks):
-    in_hash_filename = str(script_dir / "in.hash")
-    ctx.send_file(in_hash_filename, "/golem/work/in.hash")
-
-    async for task in tasks:
-        skip = task.data
-        limit = skip + step
-
-        ctx.begin()
-
-        ctx.run(f"hashcat -a 3 -m 400 in.hash --skip {skip} --limit {limit} {args.mask}")
-        output_file = f"hashcat_{skip}.potfile"
-        ctx.download_file(f"/golem/work/hashcat.potfile", output_file)
-
-        yield ctx.commit()
-  
-        task.accept_task(result=output_file)
-```
-
-* In the end, we need to iterate through all the \*.potfile and see if there is any password there:
-
-```python
-def read_password(ranges):
-    for r in ranges:
-        f = open(str(script_dir / f"hashcat_{r}.potfile"),"r")
-        line = f.readline()
-        split_liset = line.split(":")
-        if len(split_list) >= 2:
-            return split_list[2]
-    return None
-```
-
-* Finally, if something has been found, present it to the user.
-
-```python
-if password == None:
-    print("\033[31;1mNo password found\033[0m")
-else:
-    print(f"\033[32;1mPassword found: {password}\033[0m")  
-```
+### worker\_find\_password
 
 ## Example run
 
