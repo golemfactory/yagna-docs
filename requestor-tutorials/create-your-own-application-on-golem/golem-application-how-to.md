@@ -1,3 +1,7 @@
+---
+description: High level view on Golem application.
+---
+
 # Golem application - how to
 
 ## What is the Golem application?
@@ -34,5 +38,31 @@ Some additional details can be found here:
 
 {% page-ref page="../../introduction/golems-details.md" %}
 
+## How do I start?
+
+First, you need to think about your computation problem in terms of parallel execution. Let's visualize your computation problem:
+
+![](../../.gitbook/assets/image%20%288%29.png)
+
+Now you need to find a way how to divide the whole problem into parts. Each part will be processed by different provider:
+
+![](../../.gitbook/assets/image%20%287%29.png)
+
+Now you need to have an idea how to:
+
+1. Translate the problem fragments into in / out files and processing done on each of the providers.
+2. Combine all the out files into the final problem solution.
+
 ## What do you need to create Golem application?
+
+On the implementation level Golem application is made of two components:
+
+1. Docker image that will run as a container on providers.
+2. Requestor agent - a part of Pyhon / JavaScript / TypeScript code that will execute the problem dividing logic, orchestrate the providers and combine the output files to get the final result.
+
+{% hint style="success" %}
+Now you know what the Golem application is and how it works. 
+{% endhint %}
+
+Let's see how the implementation goes than! But first, let's understand how the hashcat that we are going to use as a reference can be made work in parallel.
 
