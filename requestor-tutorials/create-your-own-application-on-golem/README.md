@@ -64,8 +64,6 @@ Currently, Golem network supports the following application architecture:
 
 Some additional details can be found here:
 
-{% page-ref page="../../introduction/golems-details.md" %}
-
 ## Let's get to work. Dockerfile
 
 {% hint style="info" %}
