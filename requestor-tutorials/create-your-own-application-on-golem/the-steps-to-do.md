@@ -181,7 +181,7 @@ The details of docker image conversion are described here:
 Now let's look at the yacat core - the requestor agent. Please check the `yacat.py` file below.
 
 {% hint style="info" %}
-The critical fragments of the `yacat.py` will be described in the following sections of the tutorial. You can do just a quick scan over the below wall of code.
+The critical fragments of the `yacat.py` will be described in the following sections of the tutorial so can do just a quick scan over the below wall of code.
 {% endhint %}
 
 ```python
@@ -508,17 +508,28 @@ commands = (
 ctx.run(f"/bin/sh", "-c", commands)
 ```
 
-We also need to execute the touch `/golem/work/hashcat.potfile;` command
+We also need to execute the `touch /golem/work/hashcat.potfile` command in order to have `/golem/work/hashcat.potfile` file being present in the file system even if there is no password output by the hascat.
+
+The last step is downloading the `/golem/work/hashcat.potfile` file.
+
+```python
+output_file = f"hashcat_{skip}.potfile"
+ctx.download_file(f"/golem/work/hashcat.potfile", output_file)
+```
+
+{% hint style="success" %}
+Now, as we know how the yacat works, let's run it!
+{% endhint %}
 
 ## Example run
 
-\[i tylko jedna linijka????\]
+While being in the `/examples/yacat` directory type the following:
 
 ```python
 python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --subnet-tag devnet-alpha.2
 ```
 
-The above execution should return "pas" as a guessed password being computed on the default number of providers being 3.
+The above execution should return "pas" as a guessed password. The computations will be executed on the default number of providers with is 3.
 
 A more computation-intensive example is:
 
@@ -528,9 +539,31 @@ python3 yacat.py '?a?a?a?a' '$H$5ZDzPE45C.e3TjJ2Qi58Aaozha6cs30' --subnet-tag de
 
 The above command should execute computations on 8 providers and return "ABCD".
 
+The yacat.py supports few optional parameters. To get help on those type:
+
+```python
+python3 yacat.py --help
+```
+
+One of the interesting options is to have log output to a file. This can be achieved by adding the following option to the yacat.py run:
+
+```python
+--log-file LOG_FILE_NAME
+```
+
+## Other languages support
+
+{% hint style="info" %}
+The yacat example is written in Python using Golem's Python High-Level API \([YAPAPI](https://github.com/golemfactory/yapapi)\). Golem currently supports writing requestor agents using Java Script / Type Script High-Level API \([YAJAPI](https://github.com/golemfactory/yajsapi)\) also.
+{% endhint %}
+
 ## Next steps
 
-The requestor agent is written in Python and uses Golem's Python High Level API \(YAPAPI\). The details of the YAPAPI are described here: \[dac nizej - next steps\]
+The complete reference of the Python High-Level API \(YAPAPI\) is available here:
+
+
+
+
 
 ## Closing words
 
