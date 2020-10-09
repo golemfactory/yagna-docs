@@ -75,19 +75,27 @@ golemsp status
 As an output you will get current information about your node state as seen below: 
 
 ```text
-┌─────────────────────────┬───────────────────────────────────────────────────────┬────────────────────────────┐
-│  Status                 │  Wallet                                               │  Tasks                     │
-│                         │                                                       │                            │
-│  Service    is running  │  address  0x47c9a1ae6e29750b7e0ebdb0e85d8af0cb7161e4  │  last 1h processed    0    │
-│                         │  amount   1000.5566137729855557 NGNT                  │  last 1h in progress  1    │
-│  Node Name  node_name   │  pending  1.10569130799333359 NGNT                    │  total processed      0    │
-│  Subnet     comunity    │                                                       │                            │
-└─────────────────────────┴───────────────────────────────────────────────────────┴────────────────────────────┘
+┌─────────────────────────────┬───────────────────────────────────────────────────────────┬───────────────────────────┐
+│  Status                     │  Wallet                                                   │  Tasks                    │
+│                             │                                                           │                           │
+│  Service    is running      │  address      0x8ed221a17e63b129c1a2aa1fc2cb331cdff1a21d  │  last 1h processed    0   │
+│                             │  amount       0 NGNT                                      │  last 1h in progress  1   │
+│  Node Name  node_name       │  pending      0 NGNT                                      │  total processed      0   │
+│  Subnet     community       │  unconfirmed  0 NGNT                                      │                           │
+|  VM         valid           |                                                           |                           | 
+└─────────────────────────────┴───────────────────────────────────────────────────────────┴───────────────────────────┘
+
 ```
 
 {% hint style="info" %}
 If in the \(far to the right\) **Tasks** section of the table you will see either tasks in progress or processed then you have successfully computed a task! If not, give it some time as there is still not many tasks in the test network - and then run the command again. 
 {% endhint %}
+
+#### Known issues
+
+In case there is other status than `valid` in your `VM` run the`sudo apt install cpu-checker && sudo kvm-ok` command and follow the steps from the terminal interface. 
+
+## Provider CLI
 
 To check additional commands available in CLI check the reference page:
 
