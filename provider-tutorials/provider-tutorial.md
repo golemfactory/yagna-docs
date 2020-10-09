@@ -22,10 +22,10 @@ For this release we have prepared a dedicated and controlled subnetwork using Et
 
 #### Purge directories
 
-If you have previously used Golem Alpha on your machine run the command below that will purge its working directories since our newest version is incompatible with the old database structure:
+If you have previously used Golem Alpha.1 on your machine run the command below that will purge its working directories since our newest version is incompatible with the old database structure:
 
 ```text
-sudo dpkg -r yagna
+rm -rf $HOME/.local/share/yagna
 ```
 
 #### Run the installation command
@@ -42,14 +42,14 @@ You might be asked to modify your PATH afterwards: `PATH=$HOME/.local/bin:$PATH`
 
 After installing all required components you will be asked to set up your node
 
-`node name:` - type the name of your new node and press enter
+`node name:` - Type the name of your new node and press enter
 
 `subnet: community` - **It is important that you use "community" subnet for this release!**
 
-`price NGNT per hour:` - type the value with witch you wish to start earning as a provider
+`price NGNT per hour:` - Type the value with witch you wish to start earning as a provider. You can leave it empty with default value. **This command shows up only with first run of GolemSP**
 
 {% hint style="success" %}
-And that is it! You will see that default preset was created based on your initial node setup. You will be able to change some of this settings later on with CLI
+And that is it! You will see that default preset was created based on your initial node setup. You will be able to change this settings later on with CLI
 {% endhint %}
 
 ## Running the provider
@@ -93,7 +93,27 @@ If in the \(far to the right\) **Tasks** section of the table you will see eithe
 
 #### Known issues
 
-In case there is other status than `valid` in your `VM` run the`sudo apt install cpu-checker && sudo kvm-ok` command and follow the steps from the terminal interface. 
+In case there is other status than `valid` in your `VM`:
+
+a\). For: `the user has no access to /dev/kvm` run 
+
+```text
+curl -o setup-kvm.sh https://join.golem.network/setup-kvm.sh && chmod +x ./setup-kvm.sh && ./setup-kvm.sh
+```
+
+and afterward log out and in again into your OS. 
+
+b\). For: `running inside Docker without access to /dev/kvm` run
+
+```text
+docker run --privliged
+```
+
+c\). For: `unsupported virtualization type: XEN` We do not support **xen hypervisor**
+
+In any other case with the virtualisation we recommend:
+
+`sudo apt install cpu-checker && sudo kvm-ok` command and follow the steps from the terminal interface. 
 
 ## Provider CLI
 
