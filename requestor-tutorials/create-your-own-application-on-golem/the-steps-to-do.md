@@ -488,6 +488,28 @@ ctx.download_file(f"/golem/work/keyspace.txt", output_file)
 
 ### worker\_find\_password
 
+This function is executed on each of the providers. First, we are sending the `in.hash` file that contains the known hash:
+
+```python
+ctx.send_file("in.hash", "/golem/work/in.hash")
+```
+
+Then we are preparing the `--skip` and `--limit` parameters, and execute the commands on the provider:
+
+```python
+skip = task.data
+limit = skip + step
+
+# Commands to be run on the provider
+commands = (
+    "touch /golem/work/hashcat.potfile; "
+     f"hashcat -a 3 -m 400 /golem/work/in.hash --skip {skip} --limit {limit} {args.mask} -o /golem/work/hashcat.potfile"
+)
+ctx.run(f"/bin/sh", "-c", commands)
+```
+
+We also need to execute the touch `/golem/work/hashcat.potfile;` command
+
 ## Example run
 
 \[i tylko jedna linijka????\]
