@@ -6,7 +6,7 @@ description: High level view on Golem application.
 
 ## What is the Golem application?
 
-Golem application is just some docker containers \(Providers\) that are orchestrated by Python or JavaScript code \(Requestor\). The orchestration is realized as three types of actions: 
+Golem application is just some docker containers \(Providers\) that are orchestrated by Python or JavaScript/TypeScript code \(Requestor\). The orchestration is realized as three types of actions: 
 
 * sending input files to the docker container
 * running commands on the container
@@ -54,7 +54,7 @@ Now you need to find a way how to divide the whole problem into parts. Each part
 
 Now you need to have an idea how to:
 
-1. Translate the problem fragments into in / out files and processing done on each of the providers.
+1. Translate the problem fragments into in/out files and processing done on each of the providers.
 2. Combine all the out files into the final problem solution.
 
 ## What do you need to create Golem application?

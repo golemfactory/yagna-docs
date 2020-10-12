@@ -8,7 +8,7 @@ This section contains steps you need to execute in order to run our yacat exampl
 
 ## Before we begin
 
-In order to develop applications for the Golem network, you need to install yagna daemon on your machine. Below there are Unix commands you need to run. More details \(possibly useful if you have a Windows machine\) can be found here:
+In order to develop applications for the Golem network, you need to install yagna daemon on your machine. Below there are Unix commands you need to run. More details can be found here:
 
 {% page-ref page="../flash-tutorial-of-requestor-development.md" %}
 
@@ -554,14 +554,14 @@ One of the interesting options is to have log output to a file. This can be achi
 ## Other languages support
 
 {% hint style="info" %}
-The yacat example is written in Python using Golem's Python High-Level API \([YAPAPI](https://github.com/golemfactory/yapapi)\). Golem currently supports writing requestor agents using Java Script / Type Script High-Level API \([YAJAPI](https://github.com/golemfactory/yajsapi)\) also.
+The yacat example is written in Python using Golem's Python High-Level API \([YAPAPI](https://github.com/golemfactory/yapapi)\). Golem currently supports writing requestor agents using JavaScript/TypeScript High-Level API \([YAJAPI](https://github.com/golemfactory/yajsapi)\) also.
 {% endhint %}
 
 ## Next steps
 
 The complete reference of the Python High-Level API \(YAPAPI\) is available here:
 
-You can also check the Java Script / Type Script based development with YAJAPI: 
+You can also check the JavaScript/TypeScript based development with YAJAPI: 
 
 [https://github.com/golemfactory/yajsapi](https://github.com/golemfactory/yajsapi)
 

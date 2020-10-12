@@ -12,9 +12,17 @@ Golem is open to anyone, decentralized infrastructure platform for your applicat
 The Golem platform and the Golem SDK are carefully crafted to serve you.
 {% endhint %}
 
-This tutorial shows a typical own application development example. To show how things work, we created yacat - Golem port of [Hashcat](https://hashcat.net/hashcat/) open source password cracking tool.
+This tutorial shows a typical own application development experience. To show how things work, we created yacat - Golem port of [Hashcat](https://hashcat.net/hashcat/) open source password cracking tool.
 
-In order to make a journey with this tutorial a nice experience, we divided it to three sections. If you are eager to have direct hands-on experience, please jump directly to the "Tutorial steps" section.
+{% hint style="info" %}
+In case of any doubts or problems, you can always contact us on discord. 
+
+[https://discord.com/channels/684703559954333727/756161015493951600](https://discord.com/channels/684703559954333727/756161015493951600)
+
+We speak English, Polish, Spanish, Danish and Swedish.
+{% endhint %}
+
+In order to make a journey with this tutorial a nice experience, we divided it into three sections. If you are eager to have direct hands-on experience, please jump directly to the "Tutorial steps" section.
 
 {% page-ref page="golem-application-how-to.md" %}
 
