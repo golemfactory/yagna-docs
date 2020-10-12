@@ -100,7 +100,7 @@ curl -sSf https://join.golem.network/as-requestor | bash -
 You might be asked to modify your PATH afterwards.
 
 {% hint style="danger" %}
-To install `yagna` daemon with the above command on Windows, you need to have WSL installed. If you do not have WSL installed, please use the following link: [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+To install `yagna` daemon with the above command **on Windows 10**, you need to have Windows Subsystem for Linux \(WSL\) installed. To do it, follow the instructions here: [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 {% endhint %}
 
 #### Manual installation
