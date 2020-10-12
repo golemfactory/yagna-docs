@@ -35,8 +35,6 @@ If you have an older version of python and you'd like to keep that version in yo
 {% endtab %}
 
 {% tab title="NodeJS" %}
-
-
 {% hint style="danger" %}
 Please mind that **NodeJS** flavor of Golem is not as mature and stable as Pyhon one. Currently please consider Java Script High-Level API as alpha. 
 {% endhint %}
