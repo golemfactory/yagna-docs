@@ -51,8 +51,6 @@ Ensuring that the development of products based on Golem is smooth and effortles
 
 If you're interested, please have a look at:
 
-{% page-ref page="see-also/developing-a-golem-network-based-product.md" %}
-
 ### **Become a Golem provider**
 
 We will be enabling the providers to leverage New Golem soon.
