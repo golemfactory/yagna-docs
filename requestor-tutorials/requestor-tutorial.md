@@ -49,13 +49,15 @@ The complete code of the requestor agent \(no worries, you do not need to copy a
 {% tabs %}
 {% tab title="Python" %}
 ```python
+import asyncio
+
+from yapapi.log import enable_default_logger, log_summary, log_event_repr  # noqa
 from yapapi.runner import Engine, Task, vm
 from yapapi.runner.ctx import WorkContext
 from datetime import timedelta
-import asyncio
 
 
-async def main():
+async def main(subnet_tag="testnet"):
     package = await vm.repo(
         image_hash="9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae",
         min_mem_gib=0.5,
@@ -63,10 +65,9 @@ async def main():
     )
 
     async def worker(ctx: WorkContext, tasks):
-        ctx.send_file("./cubes.blend", "/golem/resource/scene.blend")
+        ctx.send_file("./scene.blend", "/golem/resource/scene.blend")
         async for task in tasks:
             frame = task.data
-            ctx.begin()
             crops = [{"outfilebasename": "out", "borders_x": [0.0, 1.0], "borders_y": [0.0, 1.0]}]
             ctx.send_json(
                 "/golem/work/params.json",
@@ -84,41 +85,43 @@ async def main():
                 },
             )
             ctx.run("/golem/entrypoints/run-blender.sh")
-            ctx.download_file(f"/golem/output/out{frame:04d}.png", f"output_{frame}.png")
+            output_file = f"output_{frame}.png"
+            ctx.download_file(f"/golem/output/out{frame:04d}.png", output_file)
             yield ctx.commit()
-            # TODO: Check if job results are valid
-            # and reject by: task.reject_task(msg = 'invalid file')
-            task.accept_task()
+            task.accept_task(result=output_file)
 
         ctx.log("no more frames to render")
 
     # iterator over the frame indices that we want to render
     frames: range = range(0, 60, 10)
-    # TODO make this dynamic, e.g. depending on the size of files to transfer
-    # worst-case time overhead for initialization, e.g. negotiation, file transfer etc.
     init_overhead: timedelta = timedelta(minutes=3)
 
+    # By passing `event_emitter=log_summary()` we enable summary logging.
+    # See the documentation of the `yapapi.log` module on how to set
+    # the level of detail and format of the logged information.
     async with Engine(
         package=package,
         max_workers=3,
         budget=10.0,
         timeout=init_overhead + timedelta(minutes=len(frames) * 2),
-        subnet_tag="testnet",
+        subnet_tag=subnet_tag,
+        event_emitter=log_summary(),
     ) as engine:
 
-        async for progress in engine.map(worker, [Task(data=frame) for frame in frames]):
-            print("progress=", progress)
+        async for task in engine.map(worker, [Task(data=frame) for frame in frames]):
+            print(f"\033[36;1mTask computed: {task}, result: {task.output}\033[0m")
 
 
-if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    task = loop.create_task(main())
-    try:
-        asyncio.get_event_loop().run_until_complete(task)
-    except (Exception, KeyboardInterrupt) as e:
-        print(e)
-        task.cancel()
-        asyncio.get_event_loop().run_until_complete(asyncio.sleep(0.3))
+enable_default_logger()
+loop = asyncio.get_event_loop()
+task = loop.create_task(main(subnet_tag="devnet-alpha.2"))
+try:
+    asyncio.get_event_loop().run_until_complete(task)
+except (Exception, KeyboardInterrupt) as e:
+    print(e)
+    task.cancel()
+    asyncio.get_event_loop().run_until_complete(task)
+
 ```
 {% endtab %}
 
@@ -313,13 +316,12 @@ The next few lines are very specific to the Blender use case and the vm image we
 {% tab title="Python" %}
 ```python
 frame = task.data
-ctx.begin()
 crops = [{"outfilebasename": "out", "borders_x": [0.0, 1.0], "borders_y": [0.0, 1.0]}]
 ctx.send_json(
     "/golem/work/params.json",
     {
         "scene_file": "/golem/resource/scene.blend",
-        "resolution": (800, 600),
+        "resolution": (400, 300),
         "use_compositing": False,
         "crops": crops,
         "samples": 100,
@@ -364,7 +366,7 @@ For the sake of simplicity, we have decided to render whole frames of the scene 
 
 Thus, the `crops` parameter \(which can be used to specify a part of a frame\) stays the same between the tasks and what varies is the `frames` parameter that specifies the frame range to render within each task fragment.
 
-We're using `ctx.begin()` to start the sequence of commands for this specific fragment, then`ctx.send_json()` to wrap the provided dictionary of parameters into a JSON file, the destination path of which is passed as the first parameter. Note that this destination path is again a location within the container that's executed on the provider's end.
+We're using `ctx.send_json()` to wrap the provided dictionary of parameters into a JSON file, the destination path of which is passed as the first parameter. Note that this destination path is again a location within the container that's executed on the provider's end.
 
 As you can see, the `frame` parameter comes from the `data` field of the `Task` objects that are passed into the `Engine`'s `map` function later on in the code. We could have just as well filled the `data` with e.g. a dictionary containing crop parameters for each fragment - if we wanted to render different parts of images on each fragment's execution. Or we could fill it with names of different scene files, if e.g. we wanted each task to render a completely different scene file. Of course, in this latter case, we'd also need to use `ctx.send_file()` to send a new scene file for each new task fragment.
 
@@ -395,7 +397,8 @@ After the command finishes its execution, it's time to pass the results back to 
 {% tabs %}
 {% tab title="Python" %}
 ```python
-ctx.download_file(f"/golem/output/out{frame:04d}.png", f"output_{frame}.png")
+output_file = f"output_{frame}.png"
+ctx.download_file(f"/golem/output/out{frame:04d}.png", output_file)
 ```
 {% endtab %}
 
@@ -470,16 +473,17 @@ The `Engine` is first instantiated as a context manager:
 {% tabs %}
 {% tab title="Python" %}
 ```python
-    frames: range = range(0, 60, 10)
-    init_overhead: timedelta = timedelta(minutes=3)
+frames: range = range(0, 60, 10)
+init_overhead: timedelta = timedelta(minutes=3)
 
-    async with Engine(
-        package=package,
-        max_workers=10,
-        budget=10.0,
-        timeout=init_overhead + timedelta(minutes=len(frames) * 2),
-        subnet_tag="testnet",
-    ) as engine:
+async with Engine(
+    package=package,
+    max_workers=3,
+    budget=10.0,
+    timeout=init_overhead + timedelta(minutes=len(frames) * 2),
+    subnet_tag=subnet_tag,
+    event_emitter=log_summary(log_event_repr),
+) as engine:
 ```
 {% endtab %}
 
@@ -499,20 +503,21 @@ let engine = await new Engine(
 {% endtab %}
 {% endtabs %}
 
-The `package` here is effectively our `Demand` that we have created above. `max_workers` specifies the maximum number of providers we want to be working on our task, `budget` specifies the maximum budget \(in nGNT\) that this task may utilize**,** `timeout` is the time after which we absolutely want our whole task to be finished by and after which we'll treat it as failed unless it's already finished. Finally, the `subnet_tag` serves to select a subset of the network that our requestor node wants to limit its communications to.
+The `package` here is effectively our `Demand` that we have created above, `max_workers` specifies the maximum number of providers we want to be working on our task, `budget` specifies the maximum budget \(in nGNT\) that this task may utilize**,** `timeout` is the time after which we absolutely want our whole task to be finished by and after which we'll treat it as failed unless it's already finished.
 
-The last parameter means that if we do specify the subnet - each and every provider who wants to execute our tasks must be running with the same `subnet` parameter.
+The `subnet_tag` serves to select a subset of the network that our requestor node wants to limit its communications to. Using `subnet_tag` we're effectively limiting our list of provider to those that are running with the same `subnet` parameter.
+
+Finallly, we're providing the consumer of the events that the `Engine` generates with `event_emitter` - our example mostly presents those events to the users in the form of nicely formatted console output but your own app may use in other ways.
 
 With the `Engine` in place, we can finally tell it what we want to execute and also _how_ we want to define each fragment.
 
 {% tabs %}
 {% tab title="Python" %}
 ```python
-        async for progress in engine.map(
-                worker,
-                [Task(data=frame) for frame in frames]
-        ):
-            print("progress=", progress)
+async for task in engine.map(
+        worker,
+        [Task(data=frame) for frame in frames]):
+    print(f"Task computed: {task}, result: {task.output}")
 ```
 {% endtab %}
 
