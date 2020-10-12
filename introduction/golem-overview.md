@@ -4,6 +4,8 @@ description: Internal details
 
 # Golem overview
 
+![](../.gitbook/assets/image%20%289%29.png)
+
 ## Golem daemon and the agents
 
 The Golem is defined mainly by the Golem network protocol.
