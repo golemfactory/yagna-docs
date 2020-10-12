@@ -6,7 +6,6 @@
 
 * [Provider](introduction/provider.md)
 * [Requestor](introduction/requestor.md)
-* [Decentralized market](introduction/decentralized-market.md)
 * [Golem's details](introduction/golems-details.md)
 
 ## Requestor tutorials
