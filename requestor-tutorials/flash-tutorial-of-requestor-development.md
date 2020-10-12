@@ -36,7 +36,7 @@ If you have an older version of python and you'd like to keep that version in yo
 
 {% tab title="NodeJS" %}
 {% hint style="danger" %}
-Please mind that **NodeJS** flavor of Golem is not as mature and stable as Pyhon one. Currently please consider Java Script High-Level API as alpha. 
+Please bear in mind that our **JS/TS** API is an early alpha release and not nearly as refined as the Python one.
 {% endhint %}
 
 #### NodeJS 12.13.0+
