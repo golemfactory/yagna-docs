@@ -18,7 +18,7 @@ This is our very first Alpha reveal. Therefore, temporarily, Golem only supports
 #### Languages
 
 {% hint style="warning" %}
-If you are JS developer, please click to **NodeJS**
+If you are JS developer, please click to **NodeJS** tab
 {% endhint %}
 
 {% tabs %}
@@ -35,6 +35,12 @@ If you have an older version of python and you'd like to keep that version in yo
 {% endtab %}
 
 {% tab title="NodeJS" %}
+
+
+{% hint style="danger" %}
+Please mind that **NodeJS** flavor of Golem is not as mature and stable as Pyhon one. Currently please consider Java Script High-Level API as alpha. 
+{% endhint %}
+
 #### NodeJS 12.13.0+
 
 To verify your currently installed version of node, please run:
