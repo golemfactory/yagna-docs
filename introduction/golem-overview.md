@@ -2,7 +2,7 @@
 description: Internal details
 ---
 
-# Golem's details
+# Golem overview
 
 {% hint style="danger" %}
 This documentation section is under development.

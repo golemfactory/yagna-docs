@@ -40,7 +40,7 @@ Some additional details can be found here:
 
 {% page-ref page="../../introduction/requestor.md" %}
 
-{% page-ref page="../../introduction/golems-details.md" %}
+{% page-ref page="../../introduction/golem-overview.md" %}
 
 ## How do I start?
 

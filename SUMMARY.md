@@ -4,9 +4,9 @@
 
 ## Introduction
 
+* [Golem overview](introduction/golem-overview.md)
 * [Provider](introduction/provider.md)
 * [Requestor](introduction/requestor.md)
-* [Golem's details](introduction/golems-details.md)
 
 ## Requestor tutorials
 
