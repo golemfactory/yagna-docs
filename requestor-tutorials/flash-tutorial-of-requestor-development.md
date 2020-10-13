@@ -273,13 +273,20 @@ In order for the requestor agent to connect with the yagna daemon, you need to p
 export YAGNA_APPKEY=insert-your-32-char-app-key-here
 ```
 
+{% hint style="warning" %}
+On Windows, please replace the above with:  
+  
+`set YAGNA_APPKEY=your-32-char-app-key`
+{% endhint %}
+
 #### Run the example
 
 The example we're showcasing here resides in the `examples/blender` directory within `yapapi`'s codebase so, ensure that you're in the checked-out repository's directory and run:
 
 ```bash
-cd examples/blender
-python3 ./blender.py --subnet-tag devnet-alpha.2
+cd examples
+cd blender
+python3 blender.py --subnet-tag devnet-alpha.2
 ```
 
 Once you launch the example, you should see some messages reflecting the progress of your task's execution - agreement confirmations, task dispatches and finally task completions.
