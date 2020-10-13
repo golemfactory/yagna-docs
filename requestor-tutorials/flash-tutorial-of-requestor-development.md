@@ -292,12 +292,6 @@ cd yajsapi
 git checkout b0.1
 ```
 
-### Install the dependencies and build the library
-
-```text
-yarn && yarn build
-```
-
 ### Set the yagna app key
 
 In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key)" step above:
