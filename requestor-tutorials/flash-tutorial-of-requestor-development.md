@@ -107,7 +107,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-req` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-f4e85cd3](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-f4e85cd3)
+First, download the requestor package - prefixed `golem-req` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-080012a1](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-080012a1)
 
 Unpack it and put the binaries contained within somewhere in your PATH \(e.g. copy them to `/usr/local/bin` on unix-like systems\).
 
@@ -119,7 +119,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.4.0-f4e85cd3`
+It should output: `yagna 0.4.0-080012a1`
 
 ### Purge the stale working directories
 

@@ -6,33 +6,33 @@ description: How hashcat works and how to make it work in parallel.
 
 ## What is hashcat?
 
-The [_Hashcat_](https://hashcat.net/hashcat/) __is a command-line utility that finds unknown passwords by its hash that is known.
+[_Hashcat_](https://hashcat.net/hashcat/) __is a command-line utility that finds unknown passwords from their hashes that are known.
 
 {% hint style="info" %}
-The [_Hashcat_](https://hashcat.net/hashcat/) __is a very powerful tool. It supports 320 hashing algorithms and 5 different attack types. We will use only phpass algorithm and a simple brute attack type.
+[_Hashcat_](https://hashcat.net/hashcat/) __is a very powerful tool. It supports 320 hashing algorithms and 5 different attack types. We will use only the "phpass" algorithm and a simple brute-force attack.
 {% endhint %}
 
-First, we need to precisely define the "finding password" problem. Let's assume we have hash made by processing an unknown password by phpass algorithm. 
+First, we need to precisely define the "finding a password" problem. Let's assume we have a hash obtained from processing of an unknown password using the "phpass" algorithm. 
 
 {% hint style="info" %}
-Phpass is used as a hashing method by WordPress and Drupal. It is a public domain software and used with PHP applications.
+Phpass is used as a hashing method by e.g. WordPress and Drupal. Those are free/open-source web frameworks used to run PHP-based websites.
 {% endhint %}
 
-The password hash is stored in `in.hash` file
+The password hash is stored in `in.hash` file and the hash is:
 
 ```text
 $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/
 ```
 
-We assume we know the password mask. It is:
+We're going to assume that we know the password mask. It is:
 
 ```text
 ?a?a?a
 ```
 
-That means that the password is made of 3 alpha characters.
+That means that the password consists of 3 alphanumeric characters.
 
-Now we can try to find the password matching the given hash and mask, by calling:
+Now we can try to find the password, matching the given hash and mask, by calling:
 
 ```text
 ./hashcat -a 3 -m 400 in.hash ?a?a?a
@@ -40,13 +40,13 @@ Now we can try to find the password matching the given hash and mask, by calling
 
 The parameters are:
 
-* `a 3` - use brute force type of attack. There are 5 other types of attacks.
-* `m 400` - password is hashed witch the usage of phpass algorithm. There are 320 others alghoritms supported.
+* `a 3` - use a brute-force attack. There are 5 other types of attacks.
+* `m 400` - password is hashed with the phpass algorithm. There are 320 others alghoritms supported by Hashcat.
 * `in.hash` - name of a file containing the hashed password
 * `?a?a?a` - mask to use
 
 {% hint style="info" %}
-The complete hashcat parameters reference is available here: [https://hashcat.net/wiki/doku.php?id=hashcat](https://hashcat.net/wiki/doku.php?id=hashcat) 
+The complete hashcat arguments reference is available here: [https://hashcat.net/wiki/doku.php?id=hashcat](https://hashcat.net/wiki/doku.php?id=hashcat) 
 {% endhint %}
 
 As a result of the above call, the `hashcat.potfile` will be created with the following content:
@@ -55,27 +55,25 @@ As a result of the above call, the `hashcat.potfile` will be created with the fo
 $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/:pas
 ```
 
-where `pas` is the password that was unknown to us. It has been cracked by the cat. 
+where `pas` is the password which had been unknown to us and was just retrieved by hashcat.
 
 {% hint style="info" %}
-For longer passwords usage of hashcat might be a bit problematic as it might need a lot of processing time \(days/months\) to find passwords.
+Obviously, for longer passwords, the presented usage of hashcat could be problematic as it would require a lot more processing time \(e.g. days or even months\) to find a password with such a naive method.
 {% endhint %}
 
-In order to crack long passwords faster, we created Golem Network version of Hashcat. It will use the computing power of many providers at the same time. Parallel password finding is much quicker: Golem version will possibly run in hours and not days/months as the classic one, non-parallel goes.
+To showcase how a similar problem can be resolved faster, we created the Golem version of Hashcat. It uses the computing power of many providers at the same time. Parallellized password recovery can be much quicker - instead of days or moths, this Golem version is likely to solve the problem in hours.
 
 ## Doings things in parallel
 
-\[nie jest zrozumiale\] \[dodac obrazek\] czy to jest dla hashcata czy dla tutoriala ?
-
-How to make hash cat work in parallel? The answer is very simple: the keyspace concept. We can ask the cat to tell us what is the size of the possibility space \(keyspace\) for the given mask and algorithm:
+How to make Hashcat work in parallel? The answer is quite simple: the keyspace concept. We can ask the tool to tell us what the size of the possibility space \(keyspace\) is for the given mask and algorithm:
 
 ```text
 hashcat --keyspace -a 3 ?a?a?a -m 400
 ```
 
-as a result, we will have an answer in the `stdout`. In our case it is `9025`.
+As a result, we will receive an answer in the standard output. In our case it is `9025`.
 
-Now we can divide the `0..9025` space into separate parts. Assuming we want to use 3 providers, those parts would be:
+Now we can divide the `0..9025` space into separate fragments. Assuming we want to allow our app to use up to 3 separate workers \(which means up to 3 providers\), those parts would be:
 
 * `0..3008`
 * `3009..6016`
@@ -91,8 +89,8 @@ The above call will process the `3009..6016` part. If there is any result in tha
 
 ## How to use hashcat in Golem?
 
-* provide each docker container with `in.hash` file \(the same for all providers\)
-* execute `hashcat` with proper `--skip` / `--limit` values in each docker container
-* transfer `hashcat.potfile` from each docker container to the requestor
-* check if any of the potfiles contains password. If yes, present it to the user.
+* provide each running Docker container with `in.hash` file \(the same for all fragments\)
+* execute `hashcat` with proper `--skip` / `--limit` values in each Docker container
+* transfer `hashcat.potfile` from each Docker container to the requestor
+* check if any of the resultant potfiles contains a password. If yes, present it to the user.
 

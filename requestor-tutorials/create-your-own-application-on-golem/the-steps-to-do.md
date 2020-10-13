@@ -1,91 +1,47 @@
 ---
-description: List of actions needed to execute the yacat example.
+description: List of actions needed to execute the hashcat example.
 ---
 
 # Tutorial steps
 
-This section contains steps you need to execute in order to run our yacat example. As this tutorial is designed to inspire you and create your own Golem application, we will explain all the needed details of Golem application implementation.
+This section contains steps you need to execute in order to run our hashcat password-recovery example. As this tutorial is designed to inspire you to create your own Golem applications, we will explain all the needed details of Golem application implementation.
 
 ## Before we begin
 
-In order to develop applications for the Golem network, you need to install yagna daemon on your machine. Below there are Unix commands you need to run. More details can be found here:
+In order to develop applications for the Golem network, you need to install yagna daemon on your machine. We're going to assume you're already familiar with the setup of the environment required to run Python high-level API examples. If you're not, please make sure you proceed through our quick primer to get up to speed:
 
 {% page-ref page="../flash-tutorial-of-requestor-development.md" %}
 
-So let's start...
+Once you're done with the tutorial above, make sure you're again in yapapi's main directory and move to:
 
-```bash
-curl -sSf https://join.golem.network/as-requestor | bash -
-```
-
-This will install the newest version of yagna in the requestor flavor. You might be asked to modify your `PATH` afterwards. In order to clean the files from previous yagna installs:
-
-```python
-rm -rf $HOME/.local/share/yagna
-```
-
-And now, let the yagna start:
-
-```python
-yagna service run
-```
-
-{% hint style="danger" %}
-The terminal window where you hit `yagna service run`, that runs yagna daemon should stay in the background for all the development time. The yagna daemon is needed for your requestor agent to run.
-{% endhint %}
-
-Now in another terminal window type
-
-```python
-yagna app-key create requestor
-yagna app-key list
-```
-
-Please copy the value of the `key` column and paste it into the `YAGNA_APPKEY` env variable setting command:
-
-```python
-export YAGNA_APPKEY=insert-your-32-char-app-key-here
-```
-
-Now a few commands more...
-
-```python
-yagna payment init -r
-python3 -m venv ~/.envs/yagna-python-tutorial
-source ~/.envs/yagna-python-tutorial/bin/activate
-pip3 install -U pip
-pip3 install certifi 
-pip3 install -i https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple/ yapapi==0.3.0a2
-git clone https://github.com/golemfactory/yapapi.git
-cd yapapi 
-git checkout b0.3
+```text
 cd examples/yacat
 ```
 
 {% hint style="success" %}
-Now we are done: 
+So now, we're going to assume that: 
 
-* The yagna deamon is running in the background. 
-* The `YAGNA_APPKEY` is set with the value of the generated app key.
-* The payment is initialized  \(please mind that it needs initialization after each `yagna service run`\)
-* The virtual python environment for our tutorial is activated
+* The `yagna` deamon is running in the background. 
+* The `YAGNA_APPKEY` environment variable is set to the value of the generated app key.
+* The payment is initialized with `yagna payment init -r`  \(please mind that it needs initialization after each launch of `yagna service run`\).
+* The virtual python environment for our tutorial is activated.
 * Dependencies are installed and the `yapapi` repository \(containing the tutorial examples\) is cloned.
 *  In your current directory there are two files that will be used and discussed in this example:
-  * `yacat.Dockerfile` - the docker file used for provider's container images definition
-  * `yacat.py` - entry point. Orchestration of the containers.
+  * `yacat.Dockerfile` - the Docker file used for the definition of the provider's container images
+  * `yacat.py` - requestor agent's entry point which deals with orchestration of the container runs.
 {% endhint %}
 
-## Let's get to work. Dockerfile
+## Let's get to work - the Dockerfile
 
-Let's start with Dockerfile \(`yacat.Dockerfile`\). But do we always need a dedicated dockerfile for our own Golem application?
+Let's start with the Dockerfile \(`yacat.Dockerfile`\). Do we always need a dedicated Dockerfile for our own Golem application?
 
 {% hint style="info" %}
-Golem is designed to use existing docker images, so you can use any existing docker image. There are no Golem specific conditions to be met by the image.
+Golem is designed to use existing Docker images, so you can use any existing docker image. There are no Golem-specific conditions that need to be met by the image.
 {% endhint %}
 
-If there \(for example on the [docker hub](https://hub.docker.com/)\) is no docker image you need, you will need to create a custom one. 
+If there is \(for example on the [docker hub](https://hub.docker.com/)\) no docker image that you need, you will have to create a custom one. 
 
-For the yacat example we are using following dockerfile \(`yacat.Dockerfile`\):
+For the yacat example we're going to use the following Dockerfile \(`yacat.Dockerfile`\):
 
 ```text
 FROM golemfactory/base:1.5
@@ -140,21 +96,21 @@ WORKDIR /golem/work
 VOLUME /golem/work /golem/output /golem/resource
 ```
 
-As Golem does not need any specific elements in the dockerfile, the `yacat.Dockerfil`is just a standard dockerfile. For the requestor agent code, we are going to discuss in the next chapeter, we need to know the volume name. This is the last line of the above dockerfile:
+As Golem does not need any specific elements in the Dockerfile,`yacat.Dockerfile`is just a standard Dockerfile. For the requestor agent code, which we are going to discuss in the next chapter, we need to know the volume name. This is the last line of the above Dockerfile:
 
 ```text
 VOLUME /golem/work /golem/output /golem/resource
 ```
 
-This makes `/golem/work` a place we will use for in / out file transfer. We are defining other volumes for possible future usage also.
+This makes `/golem/work` a location we will use for our input / output file transfer. We are also defining other volumes for possible future usage.
 
-Now we proceed with the `yacat.Dockerfile` with a standard docker build:
+Now we may proceed with a regular Docker build, using `yacat.Dockerfile`:
 
 ```python
 docker build . -f yacat.Dockerfile -t yacat
 ```
 
-As Golem Network can not use raw docker images and need to use `gvmkit` image format, we need to convert the docker image to Golem \(`gvmkit`\) image. This will be done by:
+As Golem cannot currently use raw docker images and uses its own, optimized `gvmkit` image format, we have to convert our Docker image the following way:
 
 ```python
 pip install gvmkit-build
@@ -162,14 +118,14 @@ gvmkit-build yacat
 gvmkit-build yacat --push
 ```
 
-The important fact is that in the end, int the console out, we are getting the `gvmkit` image hash, that looks like this:
+The important fact is that the last of the above commands, will provide us with a `gvmkit` image hash, that looks like this:
 
 ```python
 2c17589f1651baff9b82aa431850e296455777be265c2c5446c902e9
 ```
 
 {% hint style="info" %}
-This hash will identify our image when our Golem application will run. Please copy and save it somewhere as in the requestor agent code, we will need to pass it to the `Engine` object in order to have providers with the proper image used for the container instances.
+This hash will identify our image when our Golem application is run. Please copy and save it somewhere as in the requestor agent code, we will need to pass it to the `Engine` in order to have providers use the correct image for the container instances.
 {% endhint %}
 
 The details of docker image conversion are described here:
@@ -178,10 +134,10 @@ The details of docker image conversion are described here:
 
 ## The requestor agent code
 
-Now let's look at the yacat core - the requestor agent. Please check the `yacat.py` file below.
+Let's look at the core of our hashcat example - the requestor agent. Please check the `yacat.py` file below.
 
 {% hint style="info" %}
-The critical fragments of the `yacat.py` will be described in the following sections of the tutorial so can do just a quick scan over the below wall of code.
+The critical fragments of `yacat.py` will be described in the following sections of the tutorial so now, you can just do a quick scan over the wall of code below.
 {% endhint %}
 
 ```python
@@ -344,27 +300,27 @@ if __name__ == "__main__":
         loop.run_until_complete(task)
 ```
 
-## So what is happening here? yacat high-level picture
+## So what is happening here?
 
 ### worker\_check\_keyspace
 
-The first step is to **check the keyspace size**. This is done in 3 steps, executed only once on one provider:
+The first step is to **check the keyspace size**. This is done in 3 steps, executed only once using one task fragment:
 
-1. Preparing `keyspace.sh` script with contains given password mask. As the `hashcat --keyspace -a 3 {mask} -m 400` command outputs the keyspace size to `stdout`, we need to redirect the command output to the `keyspace.txt` file. That is the job of `keyspace.sh` script that is just: `hashcat --keyspace -a 3 {mask} -m 400 > /golem/work/keyspace.txt`
-2. Execute the `keyspace.sh` script on the container.
+1. Preparing the `keyspace.sh` script which contains the password mask. As the `hashcat --keyspace -a 3 {mask} -m 400` command outputs the keyspace size to `stdout`, we just need to redirect the command output to the `keyspace.txt` file. The  `keyspace.sh` then looks like: `hashcat --keyspace -a 3 {mask} -m 400 > /golem/work/keyspace.txt`
+2. Execute the `keyspace.sh` script on the provider's container.
 3. Transfer the `keyspace.txt` file back to the requestor.
 
 ![](../../.gitbook/assets/image%20%283%29.png)
 
-Knowing the keyspace size we can start looking for the password using many providers at the same time.
+Knowing the keyspace size, we can start looking for the password using multiple workers, running on multiple providers at the same time.
 
 ### worker\_find\_password
 
-In order to look for passwords in the given keyspace range, for each of the providers we are executing the following 3 steps:
+In order to look for passwords in the given keyspace range, for each of the workers employed to perform our job, we are executing the following 3 steps:
 
-* Sending the `in.hash` file that contains password hash. 
-* Executing `hashcat` with proper `--skip` and `--limit` values
-* Getting the hashcat.potfile from the provider to the requestor
+* Send the `in.hash` file that contains the password hash. 
+* Execute`hashcat` with proper `--skip` and `--limit` values
+* Get the hashcat.potfile from the provider to the requestor
 
 ![](../../.gitbook/assets/image%20%284%29.png)
 
@@ -376,7 +332,7 @@ The final action is to scan over all the `*.potfiles` received. If there is a pa
 
 ### Package
 
-To tell the Golem platform, what are our requirements for the providers we are going to get from the market, we are using the `package` object. The `image_hash` parameter tells that we want to use our image for the container. Here we use the hash received from the `gvmkit-build`. The `min_mem_gib` and `min_storage_gib` parameters specify memory and storage requirements for the provider.
+To tell the Golem platform, what our requirements against the providers are, we are using the `package` object. The `image_hash` parameter points to the image that we want the containers to run - here we use the hash received from `gvmkit-build`. The `min_mem_gib` and `min_storage_gib` parameters specify memory and storage requirements for the provider.
 
 ```python
  package = await vm.repo(
@@ -390,10 +346,10 @@ To tell the Golem platform, what are our requirements for the providers we are g
 
 The `package` object is passed to the `engine` object with  several other options, such as:
 
-*  `budget`defines maximal spendings for executing all the tasks on Golem
-* `max_workers` defines maximal number of simultaneously running providers.
-* `timeout` defines the timeout. This one is important to be big enough to include the image download time plus the computation time.
-* `subnet_tag` specifies the providers net to be used. For example, you would not use mainnet network for tests.
+*  `budget`defines maximal spendings for executing all the tasks in the whole run on Golem
+* `max_workers` defines maximal number of simultaneously running workers \(and that is, the maximum number of providers that the task fragments will be distributed to\).
+* `timeout` defines the timeout. It is important for the timeout to be large enough to include the image download time plus the computation time.
+* `subnet_tag` specifies the providers subnet to be used. For example, you would not use mainnet network for tests.
 
 ```python
 async with Engine(
@@ -407,9 +363,9 @@ async with Engine(
 ) as engine:
 ```
 
-### Main
+### Main loop
 
-Golem high-level API that we use to interact with the Golem network uses asynchronous programming a lot. The asynchronous execution starting point is at line 152:
+Golem high-level API that we use to interact with the Golem network uses asynchronous programming a lot. The asynchronous execution starting point is in line 152:
 
 ```python
 loop = asyncio.get_event_loop()
@@ -423,7 +379,7 @@ except (Exception, KeyboardInterrupt) as e:
     loop.run_until_complete(task)
 ```
 
-In the `main` function, the most important fragments begins in the 100 line:
+In the `main` function, the most important fragment begins in line 100:
 
 ```python
 async for task in engine.map(worker_check_keyspace, [Task(data=None)]):
@@ -444,7 +400,7 @@ Now we can split the whole `keyspace` by the `args.number_of_providers`:
  ranges = range(0, keyspace, step)
 ```
 
-Having the `ranges` list we can call the `worker_find_password` for each of the providers passing only given `range`:
+Having the `ranges` list, we can call the `worker_find_password` for each of the fragments, passing only the given `range`:
 
 ```python
 async for task in engine.map(worker_find_password, [Task(data=range) for range in ranges]):
@@ -455,7 +411,7 @@ async for task in engine.map(worker_find_password, [Task(data=range) for range i
     )
 ```
 
-After all the providers return its hashcat.potifle we need to scan over each of them, as one of them possibly contains the password we are looking for:
+After the `hashcat.potfile` file is returned for all the fragments, we need to scan over them, as one of them possibly contains the password we are looking for:
 
 ```python
 password = read_password(ranges)
@@ -469,11 +425,11 @@ The `worker_check_keyspace` is also interesting. Here we need to  execute the fo
 hashcat --keyspace -a 3 {mask} -m 400
 ```
 
-As this command is using `stdout` for the keyspace size information passing, we need the `stdout` to be captured. 
+As this command is using the `stdout` to display the keyspace size information, we need the `stdout` to be captured. 
 
-As we can not use `ctx.run` call directly to redirect stdout to `keyspace.txt`, we are preparing `keyspace.sh` file with the `hashcat --keyspace -a 3 {mask} -m 400 > keyspace.txt` content.
+As we can not use `ctx.run` directly to redirect stdout to `keyspace.txt`, we are preparing `keyspace.sh` file with the following content:`hashcat --keyspace -a 3 {mask} -m 400 > keyspace.txt`.
 
-Now we need to send `keyspace.sh` to one of the providers running our image. And run
+Next we're going to send `keyspace.sh` to one of the providers running our image and have them execute a single command:
 
 ```python
 ctx.run("/bin/sh","/golem/work/keyspace.sh")
@@ -488,13 +444,13 @@ ctx.download_file(f"/golem/work/keyspace.txt", output_file)
 
 ### worker\_find\_password
 
-This function is executed on each of the providers. First, we are sending the `in.hash` file that contains the known hash:
+This function is executed on each of the providers. First, we are sending them the `in.hash` file that contains the known hash. That needs only to be run once per worker run \(which usually means once per provider\).
 
 ```python
 ctx.send_file("in.hash", "/golem/work/in.hash")
 ```
 
-Then we are preparing the `--skip` and `--limit` parameters, and execute the commands on the provider:
+Then, for each task fragment that this worker is executing, we are preparing the `--skip` and `--limit` parameters, and executing the commands on the provider:
 
 ```python
 skip = task.data
@@ -508,7 +464,7 @@ commands = (
 ctx.run(f"/bin/sh", "-c", commands)
 ```
 
-We also need to execute the `touch /golem/work/hashcat.potfile` command in order to have `/golem/work/hashcat.potfile` file being present in the file system even if there is no password output by the hascat.
+We also need to execute the `touch /golem/work/hashcat.potfile` command in order to have `/golem/work/hashcat.potfile` file present in the file system even if there is no password output by Hashcat.
 
 The last step is downloading the `/golem/work/hashcat.potfile` file.
 
@@ -523,13 +479,13 @@ Now, as we know how the yacat works, let's run it!
 
 ## Example run
 
-While being in the `/examples/yacat` directory type the following:
+While in the `/examples/yacat` directory, type the following:
 
 ```python
 python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --subnet-tag devnet-alpha.2
 ```
 
-The above execution should return "pas" as a guessed password. The computations will be executed on the default number of providers with is 3.
+The above run should return "pas" as the recovered password. The computations will be executed using the default number of workers \(which is 3\).
 
 A more computation-intensive example is:
 
@@ -539,7 +495,7 @@ python3 yacat.py '?a?a?a?a' '$H$5ZDzPE45C.e3TjJ2Qi58Aaozha6cs30' --subnet-tag de
 
 The above command should execute computations on 8 providers and return "ABCD".
 
-The yacat.py supports few optional parameters. To get help on those type:
+`yacat.py` supports a few optional parameters. To get help on those, please type:
 
 ```python
 python3 yacat.py --help
@@ -559,20 +515,20 @@ The yacat example is written in Python using Golem's Python High-Level API \([YA
 
 ## Next steps
 
-The complete reference of the Python High-Level API \(YAPAPI\) is available here:
+The complete reference of the Python High-Level API \(yapapi\) is available here:
 
-You can also check the JavaScript/TypeScript based development with YAJAPI: 
+You can also have a look at our JavaScript/TypeScript API if you're interested in developing your requestor agent in JS/TS: 
 
 [https://github.com/golemfactory/yajsapi](https://github.com/golemfactory/yajsapi)
 
 ## Closing words
 
 {% hint style="success" %}
-Golem is waiting to serve your applications. The open to everyone, decentralized platform is here \(now in alpha\).
+Golem is waiting to serve your applications. Our decentralized - and open to everytone - platform is here \(now in alpha\).
 
-We did our best to make developing Golem applications to be super easy.
+We did our best to make developing Golem applications super easy.
 
-Now it is time for your move!
+Now it's time for your move!
 {% endhint %}
 
 And remember:
