@@ -227,8 +227,11 @@ Now you have the `yagna` daemon running, you may proceed with running a task as 
 
 Ensure you're running python &gt;= 3.6 and you have the `venv` module installed.
 
-Prepare a virtual environment for the tutorial script:  
+Prepare a virtual environment for the tutorial script:
 
+{% hint style="danger" %}
+On Windows please use `python` instead of `python3`.
+{% endhint %}
 
 ```text
 python3 -m venv ~/.envs/yagna-python-tutorial
