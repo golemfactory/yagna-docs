@@ -16,7 +16,7 @@ So far, said orchestration takes a form of one of three types of actions:
 * running commands on the execution unit
 * getting output files back from the execution unit
 
-![](../../.gitbook/assets/image%20%281%29.png)
+![](../../.gitbook/assets/tutorial-05.jpg)
 
 ## How does a Golem VM application work?
 
@@ -75,11 +75,11 @@ To learn about some additional details on how different parts of Golem work toge
 
 First, you need to think about your computational problem in terms of parallel execution. Let's visualize your computational problem:
 
-![](../../.gitbook/assets/image%20%288%29.png)
+![](../../.gitbook/assets/tutorial-01.jpg)
 
-Next you need to find a way how to divide the whole problem into fragments. Each fragment is a distinct part of the whole and may be processed by a different provider, independently from other fragments:
+Next, you need to find a way how to divide the whole problem into fragments. Each fragment is a distinct part of the whole and may be processed by a different provider, independently from other fragments:
 
-![](../../.gitbook/assets/image%20%287%29.png)
+![](../../.gitbook/assets/tutorial-02.jpg)
 
 In order to proceed further, you'll be required to design your app in such way that it's able to:
 

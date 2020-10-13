@@ -6,7 +6,7 @@ description: Solution architecture and details.
 
 ## Solution architecture
 
-![](../.gitbook/assets/image%20%2810%29.png)
+![](../.gitbook/assets/tutorial-06.jpg)
 
 Golem is defined by the Golem network protocol. The Golem network is made by nodes that implement the Golem network protocol. We provide a default implementation of the Golem network protocol in form of the so-called Golem daemon.
 
@@ -43,6 +43,10 @@ _Please mind the "ALT"  frame in the diagram above: the provider uses only one e
 More information on provider are here:
 
 {% page-ref page="provider.md" %}
+
+### Payments
+
+The payments between requestors and providers are done through the [Ethereum](https://ethereum.org/) network - using standard transfer or by Layer 2 solution \(zkSync\).
 
 ## Developing applications for Golem
 
