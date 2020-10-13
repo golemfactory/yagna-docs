@@ -226,7 +226,7 @@ Now you have the `yagna` daemon running, you may proceed with running a task as 
 {% tab title="Python" %}
 ### Get the environment set up
 
-Ensure you're running python &gt;= 3.6 and you have the `venv` module installed.
+Ensure you're running python &gt;= 3.6 and you have the `venv` module installed \(it's normally included in the python distribution\).
 
 Prepare a virtual environment for the tutorial script:
 
