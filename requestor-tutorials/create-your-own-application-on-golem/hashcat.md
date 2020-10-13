@@ -6,7 +6,7 @@ description: How hashcat works and how to make it work in parallel.
 
 ## What is hashcat?
 
-[_Hashcat_](https://hashcat.net/hashcat/) __is a command-line utility that finds unknown passwords from their hashes that are known.
+[_Hashcat_](https://hashcat.net/hashcat/) __is a command-line utility that finds unknown passwords from their known hashes.
 
 {% hint style="info" %}
 [_Hashcat_](https://hashcat.net/hashcat/) __is a very powerful tool. It supports 320 hashing algorithms and 5 different attack types. We will use only the "phpass" algorithm and a simple brute-force attack.
