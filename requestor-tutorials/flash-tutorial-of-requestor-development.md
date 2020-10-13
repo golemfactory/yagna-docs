@@ -14,7 +14,7 @@ While it's possible that you'll be successful running Golem and this tutorial on
 
 * OS X 10.14+
 * Ubuntu 18.04 or 20.04
-* Windows 10
+* Windows
 
 #### Languages
 
@@ -33,6 +33,10 @@ python3 --version
 ```
 
 If you have an older version of python and you'd like to keep that version in your system, consider using [pyenv](https://github.com/pyenv/pyenv). You can use [pyenv-installer](https://github.com/pyenv/pyenv-installer) to facilitate the process.
+
+{% hint style="danger" %}
+On Windows, you may need to just use `python` instead of `python3`
+{% endhint %}
 {% endtab %}
 
 {% tab title="NodeJS" %}
@@ -241,10 +245,12 @@ source ~/.envs/yagna-python-tutorial/bin/activate
 
 {% hint style="warning" %}
 On Windows, you need to replace the above with:
-
-`python3 -m venv %HOMEPATH%\.envs\yagna-python-tutorial`  
-`%HOMEPATH%\.envs\yagna-python-tutorial\Scripts\activate.bat`
 {% endhint %}
+
+```text
+python -m venv %HOMEPATH%\.envs\yagna-python-tutorial
+%HOMEPATH%\.envs\yagna-python-tutorial\Scripts\activate.bat
+```
 
 Install the dependencies:
 
@@ -288,8 +294,7 @@ On Windows, please replace the above with:
 The example we're showcasing here resides in the `examples/blender` directory within `yapapi`'s codebase so, ensure that you're in the checked-out repository's directory and run:
 
 ```bash
-cd examples
-cd blender
+cd examples/blender
 python3 blender.py --subnet-tag devnet-alpha.2
 ```
 
