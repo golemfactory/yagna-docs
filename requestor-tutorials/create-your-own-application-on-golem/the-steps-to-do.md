@@ -322,7 +322,7 @@ In order to look for passwords in the given keyspace range, for each of the work
 * Execute`hashcat` with proper `--skip` and `--limit` values
 * Get the hashcat.potfile from the provider to the requestor
 
-![](../../.gitbook/assets/image%20%284%29.png)
+![](../../.gitbook/assets/tutorial-03.jpg)
 
 ### read\_password
 
