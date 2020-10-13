@@ -485,6 +485,19 @@ While in the `/examples/yacat` directory, type the following:
 python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --subnet-tag devnet-alpha.2
 ```
 
+{% hint style="danger" %}
+Please mind that on Windows, you need to:
+
+* use `python` instead of `python3`
+* do not use ' in command
+
+So the windows version is: 
+
+```python
+python yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/ --subnet-tag devnet-alpha.2
+```
+{% endhint %}
+
 The above run should return "pas" as the recovered password. The computations will be executed using the default number of workers \(which is 3\).
 
 A more computation-intensive example is:
