@@ -230,14 +230,17 @@ Ensure you're running python &gt;= 3.6 and you have the `venv` module installed.
 
 Prepare a virtual environment for the tutorial script:
 
-{% hint style="danger" %}
-On Windows please use `python` instead of `python3`.
-{% endhint %}
-
-```text
+```bash
 python3 -m venv ~/.envs/yagna-python-tutorial
 source ~/.envs/yagna-python-tutorial/bin/activate
 ```
+
+{% hint style="warning" %}
+On Windows, you need to replace the above with:
+
+`python -m venv %HOMEPATH%.envs\yagna-python-tutorial`  
+`%HOMEPATH%\.envs\yagna-python-tutorial\bin\activate.bat`
+{% endhint %}
 
 Install the dependencies:
 
