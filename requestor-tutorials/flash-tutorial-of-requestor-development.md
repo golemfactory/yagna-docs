@@ -239,7 +239,7 @@ source ~/.envs/yagna-python-tutorial/bin/activate
 On Windows, you need to replace the above with:
 
 `python -m venv %HOMEPATH%.envs\yagna-python-tutorial`  
-`%HOMEPATH%\.envs\yagna-python-tutorial\bin\activate.bat`
+`%HOMEPATH%\.envs\yagna-python-tutorial\Scripts\activate.bat`
 {% endhint %}
 
 Install the dependencies:
