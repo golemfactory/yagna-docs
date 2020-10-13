@@ -4,59 +4,44 @@ description: Solution architecture and details.
 
 # Golem overview
 
-## Solution architecture
+## Golem architecture
 
 ![](../.gitbook/assets/tutorial-06.jpg)
 
-Golem is defined by the Golem network protocol. The Golem network is made by nodes that implement the Golem network protocol. We provide a default implementation of the Golem network protocol in form of the so-called Golem daemon.
+Golem is a network of nodes that implement the Golem network protocol. We provide the default implementation of a such a node in the form of the Golem daemon, called [yagna](https://github.com/golemfactory/yagna).
 
-The nodes in the Golem network run Golem daemon acting as providers or requestors. Both requestor and provider share the same Golem daemon. 
+The nodes in the network run can act as providers or requestors. Both the requestor and the provider share the same implementation of the Golem daemon. 
 
-The diagram above shows the solution architecture of the Golem network. For simplicity, it shows just one requestor and one provider.   
+The diagram above shows the architecture of the network. For the sake of simplicity, it shows just one requestor and one provider.   
 
 ### Requestor
 
-The requestor logic is implemented as a **requestor agent**. The requestor agent is code that runs on requestor machine and communicates via REST with golem daemon's local http server. 
+The requestor logic is implemented as a **requestor agent**, which is a piece of code that runs on requestor's machine and communicates via REST with golem daemon's http server. 
 
-Currently, Golem supports writing requestor agent code in Pyhon and JavaScript/TypeScript languages. Writing reqeustor agent code is super easy as requestor agent is using dedicated High-Level API:
+A requestor agent can be written in any language as long as it's able to talk to daemon's REST API. To make things easy for the developers though, we provide two high-level API libraries[: yapapi](https://github.com/golemfactory/yapapi) for Python 3.6+ and [yajsapi](https://github.com/golemfactory/yajsapi), which is an early alpha of our JS/TS API runnable under nodejs.
 
-* For Python we have prepared High-Level API called [YAPAPI](https://github.com/golemfactory/yapapi). 
-* [YAJSAPI](https://github.com/golemfactory/yajsapi) is High-Level API for JavaScript/TypeScript version developers. Currently in alpha. 
+_Please note the "ALT"  frame in the left part of the diagram above: typically the requestor contains application code in only one language. There are two "ALT" frames to show two possible scenarios._
 
-_Please mind the "ALT"  frame in the diagram above: typically the requestor contains application code in only one language. There are two "ALT" frames to show two possible scenarios._
-
-More information on requestor are here:
+More information on a requestor can be found here:
 
 {% page-ref page="requestor.md" %}
 
 ### Provider
 
-The provider logic is implemented as a **provider agent**.  Provider agent is code that runs on provider machine and communicated via REST with the golem daemon.
+The provider logic is implemented as a **provider agent** which is a piece of code that runs on the provider's machine and communicates via REST with the Golem daemon.
 
-The provider can offer its resources with help with many types of so-called **exe units**. Currently Golem supports:
+The provider can make its resources available to the requestors with the help of many types of **execution units** \(exe-unit for short\). Currently Golem supports:
 
-* VM exe unit that run docker images and exposes interaction with the container
-* WASM exe unit that runs WASM code
+* VM exe unit that runs Docker images and allows for an interaction with the running container,
+* and WASM exe unit that runs WASM code
 
-_Please mind the "ALT"  frame in the diagram above: the provider uses only one exe unit in the same time. There are two "ALT" frames to show two possible scenarios._
+_Please note the "ALT"  frame in the diagram above: the provider uses only one exe unit at the same time. There are two "ALT" frames to show two possible scenarios._
 
-More information on provider are here:
+More information on a provider is available here:
 
 {% page-ref page="provider.md" %}
 
 ### Payments
 
-The payments between requestors and providers are done through the [Ethereum](https://ethereum.org/) network - using standard transfer or by Layer 2 solution \(zkSync\).
-
-## Developing applications for Golem
-
-We provide a complete implementation of all the common elements for requestor and provider nodes. For you as a Golem application developer, there are just two dedicated components to provide - those are marked as "application code" above. Those are:
-
-* **Requestor agent application code**
-
-Defines the resource demands and orchestrates the task execution.
-
-* **Docker image application code**
-
-Defines the actual code that performs the tasks on the provider's hardware.
+The payments between requestors and providers are made through the [Ethereum](https://ethereum.org/) network - using standard ERC20 token transfers or - in the future - using zkSync - a Layer 2 solution that will greatly improve cost-effectiveness.
 
