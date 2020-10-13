@@ -14,7 +14,11 @@ While it's possible that you'll be successful running Golem and this tutorial on
 
 * OS X 10.14+
 * Ubuntu 18.04 or 20.04
-* Windows 10 + PowerShell
+* Windows 10
+
+{% hint style="danger" %}
+On Windows, please run all the commands in the Windows PowerShell, not the default `cmd` console.
+{% endhint %}
 
 #### Languages
 
