@@ -137,6 +137,12 @@ rm -rf $HOME/.local/share/yagna
 rm -rf $HOME/Library/Application\ Support/GolemFactory.yagna
 ```
 {% endtab %}
+
+{% tab title="Windows" %}
+```
+rmdir /s c:\Users\asus\AppData\Roaming\GolemFactory
+```
+{% endtab %}
 {% endtabs %}
 
 ### Run the daemon
