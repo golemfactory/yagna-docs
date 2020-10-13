@@ -14,6 +14,7 @@ This is our very first Alpha reveal. Therefore, temporarily, Golem only supports
 
 * OS X 10.14+
 * Ubuntu 18.04 or 20.04
+* Windows 10 + PowerShell
 
 #### Languages
 
@@ -140,7 +141,7 @@ rm -rf $HOME/Library/Application\ Support/GolemFactory.yagna
 
 {% tab title="Windows" %}
 ```
-rmdir /s c:\Users\asus\AppData\Roaming\GolemFactory
+rmdir /s %APPDATA%\GolemFactory\yagna
 ```
 {% endtab %}
 {% endtabs %}
