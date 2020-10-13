@@ -10,7 +10,7 @@ description: >-
 
 #### Platforms
 
-This is our very first Alpha reveal. Therefore, temporarily, Golem only supports a limited list of platforms. These are those:
+While it's possible that you'll be successful running Golem and this tutorial on other platforms, we officially support the following:
 
 * OS X 10.14+
 * Ubuntu 18.04 or 20.04
