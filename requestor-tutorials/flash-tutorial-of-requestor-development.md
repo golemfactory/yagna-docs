@@ -110,7 +110,11 @@ Alternatively, if you'd like to have more control over the installation process,
 
 First, download the requestor package - prefixed `golem-req` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-080012a1](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-080012a1)
 
-Unpack it and put the binaries contained within somewhere in your PATH \(e.g. copy them to `/usr/local/bin` on unix-like systems\).
+Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on unix-like systems\) or add the directory you place the binaries in to your `PATH`.
+
+{% hint style="warning" %}
+It's important for the `yagna` and `gftp` binaries to be available in your shell's PATH, otherwise, you'll encounter issues while continuing the tutorial.
+{% endhint %}
 
 ### Confirm the installed daemon's version
 
