@@ -310,7 +310,7 @@ The first step is to **check the keyspace size**. This is done in 3 steps, execu
 2. Execute the `keyspace.sh` script on the provider's container.
 3. Transfer the `keyspace.txt` file back to the requestor.
 
-![](../../.gitbook/assets/image%20%283%29.png)
+![](../../.gitbook/assets/tutorial-04.jpg)
 
 Knowing the keyspace size, we can start looking for the password using multiple workers, running on multiple providers at the same time.
 
