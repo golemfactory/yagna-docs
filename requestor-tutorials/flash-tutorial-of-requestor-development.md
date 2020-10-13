@@ -16,10 +16,6 @@ While it's possible that you'll be successful running Golem and this tutorial on
 * Ubuntu 18.04 or 20.04
 * Windows 10
 
-{% hint style="danger" %}
-On Windows, please run all the commands in the Windows PowerShell, not the default `cmd` console.
-{% endhint %}
-
 #### Languages
 
 {% hint style="warning" %}
