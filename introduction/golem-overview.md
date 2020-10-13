@@ -1,10 +1,18 @@
 ---
-description: Internal details
+description: Solution architecture and details.
 ---
 
 # Golem overview
 
-![](../.gitbook/assets/image%20%289%29.png)
+## Solution architecture
+
+![](../.gitbook/assets/image%20%2810%29.png)
+
+The Golem network is made by nodes that run Golem daemon. The nodes act as providers or requestors. Both requestor and provider share the same Golem daemon that implements the Golem network protocol. The diagram above, for simplicity reasons, shows just one requestor and one provider.   
+
+Requestor
+
+Provider
 
 ## Golem daemon and the agents
 
@@ -33,12 +41,4 @@ Defines the resource demands and orchestrates the task execution
 * **Docker image**
 
 Defines the actual code that performs the tasks on the provider's hardware
-
-## Being requestor and provider at the same time
-
-{% hint style="info" %}
-Golem daemon can act as requestor and provider at the same time.
-{% endhint %}
-
-Although the Golem code base allows Golem demon to act as a requestor and provider at the same time, we currently do not support this scenario configuration by any dedicated tutorials.
 
