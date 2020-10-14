@@ -248,8 +248,8 @@ On Windows, you need to replace the above with:
 {% endhint %}
 
 ```text
-python -m venv %HOMEPATH%\.envs\yagna-python-tutorial
-%HOMEPATH%\.envs\yagna-python-tutorial\Scripts\activate.bat
+python -m venv %HOMEDRIVE%%HOMEPATH%\.envs\yagna-python-tutorial
+%HOMEDRIVE%%HOMEPATH%\.envs\yagna-python-tutorial\Scripts\activate.bat
 ```
 
 Install the dependencies:
