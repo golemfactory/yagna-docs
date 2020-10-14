@@ -10,7 +10,7 @@ A Golem application consists of a certain number of execution units - e.g. VMs c
 
 Golem's execution units are theoretically capable of running code inside any environment that provides effective isolation of execution from the host. Currently Docker VMs and WASM are supported. The scope of this document is limited to the former.
 
-So far, said orchestration takes a form of one of three types of actions: 
+So far, said orchestration takes a form of one of three types of actions:
 
 * sending input files to the execution unit
 * running commands on the execution unit
@@ -39,7 +39,7 @@ After specifying and publishing a demand to the Golem's market, the requestor ag
 
 #### Docker image
 
-Once agreements with the selected providers are finalized, which happens in the course of an automated negotiation process, the providers are asked to load the appropriate image. 
+Once agreements with the selected providers are finalized, which happens in the course of an automated negotiation process, the providers are asked to load the appropriate image.
 
 {% hint style="info" %}
 _If this is a subsequent run of the image, the image could already be cached by some of the providers._
@@ -94,7 +94,7 @@ When it comes to the implementation itself, and as has been already mentioned ab
 2. Requestor agent - a piece of Python / JavaScript / TypeScript code that will execute the problem-dividing logic, orchestrate the execution on providers and finally combine the output files to get the result for the whole problem.
 
 {% hint style="success" %}
-Now you know what a Golem VM application is and how it works. 
+Now you know what a Golem VM application is and how it works.
 {% endhint %}
 
 Let's see how the implementation goes then! But first, let's understand how `hashcat`, the password-recovery tool which we are going to use, can be made to work in parallel.

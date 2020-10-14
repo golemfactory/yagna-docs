@@ -121,7 +121,6 @@ except (Exception, KeyboardInterrupt) as e:
     print(e)
     task.cancel()
     asyncio.get_event_loop().run_until_complete(task)
-
 ```
 {% endtab %}
 
@@ -171,7 +170,7 @@ async function main() {
         path.join(__dirname, `./output_${frame}.png`)
       );
       yield ctx.commit();
-      
+
       task.accept_task();
     }
 
@@ -198,7 +197,6 @@ async function main() {
 }
 
 main();
-
 ```
 {% endtab %}
 {% endtabs %}

@@ -52,8 +52,8 @@ To verify your currently installed version of node, please run:
 node --version
 ```
 
-If you have an older version of node and you'd like to keep that version in your system, consider using [nvm](https://github.com/nvm-sh/nvm). You can install it using the instructions from: [https://github.com/nvm-sh/nvm\#install--update-script](https://github.com/nvm-sh/nvm#install--update-script)  
-  
+If you have an older version of node and you'd like to keep that version in your system, consider using [nvm](https://github.com/nvm-sh/nvm). You can install it using the instructions from: [https://github.com/nvm-sh/nvm\#install--update-script](https://github.com/nvm-sh/nvm#install--update-script)
+
 **Yarn 1.22.3+**
 
 Verify that with:
@@ -92,7 +92,7 @@ If you'd like to give us feedback, suggestions, have some errors to report or if
 _Yagna is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network._
 {% endhint %}
 
-In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon. 
+In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon.
 
 #### Easy installation
 
@@ -112,9 +112,9 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-req` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-080012a1](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.4.0-080012a1)
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.4.0](https://github.com/golemfactory/yagna/releases/tag/v0.4.0)
 
-Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on unix-like systems\) or add the directory you place the binaries in to your `PATH`.
+Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
 {% hint style="warning" %}
 It's important for the `yagna` and `gftp` binaries to be available in your shell's PATH, otherwise, you'll encounter issues while continuing the tutorial.
@@ -128,7 +128,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.4.0-080012a1`
+It should output: `yagna 0.4.0-a1a50fd9`
 
 ### Purge the stale working directories
 
@@ -148,7 +148,7 @@ rm -rf $HOME/Library/Application\ Support/GolemFactory.yagna
 {% endtab %}
 
 {% tab title="Windows" %}
-```
+```text
 rmdir /s %APPDATA%\GolemFactory\yagna
 ```
 {% endtab %}
@@ -257,7 +257,7 @@ Install the dependencies:
 ```text
 pip3 install -U pip
 pip3 install certifi
-pip3 install -i https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple/ yapapi==0.3.0a3
+pip3 install -i https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple/ yapapi==0.3.0
 ```
 
 ### Get the requestor agent's code
@@ -284,8 +284,8 @@ export YAGNA_APPKEY=insert-your-32-char-app-key-here
 ```
 
 {% hint style="warning" %}
-On Windows, please replace the above with:  
-  
+On Windows, please replace the above with:
+
 `set YAGNA_APPKEY=your-32-char-app-key`
 {% endhint %}
 
@@ -304,9 +304,9 @@ The example in question generates six discrete jobs for providers to execute so 
 
 If everything goes right, after what could be anything from half-a-minute to a few minutes, you'll hopefully see the message announcing the successful completion of your assignment including a short summary of what had happened during the execution, which providers took part in the execution and the accumulated GNT cost of the whole task, e.g.:
 
-`Computation finished in 77.5s  
-Negotiated 1 agreements with 1 providers  
-Provider 'odra' computed 6 tasks  
+`Computation finished in 77.5s    
+Negotiated 1 agreements with 1 providers    
+Provider 'odra' computed 6 tasks    
 Total cost: 0.218290307253`
 {% endtab %}
 
@@ -341,7 +341,7 @@ yarn js:blender
 
 If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet and then ones that announce work dispatched to providers with lines starting with `new batch !!!` and subsequently confirmations of task completions.
 
-To some more detailed messages, you can run the example with `yarn js:blender -d`. 
+To some more detailed messages, you can run the example with `yarn js:blender -d`.
 
 The example in question generates six discrete jobs for providers to execute so after those six activities are completed and results returned, the whole task is finished.
 
@@ -349,15 +349,13 @@ The example in question generates six discrete jobs for providers to execute so 
 {% endtab %}
 {% endtabs %}
 
-
-
 {% hint style="success" %}
 **Yay! With this, you have completed your first job as a requestor in the new Golem network!**
 {% endhint %}
 
 #### Output
 
-You can verify that the task is indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation that should appear in the directory from which you ran the example script \(`examples/blender` within the cloned repository's path if you followed the tutorial precisely\) . 
+You can verify that the task is indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation that should appear in the directory from which you ran the example script \(`examples/blender` within the cloned repository's path if you followed the tutorial precisely\) .
 
 Here is an example rendered frame, provided here for reference:
 

@@ -19,14 +19,14 @@ cd examples/yacat
 ```
 
 {% hint style="success" %}
-So now, we're going to assume that: 
+So now, we're going to assume that:
 
 * The `yagna` deamon is running in the background. 
 * The `YAGNA_APPKEY` environment variable is set to the value of the generated app key.
 * The payment is initialized with `yagna payment init -r`  \(please keep in mind that it needs initialization after each launch of `yagna service run`\).
 * The virtual python environment for our tutorial is activated.
 * Dependencies are installed and the `yapapi` repository \(containing the tutorial examples\) is cloned.
-*  In your current directory there are two files that will be used and discussed in this example:
+* In your current directory there are two files that will be used and discussed in this example:
   * `yacat.Dockerfile` - the Docker file used for the definition of the provider's container images
   * `yacat.py` - requestor agent's entry point which deals with orchestration of the container runs.
 {% endhint %}
@@ -39,7 +39,7 @@ Let's start with the Dockerfile \(`yacat.Dockerfile`\). Do we always need a dedi
 Golem is designed to use existing Docker images, so you can use any existing docker image. There are no Golem-specific conditions that need to be met by the image.
 {% endhint %}
 
-If there is \(for example on the [docker hub](https://hub.docker.com/)\) no docker image that you need, you will have to create a custom one. 
+If there is \(for example on the [docker hub](https://hub.docker.com/)\) no docker image that you need, you will have to create a custom one.
 
 For the yacat example we're going to use the following Dockerfile \(`yacat.Dockerfile`\):
 
@@ -344,9 +344,9 @@ To tell the Golem platform, what our requirements against the providers are, we 
 
 ### Engine
 
-The `package` object is passed to the `engine` object with  several other options, such as:
+The `package` object is passed to the `engine` object with several other options, such as:
 
-*  `budget`defines maximal spendings for executing all the tasks in the whole run on Golem
+* `budget`defines maximal spendings for executing all the tasks in the whole run on Golem
 * `max_workers` defines maximal number of simultaneously running workers \(and that is, the maximum number of providers that the task fragments will be distributed to\).
 * `timeout` defines the timeout. It is important for the timeout to be large enough to include the image download time plus the computation time.
 * `subnet_tag` specifies the providers subnet to be used. For example, you would not use mainnet network for tests.
@@ -419,13 +419,13 @@ password = read_password(ranges)
 
 ### worker\_check\_keyspace
 
-The `worker_check_keyspace` is also interesting. Here we need to  execute the following command on only one of the providers:
+The `worker_check_keyspace` is also interesting. Here we need to execute the following command on only one of the providers:
 
 ```python
 hashcat --keyspace -a 3 {mask} -m 400
 ```
 
-As this command is using the `stdout` to display the keyspace size information, we need the `stdout` to be captured. 
+As this command is using the `stdout` to display the keyspace size information, we need the `stdout` to be captured.
 
 As we can not use `ctx.run` directly to redirect stdout to `keyspace.txt`, we are preparing `keyspace.sh` file with the following content:`hashcat --keyspace -a 3 {mask} -m 400 > keyspace.txt`.
 
@@ -439,7 +439,7 @@ Now we can transfer the `keyspace.txt` back to the requestor
 
 ```python
 output_file = "keyspace.txt"
-ctx.download_file(f"/golem/work/keyspace.txt", output_file) 
+ctx.download_file(f"/golem/work/keyspace.txt", output_file)
 ```
 
 ### worker\_find\_password
@@ -491,7 +491,7 @@ Please mind that on Windows, you need to:
 * use `python` instead of `python3`
 * do not use ' in command
 
-So the windows version is: 
+So the windows version is:
 
 ```python
 python yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/ --subnet-tag devnet-alpha.2
@@ -530,7 +530,7 @@ The yacat example is written in Python using Golem's Python High-Level API \([YA
 
 The complete reference of the Python High-Level API \(yapapi\) is available here:
 
-You can also have a look at our JavaScript/TypeScript API if you're interested in developing your requestor agent in JS/TS: 
+You can also have a look at our JavaScript/TypeScript API if you're interested in developing your requestor agent in JS/TS:
 
 [https://github.com/golemfactory/yajsapi](https://github.com/golemfactory/yajsapi)
 
@@ -547,7 +547,7 @@ Now it's time for your move!
 And remember:
 
 {% hint style="info" %}
-In case of any doubts or problems, you can always contact us on discord. 
+In case of any doubts or problems, you can always contact us on discord.
 
 [https://discord.com/channels/684703559954333727/756161015493951600](https://discord.com/channels/684703559954333727/756161015493951600)
 {% endhint %}

@@ -6,13 +6,13 @@ description: How hashcat works and how to make it work in parallel.
 
 ## What is hashcat?
 
-[_Hashcat_](https://hashcat.net/hashcat/) __is a command-line utility that finds unknown passwords from their known hashes.
+[_Hashcat_](https://hashcat.net/hashcat/) \_\_is a command-line utility that finds unknown passwords from their known hashes.
 
 {% hint style="info" %}
-[_Hashcat_](https://hashcat.net/hashcat/) __is a very powerful tool. It supports 320 hashing algorithms and 5 different attack types. We will use only the "phpass" algorithm and a simple brute-force attack.
+[_Hashcat_](https://hashcat.net/hashcat/) \_\_is a very powerful tool. It supports 320 hashing algorithms and 5 different attack types. We will use only the "phpass" algorithm and a simple brute-force attack.
 {% endhint %}
 
-First, we need to precisely define the "finding a password" problem. Let's assume we have a hash obtained from processing of an unknown password using the "phpass" algorithm. 
+First, we need to precisely define the "finding a password" problem. Let's assume we have a hash obtained from processing of an unknown password using the "phpass" algorithm.
 
 {% hint style="info" %}
 Phpass is used as a hashing method by e.g. WordPress and Drupal. Those are free/open-source web frameworks used to run PHP-based websites.
@@ -46,7 +46,7 @@ The parameters are:
 * `?a?a?a` - mask to use
 
 {% hint style="info" %}
-The complete hashcat arguments reference is available here: [https://hashcat.net/wiki/doku.php?id=hashcat](https://hashcat.net/wiki/doku.php?id=hashcat) 
+The complete hashcat arguments reference is available here: [https://hashcat.net/wiki/doku.php?id=hashcat](https://hashcat.net/wiki/doku.php?id=hashcat)
 {% endhint %}
 
 As a result of the above call, the `hashcat.potfile` will be created with the following content:
