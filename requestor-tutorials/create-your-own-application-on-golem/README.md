@@ -6,12 +6,6 @@ description: Your own thing on golem.
 
 ## Introduction
 
-{% hint style="info" %}
-Golem is open to anyone, decentralized infrastructure platform for your applications.
-
-The Golem platform and Golem SDK are carefully crafted to serve you.
-{% endhint %}
-
 This tutorial shows a typical experience of a developer who would like to create their own application for Golem. To show you how things work here, we created yacat - Golem port of [Hashcat](https://hashcat.net/hashcat/) - open source password cracking tool.
 
 {% hint style="info" %}
