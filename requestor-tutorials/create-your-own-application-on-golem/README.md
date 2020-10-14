@@ -17,7 +17,7 @@ This tutorial shows a typical experience of a developer who would like to create
 {% hint style="info" %}
 In case of any doubts or problems, you can always contact us on discord.
 
-[https://discord.com/channels/684703559954333727/756161015493951600](https://discord.com/channels/684703559954333727/756161015493951600)
+[https://discord.com/channels/684703559954333727/756161015493951600](https://chat.golem.network/)
 {% endhint %}
 
 In order to make the journey through this tutorial easier to follow, we divided it into three sections. If you are eager to get your hands dirty right away, feel free to jump directly to "Tutorial steps". Otherwise, read on:

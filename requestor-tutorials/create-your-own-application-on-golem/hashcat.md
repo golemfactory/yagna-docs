@@ -41,7 +41,7 @@ Now we can try to find the password, matching the given hash and mask, by callin
 The parameters are:
 
 * `a 3` - use a brute-force attack. There are 5 other types of attacks.
-* `m 400` - password is hashed with the phpass algorithm. There are 320 others alghoritms supported by Hashcat.
+* `m 400` - password is hashed with the phpass algorithm. There are 320 other alghoritms supported by Hashcat.
 * `in.hash` - name of a file containing the hashed password
 * `?a?a?a` - mask to use
 
@@ -61,7 +61,7 @@ where `pas` is the password which had been unknown to us and was just retrieved 
 Obviously, for longer passwords, the presented usage of hashcat could be problematic as it would require a lot more processing time \(e.g. days or even months\) to find a password with such a naive method.
 {% endhint %}
 
-To showcase how a similar problem can be resolved faster, we created the Golem version of Hashcat. It uses the computing power of many providers at the same time. Parallellized password recovery can be much quicker - instead of days or moths, this Golem version is likely to solve the problem in hours.
+To showcase how a similar problem can be resolved faster, we created the Golem version of Hashcat. It uses the computing power of many providers at the same time. Parallelized password recovery can be much quicker - instead of days or months, this Golem version is likely to solve the problem in hours.
 
 ## Doings things in parallel
 

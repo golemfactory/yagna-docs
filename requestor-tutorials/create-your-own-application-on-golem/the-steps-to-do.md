@@ -347,9 +347,9 @@ To tell the Golem platform, what our requirements against the providers are, we 
 The `package` object is passed to the `engine` object with several other options, such as:
 
 * `budget`defines maximal spendings for executing all the tasks in the whole run on Golem
-* `max_workers` defines maximal number of simultaneously running workers \(and that is, the maximum number of providers that the task fragments will be distributed to\).
+* `max_workers` defines the maximal number of simultaneously running workers \(and that is, the maximum number of providers that the task fragments will be distributed to\).
 * `timeout` defines the timeout. It is important for the timeout to be large enough to include the image download time plus the computation time.
-* `subnet_tag` specifies the providers subnet to be used. For example, you would not use mainnet network for tests.
+* `subnet_tag` specifies the providers subnet to be used. For example, you would not use the mainnet network for tests.
 
 ```python
 async with Engine(
@@ -429,7 +429,7 @@ As this command is using the `stdout` to display the keyspace size information, 
 
 As we can not use `ctx.run` directly to redirect stdout to `keyspace.txt`, we are preparing `keyspace.sh` file with the following content:`hashcat --keyspace -a 3 {mask} -m 400 > keyspace.txt`.
 
-Next we're going to send `keyspace.sh` to one of the providers running our image and have them execute a single command:
+Next, we're going to send `keyspace.sh` to one of the providers running our image and have them execute a single command:
 
 ```python
 ctx.run("/bin/sh","/golem/work/keyspace.sh")
@@ -551,6 +551,6 @@ And remember:
 {% hint style="info" %}
 In case of any doubts or problems, you can always contact us on discord.
 
-[https://discord.com/channels/684703559954333727/756161015493951600](https://discord.com/channels/684703559954333727/756161015493951600)
+[https://discord.com/channels/684703559954333727/756161015493951600](https://chat.golem.network)
 {% endhint %}
 

@@ -10,7 +10,7 @@ A Golem application consists of a certain number of execution units - e.g. VMs c
 
 Golem's execution units are theoretically capable of running code inside any environment that provides effective isolation of execution from the host. Currently Docker VMs and WASM are supported. The scope of this document is limited to the former.
 
-So far, said orchestration takes a form of one of three types of actions:
+So far, said orchestration takes the form of one of three types of actions:
 
 * sending input files to the execution unit
 * running commands on the execution unit
@@ -27,15 +27,15 @@ The application depicted in this article consists of two distinct components:
 * **Requestor** agent - splits the computation problem into several parts, and sends them to providers. After receiving all the results from the providers, the requestor combines them to form the final output that is passed to the user.
 * **Provider** VM image - executes the given part and returns results to the requestor.
 
-In case of a VM application, the Provider side is implemented as a docker image crafted for the desired purpose. It is the responsibility of the application's author to prepare a dedicated dockerfile that describes this custom image. Of course, it may happen that there already exists an image \(e.g. on Docker Hub\) that can be used directly - in such case, this step can be skipped.
+In the case of a VM application, the Provider side is implemented as a docker image crafted for the desired purpose. It is the responsibility of the application's author to prepare a dedicated dockerfile that describes this custom image. Of course, it may happen that there already exists an image \(e.g. on Docker Hub\) that can be used directly - in such case, this step can be skipped.
 
 ### Execution flow
 
 #### Requestor agent and market negotiation
 
-The application's execution starts on the Requestor's end, when the user runs the requestor agent.
+The application's execution starts on the Requestor's end when the user runs the requestor agent.
 
-After specifying and publishing a demand to the Golem's market, the requestor agent receives offers from providers that meet its needs - e.g. having sufficient amount of RAM.
+After specifying and publishing a demand to Golem's market, the requestor agent receives offers from providers that meet its needs - e.g. having a sufficient amount of RAM.
 
 #### Docker image
 
@@ -81,7 +81,7 @@ Next, you need to find a way how to divide the whole problem into fragments. Eac
 
 ![](../../.gitbook/assets/tutorial-02.jpg)
 
-In order to proceed further, you'll be required to design your app in such way that it's able to:
+In order to proceed further, you'll be required to design your app in such a way that it's able to:
 
 1. Translate the problem fragments into input and output files the processing of which is performed independently in each of the providers.
 2. Combine all the output files into the final solution of the problem at hand.
@@ -91,7 +91,7 @@ In order to proceed further, you'll be required to design your app in such way t
 When it comes to the implementation itself, and as has been already mentioned above, any VM-based application for Golem is made up of two components:
 
 1. a Docker image that will run as a container on providers.
-2. Requestor agent - a piece of Python / JavaScript / TypeScript code that will execute the problem-dividing logic, orchestrate the execution on providers and finally combine the output files to get the result for the whole problem.
+2. Requestor agent - a piece of Python / JavaScript / TypeScript code that will execute the problem-dividing logic, orchestrate the execution on providers, and finally combine the output files to get the result for the whole problem.
 
 {% hint style="success" %}
 Now you know what a Golem VM application is and how it works.
