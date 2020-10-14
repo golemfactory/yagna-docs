@@ -5,7 +5,7 @@ description: Introducing Golem Network
 # The Golem SDK documentation
 
 {% hint style="info" %}
-Looking for a quick start? [Dive into our requestor development primer!](tutorials/flash-tutorial-of-requestor-development.md)
+Looking for a quick start? [Dive into our requestor development primer!](requestor-tutorials/flash-tutorial-of-requestor-development.md)
 {% endhint %}
 
 {% hint style="warning" %}
@@ -18,7 +18,7 @@ Moreover, if you'd like to provide computing power to the Golem Network now, and
 ## What is Golem?
 
 {% hint style="info" %}
-Golem is a global, open source, decentralized supercomputer that anyone can use. It is made up of the combined computing power of the users' machines, from PCs to entire data centers.
+Golem is a global, open-source, decentralized supercomputer that anyone can use. It is made up of the combined computing power of the users' machines, from PCs to entire data centers.
 {% endhint %}
 
 Under the hood, Golem is a decentralized marketplace where IT resources such as computation hardware are rented out. The actors in this decentralized network can assume one of the two non-exclusive roles:
@@ -49,13 +49,15 @@ Ensuring that the development of products based on Golem is smooth and effortles
 
 **Plus, there are no licensing fees.**
 
+If you're interested, please have a look at:
+
 ### **Become a Golem provider**
 
 We will be enabling the providers to leverage New Golem soon.
 
 Those wishing to take this role, will be able to install a Golem Network provider package, share their hardware resources, and **have a passive income stream straight to their** [**ethereum**](https://ethereum.org/) **addresses**.
 
-Please note that New Golem is in its very first stag**es. At first, support will be quite limited, probably to Linux. In the future, we will be adding wider support.**
+Please note that New Golem is in its very first stages. **At first, support will be quite limited, probably to Linux. In the future, we will be adding wider support.**
 
 While you wait, you could start earning passive income now via [our Clay Golem Beta implementation](https://golem.network/products/clay-beta/) \(Legacy Golem\), which is on mainnet.
 
