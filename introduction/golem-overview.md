@@ -10,7 +10,7 @@ description: Solution architecture and details.
 
 Golem is a network of nodes that implement the Golem network protocol. We provide the default implementation of a such a node in the form of the Golem daemon, called [yagna](https://github.com/golemfactory/yagna).
 
-The nodes in the network run can act as providers or requestors. Both the requestor and the provider share the same implementation of the Golem daemon.
+The nodes in the network can act as providers or requestors. Both the requestor and the provider share the same implementation of the Golem daemon.
 
 The diagram above shows the architecture of the network. For the sake of simplicity, it shows just one requestor and one provider.
 
@@ -30,7 +30,7 @@ More information on a requestor can be found here:
 
 The provider logic is implemented as a **provider agent** which is a piece of code that runs on the provider's machine and communicates via REST with the Golem daemon.
 
-The provider can make its resources available to the requestors with the help of many types of **execution units** \(exe-unit for short\). Currently Golem supports:
+The provider can make its resources available to the requestors with the help of many types of **execution units** \(exe-unit for short\). Currently, Golem supports:
 
 * VM exe unit that runs Docker images and allows for an interaction with the running container,
 * and WASM exe unit that runs WASM code

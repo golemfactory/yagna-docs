@@ -530,6 +530,8 @@ The yacat example is written in Python using Golem's Python High-Level API \([YA
 
 The complete reference of the Python High-Level API \(yapapi\) is available here:
 
+{% page-ref page="../../yapapi/yapapi.md" %}
+
 You can also have a look at our JavaScript/TypeScript API if you're interested in developing your requestor agent in JS/TS:
 
 [https://github.com/golemfactory/yajsapi](https://github.com/golemfactory/yajsapi)
@@ -537,7 +539,7 @@ You can also have a look at our JavaScript/TypeScript API if you're interested i
 ## Closing words
 
 {% hint style="success" %}
-Golem is waiting to serve your applications. Our decentralized - and open to everytone - platform is here \(now in alpha\).
+Golem is waiting to serve your applications. Our decentralized - and open to everyone - platform is here \(now in alpha\).
 
 We did our best to make developing Golem applications super easy.
 
