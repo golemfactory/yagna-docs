@@ -10,7 +10,7 @@ Running from sources allows you to have a closer look at its internals and to tr
 
 To run `yagna` from sources, you'll need to have `rust` development environment installed - it will be needed to run the `yagna` daemon itself. If you don't have it, please refer to the docs to install it: [https://www.rust-lang.org/learn/get-started](https://www.rust-lang.org/learn/get-started)
 
-Afterward you'll need to launch the `yagna` service.
+Afterwards, you'll need to launch the `yagna` service.
 
 First, clone the `yagna` repository from: [https://github.com/golemfactory/yagna/](https://github.com/golemfactory/yagna/releases/tag/vm-poc)
 
