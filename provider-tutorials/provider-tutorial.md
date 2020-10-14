@@ -15,14 +15,18 @@ This is our very first Alpha Provider Sneak Peek reveal. Therefore, temporarily,
 * Ubuntu 18.04 and 20.04
 
 {% hint style="info" %}
-For this release we have prepared a dedicated and controlled subnetwork using Ethereums Rinkeby Testnet for payments. **This means that all the tokens for your computing power will not have any value**. If you would like to earn real GNT's head over to our [Clay Golem Beta implementation](https://golem.network/download/clay-beta/). This release also features [the basic CLI](https://golem-network.gitbook.io/golem-sdk-develop/reference/provider-cli) with which you may interact with your node.
+For this release we have prepared a dedicated and controlled subnetwork using Ethereum Rinkeby Testnet for payments. **This means that the tokens received for the rental of your computing power will not hold any value outside of the network**. This release also features [the basic CLI](https://golem-network.gitbook.io/golem-sdk-develop/reference/provider-cli) with which you may interact with your node.
+{% endhint %}
+
+{% hint style="info" %}
+If you would like to earn real GNTs head over to our [Clay Golem Beta implementation](https://golem.network/download/clay-beta/).
 {% endhint %}
 
 ## Installation
 
 #### Purge directories
 
-If you have previously used Golem Alpha.1 on your machine run the command below that will purge its working directories since our newest version is incompatible with the old database structure:
+If you have previously used **Golem Alpha one** on your machine run the command below which will purge its working directories since our newest version is incompatible with the old database structure:
 
 ```text
 rm -rf $HOME/.local/share/yagna
@@ -42,14 +46,14 @@ You might be asked to modify your PATH afterwards: `PATH=$HOME/.local/bin:$PATH`
 
 After installing all required components you will be asked to set up your node
 
-`node name:` - Type the name of your new node and press enter
+`node name:` - Type in the name of your new node and press Enter
 
-`subnet: community` - **It is important that you use "community" subnet for this release!**
+`subnet: community` - **It is important that you use "community" subnet for this release as only there we will be sending tasks for computation**
 
-`price NGNT per hour:` - Type the value with witch you wish to start earning as a provider. You can use default price by leaving this field empty. **This command shows up only with first run of GolemSP**
+`price NGNT per hour:` - Type in the value of renting your computer power as a provider. You can use default price \(5 NGNT per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
 
 {% hint style="success" %}
-And that is it! You will see that default preset was created based on your initial node setup. You will be able to change this settings later on with CLI
+Congrats, your initial setup has been completed! You will see that default preset was created based on your initial node setup. If you wish, you can change this settings later on with CLI.
 {% endhint %}
 
 ## Running the provider
@@ -66,13 +70,13 @@ Your provider node is up and running!
 
 ### Checking node status
 
-Now the question is if your node is actually computing tasks from the network. To check its status open a new terminal window and type:
+To check your node's status and see if it is actually computing tasks from the network, open a new terminal window and type:
 
 ```text
 golemsp status
 ```
 
-As an output you will get current information about your node state as seen below: 
+As an output you will get the information about your node's current state as shown below: 
 
 ```text
 ┌─────────────────────────────┬───────────────────────────────────────────────────────────┬───────────────────────────┐
@@ -88,16 +92,14 @@ As an output you will get current information about your node state as seen belo
 ```
 
 {% hint style="info" %}
-If in the \(far to the right\) **Tasks** section of the table you will see either tasks in progress or processed then you have successfully computed a task! If not, give it some time as there is still not many tasks in the test network - and then run the command again. 
+If in the \(far to the right\) **Tasks** column you see either tasks in progress or processed then you have successfully computed a task! If not, give it some time as there is still limited number of tasks in the test network - and then run the command again. 
 {% endhint %}
 
 #### Known issues
 
 * Type `golemsp status` in your terminal window and check the status of your VM
 
-{% hint style="info" %}
-When there is other status than `valid`
-{% endhint %}
+**When there is other status than `valid`** 
 
 a\) If: `the user has no access to /dev/kvm` run 
 
@@ -105,7 +107,7 @@ a\) If: `the user has no access to /dev/kvm` run
 curl -o setup-kvm.sh https://join.golem.network/setup-kvm.sh && chmod +x ./setup-kvm.sh && ./setup-kvm.sh
 ```
 
-and afterward log out and in into your OS and run `golemsp run` again. 
+and afterward log out, next log in into your OS and rerun `golemsp run`. 
 
 b\) If: `running inside Docker without access to /dev/kvm` run
 
@@ -117,7 +119,7 @@ c\) If: `unsupported virtualization type: XEN` We do not support **xen hyperviso
 
 * In any other case with the virtualisation we recommend:
 
-`sudo apt install cpu-checker && sudo kvm-ok` command and follow the steps from the terminal interface. 
+`sudo apt install cpu-checker && sudo kvm-ok` command and follow the steps as given in the terminal interface. 
 
 ## Provider CLI
 
