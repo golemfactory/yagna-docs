@@ -6,7 +6,7 @@ description: >-
 
 # Running the yagna daemon from sources
 
-Running from sources allows you to have a closer look at its internals and to try all the latest features while they're being developed. It's important to note that, you _really_ know what you're doing, you'll be better off using our bundled binaries.
+Running from sources allows you to have a closer look at its internals and to try all the latest features while they're being developed. It's important to note that, unless you _really_ know what you're doing, you'll be better off using our bundled binaries.
 
 To run `yagna` from sources, you'll need to have `rust` development environment installed - it will be needed to run the `yagna` daemon itself. If you don't have it, please refer to the docs to install it: [https://www.rust-lang.org/learn/get-started](https://www.rust-lang.org/learn/get-started)
 
