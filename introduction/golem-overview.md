@@ -6,7 +6,7 @@ description: Solution architecture and details.
 
 ## Golem architecture
 
-![](../.gitbook/assets/tutorial-06.jpg)
+![](../.gitbook/assets/tutorial-06%20%281%29.jpg)
 
 Golem is a network of nodes that implement the Golem network protocol. We provide the default implementation of a such a node in the form of the Golem daemon, called [yagna](https://github.com/golemfactory/yagna).
 
