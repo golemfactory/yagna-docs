@@ -36,7 +36,5 @@ The typical resource usage scenario is as follows: after receiving the input dat
 
 ![](../.gitbook/assets/tnm-docs-infographics-02.jpg)
 
-## How I can become a Golem provider?
 
-Becoming a Golem network provider is open to anyone. The installation and configuration are simple and straightforward. The details are described in the:
 
