@@ -12,7 +12,7 @@ description: >-
 
 This is our very first Alpha Provider Sneak Peek reveal. Therefore, temporarily, Golem only supports:
 
-* Ubuntu 18.04 and 20.04
+* Ubuntu 18.04 and 20.04 \(For the time being only Intel processors are supported. We are in the process of fixing issues with AMD\).
 
 {% hint style="info" %}
 For this release we have prepared a dedicated and controlled subnetwork using Ethereum Rinkeby Testnet for payments. **This means that the tokens received for the rental of your computing power will not hold any value outside of the network**. This release also features [the basic CLI](https://golem-network.gitbook.io/golem-sdk-develop/reference/provider-cli) with which you may interact with your node.
@@ -30,6 +30,7 @@ If you have previously used **Golem Alpha one** on your machine run the command 
 
 ```text
 rm -rf $HOME/.local/share/yagna
+rm -rf $HOME/.local/share/ya-provider
 ```
 
 #### Run the installation command
@@ -112,7 +113,7 @@ and afterward log out, next log in into your OS and rerun `golemsp run`.
 b\) If: `running inside Docker without access to /dev/kvm` run
 
 ```text
-docker run --privliged
+docker run --privileged
 ```
 
 c\) If: `unsupported virtualization type: XEN` We do not support **xen hypervisor**
