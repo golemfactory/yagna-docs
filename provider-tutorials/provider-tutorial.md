@@ -12,7 +12,7 @@ description: >-
 
 This is our very first Alpha Provider Sneak Peek reveal. Therefore, temporarily, Golem only supports:
 
-* Ubuntu 18.04 and 20.04 \(For the time being only Intel processors are supported. We are in the process of fixing issues with AMD\).
+* Ubuntu 18.04 and 20.04 \(For the time being all Linux systems with Intel processors should work properly. We are in the process of fixing issues with AMD\).
 
 {% hint style="info" %}
 For this release we have prepared a dedicated and controlled subnetwork using Ethereum Rinkeby Testnet for payments. **This means that the tokens received for the rental of your computing power will not hold any value outside of the network**. This release also features [the basic CLI](https://golem-network.gitbook.io/golem-sdk-develop/reference/provider-cli) with which you may interact with your node.
