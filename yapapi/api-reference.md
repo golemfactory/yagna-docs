@@ -742,7 +742,7 @@ Exposes local file as GFTP url.
  | async close(*, urls: List[str]) -> CommandStatus
 ```
 
-Stops exposing GFTP urls created by [publish\(files=\[..\]\)](https://github.com/golemfactory/yagna-docs/tree/8e924553482c28b8ea8111493420a55660544f2e/yapapi/%60publish%60/README.md).
+Stops exposing GFTP urls created by `publish\(files=\[..\]\)`
 
 #### receive
 
