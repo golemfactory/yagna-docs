@@ -16,7 +16,7 @@ This is our very first Alpha Provider Sneak Peek reveal. Therefore, temporarily,
 
 {% hint style="warning" %}
 * For the time being, Linux machines with Intel processors should work properly. We are in the process of addressing issues with AMD CPUs.
-* To run the Golem Sneak Peek you'll need a physical machine as you may encounter issues when running it on a virtual machine.
+* To run Golem Sneak Peek you'll need a physical machine as you may encounter issues when running it on a virtual machine.
 {% endhint %}
 
 {% hint style="info" %}
