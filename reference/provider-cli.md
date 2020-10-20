@@ -5,12 +5,12 @@ description: Golem Sneak Peek Provider Command Line Interface
 # Provider CLI reference
 
 {% hint style="info" %}
-Keep in mind that that is really basic release, and future updates will give you much more options to play with.
+Keep in mind that that is a really basic release, and future updates will give you much more options to play with.
 {% endhint %}
 
 ## CLI commands
 
-Run `golemsp help` wo arguments to see top-level usage information:
+Run `golemsp help` without arguments to see top-level usage information:
 
 ```text
 golemsp 0.1.0-49c52869
@@ -36,7 +36,7 @@ SUBCOMMANDS:
 
 ### Run
 
-`golemsp run` - will start the Golem Sneak Peek provider
+`golemsp run` - Start the Golem Sneak Peek provider.
 
 ### Settings
 
@@ -61,7 +61,7 @@ SUBCOMMANDS:
 
 #### Settings set
 
-`golemsp settings set` - Change settings
+`golemsp settings set` - Change settings.
 
 In order to change a particular setting \(for eg. price settings\) type:
 
@@ -73,7 +73,7 @@ You can also combine multiple settings in one command as follows:
 
 #### Settings show
 
-`golemsp settings show` - show current settings
+`golemsp settings show` - Show current settings.
 
 example
 
@@ -94,7 +94,9 @@ Pricing:
 
 ### Status
 
-`golemsp status` - Prints out status of your node. For eg.
+`golemsp status` - Print out status of your node.
+
+Example output:
 
 ```text
 ┌─────────────────────────────┬───────────────────────────────────────────────────────────┬───────────────────────────┐
@@ -108,11 +110,11 @@ Pricing:
 └─────────────────────────────┴───────────────────────────────────────────────────────────┴───────────────────────────┘
 ```
 
-In 3 columns you can check basic information regarding the status of your node
+In the three columns, you can check the basic information regarding the status of your node
 
 #### Status
 
-* Check if your node is running
+* Whether your node is running
 * Name of your node
 * Subnet in which your node is currently running
 * VM status
