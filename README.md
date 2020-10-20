@@ -10,13 +10,6 @@ Looking for a quick start? [Dive into our requestor development primer!](request
 Or, have a look at "[Becoming a provider](provider-tutorials/provider-tutorial.md)" for a sneak peek into the just-released provider part!
 {% endhint %}
 
-{% hint style="warning" %}
-The current Alpha release of The Next Milestone, the first New Golem iteration, is aimed at requestors.  
-Providers, don't despair!  
-We'll be adding the ability to become a provider in one of the upcoming reveals.  
-Moreover, if you'd like to provide computing power to the Golem Network now, and get rewarded in GNT, [our Clay Golem Beta implementation](https://golem.network/products/clay-beta/) allows this.
-{% endhint %}
-
 ## What is Golem?
 
 {% hint style="info" %}
