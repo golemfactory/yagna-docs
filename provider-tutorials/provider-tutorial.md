@@ -15,23 +15,23 @@ This is our very first Alpha Provider Sneak Peek reveal. Therefore, temporarily,
 * Ubuntu 18.04 and 20.04 
 
 {% hint style="warning" %}
-* For the time being all Linux systems with Intel processors should work properly. We are in the process of fixing issues with AMD
-* To run the Golem Sneak Peek you should own physical machine as you may encounter issues when running it on virtual machine
+* For the time being, Linux machines with Intel processors should work properly. We are in the process of addressing issues with AMD CPUs.
+* To run the Golem Sneak Peek you'll need a physical machine as you may encounter issues when running it on a virtual machine.
 {% endhint %}
 
 {% hint style="info" %}
-For this release we have prepared a dedicated and controlled subnetwork using Ethereum Rinkeby Testnet for payments. **This means that the tokens received for the rental of your computing power will not hold any value outside of the network**. This release also features [the basic CLI](https://golem-network.gitbook.io/golem-sdk-develop/reference/provider-cli) with which you may interact with your node.
+For this release we have prepared a dedicated and controlled sub-network using Ethereum Rinkeby Testnet for payments. **This means that the tokens received for the rental of your computing power will not hold any value outside of the network**. This release also features [the basic CLI](https://golem-network.gitbook.io/golem-sdk-develop/reference/provider-cli) with which you may use to interact with your node.
 {% endhint %}
 
 {% hint style="info" %}
-If you would like to earn real GNTs head over to our [Clay Golem Beta implementation](https://golem.network/download/clay-beta/).
+If you would like to earn real GNTs now, head over to our [Clay Golem Beta implementation](https://golem.network/download/clay-beta/).
 {% endhint %}
 
 ## Installation
 
 #### Purge directories
 
-If you have previously used **Golem Alpha one** on your machine run the command below which will purge its working directories since our newest version is incompatible with the old database structure:
+If you have previously launched **Golem Alpha one** on your machine run the command below which will purge its working directories since our newest version is incompatible with the old database structure:
 
 ```text
 rm -rf $HOME/.local/share/yagna
@@ -82,7 +82,7 @@ To check your node's status and see if it is actually computing tasks from the n
 golemsp status
 ```
 
-As an output you will get the information about your node's current state as shown below: 
+As an output you will get the information about your node's current state as shown below:
 
 ```text
 ┌─────────────────────────────┬───────────────────────────────────────────────────────────┬───────────────────────────┐
@@ -94,26 +94,25 @@ As an output you will get the information about your node's current state as sho
 │  Subnet     community       │  unconfirmed  0 NGNT                                      │                           │
 |  VM         valid           |                                                           |                           | 
 └─────────────────────────────┴───────────────────────────────────────────────────────────┴───────────────────────────┘
-
 ```
 
 {% hint style="info" %}
-If in the \(far to the right\) **Tasks** column you see either tasks in progress or processed then you have successfully computed a task! If not, give it some time as there is still limited number of tasks in the test network - and then run the command again. 
+If in the \(far to the right\) **Tasks** column you see either tasks in progress or processed then you have successfully computed a task! If not, give it some time as there is still limited number of tasks in the test network - and then run the command again.
 {% endhint %}
 
 #### Known issues
 
 * Type `golemsp status` in your terminal window and check the status of your VM
 
-**When there is other status than `valid`** 
+**When there is other status than `valid`**
 
-a\) If: `the user has no access to /dev/kvm` run 
+a\) If: `the user has no access to /dev/kvm` run
 
 ```text
 curl -o setup-kvm.sh https://join.golem.network/setup-kvm.sh && chmod +x ./setup-kvm.sh && ./setup-kvm.sh
 ```
 
-and afterward log out, next log in into your OS and rerun `golemsp run`
+Afterwards, log out and log in again into your OS and then, rerun `golemsp run`
 
 b\) If: `running inside Docker without access to /dev/kvm` run
 
@@ -125,11 +124,11 @@ c\) If: `unsupported virtualization type: XEN` We do not support **xen hyperviso
 
 * In any other case with the virtualisation we recommend:
 
-`sudo apt install cpu-checker && sudo kvm-ok` command and follow the steps as given in the terminal interface. 
+`sudo apt install cpu-checker && sudo kvm-ok` command and follow the steps as given in the terminal interface.
 
 ## Provider CLI
 
-To check additional commands available in CLI check the reference page:
+To check out additional commands available in the CLI, have a look at the reference page:
 
 {% page-ref page="../reference/provider-cli.md" %}
 

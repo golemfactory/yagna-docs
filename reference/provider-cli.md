@@ -65,7 +65,7 @@ SUBCOMMANDS:
 
 In order to change a particular setting \(for eg. price settings\) type:
 
-`golemsp settings set --cpu-per-hour 3` 
+`golemsp settings set --cpu-per-hour 3`
 
 You can also combine multiple settings in one command as follows:
 
@@ -80,17 +80,16 @@ example
 ```text
 node name: "node_name"
 shared resources:
-	cores:	7
-	memory:	10.9375 GiB
-	disk:	250.2247528076172 GiB
+    cores:    7
+    memory:    10.9375 GiB
+    disk:    250.2247528076172 GiB
 
 
 Pricing:
 
-	    0 NGNT for start
-	    1 NGNT per hour
-	    5 NGNT per cpu hour
-
+        0 NGNT for start
+        1 NGNT per hour
+        5 NGNT per cpu hour
 ```
 
 ### Status
@@ -127,7 +126,7 @@ In 3 columns you can check basic information regarding the status of your node
 
 #### Tasks
 
-*  Number of tasks that you were computing in last hour
+* Number of tasks that you were computing in last hour
 * Number of tasks that were in progress during the last hour
 * Total task that you were trying to compute - including those that were not computed
 
