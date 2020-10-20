@@ -5,7 +5,9 @@ description: Introducing Golem Network
 # The Golem SDK documentation
 
 {% hint style="info" %}
-Looking for a quick start? [Dive into our requestor development primer!](requestor-tutorials/flash-tutorial-of-requestor-development.md)
+Looking for a quick start? [Dive into our requestor development primer!](requestor-tutorials/flash-tutorial-of-requestor-development.md)   
+  
+Or, have a look at "[Becoming a provider](provider-tutorials/provider-tutorial.md)" for a sneak peek into the just-released provider part!
 {% endhint %}
 
 {% hint style="warning" %}
