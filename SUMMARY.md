@@ -18,11 +18,19 @@
   * [Hashcat](requestor-tutorials/create-your-own-application-on-golem/hashcat.md)
   * [Tutorial steps](requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do.md)
 
+## Provider tutorials
+
+* [Becoming a provider](provider-tutorials/provider-tutorial.md)
+
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
 * [Introduction to Golem's high-level Python API](yapapi/yapapi.md)
 * [Low-Level](yapapi/low-level-api.md)
 * [API Reference](yapapi/api-reference.md)
+
+## Reference
+
+* [Provider CLI reference](reference/provider-cli.md)
 
 ## See also
 
