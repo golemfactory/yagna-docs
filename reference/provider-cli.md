@@ -94,7 +94,7 @@ Pricing:
 
 ### Status
 
-`golemsp status` - Print out status of your node.
+`golemsp status` - Print out the status of your node.
 
 Example output:
 
