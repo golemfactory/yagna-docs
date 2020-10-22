@@ -486,10 +486,10 @@ python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --subnet-tag devn
 ```
 
 {% hint style="danger" %}
-Please mind that on Windows, you need to:
+Please note that on Windows, you need to:
 
 * use `python` instead of `python3`
-* do not use ' in command
+* not use the quote character in the command
 
 So the windows version is:
 

@@ -52,6 +52,8 @@ To get set-up as a provider on the community subnet, follow our Provider tutoria
 
 If you would like to earn real GNTs now, head over to our [Clay Golem Beta implementation](https://golem.network/products/clay-beta/) \(Legacy Golem\), which uses Ethereum mainnet.
 
+{% page-ref page="provider-tutorials/provider-tutorial.md" %}
+
 ## Golem's mission - free, open-source, censorship-resistant, and democratized access to computing power for all:
 
 {% hint style="info" %}
