@@ -351,6 +351,10 @@ The `package` object is passed to the `engine` object with several other options
 * `timeout` defines the timeout. It is important for the timeout to be large enough to include the image download time plus the computation time.
 * `subnet_tag` specifies the providers subnet to be used. For example, you would not use the mainnet network for tests.
 
+{% hint style="danger" %}
+Due to current golem market implementation, please use `timeout` value between 8 and 30 minutes. 
+{% endhint %}
+
 ```python
 async with Engine(
     package=package,
