@@ -93,16 +93,34 @@ RUN apt clean
 
 WORKDIR /golem/work
 
-VOLUME /golem/work /golem/output /golem/resource
+VOLUME /golem/work
 ```
 
-As Golem does not need any specific elements in the Dockerfile,`yacat.Dockerfile`is just a standard Dockerfile. For the requestor agent code, which we are going to discuss in the next chapter, we need to know the volume name. This is the last line of the above Dockerfile:
+As Golem does not need any specific elements in the Dockerfile,`yacat.Dockerfile`is just a standard Dockerfile. 
+
+### VOLUME: the input/output
+
+The one thing we need to remember while preparing the Dockerfile is to define a place \(or places\) in the container file system that will be used for the file transfer. We are going to use input \(from requestor to the provider\) and output \(from provider to the requestor\) file transfers here.
+
+The volume is defined in the last line of the above Dockerfile:
 
 ```text
-VOLUME /golem/work /golem/output /golem/resource
+VOLUME /golem/work
 ```
 
-This makes `/golem/work` a location we will use for our input / output file transfer. We are also defining other volumes for possible future usage.
+This makes `/golem/work` a location we will use for our input/output file transfer. For the requestor agent code, which we are going to discuss in the next chapter, we need to know the volume \(or volumes\) name\(s\) and use it as a directory for the file transfers.
+
+![](../../.gitbook/assets/tnm-docs-infographics-08.jpg)
+
+{% hint style="info" %}
+On the provider side, all the content of the volume directories are stored in the provider's os file system. All other container directories content is kept in RAM.
+{% endhint %}
+
+{% hint style="danger" %}
+If your provider side code creates large temporary files, you should store them in the directory defined as VOLUME. Otherwise, the large files will be stored in RAM. RAM usually has a capacity limit much lower than disk space.
+{% endhint %}
+
+### Build process
 
 Now we may proceed with a regular Docker build, using `yacat.Dockerfile`:
 
