@@ -155,7 +155,7 @@ The details of docker image conversion are described here:
 Let's look at the core of our hashcat example - the requestor agent. Please check the `yacat.py` file below.
 
 {% hint style="info" %}
-The critical fragments of `yacat.py` will be described in the following sections of the tutorial so now, you can just do a quick scan over the wall of code below.
+The critical fragments of `yacat.py` will be described in the following sections of the tutorial so now, you can just do a quick scan over the big code block below.
 {% endhint %}
 
 ```python
