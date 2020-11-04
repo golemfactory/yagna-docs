@@ -36,5 +36,3 @@ The typical resource usage scenario is as follows: after receiving the input dat
 
 ![](../.gitbook/assets/tnm-docs-infographics-02.jpg)
 
-
-
