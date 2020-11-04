@@ -1,7 +1,6 @@
 ---
 description: >-
-  If you have any feedback, questions or you need help with the new Golem. Or
-  maybe have trouble following the tutorials here, feel free to reach out to us!
+  If you have any feedback, questions or you need help with the new Golem or have trouble following the tutorials here, feel free to reach out to us!
   We love to hear from you!
 ---
 
