@@ -32,6 +32,10 @@
 
 * [Provider CLI reference](reference/provider-cli.md)
 
+## troubleshooting
+
+* [Common issues](troubleshooting/common-issues.md)
+
 ## See also
 
 * [Running the yagna daemon from sources](see-also/running-yagna-from-sources.md)
