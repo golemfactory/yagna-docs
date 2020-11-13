@@ -17,6 +17,7 @@
   * [Golem application - the basics](requestor-tutorials/create-your-own-application-on-golem/golem-application-how-to.md)
   * [Hashcat](requestor-tutorials/create-your-own-application-on-golem/hashcat.md)
   * [Tutorial steps](requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do.md)
+* [SGX secure enclave application development](requestor-tutorials/sgx-secure-enclave-application-development.md)
 
 ## Provider tutorials
 
