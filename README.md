@@ -20,7 +20,7 @@ To facilitate that exchange, Golem implements a decentralized marketplace where 
 
 Has a need to use IT resources such as computation hardware. Those resources are purchased in the decentralized market. The actual usage of the resources is backed by Golem's decentralized infrastructure.
 
-* **Provider**
+* **Provider** 
 
 Has free IT resources that can be shared with other actors in the network. Those resources are sold in the decentralized market.
 
