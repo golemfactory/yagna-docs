@@ -259,7 +259,7 @@ Install the dependencies:
 
 ```text
 pip3 install -U pip
-pip3 install certifi yapapi
+pip3 install --extra-index-url https://test.pypi.org/simple/ yapapi==0.4.0a0 certifi
 ```
 
 ### Get the requestor agent's code
@@ -274,7 +274,7 @@ and make sure you're working on the version corresponding with the latest releas
 
 ```text
 cd yapapi
-git checkout b0.3
+git checkout b0.4
 ```
 
 ### Set the yagna app key
@@ -297,7 +297,7 @@ The example we're showcasing here resides in the `examples/blender` directory wi
 
 ```bash
 cd examples/blender
-python3 blender.py --subnet-tag devnet-alpha.2
+python3 blender.py
 ```
 
 Once you launch the example, you should see some messages reflecting the progress of your task's execution - agreement confirmations, task dispatches and finally task completions.
