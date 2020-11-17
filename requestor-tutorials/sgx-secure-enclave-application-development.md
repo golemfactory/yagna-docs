@@ -1,15 +1,15 @@
 # SGX secure enclave application development
 
-Game of roulette executed in an Intel \(R\) SGX secure enclave where no player is required to trust the game host. Each game interaction is cryptographically verified with enclave's credentials to ensure that the result has been computed in a trusted execution environment.
+## Introduction
 
-Jump [here](https://github.com/golemfactory/ya-as-sgx-examples/blob/mf/roulette/roulette-client/README.md#overview) for a functional overview
+We use the Game of roulette application as golem based SGX development example. The game is executed in an Intel \(R\) SGX secure enclave where no player is required to trust the game host. Each game interaction is cryptographically verified with enclave's credentials to ensure that the result has been computed in a trusted execution environment.
 
-### Prerequisites
+## Prerequisites
 
 * [`node`](https://nodejs.org/en/download/) v12 \(LTS\) or newer
 * Firefox / Chrome web browser with a [MetaMask](https://metamask.io/download.html) plugin installed
 
-### Building
+## Building
 
 * Clone [https://github.com/golemfactory/ya-as-sgx-examples](https://github.com/golemfactory/ya-as-sgx-examples)
 
@@ -23,51 +23,60 @@ Jump [here](https://github.com/golemfactory/ya-as-sgx-examples/blob/mf/roulette/
 
 `npm run build` or `yarn build`
 
-### Running
+## Running
 
-1. Run `yagna` from [this handbook chapter](https://handbook.golem.network/requestor-tutorials/flash-tutorial-of-requestor-development).
+* Run `yagna` as described in the
 
-   Note: you can skip the `"Running the requestor and your first task on the New Golem Network"` section.
+{% page-ref page="flash-tutorial-of-requestor-development.md" %}
 
-2. Type in terminal:
-   * `export YAGNA_APPKEY=<your-application-key>`
+{% hint style="success" %}
+So now, we're going to assume that:
 
-     or on Windows:
+* The `yagna` deamon is running in the background. 
+* The `YAGNA_APPKEY` environment variable is set to the value of the generated app key.
+{% endhint %}
 
-     `set YAGNA_APPKEY=<your-application-key>`
+Now you need to setup `SUBNET` system variable to point to the `devnet.alpha.3`
 
-   * `export SUBNET=devnet.alpha.3`
+{% tabs %}
+{% tab title="Ubuntu / mac OS X" %}
+```text
+export SUBNET=devnet.alpha.3
+```
+{% endtab %}
 
-     or on Windows:
+{% tab title="Windows" %}
+```text
+set SUBNET=devnet.alpha.3
+```
+{% endtab %}
+{% endtabs %}
 
-     `set YAGNA_APPKEY=<your-application-key>`
+Now open your browser and visit [http://localhost:8000](http://localhost:8000/).
 
-   * `npm run roulette` or `yarn roulette`
-3. Visit [http://localhost:8000](http://localhost:8000/) in your browser.
-
-### Overview
+## Overview
 
 This codebase consists of 3 main modules:
 
-* HTTP & JSON API server
-  * exposes JSON API endpoints where users can request the game's status, place bets and spin the wheel
+* **HTTP & JSON API server**
+  * exposes JSON API endpoints where users can request the game's status, place bets, and spin the wheel
   * serves static web UI assets
   * forwards end-user actions to the yagna requestor
-* [`yagna`](https://handbook.golem.network/introduction/golem-overview#golem-architecture) requestor
+* \*\*\*\*[**`yagna`**](https://handbook.golem.network/introduction/golem-overview#golem-architecture) **requestor**
   * spawns game servers in SGX enclaves on providers' machines in Golem network
   * mediates communication between the game server and the JSON API endpoint
-* Web UI
+* **Web UI**
   * provides a convenient way of interacting with the JSON API
   * signs client requests with an Ethereum account, unlocked at the time in the MetaMask plugin
   * cryptographically verifies game server responses and presents them to the user
 
 These modules are executed asynchronously in a single-threaded node application.
 
-#### Server
+## **HTTP & JSON API server**
 
 Implements communication channels that allow to synchronously await for responses to game client's actions.
 
-#### Requestor
+## Requestor
 
 In order of execution, the requestor:
 
@@ -83,7 +92,7 @@ The requestor will now await clients' actions to execute in their name. Each act
 
 When a game server handles user's requests, the execution output is recorded, signed and sent back to that user. Enclave's key is known and verified by users beforehand.
 
-#### Web UI
+## Web UI
 
 When loaded by the browser, the JavaScript code attempts to:
 
@@ -93,25 +102,25 @@ When loaded by the browser, the JavaScript code attempts to:
 
 The ethereum account and game statuses are displayed at the top of the page.
 
-After the initialization completes successfully, the user is expected to interact with the form below the status boxes.
+After the initialization completes successfully, the user is expected to interact with the form below the status boxes:
 
-1. Bet
+* **Bet**
 
-   Placing a bet requires filling appropriate fields and the user will be notified when he enters an invalid value.
+Placing a bet requires filling appropriate fields and the user will be notified when he enters an invalid value.
 
-   Clicking the submit button will prompt the user to sign her request via the MetaMask plugin.
+* **Spin**
 
-2. Spin
+The UI allows users to spin the roulette wheel only after placing a bet but it's not enforced by the JSON API.
 
-   The UI allows users to spin the roulette wheel only after placing a bet but it's not enforced by the JSON API.
-
-   Clicking the submit button will prompt the user to sign her request via the MetaMask plugin.
+{% hint style="info" %}
+Clicking the submit button will prompt the user to sign her request via the MetaMask plugin.
+{% endhint %}
 
 If any of the users within a game instance request to spin, the game server will draw a number from the roulette wheel and resolve all placed bets. A result message \(winning or losing\) will be presented to the user.
 
 Each of the game server's responses is signed within the enclave and verified by the code running in the browser.
 
-### Limitations
+## Limitations
 
 Game sessions are limited to 25 minutes.
 

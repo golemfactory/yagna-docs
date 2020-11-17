@@ -26,7 +26,7 @@ So now, we're going to assume that:
 * The payment is initialized with `yagna payment init -r`  \(please keep in mind that it needs initialization after each launch of `yagna service run`\).
 * The virtual python environment for our tutorial is activated.
 * Dependencies are installed and the `yapapi` repository \(containing the tutorial examples\) is cloned.
-* In your current directory there are two files that will be used and discussed in this example:
+* In your current directory \(`examples/yacat`\) there are two files that will be used and discussed in this example:
   * `yacat.Dockerfile` - the Docker file used for the definition of the provider's container images
   * `yacat.py` - requestor agent's entry point which deals with orchestration of the container runs.
 {% endhint %}
