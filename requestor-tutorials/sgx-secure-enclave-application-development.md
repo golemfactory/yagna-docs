@@ -17,7 +17,7 @@ We use the Game of roulette application as golem based SGX development example. 
 git clone https://github.com/golemfactory/ya-as-sgx-examples
 ```
 
-* Go to the `ya-as-sgx-examples/roulette` directory and Install project dependencies with npm or yarn:
+* Go to the `ya-as-sgx-examples/roulette/client` directory and Install project dependencies with npm or yarn:
 
 {% tabs %}
 {% tab title="npm" %}
