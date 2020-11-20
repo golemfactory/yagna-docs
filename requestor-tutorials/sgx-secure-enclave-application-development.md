@@ -11,13 +11,13 @@ We use the Game of roulette application as golem based SGX development example. 
 
 ## Building
 
-* Clone [https://github.com/golemfactory/ya-as-sgx-examples](https://github.com/golemfactory/ya-as-sgx-examples)
+* Clone [https://github.com/golemfact](https://github.com/golemfactory/ya-as-sgx-examples)
 
 ```text
 git clone https://github.com/golemfactory/ya-as-sgx-examples
 ```
 
-* Install project dependencies with npm or yarn:
+* Go to the `ya-as-sgx-examples/roulette` directory and Install project dependencies with npm or yarn:
 
 {% tabs %}
 {% tab title="npm" %}
@@ -74,6 +74,22 @@ export SUBNET=devnet.alpha.3
 {% tab title="Windows" %}
 ```text
 set SUBNET=devnet.alpha.3
+```
+{% endtab %}
+{% endtabs %}
+
+Run the node server:
+
+{% tabs %}
+{% tab title="npm" %}
+```text
+npm run roulette
+```
+{% endtab %}
+
+{% tab title="yarn" %}
+```
+yarn roulette
 ```
 {% endtab %}
 {% endtabs %}
