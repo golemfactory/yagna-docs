@@ -19,7 +19,7 @@ While it's possible that you'll be successful running Golem and this tutorial on
 #### Languages
 
 {% hint style="warning" %}
-If you are JS developer, please click to **NodeJS** tab
+If you are JS developer, please switch to **NodeJS** tab
 {% endhint %}
 
 {% tabs %}
@@ -80,7 +80,7 @@ git --version
 #### No crypto assets needed \(for now!\)
 
 {% hint style="info" %}
-Alpha lives on the Rinkeby Testnet. You don't need any real ETH or GNT tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets are acquired by the daemon in one of the steps below.
+Alpha lives on the Rinkeby Testnet. You don't need any real ETH or GLM tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets are acquired by the daemon in one of the steps below.
 {% endhint %}
 
 ### Can we help you? Do you have feedback for Golem?
@@ -102,7 +102,7 @@ In order to follow our requestor agent tutorial, you'll first need to run the `y
 You can install it using our helper script like this:
 
 ```text
-curl -sSf https://join.golem.network/as-requestor | YA_INSTALLER_CORE="pre-rel-v0.5.0-495172ea" bash -
+curl -sSf https://join.golem.network/as-requestor | YA_INSTALLER_CORE="pre-rel-v0.5.0-rc.3" bash -
 ```
 
 You might be asked to modify your PATH afterwards.
@@ -115,7 +115,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.5.0-495172ea](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.5.0-495172ea)
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.5.0-rc.3](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.5.0-rc.3)
 
 Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
@@ -131,7 +131,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.5.0-pre-rel-v0.4.1-buildtest-102-g495172ea`
+It should output: `yagna 0.5.0-rc.3 (325b281f 2020-11-23 build #87)`
 
 ### Purge the stale working directories
 
@@ -201,15 +201,21 @@ yagna app-key list
 
 the value in the `key` column is the key you need.
 
-### Enable the daemon as a requestor
+### Wait for the funds
 
-You need the following command to enable the daemon as a requestor.
+The current alpha version automatically contacts the faucet and acquires the funds needed for a requestor agent to run in case it finds the account uninitialized yet or missing the required tokens.
 
-What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some ETH and nGNT tokens to the node.
+Before you proceed though, you need to ensure those funds are already there.
 
-{% hint style="warning" %}
-It needs to be run each time the daemon is started or restarted.
-{% endhint %}
+You may verify that the process succeeded by running:
+
+```text
+yagna payment status
+```
+
+to confirm the account is ready.
+
+If you still don't have the funds after a few minutes and/or receive an error from the above command, you may retry the initialization with: 
 
 ```text
 yagna payment init -r
@@ -221,13 +227,7 @@ Once you issue the command, allow some time until it completes its job.
 Due to the fact that our example uses the Rinkeby Ethereum testnet, the transactions that add ETH and nGNT to the requestor node's address need to be mined and confirmed there. It may take several minutes until that's completed.
 {% endhint %}
 
-You can verify whether you already have the funds with:
-
-```text
-yagna payment status
-```
-
-If, after a few minutes, you can't see the assets, re-run the `payment init` command above and check again after a few more minutes.
+If, after a few minutes, you still can't see the assets, re-run the `payment init` command above and check again after a few more minutes.
 
 ## Running the requestor and your first task on the New Golem Network
 
@@ -259,7 +259,7 @@ Install the dependencies:
 
 ```text
 pip3 install -U pip
-pip3 install --extra-index-url https://test.pypi.org/simple/ yapapi==0.4.0a1 certifi
+pip3 install --extra-index-url https://test.pypi.org/simple/ yapapi==0.4.0a2 certifi
 ```
 
 ### Get the requestor agent's code
@@ -377,7 +377,7 @@ Finally, you can verify that the providers have been paid for the work they cont
 yagna app-key list
 ```
 
-again but this time it's the value in the `id` column that you're interested in. This is your the Ethereum address of your yagna node on the Rinkeby testnet. Once you have that address, head to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) and put the value in the address field there. Afterwards, switch to the "Erc20 Token Txns" tab and you should be able to see your outgoing payments there.
+again but this time it's the value in the `id` column that you're interested in. This is your the Ethereum address of your yagna node on the Rinkeby testnet and on zkSync. Once you have that address, head to [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/) , put the value in the address field there and verify that you see the outgoing payment transactions.
 
 ## Next steps
 
