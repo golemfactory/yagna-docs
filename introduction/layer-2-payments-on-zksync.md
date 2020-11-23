@@ -10,7 +10,7 @@ Ever since the launch of the previous incarnation of Golem on mainnet, we have b
 
 When payments are performed directly on Ethereum, each payment must be executed as a transaction and that means that a fee needs to be paid in order for the transaction to be mined and included in the blockchain. The problem becomes much more serious whenever the average gas price or the price of the ETH token - with which every Ethereum transaction fee is paid - rises.
 
-In Brass/Clay, we implemented batch payments. It added a lot of complexity to achieve a very dubious cost decrease. Apart from that we briefly flirted with various ideas on decreasing the costs like probabilistic payments, payment channels, plasma, and so on and so on, and until recently, none of them seemed to be ideal and mature enough to use right away.
+In that previous version - dubbed Brass and later Clay - we implemented batch payments. It added a lot of complexity to achieve a very dubious cost decrease. Apart from that we briefly flirted with various ideas on decreasing the costs like probabilistic payments, payment channels, plasma, and so on and so on, and until recently, none of them seemed to be ideal and mature enough to use right away.
 
 ### The solution - zkSync
 
