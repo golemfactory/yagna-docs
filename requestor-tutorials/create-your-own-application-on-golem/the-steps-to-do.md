@@ -159,16 +159,15 @@ The critical fragments of `yacat.py` will be described in the following sections
 {% endhint %}
 
 ```python
- #!/usr/bin/env python3
+#!/usr/bin/env python3
 import asyncio
 from datetime import timedelta
 import pathlib
 import sys
 
+from yapapi import Executor, Task, WorkContext, windows_event_loop_fix
 from yapapi.log import enable_default_logger, log_summary, log_event_repr  # noqa
-from yapapi.runner import Engine, Task, vm
-from yapapi.runner.ctx import WorkContext
-
+from yapapi.package import vm
 
 # For importing `utils.py`:
 script_dir = pathlib.Path(__file__).resolve().parent
@@ -218,7 +217,7 @@ async def main(args):
             output_file = "keyspace.txt"
             ctx.download_file("/golem/work/keyspace.txt", output_file)
             yield ctx.commit()
-            task.accept_task()
+            task.accept_result()
 
     async def worker_find_password(ctx: WorkContext, tasks):
         ctx.send_file("in.hash", "/golem/work/in.hash")
@@ -237,29 +236,34 @@ async def main(args):
             output_file = f"hashcat_{skip}.potfile"
             ctx.download_file(f"/golem/work/hashcat.potfile", output_file)
             yield ctx.commit()
-            task.accept_task(result=output_file)
+            task.accept_result(result=output_file)
 
     # beginning of the main flow
 
     write_hash(args.hash)
     write_keyspace_check_script(args.mask)
 
-    # By passing `event_emitter=log_summary()` we enable summary logging.
+    # By passing `event_consumer=log_summary()` we enable summary logging.
     # See the documentation of the `yapapi.log` module on how to set
     # the level of detail and format of the logged information.
-    async with Engine(
+    async with Executor(
         package=package,
         max_workers=args.number_of_providers,
         budget=10.0,
         # timeout should be keyspace / number of providers dependent
         timeout=timedelta(minutes=25),
         subnet_tag=args.subnet_tag,
-        event_emitter=log_summary(log_event_repr),
-    ) as engine:
+        event_consumer=log_summary(log_event_repr),
+    ) as executor:
 
-        # this is not typical use of engine.map as, there is only one task, with no data
-        async for task in engine.map(worker_check_keyspace, [Task(data=None)]):
-            pass
+        keyspace_computed = False
+        # This is not a typical use of executor.submit as there is only one task, with no data:
+        async for _task in executor.submit(worker_check_keyspace, [Task(data=None)]):
+            keyspace_computed = True
+
+        if not keyspace_computed:
+            # Assume the errors have been already reported and we may return quietly.
+            return
 
         keyspace = read_keyspace()
 
@@ -273,10 +277,12 @@ async def main(args):
 
         ranges = range(0, keyspace, step)
 
-        async for task in engine.map(worker_find_password, [Task(data=range) for range in ranges]):
+        async for task in executor.submit(
+            worker_find_password, [Task(data=range) for range in ranges]
+        ):
             print(
                 f"{utils.TEXT_COLOR_CYAN}"
-                f"Task computed: {task}, result: {task.output}"
+                f"Task computed: {task}, result: {task.result}"
                 f"{utils.TEXT_COLOR_DEFAULT}"
             )
 
@@ -301,6 +307,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
+    # This is only required when running on Windows with Python prior to 3.8:
+    windows_event_loop_fix()
+
     enable_default_logger(log_file=args.log_file)
 
     sys.stderr.write(
@@ -312,10 +321,24 @@ if __name__ == "__main__":
 
     try:
         loop.run_until_complete(task)
-    except (Exception, KeyboardInterrupt) as e:
-        print(e)
+    except KeyboardInterrupt:
+        print(
+            f"{utils.TEXT_COLOR_YELLOW}"
+            "Shutting down gracefully, please wait a few seconds "
+            "or press Ctrl+C to exit immediately..."
+            f"{utils.TEXT_COLOR_DEFAULT}"
+        )
         task.cancel()
-        loop.run_until_complete(task)
+        try:
+            loop.run_until_complete(task)
+            print(
+                f"{utils.TEXT_COLOR_YELLOW}"
+                "Shutdown completed, thank you for waiting!"
+                f"{utils.TEXT_COLOR_DEFAULT}"
+            )
+        except KeyboardInterrupt:
+            pass
+
 ```
 
 ## So what is happening here?
@@ -360,9 +383,9 @@ To tell the Golem platform, what our requirements against the providers are, we 
  )
 ```
 
-### Engine
+### Executor
 
-The `package` object is passed to the `engine` object with several other options, such as:
+The `package` object is passed to the `Executor` object with several other options, such as:
 
 * `budget`defines maximal spendings for executing all the tasks in the whole run on Golem
 * `max_workers` defines the maximal number of simultaneously running workers \(and that is, the maximum number of providers that the task fragments will be distributed to\).
@@ -374,38 +397,39 @@ Due to current golem market implementation, please use `timeout` value between 8
 {% endhint %}
 
 ```python
-async with Engine(
+async with Executor(
     package=package,
     max_workers=args.number_of_providers,
     budget=10.0,
     # timeout should be keyspace / number of providers dependent
     timeout=timedelta(minutes=25),
     subnet_tag=args.subnet_tag,
-    event_emitter=log_summary(log_event_repr),
-) as engine:
+    event_consumer=log_summary(log_event_repr),
+) as executor:
+
 ```
 
 ### Main loop
 
-Golem high-level API that we use to interact with the Golem network uses asynchronous programming a lot. The asynchronous execution starting point is in line 152:
+Golem high-level API that we use to interact with the Golem network uses asynchronous programming a lot. The asynchronous execution starting point is in line 161. We catch the KeyboardInterrupt twice because after normal break, we ideally want the code to finalize the cleanup but if the user is determined to break the execution at all cost, we'd like to catch the exception there too:
 
 ```python
-loop = asyncio.get_event_loop()
-task = loop.create_task(main(args))
+    try:
+        loop.run_until_complete(task)
+    except KeyboardInterrupt:
+        task.cancel()
+        try:
+            loop.run_until_complete(task)
+        except KeyboardInterrupt:
+            pass
 
-try:
-    loop.run_until_complete(task)
-except (Exception, KeyboardInterrupt) as e:
-    print(e)
-    task.cancel()
-    loop.run_until_complete(task)
 ```
 
 In the `main` function, the most important fragment begins in line 100:
 
 ```python
-async for task in engine.map(worker_check_keyspace, [Task(data=None)]):
-    pass
+async for _task in executor.submit(worker_check_keyspace, [Task(data=None)]):
+    keyspace_computed = True
 ```
 
 This calls the `worker_check_keyspace` once with no additional task parameters. The next step is getting the `keyspace` variable from the `keyspace.txt` file:
@@ -425,12 +449,14 @@ Now we can split the whole `keyspace` by the `args.number_of_providers`:
 Having the `ranges` list, we can call the `worker_find_password` for each of the fragments, passing only the given `range`:
 
 ```python
-async for task in engine.map(worker_find_password, [Task(data=range) for range in ranges]):
+async for task in executor.submit(
+    worker_find_password,
+    [Task(data=range) for range in ranges]
+):
     print(
-        f"{utils.TEXT_COLOR_CYAN}"
-        f"Task computed: {task}, result: {task.output}"
-        f"{utils.TEXT_COLOR_DEFAULT}"
+        f"Task computed: {task}, result: {task.result}"
     )
+
 ```
 
 After the `hashcat.potfile` file is returned for all the fragments, we need to scan over them, as one of them possibly contains the password we are looking for:
