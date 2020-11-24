@@ -11,7 +11,7 @@ We use the Game of roulette application as golem based SGX development example. 
 
 ## Building
 
-* Clone [https://github.com/golemfact](https://github.com/golemfactory/ya-as-sgx-examples)
+* Clone [https://github.com/golemfactory/ya-as-sgx-examples](https://github.com/golemfactory/ya-as-sgx-examples)
 
 ```text
 git clone https://github.com/golemfactory/ya-as-sgx-examples
