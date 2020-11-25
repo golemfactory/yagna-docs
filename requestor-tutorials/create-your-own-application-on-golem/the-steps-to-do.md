@@ -599,6 +599,6 @@ And remember:
 {% hint style="info" %}
 In case of any doubts or problems, you can always contact us on discord.
 
-[https://discord.com/channels/684703559954333727/756161015493951600](https://chat.golem.network)
+[https://chat.golem.network](https://chat.golem.network)
 {% endhint %}
 
