@@ -201,21 +201,17 @@ yagna app-key list
 
 the value in the `key` column is the key you need.
 
-## Get some GLM tokens
 
-The current alpha version automatically contacts the faucet and acquires the funds needed for a requestor agent to run in case it finds the account uninitialized yet or missing the required tokens.
 
-Before you proceed though, you need to ensure those funds are already there.
+### Enable the daemon as a requestor
 
-You may verify that the process succeeded by running:
+You need the following command to enable the daemon as a requestor.
 
-```text
-yagna payment status
-```
+What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some nGNT tokens to the node using zkSync.
 
-to confirm the account is ready.
-
-If you still don't have the funds after a few minutes and/or receive an error from the above command, you may retry the initialization with: 
+{% hint style="warning" %}
+It needs to be run each time the daemon is started or restarted.
+{% endhint %}
 
 ```text
 yagna payment init -r
@@ -223,11 +219,13 @@ yagna payment init -r
 
 Once you issue the command, allow some time until it completes its job.
 
-{% hint style="warning" %}
-Due to the fact that our example uses the Rinkeby Ethereum testnet, the transactions that add ETH and nGNT to the requestor node's address need to be mined and confirmed there. It may take several minutes until that's completed.
-{% endhint %}
+You can verify whether you already have the funds with:
 
-If, after a few minutes, you still can't see the assets, re-run the `payment init` command above and check again after a few more minutes.
+```text
+yagna payment status
+```
+
+If, after a few minutes, you can't see the assets, re-run the `payment init` command above and check again after a few more minutes.
 
 ## Running the requestor and your first task on the New Golem Network
 
