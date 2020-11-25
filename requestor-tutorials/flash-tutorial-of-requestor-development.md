@@ -225,6 +225,8 @@ yagna payment status
 
 If, after a few minutes, you can't see the assets, re-run the `payment init` command above and check again after a few more minutes.
 
+As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../troubleshooting/common-issues.md#payment-driver-initialization-issue).
+
 ## Running the requestor and your first task on the New Golem Network
 
 Now you have the `yagna` daemon running, you may proceed with running a task as a requestor.
