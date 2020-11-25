@@ -201,7 +201,7 @@ yagna app-key list
 
 the value in the `key` column is the key you need.
 
-### Wait for the funds
+## Get some GLM tokens
 
 The current alpha version automatically contacts the faucet and acquires the funds needed for a requestor agent to run in case it finds the account uninitialized yet or missing the required tokens.
 
@@ -347,13 +347,11 @@ yarn
 yarn js:blender
 ```
 
-If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet and then ones that announce work dispatched to providers with lines starting with `new batch !!!` and subsequently confirmations of task completions.
+If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet and then ones that announce work dispatched to providers with lines starting with `Task sent to provider [...]` and subsequently confirmations of task completions.
 
 To some more detailed messages, you can run the example with `yarn js:blender -d`.
 
 The example in question generates six discrete jobs for providers to execute so after those six activities are completed and results returned, the whole task is finished.
-
-`progress= {'done': True}`
 {% endtab %}
 {% endtabs %}
 
