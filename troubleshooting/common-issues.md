@@ -36,3 +36,24 @@ _Description:_ When someone is not receiving tasks at all, has correct subnet co
 
 _Solution:_ Kill and restart the process
 
+### Payment driver initialization issue
+
+_Os:_ All, requestor only
+
+_Description:_ Since our newest addition to Golem - the integration with zkSync, layer 2 payment solution - is, so far, a highly experimental feature, it may still sometimes happen that the yagna daemon fails to initialize itself correctly.
+
+This will manifest itself either by a failure of the regular initialization with`yagna payment init -r` or through an error you'll receive when running `yagna payment status`.
+
+_Solution:_ In such a case, we're providing you with a fallback to normal payments, using our ERC-20 on-chain payment driver.
+
+To enable it, first **stop and re-start the yagna daemon** and then run:
+
+```text
+yagna payment init -r --driver=ngnt
+yagna payment status --platform=NGNT
+```
+
+After you confirm you have the funds, proceed with running the examples or your own requestor agent code normally. The providers are configured to accept both zkSync and the regular tokens and will adjust accordingly.
+
+Once you finish a task run and should you verify the payments, remember to use [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) instead of the zkSync explorer.
+
