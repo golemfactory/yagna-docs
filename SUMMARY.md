@@ -26,8 +26,9 @@
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
-* [Introduction to Golem's high-level Python API](yapapi/yapapi.md)
-* [Low-Level](yapapi/low-level-api.md)
+* [Introduction to Golem's high-level Python API](yapapi/README.md)
+* [VM Tutorial](yapapi/docs/VM-Tutorial.md)
+* [Low-Level](yapapi/docs/Low-Level-Api.md)
 * [API Reference](yapapi/api-reference.md)
 
 ## Reference
