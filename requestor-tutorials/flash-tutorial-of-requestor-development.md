@@ -201,8 +201,6 @@ yagna app-key list
 
 the value in the `key` column is the key you need.
 
-
-
 ### Enable the daemon as a requestor
 
 You need the following command to enable the daemon as a requestor.
