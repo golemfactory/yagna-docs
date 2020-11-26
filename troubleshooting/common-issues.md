@@ -59,7 +59,7 @@ _**Description:**_ Since our newest addition to Golem - the integration with zkS
 
 This will manifest itself either by a failure of the regular initialization with`yagna payment init -r` or through an error you'll receive when running `yagna payment status`.
 
-_**Solution:**_ In such a case, we're providing you with a fallback to normal payments, using our ERC-20, on-chain payment driver.
+_**Solution:**_ In such a case, we're providing you with a fallback to normal payments, i.e. regular GLM token transfer on the Ethereum chain.
 
 To enable it, first **stop and re-start the yagna daemon** and then run:
 
