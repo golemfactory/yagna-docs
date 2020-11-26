@@ -530,7 +530,7 @@ Now, as we know how the yacat works, let's run it!
 While in the `/examples/yacat` directory, type the following:
 
 ```python
-python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --subnet-tag devnet-alpha.2
+python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --subnet-tag community.3
 ```
 
 {% hint style="danger" %}
