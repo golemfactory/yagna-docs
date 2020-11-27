@@ -72,3 +72,23 @@ After you confirm you have the funds, proceed with running the examples or your 
 
 Just remember to use [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) instead of the zkSync explorer, should you wish to verify that the payment went through.
 
+### Bind error: already registered
+
+_**Os:** Ubuntu_
+
+_**Description:**_ If the user has an obsolete/incorrect version of `gftp`  in `$PATH` they will get a repeating error when they try to request a task:
+
+```text
+[2020-11-27 15:43:11,509 INFO yapapi.summary] Received proposals from 9 providers so far
+[2020-11-27T14:43:12Z ERROR ya_service_bus::remote_router] bind error: already registered: Service ID '/public/gftp/ee82d5dc7188611da558c76e777a2df7867d9526eac6fa9378728d44ca4a2a10/GetMetadata' already registered
+[2020-11-27T14:43:12Z ERROR ya_service_bus::remote_router] bind error: already registered: Service ID '/public/gftp/ee82d5dc7188611da558c76e777a2df7867d9526eac6fa9378728d44ca4a2a10/GetChunk' already registered
+[2020-11-27 15:43:12,434 WARNING yapapi.summary] Activity failed on provider 'odra.3', reason: (-32000, "bad request: No service registered under given address '/private/identity/Get'.", {'jsonrpc': '2.0', 'id': 4622765855815754544, 'error': {'code': -32000, 'message': "bad request: No service registered under given address '/private/identity/Get'."}})
+[2020-11-27 15:43:12,592 INFO yapapi.summary] Agreement proposed to provider 'ada'
+[2020-11-27 15:43:13,961 INFO yapapi.summary] Agreement confirmed by provider 'ada'
+[2020-11-27T14:43:15Z ERROR ya_service_bus::remote_router] bind error: already registered: Service ID '/public/gftp/ee82d5dc7188611da558c76e777a2df7867d9526eac6fa9378728d44ca4a2a10/GetMetadata' already registered
+[2020-11-27T14:43:15Z ERROR ya_service_bus::remote_router] bind error: already registered: Service ID '/public/gftp/ee82d5dc7188611da558c76e777a2df7867d9526eac6fa9378728d44ca4a2a10/GetChunk' already registered
+[2020-11-27 15:43:15,199 WARNING yapapi.summary] Activity failed on provider 'ada', reason: (-32000, "bad request: No service registered under given address '/private/identity/Get'.", {'jsonrpc': '2.0', 'id': 1935240589707464482, 'error': {'code': -32000, 'message': "bad request: No service registered under given address '/private/identity/Get'."}})
+```
+
+ _**Solution:**_ Type `which gftp` to find the obsolete version of `gftp` and then remove it. Then restart your daemon and the issue should be fixed!
+
