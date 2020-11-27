@@ -29,6 +29,7 @@ FLAGS:
 
 SUBCOMMANDS:
     run         Run the golem provider
+    stop        Stop the golem provider
     settings    Manage settings
     status      Show provider status
     help        Prints this message or the help of the given subcommand(s)
@@ -71,6 +72,12 @@ You can also combine multiple settings in one command as follows:
 
 `golemsp settings set --cpu-per-hour 3 --cores 7` which will change your NGNT per hour to "3" and adjust the numbers of shared cpu cores to "7".
 
+**To change the default Ethereum address that was created for you during the initial setup process type:**
+
+`golemsp settings set --address <address>`
+
+and restart your node afterwards for it to update. To check if your address has been updated properly run `golemsp status`
+
 #### Settings show
 
 `golemsp settings show` - Show current settings.
@@ -80,9 +87,9 @@ example
 ```text
 node name: "node_name"
 shared resources:
-    cores:    7
+    cores:     7
     memory:    10.9375 GiB
-    disk:    250.2247528076172 GiB
+    disk:      250.2247528076172 GiB
 
 
 Pricing:
@@ -99,15 +106,33 @@ Pricing:
 Example output:
 
 ```text
-┌─────────────────────────────┬───────────────────────────────────────────────────────────┬───────────────────────────┐
-│  Status                     │  Wallet                                                   │  Tasks                    │
-│                             │                                                           │                           │
-│  Service    is running      │  address      0x8ed221a17e63b129c1a2aa1fc2cb331cdff1a21d  │  last 1h processed    0   │
-│                             │  amount       0 NGNT                                      │  last 1h in progress  1   │
-│  Node Name  node_name       │  pending      0 NGNT                                      │  total processed      0   │
-│  Subnet     community       │  unconfirmed  0 NGNT                                      │                           │
-|  VM         valid           |                                                           |                           | 
-└─────────────────────────────┴───────────────────────────────────────────────────────────┴───────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│  Status                                                      │
+│                                                              │
+│  Service    is running                                       │
+│  Version    0.5.0                                            │
+│                                                              │
+│  Node Name  outstanding-chalk                                │
+│  Subnet     community.3                                      │
+│  VM         valid                                            │
+├──────────────────────────────────────────────────────────────┤
+│  Wallet                                                      │
+│                                                              │
+│  address         0xe4781cd3af959417f560372544f77aec33124b5f  │
+│  amount (total)  0 GLM                                       │
+│      (on-chain)  0 GLM                                       │
+│       (zk-sync)  0 GLM                                       │
+│                                                              │
+│  pending         0 GLM (0)                                   │
+│  issued          0 GLM (0)                                   │
+├──────────────────────────────────────────────────────────────┤
+│  Tasks                                                       │
+│                                                              │
+│  last 1h processed    0                                      │
+│  last 1h in progress  0                                      │
+│  total processed      0                                      │
+└──────────────────────────────────────────────────────────────┘
+
 ```
 
 In the three columns, you can check the basic information regarding the status of your node
@@ -115,6 +140,7 @@ In the three columns, you can check the basic information regarding the status o
 #### Status
 
 * Whether your node is running
+* Version of your node
 * Name of your node
 * Subnet in which your node is currently running
 * VM status
@@ -123,6 +149,8 @@ In the three columns, you can check the basic information regarding the status o
 
 * Account address
 * Amount of tokens that you have earned for successful computation
+* On-chain amount of tokens that you have earned \(explorer [https://rinkeby.etherscan.io](https://rinkeby.etherscan.io/)\)
+* Zk-sync amount of tokens that you have earned \(explorer [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/)\)
 * Pending payments that you should receive for computation
 * Amount of tokens that is still unconfirmed and may not show on your account 
 
