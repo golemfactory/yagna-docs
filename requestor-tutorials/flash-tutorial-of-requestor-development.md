@@ -102,7 +102,7 @@ In order to follow our requestor agent tutorial, you'll first need to run the `y
 You can install it using our helper script like this:
 
 ```text
-curl -sSf https://join.golem.network/as-requestor | YA_INSTALLER_CORE="pre-rel-v0.5.0-rc.7" bash -
+curl -sSf https://join.golem.network/as-requestor | YA_INSTALLER_CORE="pre-rel-v0.5.0-rc.9" bash -
 ```
 
 You might be asked to modify your PATH afterwards.
@@ -115,7 +115,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.5.0-rc.7](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.5.0-rc.7)
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.5.0-rc.9](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.5.0-rc.9)
 
 Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
@@ -131,7 +131,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.5.0-rc.7 (af58fd2a 2020-11-26 build #91)`
+It should output: `yagna 0.5.0-rc.9 (65f72bdc 2020-11-28 build #95)`
 
 ### Purge the stale working directories
 
@@ -257,7 +257,7 @@ Install the dependencies:
 
 ```text
 pip3 install -U pip
-pip3 install --extra-index-url https://test.pypi.org/simple/ yapapi==0.4.0a4 certifi
+pip3 install --extra-index-url https://test.pypi.org/simple/ yapapi==0.4.0a5 certifi
 ```
 
 ### Get the requestor agent's code
