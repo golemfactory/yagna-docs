@@ -102,7 +102,7 @@ In order to follow our requestor agent tutorial, you'll first need to run the `y
 You can install it using our helper script like this:
 
 ```text
-curl -sSf https://join.golem.network/as-requestor | YA_INSTALLER_CORE="v0.5.0" bash -
+curl -sSf https://join.golem.network/as-requestor | bash -
 ```
 
 You might be asked to modify your PATH afterwards.
