@@ -2,7 +2,7 @@
 
 ## General Concept
 
-![](https://github.com/golemfactory/yagna-docs/tree/b1544b881581741e05889f5653f253d69360fb70/yapapi/art/gc-nodes.svg)
+![](./art/gc-nodes.svg)
 
 ```python
 from yapapi.rest import Configuration, Market, Activity, Payment
