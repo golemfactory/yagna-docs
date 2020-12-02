@@ -10,12 +10,13 @@ description: >-
 
 #### Platforms
 
-This is our very first Alpha Provider Sneak Peek reveal. Therefore, temporarily, Golem only supports:
+This is still an early Alpha Provider Sneak Peek reveal. Therefore, temporarily, Golem official support is for:
 
 * Ubuntu 18.04 and 20.04 
 
+but you are welcome to try out run it on other Linux distributions. 
+
 {% hint style="warning" %}
-* For the time being, Linux machines with Intel processors should work properly. We are in the process of addressing issues with AMD CPUs.
 * To run Golem Sneak Peek you'll need a physical machine as you may encounter issues when running it on a virtual machine.
 {% endhint %}
 
@@ -31,7 +32,7 @@ If you would like to earn real GNTs now, head over to our [Clay Golem Beta imple
 
 #### Purge directories
 
-If you have previously launched **Golem Alpha one** on your machine run the command below which will purge its working directories since our newest version is incompatible with the old database structure:
+If you have previously launched **Golem Alpha** on your machine run the command below which will purge its working directories since our newest version is incompatible with the old database structure:
 
 ```text
 rm -rf $HOME/.local/share/yagna
@@ -44,19 +45,25 @@ Open your terminal and type:
 
 ```text
 curl -sSf https://join.golem.network/as-provider | bash -
+
 ```
 
-You might be asked to modify your PATH afterwards: `PATH=$HOME/.local/bin:$PATH`
+You might be asked to modify your PATH afterwards For future terminal sessions:`echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc`
+
+Update your active terminal\(s\) with:  
+`export PATH="$HOME/.local/bin:$PATH”`
 
 #### Initial setup
 
-After installing all required components you will be asked to set up your node
+After installing all required components you will be asked to set up your node. **If you leave them empty the default values presented in brackets will be applied.**
 
-`node name:` - Type in the name of your new node and press Enter
+`Node name (default=generated_name):` - Type in the name of your new node and press Enter
 
-`subnet: community` - **It is important that you use "community" subnet for this release as only there we will be sending tasks for computation**
+`subnet (default=community.3):` - It is important that you use "community.3"
 
-`price NGNT per hour:` - Type in the value of renting your computer power as a provider. You can use default price \(5 NGNT per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
+`Ethereum wallet address (default=internal wallet):`  - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty an address will be created for you on your local system.
+
+`price NGNT per hour (default=5):` - Type in the value of renting your computer power as a provider. You can use default price \(5 NGNT per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
 
 {% hint style="success" %}
 Congrats, your initial setup has been completed! You will see that default preset was created based on your initial node setup. If you wish, you can change this settings later on with CLI.
@@ -85,20 +92,46 @@ golemsp status
 As an output you will get the information about your node's current state as shown below:
 
 ```text
-┌─────────────────────────────┬───────────────────────────────────────────────────────────┬───────────────────────────┐
-│  Status                     │  Wallet                                                   │  Tasks                    │
-│                             │                                                           │                           │
-│  Service    is running      │  address      0x8ed221a17e63b129c1a2aa1fc2cb331cdff1a21d  │  last 1h processed    0   │
-│                             │  amount       0 NGNT                                      │  last 1h in progress  1   │
-│  Node Name  node_name       │  pending      0 NGNT                                      │  total processed      0   │
-│  Subnet     community       │  unconfirmed  0 NGNT                                      │                           │
-|  VM         valid           |                                                           |                           | 
-└─────────────────────────────┴───────────────────────────────────────────────────────────┴───────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│  Status                                                      │
+│                                                              │
+│  Service    is running                                       │
+│  Version    0.5.0                                            │
+│                                                              │
+│  Node Name  outstanding-chalk                                │
+│  Subnet     community.3                                      │
+│  VM         valid                                            │
+├──────────────────────────────────────────────────────────────┤
+│  Wallet                                                      │
+│                                                              │
+│  address         0xe4781cd3af959417f560372544f77aec33124b5f  │
+│  amount (total)  0 GLM                                       │
+│      (on-chain)  0 GLM                                       │
+│       (zk-sync)  0 GLM                                       │
+│                                                              │
+│  pending         0 GLM (0)                                   │
+│  issued          0 GLM (0)                                   │
+├──────────────────────────────────────────────────────────────┤
+│  Tasks                                                       │
+│                                                              │
+│  last 1h processed    0                                      │
+│  last 1h in progress  0                                      │
+│  total processed      0                                      │
+└──────────────────────────────────────────────────────────────┘
+
 ```
 
 {% hint style="info" %}
-If in the \(far to the right\) **Tasks** column you see either tasks in progress or processed then you have successfully computed a task! If not, give it some time as there is still limited number of tasks in the test network - and then run the command again.
+Under your address you can see both **on-chain** and **zk-sync** values listed. 
+
+Although zk-sync is from now on the default payment driver in Golem you may receive on-chain transactions as well. To confirm correctness of the listed values head over to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) \(on-chain\) and [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/) \(for zk-sync\).
 {% endhint %}
+
+{% hint style="info" %}
+If in the **Tasks** column you see either tasks in progress or processed then you have successfully computed a task! If not, give it some time as there is still limited number of tasks in the test network - and then run the command again.
+{% endhint %}
+
+
 
 #### Known issues
 
@@ -133,4 +166,3 @@ To check out additional commands available in the CLI, have a look at the refere
 {% page-ref page="../reference/provider-cli.md" %}
 
 ## Next steps
-

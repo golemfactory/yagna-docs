@@ -51,13 +51,13 @@ The complete code of the requestor agent \(no worries, you do not need to copy a
 ```python
 import asyncio
 
-from yapapi.log import enable_default_logger, log_summary, log_event_repr  # noqa
-from yapapi.runner import Engine, Task, vm
-from yapapi.runner.ctx import WorkContext
+from yapapi import Executor, Task, WorkContext
+from yapapi.log import enable_default_logger, log_summary, log_event_repr
+from yapapi.package import vm
 from datetime import timedelta
 
 
-async def main(subnet_tag="testnet"):
+async def main(subnet_tag: str):
     package = await vm.repo(
         image_hash="9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae",
         min_mem_gib=0.5,
@@ -88,7 +88,7 @@ async def main(subnet_tag="testnet"):
             output_file = f"output_{frame}.png"
             ctx.download_file(f"/golem/output/out{frame:04d}.png", output_file)
             yield ctx.commit()
-            task.accept_task(result=output_file)
+            task.accept_result(result=output_file)
 
         ctx.log("no more frames to render")
 
@@ -96,25 +96,25 @@ async def main(subnet_tag="testnet"):
     frames: range = range(0, 60, 10)
     init_overhead: timedelta = timedelta(minutes=3)
 
-    # By passing `event_emitter=log_summary()` we enable summary logging.
+    # By passing `event_consumer=log_summary()` we enable summary logging.
     # See the documentation of the `yapapi.log` module on how to set
     # the level of detail and format of the logged information.
-    async with Engine(
+    async with Executor(
         package=package,
         max_workers=3,
         budget=10.0,
         timeout=init_overhead + timedelta(minutes=len(frames) * 2),
         subnet_tag=subnet_tag,
-        event_emitter=log_summary(),
-    ) as engine:
+        event_consumer=log_summary(),
+    ) as executor:
 
-        async for task in engine.map(worker, [Task(data=frame) for frame in frames]):
-            print(f"\033[36;1mTask computed: {task}, result: {task.output}\033[0m")
+        async for task in executor.submit(worker, [Task(data=frame) for frame in frames]):
+            print(f"Task computed: {task}, result: {task.result}")
 
 
 enable_default_logger()
 loop = asyncio.get_event_loop()
-task = loop.create_task(main(subnet_tag="devnet-alpha.2"))
+task = loop.create_task(main(subnet_tag="community.3"))
 try:
     asyncio.get_event_loop().run_until_complete(task)
 except (Exception, KeyboardInterrupt) as e:
@@ -330,6 +330,7 @@ ctx.send_json(
         "OUTPUT_DIR": "/golem/output",
     },
 )
+
 ```
 {% endtab %}
 
@@ -366,9 +367,9 @@ Thus, the `crops` parameter \(which can be used to specify a part of a frame\) s
 
 We're using `ctx.send_json()` to wrap the provided dictionary of parameters into a JSON file, the destination path of which is passed as the first parameter. Note that this destination path is again a location within the container that's executed on the provider's end.
 
-As you can see, the `frame` parameter comes from the `data` field of the `Task` objects that are passed into the `Engine`'s `map` function later on in the code. We could have just as well filled the `data` with e.g. a dictionary containing crop parameters for each fragment - if we wanted to render different parts of images on each fragment's execution. Or we could fill it with names of different scene files, if e.g. we wanted each task to render a completely different scene file. Of course, in this latter case, we'd also need to use `ctx.send_file()` to send a new scene file for each new task fragment.
+As you can see, the `frame` parameter comes from the `data` field of the `Task` objects that are passed into the `Executor`'s `submit` function later on in the code. We could have just as well filled the `data` with e.g. a dictionary containing crop parameters for each fragment - if we wanted to render different parts of images on each fragment's execution. Or we could fill it with names of different scene files, if e.g. we wanted each task to render a completely different scene file. Of course, in this latter case, we'd also need to use `ctx.send_file()` to send a new scene file for each new task fragment.
 
-**TLDR**, the most important take-away here is that `send_json` provides an easy way to pass a dictionary of parameters into the execution container, and that you pass parameters for each task fragment in the `data` field of the `Task` objects passed to the `map` function.
+**TLDR**, the most important take-away here is that `send_json` provides an easy way to pass a dictionary of parameters into the execution container, and that you pass parameters for each task fragment in the `data` field of the `Task` objects passed to the `submit` function.
 
 Okay, next we have the most important step:
 
@@ -386,7 +387,7 @@ ctx.run("/golem/entrypoints/run-blender.sh");
 {% endtab %}
 {% endtabs %}
 
-Which, of course, causes a specific `run` command to be executed by the Docker container on the provider's end. Again, in this case, this script is pretty specific to the use case at hand, and knows that it needs to take the `params.json` file and use it to call `Blender` in such a way as to render the desired content.
+Which, of course, causes a specific `run` command to be executed by the Docker container on the provider's end. Again, in this case, this script is pretty specific to the use case at hand, and knows that it needs to take the `params.json` file and use it to call Blender in such a way as to render the desired content.
 
 Still, you could just as well run any other command in the container's shell, by also providing its arguments as subsequent parameters to the `run()` function.
 
@@ -412,7 +413,7 @@ ctx.download_file(
 
 The first parameter here is the source path - which refers to a path within the container on the provider's end - and the second one is the local path on the requestor machine to which the output should be written.
 
-Finally - or _almost_ finally - we issue a `commit()` call which combines all the steps together and we pass them using `yield` to the `Engine.` The Engine, in turn, passes them for execution and allows the flows for other providers to be executed on the requestor while this provider works on this task fragment.
+Finally - or _almost_ finally - we issue a `commit()` call which combines all the steps together and we pass them using `yield` to the `Executor.` The Executor, in turn, passes them for execution and allows the flows for other providers to progress on the requestor while this provider works on this task fragment.
 
 {% tabs %}
 {% tab title="Python" %}
@@ -462,11 +463,11 @@ ctx.log("no more frames to render");
 {% endtab %}
 {% endtabs %}
 
-### Time to call the runner Engine
+### Time to call the runner engine
 
-With our task \(fragment\) steps defined, we can finally call the `Engine` , that will orchestrate first the negotiation of our computational `Demand` against the `Offer` from the providers in the network, to reach agreements with each of them and subsequently, will use those agreements to launch specific computational activities to complete the task we have specified. Finally, the runner Engine will make ensure that payment transactions are triggered for invoices sent from the providers to remunerate them for the work they provided for your task.
+With our task \(fragment\) steps defined, we can finally call the `Executor` , that will orchestrate first the negotiation of our computational `Demand` against the `Offer` from the providers in the network, to reach agreements with each of them and subsequently, will use those agreements to launch specific computational activities to complete the task we have specified. Finally, the Executor will make ensure that payment transactions are triggered for invoices sent from the providers to remunerate them for the work they provided for your task.
 
-The `Engine` is first instantiated as a context manager:
+The `Executor` is first instantiated as a context manager:
 
 {% tabs %}
 {% tab title="Python" %}
@@ -474,14 +475,15 @@ The `Engine` is first instantiated as a context manager:
 frames: range = range(0, 60, 10)
 init_overhead: timedelta = timedelta(minutes=3)
 
-async with Engine(
+async with Executor(
     package=package,
     max_workers=3,
     budget=10.0,
     timeout=init_overhead + timedelta(minutes=len(frames) * 2),
     subnet_tag=subnet_tag,
-    event_emitter=log_summary(log_event_repr),
-) as engine:
+    event_consumer=log_summary(),
+) as executor:
+
 ```
 {% endtab %}
 
@@ -505,17 +507,15 @@ The `package` here is effectively our `Demand` that we have created above, `max_
 
 The `subnet_tag` serves to select a subset of the network that our requestor node wants to limit its communications to. Using `subnet_tag` we're effectively limiting our list of provider to those that are running with the same `subnet` parameter.
 
-Finallly, we're providing the consumer of the events that the `Engine` generates with `event_emitter` - our example mostly presents those events to the users in the form of nicely formatted console output but your own app may use in other ways.
+Finallly, we're providing the consumer of the events that the `Exectuor` generates with `event_consumer` - our example mostly presents those events to the users in the form of nicely formatted console output but your own app may use in other ways.
 
-With the `Engine` in place, we can finally tell it what we want to execute and also _how_ we want to define each fragment.
+With the `Executor` in place, we can finally tell it what we want to execute and also _how_ we want to define each fragment.
 
 {% tabs %}
 {% tab title="Python" %}
 ```python
-async for task in engine.map(
-        worker,
-        [Task(data=frame) for frame in frames]):
-    print(f"Task computed: {task}, result: {task.output}")
+async for task in executor.submit(worker, [Task(data=frame) for frame in frames]):
+    print(f"Task computed: {task}, result: {task.result}")
 ```
 {% endtab %}
 
@@ -546,4 +546,3 @@ With this, our requestor agent is complete and we can use it to run our computat
 Are you hooked up? then go ahead and follow up with our tutorial on using your own - or generally any other - Docker image and using our `gvmkit-builder` tool to build and push the image to our repository:
 
 {% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
-
