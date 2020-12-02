@@ -26,7 +26,7 @@ So now, we're going to assume that:
 * The payment is initialized with `yagna payment init -r`  \(please keep in mind that it needs initialization after each launch of `yagna service run`\).
 * The virtual python environment for our tutorial is activated.
 * Dependencies are installed and the `yapapi` repository \(containing the tutorial examples\) is cloned.
-* In your current directory there are two files that will be used and discussed in this example:
+* In your current directory \(`examples/yacat`\) there are two files that will be used and discussed in this example:
   * `yacat.Dockerfile` - the Docker file used for the definition of the provider's container images
   * `yacat.py` - requestor agent's entry point which deals with orchestration of the container runs.
 {% endhint %}
@@ -96,7 +96,7 @@ WORKDIR /golem/work
 VOLUME /golem/work
 ```
 
-As Golem does not need any specific elements in the Dockerfile,`yacat.Dockerfile`is just a standard Dockerfile. 
+As Golem does not need any specific elements in the Dockerfile,`yacat.Dockerfile`is just a standard Dockerfile.
 
 ### VOLUME: the input/output
 
@@ -117,6 +117,12 @@ On the provider side, all the content of the volume directories are stored in th
 {% endhint %}
 
 {% hint style="danger" %}
+Please mind that tasks within a single worker instance - so effectively part of the same activity on a given provider node - run within the same virtual machine and share the contents of a VOLUME between each other.  
+  
+That means that as long as the execution takes place on the same provider, and thus, on the same filesystem, files in the VOLUME left over from one task execution will be present in a subsequent run.
+{% endhint %}
+
+{% hint style="warning" %}
 If your provider side code creates large temporary files, you should store them in the directory defined as VOLUME. Otherwise, the large files will be stored in RAM. RAM usually has a capacity limit much lower than disk space.
 {% endhint %}
 
@@ -159,16 +165,15 @@ The critical fragments of `yacat.py` will be described in the following sections
 {% endhint %}
 
 ```python
- #!/usr/bin/env python3
+#!/usr/bin/env python3
 import asyncio
 from datetime import timedelta
 import pathlib
 import sys
 
+from yapapi import Executor, Task, WorkContext, windows_event_loop_fix
 from yapapi.log import enable_default_logger, log_summary, log_event_repr  # noqa
-from yapapi.runner import Engine, Task, vm
-from yapapi.runner.ctx import WorkContext
-
+from yapapi.package import vm
 
 # For importing `utils.py`:
 script_dir = pathlib.Path(__file__).resolve().parent
@@ -195,7 +200,10 @@ def read_keyspace():
 
 def read_password(ranges):
     for r in ranges:
-        with open(f"hashcat_{r}.potfile", "r") as f:
+        path = pathlib.Path(f"hashcat_{r}.potfile")
+        if not path.is_file():
+            continue
+        with open(path, "r") as f:
             line = f.readline()
         split_list = line.split(":")
         if len(split_list) >= 2:
@@ -218,7 +226,7 @@ async def main(args):
             output_file = "keyspace.txt"
             ctx.download_file("/golem/work/keyspace.txt", output_file)
             yield ctx.commit()
-            task.accept_task()
+            task.accept_result()
 
     async def worker_find_password(ctx: WorkContext, tasks):
         ctx.send_file("in.hash", "/golem/work/in.hash")
@@ -229,37 +237,43 @@ async def main(args):
 
             # Commands to be run on the provider
             commands = (
-                "touch /golem/work/hashcat.potfile; "
-                f"hashcat -a 3 -m 400 /golem/work/in.hash --skip {skip} --limit {limit} {args.mask} -o /golem/work/hashcat.potfile"
+                "rm -f /golem/work/*.potfile ~/.hashcat/hashcat.potfile; "
+                f"touch /golem/work/hashcat_{skip}.potfile; "
+                f"hashcat -a 3 -m 400 /golem/work/in.hash {args.mask} --skip={skip} --limit={limit} --self-test-disable -o /golem/work/hashcat_{skip}.potfile || true"
             )
             ctx.run(f"/bin/sh", "-c", commands)
 
             output_file = f"hashcat_{skip}.potfile"
-            ctx.download_file(f"/golem/work/hashcat.potfile", output_file)
+            ctx.download_file(f"/golem/work/hashcat_{skip}.potfile", output_file)
             yield ctx.commit()
-            task.accept_task(result=output_file)
+            task.accept_result(result=output_file)
 
     # beginning of the main flow
 
     write_hash(args.hash)
     write_keyspace_check_script(args.mask)
 
-    # By passing `event_emitter=log_summary()` we enable summary logging.
+    # By passing `event_consumer=log_summary()` we enable summary logging.
     # See the documentation of the `yapapi.log` module on how to set
     # the level of detail and format of the logged information.
-    async with Engine(
+    async with Executor(
         package=package,
         max_workers=args.number_of_providers,
         budget=10.0,
         # timeout should be keyspace / number of providers dependent
         timeout=timedelta(minutes=25),
         subnet_tag=args.subnet_tag,
-        event_emitter=log_summary(log_event_repr),
-    ) as engine:
+        event_consumer=log_summary(log_event_repr),
+    ) as executor:
 
-        # this is not typical use of engine.map as, there is only one task, with no data
-        async for task in engine.map(worker_check_keyspace, [Task(data=None)]):
-            pass
+        keyspace_computed = False
+        # This is not a typical use of executor.submit as there is only one task, with no data:
+        async for _task in executor.submit(worker_check_keyspace, [Task(data=None)]):
+            keyspace_computed = True
+
+        if not keyspace_computed:
+            # Assume the errors have been already reported and we may return quietly.
+            return
 
         keyspace = read_keyspace()
 
@@ -273,10 +287,12 @@ async def main(args):
 
         ranges = range(0, keyspace, step)
 
-        async for task in engine.map(worker_find_password, [Task(data=range) for range in ranges]):
+        async for task in executor.submit(
+            worker_find_password, [Task(data=range) for range in ranges]
+        ):
             print(
                 f"{utils.TEXT_COLOR_CYAN}"
-                f"Task computed: {task}, result: {task.output}"
+                f"Task computed: {task}, result: {task.result}"
                 f"{utils.TEXT_COLOR_DEFAULT}"
             )
 
@@ -301,6 +317,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
+    # This is only required when running on Windows with Python prior to 3.8:
+    windows_event_loop_fix()
+
     enable_default_logger(log_file=args.log_file)
 
     sys.stderr.write(
@@ -312,10 +331,23 @@ if __name__ == "__main__":
 
     try:
         loop.run_until_complete(task)
-    except (Exception, KeyboardInterrupt) as e:
-        print(e)
+    except KeyboardInterrupt:
+        print(
+            f"{utils.TEXT_COLOR_YELLOW}"
+            "Shutting down gracefully, please wait a short while "
+            "or press Ctrl+C to exit immediately..."
+            f"{utils.TEXT_COLOR_DEFAULT}"
+        )
         task.cancel()
-        loop.run_until_complete(task)
+        try:
+            loop.run_until_complete(task)
+            print(
+                f"{utils.TEXT_COLOR_YELLOW}"
+                "Shutdown completed, thank you for waiting!"
+                f"{utils.TEXT_COLOR_DEFAULT}"
+            )
+        except KeyboardInterrupt:
+            pass
 ```
 
 ## So what is happening here?
@@ -338,13 +370,13 @@ In order to look for passwords in the given keyspace range, for each of the work
 
 * Send the `in.hash` file that contains the password hash. 
 * Execute`hashcat` with proper `--skip` and `--limit` values
-* Get the hashcat.potfile from the provider to the requestor
+* Get the `hashcat_{skip}.potfile` from the provider to the requestor
 
 ![](../../.gitbook/assets/tutorial-03.jpg)
 
 ### read\_password
 
-The final action is to scan over all the `*.potfiles` received. If there is a password, it will be displayed to the user.
+The final action is to scan over all the received `*.potfiles` received. If there is a password, it will be displayed to the user.
 
 ## How does the code work?
 
@@ -360,9 +392,9 @@ To tell the Golem platform, what our requirements against the providers are, we 
  )
 ```
 
-### Engine
+### Executor
 
-The `package` object is passed to the `engine` object with several other options, such as:
+The `package` object is passed to the `Executor` object with several other options, such as:
 
 * `budget`defines maximal spendings for executing all the tasks in the whole run on Golem
 * `max_workers` defines the maximal number of simultaneously running workers \(and that is, the maximum number of providers that the task fragments will be distributed to\).
@@ -370,24 +402,25 @@ The `package` object is passed to the `engine` object with several other options
 * `subnet_tag` specifies the providers subnet to be used. For example, you would not use the mainnet network for tests.
 
 {% hint style="danger" %}
-Due to current golem market implementation, please use `timeout` value between 8 and 30 minutes. 
+Due to current golem market implementation, please use `timeout` value between 8 and 30 minutes.
 {% endhint %}
 
 ```python
-async with Engine(
+async with Executor(
     package=package,
     max_workers=args.number_of_providers,
     budget=10.0,
     # timeout should be keyspace / number of providers dependent
     timeout=timedelta(minutes=25),
     subnet_tag=args.subnet_tag,
-    event_emitter=log_summary(log_event_repr),
-) as engine:
+    event_consumer=log_summary(log_event_repr),
+) as executor:
+
 ```
 
 ### Main loop
 
-Golem high-level API that we use to interact with the Golem network uses asynchronous programming a lot. The asynchronous execution starting point is in line 152:
+Golem high-level API that we use to interact with the Golem network uses asynchronous programming a lot. The asynchronous execution starting point is in line 162. We catch the KeyboardInterrupt twice because after normal break, we ideally want the code to finalize the cleanup but if the user is determined to break the execution at all cost, we'd like to catch the exception there too:
 
 ```python
 loop = asyncio.get_event_loop()
@@ -395,17 +428,30 @@ task = loop.create_task(main(args))
 
 try:
     loop.run_until_complete(task)
-except (Exception, KeyboardInterrupt) as e:
-    print(e)
+except KeyboardInterrupt:
+    print(
+        f"{utils.TEXT_COLOR_YELLOW}"
+        "Shutting down gracefully, please wait a short while "
+        "or press Ctrl+C to exit immediately..."
+        f"{utils.TEXT_COLOR_DEFAULT}"
+    )
     task.cancel()
-    loop.run_until_complete(task)
+    try:
+        loop.run_until_complete(task)
+        print(
+            f"{utils.TEXT_COLOR_YELLOW}"
+            "Shutdown completed, thank you for waiting!"
+            f"{utils.TEXT_COLOR_DEFAULT}"
+        )
+    except KeyboardInterrupt:
+        pass
 ```
 
-In the `main` function, the most important fragment begins in line 100:
+In the `main` function, the most important fragment begins in line 104:
 
 ```python
-async for task in engine.map(worker_check_keyspace, [Task(data=None)]):
-    pass
+async for _task in executor.submit(worker_check_keyspace, [Task(data=None)]):
+    keyspace_computed = True
 ```
 
 This calls the `worker_check_keyspace` once with no additional task parameters. The next step is getting the `keyspace` variable from the `keyspace.txt` file:
@@ -425,12 +471,14 @@ Now we can split the whole `keyspace` by the `args.number_of_providers`:
 Having the `ranges` list, we can call the `worker_find_password` for each of the fragments, passing only the given `range`:
 
 ```python
-async for task in engine.map(worker_find_password, [Task(data=range) for range in ranges]):
+async for task in executor.submit(
+    worker_find_password,
+    [Task(data=range) for range in ranges]
+):
     print(
-        f"{utils.TEXT_COLOR_CYAN}"
-        f"Task computed: {task}, result: {task.output}"
-        f"{utils.TEXT_COLOR_DEFAULT}"
+        f"Task computed: {task}, result: {task.result}"
     )
+
 ```
 
 After the `hashcat.potfile` file is returned for all the fragments, we need to scan over them, as one of them possibly contains the password we are looking for:
@@ -480,11 +528,14 @@ limit = skip + step
 
 # Commands to be run on the provider
 commands = (
-    "touch /golem/work/hashcat.potfile; "
-     f"hashcat -a 3 -m 400 /golem/work/in.hash --skip {skip} --limit {limit} {args.mask} -o /golem/work/hashcat.potfile"
+    "rm -f /golem/work/*.potfile ~/.hashcat/hashcat.potfile; "
+    f"touch /golem/work/hashcat_{skip}.potfile; "
+    f"hashcat -a 3 -m 400 /golem/work/in.hash {args.mask} --skip={skip} --limit={limit} --self-test-disable -o /golem/work/hashcat_{skip}.potfile || true"
 )
 ctx.run(f"/bin/sh", "-c", commands)
 ```
+
+If from the previous container execution \(possibly on the same provider\) there are any `*.potfiles` left, we are deleting them as they might interfere with current execution.
 
 We also need to execute the `touch /golem/work/hashcat.potfile` command in order to have `/golem/work/hashcat.potfile` file present in the file system even if there is no password output by Hashcat.
 
@@ -492,7 +543,7 @@ The last step is downloading the `/golem/work/hashcat.potfile` file.
 
 ```python
 output_file = f"hashcat_{skip}.potfile"
-ctx.download_file(f"/golem/work/hashcat.potfile", output_file)
+ctx.download_file(f"/golem/work/hashcat_{skip}.potfile", output_file)
 ```
 
 {% hint style="success" %}
@@ -504,7 +555,7 @@ Now, as we know how the yacat works, let's run it!
 While in the `/examples/yacat` directory, type the following:
 
 ```python
-python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --subnet-tag devnet-alpha.2
+python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --subnet-tag community.3
 ```
 
 {% hint style="danger" %}
@@ -516,7 +567,7 @@ Please note that on Windows, you need to:
 So the windows version is:
 
 ```python
-python yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/ --subnet-tag devnet-alpha.2
+python yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/ --subnet-tag community.3
 ```
 {% endhint %}
 
@@ -525,7 +576,7 @@ The above run should return "pas" as the recovered password. The computations wi
 A more computation-intensive example is:
 
 ```python
-python3 yacat.py '?a?a?a?a' '$H$5ZDzPE45C.e3TjJ2Qi58Aaozha6cs30' --subnet-tag devnet-alpha.2 --number-of-providers 8
+python3 yacat.py '?a?a?a?a' '$H$5ZDzPE45C.e3TjJ2Qi58Aaozha6cs30' --subnet-tag community.3 --number-of-providers 8
 ```
 
 The above command should execute computations on 8 providers and return "ABCD".
@@ -573,6 +624,6 @@ And remember:
 {% hint style="info" %}
 In case of any doubts or problems, you can always contact us on discord.
 
-[https://discord.com/channels/684703559954333727/756161015493951600](https://chat.golem.network)
+[https://chat.golem.network](https://chat.golem.network)
 {% endhint %}
 

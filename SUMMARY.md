@@ -7,6 +7,7 @@
 * [Golem overview](introduction/golem-overview.md)
 * [Provider](introduction/provider.md)
 * [Requestor](introduction/requestor.md)
+* [Layer 2 payments on zkSync](introduction/layer-2-payments-on-zksync.md)
 
 ## Requestor tutorials
 
@@ -17,6 +18,7 @@
   * [Golem application - the basics](requestor-tutorials/create-your-own-application-on-golem/golem-application-how-to.md)
   * [Hashcat](requestor-tutorials/create-your-own-application-on-golem/hashcat.md)
   * [Tutorial steps](requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do.md)
+* [SGX secure enclave application development](requestor-tutorials/sgx-secure-enclave-application-development.md)
 
 ## Provider tutorials
 
@@ -31,6 +33,10 @@
 ## Reference
 
 * [Provider CLI reference](reference/provider-cli.md)
+
+## troubleshooting
+
+* [Common issues](troubleshooting/common-issues.md)
 
 ## See also
 

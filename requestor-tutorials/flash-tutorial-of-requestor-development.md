@@ -19,7 +19,7 @@ While it's possible that you'll be successful running Golem and this tutorial on
 #### Languages
 
 {% hint style="warning" %}
-If you are JS developer, please click to **NodeJS** tab
+If you are JS developer, please switch to **NodeJS** tab
 {% endhint %}
 
 {% tabs %}
@@ -54,7 +54,7 @@ node --version
 
 If you have an older version of node and you'd like to keep that version in your system, consider using [nvm](https://github.com/nvm-sh/nvm). You can install it using the instructions from:
 
-*  [https://github.com/nvm-sh/nvm\#install--update-script](https://github.com/nvm-sh/nvm#install--update-script) \(Linux/macOS X\)
+* [https://github.com/nvm-sh/nvm\#install--update-script](https://github.com/nvm-sh/nvm#install--update-script) \(Linux/macOS X\)
 * [https://github.com/coreybutler/nvm-windows/\#node-version-manager-nvm-for-windows](https://github.com/coreybutler/nvm-windows/#node-version-manager-nvm-for-windows) \(Windows\)
 
 Once you have `nvm` installed on your machine, run:
@@ -86,7 +86,7 @@ git --version
 #### No crypto assets needed \(for now!\)
 
 {% hint style="info" %}
-Alpha lives on the Rinkeby Testnet. You don't need any real ETH or GNT tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets are acquired by the daemon in one of the steps below.
+Alpha lives on the Rinkeby Testnet. You don't need any real ETH or GLM tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets are acquired by the daemon in one of the steps below.
 {% endhint %}
 
 ### Can we help you? Do you have feedback for Golem?
@@ -121,7 +121,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.4.0](https://github.com/golemfactory/yagna/releases/tag/v0.4.0)
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.5.0](https://github.com/golemfactory/yagna/releases/tag/v0.5.0)
 
 Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
@@ -137,7 +137,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.4.0-a1a50fd9`
+It should output: `yagna 0.5.0 (d33058bb 2020-12-01 build #96)`
 
 ### Purge the stale working directories
 
@@ -211,7 +211,7 @@ the value in the `key` column is the key you need.
 
 You need the following command to enable the daemon as a requestor.
 
-What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some ETH and nGNT tokens to the node.
+What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some nGNT tokens to the node using zkSync.
 
 {% hint style="warning" %}
 It needs to be run each time the daemon is started or restarted.
@@ -223,10 +223,6 @@ yagna payment init -r
 
 Once you issue the command, allow some time until it completes its job.
 
-{% hint style="warning" %}
-Due to the fact that our example uses the Rinkeby Ethereum testnet, the transactions that add ETH and nGNT to the requestor node's address need to be mined and confirmed there. It may take several minutes until that's completed.
-{% endhint %}
-
 You can verify whether you already have the funds with:
 
 ```text
@@ -234,6 +230,8 @@ yagna payment status
 ```
 
 If, after a few minutes, you can't see the assets, re-run the `payment init` command above and check again after a few more minutes.
+
+As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../troubleshooting/common-issues.md#payment-driver-initialization-issue).
 
 ## Running the requestor and your first task on the New Golem Network
 
@@ -265,7 +263,7 @@ Install the dependencies:
 
 ```text
 pip3 install -U pip
-pip3 install certifi yapapi
+pip3 install yapapi
 ```
 
 ### Get the requestor agent's code
@@ -280,7 +278,7 @@ and make sure you're working on the version corresponding with the latest releas
 
 ```text
 cd yapapi
-git checkout b0.3
+git checkout b0.4
 ```
 
 ### Set the yagna app key
@@ -303,7 +301,7 @@ The example we're showcasing here resides in the `examples/blender` directory wi
 
 ```bash
 cd examples/blender
-python3 blender.py --subnet-tag devnet-alpha.2
+python3 blender.py
 ```
 
 Once you launch the example, you should see some messages reflecting the progress of your task's execution - agreement confirmations, task dispatches and finally task completions.
@@ -326,7 +324,7 @@ Check out or download the `yajsapi` repository:
 ```text
 git clone https://github.com/golemfactory/yajsapi.git
 cd yajsapi
-git checkout b0.1
+git checkout b0.2
 ```
 
 ### Set the yagna app key
@@ -353,13 +351,11 @@ yarn
 yarn js:blender
 ```
 
-If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet and then ones that announce work dispatched to providers with lines starting with `new batch !!!` and subsequently confirmations of task completions.
+If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet and then ones that announce work dispatched to providers with lines starting with `Task sent to provider [...]` and subsequently confirmations of task completions.
 
-To some more detailed messages, you can run the example with `yarn js:blender -d`.
+To see some more detailed messages, you can run the example with `yarn js:blender -d`.
 
 The example in question generates six discrete jobs for providers to execute so after those six activities are completed and results returned, the whole task is finished.
-
-`progress= {'done': True}`
 {% endtab %}
 {% endtabs %}
 
@@ -383,7 +379,7 @@ Finally, you can verify that the providers have been paid for the work they cont
 yagna app-key list
 ```
 
-again but this time it's the value in the `id` column that you're interested in. This is your the Ethereum address of your yagna node on the Rinkeby testnet. Once you have that address, head to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) and put the value in the address field there. Afterwards, switch to the "Erc20 Token Txns" tab and you should be able to see your outgoing payments there.
+again but this time it's the value in the `id` column that you're interested in. This is your the Ethereum address of your yagna node on the Rinkeby testnet and on zkSync. Once you have that address, head to [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/) , put the value in the address field there and verify that you see the outgoing payment transactions.
 
 ## Next steps
 
