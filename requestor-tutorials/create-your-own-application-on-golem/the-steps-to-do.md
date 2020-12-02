@@ -117,7 +117,7 @@ On the provider side, all the content of the volume directories are stored in th
 {% endhint %}
 
 {% hint style="danger" %}
-Please mind that if the subsequent container instances are executed on the same provider the file content of the VOLUMES will be preserved between the instances. That means that files in the VOLUMES left overt from one execution will be present in the subsequent container instance, if only the container is instantiated on the same provider \(and its file system\).  
+Please mind that if the subsequent container instances are executed on the same provider the file content of the VOLUMES will be preserved between the instances. That means that files in the VOLUMES left overt from one execution will be present in the subsequent container instance if only the container is instantiated on the same provider \(and its file system\).  
 {% endhint %}
 
 {% hint style="warning" %}
