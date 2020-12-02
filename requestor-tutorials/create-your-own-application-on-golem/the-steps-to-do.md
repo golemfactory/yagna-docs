@@ -117,7 +117,9 @@ On the provider side, all the content of the volume directories are stored in th
 {% endhint %}
 
 {% hint style="danger" %}
-Please mind that if the subsequent container instances are executed on the same provider the file content of the VOLUMES will be preserved between the instances. That means that files in the VOLUMES left overt from one execution will be present in the subsequent container instance if only the container is instantiated on the same provider \(and its file system\).  
+Please mind that tasks within a single worker instance - so effectively part of the same activity on a given provider node - run within the same virtual machine and share the contents of a VOLUME between each other.  
+  
+That means that as long as the execution takes place on the same provider, and thus, on the same filesystem, files in the VOLUME left over from one task execution will be present in a subsequent run.
 {% endhint %}
 
 {% hint style="warning" %}
