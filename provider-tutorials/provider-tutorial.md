@@ -10,7 +10,7 @@ description: >-
 
 #### Platforms
 
-This is our very second Alpha Provider Sneak Peek reveal. Therefore, temporarily, Golem official support is for:
+This is still an early Alpha Provider Sneak Peek reveal. Therefore, temporarily, Golem official support is for:
 
 * Ubuntu 18.04 and 20.04 
 
@@ -124,7 +124,7 @@ As an output you will get the information about your node's current state as sho
 {% hint style="info" %}
 Under your address you can see both **on-chain** and **zk-sync** values listed. 
 
-Although zk-synk is from now on the main payment operator in Golem you may receive on-chain transactions as well. To confirm correctness of the listed values head over to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) \(on-chain\) and [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/) \(for zk-synk\).
+Although zk-sync is from now on the default payment driver in Golem you may receive on-chain transactions as well. To confirm correctness of the listed values head over to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) \(on-chain\) and [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/) \(for zk-sync\).
 {% endhint %}
 
 {% hint style="info" %}
@@ -166,4 +166,3 @@ To check out additional commands available in the CLI, have a look at the refere
 {% page-ref page="../reference/provider-cli.md" %}
 
 ## Next steps
-

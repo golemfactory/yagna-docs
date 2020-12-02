@@ -276,7 +276,7 @@ In this example, we're using a single scene file which all task fragments use, s
 {% tabs %}
 {% tab title="Python" %}
 ```python
-ctx.send_file("./scene.blend", "/golem/resource/scene.blend")
+ctx.send_file("./cubes.blend", "/golem/resource/scene.blend")
 ```
 {% endtab %}
 
@@ -546,4 +546,3 @@ With this, our requestor agent is complete and we can use it to run our computat
 Are you hooked up? then go ahead and follow up with our tutorial on using your own - or generally any other - Docker image and using our `gvmkit-builder` tool to build and push the image to our repository:
 
 {% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
-
