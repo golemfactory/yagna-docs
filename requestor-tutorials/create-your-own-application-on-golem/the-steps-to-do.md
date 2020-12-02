@@ -117,6 +117,10 @@ On the provider side, all the content of the volume directories are stored in th
 {% endhint %}
 
 {% hint style="danger" %}
+Please mind that if the subsequent container instances are executed on the same provider the file content of the VOLUMES will be preserved between the instances. That means that files in the VOLUMES left overt from one execution will be present in the subsequent container instance, if only the container is instantiated on the same provider \(and its file system\).  
+{% endhint %}
+
+{% hint style="warning" %}
 If your provider side code creates large temporary files, you should store them in the directory defined as VOLUME. Otherwise, the large files will be stored in RAM. RAM usually has a capacity limit much lower than disk space.
 {% endhint %}
 
@@ -194,7 +198,10 @@ def read_keyspace():
 
 def read_password(ranges):
     for r in ranges:
-        with open(f"hashcat_{r}.potfile", "r") as f:
+        path = pathlib.Path(f"hashcat_{r}.potfile")
+        if not path.is_file():
+            continue
+        with open(path, "r") as f:
             line = f.readline()
         split_list = line.split(":")
         if len(split_list) >= 2:
@@ -228,13 +235,14 @@ async def main(args):
 
             # Commands to be run on the provider
             commands = (
-                "touch /golem/work/hashcat.potfile; "
-                f"hashcat -a 3 -m 400 /golem/work/in.hash --skip {skip} --limit {limit} {args.mask} -o /golem/work/hashcat.potfile"
+                "rm -f /golem/work/*.potfile ~/.hashcat/hashcat.potfile; "
+                f"touch /golem/work/hashcat_{skip}.potfile; "
+                f"hashcat -a 3 -m 400 /golem/work/in.hash {args.mask} --skip={skip} --limit={limit} --self-test-disable -o /golem/work/hashcat_{skip}.potfile || true"
             )
             ctx.run(f"/bin/sh", "-c", commands)
 
             output_file = f"hashcat_{skip}.potfile"
-            ctx.download_file(f"/golem/work/hashcat.potfile", output_file)
+            ctx.download_file(f"/golem/work/hashcat_{skip}.potfile", output_file)
             yield ctx.commit()
             task.accept_result(result=output_file)
 
@@ -324,7 +332,7 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print(
             f"{utils.TEXT_COLOR_YELLOW}"
-            "Shutting down gracefully, please wait a few seconds "
+            "Shutting down gracefully, please wait a short while "
             "or press Ctrl+C to exit immediately..."
             f"{utils.TEXT_COLOR_DEFAULT}"
         )
@@ -338,7 +346,6 @@ if __name__ == "__main__":
             )
         except KeyboardInterrupt:
             pass
-
 ```
 
 ## So what is happening here?
@@ -361,13 +368,13 @@ In order to look for passwords in the given keyspace range, for each of the work
 
 * Send the `in.hash` file that contains the password hash. 
 * Execute`hashcat` with proper `--skip` and `--limit` values
-* Get the hashcat.potfile from the provider to the requestor
+* Get the `hashcat_{skip}.potfile` from the provider to the requestor
 
 ![](../../.gitbook/assets/tutorial-03.jpg)
 
 ### read\_password
 
-The final action is to scan over all the `*.potfiles` received. If there is a password, it will be displayed to the user.
+The final action is to scan over all the received `*.potfiles` received. If there is a password, it will be displayed to the user.
 
 ## How does the code work?
 
@@ -411,21 +418,34 @@ async with Executor(
 
 ### Main loop
 
-Golem high-level API that we use to interact with the Golem network uses asynchronous programming a lot. The asynchronous execution starting point is in line 161. We catch the KeyboardInterrupt twice because after normal break, we ideally want the code to finalize the cleanup but if the user is determined to break the execution at all cost, we'd like to catch the exception there too:
+Golem high-level API that we use to interact with the Golem network uses asynchronous programming a lot. The asynchronous execution starting point is in line 162. We catch the KeyboardInterrupt twice because after normal break, we ideally want the code to finalize the cleanup but if the user is determined to break the execution at all cost, we'd like to catch the exception there too:
 
 ```python
+loop = asyncio.get_event_loop()
+task = loop.create_task(main(args))
+
+try:
+    loop.run_until_complete(task)
+except KeyboardInterrupt:
+    print(
+        f"{utils.TEXT_COLOR_YELLOW}"
+        "Shutting down gracefully, please wait a short while "
+        "or press Ctrl+C to exit immediately..."
+        f"{utils.TEXT_COLOR_DEFAULT}"
+    )
+    task.cancel()
     try:
         loop.run_until_complete(task)
+        print(
+            f"{utils.TEXT_COLOR_YELLOW}"
+            "Shutdown completed, thank you for waiting!"
+            f"{utils.TEXT_COLOR_DEFAULT}"
+        )
     except KeyboardInterrupt:
-        task.cancel()
-        try:
-            loop.run_until_complete(task)
-        except KeyboardInterrupt:
-            pass
-
+        pass
 ```
 
-In the `main` function, the most important fragment begins in line 100:
+In the `main` function, the most important fragment begins in line 104:
 
 ```python
 async for _task in executor.submit(worker_check_keyspace, [Task(data=None)]):
@@ -506,11 +526,14 @@ limit = skip + step
 
 # Commands to be run on the provider
 commands = (
-    "touch /golem/work/hashcat.potfile; "
-     f"hashcat -a 3 -m 400 /golem/work/in.hash --skip {skip} --limit {limit} {args.mask} -o /golem/work/hashcat.potfile"
+    "rm -f /golem/work/*.potfile ~/.hashcat/hashcat.potfile; "
+    f"touch /golem/work/hashcat_{skip}.potfile; "
+    f"hashcat -a 3 -m 400 /golem/work/in.hash {args.mask} --skip={skip} --limit={limit} --self-test-disable -o /golem/work/hashcat_{skip}.potfile || true"
 )
 ctx.run(f"/bin/sh", "-c", commands)
 ```
+
+If from the previous container execution \(possibly on the same provider\) there are any `*.potfiles` left, we are deleting them as they might interfere with current execution.
 
 We also need to execute the `touch /golem/work/hashcat.potfile` command in order to have `/golem/work/hashcat.potfile` file present in the file system even if there is no password output by Hashcat.
 
@@ -518,7 +541,7 @@ The last step is downloading the `/golem/work/hashcat.potfile` file.
 
 ```python
 output_file = f"hashcat_{skip}.potfile"
-ctx.download_file(f"/golem/work/hashcat.potfile", output_file)
+ctx.download_file(f"/golem/work/hashcat_{skip}.potfile", output_file)
 ```
 
 {% hint style="success" %}
