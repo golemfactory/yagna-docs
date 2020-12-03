@@ -14,7 +14,7 @@ This is still an early Alpha Provider Sneak Peek reveal. Therefore, temporarily,
 
 * Ubuntu 18.04 and 20.04 
 
-but you are welcome to try out run it on other Linux distributions. 
+but you are welcome to try out run it on other Linux distributions.
 
 {% hint style="warning" %}
 * To run Golem Sneak Peek you'll need a physical machine as you may encounter issues when running it on a virtual machine.
@@ -45,7 +45,6 @@ Open your terminal and type:
 
 ```text
 curl -sSf https://join.golem.network/as-provider | bash -
-
 ```
 
 You might be asked to modify your PATH afterwards For future terminal sessions:`echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc`
@@ -61,7 +60,7 @@ After installing all required components you will be asked to set up your node. 
 
 `subnet (default=community.3):` - It is important that you use "community.3"
 
-`Ethereum wallet address (default=internal wallet):`  - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty an address will be created for you on your local system.
+`Ethereum wallet address (default=internal wallet):` - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty an address will be created for you on your local system.
 
 `price NGNT per hour (default=5):` - Type in the value of renting your computer power as a provider. You can use default price \(5 NGNT per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
 
@@ -118,11 +117,10 @@ As an output you will get the information about your node's current state as sho
 │  last 1h in progress  0                                      │
 │  total processed      0                                      │
 └──────────────────────────────────────────────────────────────┘
-
 ```
 
 {% hint style="info" %}
-Under your address you can see both **on-chain** and **zk-sync** values listed. 
+Under your address you can see both **on-chain** and **zk-sync** values listed.
 
 Although zk-sync is from now on the default payment driver in Golem you may receive on-chain transactions as well. To confirm correctness of the listed values head over to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) \(on-chain\) and [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/) \(for zk-sync\).
 {% endhint %}
@@ -130,8 +128,6 @@ Although zk-sync is from now on the default payment driver in Golem you may rece
 {% hint style="info" %}
 If in the **Tasks** column you see either tasks in progress or processed then you have successfully computed a task! If not, give it some time as there is still limited number of tasks in the test network - and then run the command again.
 {% endhint %}
-
-
 
 #### Known issues
 
@@ -166,3 +162,4 @@ To check out additional commands available in the CLI, have a look at the refere
 {% page-ref page="../reference/provider-cli.md" %}
 
 ## Next steps
+

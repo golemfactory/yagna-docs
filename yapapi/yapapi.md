@@ -10,7 +10,7 @@
 
 Golem's requestor-side configuration consists of two separate components:
 
-* the [`yagna` daemon](https://github.com/golemfactory/yagna) - your node in the new Golem network, responsible for communication with the other nodes, running the 
+* the [`yagna` daemon](https://github.com/golemfactory/yagna) - your node in the new Golem network, responsible for communication with the other nodes, running the
 
   market and providing easy access to the payment mechanisms.
 

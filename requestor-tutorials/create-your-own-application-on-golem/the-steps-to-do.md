@@ -117,8 +117,8 @@ On the provider side, all the content of the volume directories are stored in th
 {% endhint %}
 
 {% hint style="danger" %}
-Please mind that tasks within a single worker instance - so effectively part of the same activity on a given provider node - run within the same virtual machine and share the contents of a VOLUME between each other.  
-  
+Please mind that tasks within a single worker instance - so effectively part of the same activity on a given provider node - run within the same virtual machine and share the contents of a VOLUME between each other.
+
 That means that as long as the execution takes place on the same provider, and thus, on the same filesystem, files in the VOLUME left over from one task execution will be present in a subsequent run.
 {% endhint %}
 
@@ -415,7 +415,6 @@ async with Executor(
     subnet_tag=args.subnet_tag,
     event_consumer=log_summary(log_event_repr),
 ) as executor:
-
 ```
 
 ### Main loop
@@ -478,7 +477,6 @@ async for task in executor.submit(
     print(
         f"Task computed: {task}, result: {task.result}"
     )
-
 ```
 
 After the `hashcat.potfile` file is returned for all the fragments, we need to scan over them, as one of them possibly contains the password we are looking for:

@@ -126,25 +126,30 @@ except (Exception, KeyboardInterrupt) as e:
 
 {% tab title="NodeJS" %}
 ```javascript
-import path from "path";
-import { Engine, Task, vm, WorkContext } from "yajsapi";
-import { range } from "yajsapi/utils";
+const path = require("path");
+const dayjs = require("dayjs");
+const duration = require("dayjs/plugin/duration");
+const { Engine, Task, utils, vm } = require("yajsapi");
+const { program } = require("commander");
 
-async function main() {
-  let _package = await vm.repo(
+dayjs.extend(duration);
+
+const { asyncWith, logUtils, range } = utils;
+
+async function main(subnetTag) {
+  const _package = await vm.repo(
     "9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae",
     0.5,
     2.0
   );
 
-  async function* worker(ctx: WorkContext, tasks) {
+  async function* worker(ctx, tasks) {
     ctx.send_file(
       path.join(__dirname, "./cubes.blend"),
       "/golem/resource/scene.blend"
     );
     for await (let task of tasks) {
       let frame = task.data();
-      ctx.begin();
       let crops = [
         {
           outfilebasename: "out",
@@ -165,38 +170,52 @@ async function main() {
         OUTPUT_DIR: "/golem/output",
       });
       ctx.run("/golem/entrypoints/run-blender.sh");
+      const output_file = `output_${frame.toString()}.png`
       ctx.download_file(
-        `/golem/output/out${frame.toString().padStart(4, '0')}.png`,
+        `/golem/output/out${frame.toString().padStart(4, "0")}.png`,
         path.join(__dirname, `./output_${frame}.png`)
       );
       yield ctx.commit();
-
-      task.accept_task();
+      task.accept_task(output_file);
     }
 
     ctx.log("no more frames to render");
+    return;
   }
 
-  let frames: number[] = range(0, 60, 10);
+  const frames = range(0, 60, 10);
+  const timeout = dayjs.duration({ minutes: 15 }).asMilliseconds();
 
-  let engine = await new Engine(
-    _package,
-    6,
-    900000, //5 min to 30 min
-    "10.0",
-    undefined,
-    "testnet"
+  await asyncWith(
+    await new Engine(
+      _package,
+      6,
+      timeout,
+      "10.0",
+      undefined,
+      subnetTag,
+      logUtils.logSummary()
+    ),
+    async (engine) => {
+      for await (let task of engine.map(
+        worker,
+        frames.map((frame) => new Task(frame))
+      )) {
+        console.log("result=", task.output());
+      }
+    }
   );
-
-  for await (let progress of engine.map(
-    worker,
-    frames.map((frame) => new Task(frame))
-  )) {
-    console.log("progress=", progress);
-  }
+  return;
 }
 
-main();
+program
+  .option('--subnet-tag <subnet>', 'set subnet name', 'community.3')
+  .option('-d, --debug', 'output extra debugging');
+program.parse(process.argv);
+if (program.debug) {
+  utils.changeLogLevel("debug");
+}
+main(program.subnetTag);
 ```
 {% endtab %}
 {% endtabs %}
@@ -262,7 +281,7 @@ async def worker(ctx: WorkContext, tasks):
 
 {% tab title="NodeJS" %}
 ```typescript
-async function* worker(ctx: WorkContext, tasks) {
+async function* worker(ctx, tasks) {
 ```
 {% endtab %}
 {% endtabs %}
@@ -330,14 +349,12 @@ ctx.send_json(
         "OUTPUT_DIR": "/golem/output",
     },
 )
-
 ```
 {% endtab %}
 
 {% tab title="NodeJS" %}
 ```typescript
 let frame = task.data();
-ctx.begin();
 let crops = [
   {
     outfilebasename: "out",
@@ -418,7 +435,7 @@ Finally - or _almost_ finally - we issue a `commit()` call which combines all th
 {% tabs %}
 {% tab title="Python" %}
 ```python
-yield ctx.commit()
+yield ctx.commit(timeout=timedelta(seconds=120))
 ```
 {% endtab %}
 
@@ -436,13 +453,13 @@ Ordinarily, you'd most likely want to run some verification of the result to mak
 {% tabs %}
 {% tab title="Python" %}
 ```python
-task.accept_task()
+task.accept_result(result=output_file)
 ```
 {% endtab %}
 
 {% tab title="NodeJS" %}
 ```javascript
-task.accept_task();
+task.accept_task(output_file);
 ```
 {% endtab %}
 {% endtabs %}
@@ -483,22 +500,25 @@ async with Executor(
     subnet_tag=subnet_tag,
     event_consumer=log_summary(),
 ) as executor:
-
 ```
 {% endtab %}
 
 {% tab title="NodeJS" %}
 ```typescript
-let frames: number[] = range(0, 60, 10);
+const frames = range(0, 60, 10);
+const timeout = dayjs.duration({ minutes: 15 }).asMilliseconds();
 
-let engine = await new Engine(
-  _package,
-  6,
-  900000, //5 min to 30 min
-  "10.0",
-  undefined,
-  "testnet"
-);
+await asyncWith(
+  await new Engine(
+    _package,
+    6,
+    timeout, //5 min to 30 min
+    "10.0",
+    undefined,
+    subnetTag,
+    logUtils.logSummary()
+  ),
+  async (engine) => {
 ```
 {% endtab %}
 {% endtabs %}
@@ -515,17 +535,17 @@ With the `Executor` in place, we can finally tell it what we want to execute and
 {% tab title="Python" %}
 ```python
 async for task in executor.submit(worker, [Task(data=frame) for frame in frames]):
-    print(f"Task computed: {task}, result: {task.result}")
+    print(f"Task computed: {task}, result: {task.result}, time: {task.running_time}")
 ```
 {% endtab %}
 
 {% tab title="NodeJS" %}
 ```typescript
-for await (let progress of engine.map(
-  worker,
-  frames.map((frame) => new Task(frame))
+for await (let task of engine.map(
+    worker,
+    frames.map((frame) => new Task(frame))
 )) {
-  console.log("progress=", progress);
+  console.log("result=", task.output());
 }
 ```
 {% endtab %}
@@ -546,3 +566,4 @@ With this, our requestor agent is complete and we can use it to run our computat
 Are you hooked up? then go ahead and follow up with our tutorial on using your own - or generally any other - Docker image and using our `gvmkit-builder` tool to build and push the image to our repository:
 
 {% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
+
