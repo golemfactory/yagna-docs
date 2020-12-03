@@ -551,7 +551,7 @@ for await (let task of engine.map(
 {% endtab %}
 {% endtabs %}
 
-As has been mentioned previously, the first parameter to `map` is the worker routine that defines our task's steps. The second parameter is an iterable defining all the fragments of our whole task that we desire to be executed.
+As has been mentioned previously, the first parameter to `submit` is the worker routine that defines our task's steps. The second parameter is an iterable defining all the fragments of our whole task that we desire to be executed.
 
 Here we're passing the specific `frame` from the scene that we'd like our Blender container to render. However, it can essentially be any parameter or set of parameters that can accurately describe the job to be executed and it is up for our `worker` routine and - through it - for our containerized payload to make sense of what that set of parameters is.
 
