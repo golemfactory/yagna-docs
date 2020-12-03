@@ -50,7 +50,7 @@ curl -sSf https://join.golem.network/as-provider | bash -
 You might be asked to modify your PATH afterwards For future terminal sessions:`echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc`
 
 Update your active terminal\(s\) with:  
-`export PATH="$HOME/.local/bin:$PATH”`
+`export PATH="$HOME/.local/bin:$PATH"`
 
 #### Initial setup
 
