@@ -51,3 +51,21 @@ class LeastExpensiveLinearPayuMS(MarketStrategy, object):
 
 if \(offer.props\(\)\["golem.node.id.name"\] == "manchester.3"\) { return SCORE\_REJECTED; }
 
+
+
+```python
+def sample_cheap_offer(offer_list):
+    # in each query calculate the mean of score of given offer list 
+    _mean   = getMeanOfScore(offer_list)
+    # get random sample from given list
+    _sample = randomChoice(offer_list)
+
+    # check if score of sample is greater or equal to the average
+    if(_sample.score => _mean) {
+        # if it is return the sample
+        return _sample;
+    }
+    # if not call the same operation recursively, until it matches to a score lte _mean condition  
+    sample_cheap_offer(offer_list)
+```
+
