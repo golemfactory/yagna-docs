@@ -47,7 +47,7 @@ class LeastExpensiveLinearPayuMS(MarketStrategy, object):
 
  `fixed_price` \(cena za start\) + price for second CPU \* oczekiwany czas obliczeń + cena za sekundy TIME \* oczekiwany czas obliczeń
 
-
+fixed\_price \(cena za start\) + price for second CPU  _oczekiwany czas obliczeń + cena za sekundy TIME_  oczekiwany czas obliczeń + random\(20\)
 
 if \(offer.props\(\)\["golem.node.id.name"\] == "manchester.3"\) { return SCORE\_REJECTED; }
 
