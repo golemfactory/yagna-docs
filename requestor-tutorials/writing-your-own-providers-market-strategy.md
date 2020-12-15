@@ -45,5 +45,5 @@ class LeastExpensiveLinearPayuMS(MarketStrategy, object):
         return score
 ```
 
-
+ `fixed_price` \(cena za start\) + cena za sekundy CPU \* oczekiwany czas obliczeń + cena za sekundy TIME \* oczekiwany czas obliczeń
 
