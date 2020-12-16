@@ -1,4 +1,4 @@
-# Writing your own provider's market strategy
+# Writing your own market strategy
 
 ## Business rules for offer scoring
 
