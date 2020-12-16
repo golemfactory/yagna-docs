@@ -225,7 +225,7 @@ async def main(args):
             ctx.run("/bin/sh", "/golem/work/keyspace.sh")
             output_file = "keyspace.txt"
             ctx.download_file("/golem/work/keyspace.txt", output_file)
-            yield ctx.commit()
+            yield ctx.commit(timeout=timedelta(minutes=1))
             task.accept_result()
 
     async def worker_find_password(ctx: WorkContext, tasks):
@@ -245,7 +245,7 @@ async def main(args):
 
             output_file = f"hashcat_{skip}.potfile"
             ctx.download_file(f"/golem/work/hashcat_{skip}.potfile", output_file)
-            yield ctx.commit()
+            yield ctx.commit(timeout=timedelta(minutes=25))
             task.accept_result(result=output_file)
 
     # beginning of the main flow
@@ -403,6 +403,10 @@ The `package` object is passed to the `Executor` object with several other optio
 
 {% hint style="danger" %}
 Due to current golem market implementation, please use `timeout` value between 8 and 30 minutes.
+{% endhint %}
+
+{% hint style="info" %}
+You can also specify the timeout value for the particular provider side execution batch that is triggered by `ctx.commit(timeout=timedelta(...))`.
 {% endhint %}
 
 ```python
