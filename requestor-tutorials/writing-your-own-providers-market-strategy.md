@@ -10,6 +10,8 @@ the properties used in the market offer scoring:
 * `com.Counter.TIME` - cost of one second of computation time in the real-time units
 * `com.Counter.CPU` - cost of one second of computation time in the CPU time units
 
+`expected_time_secs` default 60 seconds
+
 ### LeastExpensiveLinearPay
 
 `com.ComLinear.fixed_price + com.Counter.TIME * expected_time_secs + com.Counter.CPU * expected_time_secs`
