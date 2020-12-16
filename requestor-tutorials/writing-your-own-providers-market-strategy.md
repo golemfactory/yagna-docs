@@ -1,5 +1,33 @@
 # Writing your own provider's market strategy
 
+## Business rules for offer scoring
+
+### The properties
+
+the properties used in the market offer scoring:
+
+* `com.ComLinear.fixed_price` -  fixed startup price that is not dependant on computation time
+* `com.Counter.TIME` - cost of one second of computation time in the real-time units
+* `com.Counter.CPU` - cost of one second of computation time in the CPU time units
+
+### LeastExpensiveLinearPay
+
+`com.ComLinear.fixed_price + com.Counter.TIME * expected_time_secs + com.Counter.CPU * expected_time_secs`
+
+### LeastExpensiveLinearPayPlusRandom
+
+`com.ComLinear.fixed_price + com.Counter.TIME * expected_time_secs + com.Counter.CPU * expected_time_secs + random(noise_factor)`
+
+where:
+
+* `noise_factor` - is the amount of artificial noise we are adding to prevent the same cheapest providers from being selected all the time
+
+### Blacklist
+
+```python
+if (offer.props()["golem.node.id.name"] == "manchester.3") { return SCORE_REJECTED; }
+```
+
 ## LeastExpensiveLinearPayuMS
 
 Let's look at LeastExpensiveLinearPayuMS code.
@@ -45,13 +73,9 @@ class LeastExpensiveLinearPayuMS(MarketStrategy, object):
         return score
 ```
 
- `fixed_price` \(cena za start\) + price for second CPU \* oczekiwany czas obliczeń + cena za sekundy TIME \* oczekiwany czas obliczeń
+## Offer sampling
 
-fixed\_price \(cena za start\) + price for second CPU  _oczekiwany czas obliczeń + cena za sekundy TIME_  oczekiwany czas obliczeń + random\(20\)
-
-if \(offer.props\(\)\["golem.node.id.name"\] == "manchester.3"\) { return SCORE\_REJECTED; }
-
-
+Another solution to prevent the same cheapest providers from being selected all the time is offer sampling.
 
 ```python
 def sample_cheap_offer(offer_list):
