@@ -1,8 +1,6 @@
 ---
-description: Using the Test Harness to test your own apps
+description: Making use of goth's interactive mode
 ---
 
-# Running Goth's interactive mode
-
-Okay, if you have already 
+# Using Test Harness to test Golem apps
 
