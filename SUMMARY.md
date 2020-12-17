@@ -21,6 +21,7 @@
 * [SGX secure enclave application development](requestor-tutorials/sgx-secure-enclave-application-development.md)
 * [Writing your own market strategy](requestor-tutorials/writing-your-own-providers-market-strategy.md)
 * [Interactive testing environment](requestor-tutorials/interactive-testing-environment/README.md)
+  * [Running Goth](requestor-tutorials/interactive-testing-environment/running-goth.md)
   * [Running Goth's interactive mode](requestor-tutorials/interactive-testing-environment/running-goths-interactive-mode.md)
 
 ## Provider tutorials
