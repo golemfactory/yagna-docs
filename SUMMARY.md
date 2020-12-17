@@ -20,6 +20,8 @@
   * [Tutorial steps](requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do.md)
 * [SGX secure enclave application development](requestor-tutorials/sgx-secure-enclave-application-development.md)
 * [Writing your own market strategy](requestor-tutorials/writing-your-own-providers-market-strategy.md)
+* [Interactive testing environment](requestor-tutorials/interactive-testing-environment/README.md)
+  * [Running Goth's interactive mode](requestor-tutorials/interactive-testing-environment/running-goths-interactive-mode.md)
 
 ## Provider tutorials
 
