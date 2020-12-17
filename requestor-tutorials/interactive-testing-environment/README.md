@@ -38,9 +38,9 @@ This environment is self-contained and independent of any external components th
 
 Now that you know what `goth` is and how it can help you as the developer, let's follow up with what it takes to actually run the thing!
 
+{% page-ref page="running-goth.md" %}
 
+Or, if you have already run the Golem Test Harness, you may proceed directly to our tutorial on testing your own apps with it:
 
-
-
-
+{% page-ref page="running-goths-interactive-mode.md" %}
 
