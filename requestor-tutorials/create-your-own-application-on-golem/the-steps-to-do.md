@@ -245,7 +245,7 @@ async def main(args):
 
             output_file = f"hashcat_{skip}.potfile"
             ctx.download_file(f"/golem/work/hashcat_{skip}.potfile", output_file)
-            yield ctx.commit(timeout=timedelta(minutes=25))
+            yield ctx.commit(timeout=timedelta(minutes=10))
             task.accept_result(result=output_file)
 
     # beginning of the main flow
