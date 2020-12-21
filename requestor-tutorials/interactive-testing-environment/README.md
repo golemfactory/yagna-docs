@@ -12,7 +12,7 @@ Currently, Golem provider nodes require actual Linux machines to run.
 Because of that, while it may be possible to utilize a subset of our integration testing framework on Mac or Windows, for the time being, local end-to-end testing of Golem applications is only fully supported on Linux.
 {% endhint %}
 
-Hello Developer! So you've finally implemented your awesome, new Golem app and would like to finally deploy it to the Golem network and see your tasks executed there?
+Hello Developer! So you've implemented your awesome, new Golem app and would like to deploy it to the Golem network and see your tasks executed there?
 
 But of course, your app may still be far from perfect, the network may be congested, information from the execution units on providers next-to-impossible to acquire or maybe those nodes currently available to you are ill-suited to your particular task at hand.
 
@@ -36,7 +36,9 @@ This environment is self-contained and independent of any external components th
 * support for running your own, local requestor agent that connects to this network
 {% endhint %}
 
-Now that you know what `goth` is and how it can help you as the developer, let's follow up with what it takes to actually run the thing!
+The TL;DR from the above is that it basically allows you to run your app on your local machine in exactly the same way as you'd run it on the actual network but at the same time, it gives you much more tools to investigate and debug the issues you may encounter.
+
+So, now that you know what `goth` is and how it can help you as the developer, let's follow up with what it takes to actually run the thing!
 
 {% page-ref page="running-goth.md" %}
 
