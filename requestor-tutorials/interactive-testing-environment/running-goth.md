@@ -79,7 +79,7 @@ To generate a new token, go to your account's [developer settings](https://githu
 
 Once your token is generated you need to do two things:
 
-1. Log in to GitHub's Docker registry by calling: `docker login docker.pkg.github.com -u {username}`, replacing `{username}` with your GitHub username and pasting in your access token as the password. You only need to do this once on your development machine.
+1. Log in to GitHub's Docker registry by calling: `docker login docker.pkg.github.com -u {username}`, replacing `{username}` with your GitHub username and **pasting in your access token as the password** \(iow, _don't_ use your regular github password here\). You only need to do this once on your development machine.
 2. Export an environment variable named `GITHUB_API_TOKEN` and use the access token as its value. This environment variable will need to be available in the shell from which you run `goth`.
 
 ### Running the integration tests
