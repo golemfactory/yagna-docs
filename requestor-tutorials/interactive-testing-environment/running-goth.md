@@ -44,7 +44,7 @@ poetry --version
 
 **project dependencies**
 
-To install the project's dependencies run:
+To install the project's dependencies run in the directory where you checked-out `goth`:
 
 ```text
 poetry install
