@@ -2,6 +2,14 @@
 
 Here's what you need to do in order to set up `goth` and ensure it's running properly on your system.
 
+### Clone the repository
+
+Before you begin, clone the `goth`'s repository:
+
+```text
+git clone https://github.com/golemfactory/goth.git
+```
+
 ### Python setup
 
 #### Python 3.8
@@ -22,7 +30,13 @@ For the sake of compatibility with other projects and/or your local Python 3 ins
 
 **poetry**
 
-`goth` uses [`poetry`](https://python-poetry.org/) to manage its dependencies and provide a runner for common tasks \(e.g. running E2E tests\). If you don't have `poetry` available on your system then follow its [installation instructions](https://python-poetry.org/docs/#installation) before proceeding. Verify your installation by running:
+`goth` uses [`poetry`](https://python-poetry.org/) to manage its dependencies and provide a runner for common tasks \(e.g. running E2E tests\). If you don't have `poetry` available on your system then follow its [installation instructions](https://python-poetry.org/docs/#installation) before proceeding or just install it with:
+
+```text
+pip install poetry
+```
+
+Verify your installation by running:
 
 ```text
 poetry --version
