@@ -110,8 +110,28 @@ You can install it using our helper script like this:
 ```text
 curl -sSf https://join.golem.network/as-requestor | bash -
 ```
+{% hint style="info" %}
+_You will be requested to accept to our disclaimer and privacy warning found under [Terms](https://handbook.golem.network/see-also/terms)._
 
-You might be asked to modify your PATH afterwards.
+```text
+Do you accept the terms and conditions? [yes/no]: yes
+```
+{% endhint %}
+
+You might be asked to modify your PATH afterwards. In Linux and macOS distributions, this might look as follows:
+
+```text
+ Component                             Version
+-----------               --------------------
+golem core                               0.5.0 [done]
+golem-installer: 
+golem-installer: Add /home/gitpod/.local/bin to your path
+golem-installer: HINT:   echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+golem-installer: Update your current terminal.
+golem-installer: HINT:   export PATH="$HOME/.local/bin:$PATH"
+```
+
+Run the two commands shown as `HINT` to update your PATH. You can verify the installation was successful by running `which yagna`.
 
 {% hint style="danger" %}
 On Windows, only the manual installation is supported.
