@@ -211,15 +211,15 @@ the value in the `key` column is the key you need.
 
 You need the following command to enable the daemon as a requestor.
 
-What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some nGNT tokens to the node using zkSync.
-
-{% hint style="warning" %}
-It needs to be run each time the daemon is started or restarted.
-{% endhint %}
-
 ```text
 yagna payment init -r
 ```
+
+What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some nGNT tokens to the node using zkSync.
+
+{% hint style="warning" %}
+This needs to be run each time the daemon is started or restarted. Bear in mind that if you see `database is locked` in your daemon log output, you need to restart your daemon (i.e. `Ctrl+C` and `yagna service run`) and run the following payment command again.
+{% endhint %}
 
 Once you issue the command, allow some time until it completes its job.
 
@@ -229,7 +229,17 @@ You can verify whether you already have the funds with:
 yagna payment status
 ```
 
-If, after a few minutes, you can't see the assets, re-run the `payment init` command above and check again after a few more minutes.
+It should show an output as follows:
+
+```text
+---
+amount: "99.7986"
+incoming:
+  accepted:
+...
+```
+
+If, after a few minutes, you can't see the assets (i.e. `amount` shows "0.00"), re-run the `payment init` command above and check again after a few more minutes.
 
 As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../troubleshooting/common-issues.md#payment-driver-initialization-issue).
 
