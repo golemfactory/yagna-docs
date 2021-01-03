@@ -171,6 +171,10 @@ Now, you can run the daemon:
 yagna service run
 ```
 
+{% hint style="info" %}
+The `yagna` daemon will open port `7464` and `7465`.
+{% endhint %}
+
 {% hint style="warning" %}
 Important: After you launch the daemon, leave it running in the background while you proceed with the tutorial.
 {% endhint %}
