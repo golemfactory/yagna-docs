@@ -197,7 +197,7 @@ With the daemon running, enter the daemon's directory using another shell and ge
 yagna app-key create requestor
 ```
 
-This should produce a base64 32-character-long hexadecimal app key like `67b645...c96900` that **you need to note down** as it will be needed to run the requestor agent. Please keep this key **secret**, as anyone with it will be able to access to your `yagna` daemon instance via its REST API.
+This should produce a 32-character-long hexadecimal app key like `67b645...c96900` that **you need to note down** as it will be needed to run the requestor agent. Please keep this key **secret**, as anyone with it will be able to access to your `yagna` daemon instance via its REST API.
 
 In case you lose your app key, you can retrieve it with:
 
