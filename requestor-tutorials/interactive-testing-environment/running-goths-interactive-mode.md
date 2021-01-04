@@ -54,7 +54,7 @@ Once you're done running either your own app or our introductory example, you ca
 
 While you execute your app, the output in the console that's running goth won't tell you much on its own. You should see a message confirming that it detected the creation of an activity between the requestor and one of the provider and the subsequent destruction of it but that's going to be more or less that.
 
-The real benefit starts when you have a look at the logs each run produces. By default, the logs are stored under `/tmp/goth-tests` or, more exactly under whatever location `$TEMP_DIR/goth-tests` resolves to in the shell you're running goth from. This path will depend either on the shell environment or the operating system on which the tests are being run \(see [`tempfile.gettempdir`](https://docs.python.org/3/library/tempfile.html) for more details\).
+The real benefit starts when you have a look at the logs each run produces. By default, the logs are stored under `/tmp/goth-tests` or, more exactly, under whatever location `$TEMP_DIR/goth-tests` resolves to in your shell. This path will depend either on the shell environment or the operating system on which the tests are being run \(see [`tempfile.gettempdir`](https://docs.python.org/3/library/tempfile.html) for more details\).
 
 For each run in the interactive mode, `goth` will create a timestamped directory there, e.g.: `goth_20201221_172759+0000` which will contain all the logs that this run was able to collect from all the components of your local Golem network:
 
