@@ -23,14 +23,14 @@ This environment is self-contained and independent of any external components th
 {% hint style="info" %}
 #### Goth features
 
-* transactions between nodes on a local Ethereum blockchain \(Ganache\),
+* transactions between nodes on a local Ethereum blockchain \([Ganache](https://github.com/trufflesuite/ganache)\),
 * automated, configurable deployment of yagna and its components,
 * all network components running in an isolated Docker Compose network,
 * easy access to logs from the requestor and all the providers along with the history of HTTP traffic between them,
 * support for running your own, local requestor agent that connects to this network
 {% endhint %}
 
-The TL;DR from the above is that it basically allows you to run your app on your local machine in exactly the same way as you'd run it on the actual network but at the same time, it gives you much more tools to investigate and debug the issues you may encounter.
+The TL;DR from the above is that with `goth` you can run your app on your machine in the same way as you'd run it on the Golem network, but with extra tools for debugging and investigating potential issues.
 
 So, now that you know what `goth` is and how it can help you as the developer, let's follow up with what it takes to actually run the thing!
 
