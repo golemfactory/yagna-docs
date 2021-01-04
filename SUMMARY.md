@@ -18,6 +18,9 @@
   * [Golem application - the basics](requestor-tutorials/create-your-own-application-on-golem/golem-application-how-to.md)
   * [Hashcat](requestor-tutorials/create-your-own-application-on-golem/hashcat.md)
   * [Tutorial steps](requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do.md)
+* [Interactive testing environment](requestor-tutorials/interactive-testing-environment/README.md)
+  * [Running Goth](requestor-tutorials/interactive-testing-environment/running-goth.md)
+  * [Using Test Harness to test Golem apps](requestor-tutorials/interactive-testing-environment/running-goths-interactive-mode.md)
 
 ## Provider tutorials
 
