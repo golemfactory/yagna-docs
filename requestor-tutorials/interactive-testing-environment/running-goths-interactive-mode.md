@@ -42,7 +42,7 @@ Once it finishes all the preparatory steps, you'll be greeted with a message tha
 
 ![](../../.gitbook/assets/goth-interactive-mode-prompt.png)
 
-The important information there is they **`YAGNA_APPKEY`**, **the URL** and **the port** that you need to use to run your requestor agent within goth's test network.
+The important pieces of information there are the **`YAGNA_APPKEY`**, **the URL** and **the port** that you need to use to run your requestor agent within goth's test network.
 
 All right! At this point, the network is ready for you, the app developer! You can now communicate with the launched requestor daemon using either the yagna's REST API directly or using one of our high-level APIs and run your apps this way. 
 
