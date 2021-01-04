@@ -4,24 +4,26 @@ description: Using Golem Test Harness a.k.a. goth for fun and profit
 
 # Interactive testing environment
 
-### Introduction
+{% embed url="https://www.youtube.com/watch?v=HP6VVBUdkm8" caption="Golem Test Harness introduction video" %}
+
+## Introduction
 
 Hello Developer! So you've implemented your awesome, new Golem app and would like to deploy it to the Golem network and see your tasks executed there?
 
 But of course, your app may still be far from perfect, the network may be congested, information from the execution units on providers next-to-impossible to acquire or maybe those nodes currently available to you are ill-suited to your particular task at hand.
 
-All that means that testing your shiny new app by running it in on the actual Golem network may prove a slightly frustrating endeavor. 
+All that means that testing your shiny new app by running it in on the actual Golem network may prove a slightly frustrating endeavor.
 
-### Enter goth
+## Enter goth
 
-This is where Golem's Test Harness \(or `goth` for short\) comes in to help. 
+This is where Golem's Test Harness \(or `goth` for short\) comes in to help.
 
 `Goth` is our carefully-tailored integration testing framework that is able to run a minimal, simulated network of Golem requestors and providers locally on a single machine, while at the same time providing a developer with some additional tools that allow them to inspect both the application itself and the communications between the nodes in an isolated, controlled environment.
 
-This environment is self-contained and independent of any external components that the regular Golem nodes use - such as the Ethereum blockchain, the central communications hub or any other Golem nodes in the public network. 
+This environment is self-contained and independent of any external components that the regular Golem nodes use - such as the Ethereum blockchain, the central communications hub or any other Golem nodes in the public network.
 
 {% hint style="info" %}
-#### Goth features
+### Goth features
 
 * transactions between nodes on a local Ethereum blockchain \([Ganache](https://github.com/trufflesuite/ganache)\),
 * automated, configurable deployment of yagna and its components,

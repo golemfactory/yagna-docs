@@ -5,10 +5,10 @@ description: Making use of goth's interactive mode
 # Using Test Harness to test Golem apps
 
 {% hint style="danger" %}
-What you're going to try is still pretty early alpha.   
-  
-We're assuming here that you were able to run both `goth` and a requestor app correctly on your machine earlier and thus, you have all the components up and running without issues.  
-  
+What you're going to try is still pretty early alpha.
+
+We're assuming here that you were able to run both `goth` and a requestor app correctly on your machine earlier and thus, you have all the components up and running without issues.
+
 If you hadn't tried those yet though, please have a look at the earlier parts of our handbook:
 
 {% page-ref page="../flash-tutorial-of-requestor-development.md" %}
@@ -20,9 +20,9 @@ You're here, excellent! If you successfully ran the tests in the previous step, 
 
 But apart from that, goth now also includes something called the interactive mode.
 
-### Running the interactive mode
+## Running the interactive mode
 
-In this mode, instead of running an end-to-end test suite, `goth` only prepares and launches its local network with all components needed for a requestor agent to connect to and run its tasks against it. 
+In this mode, instead of running an end-to-end test suite, `goth` only prepares and launches its local network with all components needed for a requestor agent to connect to and run its tasks against it.
 
 Once that's done, `goth` will patiently wait for the developer to do whatever they need and will dutifully record its logs for further examination once the user is finished with their activity.
 
@@ -44,13 +44,13 @@ Once it finishes all the preparatory steps, you'll be greeted with a message tha
 
 The important pieces of information there are the **`YAGNA_APPKEY`**, **the URL** and **the port** that you need to use to run your requestor agent within goth's test network.
 
-All right! At this point, the network is ready for you, the app developer! You can now communicate with the launched requestor daemon using either the yagna's REST API directly or using one of our high-level APIs and run your apps this way. 
+All right! At this point, the network is ready for you, the app developer! You can now communicate with the launched requestor daemon using either the yagna's REST API directly or using one of our high-level APIs and run your apps this way.
 
 If you're doing it the first time, you may as well launch that example command to confirm everything is working as it should be and to verify that the task is completed successfully. Just make sure you're launching this command from a separate terminal window and within the directory where you have checked out our Python high-level API \(`yapapi`\).
 
 Once you're done running either your own app or our introductory example, you can come back to the console that's running `goth` and press Ctrl-C to finish the interactive run and allow `goth` to proceed with some cleanup that ensures any test artifacts are remove and that subsequent runs can be lanuched without issues.
 
-### Analyzing your runs
+## Analyzing your runs
 
 While you execute your app, the output in the console that's running goth won't tell you much on its own. You should see a message confirming that it detected the creation of an activity between the requestor and one of the provider and the subsequent destruction of it but that's going to be more or less that.
 
