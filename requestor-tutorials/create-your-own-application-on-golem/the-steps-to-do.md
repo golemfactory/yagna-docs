@@ -113,7 +113,9 @@ This makes `/golem/work` a location we will use for our input/output file transf
 ![](../../.gitbook/assets/tnm-docs-infographics-08.jpg)
 
 {% hint style="info" %}
-On the provider side, all the content of the volume directories are stored in the provider's os file system. All other container directories content is kept in RAM.
+On the provider side, all the content of the VOLUME directories is stored in the provider's os file system. 
+
+All the changes in other \(non VOLUME mounted\) container directories content are kept in RAM. The rest of the VM image file system \(not changed, non VOLUME mounted\) content is stored as VM image in the provider's os file system.
 {% endhint %}
 
 {% hint style="danger" %}
