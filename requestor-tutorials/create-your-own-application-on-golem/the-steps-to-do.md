@@ -110,7 +110,7 @@ VOLUME /golem/work
 
 This makes `/golem/work` a location we will use for our input/output file transfer. For the requestor agent code, which we are going to discuss in the next chapter, we need to know the volume \(or volumes\) name\(s\) and use it as a directory for the file transfers.
 
-![](../../.gitbook/assets/tnm-docs-infographics-08.jpg)
+![](../../.gitbook/assets/tnm-docs-infographics-08%20%281%29.jpg)
 
 {% hint style="info" %}
 On the provider side, all the content of the VOLUME directories is stored in the provider's os file system. 
