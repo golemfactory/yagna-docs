@@ -194,11 +194,13 @@ The transferring files from Requestor to the Provider can be identified in the l
 ```python
 [2021-01-22 16:22:16,773 DEBUG yapapi.events] 
 CommandStarted(agr_id='bf8c484e362af417cbf5fc440281debd5c5cf772b433f53e0ecb90b4faac55f4', 
-task_id='1', cmd_idx=2, command={'transfer': {'from': 'gftp://0xf378a153b24fe98227ee153a0cb056faed155ba7/050a02b6976e59fbc1b9dfa6292d4f63942a820ee7dcc859af0a5efaea80c959', 
+task_id='1', cmd_idx=2, command={'transfer': {'from': 
+'gftp://0xf378a153b24fe98227ee153a0cb056faed155ba7/050a02b6976e59fbc1b9dfa6292d4f63942a820ee7dcc859af0a5efaea80c959', 
 'to': 'container:/golem/work/keyspace.sh', 'format': None, 'depth': None, 'fileset': None}})
 [2021-01-22 16:22:17,217 DEBUG yapapi.events] 
 CommandExecuted(agr_id='bf8c484e362af417cbf5fc440281debd5c5cf772b433f53e0ecb90b4faac55f4', 
-task_id='1', cmd_idx=2, command={'transfer': {'from': 'gftp://0xf378a153b24fe98227ee153a0cb056faed155ba7/050a02b6976e59fbc1b9dfa6292d4f63942a820ee7dcc859af0a5efaea80c959', 
+task_id='1', cmd_idx=2, command={'transfer': {'from': 
+'gftp://0xf378a153b24fe98227ee153a0cb056faed155ba7/050a02b6976e59fbc1b9dfa6292d4f63942a820ee7dcc859af0a5efaea80c959', 
 'to': 'container:/golem/work/keyspace.sh'}}, success=True, message=None)
 ```
 
@@ -278,7 +280,42 @@ The `output` parts of the `CommandStdOut` contains the `stdout` of the `ctx.run`
 
 ### Provider &gt; Requestor file transfer details
 
+Getting files back from the provider to the requestor will leave a trace such as:
+
+```python
+[2021-01-22 16:22:18,304 DEBUG yapapi.events] 
+CommandStarted(agr_id='bf8c484e362af417cbf5fc440281debd5c5cf772b433f53e0ecb90b4faac55f4', 
+task_id='1', cmd_idx=4, command={'transfer': {'from': 'container:/golem/work/keyspace.txt', 'to': 
+'gftp://0xf378a153b24fe98227ee153a0cb056faed155ba7/0GdLl2vUcEYgO7ExgkVuttc5oqeAmU90Im911Eqs5LZXzD9ehlYCUGH7p5oII9jSg', 
+'format': None, 'depth': None, 'fileset': None}})
+[2021-01-22 16:22:18,513 DEBUG yapapi.events] 
+CommandExecuted(agr_id='bf8c484e362af417cbf5fc440281debd5c5cf772b433f53e0ecb90b4faac55f4', 
+task_id='1', cmd_idx=4, command={'transfer': {'from': 'container:/golem/work/keyspace.txt', 'to': 
+'gftp://0xf378a153b24fe98227ee153a0cb056faed155ba7/0GdLl2vUcEYgO7ExgkVuttc5oqeAmU90Im911Eqs5LZXzD9ehlYCUGH7p5oII9jSg'}}, 
+success=True, message=None)
+[2021-01-22 16:22:18,517 DEBUG yapapi.events] 
+GettingResults(agr_id='bf8c484e362af417cbf5fc440281debd5c5cf772b433f53e0ecb90b4faac55f4', task_id='1')
+[2021-01-22 16:22:18,519 DEBUG yapapi.events] DownloadStarted(path='/golem/work/keyspace.txt')
+[2021-01-22 16:22:18,521 DEBUG yapapi.events] DownloadFinished(path='keyspace.txt')
+```
+
+The source filename is identified by `'from': 'container:/golem/work/keyspace.txt'` and the target filename is identified by `DownloadFinished(path='keyspace.txt')`.
+
 ## Docker exec - an alternative approach 
+
+Analyzing the requestor logs gives us the full picture of what is going on under the hood of Golem, but in some cases, it might be easier to start with executing a simple `docker exec`that executes commands on the container. The syntax of this docker command is:
+
+```bash
+docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+```
+
+This command can be used to execute the `ctx.run` commands directly on the provider container. This is standard stuff so we will leave you with a reference to docker documentation [https://docs.docker.com/engine/reference/commandline/exec/](https://docs.docker.com/engine/reference/commandline/exec/)
+
+## Closing words
+
+Besides requestor logs there are also provider side logs. The suggested approach for the developer to know the provider side logs is to use our testing environment:
+
+{% page-ref page="interactive-testing-environment/" %}
 
 
 
