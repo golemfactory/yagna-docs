@@ -2,7 +2,7 @@
 description: Introducing log files
 ---
 
-# Debugging
+# Debugging by use of log file
 
 When developing applications on Golem, sooner or later you will get to a point where something is not working as expected. Executing commands on the provider-hosted container seems to be one of the most error-prone areas. If something is going wrong on the provider side, we need to have a tool that helps us in problem identification. When we know what are the error details it usually is much easier to correct our code and thus eliminate the bug.
 
