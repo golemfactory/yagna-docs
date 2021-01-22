@@ -185,7 +185,98 @@ Congratulations! Error in the code has been corrected.
 
 ## Log files - what else is there?
 
-In the log file there are all the information you are f 
+In the log file, there is all the information you are already familiar with, because it is displayed as `INFO` messages at the `stdout` of the requestor applications. Between the familiar `INFO` entries, you will find additional `DEBUG` messages. Let's analyse most interesting of them.
+
+### Requestor &gt; Provider file transfer details
+
+The transferring files from Requestor to the Provider can be identified in the log as pair of `CommandStarted` and `CommandExecuted` similar to:
+
+```python
+[2021-01-22 16:22:16,773 DEBUG yapapi.events] 
+CommandStarted(agr_id='bf8c484e362af417cbf5fc440281debd5c5cf772b433f53e0ecb90b4faac55f4', 
+task_id='1', cmd_idx=2, command={'transfer': {'from': 'gftp://0xf378a153b24fe98227ee153a0cb056faed155ba7/050a02b6976e59fbc1b9dfa6292d4f63942a820ee7dcc859af0a5efaea80c959', 
+'to': 'container:/golem/work/keyspace.sh', 'format': None, 'depth': None, 'fileset': None}})
+[2021-01-22 16:22:17,217 DEBUG yapapi.events] 
+CommandExecuted(agr_id='bf8c484e362af417cbf5fc440281debd5c5cf772b433f53e0ecb90b4faac55f4', 
+task_id='1', cmd_idx=2, command={'transfer': {'from': 'gftp://0xf378a153b24fe98227ee153a0cb056faed155ba7/050a02b6976e59fbc1b9dfa6292d4f63942a820ee7dcc859af0a5efaea80c959', 
+'to': 'container:/golem/work/keyspace.sh'}}, success=True, message=None)
+```
+
+The source file name is identified by `'from':'gftp://0xf378a153b24fe98227ee153a0cb056faed155ba7/050a02b6976e59fbc1b9dfa6292d4f63942a820ee7dcc859af0a5efaea80c959'`
+
+{% hint style="info" %}
+The `gftp` is internal Golem protocol for transferring files in the Golem network.
+{% endhint %}
+
+The target file name is identified by 
+
+`'to': 'container:/golem/work/keyspace.sh'`
+
+The `success=True` informs us that the operation was successful.
+
+### stdout of executing commands on the Provider
+
+The stdout of `ctx.run` will effect in `CommandStarted`, multiple `CommandStdOut` and one `CommandExecuted` entries. The yacat main `ctx.run` results in the log looks like this:
+
+```python
+[2021-01-22 16:22:36,986 DEBUG yapapi.events]
+CommandStarted(agr_id='ac6c0ea05bd668ee6afc5d2cf255e3f6ac40eabe78b4a313e18d521eaa07dfa4', 
+task_id='2', cmd_idx=3, command={'run': {'entry_point': '/bin/sh', 'args': 
+['-c', 'rm -f /golem/work/*.potfile ~/.hashcat/hashcat.potfile; touch /golem/work/hashcat_0.potfile; 
+hashcat -a 3 -m 400 /golem/work/in.hash ?a?a?a --skip=0 --limit=3009 --self-test-disable -o 
+/golem/work/hashcat_0.potfile || true'], 'capture': {'stdout': {'stream': {}}, 'stderr': {'stream': {}}}}})
+[2021-01-22 16:22:37,018 DEBUG yapapi.events] 
+CommandStdOut(agr_id='ac6c0ea05bd668ee6afc5d2cf255e3f6ac40eabe78b4a313e18d521eaa07dfa4', 
+task_id='2', cmd_idx=3, output='hashcat (v5.1.0) starting...\n\n')
+[2021-01-22 16:22:37,018 DEBUG yapapi.events] 
+CommandStdOut(agr_id='ac6c0ea05bd668ee6afc5d2cf255e3f6ac40eabe78b4a313e18d521eaa07dfa4',
+task_id='2', cmd_idx=3, output='\x1b[2K\rParsed Hashes: 1/1 (100.00%)\x1b[2K\rParsed Hashes: 1/1 (100.00%)')
+[2021-01-22 16:22:37,018 DEBUG yapapi.events] 
+CommandStdOut(agr_id='ac6c0ea05bd668ee6afc5d2cf255e3f6ac40eabe78b4a313e18d521eaa07dfa4', 
+task_id='2', cmd_idx=3, output='\x1b[2K\rCounted lines in /golem/work/in.hash...')
+[2021-01-22 16:22:37,019 DEBUG yapapi.events] 
+CommandStdOut(agr_id='ac6c0ea05bd668ee6afc5d2cf255e3f6ac40eabe78b4a313e18d521eaa07dfa4', 
+task_id='2', cmd_idx=3, output='Counting lines in /golem/work/in.hash...')
+[2021-01-22 16:22:37,019 DEBUG yapapi.events] 
+CommandStdOut(agr_id='ac6c0ea05bd668ee6afc5d2cf255e3f6ac40eabe78b4a313e18d521eaa07dfa4', 
+task_id='2', cmd_idx=3, output='OpenCL Platform #1: Intel(R) Corporation\n========================================\n* 
+Device #1: Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz, 5347/21388 MB allocatable, 4MCU\n\n')
+[2021-01-22 16:22:37,048 DEBUG yapapi.events] 
+CommandStdOut(agr_id='ac6c0ea05bd668ee6afc5d2cf255e3f6ac40eabe78b4a313e18d521eaa07dfa4', 
+task_id='2', cmd_idx=3, output='\x1b[2K\rSorting hashes...\x1b[2K\rSorted hashes...\x1b[2K\r
+Removing duplicate hashes...\x1b[2K\rRemoved duplicate hashes...\x1b[2K\rSorting salts...\x1b[2K\rSorted salts...\x1b[2K\r
+Comparing hashes with potfile entries...\x1b[2K\rCompared hashes with potfile entries...')
+[2021-01-22 16:22:37,048 DEBUG yapapi.events] 
+CommandStdOut(agr_id='ac6c0ea05bd668ee6afc5d2cf255e3f6ac40eabe78b4a313e18d521eaa07dfa4', 
+task_id='2', cmd_idx=3, output='\x1b[2K\rGenerated bitmap tables...')
+[2021-01-22 16:22:37,048 DEBUG yapapi.events] 
+CommandStdOut(agr_id='ac6c0ea05bd668ee6afc5d2cf255e3f6ac40eabe78b4a313e18d521eaa07dfa4', 
+task_id='2', cmd_idx=3, output='\x1b[2K\rGenerating bitmap tables...')
+[2021-01-22 16:22:37,963 DEBUG yapapi.events] 
+CommandStdOut(agr_id='ac6c0ea05bd668ee6afc5d2cf255e3f6ac40eabe78b4a313e18d521eaa07dfa4', 
+task_id='2', cmd_idx=3, output='\x1b[2K\rHashes: 1 digests; 1 unique digests, 1 unique salts\n
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates\n\nApplicable optimizers:\n* 
+Zero-Byte\n* Single-Hash\n* Single-Salt\n* Brute-Force\n\nMinimum password length supported by kernel: 0\n
+Maximum password length supported by kernel: 256\n\n\x1b[33mATTENTION! Pure (unoptimized) 
+OpenCL kernels selected.\x1b[0m\n\x1b[33mThis enables cracking passwords and salts > length 32 but for the 
+price of drastically reduced performance.\x1b[0m\n\x1b[33mIf you want to switch to optimized OpenCL kernels, 
+append -O to your commandline.\x1b[0m\n\x1b[33m\x1b[0m\nWatchdog: Hardware monitoring interface not found 
+on your system.\nWatchdog: Temperature abort trigger disabled.\n\n
+Initializing device kernels and memory...\x1b[2K\rInitializing OpenCL runtime for device #1...')
+
+...
+
+[2021-01-22 16:22:40,649 DEBUG yapapi.events] 
+CommandExecuted(agr_id='ac6c0ea05bd668ee6afc5d2cf255e3f6ac40eabe78b4a313e18d521eaa07dfa4', 
+task_id='2', cmd_idx=3, command={'run': {'entry_point': '/bin/sh', 'args': 
+('-c', 'rm -f /golem/work/*.potfile ~/.hashcat/hashcat.potfile; touch /golem/work/hashcat_0.potfile; 
+hashcat -a 3 -m 400 /golem/work/in.hash ?a?a?a --skip=0 --limit=3009 --self-test-disable -o 
+/golem/work/hashcat_0.potfile || true'), 'capture': {'stdout': {'stream': {}}, 'stderr': {'stream': {}}}}}, success=True, message=None)
+```
+
+The `output` parts of the `CommandStdOut` contains the `stdout` of the `ctx.run`. For example the beginning of the `hashcat` execution can be traced by `output='hashcat (v5.1.0) starting...\n\n'` .
+
+### Provider &gt; Requestor file transfer details
 
 ## Docker exec - an alternative approach 
 
