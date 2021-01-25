@@ -6,8 +6,6 @@
 
 ### Table of contents
 
-#### Modules
-
 * [crypto](modules/crypto.md)
 * [executor](modules/executor.md)
 * [executor/ctx](modules/executor_ctx.md)
