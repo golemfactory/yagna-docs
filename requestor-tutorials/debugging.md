@@ -47,6 +47,12 @@ The `log_summary` creates `SummaryLogger` instance that is passed as event consu
 
 ## Let's have an error
 
+{% hint style="info" %}
+We are going to simulate some bug in the code. We will take fully working code,  modify it a bit \(create the bug in the code that makes the application go bad at the provider side\).and then by analyzing the log file we will track what is the root cause of the problem. In the end, we will fix the code and check the details of its work by the analysis of the log file.
+{% endhint %}
+
+
+
 Let's look at the code of yacat that is part of the Golem high-level Python API repository. All the code that enables logging is already there. We just need to use `--log-file` command-line switch.
 
 {% embed url="https://github.com/golemfactory/yapapi/blob/master/examples/yacat/yacat.py" %}
