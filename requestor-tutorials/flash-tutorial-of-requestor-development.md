@@ -115,7 +115,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.5.0](https://github.com/golemfactory/yagna/releases/tag/v0.5.0)
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: **\[ VERSION LINK NEEDED \]**
 
 Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
@@ -131,7 +131,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.5.0 (d33058bb 2020-12-01 build #96)`
+It should output: **\[ version needed \]**
 
 ### Purge the stale working directories
 
@@ -201,7 +201,7 @@ yagna app-key list
 
 the value in the `key` column is the key you need.
 
-### Enable the daemon as a requestor
+### Enable the daemon as a requestor \[needs update\]
 
 You need the following command to enable the daemon as a requestor.
 
@@ -212,7 +212,8 @@ It needs to be run each time the daemon is started or restarted.
 {% endhint %}
 
 ```text
-yagna payment init -r
+payment fund
+payment init --sender
 ```
 
 Once you issue the command, allow some time until it completes its job.
@@ -223,7 +224,7 @@ You can verify whether you already have the funds with:
 yagna payment status
 ```
 
-If, after a few minutes, you can't see the assets, re-run the `payment init` command above and check again after a few more minutes.
+If, after a few minutes, you can't see the assets, re-run the `payment fund` command above and check again after a few more minutes.
 
 As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../troubleshooting/common-issues.md#payment-driver-initialization-issue).
 
@@ -257,7 +258,7 @@ Install the dependencies:
 
 ```text
 pip3 install -U pip
-pip3 install yapapi
+pip install --extra-index-url https://test.pypi.org/simple/ yapapi==0.5.0a1
 ```
 
 ### Get the requestor agent's code
@@ -272,7 +273,7 @@ and make sure you're working on the version corresponding with the latest releas
 
 ```text
 cd yapapi
-git checkout b0.4
+git checkout b0.5
 ```
 
 ### Set the yagna app key

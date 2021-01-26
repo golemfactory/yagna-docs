@@ -38,7 +38,7 @@
 ## yajsapi - Java Script high-level API <a id="yajsapi"></a>
 
 * [Introduction to Golem's high-level Java Script API](yajsapi/yajsapi.md)
-* [API Reference](yajsapi/modules/README.md)
+* [API Reference](yajsapi/modules.md)
 
 ## Reference
 
