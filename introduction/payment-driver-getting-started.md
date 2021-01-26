@@ -14,6 +14,14 @@ You might assume that payment driver should:
 - notify Payment service about committed transactions,
 - retry operations that failed to due non-critical causes.
 
+Here is a checklist that driver implementors would want to follow:
+
+- [] Fork the Yagna repository and clone it locally to start working on the code,
+- [] Implement all methods from `PaymentDriver` and `PaymentDriverCron` traits, some of the them are describe in the section below,
+- [] Make a new driver builds and starts with the Yagna daemon. See instructions bellow,
+- [] Test and verify it's working using instructions from the section bellow,
+- [] Send us a Pull Request.
+
 
 ## Codebase
 
@@ -25,7 +33,7 @@ Here's what can be find there:
 - `core/payment-driver/zksync` - provides a reference driver implementation of [Zk-Sync](https://zksync.io) L2 network.
 - `core/payment-driver/base/driver.rs` - declares a Rust's trait that a new driver hast to implement
 - `core/payment-driver/base/cron.rs` - declares a driver's periodical operation trait.
--  - declares the driver's operations to other daemon services, e.g. `register_account`, `sign`, `notify_payment`.
+- `core/payment-driver/base/bus.rs` - declares the driver's operations to other daemon services, e.g. `register_account`, `sign`, `notify_payment`.
  
 
 ## Implementation details
@@ -37,12 +45,14 @@ Let's see what a driver's trait exposes:
 - `exit` - Exits the funds outside the driver's supported network (most likely L1). Called by CLI.
 - `get_account_balance` - Gets the balance of the account.
 - `transfer` - Transfers the funds between specified accounts. Called by CLI.
-- `get_transaction_balance` - Deprecated. Drivers should return very big number (e.g. `1_000_000_000_000_000_000u64` or the whole token supply).
+- `fund` - Funds the account from faucet when run on testnet. Provides instructions how to fund on mainnet.
 - `schedule_payment` - Schedules the payment between specified accounts. Payments are processed by the `cron` job. Payment tracking is done by cron job, see: `PaymentDriverCron::confirm_payments`. Returns an `order_id`. See also `notify_payment`
 - `verify_payment` - Verifies the payment transaction specified by transaction's hash.
 - `validate_allocation` - Validates that allocated funds are still sufficient to cover the costs of the task (including the Gas cost). Allocation is created when the requestor publishes the task on the market.
 - `account_event` - Called by the Identity service to notify the driver that specified account is _locked_ / _unlocked_. Identity service holds accounts private keys and signs transactions.
 - `recv_init_required` - Tells whether account initialization is needed for receiving payments.
+- `get_transaction_balance` - Deprecated. Drivers should return very big number (e.g. `1_000_000_000_000_000_000u64` or the whole token supply).
+
 
 The following driver's operations are processed periodically by the cron jobs. The following `PaymentDriverCron` trait needs to be implemented.
 
@@ -51,7 +61,21 @@ The following driver's operations are processed periodically by the cron jobs. T
 
 The payment driver receives all requests via the GSB. This is also a communication channel to call other services. See `core/payment-driver/base/bus.rs` file.
 
-- `register_account` - /// Notifies the Payment service that the account is ready to sending / receiving funds. See `init` above.
+- `register_account` - Notifies the Payment service that the account is ready to sending / receiving funds. See `init` above.
 - `sign` - Delegates signing of the transaction's payload to the Identity service.
 - `notify_payment` - Notifies the Payment service that the scheduled payment is processed successfully. It also links the `order_id` with the `confirmation` (e.g. transaction's hash). See `schedule_payment` above.
 
+## Starting a new driver with Yagna
+
+Add a new block in `start_payment_drivers` function in [`core/serv/src/main.rs`](https://github.com/golemfactory/yagna/blob/master/core/serv/src/main.rs#L216) file.
+It should follow the convention and declares it's own compilation flag. Don't forget to set this flag during the compilation :wink:.
+
+## Testing a new driver
+
+When you consider your work is done, take some time to actually see it in action. Be sure we will scrupulously test the driver behavior in the following scenarios, including the error messages written in logs and returned from CLI. Don't hesitate to ask questions, we are here to help.  
+
+We will run the following tests (happy paths and providing invalid parameters to make it fail).
+
+- command line interaction with the driver: `init`, `fund`, `enter`, `transfer`, `status`,  `exit` ...
+- [quickstart tutorial](https://golem-network.gitbook.io/golem-sdk-develop/requestor-tutorials/flash-tutorial-of-requestor-development) with the blender example task,
+- review made transactions in the corresponding block explorer.
