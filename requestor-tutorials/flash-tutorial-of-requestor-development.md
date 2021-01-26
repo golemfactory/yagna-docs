@@ -319,7 +319,7 @@ Check out or download the `yajsapi` repository:
 ```text
 git clone https://github.com/golemfactory/yajsapi.git
 cd yajsapi
-git checkout b0.2
+git checkout b0.3
 ```
 
 ### Set the yagna app key
