@@ -32,17 +32,17 @@ Here's what can be find there:
 
 Let's see what a driver's trait exposes:
 
-- `init` - Initializes the driver service. It should call `bus::register_account` to notify Payment service about the driver readiness.
+- `init` - Initializes the account to be used with the driver service. It should call `bus::register_account` to notify Payment service about the driver readiness. Driver can handle multiple accounts.
 - `enter` - Deposits the funds into the driver's supported network. Called by CLI.
 - `exit` - Exits the funds outside the driver's supported network (most likely L1). Called by CLI.
 - `get_account_balance` - Gets the balance of the account.
 - `transfer` - Transfers the funds between specified accounts. Called by CLI.
-- `get_transaction_balance` - Gets the balance of the funds sent from the sender to the recipient.
+- `get_transaction_balance` - Deprecated. Drivers should return very big number (e.g. `1_000_000_000_000_000_000u64` or the whole token supply).
 - `schedule_payment` - Schedules the payment between specified accounts. Payments are processed by the `cron` job. Payment tracking is done by cron job, see: `PaymentDriverCron::confirm_payments`. Returns an `order_id`. See also `notify_payment`
 - `verify_payment` - Verifies the payment transaction specified by transaction's hash.
 - `validate_allocation` - Validates that allocated funds are still sufficient to cover the costs of the task (including the Gas cost). Allocation is created when the requestor publishes the task on the market.
 - `account_event` - Called by the Identity service to notify the driver that specified account is _locked_ / _unlocked_. Identity service holds accounts private keys and signs transactions.
-- `recv_init_required` - Tells whether funds are available for spent just after depositing on the driver's supported network or the additional unlocking is needed.
+- `recv_init_required` - Tells whether account initialization is needed for receiving payments.
 
 The following driver's operations are processed periodically by the cron jobs. The following `PaymentDriverCron` trait needs to be implemented.
 
@@ -51,7 +51,7 @@ The following driver's operations are processed periodically by the cron jobs. T
 
 The payment driver receives all requests via the GSB. This is also a communication channel to call other services. See `core/payment-driver/base/bus.rs` file.
 
-- `register_account` - Notifies the Payment service that the driver is ready. See `init` above.
+- `register_account` - /// Notifies the Payment service that the account is ready to sending / receiving funds. See `init` above.
 - `sign` - Delegates signing of the transaction's payload to the Identity service.
 - `notify_payment` - Notifies the Payment service that the scheduled payment is processed successfully. It also links the `order_id` with the `confirmation` (e.g. transaction's hash). See `schedule_payment` above.
 
