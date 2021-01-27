@@ -195,13 +195,25 @@ the value in the `key` column is the key you need.
 
 ### Get some test GLM tokens
 
-In order to be able to request tasks on Golem, you'll need some GLM tokens \(called tGLM on the rinkeby testnet\) to pay the providers with. Even on the testnet, those tokens are still required but of course you can easily get them issued to you using our tGLM faucet, which you do with:
+In order to be able to request tasks on Golem, you'll need some GLM tokens \(called tGLM on the rinkeby testnet\) to pay the providers with. Even on the testnet, those tokens are still required but of course you can easily get them issued to you using our tGLM faucet.
+
+That's done using:
 
 ```text
-payment fund
+yagna payment fund
 ```
 
+Once you issue the command, allow some time until it completes its job.
 
+You can verify whether you already have the funds with:
+
+```text
+yagna payment status
+```
+
+If, after a few minutes, you can't see the assets, re-run the `payment fund` command above and check again after a few more minutes.
+
+As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../troubleshooting/common-issues.md#payment-driver-initialization-issue).
 
 ### Enable the daemon as a requestor \[needs update\]
 
@@ -218,17 +230,7 @@ payment fund
 payment init --sender
 ```
 
-Once you issue the command, allow some time until it completes its job.
 
-You can verify whether you already have the funds with:
-
-```text
-yagna payment status
-```
-
-If, after a few minutes, you can't see the assets, re-run the `payment fund` command above and check again after a few more minutes.
-
-As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../troubleshooting/common-issues.md#payment-driver-initialization-issue).
 
 ## Running the requestor and your first task on the New Golem Network
 
