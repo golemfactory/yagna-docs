@@ -203,33 +203,31 @@ That's done using:
 yagna payment fund
 ```
 
-Once you issue the command, allow some time until it completes its job.
+It tells yagna to check for funds on your node and if needed, contacts the faucet which, in turn, issues some tGLM tokens to the node using zkSync.
 
-You can verify whether you already have the funds with:
+Once you issue the command, allow some time until it completes its job. You can verify whether you already have the funds with:
 
 ```text
 yagna payment status
 ```
 
-If, after a few minutes, you can't see the assets, re-run the `payment fund` command above and check again after a few more minutes.
+If, after a few minutes, you still can't see the tokens, re-run the `yagna payment fund` command above and check again after a few more minutes.
 
-As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../troubleshooting/common-issues.md#payment-driver-initialization-issue).
+As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver or our faucet, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../troubleshooting/common-issues.md#payment-driver-initialization-issue).
 
-### Enable the daemon as a requestor \[needs update\]
+### Enable the daemon as a requestor
 
-You need the following command to enable the daemon as a requestor.
-
-What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some nGNT tokens to the node using zkSync.
+As the last step before your requestor node is ready, you'll need to enable the daemon as a requestor.
 
 {% hint style="warning" %}
-It needs to be run each time the daemon is started or restarted.
+The command needs to be run each time the daemon is started or restarted.
 {% endhint %}
 
 ```text
 yagna payment init --sender
 ```
 
-
+With this completed, you're good to go!
 
 ## Running the requestor and your first task on the New Golem Network
 
