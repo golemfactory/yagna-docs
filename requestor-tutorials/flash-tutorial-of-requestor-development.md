@@ -77,10 +77,10 @@ You'll also need the `git` versioning system client so you can clone our reposit
 git --version
 ```
 
-#### No crypto assets needed \(for now!\)
+#### No crypto assets needed \(for now\)
 
 {% hint style="info" %}
-Alpha lives on the Rinkeby Testnet. You don't need any real ETH or GLM tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets are acquired by the daemon in one of the steps below.
+During development, you'll most likely want to run your tasks on the Rinkeby Testnet. In that case, you won't need any real ETH or GLM tokens to start this tutorial. These test assets are acquired by the daemon in one of the steps below.
 {% endhint %}
 
 ### Can we help you? Do you have feedback for Golem?
@@ -92,7 +92,7 @@ If you'd like to give us feedback, suggestions, have some errors to report or if
 ## Running the `yagna` daemon
 
 {% hint style="info" %}
-_Yagna is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network._
+Yagna is the main service of the new Golem that's responsible for maintaing the marketplace and keeping connections with all the other nodes in the network.
 {% endhint %}
 
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon.
@@ -102,7 +102,7 @@ In order to follow our requestor agent tutorial, you'll first need to run the `y
 You can install it using our helper script like this:
 
 ```text
-curl -sSf https://join.golem.network/as-requestor | bash -
+curl -sSf https://join.golem.network/as-requestor | YA_INSTALLER_CORE=pre-rel-v0.6.0-rc2 YA_INSTALLER_VM=0.2.4 bash -
 ```
 
 You might be asked to modify your PATH afterwards.
@@ -115,7 +115,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: **\[ VERSION LINK NEEDED \]**
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.6.0-rc2](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.6.0-rc2)
 
 Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
@@ -131,7 +131,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: **\[ version needed \]**
+It should output: `yagna 0.6.0-rc2 (635fac0e 2021-01-26 build #104)`
 
 ### Purge the stale working directories
 
@@ -171,17 +171,9 @@ Important: After you launch the daemon, leave it running in the background while
 
 You can now proceed to [Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key).
 
-#### Warning! Construction zone: errors ahead
-
 {% hint style="danger" %}
-You may notice errors while running the yagna daemon or the example script. **Some of those errors will be silenced, prevented or handled more gracefully in the future production version.** For now, you can usually ignore them, unless of course, they make the daemon or the example script crash - or - cause the task itself to fail before completion.
+Sometimes, you may notice errors while running the yagna daemon or the example script. Unless they cause your task to be aborted or never finished they are usually no reason to worry. In case of doubt, please consult our [list of "Common Issues" in the Troubleshooting section.](../troubleshooting/common-issues.md)
 {% endhint %}
-
-Some of the errors you may encounter are:
-
-`[2020-08-11T10:49:17Z ERROR ya_service_bus::remote_router] bind error: already registered: Service ID [... url ... ] already registered`
-
-`Task exception was never retrieved [... several lines of stack trace ...] {"message":"GSB error: bad request: No service registered under given address"}`
 
 ## Generate the app key
 
@@ -200,6 +192,16 @@ yagna app-key list
 ```
 
 the value in the `key` column is the key you need.
+
+### Get some test GLM tokens
+
+In order to be able to request tasks on Golem, you'll need some GLM tokens \(called tGLM on the rinkeby testnet\) to pay the providers with. Even on the testnet, those tokens are still required but of course you can easily get them issued to you using our tGLM faucet, which you do with:
+
+```text
+payment fund
+```
+
+
 
 ### Enable the daemon as a requestor \[needs update\]
 
