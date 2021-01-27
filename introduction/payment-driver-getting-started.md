@@ -81,3 +81,20 @@ We will run the following tests (happy paths and providing invalid parameters to
 - command line interaction with the driver: `init`, `fund`, `enter`, `transfer`, `status`,  `exit` ...
 - [quickstart tutorial](https://golem-network.gitbook.io/golem-sdk-develop/requestor-tutorials/flash-tutorial-of-requestor-development) with the blender example task,
 - review made transactions in the corresponding block explorer.
+
+## Running Payment service examples
+
+As an another option to testing is to run [Payment service examples](https://github.com/golemfactory/yagna/blob/master/core/payment/examples/README.md) against new driver. There's a little bit of hassle to setup the test so I'll describe it here.
+
+1. Enable your driver in the example's [`payment_api` enum](https://github.com/golemfactory/yagna/blob/635fac0eda514c7359928851323affa254116d71/core/payment/examples/payment_api.rs#L30) and resolve compilation errors in the following `match` expressions.
+
+1. Start an example payment service (each test assumes running from scratch) <br/>`
+rm payment.db* && cargo run --example payment_api -- --driver=<DRIVER> --platform=<PLATFORM>`
+
+1. Start _invoice flow_ example (restart above `platform_api` on each test) <br/>`
+cargo run --example invoice_flow -- --platform=<PLATFORM>`
+
+1. Start _debit note flow_ example (restart above `platform_api` on each test) <br/>`
+cargo run --example debit_note_flow -- --platform=<PLATFORM>`
+
+1. Don't be afraid to try other examples as well ;)
