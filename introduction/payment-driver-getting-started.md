@@ -1,6 +1,6 @@
 # Getting started to write payment driver for Yagna
 
-This document aims to provide guidelines to develop a payment driver based on boilerplate code from [Yagna repository](https://github.com/golemfactory/yagna). It assumes reader has some experience in [Rust language](https://www.rust-lang.org/) and also Yagna project's codebase. We're providing an information for payment driver that will be integrated into Yagna daemon codebase and gains from reusing a lot of already provided components. It's also possible to develop stand-alone driver application that communicates with the Yagna daemon via TCP, but it won't be described here.
+This document aims to provide guidelines to develop a payment driver based on boilerplate code from [Yagna repository](https://github.com/golemfactory/yagna). It assumes the reader has some experience in [Rust language](https://www.rust-lang.org/) and also Yagna project's codebase. We're providing an information for payment driver that will be integrated into Yagna daemon codebase and gains from reusing a lot of already provided components. It's also possible to develop stand-alone driver application that communicates with the Yagna daemon via TCP, but it won't be described here.
 
 
 ## Overview
@@ -12,14 +12,14 @@ You might assume that payment driver should:
 - provide operation like deposits, exits, transfer, account unlocking,
 - delegate transaction's signing to the Identity service,
 - notify Payment service about committed transactions,
-- retry operations that failed to due non-critical causes.
+- retry operations that failed due to non-critical causes.
 
 Here is a checklist that driver implementors would want to follow:
 
 - [] Fork the Yagna repository and clone it locally to start working on the code,
-- [] Implement all methods from `PaymentDriver` trait, some of the them are describe in the section below,
-- [] Your implementation can also benefits from database handling code and backgroud tasks in `cron` module, but it is not mandatory to use them,
-- [] Make a new driver builds and starts with the Yagna daemon. See instructions bellow,
+- [] Implement all methods from `PaymentDriver` trait, some of them are described in the section below,
+- [] Your implementation can also benefit from database handling code and background tasks in `cron` module, but it is not mandatory to use them,
+- [] Make a new driver build and start with the Yagna daemon. See instructions bellow,
 - [] Test and verify it's working using instructions from the section bellow,
 - [] Send us a Pull Request.
 
@@ -28,7 +28,7 @@ Here is a checklist that driver implementors would want to follow:
 
 Clone [Yagna](https://github.com/golemfactory/yagna) git repository from GitHub. 
 Most interesting parts are located in `core/payment-driver` directory. 
-Here's what can be find there:
+Here's what can be found there:
 
 - `core/payment-driver/base` - base driver components which defines database schema and operations, registers to GSB events, helps with creation of background jobs and some utility code.
 - `core/payment-driver/zksync` - provides a reference driver implementation of [Zk-Sync](https://zksync.io) L2 network.
@@ -56,7 +56,7 @@ Let's see what a driver's trait exposes:
 - `get_transaction_balance` - Deprecated. Drivers should return very big number (e.g. `1_000_000_000_000_000_000u64` or the whole token supply).
 
 
-The following driver's operations are processed periodically by the cron jobs. It is not mandatory to implemeny `PaymentDriverCron` trait as long as the driver can operate without the cron.
+The following driver's operations are processed periodically by the cron jobs. It is not mandatory to implement `PaymentDriverCron` trait as long as the driver can operate without the cron.
 
 - `confirm_payments` - Confirms scheduled payments.
 - `process_payments` - Processes scheduled payments.
@@ -70,7 +70,7 @@ The payment driver receives all requests via the GSB. This is also a communicati
 ## Starting a new driver with Yagna
 
 Add a new block in `start_payment_drivers` function in [`core/serv/src/main.rs`](https://github.com/golemfactory/yagna/blob/master/core/serv/src/main.rs#L216) file.
-It should follow the convention and declares it's own compilation flag. Don't forget to set this flag during the compilation :wink:.
+It should follow the convention and declares its own compilation flag. Don't forget to set this flag during the compilation :wink:.
 
 ## Testing a new driver
 
@@ -84,7 +84,7 @@ We will run the following tests (happy paths and providing invalid parameters to
 
 ## Running Payment service examples
 
-As an another option to testing is to run [Payment service examples](https://github.com/golemfactory/yagna/blob/master/core/payment/examples/README.md) against new driver. There's a little bit of hassle to setup the test so I'll describe it here.
+As another option to testing is to run [Payment service examples](https://github.com/golemfactory/yagna/blob/master/core/payment/examples/README.md) against new driver. There's a bit of hassle to set up the test, so I'll describe it here.
 
 1. Enable your driver in the example's [`payment_api` enum](https://github.com/golemfactory/yagna/blob/635fac0eda514c7359928851323affa254116d71/core/payment/examples/payment_api.rs#L30) and resolve compilation errors in the following `match` expressions.
 
