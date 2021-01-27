@@ -226,8 +226,7 @@ It needs to be run each time the daemon is started or restarted.
 {% endhint %}
 
 ```text
-payment fund
-payment init --sender
+yagna payment init --sender
 ```
 
 
