@@ -133,6 +133,16 @@ yagna --version
 
 It should output: `yagna 0.6.0-rc3 (6b1ebea0 2021-01-27 build #105)`
 
+Please also verify that you have the correct version of the `gftp` binary used for file transfers in the Golem network.
+
+```text
+gftp --version
+```
+
+It should output:
+
+`gftp 0.6.0-rc3 (6b1ebea0 2021-01-27 build #105)`
+
 ### Purge the stale working directories
 
 If you had run a previous version of `yagna` in the past, you'll need to purge its working directories since our newest version is incompatible with the old database structure:
