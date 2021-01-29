@@ -6,7 +6,7 @@
 
 ### Classes
 
-- [CryptoCtx FIX](yajsapi/classes/crypto.cryptoctx.md)
+- [CryptoCtx FIX2](../classes/crypto.cryptoctx.md)
 - [PrivateKey](../classes/crypto.privatekey.md)
 - [PublicKey](../classes/crypto.publickey.md)
 
