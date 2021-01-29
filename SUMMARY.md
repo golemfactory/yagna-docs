@@ -39,6 +39,7 @@
 
 * [Introduction to Golem's high-level Java Script API](yajsapi/yajsapi.md)
   * [crypto](yajsapi/modules/crypto.md)
+  * [CryptoCtx](yajsapi/classes/crypto.cryptoctx.md)
   * [executor](yajsapi/modules/executor.md)
   * [executor/ctx](yajsapi/modules/executor_ctx.md)
   * [executor/events](yajsapi/modules/executor_events.md)
