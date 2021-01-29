@@ -171,6 +171,7 @@
   * [utils/queue](yajsapi/modules/utils_queue.md)
   * [utils/range](yajsapi/modules/utils_range.md)
   * [utils/sleep](yajsapi/modules/utils_sleep.md)
+  * [utils/sleep](yajsapi/modules/utils_sleep.md)
 * [Enums](yajsapi/yajsapi.md) 
   * [executor/task/taskstatus](yajsapi/enums/executor_task.taskstatus.md)
   * [package/sgx/sgxengine](yajsapi/enums/package_sgx.sgxengine.md)
