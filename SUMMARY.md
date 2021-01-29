@@ -171,7 +171,17 @@
   * [utils/queue](yajsapi/modules/utils_queue.md)
   * [utils/range](yajsapi/modules/utils_range.md)
   * [utils/sleep](yajsapi/modules/utils_sleep.md)
-
+ * [Enums](yajsapi/yajsapi.md) 
+  * [executor/task/taskstatus](yajsapi/enums/executor_task.taskstatus.md)
+  * [package/sgx/sgxengine](yajsapi/enums/package_sgx.sgxengine.md)
+  * [props/com/billingscheme](yajsapi/enums/props_com.billingscheme.md)
+  * [props/com/counter](yajsapi/enums/props_com.counter.md)
+  * [props/com/pricemodel](yajsapi/enums/props_com.pricemodel.md)
+  * [props/inf/runtimetype](yajsapi/enums/props_inf.runtimetype.md)
+  * [props/inf/vmpackageformat](yajsapi/enums/props_inf.vmpackageformat.md)
+ * [Interfaces](yajsapi/yajsapi.md) 
+  * [utils/callable/default](yajsapi/interfaces/utils_callable.default.md)
+  
 ## Reference
 
 * [Provider CLI reference](reference/provider-cli.md)
