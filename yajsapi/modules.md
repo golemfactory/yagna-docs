@@ -4,6 +4,8 @@
 
 ### Table of contents
 
+* [crypto](yajsapi/modules/crypto.md)
+
 - [crypto](yajsapi/modules/crypto.md)
 - [executor](yajsapi/modules/executor.md)
 - [executor/ctx](yajsapi/modules/executor_ctx.md)
