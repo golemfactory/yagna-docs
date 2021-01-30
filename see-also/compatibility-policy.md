@@ -6,7 +6,7 @@ description: 'Version: 0.1 (Draft)'
 
 ## Intro
 
-For summary of default compatibility guidelines refer [here](https://docs.google.com/document/u/1/d/1g1ARLOc1hz9iY0CS2UYi03OWBvt8DeYHxysPtTRrILA/edit).
+For summary of default compatibility guidelines refer [here](https://app.gitbook.com/@golem-network/s/golem-sdk-develop/see-also/compatibility-guidelines).
 
 The purpose of the compatibility policy is to make promises to the users of Yagna software regarding the compatibility of Yagna packages against their software \(a proprietary app referencing a ya\*api library may or may not be compatible with subsequent versions of the library\) and against each other \(Requestor nodes running one version of Yagna may or may not be compatible with Provider nodes running a different version\).
 
