@@ -274,11 +274,11 @@ Where:
 * Semantic versioning 2.0 \([https://semver.org/](https://semver.org/)\) rules apply.
 * ya\*api libraries are labeled with required versions of interfacing packages, eg:
 
- Required dependencies:
+   Required dependencies:
 
-Yagna \(Requestor\): 0.18.0+
+      Yagna \(Requestor\): 0.18.0+
 
-Yagna \(Provider\): 0.17.0+
+      Yagna \(Provider\): 0.17.0+
 
 * Within a major version we guarantee the APIs to be backward compatible, but not forward compatible. Ie. newer releases may add elements to the API, but they should not alter or remove.
 
