@@ -8,6 +8,7 @@
 * [Provider](introduction/provider.md)
 * [Requestor](introduction/requestor.md)
 * [Layer 2 payments on zkSync](introduction/layer-2-payments-on-zksync.md)
+* [Using Golem on Mainnet](introduction/deposits-and-withdraws.md)
 
 ## Requestor tutorials
 
