@@ -26,7 +26,7 @@ Of course, if you're willing to accept that disproportion, you may continue to u
 
 ## Sending funds to your account
 
-#### zkSync
+### zkSync
 
 So far the only supported way to enable your requestor wallet to operate on zkSync is to reach out to us to get your address funded with some GLM tokens.
 
@@ -44,7 +44,7 @@ The same instruction, already containing your mainnet adress can be obtained by 
 yagna payment fund --network=mainnet --driver=zksync
 ```
 
-#### ERC-20
+### ERC-20
 
 On the other hand, if you'd like to use the regular ERC-20 transactions to pay the providers, you'll need to provide your address with some actual GLM tokens, plus some ETH to pay for all the gas fees.
 
@@ -64,7 +64,7 @@ yagna payment fund --network=mainnet --driver=erc20
 
 ## Getting your funds out of the Golem node
 
-#### zkSync
+### zkSync
 
 If you'd like to convert your GLM tokens on zkSync back to regular ERC-20 GLM tokens on the Ethereum blockchain, you need to exit the zkSync Layer2.
 
@@ -84,11 +84,11 @@ yagna payment exit --to-address=YOUR-ETHEREUM-ADDRESS --network=mainnet
 Be careful though, as Golem does not perform any validation of the supplied address.
 {% endhint %}
 
-#### ERC-20
+### ERC-20
 
 \[ content needed \]
 
-### Backing up your Golem wallet
+## Backing up your Golem wallet
 
 As you're probably aware, in the Ethereum universe, your funds are only as secure as the private key for the account that holds them. Because of that, to ensure that you don't lose access to your GLM/ETH tokens stored on your Golem account, it's crucial for you to be able to back-up your Golem wallet and store the key in a safe storage, separate from the node itself.
 
