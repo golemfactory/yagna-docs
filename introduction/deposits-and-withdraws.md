@@ -6,11 +6,11 @@ description: How to move and ensure safety of your funds when operating on mainn
 
 Okay, so we've seen Golem requestors hand out tasks to providers and saw them pay those providers for the successfully executed tasks. We've also seen how we could use layer 2 \(zkSync\) to speed up those payments and significantly cut the transactions fees.
 
-Still, a few questions remain largely unanswered:
+Still, in a context of running Golem on the Ethereum mainnet, a few important questions remain largely unanswered:
 
-* how do you get funds to your requestor so you can use them to pay for the tasks?
-* how do you get funds out of a Golem node if you don't need them there anymore?
-* how to secure access to the funds in your Golem wallet if things go haywire?
+* how do you **get funds to your requestor** so you can use them to pay for the tasks?
+* how do you **get funds out of a Golem node** if you don't need them there anymore?
+* how to **secure access to the funds** in your Golem wallet if things go haywire?
 
 ## ERC-20 vs Layer2
 
@@ -20,9 +20,17 @@ While direct, on-chain transactions using ERC-20-based tokens have long become t
 
 Of course, if you're willing to accept that disproportion, you may continue to use our ERC-20 payment driver but for the majority of Golem node users, zkSync will be the main platform both when paying for tasks and receiving payments for their execution.
 
-## Initialize your Golem wallet
+## Your Golem wallet
 
-\[ is this needed ? \]
+Golem's wallet is automatically initialized for you the first time you start your `yagna` daemon and thus, an address associated with it is also generated automatically.
+
+Obviously, to have any kind of funds transferred to your Golem's wallet, you'll need its address. You may obtain it using the `id` command:
+
+```text
+yagna id show
+```
+
+The value described as `nodeId` in the output is the Ethereum address of your Golem node and it's also the address of its wallet. Note it down so you can use it to supply your node with funds.
 
 ## Sending funds to your account
 
@@ -30,13 +38,7 @@ Of course, if you're willing to accept that disproportion, you may continue to u
 
 So far the only supported way to enable your requestor wallet to operate on zkSync is to reach out to us to get your address funded with some GLM tokens.
 
-First, establish the address of your account with:
-
-```text
-yagna payment accounts
-```
-
-And take note of the address of your Golem node. With the address, reach out to us on our Discord at [https://chat.golem.network](https://chat.golem.network) where, after a short verification process, you'll be issued some GLM tokens directly to your zkSync wallet and your Golem node will be good to go!
+Using the address you obtained in the previous sesction, reach out to us on our Discord at [https://chat.golem.network](https://chat.golem.network) where, after a short verification process, you'll be issued some GLM tokens directly to your zkSync wallet and your Golem node will be good to go!
 
 The same instruction, already containing your mainnet adress can be obtained by running:
 
@@ -46,21 +48,39 @@ yagna payment fund --network=mainnet --driver=zksync
 
 ### ERC-20
 
-On the other hand, if you'd like to use the regular ERC-20 transactions to pay the providers, you'll need to provide your address with some actual GLM tokens, plus some ETH to pay for all the gas fees.
-
-The same as in case of zkSync above, you'll need to establish the address of your node's account using:
-
-```text
-yagna payment accounts
-```
-
-And then use you regular wallet to send some GLM and ETH tokens there.
+On the other hand, if you'd like to use the regular ERC-20 transactions to pay the providers, you'll need to supply your address with some actual GLM tokens, plus some ETH to pay for all the gas fees. Just use you regular wallet to send some GLM and ETH tokens to the node's address.
 
 Again, you'll get the same instruction plus your mainnet address if you just run:
 
 ```text
 yagna payment fund --network=mainnet --driver=erc20
 ```
+
+## Enable the mainnet account
+
+In the current version though, the daemon is set-up to use Ethereum's Rinkeby testnet by default.
+
+In order to enable the daemon to use the mainnet, you'll need to tell it so using:
+
+```text
+yagna payment init --sender --network==mainnet --driver=zksync
+```
+
+or
+
+```text
+yagna payment init --sender --network=mainnet --driver=erc20
+```
+
+to enable the zkSync or the ERC-20 mainnet drivers respectively. 
+
+{% hint style="warning" %}
+Again, unless you have good reasons not to, we recommend using zkSync for much lower transaction fees.
+{% endhint %}
+
+{% hint style="danger" %}
+The initialization must be performed after every restart of the `yagna` daemon.
+{% endhint %}
 
 ## Getting your funds out of the Golem node
 
