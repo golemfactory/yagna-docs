@@ -122,5 +122,7 @@ The resultant `key.json` file in the directory you ran the command from will con
 
 {% hint style="danger" %}
 Ensure you store that key file in a safe place. In case your Golem wallet gets corrupted or lost, if you don't have the backup, your funds will be lost forever.
+
+Likewise, it's probably a good idea to encrypt the keystore file so that someone who'd take hold of the file wouldn't be able to take control of your funds.
 {% endhint %}
 
