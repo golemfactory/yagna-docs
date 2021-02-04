@@ -57,9 +57,9 @@ Following rules apply:
 
 * For initial development \(major version = 0\) the compatibility may be broken at anytime. The APIs should not be considered stable.
 * For versions 1.0+ the rules are:
-* Major updates imply potentially incompatible changes to existing APIs, components and packages, eg. removal of features, APIs or modules.
-* Minor updates are related to adding features to existing APIs, preserving backwards compatibility.
-* Patch updates are reserved for bug fixes, maintaining compatibility.
+  * Major updates imply potentially incompatible changes to existing APIs, components and packages, eg. removal of features, APIs or modules.
+  * Minor updates are related to adding features to existing APIs, preserving backwards compatibility.
+  * Patch updates are reserved for bug fixes, maintaining compatibility.
 
 ### Compatibility concepts
 
