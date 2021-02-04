@@ -6,7 +6,7 @@ description: 'Version: 0.1 (Draft)'
 
 ## Intro
 
-For summary of default compatibility guidelines refer [here](https://app.gitbook.com/@golem-network/s/golem-sdk-develop/see-also/compatibility-guidelines).
+For summary of default compatibility guidelines refer [here](https://handbook.golem.network/see-also/compatibility-guidelines).
 
 The purpose of the compatibility policy is to make promises to the users of Yagna software regarding the compatibility of Yagna packages against their software \(a proprietary app referencing a ya\*api library may or may not be compatible with subsequent versions of the library\) and against each other \(Requestor nodes running one version of Yagna may or may not be compatible with Provider nodes running a different version\).
 
@@ -32,11 +32,12 @@ This policy assumes a number of simplifications, without sacrificing generality:
 This implies we are not considering the compatibility between specific versions of ya\*api libraries and different versions of yagna daemon modules.
 
 * By **Provider version** we consider a bundle of specific versions of following components meant to be running on Provider node:
+
   * yagna daemon
   * ya-provider agent application
   * ExeUnit and runtime modules
 
- This implies we are not considering the compatibility between specific versions of ya-provider application and different versions of yagna daemon and exeunit runtimes.
+  This implies we are not considering the compatibility between specific versions of ya-provider application and different versions of yagna daemon and exeunit runtimes.
 
 ### Versioning scheme
 
@@ -221,7 +222,7 @@ The behavior of an API or a package must not change between any two consecutive 
 
 Some features, components or API elements may be explicitly marked as experimental. The purpose of experimental features is to publish new concepts, gather community feedback and allow to stabilize.
 
- Experimental features may change with any release, and the change may include:
+Experimental features may change with any release, and the change may include:
 
 * Change of behaviour or API specification
 * Removal of feature, component or API
@@ -274,11 +275,13 @@ Where:
 * Semantic versioning 2.0 \([https://semver.org/](https://semver.org/)\) rules apply.
 * ya\*api libraries are labeled with required versions of interfacing packages, eg:
 
-   Required dependencies:
+  Required dependencies:
 
-      Yagna \(Requestor\): 0.18.0+
+  ```text
+  Yagna \(Requestor\): 0.18.0+
 
-      Yagna \(Provider\): 0.17.0+
+  Yagna \(Provider\): 0.17.0+
+  ```
 
 * Within a major version we guarantee the APIs to be backward compatible, but not forward compatible. Ie. newer releases may add elements to the API, but they should not alter or remove.
 
