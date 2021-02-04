@@ -16,13 +16,13 @@ You might assume that payment driver should:
 
 Here is a checklist that driver implementors would want to follow:
 
-- [] Fork the Yagna repository and clone it locally to start working on the code,
-- [] Create a new crate for your driver in the `core/payment-drivers` directory,
-- [] Implement all methods from `PaymentDriver` trait, some of them are described in the section below,
-- [] Your implementation can also benefit from database handling code and background tasks in `cron` module, but it is not mandatory to use them,
-- [] Make a new driver build and start with the Yagna daemon. See instructions bellow,
-- [] Test and verify it's working using instructions from the section bellow,
-- [] Send us a Pull Request.
+- Fork the Yagna repository and clone it locally to start working on the code,
+- Create a new crate for your driver in the `core/payment-drivers` directory,
+- Implement all methods from `PaymentDriver` trait, some of them are described in the section below,
+- Your implementation can also benefit from database handling code and background tasks in `cron` module, but it is not mandatory to use them,
+- Make a new driver build and start with the Yagna daemon. See instructions bellow,
+- Test and verify it's working using instructions from the section bellow,
+- Send us a Pull Request.
 
 
 ## Codebase
