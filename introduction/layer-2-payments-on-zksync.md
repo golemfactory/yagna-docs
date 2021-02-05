@@ -14,7 +14,7 @@ In that previous version - dubbed Brass and later Clay - we implemented batch pa
 
 ## The solution - zkSync
 
-It all changes with the new Golem. That's because the new Golem uses our new, upgraded, ERC-20-compliant token, which, by the way, all current GNT holders already have an ability to migrate to, thanks to the recently-enabled migration process.
+It all changes with the new Golem. That's because the new Golem uses our new, upgraded, ERC-20-compliant token, which, by the way, all current GLM holders already have an ability to migrate to, thanks to the recently-enabled migration process.
 
 While the new token's ERC-20 compliance enables integration with a whole lot of other contracts and DeFi platforms present in the Ethereum ecosystem, it also, specifically, enables integration with zkSync. And zkSync happens to be our answer to the aforementioned problem of increasing transactions costs in the Ethereum mainnet.
 

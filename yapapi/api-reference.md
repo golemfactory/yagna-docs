@@ -1374,7 +1374,7 @@ Total amount allocated
 
 #### payment\_platform
 
-Payment platform, e.g. NGNT
+Payment platform, e.g. tGLM
 
 #### payment\_address
 

@@ -64,8 +64,8 @@ _**Solution:**_ In such a case, we're providing you with a fallback to normal pa
 To enable it, first **stop and re-start the yagna daemon** and then run:
 
 ```text
-yagna payment init -r --driver=ngnt
-yagna payment status --platform=NGNT
+yagna payment init -r --driver=erc20
+yagna payment status --network=rinkeby
 ```
 
 After you confirm you have the funds, proceed with running the examples or your own requestor agent code normally. The providers are configured to accept both zkSync and the regular tokens and will adjust accordingly.

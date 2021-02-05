@@ -25,7 +25,7 @@ For this release we have prepared a dedicated and controlled sub-network using E
 {% endhint %}
 
 {% hint style="info" %}
-If you would like to earn real GNTs now, head over to our [Clay Golem Beta implementation](https://golem.network/download/clay-beta/).
+If you would like to earn real GLMs now, head over to our [Clay Golem Beta implementation](https://golem.network/download/clay-beta/).
 {% endhint %}
 
 ## Installation
@@ -62,7 +62,7 @@ After installing all required components you will be asked to set up your node. 
 
 `Ethereum wallet address (default=internal wallet):` - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty an address will be created for you on your local system.
 
-`price NGNT per hour (default=5):` - Type in the value of renting your computer power as a provider. You can use default price \(5 NGNT per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
+`price tGLM per hour (default=5):` - Type in the value of renting your computer power as a provider. You can use default price \(5 tGLM per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
 
 {% hint style="success" %}
 Congrats, your initial setup has been completed! You will see that default preset was created based on your initial node setup. If you wish, you can change this settings later on with CLI.

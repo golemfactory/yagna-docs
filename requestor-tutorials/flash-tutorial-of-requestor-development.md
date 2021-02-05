@@ -211,7 +211,7 @@ the value in the `key` column is the key you need.
 
 You need the following command to enable the daemon as a requestor.
 
-What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some nGNT tokens to the node using zkSync.
+What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some tGLM tokens to the node using zkSync.
 
 {% hint style="warning" %}
 It needs to be run each time the daemon is started or restarted.
@@ -308,7 +308,7 @@ Once you launch the example, you should see some messages reflecting the progres
 
 The example in question generates six discrete jobs for providers to execute so after those six activities are completed and results returned, the whole task is finished.
 
-If everything goes right, after what could be anything from half-a-minute to a few minutes, you'll hopefully see the message announcing the successful completion of your assignment including a short summary of what had happened during the execution, which providers took part in the execution and the accumulated GNT cost of the whole task, e.g.:
+If everything goes right, after what could be anything from half-a-minute to a few minutes, you'll hopefully see the message announcing the successful completion of your assignment including a short summary of what had happened during the execution, which providers took part in the execution and the accumulated GLM cost of the whole task, e.g.:
 
 `Computation finished in 77.5s    
 Negotiated 1 agreements with 1 providers    
