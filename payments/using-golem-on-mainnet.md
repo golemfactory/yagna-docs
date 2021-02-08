@@ -66,9 +66,9 @@ yagna payment fund --network=mainnet --driver=erc20
 
 ## Enable the mainnet account
 
-In the current version though, the daemon is set-up to use Ethereum's Rinkeby testnet by default.
+In the current version though, the daemon is set-up to use Ethereum's Rinkeby testnet by default. Also, all accounts are initialized in the receiver mode by default so you need to enable them as a sender \(that's the reason we're adding the `--sender` flag below\).
 
-In order to enable the daemon to use the mainnet, you'll need to tell it so using:
+Thus, in order to enable the daemon to use the mainnet, you'll need to tell it so using:
 
 ```text
 yagna payment init --sender --network==mainnet --driver=zksync
@@ -114,7 +114,7 @@ Be careful though, as Golem does not perform any validation of the supplied addr
 
 ### ERC-20
 
-\[ content needed \]
+We don't currently support direct, ERC-20 withdraws from the Golem wallet. Soon, we will add functionality that will enable you to export your wallet and import it into MetaMask and you'll be able to withdraw your ERC-20 tokens that way.
 
 ## Backing up your Golem wallet
 
