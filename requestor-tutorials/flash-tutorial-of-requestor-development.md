@@ -86,7 +86,7 @@ git --version
 #### No crypto assets needed \(for now!\)
 
 {% hint style="info" %}
-Alpha lives on the Rinkeby Testnet. You don't need any real ETH or tGLM tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets are acquired by the daemon in one of the steps below.
+Alpha lives on the Rinkeby Testnet. You don't need any real ETH or GLM tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets, rETH and tGLM, are acquired by the daemon in one of the steps below.
 {% endhint %}
 
 ### Can we help you? Do you have feedback for Golem?
@@ -218,7 +218,7 @@ It needs to be run each time the daemon is started or restarted.
 {% endhint %}
 
 ```text
-yagna payment init -r
+yagna payment init --sender
 ```
 
 Once you issue the command, allow some time until it completes its job.
