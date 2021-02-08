@@ -200,8 +200,6 @@
 
 * [How to write payment driver](payment-driver-getting-started.md)
 
-## Yagna Contributor Guide <a id="yagna-contribution-development"></a>
-
 ## See also
 
 * [Running the yagna daemon from sources](see-also/running-yagna-from-sources.md)
