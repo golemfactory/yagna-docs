@@ -8,7 +8,7 @@ description: Solution architecture and details.
 
 ![](../.gitbook/assets/tutorial-06%20%281%29.jpg)
 
-Golem is a network of nodes that implement the Golem network protocol. We provide the default implementation of a such a node in the form of the Golem daemon, called [yagna](https://github.com/golemfactory/yagna).
+Golem is a network of nodes that implement the Golem network protocol. We provide the default implementation of such a node in the form of the Golem daemon, called [yagna](https://github.com/golemfactory/yagna).
 
 The nodes in the network can act as providers or requestors. Both the requestor and the provider share the same implementation of the Golem daemon.
 
