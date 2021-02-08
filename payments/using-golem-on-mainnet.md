@@ -216,6 +216,10 @@ The `nodeId` property should display the Ethereum address of your backed-up wall
 
 ## Running your requestor on mainnet
 
+{% hint style="info" %}
+In order for the below commands and code to work, your `yagna` daemon must have the mainnet accounts correctly initialized using the instructions above.
+{% endhint %}
+
 After you have taken care of the above, the one last thing that you'll need to do if you want to request tasks from the providers running on the mainnet is enabling the mainnet driver in your requestor agent.
 
 The examples we bundle with our APIs \(the Blender rendering and Hashcat password recovery\) expose two command-line arguments, analogous to yagna daemon itself: `--driver` and `--network`.
