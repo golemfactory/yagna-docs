@@ -45,3 +45,11 @@ You can learn more about Golem providers here:
 
 The payments between requestors and providers are made through the [Ethereum](https://ethereum.org/) network using zkSync, a Layer2 solution that greatly improves cost-effectiveness. However, a user can also opt to use standard ERC-20 token transfers.
 
+More on that here:
+
+{% page-ref page="../payments/layer-2-payments-on-zksync.md" %}
+
+and here:
+
+{% page-ref page="../payments/using-golem-on-mainnet.md" %}
+
