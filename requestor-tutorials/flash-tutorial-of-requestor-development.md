@@ -86,7 +86,7 @@ git --version
 #### No crypto assets needed \(for now!\)
 
 {% hint style="info" %}
-Alpha lives on the Rinkeby Testnet. You don't need any real ETH or GLM tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets are acquired by the daemon in one of the steps below.
+Alpha lives on the Rinkeby Testnet. You don't need any real ETH or tGLM tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets are acquired by the daemon in one of the steps below.
 {% endhint %}
 
 ### Can we help you? Do you have feedback for Golem?
@@ -308,7 +308,7 @@ Once you launch the example, you should see some messages reflecting the progres
 
 The example in question generates six discrete jobs for providers to execute so after those six activities are completed and results returned, the whole task is finished.
 
-If everything goes right, after what could be anything from half-a-minute to a few minutes, you'll hopefully see the message announcing the successful completion of your assignment including a short summary of what had happened during the execution, which providers took part in the execution and the accumulated GLM cost of the whole task, e.g.:
+If everything goes right, after what could be anything from half-a-minute to a few minutes, you'll hopefully see the message announcing the successful completion of your assignment including a short summary of what had happened during the execution, which providers took part in the execution and the accumulated tGLM cost of the whole task, e.g.:
 
 `Computation finished in 77.5s    
 Negotiated 1 agreements with 1 providers    

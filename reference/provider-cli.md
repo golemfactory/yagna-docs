@@ -70,7 +70,7 @@ In order to change a particular setting \(for eg. price settings\) type:
 
 You can also combine multiple settings in one command as follows:
 
-`golemsp settings set --cpu-per-hour 3 --cores 7` which will change your tGLM per hour to "3" and adjust the numbers of shared cpu cores to "7".
+`golemsp settings set --cpu-per-hour 3 --cores 7` which will change your GLM per hour to "3" and adjust the numbers of shared cpu cores to "7".
 
 **To change the default Ethereum address that was created for you during the initial setup process type:**
 
@@ -94,9 +94,9 @@ shared resources:
 
 Pricing:
 
-        0 tGLM for start
-        1 tGLM per hour
-        5 tGLM per cpu hour
+        0 GLM for start
+        1 GLM per hour
+        5 GLM per cpu hour
 ```
 
 ### Status

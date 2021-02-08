@@ -1374,7 +1374,7 @@ Total amount allocated
 
 #### payment\_platform
 
-Payment platform, e.g. tGLM
+Payment platform, e.g. zksync-rinkeby-tglm
 
 #### payment\_address
 

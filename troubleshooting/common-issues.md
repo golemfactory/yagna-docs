@@ -64,7 +64,7 @@ _**Solution:**_ In such a case, we're providing you with a fallback to normal pa
 To enable it, first **stop and re-start the yagna daemon** and then run:
 
 ```text
-yagna payment init -r --driver=erc20
+yagna payment init --sender --driver=erc20
 yagna payment status --network=rinkeby
 ```
 

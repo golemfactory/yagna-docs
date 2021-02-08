@@ -25,7 +25,7 @@ For this release we have prepared a dedicated and controlled sub-network using E
 {% endhint %}
 
 {% hint style="info" %}
-If you would like to earn real GLMs now, head over to our [Clay Golem Beta implementation](https://golem.network/download/clay-beta/).
+If you would like to earn real GNTs now, head over to our [Clay Golem Beta implementation](https://golem.network/download/clay-beta/).
 {% endhint %}
 
 ## Installation
