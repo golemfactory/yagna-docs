@@ -12,7 +12,6 @@
 
 * [Layer 2 payments on zkSync](payment/layer-2-payments-on-zksync.md)
 * [Using Golem on Mainnet](payment/using-golem-on-mainnet.md)
-* [How to write payment driver](payment/payment-driver-getting-started.md)
 
 ## Requestor tutorials
 
@@ -194,6 +193,10 @@
 ## troubleshooting
 
 * [Common issues](troubleshooting/common-issues.md)
+
+## Yagna contribution development
+
+* [How to write payment driver](yagna-contribution-development/payment-driver-getting-started.md)
 
 ## See also
 
