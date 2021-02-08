@@ -37,7 +37,7 @@ The provider can make its resources available to the requestors with the help of
 
 _Please note the "ALT" frames in the diagram above: the provider uses only one exe unit at the same time out of the two available._
 
-More information on a provider is available here:
+You can learn more about Golem providers here:
 
 {% page-ref page="provider.md" %}
 
