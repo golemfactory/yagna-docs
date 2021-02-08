@@ -8,10 +8,10 @@
 * [Provider](introduction/provider.md)
 * [Requestor](introduction/requestor.md)
 
-## Payment
+## Payments
 
-* [Layer 2 payments on zkSync](payment/layer-2-payments-on-zksync.md)
-* [Using Golem on Mainnet](payment/using-golem-on-mainnet.md)
+* [Layer 2 payments on zkSync](payments/layer-2-payments-on-zksync.md)
+* [Using Golem on Mainnet](payments/using-golem-on-mainnet.md)
 
 ## Requestor tutorials
 
