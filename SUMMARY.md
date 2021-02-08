@@ -196,9 +196,11 @@
 
 ## Yagna Contributor Guide
 
-## Yagna Contributor Guide <a id="yagna-contribution-development"></a>
+---
 
-* [How to write payment driver](yagna-contribution-development/payment-driver-getting-started.md)
+* [How to write payment driver](payment-driver-getting-started.md)
+
+## Yagna Contributor Guide <a id="yagna-contribution-development"></a>
 
 ## See also
 
