@@ -194,7 +194,7 @@
 
 * [Common issues](troubleshooting/common-issues.md)
 
-## Yagna contribution development
+## Yagna Contributor Guide <a id="yagna-contribution-development"></a>
 
 * [How to write payment driver](yagna-contribution-development/payment-driver-getting-started.md)
 
