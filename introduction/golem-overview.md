@@ -20,7 +20,7 @@ The requestor logic is implemented as a **requestor agent**, which is a piece of
 
 A requestor agent can be written in any language as long as it's able to talk to daemon's REST API. To make things easy for the developers though, we provide two high-level API libraries[: yapapi](https://github.com/golemfactory/yapapi) for Python 3.6+ and [yajsapi](https://github.com/golemfactory/yajsapi), our JS/TS API runnable under nodejs.
 
-_Please note the "ALT" frame in the left part of the diagram above: typically the requestor contains application code in only one language. There are two "ALT" frames to show two possible scenarios._
+_Please note the "ALT" frames in the left part of the diagram above: there are two APIs that we support but a typical requestor agent contains application code in only one language and, hence, will use one of those alternatives._
 
 More information on a requestor can be found here:
 
@@ -35,7 +35,7 @@ The provider can make its resources available to the requestors with the help of
 * VM exe unit that runs Docker images and allows for an interaction with the running container,
 * and WASM exe unit that runs WASM code
 
-_Please note the "ALT" frame in the diagram above: the provider uses only one exe unit at the same time. There are two "ALT" frames to show two possible scenarios._
+_Please note the "ALT" frames in the diagram above: the provider uses only one exe unit at the same time out of the two available._
 
 More information on a provider is available here:
 
