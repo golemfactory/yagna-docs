@@ -250,7 +250,7 @@ Ensure you're running python &gt;= 3.6 and you have the `venv` module installed 
 Prepare a virtual environment for the tutorial script:
 
 ```bash
-python3 -m venv ~/.envs/yagna-python-tutorial
+python3 -m venv --clear ~/.envs/yagna-python-tutorial
 source ~/.envs/yagna-python-tutorial/bin/activate
 ```
 
@@ -259,7 +259,7 @@ On Windows, you need to replace the above with:
 {% endhint %}
 
 ```text
-python -m venv %HOMEDRIVE%%HOMEPATH%\.envs\yagna-python-tutorial
+python -m venv --clear %HOMEDRIVE%%HOMEPATH%\.envs\yagna-python-tutorial
 %HOMEDRIVE%%HOMEPATH%\.envs\yagna-python-tutorial\Scripts\activate.bat
 ```
 
