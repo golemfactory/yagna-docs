@@ -22,7 +22,7 @@ A requestor agent can be written in any language as long as it's able to talk to
 
 _Please note the "ALT" frames in the left part of the diagram above: there are two APIs that we support but a typical requestor agent contains application code in only one language and hence, will use only one of those alternatives._
 
-More information on a requestor can be found here:
+For more information regarding a Golem requestor, have a look at:
 
 {% page-ref page="requestor.md" %}
 
