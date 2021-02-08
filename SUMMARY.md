@@ -10,9 +10,9 @@
 
 ## Payment
 
-* [Layer 2 payments on zkSync](introduction/layer-2-payments-on-zksync.md)
-* [Using Golem on Mainnet](introduction/using-golem-on-mainnet.md)
-* [How to write payment driver](introduction/payment-driver-getting-started.md)
+* [Layer 2 payments on zkSync](payment/layer-2-payments-on-zksync.md)
+* [Using Golem on Mainnet](payment/using-golem-on-mainnet.md)
+* [How to write payment driver](payment/payment-driver-getting-started.md)
 
 ## Requestor tutorials
 
