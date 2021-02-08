@@ -214,3 +214,56 @@ yagna id show
 
 The `nodeId` property should display the Ethereum address of your backed-up wallet.
 
+## Running your requestor on mainnet
+
+After you have taken care of the above, the one last thing that you'll need to do if you want to request tasks from the providers running on the mainnet is enabling the mainnet driver in your requestor agent.
+
+The examples we bundle with our APIs \(the Blender rendering and Hashcat password recovery\) expose two command-line arguments, analogous to yagna daemon itself: `--driver` and `--network`.
+
+Therefore, in order to run them on mainnet, you'd launch them using e.g.:
+
+{% tabs %}
+{% tab title="Python / Blender" %}
+```text
+python3 blender.py --subnet-tag mainnet-alpha.4 --network mainnet
+```
+{% endtab %}
+
+{% tab title="Python / Hashcat" %}
+```text
+python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --subnet-tag mainnet-alpha.4 --network=mainnet --number-of-providers 4 --log-file yacat-debug.log
+```
+{% endtab %}
+
+{% tab title="JS / Blender" %}
+```text
+yarn js:blender --subnet-tag mainnet-alpha.4 --network mainnet
+```
+{% endtab %}
+{% endtabs %}
+
+### Requestor agent code
+
+As for your own requestor agent code, you'll need to supply appropriate `driver` and `network` parameters to the `Executor` .
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+async with Executor(
+    [...],
+    network="mainnet",
+    driver="zksync",
+)
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```javascript
+new Executor({
+    driver: "zksync",
+    network: "mainnet",
+})
+```
+{% endtab %}
+{% endtabs %}
+
