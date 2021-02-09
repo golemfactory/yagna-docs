@@ -13,6 +13,10 @@
 * [Layer 2 payments on zkSync](payments/layer-2-payments-on-zksync.md)
 * [Using Golem on Mainnet](payments/using-golem-on-mainnet.md)
 
+## Provider tutorials
+
+* [Becoming a provider](provider-tutorials/provider-tutorial.md)
+
 ## Requestor tutorials
 
 * [Requestor development: a quick primer](requestor-tutorials/flash-tutorial-of-requestor-development.md)
@@ -28,10 +32,6 @@
 * [Interactive testing environment](requestor-tutorials/interactive-testing-environment/README.md)
   * [Running Goth](requestor-tutorials/interactive-testing-environment/running-goth.md)
   * [Using Test Harness to test Golem apps](requestor-tutorials/interactive-testing-environment/running-goths-interactive-mode.md)
-
-## Provider tutorials
-
-* [Becoming a provider](provider-tutorials/provider-tutorial.md)
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
