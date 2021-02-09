@@ -20,7 +20,7 @@ Have a look at "[Becoming a provider](provider-tutorials/provider-tutorial.md)" 
 
 Golem is a global, open-source, decentralized supercomputer that anyone can use. It is made up of the combined computing power of the users' machines, from PCs to entire data centers.
 
-To facilitate that exchange, Golem implements a decentralized marketplace where IT resources such as computation hardware are rented out. The actors in this decentralized network can assume one of the two non-exclusive roles:
+To facilitate that exchange, Golem implements a decentralized marketplace where IT resources are rented out. The actors in this decentralized network can assume one of the two non-exclusive roles:
 
 * **Requestor**
 
