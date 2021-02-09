@@ -1,5 +1,5 @@
 ---
-description: Golem Sneak Peek Provider Command Line Interface
+description: Golem Provider Command Line Interface
 ---
 
 # Provider CLI reference
@@ -37,7 +37,7 @@ SUBCOMMANDS:
 
 ### Run
 
-`golemsp run` - Start the Golem Sneak Peek provider.
+`golemsp run` - Start the Golem provider.
 
 ### Settings
 

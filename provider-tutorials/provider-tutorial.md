@@ -1,7 +1,7 @@
 ---
 description: >-
-  This tutorial shows how to run the new Golem Provider Sneak Peek release and
-  play around with its limited functionalities.
+  This tutorial shows how to run a Golem Provider node and play around with its
+  functionalities.
 ---
 
 # Becoming a provider
@@ -12,20 +12,16 @@ description: >-
 
 This is our very second Alpha Provider Sneak Peek reveal. Therefore, temporarily, Golem official support is for:
 
-* Ubuntu 18.04 and 20.04 
+* Ubuntu 18.04 LTS and 20.04 LTS
 
 but you are welcome to try out run it on other Linux distributions. 
 
 {% hint style="warning" %}
-* To run Golem Sneak Peek you'll need a physical machine as you may encounter issues when running it on a virtual machine.
+* To run a Golem provider node you'll need a physical machine as you may encounter issues when running it on a virtual machine.
 {% endhint %}
 
 {% hint style="info" %}
 For this release we have prepared a dedicated and controlled sub-network using Ethereum Rinkeby Testnet for payments. **This means that the tokens received for the rental of your computing power will not hold any value outside of the network**. This release also features [the basic CLI](https://golem-network.gitbook.io/golem-sdk-develop/reference/provider-cli) with which you may interact with your node.
-{% endhint %}
-
-{% hint style="info" %}
-If you would like to earn real GNTs now, head over to our [Clay Golem Beta implementation](https://golem.network/download/clay-beta/).
 {% endhint %}
 
 ## Installation
@@ -59,7 +55,7 @@ After installing all required components you will be asked to set up your node. 
 
 `Node name (default=generated_name):` - Type in the name of your new node and press Enter
 
-`subnet (default=community.3):` - It is important that you use "community.3"
+`subnet (default=community.4):` - It is important that you use "community.4"
 
 `Ethereum wallet address (default=internal wallet):`  - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty an address will be created for you on your local system.
 
@@ -71,7 +67,7 @@ Congrats, your initial setup has been completed! You will see that default prese
 
 ## Running the provider
 
-To run Golem Sneak Peek type in the terminal:
+To run a Golem provider, type the following in the terminal:
 
 ```text
 golemsp run
@@ -96,10 +92,10 @@ As an output you will get the information about your node's current state as sho
 │  Status                                                      │
 │                                                              │
 │  Service    is running                                       │
-│  Version    0.5.0                                            │
+│  Version    0.6n.0                                            │
 │                                                              │
 │  Node Name  outstanding-chalk                                │
-│  Subnet     community.3                                      │
+│  Subnet     community.4                                      │
 │  VM         valid                                            │
 ├──────────────────────────────────────────────────────────────┤
 │  Wallet                                                      │
@@ -124,7 +120,7 @@ As an output you will get the information about your node's current state as sho
 {% hint style="info" %}
 Under your address you can see both **on-chain** and **zk-sync** values listed. 
 
-Although zk-synk is from now on the main payment operator in Golem you may receive on-chain transactions as well. To confirm correctness of the listed values head over to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) \(on-chain\) and [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/) \(for zk-synk\).
+Although zk-sync is from now on the main payment operator in Golem you may receive on-chain transactions as well. To confirm correctness of the listed values head over to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) \(on-chain\) and [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/) \(for zk-sync\).
 {% endhint %}
 
 {% hint style="info" %}
