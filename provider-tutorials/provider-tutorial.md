@@ -62,7 +62,7 @@ After installing all required components you will be asked to set up your node. 
 
 `Ethereum wallet address (default=internal wallet):` - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty an address will be created for you on your local system.
 
-`price tGLM per hour (default=5):` - Type in the value of renting your computer power as a provider. You can use default price \(5 tGLM per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
+`price GLM per hour (default=0.1):` - Type in the value of renting your computer power as a provider. You can use default price \(0.1 GLM per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
 
 {% hint style="success" %}
 Congrats, your initial setup has been completed! You will see that default preset was created based on your initial node setup. If you wish, you can change this settings later on with CLI.
