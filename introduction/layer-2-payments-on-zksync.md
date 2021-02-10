@@ -14,7 +14,7 @@ In that previous version - dubbed Brass and later Clay - we implemented batch pa
 
 ## The solution - zkSync
 
-It all changes with the new Golem. That's because the new Golem uses our new, upgraded, ERC-20-compliant token, which, by the way, all current GNT holders already have an ability to migrate to, thanks to the recently-enabled migration process.
+It all changes with the new Golem. That's because the new Golem uses our new, upgraded, ERC-20-compliant token: GLM. Which, by the way, all current GNT holders already have an ability to migrate to, thanks to the recently-enabled migration process.
 
 While the new token's ERC-20 compliance enables integration with a whole lot of other contracts and DeFi platforms present in the Ethereum ecosystem, it also, specifically, enables integration with zkSync. And zkSync happens to be our answer to the aforementioned problem of increasing transactions costs in the Ethereum mainnet.
 
@@ -38,7 +38,7 @@ The net effect is that, with orders of magnitude smaller costs and much higher t
 
 With the latest alpha reveal, zkSync - for now on Rinkeby - is enabled as the default platform to pay for and receive payments for computations in the new Golem.
 
-Currently, when you run `yagna payment init -r`, Golem initializes a new account from our custom faucet \(a service that transfers test tokens to an address that asks for it\) which provides it with GLM tokens that are already transferred to zkSync. Then all payments are performed through zkSync and in consequence, all the providers receive all the payments to their zkSync accounts.
+Currently, when you run `yagna payment init --sender`, Golem initializes a new account from our custom faucet \(a service that transfers test tokens to an address that asks for it\) which provides it with GLM tokens that are already transferred to zkSync. Then all payments are performed through zkSync and in consequence, all the providers receive all the payments to their zkSync accounts.
 
 For now, we don't support withdrawing those funds back to Ethereum proper in the Golem application but certainly we'll support it in the mainnet release.
 

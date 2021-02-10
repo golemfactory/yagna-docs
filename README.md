@@ -50,7 +50,7 @@ One of the features we’re excited to share about New Golem, in comparison to C
 
 To get set-up as a provider on the community subnet, follow our Provider tutorial and installation instructions. For this release, we have prepared a dedicated and controlled sub-network using Ethereum Rinkeby Testnet for payments. This means that the tokens received for the rental of your computing power will not hold any value outside of the network.
 
-If you would like to earn real GNTs now, head over to our [Clay Golem Beta implementation](https://golem.network/products/clay-beta/) \(Legacy Golem\), which uses Ethereum mainnet.
+If you would like to earn real (pre-migration) GNTs now, head over to our [Clay Golem Beta implementation](https://golem.network/products/clay-beta/) \(Legacy Golem\), which uses Ethereum mainnet.
 
 {% page-ref page="provider-tutorials/provider-tutorial.md" %}
 

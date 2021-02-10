@@ -523,7 +523,7 @@ await asyncWith(
 {% endtab %}
 {% endtabs %}
 
-The `package` here is effectively our `Demand` that we have created above, `max_workers` specifies the maximum number of providers we want to be working on our task, `budget` specifies the maximum budget \(in nGNT\) that this task may utilize**,** `timeout` is the time after which we absolutely want our whole task to be finished by and after which we'll treat it as failed unless it's already finished.
+The `package` here is effectively our `Demand` that we have created above, `max_workers` specifies the maximum number of providers we want to be working on our task, `budget` specifies the maximum budget \(in tGLM\) that this task may utilize**,** `timeout` is the time after which we absolutely want our whole task to be finished by and after which we'll treat it as failed unless it's already finished.
 
 The `subnet_tag` serves to select a subset of the network that our requestor node wants to limit its communications to. Using `subnet_tag` we're effectively limiting our list of provider to those that are running with the same `subnet` parameter.
 
