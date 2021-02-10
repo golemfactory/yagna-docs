@@ -69,7 +69,7 @@ Here, your application code is running inside a web server and the front-end lay
 {% hint style="info" %}
 To write a fully functional requestor you need to write just a few lines of code.
 
-Golem's infrastructure takes care of the rest.
+Golem's APIs, the daemon and the infrastructure take care of the rest.
 {% endhint %}
 
 The basic requestor development tutorial is here:
