@@ -6,7 +6,7 @@
 
 the properties used in the market offer scoring:
 
-* `com.ComLinear.fixed_price` -  fixed startup price that is not dependant on computation time
+* `com.ComLinear.fixed_price` -  fixed startup price that is not dependent on computation time
 * `com.Counter.TIME` - cost of one second of computation time in the real-time units
 * `com.Counter.CPU` - cost of one second of computation time in the CPU time units
 
