@@ -10,18 +10,18 @@ description: >-
 
 #### Platforms
 
-This is our very second Alpha Provider Sneak Peek reveal. Therefore, temporarily, Golem official support is for:
+For the provider end, we currently, officially support:
 
 * Ubuntu 18.04 LTS and 20.04 LTS
 
 but you are welcome to try out run it on other Linux distributions. 
 
 {% hint style="warning" %}
-* To run a Golem provider node you'll need a physical machine as you may encounter issues when running it on a virtual machine.
+To run a Golem provider node you'll need a physical machine as you may encounter issues when running it on a virtual machine. For this reason, and because we expect most apps to use vm-based payloads, we don't recommend running a provider on non-Linux platforms.
 {% endhint %}
 
 {% hint style="info" %}
-For this release we have prepared a dedicated and controlled sub-network using Ethereum Rinkeby Testnet for payments. **This means that the tokens received for the rental of your computing power will not hold any value outside of the network**. This release also features [the basic CLI](https://golem-network.gitbook.io/golem-sdk-develop/reference/provider-cli) with which you may interact with your node.
+For this release we have enabled the providers to expect payments on the Ethereum mainnet by default. It means that by running a provider node and executing tasks, you'll be **earning real GLM tokens** - either as pure ERC-20 tokens or on zkSync.
 {% endhint %}
 
 ## Installation
