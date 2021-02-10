@@ -6,7 +6,7 @@ description: Your own thing on golem.
 
 ## Introduction
 
-This tutorial shows a typical experience of a developer who would like to create their own application for Golem. To show you how things work here, we created yacat - Golem port of [Hashcat](https://hashcat.net/hashcat/) - open source password cracking tool.
+This tutorial shows a typical experience of a developer who would like to create their own application for Golem. To show you how things work here, we created yacat - Golem port of [Hashcat](https://hashcat.net/hashcat/) - open source password recovery tool.
 
 {% hint style="info" %}
 In case of any doubts or problems, you can always contact us on discord.
