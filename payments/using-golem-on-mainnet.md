@@ -229,19 +229,19 @@ Therefore, in order to run them on mainnet, you'd launch them using e.g.:
 {% tabs %}
 {% tab title="Python / Blender" %}
 ```text
-python3 blender.py --subnet-tag mainnet-alpha.4 --network mainnet
+python3 blender.py --network=mainnet
 ```
 {% endtab %}
 
 {% tab title="Python / Hashcat" %}
 ```text
-python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --subnet-tag mainnet-alpha.4 --network=mainnet --number-of-providers 4 --log-file yacat-debug.log
+python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --network=mainnet --number-of-providers 4 --log-file yacat-debug.log
 ```
 {% endtab %}
 
 {% tab title="JS / Blender" %}
 ```text
-yarn js:blender --subnet-tag mainnet-alpha.4 --network mainnet
+yarn js:blender --network mainnet
 ```
 {% endtab %}
 {% endtabs %}
