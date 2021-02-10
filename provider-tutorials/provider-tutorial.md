@@ -28,6 +28,12 @@ For this release we have enabled the providers to expect payments on the Ethereu
 
 #### Purge directories
 
+{% hint style="danger" %}
+**BEFORE YOU PROCEED** - if you have ever run your Golem on mainnet and you have earned GLM tokens or funded your Golem account with ETH/GLM - **DO NOT purge** your data directories before you have backed-up your Golem wallet and confirmed that you can safely recover it.
+
+For instructions on how to do it, consult our [guide on using Golem on Mainnet](../payments/using-golem-on-mainnet.md#backing-up-your-golem-wallet) and specifically its backup/recovery section.
+{% endhint %}
+
 If you have previously launched **Golem Alpha** on your machine run the command below which will purge its working directories since our newest version is incompatible with the old database structure:
 
 ```text
@@ -59,7 +65,11 @@ After installing all required components you will be asked to set up your node. 
 
 `Ethereum wallet address (default=internal wallet):`  - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty an address will be created for you on your local system.
 
-`price NGNT per hour (default=5):` - Type in the value of renting your computer power as a provider. You can use default price \(5 NGNT per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
+{% hint style="info" %}
+This is especially important now that the providers are by default using **Ethereum mainnet** - this way, you can have your earned GLM tokens sent directly e.g. to your MetaMask or Ledger account and you can manage them from there without Golem ever needing to touch your wallet - do that especially if you don't plan on becoming a Requestor.
+{% endhint %}
+
+`price NGNT per hour (default=5):` - Type in the value of renting your computer power as a provider. You can use default price \(5 GLM per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
 
 {% hint style="success" %}
 Congrats, your initial setup has been completed! You will see that default preset was created based on your initial node setup. If you wish, you can change this settings later on with CLI.
@@ -88,39 +98,25 @@ golemsp status
 As an output you will get the information about your node's current state as shown below:
 
 ```text
-┌──────────────────────────────────────────────────────────────┐
-│  Status                                                      │
-│                                                              │
-│  Service    is running                                       │
-│  Version    0.6n.0                                            │
-│                                                              │
-│  Node Name  outstanding-chalk                                │
-│  Subnet     community.4                                      │
-│  VM         valid                                            │
-├──────────────────────────────────────────────────────────────┤
-│  Wallet                                                      │
-│                                                              │
-│  address         0xe4781cd3af959417f560372544f77aec33124b5f  │
-│  amount (total)  0 GLM                                       │
-│      (on-chain)  0 GLM                                       │
-│       (zk-sync)  0 GLM                                       │
-│                                                              │
-│  pending         0 GLM (0)                                   │
-│  issued          0 GLM (0)                                   │
-├──────────────────────────────────────────────────────────────┤
-│  Tasks                                                       │
-│                                                              │
-│  last 1h processed    0                                      │
-│  last 1h in progress  0                                      │
-│  total processed      0                                      │
-└──────────────────────────────────────────────────────────────┘
+┌────────────────────────────┬──────────────────────────────────────────────┬───────────────────────────┐
+│  Status                    │  Wallet                                      │  Tasks                    │
+│                            │  0x923ce8f2aaeb80b6c3f7fb15173fe546fefa1ed5  │                           │
+│  Service    is running     │                                              │  last 1h processed    0   │
+│  Version    0.6.0          │  network               mainnet               │  last 1h in progress  0   │
+│  Commit     5a472f9e       │  amount (total)        100.42 GL             │  total processed      15  │
+│  Date       2021-02-08     │      (on-chain)        0 GLM                 │                           │
+│  Build      112            │       (zk-sync)        100.42 GLM            │                           │
+│                            │                                              │                           │
+│  Node Name  cakeisalie     │  pending               0 GLM (0)             │                           │
+│  Subnet     community.4    │  issued                0 GLM (0)             │                           │
+└────────────────────────────┴──────────────────────────────────────────────┴───────────────────────────┘
 
 ```
 
 {% hint style="info" %}
 Under your address you can see both **on-chain** and **zk-sync** values listed. 
 
-Although zk-sync is from now on the main payment operator in Golem you may receive on-chain transactions as well. To confirm correctness of the listed values head over to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) \(on-chain\) and [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/) \(for zk-sync\).
+Although zk-sync is from now on the main payment operator in Golem you may receive on-chain transactions as well. To confirm correctness of the listed values head over to [https://etherscan.io/](https://etherscan.io/) \(on-chain\) and [https://zkscan.io/](https://zkscan.io/) \(for zk-sync\).
 {% endhint %}
 
 {% hint style="info" %}
