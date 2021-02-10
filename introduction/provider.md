@@ -16,6 +16,8 @@ In general, almost any computer might act as a provider. It can be a laptop, des
 The provider binaries are available as a pre-built Linux installation package. You do not need to perform any development or extensive configuration to have a Golem provider up and running on your Linux machine.
 {% endhint %}
 
+{% page-ref page="../provider-tutorials/provider-tutorial.md" %}
+
 ## What does a provider do?
 
 1. The provider announces the availability of its resources in the Golem market. This announcement is called an offer.

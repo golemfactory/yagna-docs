@@ -6,7 +6,7 @@ description: The requestor actor in the Golem
 
 ## What is a requestor?
 
-Technically speaking, a New Golem requestor is a specific piece of code running on an Internet-connected device.
+A Golem requestor is a specific piece of code running on an Internet-connected device.
 
 **The characteristic that describes the requestor agent is the need to use hardware resources that are available in the Golem network, shared by its providers.**
 
