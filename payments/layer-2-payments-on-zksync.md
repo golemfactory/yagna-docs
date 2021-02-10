@@ -14,9 +14,9 @@ In that previous version - dubbed Brass and later Clay - we implemented batch pa
 
 ### The solution - zkSync
 
-It all changes with the new Golem. That's because the new Golem uses our new, upgraded, ERC-20-compliant token, which, by the way, all current GNT holders already have an ability to migrate to, thanks to the recently-enabled migration process.
+It all changes with the new Golem. That's because the new Golem uses our new, upgraded, ERC-20-compliant token, which, by the way, all current GNT holders already have an ability to migrate to, thanks to the [recently-enabled migration](https://glm.golem.network/) process.
 
-While the new token's ERC-20 compliance enables integration with a whole lot of other contracts and DeFi platforms present in the Ethereum ecosystem, it also, specifically, enables integration with zkSync. And zkSync happens to be our answer to the aforementioned problem of increasing transactions costs in the Ethereum mainnet.
+While the new token's ERC-20 compliance enables integration with a whole lot of other contracts and DeFi platforms present in the Ethereum ecosystem, it also, specifically, enables integration with zkSync. And zkSync happens to be our latest answer to the aforementioned problem of increasing transactions costs in the Ethereum mainnet.
 
 #### What is this zkSync thing then?
 
@@ -28,7 +28,7 @@ Importantly, contrary to some alternative solutions that we have considered, zkS
 
 zkSync supports both ETH itself and potentially any ERC-20-compatible token and transactions on zkSync itself are almost immediate.
 
-Additionally, the transactions fees can be paid in the token that's transferred, eliminating the need for the transfer sender to be in posession of ETH.
+Additionally, the transactions fees can be paid in the token that's transferred, eliminating the need for the sender to be in posession of ETH.
 
 Thanks to the underlying technology, namely zkRollup, the validators in zkSync are able to process thousands of transactions in a single block. The hash of such a block and a cryptographic proof that the block is a result of an application of a series of correct state transitions is published to Ethereum blockchain. Alongside it, the delta change resultant from execution of all the included transactions is also published to the blockchain and both the delta and the proof are validated by a smart contract.
 
@@ -36,11 +36,19 @@ The net effect is that, with orders of magnitude smaller costs and much higher t
 
 ### zkSync in Golem
 
-With the latest alpha reveal, zkSync - for now on Rinkeby - is enabled as the default platform to pay for and receive payments for computations in the new Golem.
+ZkSync is enabled as the default platform to pay for and receive payments for computations in the new Golem. How you'd use it though, depends on whether you're running on testnet or on mainnet.
 
-Currently, when you run `yagna payment init -r`, Golem initializes a new account from our custom faucet \(a service that transfers test tokens to an address that asks for it\) which provides it with GLM tokens that are already transferred to zkSync. Then all payments are performed through zkSync and in consequence, all the providers receive all the payments to their zkSync accounts.
+The current default for providers is running on mainnet and provider accounts are ready to receive both erc20 tokens and zkSync payments out of the box. 
 
-For now, we don't support withdrawing those funds back to Ethereum proper in the Golem application but certainly we'll support it in the mainnet release.
+On the other hand, because we assume requestors will first start by testing the ground using their just-created apps on the Ethereum testnet, the default network for those nodes is Rinkeby.
+
+When you run `yagna payment fund` \(you don't have to add `--driver=zksync` since it's the default\) on rinkeby, Golem initializes a new account from our custom faucet \(a service that transfers test tokens to an address that asks for it\) which provides it with test GLM tokens that are already transferred to zkSync. Then all payments are performed through zkSync and in consequence, all the providers receive all the payments to their zkSync accounts.
+
+Of course, you also need to enable your accounts' sender mode, which is done using `yagna payment init --sender`. All this is covered in [our requestor introduction](../requestor-tutorials/flash-tutorial-of-requestor-development.md).
+
+If you're interested in running a requestor on the Ethereum mainnet, to be able to leverage the main pool of Golem providers, please refer to:
+
+{% page-ref page="using-golem-on-mainnet.md" %}
 
 ### Further reading
 
