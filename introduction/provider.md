@@ -29,7 +29,7 @@ The provider binaries are available as a pre-built Linux installation package. Y
 
 ## How can I benefit from running a provider on my machine?
 
-After installing and running the Golem provider you will benefit in the following way:
+After installing and running the Golem provider you will start participating in the Golem network in the following way:
 
 * serving other actors in the Golem network that are in need of IT resources with your hardware that is currently not in use
 * receiving payments for the resources you share
