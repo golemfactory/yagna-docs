@@ -4,7 +4,7 @@ description: Introducing log files
 
 # Debugging by use of log file
 
-When developing applications on Golem, sooner or later you will get to a point where something is not working as expected. Executing commands on the provider-hosted container seems to be one of the most error-prone areas. If something is going wrong on the provider side, we need to have a tool that helps us in problem identification. When we know what are the error details it usually is much easier to correct our code and thus eliminate the bug.
+When developing applications on Golem, sooner or later you will get to a point where something is not working as expected. Executing commands on the provider-hosted container seems to be one of the most error-prone areas. If something is going wrong on the provider side, we need to have a tool that helps us in problem identification. When we know what the error details are, it usually is much easier to correct our code and thus eliminate the bug.
 
 ## Introducing log files
 
@@ -48,16 +48,14 @@ The `log_summary` creates `SummaryLogger` instance that is passed as event consu
 ## Let's have an error
 
 {% hint style="info" %}
-We are going to simulate some bug in the code. We will take fully working code,  modify it a bit \(create the bug in the code that makes the application go bad at the provider side\).and then by analyzing the log file we will track what is the root cause of the problem. In the end, we will fix the code and check the details of its work by the analysis of the log file.
+We are going to simulate some bug in the code. We will take fully working code,  modify it a bit \(create the bug in the code that makes the application go bad at the provider side\) and then, by analyzing the log file, we will track what the root cause of the problem is. In the end, we will fix the code and check the details of its work with the analysis of the log file.
 {% endhint %}
-
-
 
 Let's look at the code of yacat that is part of the Golem high-level Python API repository. All the code that enables logging is already there. We just need to use `--log-file` command-line switch.
 
 {% embed url="https://github.com/golemfactory/yapapi/blob/master/examples/yacat/yacat.py" %}
 
-In line 24 we are generating the body of `keyspace.sh` script to be executed on the provider:
+In line 29 we are generating the body of `keyspace.sh` script to be executed on the provider:
 
 ```python
 def write_keyspace_check_script(mask):
@@ -191,7 +189,7 @@ Congratulations! Error in the code has been corrected.
 
 ## Log files - what else is there?
 
-In the log file, there is all the information you are already familiar with, because it is displayed as `INFO` messages at the `stdout` of the requestor applications. Between the familiar `INFO` entries, you will find additional `DEBUG` messages. Let's analyse most interesting of them.
+In the log file, there is all the information you are already familiar with, because it is displayed as `INFO` messages at the `stdout` of the requestor applications. Between the familiar `INFO` entries, you will find additional `DEBUG` messages. Let's have a look at the most interesting ones.
 
 ### Requestor &gt; Provider file transfer details
 
@@ -282,7 +280,7 @@ hashcat -a 3 -m 400 /golem/work/in.hash ?a?a?a --skip=0 --limit=3009 --self-test
 /golem/work/hashcat_0.potfile || true'), 'capture': {'stdout': {'stream': {}}, 'stderr': {'stream': {}}}}}, success=True, message=None)
 ```
 
-The `output` parts of the `CommandStdOut` contains the `stdout` of the `ctx.run`. For example the beginning of the `hashcat` execution can be traced by `output='hashcat (v5.1.0) starting...\n\n'` .
+The `output` parts of the `CommandStdOut` contain the `stdout` of the `ctx.run`. For example the beginning of the `hashcat` execution can be traced by `output='hashcat (v5.1.0) starting...\n\n'` .
 
 ### Provider &gt; Requestor file transfer details
 
@@ -309,13 +307,13 @@ The source filename is identified by `'from': 'container:/golem/work/keyspace.tx
 
 ## Docker exec - an alternative approach 
 
-Analyzing the requestor logs gives us the full picture of what is going on under the hood of Golem, but in some cases, it might be easier to start with executing a simple `docker exec`that executes commands on the container. The syntax of this docker command is:
+Analyzing the requestor logs gives us the full picture of what is going on under the hood of Golem, but in some cases, it might be easier to start with executing a simple `docker exec`that runs commands on the container. The syntax of this docker command is:
 
 ```bash
 docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
 ```
 
-This command can be used to execute the `ctx.run` commands directly on the provider container. This is standard stuff so we will leave you with a reference to docker documentation [https://docs.docker.com/engine/reference/commandline/exec/](https://docs.docker.com/engine/reference/commandline/exec/)
+This command can be used to execute the `ctx.run` scripts directly on the provider container. This is standard stuff so we will leave you with a reference to docker documentation [https://docs.docker.com/engine/reference/commandline/exec/](https://docs.docker.com/engine/reference/commandline/exec/)
 
 ## Closing words
 
