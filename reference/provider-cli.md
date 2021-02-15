@@ -13,19 +13,15 @@ Keep in mind that that is a really basic release, and future updates will give y
 Run `golemsp help` without arguments to see top-level usage information:
 
 ```text
-golemsp 0.1.0-49c52869
-User friedly CLI for running provider
+golemsp 0.6.0 (ed55e851 2021-02-15 build #113)
+User friedly CLI for running Golem Provider
 
 USAGE:
     golemsp <SUBCOMMAND>
 
 FLAGS:
-    -h, --help       
-            Prints help information
-
-    -V, --version    
-            Prints version information
-
+    -h, --help       Prints help information
+    -V, --version    Prints version information
 
 SUBCOMMANDS:
     run         Run the golem provider
@@ -37,15 +33,15 @@ SUBCOMMANDS:
 
 ### Run
 
-`golemsp run` - Start the Golem provider.
+`golemsp run` - Start the Golem provider. It uses `mainnet` as a payment platform by default.
+
+Invoke `golemsp run --help` to see more options.
 
 ### Settings
 
 ```text
-golemsp-settings 0.1.0
+golemsp-settings 0.2.0
 Manage settings
-
-This can be used regardless of whether golem is running or not.
 
 USAGE:
     golemsp settings <SUBCOMMAND>
@@ -62,7 +58,7 @@ SUBCOMMANDS:
 
 #### Settings set
 
-`golemsp settings set` - Change settings.
+`golemsp settings set --help` - to see how to change settings.
 
 In order to change a particular setting \(for eg. price settings\) type:
 
@@ -70,11 +66,11 @@ In order to change a particular setting \(for eg. price settings\) type:
 
 You can also combine multiple settings in one command as follows:
 
-`golemsp settings set --cpu-per-hour 3 --cores 7` which will change your NGNT per hour to "3" and adjust the numbers of shared cpu cores to "7".
+`golemsp settings set --cpu-per-hour 3 --cores 7` which will change your GLM per hour to "3" and adjust the numbers of shared CPU cores to "7".
 
 **To change the default Ethereum address that was created for you during the initial setup process type:**
 
-`golemsp settings set --address <address>`
+`golemsp settings set --account <address>`
 
 and restart your node afterwards for it to update. To check if your address has been updated properly run `golemsp status`
 
@@ -106,33 +102,40 @@ Pricing:
 Example output:
 
 ```text
-┌──────────────────────────────────────────────────────────────┐
-│  Status                                                      │
-│                                                              │
-│  Service    is running                                       │
-│  Version    0.5.0                                            │
-│                                                              │
-│  Node Name  outstanding-chalk                                │
-│  Subnet     community.3                                      │
-│  VM         valid                                            │
-├──────────────────────────────────────────────────────────────┤
-│  Wallet                                                      │
-│                                                              │
-│  address         0xe4781cd3af959417f560372544f77aec33124b5f  │
-│  amount (total)  0 GLM                                       │
-│      (on-chain)  0 GLM                                       │
-│       (zk-sync)  0 GLM                                       │
-│                                                              │
-│  pending         0 GLM (0)                                   │
-│  issued          0 GLM (0)                                   │
-├──────────────────────────────────────────────────────────────┤
-│  Tasks                                                       │
-│                                                              │
-│  last 1h processed    0                                      │
-│  last 1h in progress  0                                      │
-│  total processed      0                                      │
-└──────────────────────────────────────────────────────────────┘
-
+┌──────────────────────────────────────────────────┐
+│  Status                                          │
+│                                                  │
+│  Service    is running                           │
+│  Version    0.6.0                                │
+│  Commit     ed55e851                             │
+│  Date       2021-02-15                           │
+│  Build      113                                  │
+│                                                  │
+│  Node Name  tenuous-condition                    │
+│  Subnet     community.4                          │
+│  VM         valid                                │
+├──────────────────────────────────────────────────┤
+│  Wallet                                          │
+│  0x979db95461652299c34e15df09441b8dfc4edf7a      │
+│                                                  │
+│  network               mainnet                   │
+│  amount (total)        5.261287428341905586 GLM  │
+│      (on-chain)        1.618008610566005586 GLM  │
+│       (zk-sync)        3.6432788177759 GLM       │
+│                                                  │
+│  pending               0 GLM (0)                 │
+│  issued                0 GLM (0)                 │
+├──────────────────────────────────────────────────┤
+│  Offers                                          │
+│                                                  │
+│  Subscribed           2                          │
+│                                                  │
+│  Tasks                                           │
+│                                                  │
+│  last 1h processed    1                          │
+│  last 1h in progress  0                          │
+│  total processed      1                          │
+└──────────────────────────────────────────────────┘
 ```
 
 In the three columns, you can check the basic information regarding the status of your node
@@ -140,7 +143,7 @@ In the three columns, you can check the basic information regarding the status o
 #### Status
 
 * Whether your node is running
-* Version of your node
+* Version of your node \(with commit, build date and build number\)
 * Name of your node
 * Subnet in which your node is currently running
 * VM status
@@ -148,11 +151,16 @@ In the three columns, you can check the basic information regarding the status o
 #### Wallet
 
 * Account address
+* Payment network: `mainnet` or `rinkeby`
 * Amount of tokens that you have earned for successful computation
-* On-chain amount of tokens that you have earned \(explorer [https://rinkeby.etherscan.io](https://rinkeby.etherscan.io/)\)
-* Zk-sync amount of tokens that you have earned \(explorer [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/)\)
+* On-chain amount of tokens that you have earned \(explorer [etherscan.io](https://etherscan.io/) or [rinkeby.etherscan.io](https://rinkeby.etherscan.io/)\)
+* Zk-sync amount of tokens that you have earned \(explorer [zkscan.io](https://zkscan.io) or [rinkeby.zkscan.io](https://rinkeby.zkscan.io/)\)
 * Pending payments that you should receive for computation
 * Amount of tokens that is still unconfirmed and may not show on your account 
+
+#### Offers
+
+* Number of currently subscribed \(ie. published\) Offers by your node.  
 
 #### Tasks
 
