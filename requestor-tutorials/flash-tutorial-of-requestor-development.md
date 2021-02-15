@@ -269,7 +269,7 @@ Install the dependencies:
 
 ```text
 pip3 install -U pip
-pip install --extra-index-url https://test.pypi.org/simple/ yapapi==0.5.0a5
+pip install yapapi
 ```
 
 ### Get the requestor agent's code
