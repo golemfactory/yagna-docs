@@ -2,39 +2,13 @@
 description: Symptoms and solutions of known issues.
 ---
 
-# Common issues
+# Requestor troubleshooting
 
 {% hint style="info" %}
 ## Requestor Issues
 
 Don't miss the [debugging section by using the log file](../requestor-tutorials/debugging.md#reading-the-log-file).
 {% endhint %}
-
-### No access to VM
-
-_**Os:**_ Ubuntu
-
-_**Description:**_   **`golemsp status`**shows status other than **`valid`**
-
-a\) If: `the user has no access to /dev/kvm` run
-
-```text
-curl -o setup-kvm.sh https://join.golem.network/setup-kvm.sh && chmod +x ./setup-kvm.sh && ./setup-kvm.sh
-```
-
-Afterwards, log out and log in again into your OS and then, rerun `golemsp run`
-
-b\) If: `running inside Docker without access to /dev/kvm` run
-
-```text
-docker run --privileged
-```
-
-c\) If: `unsupported virtualization type: XEN` We do not support **xen hypervisor**
-
-* In any other case with the virtualisation we recommend:
-
-`sudo apt install cpu-checker && sudo kvm-ok` command and follow the steps as given in the terminal interface.
 
 ### IO error: No such file or directory
 
