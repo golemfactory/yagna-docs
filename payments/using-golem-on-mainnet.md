@@ -195,7 +195,7 @@ rm $HOME/Library/Application\ Support/GolemFactory.yagna/accounts.json
 
 {% tab title="Windows" %}
 ```
-del %APPDATA%\GolemFactory\yagna\accounts.json
+del %APPDATA%\GolemFactory\yagna\data\accounts.json
 ```
 {% endtab %}
 {% endtabs %}
