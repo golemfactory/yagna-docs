@@ -109,7 +109,7 @@ curl -sSf https://join.golem.network/as-requestor | bash -
 
 You might be asked to modify your PATH afterwards.
 
-{% hint style="danger" %}
+{% hint style="warning" %}
 On Windows, only the manual installation is supported.
 {% endhint %}
 
