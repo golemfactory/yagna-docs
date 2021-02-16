@@ -13,5 +13,3 @@ For detailed summary of Yagna compatibility aspects refer to the
 
 {% page-ref page="compatibility-policy.md" %}
 
-
-

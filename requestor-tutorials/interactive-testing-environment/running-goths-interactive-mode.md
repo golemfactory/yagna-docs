@@ -5,10 +5,10 @@ description: Making use of goth's interactive mode
 # Using Test Harness to test Golem apps
 
 {% hint style="danger" %}
-What you're going to try is still pretty early alpha.
-
-We're assuming here that you were able to run both `goth` and a requestor app correctly on your machine earlier and thus, you have all the components up and running without issues.
-
+What you're going to try is still considered experimental.   
+  
+We're assuming here that you were able to run both `goth` and a requestor app correctly on your machine earlier and thus, you have all the components up and running without issues.  
+  
 If you hadn't tried those yet though, please have a look at the earlier parts of our handbook:
 
 {% page-ref page="../flash-tutorial-of-requestor-development.md" %}
@@ -58,7 +58,7 @@ The real benefit starts when you have a look at the logs each run produces. By d
 
 For each run in the interactive mode, `goth` will create a timestamped directory there, e.g.: `goth_20201221_172759+0000` which will contain all the logs that this run was able to collect from all the components of your local Golem network:
 
-* `runner.log` - the logs for the goth runner itself. This includes the output that goth produces to the console but it also includes a whole lot of addtional DEBUG-level logs.
+* `runner.log` - the logs for the goth runner itself. This includes the output that goth produces to the console but it also includes a whole lot of additional DEBUG-level logs.
 * `proxy.log` - contains the traffic between the nodes and the agents in the goth's network
 * `test_interactive_vm` - the directory in which the logs for each of the components launched by the runner are stored. You'll be most interested in the following ones:
   * `provider_N.log` - the debug logs from the provider daemons

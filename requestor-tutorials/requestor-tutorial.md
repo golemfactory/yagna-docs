@@ -13,7 +13,7 @@ In this tutorial, we'll show you how to do that.
 There are a couple of assumptions we'll be making here, in order to do this tutorial:
 
 * Your task is easily splittable and follows a simple map-reduce model in which the input for the whole task is known beforehand, and the result is constructed directly from the singular outputs produced from each subset of the input. In other words,  the input of each split task does not depend on an output of another split task. 
-* Your payload can be executed inside an isolated container and doesn't - by itself - need to access the outside world. **This is a temporary limitation of this Alpha release** and we intend to support network connectivity in the future.
+* Your payload can be executed inside an isolated container and doesn't - by itself - need to access the outside world. **This is a temporary limitation** and we intend to support network connectivity in near future.
 
 ## Prerequisites
 
@@ -50,14 +50,24 @@ The complete code of the requestor agent \(no worries, you do not need to copy a
 {% tab title="Python" %}
 ```python
 import asyncio
+from datetime import datetime, timedelta
+import pathlib
+import sys
 
-from yapapi import Executor, Task, WorkContext
-from yapapi.log import enable_default_logger, log_summary, log_event_repr
+from yapapi import (
+    Executor,
+    NoPaymentAccountError,
+    Task,
+    __version__ as yapapi_version,
+    WorkContext,
+    windows_event_loop_fix,
+)
+from yapapi.log import enable_default_logger, log_summary, log_event_repr  # noqa
 from yapapi.package import vm
-from datetime import timedelta
+from yapapi.rest.activity import BatchTimeoutError
 
 
-async def main(subnet_tag: str):
+async def main(subnet_tag, driver=None, network=None):
     package = await vm.repo(
         image_hash="9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae",
         min_mem_gib=0.5,
@@ -65,7 +75,9 @@ async def main(subnet_tag: str):
     )
 
     async def worker(ctx: WorkContext, tasks):
-        ctx.send_file("./scene.blend", "/golem/resource/scene.blend")
+        script_dir = pathlib.Path(__file__).resolve().parent
+        scene_path = str(script_dir / "cubes.blend")
+        ctx.send_file(scene_path, "/golem/resource/scene.blend")
         async for task in tasks:
             frame = task.data
             crops = [{"outfilebasename": "out", "borders_x": [0.0, 1.0], "borders_y": [0.0, 1.0]}]
@@ -87,14 +99,32 @@ async def main(subnet_tag: str):
             ctx.run("/golem/entrypoints/run-blender.sh")
             output_file = f"output_{frame}.png"
             ctx.download_file(f"/golem/output/out{frame:04d}.png", output_file)
-            yield ctx.commit()
-            task.accept_result(result=output_file)
+            try:
+                # Set timeout for executing the script on the provider. Two minutes is plenty
+                # of time for computing a single frame, for other tasks it may be not enough.
+                # If the timeout is exceeded, this worker instance will be shut down and all
+                # remaining tasks, including the current one, will be computed by other providers.
+                yield ctx.commit(timeout=timedelta(seconds=120))
+                # TODO: Check if job results are valid
+                # and reject by: task.reject_task(reason = 'invalid file')
+                task.accept_result(result=output_file)
+            except BatchTimeoutError:
+                print(
+                    f"Task {task} timed out on {ctx.provider_name}, time: {task.running_time}"
+                )
+                raise
 
-        ctx.log("no more frames to render")
-
-    # iterator over the frame indices that we want to render
+    # Iterator over the frame indices that we want to render
     frames: range = range(0, 60, 10)
-    init_overhead: timedelta = timedelta(minutes=3)
+    # Worst-case overhead, in minutes, for initialization (negotiation, file transfer etc.)
+    # TODO: make this dynamic, e.g. depending on the size of files to transfer
+    init_overhead = 3
+    # Providers will not accept work if the timeout is outside of the [5 min, 30min] range.
+    # We increase the lower bound to 6 min to account for the time needed for our demand to
+    # reach the providers.
+    min_timeout, max_timeout = 6, 30
+
+    timeout = timedelta(minutes=max(min(init_overhead + len(frames) * 2, max_timeout), min_timeout))
 
     # By passing `event_consumer=log_summary()` we enable summary logging.
     # See the documentation of the `yapapi.log` module on how to set
@@ -103,53 +133,101 @@ async def main(subnet_tag: str):
         package=package,
         max_workers=3,
         budget=10.0,
-        timeout=init_overhead + timedelta(minutes=len(frames) * 2),
+        timeout=timeout,
         subnet_tag=subnet_tag,
-        event_consumer=log_summary(),
+        driver=driver,
+        network=network,
+        event_consumer=log_summary(log_event_repr),
     ) as executor:
 
+        sys.stderr.write(
+            f"yapapi version: {yapapi_version}\n"
+            f"Using subnet: {subnet_tag}, "
+            f"payment driver: {executor.driver}, "
+            f"and network: {executor.network}\n"
+        )
+
+        num_tasks = 0
+        start_time = datetime.now()
+
         async for task in executor.submit(worker, [Task(data=frame) for frame in frames]):
-            print(f"Task computed: {task}, result: {task.result}")
+            num_tasks += 1
+            print(
+                f"Task computed: {task}, result: {task.result}, time: {task.running_time}"
+            )
+
+        print(
+            f"{num_tasks} tasks computed, total time: {datetime.now() - start_time}"
+        )
 
 
-enable_default_logger()
-loop = asyncio.get_event_loop()
-task = loop.create_task(main(subnet_tag="community.3"))
-try:
-    asyncio.get_event_loop().run_until_complete(task)
-except (Exception, KeyboardInterrupt) as e:
-    print(e)
-    task.cancel()
-    asyncio.get_event_loop().run_until_complete(task)
+if __name__ == "__main__":
+    # This is only required when running on Windows with Python prior to 3.8:
+    windows_event_loop_fix()
+
+    enable_default_logger()
+
+    loop = asyncio.get_event_loop()
+    task = loop.create_task(
+        main(subnet_tag="community.4", driver="zksync", network="rinkeby")
+    )
+
+    try:
+        loop.run_until_complete(task)
+    except NoPaymentAccountError as e:
+        handbook_url = (
+            "https://handbook.golem.network/requestor-tutorials/"
+            "flash-tutorial-of-requestor-development"
+        )
+        print(
+            f"No payment account initialized for driver `{e.required_driver}` "
+            f"and network `{e.required_network}`.\n\n"
+            f"See {handbook_url} on how to initialize payment accounts for a requestor node."
+        )
+    except KeyboardInterrupt:
+        print(
+            "Shutting down gracefully, please wait a short while "
+            "or press Ctrl+C to exit immediately..."
+        )
+        task.cancel()
+        try:
+            loop.run_until_complete(task)
+            print(
+                f"Shutdown completed, thank you for waiting!"
+            )
+        except (asyncio.CancelledError, KeyboardInterrupt):
+            pass
+
 ```
 {% endtab %}
 
 {% tab title="NodeJS" %}
 ```javascript
-const path = require("path");
-const dayjs = require("dayjs");
-const duration = require("dayjs/plugin/duration");
-const { Engine, Task, utils, vm } = require("yajsapi");
-const { program } = require("commander");
+import path from "path";
+import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+import { Executor, Task, utils, vm, WorkContext } from "yajsapi";
+import { program } from "commander";
 
 dayjs.extend(duration);
 
 const { asyncWith, logUtils, range } = utils;
 
-async function main(subnetTag) {
-  const _package = await vm.repo(
-    "9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae",
-    0.5,
-    2.0
-  );
+async function main() {
+  const _package = await vm.repo({
+    image_hash: "9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae",
+    min_mem_gib: 0.5,
+    min_storage_gib: 2.0,
+  });
 
   async function* worker(ctx, tasks) {
     ctx.send_file(
       path.join(__dirname, "./cubes.blend"),
       "/golem/resource/scene.blend"
     );
+
     for await (let task of tasks) {
-      let frame = task.data();
+      let frame: any = task.data();
       let crops = [
         {
           outfilebasename: "out",
@@ -170,52 +248,49 @@ async function main(subnetTag) {
         OUTPUT_DIR: "/golem/output",
       });
       ctx.run("/golem/entrypoints/run-blender.sh");
-      const output_file = `output_${frame.toString()}.png`
+      const output_file = `output_${frame.toString()}.png`;
       ctx.download_file(
         `/golem/output/out${frame.toString().padStart(4, "0")}.png`,
         path.join(__dirname, `./output_${frame}.png`)
       );
-      yield ctx.commit();
-      task.accept_task(output_file);
+      yield ctx.commit({timeout: dayjs.duration({ seconds: 120 }).asMilliseconds()});
+      // TODO: Check
+      // job results are valid // and reject by:
+      // task.reject_task(msg = 'invalid file')
+      task.accept_result(output_file);
     }
 
     ctx.log("no more frames to render");
     return;
   }
 
-  const frames = range(0, 60, 10);
-  const timeout = dayjs.duration({ minutes: 15 }).asMilliseconds();
+  const frames: any[] = range(0, 60, 10);
+  const timeout: number = dayjs.duration({ minutes: 15 }).asMilliseconds();
 
   await asyncWith(
-    await new Engine(
-      _package,
-      6,
-      timeout,
-      "10.0",
-      undefined,
-      subnetTag,
-      logUtils.logSummary()
-    ),
-    async (engine) => {
-      for await (let task of engine.map(
+    new Executor({
+      task_package: _package,
+      max_workers: 6,
+      timeout: timeout,
+      budget: "10.0",
+      subnet_tag: "community.4",
+      driver: "zksync",
+      network: "rinkeby",
+      event_consumer: logUtils.logSummary(),
+    }),
+    async (executor: Executor): Promise<void> => {
+      for await (let task of executor.submit(
         worker,
         frames.map((frame) => new Task(frame))
       )) {
-        console.log("result=", task.output());
+        console.log("result=", task.result());
       }
     }
   );
   return;
 }
 
-program
-  .option('--subnet-tag <subnet>', 'set subnet name', 'community.3')
-  .option('-d, --debug', 'output extra debugging');
-program.parse(process.argv);
-if (program.debug) {
-  utils.changeLogLevel("debug");
-}
-main(program.subnetTag);
+main()
 ```
 {% endtab %}
 {% endtabs %}
@@ -295,7 +370,9 @@ In this example, we're using a single scene file which all task fragments use, s
 {% tabs %}
 {% tab title="Python" %}
 ```python
-ctx.send_file("./cubes.blend", "/golem/resource/scene.blend")
+script_dir = pathlib.Path(__file__).resolve().parent
+scene_path = str(script_dir / "cubes.blend")
+ctx.send_file(scene_path, "/golem/resource/scene.blend")
 ```
 {% endtab %}
 
@@ -432,53 +509,45 @@ The first parameter here is the source path - which refers to a path within the 
 
 Finally - or _almost_ finally - we issue a `commit()` call which combines all the steps together and we pass them using `yield` to the `Executor.` The Executor, in turn, passes them for execution and allows the flows for other providers to progress on the requestor while this provider works on this task fragment.
 
-{% tabs %}
-{% tab title="Python" %}
-```python
-yield ctx.commit(timeout=timedelta(seconds=120))
-```
-{% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-yield ctx.commit();
-```
-{% endtab %}
-{% endtabs %}
-
 Eventually, when the execution returns to our routine and to the work context of the specific provider, we should already have the results available in the desired location.
 
 Ordinarily, you'd most likely want to run some verification of the result to make sure that the provider has done a proper job. Here, for simplicity's sake, we'll just accept the task as it is.
 
+In Python, the `ctx.commit` and `task.accept_result` are wrapped in a try/catch block to handle the timeout of a task on a given provider and handle such timeout gracefully.
+
 {% tabs %}
 {% tab title="Python" %}
 ```python
-task.accept_result(result=output_file)
+try:
+    # Set timeout for executing the script on the provider. Two minutes is plenty
+    # of time for computing a single frame, for other tasks it may be not enough.
+    # If the timeout is exceeded, this worker instance will be shut down and all
+    # remaining tasks, including the current one, will be computed by other providers.
+    yield ctx.commit(timeout=timedelta(seconds=120))
+    # TODO: Check if job results are valid
+    # and reject by: task.reject_task(reason = 'invalid file')
+    task.accept_result(result=output_file)
+except BatchTimeoutError:
+    print(
+        f"Task {task} timed out on {ctx.provider_name}, time: {task.running_time}"
+    )
+    raise
+
 ```
 {% endtab %}
 
 {% tab title="NodeJS" %}
 ```javascript
-task.accept_task(output_file);
+yield ctx.commit({timeout: dayjs.duration({ seconds: 120 }).asMilliseconds()});
+// TODO: Check
+// job results are valid // and reject by:
+// task.reject_task(msg = 'invalid file')
+task.accept_result(output_file);
 ```
 {% endtab %}
 {% endtabs %}
 
-And, if the queue is empty and thus the loop is ended, we can finalize the work context of the specific provider - here, just by stating that we see no more frames to render.
-
-{% tabs %}
-{% tab title="Python" %}
-```python
-ctx.log("no more frames to render")
-```
-{% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-ctx.log("no more frames to render");
-```
-{% endtab %}
-{% endtabs %}
+And, if the queue is empty and thus the loop is ended, we can finalize the work context of the specific provider.
 
 ### Time to call the runner engine
 
@@ -490,35 +559,41 @@ The `Executor` is first instantiated as a context manager:
 {% tab title="Python" %}
 ```python
 frames: range = range(0, 60, 10)
-init_overhead: timedelta = timedelta(minutes=3)
+init_overhead = 3
+min_timeout, max_timeout = 6, 30
+
+timeout = timedelta(minutes=max(min(init_overhead + len(frames) * 2, max_timeout), min_timeout))
 
 async with Executor(
-    package=package,
-    max_workers=3,
-    budget=10.0,
-    timeout=init_overhead + timedelta(minutes=len(frames) * 2),
-    subnet_tag=subnet_tag,
-    event_consumer=log_summary(),
+   package=package,
+   max_workers=3,
+   budget=10.0,
+   timeout=timeout,
+   subnet_tag=subnet_tag,
+   driver=driver,
+   network=network,
+   event_consumer=log_summary(),
 ) as executor:
 ```
 {% endtab %}
 
 {% tab title="NodeJS" %}
 ```typescript
-const frames = range(0, 60, 10);
-const timeout = dayjs.duration({ minutes: 15 }).asMilliseconds();
+const frames: any[] = range(0, 60, 10);
+const timeout: number = dayjs.duration({ minutes: 15 }).asMilliseconds();
 
 await asyncWith(
-  await new Engine(
-    _package,
-    6,
-    timeout, //5 min to 30 min
-    "10.0",
-    undefined,
-    subnetTag,
-    logUtils.logSummary()
-  ),
-  async (engine) => {
+  new Executor({
+    task_package: _package,
+    max_workers: 6,
+    timeout: timeout,
+    budget: "10.0",
+    subnet_tag: "community.4",
+    driver: "zksync",
+    network: "rinkeby",
+    event_consumer: logUtils.logSummary(),
+  }),
+
 ```
 {% endtab %}
 {% endtabs %}
@@ -527,7 +602,9 @@ The `package` here is effectively our `Demand` that we have created above, `max_
 
 The `subnet_tag` serves to select a subset of the network that our requestor node wants to limit its communications to. Using `subnet_tag` we're effectively limiting our list of provider to those that are running with the same `subnet` parameter.
 
-Finallly, we're providing the consumer of the events that the `Exectuor` generates with `event_consumer` - our example mostly presents those events to the users in the form of nicely formatted console output but your own app may use in other ways.
+The `driver` and `network` are two new parameters that select the Ethereum network \(`rinkeby` or `mainnet`\) and the payment driver \(`zksync` or `erc20`\) which will be used to pay for the tasks - both of which must be enabled within the yagna daemon.
+
+Finallly, we're providing the consumer of the events that the `Executor` generates with `event_consumer` - our example mostly presents those events to the users in the form of nicely formatted console output but your own app may use in other ways.
 
 With the `Executor` in place, we can finally tell it what we want to execute and also _how_ we want to define each fragment.
 
@@ -541,11 +618,13 @@ async for task in executor.submit(worker, [Task(data=frame) for frame in frames]
 
 {% tab title="NodeJS" %}
 ```typescript
-for await (let task of engine.map(
+async (executor: Executor): Promise<void> => {
+  for await (let task of executor.submit(
     worker,
     frames.map((frame) => new Task(frame))
-)) {
-  console.log("result=", task.output());
+  )) {
+    console.log("result=", task.result());
+  }
 }
 ```
 {% endtab %}

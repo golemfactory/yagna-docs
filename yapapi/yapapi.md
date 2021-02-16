@@ -22,10 +22,8 @@ The daemon and the requestor agent communicate using three REST APIs which `yapa
 
 Assuming you have your Golem node up and running \(you can find instructions on how to do that in the [yagna repository](https://github.com/golemfactory/yagna) and in our [handbook](https://handbook.golem.network)\), what you need to do is:
 
-* **prepare your payload** - this needs to be a Docker image containing your application that will be executed on the provider's end. This image needs to have its volumes mapped in a way that will allow the supervisor module to exchange data \(write and  read files\) with it. This image needs to be packed and uploaded into Golem's image repository using our dedicated tool - [`gvmkit-build`](https://pypi.org/project/gvmkit-build/).
-* **create your requestor agent** - this is where `yapapi` comes in. Utilizing our high-level API, the creation of a requestor agent should be straighforward and require minimal effort.
-
-  You can use examples contained in this repository \(blender and hashcat\) as references.
+* **prepare your payload** - this needs to be a Docker image containing your application that will be executed on the provider's end. This image needs to have its volumes mapped in a way that will allow the supervisor module to exchange data \(write and read files\) with it. This image needs to be packed and uploaded into Golem's image repository using our dedicated tool - [`gvmkit-build`](https://pypi.org/project/gvmkit-build/).
+* **create your requestor agent** - this is where `yapapi` comes in. Utilizing our high-level API, the creation of a requestor agent should be straighforward and require minimal effort. You can use examples contained in this repository \(blender and hashcat\) as references.
 
 ### Components
 
@@ -95,7 +93,7 @@ async def main(subnet_tag: str):
             yield ctx.commit()
             task.accept_result(result=output_file)
 
-        ctx.log("no more frames to render")
+        print(f"Worker {ctx.id} on {ctx.provider_name}: No more frames to render")
 
     # iterator over the frame indices that we want to render
     frames: range = range(0, 60, 10)
@@ -119,7 +117,7 @@ async def main(subnet_tag: str):
 
 enable_default_logger()
 loop = asyncio.get_event_loop()
-task = loop.create_task(main(subnet_tag="community.3"))
+task = loop.create_task(main(subnet_tag="devnet-alpha.4"))
 try:
     asyncio.get_event_loop().run_until_complete(task)
 except (Exception, KeyboardInterrupt) as e:

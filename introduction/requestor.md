@@ -6,7 +6,7 @@ description: The requestor actor in the Golem
 
 ## What is a requestor?
 
-Technically speaking, a New Golem requestor is a specific piece of code running on an Internet-connected device.
+A Golem requestor is a specific piece of code running on an Internet-connected device.
 
 **The characteristic that describes the requestor agent is the need to use hardware resources that are available in the Golem network, shared by its providers.**
 
@@ -69,7 +69,7 @@ Here, your application code is running inside a web server and the front-end lay
 {% hint style="info" %}
 To write a fully functional requestor you need to write just a few lines of code.
 
-Golem's infrastructure takes care of the rest.
+Golem's APIs, the daemon and the infrastructure take care of the rest.
 {% endhint %}
 
 The basic requestor development tutorial is here:

@@ -23,7 +23,7 @@ So now, we're going to assume that:
 
 * The `yagna` deamon is running in the background. 
 * The `YAGNA_APPKEY` environment variable is set to the value of the generated app key.
-* The payment is initialized with `yagna payment init --sender`  \(please keep in mind that it needs initialization after each launch of `yagna service run`\).
+* The payment driver is initialized with `yagna payment init -sender`  \(please keep in mind that it needs initialization after each launch of `yagna service run`\).
 * The virtual python environment for our tutorial is activated.
 * Dependencies are installed and the `yapapi` repository \(containing the tutorial examples\) is cloned.
 * In your current directory \(`examples/yacat`\) there are two files that will be used and discussed in this example:
@@ -51,7 +51,6 @@ MAINTAINER Radek Tereszczuk <radoslaw.tereszczuk@golem.network>
 RUN apt-get update && apt-get install -y alien clinfo
 
 # Install Intel OpenCL driver
-#ENV INTEL_OPENCL_URL=http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/13793/l_opencl_p_18.1.0.013.tgz
 ENV INTEL_OPENCL_URL=http://registrationcenter-download.intel.com/akdlm/irc_nas/9019/opencl_runtime_16.1.1_x64_ubuntu_6.4.0.25.tgz
 
 RUN mkdir -p /tmp/opencl-driver-intel
@@ -93,7 +92,7 @@ RUN apt clean
 
 WORKDIR /golem/work
 
-VOLUME /golem/work
+VOLUME /golem/work /golem/output /golem/resource
 ```
 
 As Golem does not need any specific elements in the Dockerfile,`yacat.Dockerfile`is just a standard Dockerfile.
@@ -105,15 +104,17 @@ The one thing we need to remember while preparing the Dockerfile is to define a 
 The volume is defined in the last line of the above Dockerfile:
 
 ```text
-VOLUME /golem/work
+VOLUME /golem/work /golem/output /golem/resource
 ```
 
 This makes `/golem/work` a location we will use for our input/output file transfer. For the requestor agent code, which we are going to discuss in the next chapter, we need to know the volume \(or volumes\) name\(s\) and use it as a directory for the file transfers.
 
-![](../../.gitbook/assets/tnm-docs-infographics-08.jpg)
+![](../../.gitbook/assets/tnm-docs-infographics-08%20%281%29.jpg)
 
 {% hint style="info" %}
-On the provider side, all the content of the volume directories are stored in the provider's os file system. All other container directories content is kept in RAM.
+On the provider side, all the content of the VOLUME directories is stored in the provider's os file system. 
+
+All the changes in other \(non VOLUME mounted\) container directories content are kept in RAM. The rest of the VM image file system \(not changed, non VOLUME mounted\) content is stored as VM image in the provider's os file system.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -167,20 +168,25 @@ The critical fragments of `yacat.py` will be described in the following sections
 ```python
 #!/usr/bin/env python3
 import asyncio
-from datetime import timedelta
+from datetime import datetime, timedelta
 import pathlib
 import sys
 
-from yapapi import Executor, Task, WorkContext, windows_event_loop_fix
+from yapapi import Executor, NoPaymentAccountError, Task, WorkContext, windows_event_loop_fix
 from yapapi.log import enable_default_logger, log_summary, log_event_repr  # noqa
 from yapapi.package import vm
 
-# For importing `utils.py`:
-script_dir = pathlib.Path(__file__).resolve().parent
-parent_directory = script_dir.parent
-sys.stderr.write(f"Adding {parent_directory} to sys.path.\n")
-sys.path.append(str(parent_directory))
-import utils  # noqa
+examples_dir = pathlib.Path(__file__).resolve().parent.parent
+sys.path.append(str(examples_dir))
+
+from utils import (
+    build_parser,
+    TEXT_COLOR_CYAN,
+    TEXT_COLOR_DEFAULT,
+    TEXT_COLOR_GREEN,
+    TEXT_COLOR_RED,
+    TEXT_COLOR_YELLOW,
+)
 
 
 def write_hash(hash):
@@ -225,7 +231,7 @@ async def main(args):
             ctx.run("/bin/sh", "/golem/work/keyspace.sh")
             output_file = "keyspace.txt"
             ctx.download_file("/golem/work/keyspace.txt", output_file)
-            yield ctx.commit(timeout=timedelta(minutes=1))
+            yield ctx.commit(timeout=timedelta(minutes=10))
             task.accept_result()
 
     async def worker_find_password(ctx: WorkContext, tasks):
@@ -261,12 +267,22 @@ async def main(args):
         max_workers=args.number_of_providers,
         budget=10.0,
         # timeout should be keyspace / number of providers dependent
-        timeout=timedelta(minutes=25),
+        timeout=timedelta(minutes=10),
         subnet_tag=args.subnet_tag,
+        driver=args.driver,
+        network=args.network,
         event_consumer=log_summary(log_event_repr),
     ) as executor:
 
+        sys.stderr.write(
+            f"Using subnet: {TEXT_COLOR_YELLOW}{args.subnet_tag}{TEXT_COLOR_DEFAULT}, "
+            f"payment driver: {TEXT_COLOR_YELLOW}{executor.driver}{TEXT_COLOR_DEFAULT}, "
+            f"and network: {TEXT_COLOR_YELLOW}{executor.network}{TEXT_COLOR_DEFAULT}\n"
+        )
+
         keyspace_computed = False
+        start_time = datetime.now()
+
         # This is not a typical use of executor.submit as there is only one task, with no data:
         async for _task in executor.submit(worker_check_keyspace, [Task(data=None)]):
             keyspace_computed = True
@@ -278,9 +294,9 @@ async def main(args):
         keyspace = read_keyspace()
 
         print(
-            f"{utils.TEXT_COLOR_CYAN}"
+            f"{TEXT_COLOR_CYAN}"
             f"Task computed: keyspace size count. The keyspace size is {keyspace}"
-            f"{utils.TEXT_COLOR_DEFAULT}"
+            f"{TEXT_COLOR_DEFAULT}"
         )
 
         step = int(keyspace / args.number_of_providers) + 1
@@ -291,25 +307,21 @@ async def main(args):
             worker_find_password, [Task(data=range) for range in ranges]
         ):
             print(
-                f"{utils.TEXT_COLOR_CYAN}"
-                f"Task computed: {task}, result: {task.result}"
-                f"{utils.TEXT_COLOR_DEFAULT}"
+                f"{TEXT_COLOR_CYAN}Task computed: {task}, result: {task.result}{TEXT_COLOR_DEFAULT}"
             )
 
         password = read_password(ranges)
 
         if password is None:
-            print(f"{utils.TEXT_COLOR_RED}No password found{utils.TEXT_COLOR_DEFAULT}")
+            print(f"{TEXT_COLOR_RED}No password found{TEXT_COLOR_DEFAULT}")
         else:
-            print(
-                f"{utils.TEXT_COLOR_GREEN}"
-                f"Password found: {password}"
-                f"{utils.TEXT_COLOR_DEFAULT}"
-            )
+            print(f"{TEXT_COLOR_GREEN}Password found: {password}{TEXT_COLOR_DEFAULT}")
+
+        print(f"{TEXT_COLOR_CYAN}Total time: {datetime.now() - start_time}{TEXT_COLOR_DEFAULT}")
 
 
 if __name__ == "__main__":
-    parser = utils.build_parser("yacat")
+    parser = build_parser("yacat")
 
     parser.add_argument("--number-of-providers", dest="number_of_providers", type=int, default=3)
     parser.add_argument("mask")
@@ -322,32 +334,39 @@ if __name__ == "__main__":
 
     enable_default_logger(log_file=args.log_file)
 
-    sys.stderr.write(
-        f"Using subnet: {utils.TEXT_COLOR_YELLOW}{args.subnet_tag}{utils.TEXT_COLOR_DEFAULT}\n"
-    )
-
     loop = asyncio.get_event_loop()
     task = loop.create_task(main(args))
 
     try:
         loop.run_until_complete(task)
+    except NoPaymentAccountError as e:
+        handbook_url = (
+            "https://handbook.golem.network/requestor-tutorials/"
+            "flash-tutorial-of-requestor-development"
+        )
+        print(
+            f"{TEXT_COLOR_RED}"
+            f"No payment account initialized for driver `{e.required_driver}` "
+            f"and network `{e.required_network}`.\n\n"
+            f"See {handbook_url} on how to initialize payment accounts for a requestor node."
+            f"{TEXT_COLOR_DEFAULT}"
+        )
     except KeyboardInterrupt:
         print(
-            f"{utils.TEXT_COLOR_YELLOW}"
+            f"{TEXT_COLOR_YELLOW}"
             "Shutting down gracefully, please wait a short while "
             "or press Ctrl+C to exit immediately..."
-            f"{utils.TEXT_COLOR_DEFAULT}"
+            f"{TEXT_COLOR_DEFAULT}"
         )
         task.cancel()
         try:
             loop.run_until_complete(task)
             print(
-                f"{utils.TEXT_COLOR_YELLOW}"
-                "Shutdown completed, thank you for waiting!"
-                f"{utils.TEXT_COLOR_DEFAULT}"
+                f"{TEXT_COLOR_YELLOW}Shutdown completed, thank you for waiting!{TEXT_COLOR_DEFAULT}"
             )
         except KeyboardInterrupt:
             pass
+
 ```
 
 ## So what is happening here?
@@ -399,7 +418,8 @@ The `package` object is passed to the `Executor` object with several other optio
 * `budget`defines maximal spendings for executing all the tasks in the whole run on Golem
 * `max_workers` defines the maximal number of simultaneously running workers \(and that is, the maximum number of providers that the task fragments will be distributed to\).
 * `timeout` defines the timeout. It is important for the timeout to be large enough to include the image download time plus the computation time.
-* `subnet_tag` specifies the providers subnet to be used. For example, you would not use the mainnet network for tests.
+* `subnet_tag` specifies the providers subnet to be used. It's best to leave the default value in place unless you mean to run your own network of test providers to test the app against,
+* next are the `driver` and `network` parameters that select the Ethereum blockchain and the payment driver for you. For example, you would not use the mainnet network for tests but you'll probably want to run the real-live tasks on the mainnet to be able to use all the providers that participate in the Golem network.
 
 {% hint style="danger" %}
 Due to current golem market implementation, please use `timeout` value between 8 and 30 minutes.
@@ -415,8 +435,10 @@ async with Executor(
     max_workers=args.number_of_providers,
     budget=10.0,
     # timeout should be keyspace / number of providers dependent
-    timeout=timedelta(minutes=25),
+    timeout=timedelta(minutes=10),
     subnet_tag=args.subnet_tag,
+    driver=args.driver,
+    network=args.network,
     event_consumer=log_summary(log_event_repr),
 ) as executor:
 ```
@@ -431,26 +453,36 @@ task = loop.create_task(main(args))
 
 try:
     loop.run_until_complete(task)
+except NoPaymentAccountError as e:
+    handbook_url = (
+        "https://handbook.golem.network/requestor-tutorials/"
+        "flash-tutorial-of-requestor-development"
+    )
+    print(
+        f"{TEXT_COLOR_RED}"
+        f"No payment account initialized for driver `{e.required_driver}` "
+        f"and network `{e.required_network}`.\n\n"
+        f"See {handbook_url} on how to initialize payment accounts for a requestor node."
+        f"{TEXT_COLOR_DEFAULT}"
+    )
 except KeyboardInterrupt:
     print(
-        f"{utils.TEXT_COLOR_YELLOW}"
+        f"{TEXT_COLOR_YELLOW}"
         "Shutting down gracefully, please wait a short while "
         "or press Ctrl+C to exit immediately..."
-        f"{utils.TEXT_COLOR_DEFAULT}"
+        f"{TEXT_COLOR_DEFAULT}"
     )
     task.cancel()
     try:
         loop.run_until_complete(task)
         print(
-            f"{utils.TEXT_COLOR_YELLOW}"
-            "Shutdown completed, thank you for waiting!"
-            f"{utils.TEXT_COLOR_DEFAULT}"
+            f"{TEXT_COLOR_YELLOW}Shutdown completed, thank you for waiting!{TEXT_COLOR_DEFAULT}"
         )
     except KeyboardInterrupt:
         pass
 ```
 
-In the `main` function, the most important fragment begins in line 104:
+In the `main` function, the most important fragment begins in line 119:
 
 ```python
 async for _task in executor.submit(worker_check_keyspace, [Task(data=None)]):
@@ -475,11 +507,10 @@ Having the `ranges` list, we can call the `worker_find_password` for each of the
 
 ```python
 async for task in executor.submit(
-    worker_find_password,
-    [Task(data=range) for range in ranges]
+    worker_find_password, [Task(data=range) for range in ranges]
 ):
     print(
-        f"Task computed: {task}, result: {task.result}"
+        f"{TEXT_COLOR_CYAN}Task computed: {task}, result: {task.result}{TEXT_COLOR_DEFAULT}"
     )
 ```
 

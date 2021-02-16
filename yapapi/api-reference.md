@@ -80,7 +80,7 @@ If `log_file` is specified, the logger with output messages with level `DEBUG` t
 log_event(event: events.Event) -> None
 ```
 
-Log an event in human-readable representation.
+Log `event` with a human-readable description.
 
 #### log\_event\_repr
 
@@ -88,7 +88,7 @@ Log an event in human-readable representation.
 log_event_repr(event: events.Event) -> None
 ```
 
-Log the result of calling `__repr__()` for the `event`.
+Log the result of calling `repr(event)`.
 
 ### SummaryLogger Objects
 
@@ -177,6 +177,10 @@ Sets a Soft cap on total cost of the Activity \(regardless of the usage vector o
 #### timeout\_secs
 
 A timeout value for batch computation \(eg. used for container-based batch processes\). This property allows to set the timeout to be applied by the Provider when running a batch computation: the Requestor expects the Activity to take no longer than the specified timeout value - which implies that eg. the golem.usage.duration\_sec counter shall not exceed the specified timeout value.
+
+#### multi\_activity
+
+Whether client supports multi\_activity \(executing more than one activity per agreement\).
 
 ## yapapi.props.builder
 
@@ -395,7 +399,7 @@ Exposes local file as GFTP url.
  | async close(*, urls: List[str]) -> CommandStatus
 ```
 
-Stops exposing GFTP urls created by [publish\(files=\[..\]\)](https://github.com/golemfactory/yagna-docs/tree/b1544b881581741e05889f5653f253d69360fb70/yapapi/%60publish%60/README.md).
+Stops exposing GFTP urls created by [publish\(files=\[..\]\)](https://github.com/golemfactory/yagna-docs/tree/40a6a1d2802589e21e78d961b7ff327c48ac6637/yapapi/%60publish%60/README.md).
 
 #### receive
 
@@ -521,9 +525,29 @@ Lists all invoices.
 
 An implementation of the new Golem's task executor.
 
+#### DEBIT\_NOTE\_MIN\_TIMEOUT
+
+Shortest debit note acceptance timeout the requestor will accept.
+
 #### CFG\_INVOICE\_TIMEOUT
 
 Time to receive invoice from provider after tasks ended.
+
+### NoPaymentAccountError Objects
+
+```python
+class NoPaymentAccountError(Exception)
+```
+
+The error raised if no payment account for the required driver/network is available.
+
+#### required\_driver
+
+Payment driver required for the account.
+
+#### required\_network
+
+Network required for the account.
 
 ### Executor Objects
 
@@ -538,7 +562,7 @@ Used to run tasks using the specified application package within providers' exec
 #### \_\_init\_\_
 
 ```python
- | __init__(*, package: Package, max_workers: int = 5, timeout: timedelta = timedelta(minutes=5), budget: Union[float, Decimal], strategy: MarketStrategy = DummyMS(), subnet_tag: Optional[str] = None, event_consumer: Optional[Callable[[Event], None]] = None)
+ | __init__(*, package: Package, max_workers: int = 5, timeout: timedelta = timedelta(minutes=5), budget: Union[float, Decimal], strategy: MarketStrategy = LeastExpensiveLinearPayuMS(), subnet_tag: Optional[str] = None, driver: Optional[str] = None, network: Optional[str] = None, event_consumer: Optional[Callable[[Event], None]] = None)
 ```
 
 Create a new executor.
@@ -557,6 +581,14 @@ Create a new executor.
   \(e.g. LeastExpensiveLinearPayuMS or DummyMS\)
 
 * `subnet_tag`: use only providers in the subnet with the subnet\_tag name
+* `driver`: name of the payment driver to use or `None` to use the default driver;
+
+  only payment platforms with the specified driver will be used
+
+* `network`: name of the network to use or `None` to use the default network;
+
+  only payment platforms with the specified network will be used
+
 * `event_consumer`: a callable that processes events related to the
 
   computation; by default it is a function that logs all events
@@ -584,6 +616,32 @@ yields computation progress events
 ## yapapi.executor.\_smartq
 
 YAPAPI internal module. This is not a part of the public API. It can change at any time.
+
+### SmartQueue Objects
+
+```python
+class SmartQueue(Generic[Item],  object)
+```
+
+#### has\_new\_items
+
+```python
+ | has_new_items() -> bool
+```
+
+Check whether this queue has any items that were not retrieved by any consumer yet.
+
+#### has\_unassigned\_items
+
+```python
+ | has_unassigned_items() -> bool
+```
+
+Check whether this queue has any unassigned items.
+
+An item is _unassigned_ if it's new \(hasn't been retrieved yet by any consumer\) or it has been rescheduled and is not in progress.
+
+A queue has unassigned items iff `get()` will immediately return some item, without waiting for an item that is currently "in progress" to be rescheduled.
 
 ## yapapi.executor.task
 
@@ -653,6 +711,77 @@ Must be called when the result is not correct to indicate that the task should b
 **Returns**:
 
 None
+
+## yapapi.executor.agreements\_pool
+
+### BufferedAgreement Objects
+
+```python
+@dataclass
+class BufferedAgreement()
+```
+
+Confirmed agreement with additional local metadata
+
+### AgreementsPool Objects
+
+```python
+class AgreementsPool()
+```
+
+Manages proposals and agreements pool
+
+#### cycle
+
+```python
+ | async cycle()
+```
+
+Performs cyclic tasks.
+
+Should be called regularly.
+
+#### add\_proposal
+
+```python
+ | async add_proposal(score: float, proposal: OfferProposal) -> None
+```
+
+Adds providers' proposal to the pool of available proposals
+
+#### use\_agreement
+
+```python
+ | async use_agreement(cbk)
+```
+
+Gets an agreement and performs cbk\(\) on it
+
+#### release\_agreement
+
+```python
+ | async release_agreement(agreement_id: str) -> None
+```
+
+Marks agreement as ready for reuse
+
+#### terminate
+
+```python
+ | async terminate(reason: dict) -> None
+```
+
+Terminates all agreements
+
+#### on\_agreement\_terminated
+
+```python
+ | async on_agreement_terminated(agr_id: str, reason: dict) -> None
+```
+
+Reacts to agreement termination event
+
+Should be called when AgreementTerminated event is received.
 
 ## yapapi.executor.events
 
@@ -819,6 +948,14 @@ with AsyncWrapper\(func\) as wrapper: wrapper.async\_call\("Hello", world=True\)
 
 The above code will make two asynchronous calls to `func`. The results of the calls, if any, are discarded, so this class is most useful for wrapping callables that return `None`.
 
+#### stop
+
+```python
+ | async stop() -> None
+```
+
+Stop the wrapper, process queued calls but do not accept any new ones.
+
 #### async\_call
 
 ```python
@@ -914,6 +1051,19 @@ class WorkContext()
 ```
 
 An object used to schedule commands to be sent to provider.
+
+#### id
+
+Unique identifier for this work context.
+
+#### provider\_name
+
+```python
+ | @property
+ | provider_name() -> Optional[str]
+```
+
+Return the name of the provider associated with this work context.
 
 #### send\_json
 
@@ -1286,6 +1436,14 @@ Query the state of the activity.
 
 Send the execution script to the provider's execution unit.
 
+#### \_\_aexit\_\_
+
+```python
+ | async __aexit__(exc_type, exc_val, exc_tb) -> None
+```
+
+Call DestroyActivity API operation.
+
 ### CommandExecutionError Objects
 
 ```python
@@ -1426,6 +1584,14 @@ async def list\_allocations\(payment\_api: rest.Payment\): async for allocation 
 
 ## yapapi.package
 
+### PackageException Objects
+
+```python
+class PackageException(Exception)
+```
+
+Exception raised on any problems related to the package repository.
+
 ### Package Objects
 
 ```python
@@ -1460,9 +1626,32 @@ Add package information to a Demand.
 async repo(*, image_hash: str, min_mem_gib: float = 0.5, min_storage_gib: float = 2.0) -> Package
 ```
 
-Builds reference to application package.
+Build reference to application package.
 
 * _image\_hash_: finds package by its contents hash.
 * _min\_mem\_gib_: minimal memory required to execute application code.
 * _min\_storage\_gib_ minimal disk storage to execute tasks.
+
+#### resolve\_repo\_srv
+
+```python
+resolve_repo_srv(repo_srv, fallback_url=_FALLBACK_REPO_URL) -> str
+```
+
+Get the url of the package repository based on its SRV record address.
+
+**Arguments**:
+
+* `repo_srv`: the SRV domain name
+* `fallback_url`: temporary hardcoded fallback url in case there's a problem resolving SRV
+
+**Returns**:
+
+the url of the package repository containing the port :raises: PackageException if no valid service could be reached
+
+## examples
+
+## examples.utils
+
+Utilities for yapapi example scripts.
 

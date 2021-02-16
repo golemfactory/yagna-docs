@@ -18,7 +18,7 @@ While it's possible that you'll be successful running Golem and this tutorial on
 
 #### Languages
 
-{% hint style="warning" %}
+{% hint style="info" %}
 If you are JS developer, please switch to **NodeJS** tab
 {% endhint %}
 
@@ -34,16 +34,12 @@ python3 --version
 
 If you have an older version of python and you'd like to keep that version in your system, consider using [pyenv](https://github.com/pyenv/pyenv). You can use [pyenv-installer](https://github.com/pyenv/pyenv-installer) to facilitate the process.
 
-{% hint style="danger" %}
+{% hint style="warning" %}
 On Windows, you may need to just use `python` instead of `python3`
 {% endhint %}
 {% endtab %}
 
 {% tab title="NodeJS" %}
-{% hint style="danger" %}
-Please bear in mind that our **JS/TS** API is an early alpha release and not nearly as refined as the Python one.
-{% endhint %}
-
 #### NodeJS 12.13.0+
 
 To verify your currently installed version of node, please run:
@@ -83,10 +79,12 @@ You'll also need the `git` versioning system client so you can clone our reposit
 git --version
 ```
 
-#### No crypto assets needed \(for now!\)
+#### No crypto assets needed \(for now\)
 
 {% hint style="info" %}
-Alpha lives on the Rinkeby Testnet. You don't need any real ETH or GLM tokens to start this tutorial. You also don't need to do anything to get test tokens! These test assets, rETH and tGLM, are acquired by the daemon in one of the steps below.
+During development, you'll most likely want to run your tasks on the Rinkeby Testnet. In that case, you won't need any real ETH or GLM tokens to start this tutorial. These test assets are acquired by the daemon in one of the steps below.
+
+Should you later want to run your tasks on the mainnet, to leverage the potential of all Golem's provider nodes, please have a look at: ["Using Golem on Mainnet"](../payments/using-golem-on-mainnet.md)
 {% endhint %}
 
 ### Can we help you? Do you have feedback for Golem?
@@ -98,7 +96,7 @@ If you'd like to give us feedback, suggestions, have some errors to report or if
 ## Running the `yagna` daemon
 
 {% hint style="info" %}
-_Yagna is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network._
+Yagna is the main service of the new Golem that's responsible for maintaing the marketplace and keeping connections with all the other nodes in the network.
 {% endhint %}
 
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon.
@@ -113,7 +111,7 @@ curl -sSf https://join.golem.network/as-requestor | bash -
 
 You might be asked to modify your PATH afterwards.
 
-{% hint style="danger" %}
+{% hint style="warning" %}
 On Windows, only the manual installation is supported.
 {% endhint %}
 
@@ -121,7 +119,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.5.0](https://github.com/golemfactory/yagna/releases/tag/v0.5.0)
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.6.0](https://github.com/golemfactory/yagna/releases/tag/v0.6.0)
 
 Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
@@ -137,9 +135,25 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.5.0 (d33058bb 2020-12-01 build #96)`
+It should output: `yagna 0.6.0 (ed55e851 2021-02-15 build #113)`
+
+Please also verify that you have the correct version of the `gftp` binary used for file transfers in the Golem network.
+
+```text
+gftp --version
+```
+
+It should output: `gftp 0.6.0 (ed55e851 2021-02-15 build #113)`
 
 ### Purge the stale working directories
+
+{% hint style="danger" %}
+**WARNING**
+
+Skip this step if you have ever funded your Golem account with mainnet ETH or GLM. If your accounts contains mainnet tokens, you'll lose your funds.
+
+Proceed with the purge only if you're sure you never ran Golem on mainnet and never funded your address with mainnet tokens before.
+{% endhint %}
 
 If you had run a previous version of `yagna` in the past, you'll need to purge its working directories since our newest version is incompatible with the old database structure:
 
@@ -177,17 +191,9 @@ Important: After you launch the daemon, leave it running in the background while
 
 You can now proceed to [Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key).
 
-#### Warning! Construction zone: errors ahead
-
-{% hint style="danger" %}
-You may notice errors while running the yagna daemon or the example script. **Some of those errors will be silenced, prevented or handled more gracefully in the future production version.** For now, you can usually ignore them, unless of course, they make the daemon or the example script crash - or - cause the task itself to fail before completion.
+{% hint style="warning" %}
+Sometimes, you may notice errors while running the yagna daemon or the example script. Unless they cause your task to be aborted or never finished they are usually no reason to worry. In case of doubt, please consult our [list of "Common Issues" in the Troubleshooting section.](../troubleshooting/common-issues.md)
 {% endhint %}
-
-Some of the errors you may encounter are:
-
-`[2020-08-11T10:49:17Z ERROR ya_service_bus::remote_router] bind error: already registered: Service ID [... url ... ] already registered`
-
-`Task exception was never retrieved [... several lines of stack trace ...] {"message":"GSB error: bad request: No service registered under given address"}`
 
 ## Generate the app key
 
@@ -207,31 +213,41 @@ yagna app-key list
 
 the value in the `key` column is the key you need.
 
+### Get some test GLM tokens
+
+In order to be able to request tasks on Golem, you'll need some GLM tokens \(called tGLM on the rinkeby testnet\) to pay the providers with. Even on the testnet, those tokens are still required but of course you can easily get them issued to you using our tGLM faucet.
+
+That's done using:
+
+```text
+yagna payment fund
+```
+
+It tells yagna to check for funds on your node and if needed, contacts the faucet which, in turn, issues some tGLM tokens to the node using zkSync.
+
+Once you issue the command, allow some time until it completes its job. You can verify whether you already have the funds with:
+
+```text
+yagna payment status
+```
+
+If, after a few minutes, you still can't see the tokens, re-run the `yagna payment fund` command above and check again after a few more minutes.
+
+As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver or our faucet, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../troubleshooting/common-issues.md#payment-driver-initialization-issue).
+
 ### Enable the daemon as a requestor
 
-You need the following command to enable the daemon as a requestor.
-
-What it also does under the hood, it also checks for funds on your requestor node and if needed, contacts the faucet which issues some tGLM tokens to the node using zkSync.
+As the last step before your requestor node is ready, you'll need to enable the daemon as a requestor.
 
 {% hint style="warning" %}
-It needs to be run each time the daemon is started or restarted.
+The command needs to be run each time the daemon is started or restarted.
 {% endhint %}
 
 ```text
 yagna payment init --sender
 ```
 
-Once you issue the command, allow some time until it completes its job.
-
-You can verify whether you already have the funds with:
-
-```text
-yagna payment status
-```
-
-If, after a few minutes, you can't see the assets, re-run the `payment init` command above and check again after a few more minutes.
-
-As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../troubleshooting/common-issues.md#payment-driver-initialization-issue).
+With this completed, you're good to go!
 
 ## Running the requestor and your first task on the New Golem Network
 
@@ -246,7 +262,7 @@ Ensure you're running python &gt;= 3.6 and you have the `venv` module installed 
 Prepare a virtual environment for the tutorial script:
 
 ```bash
-python3 -m venv ~/.envs/yagna-python-tutorial
+python3 -m venv --clear ~/.envs/yagna-python-tutorial
 source ~/.envs/yagna-python-tutorial/bin/activate
 ```
 
@@ -255,7 +271,7 @@ On Windows, you need to replace the above with:
 {% endhint %}
 
 ```text
-python -m venv %HOMEDRIVE%%HOMEPATH%\.envs\yagna-python-tutorial
+python -m venv --clear %HOMEDRIVE%%HOMEPATH%\.envs\yagna-python-tutorial
 %HOMEDRIVE%%HOMEPATH%\.envs\yagna-python-tutorial\Scripts\activate.bat
 ```
 
@@ -263,7 +279,7 @@ Install the dependencies:
 
 ```text
 pip3 install -U pip
-pip3 install yapapi
+pip install yapapi
 ```
 
 ### Get the requestor agent's code
@@ -278,7 +294,7 @@ and make sure you're working on the version corresponding with the latest releas
 
 ```text
 cd yapapi
-git checkout b0.4
+git checkout b0.5
 ```
 
 ### Set the yagna app key
@@ -324,7 +340,7 @@ Check out or download the `yajsapi` repository:
 ```text
 git clone https://github.com/golemfactory/yajsapi.git
 cd yajsapi
-git checkout b0.2
+git checkout b0.3
 ```
 
 ### Set the yagna app key
