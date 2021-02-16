@@ -40,10 +40,6 @@ On Windows, you may need to just use `python` instead of `python3`
 {% endtab %}
 
 {% tab title="NodeJS" %}
-{% hint style="danger" %}
-Please bear in mind that our **JS/TS** API is an early alpha release and not nearly as refined as the Python one.
-{% endhint %}
-
 #### NodeJS 12.13.0+
 
 To verify your currently installed version of node, please run:
