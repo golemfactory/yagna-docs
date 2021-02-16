@@ -104,7 +104,7 @@ In order to follow our requestor agent tutorial, you'll first need to run the `y
 You can install it using our helper script like this:
 
 ```text
-curl -sSf https://join.golem.network/as-requestor | YA_INSTALLER_CORE=pre-rel-v0.6.0-rc9 bash -
+curl -sSf https://join.golem.network/as-requestor | bash -
 ```
 
 You might be asked to modify your PATH afterwards.
@@ -117,7 +117,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.6.0-rc9](https://github.com/golemfactory/yagna/releases/tag/pre-rel-v0.6.0-rc9)
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.6.0](https://github.com/golemfactory/yagna/releases/tag/v0.6.0)
 
 Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
@@ -133,7 +133,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.6.0-rc9 (483c832f 2021-02-11 build #112)`
+It should output: `yagna 0.6.0 (ed55e851 2021-02-15 build #113)`
 
 Please also verify that you have the correct version of the `gftp` binary used for file transfers in the Golem network.
 
@@ -141,9 +141,17 @@ Please also verify that you have the correct version of the `gftp` binary used f
 gftp --version
 ```
 
-It should output: `gftp 0.6.0-rc9 (483c832f 2021-02-11 build #112)`
+It should output: `gftp 0.6.0 (ed55e851 2021-02-15 build #113)`
 
 ### Purge the stale working directories
+
+{% hint style="danger" %}
+**WARNING**
+
+Skip this step if you have ever funded your Golem account with mainnet ETH or GLM. If your accounts contains mainnet tokens, you'll lose your funds.
+
+Proceed with the purge only if you're sure you never ran Golem on mainnet and never funded your address with mainnet tokens before.
+{% endhint %}
 
 If you had run a previous version of `yagna` in the past, you'll need to purge its working directories since our newest version is incompatible with the old database structure:
 
@@ -181,7 +189,7 @@ Important: After you launch the daemon, leave it running in the background while
 
 You can now proceed to [Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key).
 
-{% hint style="danger" %}
+{% hint style="warning" %}
 Sometimes, you may notice errors while running the yagna daemon or the example script. Unless they cause your task to be aborted or never finished they are usually no reason to worry. In case of doubt, please consult our [list of "Common Issues" in the Troubleshooting section.](../troubleshooting/common-issues.md)
 {% endhint %}
 
