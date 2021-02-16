@@ -6,7 +6,7 @@ description: The provider actor in the Golem
 
 ## What is a provider?
 
-The role of a Provider agent is sharing hardware resources within the Golem network in remuneration of GLMs.
+The role of a Provider agent is sharing hardware resources within the Golem network in return for GLM tokens.
 
 A provider agent - as understood in the context of the Golem network - is a specific piece of code running on an Internet-connected device. The code implements the Golem network protocol, thus the machine running it acts as a Golem node.
 
