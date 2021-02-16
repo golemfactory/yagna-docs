@@ -193,8 +193,6 @@
 * [Interface](yajsapi/interface/README.md)
   * [Interface: default](yajsapi/interface/utils_callable.default.md)
 
-## Reference
-
 ## troubleshooting
 
 * [Common issues](troubleshooting/common-issues.md)
