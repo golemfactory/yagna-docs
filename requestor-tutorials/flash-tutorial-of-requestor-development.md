@@ -18,7 +18,7 @@ While it's possible that you'll be successful running Golem and this tutorial on
 
 #### Languages
 
-{% hint style="warning" %}
+{% hint style="info" %}
 If you are JS developer, please switch to **NodeJS** tab
 {% endhint %}
 
