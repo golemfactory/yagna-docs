@@ -16,6 +16,8 @@
 ## Provider tutorials
 
 * [Becoming a provider](provider-tutorials/provider-tutorial.md)
+* [Provider Troubleshooting](provider-tutorials/provider-troubleshooting.md)
+* [Provider CLI reference](provider-tutorials/provider-cli.md)
 
 ## Requestor tutorials
 
@@ -192,8 +194,6 @@
   * [Interface: default](yajsapi/interface/utils_callable.default.md)
 
 ## Reference
-
-* [Provider CLI reference](reference/provider-cli.md)
 
 ## troubleshooting
 

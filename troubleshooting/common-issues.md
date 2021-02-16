@@ -4,13 +4,37 @@ description: Symptoms and solutions of known issues.
 
 # Common issues
 
+{% hint style="info" %}
+## Requestor Issues
+
+Don't miss the [debugging section by using the log file](../requestor-tutorials/debugging.md#reading-the-log-file).
+{% endhint %}
+
 ### No access to VM
 
-_**Description:**_ No access to VM
+_**Os:**_ Ubuntu
 
- _**Solution:**_ `curl -o setup-kvm.sh https://join.golem.network/setup-kvm.sh && chmod +x ./setup-kvm.sh && ./setup-kvm.sh` 
+_**Description:**_   **`golemsp status`**shows status other than **`valid`**
 
-Note: make sure `qemu-vm` is installed first with `apt install qemu-kvm`.
+a\) If: `the user has no access to /dev/kvm` run
+
+```text
+curl -o setup-kvm.sh https://join.golem.network/setup-kvm.sh && chmod +x ./setup-kvm.sh && ./setup-kvm.sh
+```
+
+Afterwards, log out and log in again into your OS and then, rerun `golemsp run`
+
+b\) If: `running inside Docker without access to /dev/kvm` run
+
+```text
+docker run --privileged
+```
+
+c\) If: `unsupported virtualization type: XEN` We do not support **xen hypervisor**
+
+* In any other case with the virtualisation we recommend:
+
+`sudo apt install cpu-checker && sudo kvm-ok` command and follow the steps as given in the terminal interface.
 
 ### IO error: No such file or directory
 
@@ -57,15 +81,16 @@ _**Os:**_ All, requestor only
 
 _**Description:**_ Since our newest addition to Golem - the integration with zkSync, layer 2 payment solution - is, so far, a highly experimental feature, it may still sometimes happen that the yagna daemon fails to initialize itself correctly.
 
-This will manifest itself either by a failure of the regular initialization with`yagna payment init -r` or through an error you'll receive when running `yagna payment status`.
+This will manifest itself either by a failure of the regular initialization with`yagna payment fund` or through an error you'll receive when running `yagna payment status`.
 
 _**Solution:**_ In such a case, we're providing you with a fallback to normal payments, i.e. regular GLM token transfer on the Ethereum chain.
 
 To enable it, first **stop and re-start the yagna daemon** and then run:
 
 ```text
-yagna payment init -r --driver=ngnt
-yagna payment status --platform=NGNT
+yagna payment fund --driver erc20
+yagna payment status --driver erc20
+yagna payment init --sender --driver erc20
 ```
 
 After you confirm you have the funds, proceed with running the examples or your own requestor agent code normally. The providers are configured to accept both zkSync and the regular tokens and will adjust accordingly.

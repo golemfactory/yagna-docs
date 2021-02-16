@@ -147,39 +147,11 @@ Although zk-sync is from now on the main payment operator in Golem you may recei
 If in the **Offers/Tasks** column you see your active Offers count, and either tasks in progress or processed then you have successfully computed! If not, give it some time as there is still a limited number of tasks in the network - and then run the command again.
 {% endhint %}
 
-
-
-#### Known issues
-
-* Type `golemsp status` in your terminal window and check the status of your VM
-
-**When there is other status than `valid`**
-
-a\) If: `the user has no access to /dev/kvm` run
-
-```text
-curl -o setup-kvm.sh https://join.golem.network/setup-kvm.sh && chmod +x ./setup-kvm.sh && ./setup-kvm.sh
-```
-
-Afterwards, log out and log in again into your OS and then, rerun `golemsp run`
-
-b\) If: `running inside Docker without access to /dev/kvm` run
-
-```text
-docker run --privileged
-```
-
-c\) If: `unsupported virtualization type: XEN` We do not support **xen hypervisor**
-
-* In any other case with the virtualisation we recommend:
-
-`sudo apt install cpu-checker && sudo kvm-ok` command and follow the steps as given in the terminal interface.
-
 ## Provider CLI
 
 To check out additional commands available in the CLI, have a look at the reference page:
 
-{% page-ref page="../reference/provider-cli.md" %}
+{% page-ref page="provider-cli.md" %}
 
 ## Next steps
 

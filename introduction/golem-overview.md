@@ -16,9 +16,9 @@ The diagram above shows the architecture of the network. For the sake of simplic
 
 ### Requestor
 
-The requestor logic is implemented as a **requestor agent**, which is a piece of code that runs on requestor's machine and communicates via REST with golem daemon's http server, usually running on the same machine.
+The requestor logic is implemented as a **requestor agent**, which is a piece of code that runs on the requestor's machine and communicates via REST with the Golem daemon's http server, usually running on the same machine.
 
-A requestor agent can be written in any language as long as it's able to talk to daemon's REST API. To make things easy for the developers though, we provide two high-level API libraries[: yapapi](https://github.com/golemfactory/yapapi) for Python 3.6+ and [yajsapi](https://github.com/golemfactory/yajsapi), our JS/TS API runnable under nodejs.
+A requestor agent can be written in any language as long as it's able to talk to the daemon's REST API. To make things easy for the developers though, we provide two high-level API libraries[: yapapi](https://github.com/golemfactory/yapapi) for Python 3.6+ and [yajsapi](https://github.com/golemfactory/yajsapi), our JS/TS API runnable under nodejs.
 
 _Please note the "ALT" frames in the left part of the diagram above: there are two APIs that we support but a typical requestor agent contains application code in only one language and hence, will use only one of those alternatives._
 
