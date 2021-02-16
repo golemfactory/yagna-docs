@@ -21,7 +21,7 @@
 ## troubleshooting
 
 * [Provider Troubleshooting](troubleshooting/provider-troubleshooting.md)
-* [Requestor troubleshooting](troubleshooting/common-issues.md)
+* [Requestor Troubleshooting](troubleshooting/common-issues.md)
 
 ## Requestor tutorials
 

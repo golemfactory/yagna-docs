@@ -2,7 +2,7 @@
 description: Symptoms and solutions of known issues.
 ---
 
-# Requestor troubleshooting
+# Requestor Troubleshooting
 
 {% hint style="info" %}
 ## Requestor Issues
