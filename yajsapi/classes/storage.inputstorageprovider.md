@@ -44,7 +44,7 @@ Name | Type |
 
 **Returns:** *Promise*<[*Source*](storage.source.md)\>
 
-Defined in: [yajsapi/storage/index.ts:69](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L69)
+Defined in: [yajsapi/storage/index.ts:69](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L69)
 
 ___
 
@@ -60,7 +60,7 @@ Name | Type |
 
 **Returns:** *Promise*<[*Source*](storage.source.md)\>
 
-Defined in: [yajsapi/storage/index.ts:77](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L77)
+Defined in: [yajsapi/storage/index.ts:77](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L77)
 
 ___
 
@@ -77,4 +77,4 @@ Name | Type |
 
 **Returns:** *Promise*<[*Source*](storage.source.md)\>
 
-Defined in: [yajsapi/storage/index.ts:62](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L62)
+Defined in: [yajsapi/storage/index.ts:62](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L62)

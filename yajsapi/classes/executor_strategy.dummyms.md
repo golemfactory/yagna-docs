@@ -48,7 +48,7 @@
 
 • `Optional` **\_activity**: *undefined* \| [*Activity*](props.activity.md)
 
-Defined in: [yajsapi/executor/strategy.ts:40](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L40)
+Defined in: [yajsapi/executor/strategy.ts:40](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L40)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 • **max\_fixed**: Number
 
-Defined in: [yajsapi/executor/strategy.ts:39](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L39)
+Defined in: [yajsapi/executor/strategy.ts:39](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L39)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 • **max\_for\_counter**: *Map*<[*Counter*](../enums/props_com.counter.md), Number\>
 
-Defined in: [yajsapi/executor/strategy.ts:38](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L38)
+Defined in: [yajsapi/executor/strategy.ts:38](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L38)
 
 ## Methods
 
@@ -90,7 +90,7 @@ Name | Type |
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/executor/strategy.ts:42](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L42)
+Defined in: [yajsapi/executor/strategy.ts:42](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L42)
 
 ___
 
@@ -160,7 +160,7 @@ Name | Type |
 
 **Returns:** *Promise*<Number\>
 
-Defined in: [yajsapi/executor/strategy.ts:47](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L47)
+Defined in: [yajsapi/executor/strategy.ts:47](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L47)
 
 ___
 

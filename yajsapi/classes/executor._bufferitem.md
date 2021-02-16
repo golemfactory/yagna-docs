@@ -36,7 +36,7 @@ Name | Type |
 
 **Returns:** [*\_BufferItem*](executor._bufferitem.md)
 
-Defined in: [yajsapi/executor/index.ts:85](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L85)
+Defined in: [yajsapi/executor/index.ts:90](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L90)
 
 ## Properties
 
@@ -44,7 +44,7 @@ Defined in: [yajsapi/executor/index.ts:85](https://github.com/golemfactory/yajsa
 
 • **proposal**: [*OfferProposal*](rest_market.offerproposal.md)
 
-Defined in: [yajsapi/executor/index.ts:85](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L85)
+Defined in: [yajsapi/executor/index.ts:90](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L90)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 • **score**: Number
 
-Defined in: [yajsapi/executor/index.ts:84](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L84)
+Defined in: [yajsapi/executor/index.ts:89](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L89)
 
 ___
 
@@ -60,4 +60,4 @@ ___
 
 • **ts**: Date
 
-Defined in: [yajsapi/executor/index.ts:83](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L83)
+Defined in: [yajsapi/executor/index.ts:88](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L88)

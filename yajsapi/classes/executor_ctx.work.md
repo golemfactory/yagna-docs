@@ -40,7 +40,7 @@
 
 • `Optional` **attestation**: *undefined* \| *object*
 
-Defined in: [yajsapi/executor/ctx.ts:50](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L50)
+Defined in: [yajsapi/executor/ctx.ts:50](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L50)
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 • **output**: *object*[]
 
-Defined in: [yajsapi/executor/ctx.ts:49](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L49)
+Defined in: [yajsapi/executor/ctx.ts:49](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L49)
 
 ## Methods
 
@@ -58,7 +58,7 @@ Defined in: [yajsapi/executor/ctx.ts:49](https://github.com/golemfactory/yajsapi
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/executor/ctx.ts:59](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L59)
+Defined in: [yajsapi/executor/ctx.ts:59](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L59)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/executor/ctx.ts:53](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L53)
+Defined in: [yajsapi/executor/ctx.ts:53](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L53)
 
 ___
 
@@ -84,7 +84,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/ctx.ts:56](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L56)
+Defined in: [yajsapi/executor/ctx.ts:56](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L56)
 
 ___
 
@@ -94,4 +94,4 @@ ___
 
 **Returns:** *null*
 
-Defined in: [yajsapi/executor/ctx.ts:61](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L61)
+Defined in: [yajsapi/executor/ctx.ts:61](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L61)

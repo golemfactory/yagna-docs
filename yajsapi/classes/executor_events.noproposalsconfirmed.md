@@ -33,15 +33,13 @@
 
 #### Parameters:
 
-Name | Type |
------- | ------ |
-`__namedParameters` | *Object* |
+• **__namedParameters**: *Object*
 
 **Returns:** [*NoProposalsConfirmed*](executor_events.noproposalsconfirmed.md)
 
 Inherited from: [YaEvent](executor_events.yaevent.md)
 
-Defined in: [yajsapi/executor/events.ts:113](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L113)
+Defined in: [yajsapi/executor/events.ts:113](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L113)
 
 ## Properties
 
@@ -49,7 +47,7 @@ Defined in: [yajsapi/executor/events.ts:113](https://github.com/golemfactory/yaj
 
 • `Optional` **num\_offers**: *undefined* \| *number*
 
-Defined in: [yajsapi/executor/events.ts:112](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L112)
+Defined in: [yajsapi/executor/events.ts:112](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L112)
 
 ___
 
@@ -57,7 +55,7 @@ ___
 
 • `Optional` **timeout**: *undefined* \| *number*
 
-Defined in: [yajsapi/executor/events.ts:113](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L113)
+Defined in: [yajsapi/executor/events.ts:113](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L113)
 
 ## Methods
 
@@ -73,4 +71,4 @@ The extracted exception information and a copy of the event without the exceptio
 
 Inherited from: [YaEvent](executor_events.yaevent.md)
 
-Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L17)
+Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L17)

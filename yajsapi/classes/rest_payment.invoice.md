@@ -52,7 +52,7 @@ Name | Type |
 
 **Returns:** [*Invoice*](rest_payment.invoice.md)
 
-Defined in: [yajsapi/rest/payment.ts:28](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L28)
+Defined in: [yajsapi/rest/payment.ts:45](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L45)
 
 ## Properties
 
@@ -60,7 +60,7 @@ Defined in: [yajsapi/rest/payment.ts:28](https://github.com/golemfactory/yajsapi
 
 • `Private` **\_api**: *RequestorApi*
 
-Defined in: [yajsapi/rest/payment.ts:28](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L28)
+Defined in: [yajsapi/rest/payment.ts:45](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L45)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 • `Optional` **activityIds**: *undefined* \| *string*[]
 
-Defined in: [yajsapi/rest/payment.ts:21](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L21)
+Defined in: [yajsapi/rest/payment.ts:21](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L21)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • **agreementId**: *string*
 
-Defined in: [yajsapi/rest/payment.ts:20](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L20)
+Defined in: [yajsapi/rest/payment.ts:20](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L20)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 • **amount**: *string*
 
-Defined in: [yajsapi/rest/payment.ts:22](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L22)
+Defined in: [yajsapi/rest/payment.ts:22](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L22)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 • **invoiceId**: *string*
 
-Defined in: [yajsapi/rest/payment.ts:12](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L12)
+Defined in: [yajsapi/rest/payment.ts:12](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L12)
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 • **issuerId**: *string*
 
-Defined in: [yajsapi/rest/payment.ts:13](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L13)
+Defined in: [yajsapi/rest/payment.ts:13](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L13)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 • `Optional` **lastDebitNoteId**: *undefined* \| *string*
 
-Defined in: [yajsapi/rest/payment.ts:18](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L18)
+Defined in: [yajsapi/rest/payment.ts:18](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L18)
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 • `Optional` **payeeAddr**: *undefined* \| *string*
 
-Defined in: [yajsapi/rest/payment.ts:15](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L15)
+Defined in: [yajsapi/rest/payment.ts:15](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L15)
 
 ___
 
@@ -124,7 +124,7 @@ ___
 
 • `Optional` **payerAddr**: *undefined* \| *string*
 
-Defined in: [yajsapi/rest/payment.ts:16](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L16)
+Defined in: [yajsapi/rest/payment.ts:16](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L16)
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 • **paymentDueDate**: *string*
 
-Defined in: [yajsapi/rest/payment.ts:23](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L23)
+Defined in: [yajsapi/rest/payment.ts:23](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L23)
 
 ___
 
@@ -140,7 +140,7 @@ ___
 
 • `Optional` **paymentPlatform**: *undefined* \| *string*
 
-Defined in: [yajsapi/rest/payment.ts:17](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L17)
+Defined in: [yajsapi/rest/payment.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L17)
 
 ___
 
@@ -148,7 +148,7 @@ ___
 
 • **recipientId**: *string*
 
-Defined in: [yajsapi/rest/payment.ts:14](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L14)
+Defined in: [yajsapi/rest/payment.ts:14](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L14)
 
 ___
 
@@ -156,7 +156,7 @@ ___
 
 • **status**: InvoiceStatus
 
-Defined in: [yajsapi/rest/payment.ts:24](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L24)
+Defined in: [yajsapi/rest/payment.ts:24](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L24)
 
 ___
 
@@ -164,7 +164,7 @@ ___
 
 • **timestamp**: *string*
 
-Defined in: [yajsapi/rest/payment.ts:19](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L19)
+Defined in: [yajsapi/rest/payment.ts:19](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L19)
 
 ## Methods
 
@@ -181,4 +181,4 @@ Name | Type |
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/rest/payment.ts:37](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L37)
+Defined in: [yajsapi/rest/payment.ts:54](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L54)

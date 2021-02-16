@@ -35,7 +35,7 @@
 
 **Returns:** [*PrivateKey*](crypto.privatekey.md)
 
-Defined in: [yajsapi/crypto.ts:11](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L11)
+Defined in: [yajsapi/crypto.ts:11](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L11)
 
 ## Properties
 
@@ -43,7 +43,7 @@ Defined in: [yajsapi/crypto.ts:11](https://github.com/golemfactory/yajsapi/blob/
 
 • **inner**: *Buffer*
 
-Defined in: [yajsapi/crypto.ts:11](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L11)
+Defined in: [yajsapi/crypto.ts:11](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L11)
 
 ## Methods
 
@@ -59,7 +59,7 @@ Name | Type |
 
 **Returns:** *Promise*<*Buffer*\>
 
-Defined in: [yajsapi/crypto.ts:35](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L35)
+Defined in: [yajsapi/crypto.ts:35](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L35)
 
 ___
 
@@ -75,7 +75,7 @@ Name | Type | Default value |
 
 **Returns:** [*PublicKey*](crypto.publickey.md)
 
-Defined in: [yajsapi/crypto.ts:28](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L28)
+Defined in: [yajsapi/crypto.ts:28](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L28)
 
 ___
 
@@ -91,7 +91,7 @@ Name | Type |
 
 **Returns:** *Promise*<*Buffer*\>
 
-Defined in: [yajsapi/crypto.ts:39](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L39)
+Defined in: [yajsapi/crypto.ts:39](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L39)
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 **Returns:** *string*
 
-Defined in: [yajsapi/crypto.ts:43](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L43)
+Defined in: [yajsapi/crypto.ts:43](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L43)
 
 ___
 
@@ -117,7 +117,7 @@ Name | Type |
 
 **Returns:** [*PrivateKey*](crypto.privatekey.md)
 
-Defined in: [yajsapi/crypto.ts:17](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L17)
+Defined in: [yajsapi/crypto.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L17)
 
 ___
 
@@ -133,4 +133,4 @@ Name | Type |
 
 **Returns:** [*PublicKey*](crypto.publickey.md)
 
-Defined in: [yajsapi/crypto.ts:23](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L23)
+Defined in: [yajsapi/crypto.ts:23](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L23)

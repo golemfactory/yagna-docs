@@ -37,7 +37,7 @@ Name | Type |
 
 **Returns:** [*Market*](rest_market.market.md)
 
-Defined in: [yajsapi/rest/market.ts:264](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L264)
+Defined in: [yajsapi/rest/market.ts:267](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L267)
 
 ## Properties
 
@@ -45,7 +45,7 @@ Defined in: [yajsapi/rest/market.ts:264](https://github.com/golemfactory/yajsapi
 
 • `Private` **\_api**: *RequestorApi*
 
-Defined in: [yajsapi/rest/market.ts:264](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L264)
+Defined in: [yajsapi/rest/market.ts:267](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L267)
 
 ## Methods
 
@@ -62,7 +62,7 @@ Name | Type |
 
 **Returns:** *Promise*<[*Subscription*](rest_market.subscription.md)\>
 
-Defined in: [yajsapi/rest/market.ts:269](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L269)
+Defined in: [yajsapi/rest/market.ts:272](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L272)
 
 ___
 
@@ -72,4 +72,4 @@ ___
 
 **Returns:** *AsyncGenerator*<[*Subscription*](rest_market.subscription.md), *any*, *unknown*\>
 
-Defined in: [yajsapi/rest/market.ts:287](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L287)
+Defined in: [yajsapi/rest/market.ts:290](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L290)

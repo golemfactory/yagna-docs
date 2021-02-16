@@ -31,7 +31,7 @@
 
 • `Const` **INF\_CORES**: *string*= "golem.inf.cpu.cores"
 
-Defined in: [yajsapi/props/inf.ts:5](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L5)
+Defined in: [yajsapi/props/inf.ts:5](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L5)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 • `Const` **INF\_MEM**: *string*= "golem.inf.mem.gib"
 
-Defined in: [yajsapi/props/inf.ts:3](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L3)
+Defined in: [yajsapi/props/inf.ts:3](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L3)
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 • `Const` **INF\_RUNTIME**: *string*= "golem.runtime.name"
 
-Defined in: [yajsapi/props/inf.ts:6](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L6)
+Defined in: [yajsapi/props/inf.ts:6](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L6)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 • `Const` **INF\_STORAGE**: *string*= "golem.inf.storage.gib"
 
-Defined in: [yajsapi/props/inf.ts:4](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L4)
+Defined in: [yajsapi/props/inf.ts:4](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L4)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 • `Const` **InfVmKeys**: *object*
 
-Defined in: [yajsapi/props/inf.ts:39](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L39)
+Defined in: [yajsapi/props/inf.ts:39](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L39)
 
 ___
 
@@ -71,4 +71,4 @@ ___
 
 • `Const` **TRANSFER\_CAPS**: *string*= "golem.activity.caps.transfer.protocol"
 
-Defined in: [yajsapi/props/inf.ts:7](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L7)
+Defined in: [yajsapi/props/inf.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L7)

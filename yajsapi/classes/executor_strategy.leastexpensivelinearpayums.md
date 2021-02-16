@@ -37,7 +37,7 @@ Name | Type | Default value |
 
 **Returns:** [*LeastExpensiveLinearPayuMS*](executor_strategy.leastexpensivelinearpayums.md)
 
-Defined in: [yajsapi/executor/strategy.ts:67](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L67)
+Defined in: [yajsapi/executor/strategy.ts:67](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L67)
 
 ## Properties
 
@@ -45,7 +45,7 @@ Defined in: [yajsapi/executor/strategy.ts:67](https://github.com/golemfactory/ya
 
 • `Private` **\_expected\_time\_secs**: *number*
 
-Defined in: [yajsapi/executor/strategy.ts:67](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L67)
+Defined in: [yajsapi/executor/strategy.ts:67](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L67)
 
 ## Methods
 
@@ -61,7 +61,7 @@ Name | Type |
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/executor/strategy.ts:72](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L72)
+Defined in: [yajsapi/executor/strategy.ts:72](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L72)
 
 ___
 
@@ -77,4 +77,4 @@ Name | Type |
 
 **Returns:** *Promise*<Number\>
 
-Defined in: [yajsapi/executor/strategy.ts:76](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L76)
+Defined in: [yajsapi/executor/strategy.ts:76](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L76)

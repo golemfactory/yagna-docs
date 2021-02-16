@@ -33,13 +33,11 @@
 
 #### Parameters:
 
-Name | Type |
------- | ------ |
-`__namedParameters` | *Object* |
+• **__namedParameters**: *Object*
 
 **Returns:** [*WorkerFinished*](executor_events.workerfinished.md)
 
-Defined in: [yajsapi/executor/events.ts:247](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L247)
+Defined in: [yajsapi/executor/events.ts:262](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L262)
 
 ## Properties
 
@@ -47,7 +45,7 @@ Defined in: [yajsapi/executor/events.ts:247](https://github.com/golemfactory/yaj
 
 • `Optional` **agr\_id**: *undefined* \| *string*
 
-Defined in: [yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L123)
+Defined in: [yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L123)
 
 ___
 
@@ -55,7 +53,7 @@ ___
 
 • `Optional` **exception**: *undefined* \| *null* \| Error= null
 
-Defined in: [yajsapi/executor/events.ts:247](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L247)
+Defined in: [yajsapi/executor/events.ts:262](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L262)
 
 ## Methods
 
@@ -65,4 +63,4 @@ Defined in: [yajsapi/executor/events.ts:247](https://github.com/golemfactory/yaj
 
 **Returns:** [*undefined* \| *null* \| Error, [*YaEvent*](executor_events.yaevent.md)]
 
-Defined in: [yajsapi/executor/events.ts:255](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L255)
+Defined in: [yajsapi/executor/events.ts:270](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L270)

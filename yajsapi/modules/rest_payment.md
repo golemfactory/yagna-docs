@@ -7,6 +7,7 @@
 ### Classes
 
 - [Allocation](../classes/rest_payment.allocation.md)
+- [DebitNote](../classes/rest_payment.debitnote.md)
 - [Invoice](../classes/rest_payment.invoice.md)
 - [Payment](../classes/rest_payment.payment.md)
 
@@ -20,6 +21,6 @@
 
 • `Const` **InvoiceStatus**: *typeof* InvoiceStatus
 
-Defined in: [yajsapi/rest/payment.ts:48](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L48)
+Defined in: [yajsapi/rest/payment.ts:65](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L65)
 
-Defined in: [yajsapi/rest/index.ts:12](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/index.ts#L12)
+Defined in: [yajsapi/rest/index.ts:12](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/index.ts#L12)

@@ -31,7 +31,7 @@
 
 **Returns:** [*CommandContainer*](executor_ctx.commandcontainer.md)
 
-Defined in: [yajsapi/executor/ctx.ts:7](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L7)
+Defined in: [yajsapi/executor/ctx.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L7)
 
 ## Properties
 
@@ -39,7 +39,7 @@ Defined in: [yajsapi/executor/ctx.ts:7](https://github.com/golemfactory/yajsapi/
 
 • `Private` **\_commands**: *any*
 
-Defined in: [yajsapi/executor/ctx.ts:7](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L7)
+Defined in: [yajsapi/executor/ctx.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L7)
 
 ## Methods
 
@@ -49,7 +49,7 @@ Defined in: [yajsapi/executor/ctx.ts:7](https://github.com/golemfactory/yajsapi/
 
 **Returns:** *any*
 
-Defined in: [yajsapi/executor/ctx.ts:14](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L14)
+Defined in: [yajsapi/executor/ctx.ts:14](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L14)
 
 ___
 
@@ -63,4 +63,4 @@ Name | Type |
 ------ | ------ |
 `get` | (`target`: *any*, `name`: *any*) => *any* |
 
-Defined in: [yajsapi/executor/ctx.ts:18](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L18)
+Defined in: [yajsapi/executor/ctx.ts:18](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L18)

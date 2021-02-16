@@ -28,7 +28,7 @@
 
 • `Const` **DEFINED\_USAGES**: *string*= "golem.com.usage.vector"
 
-Defined in: [yajsapi/props/com.ts:7](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/com.ts#L7)
+Defined in: [yajsapi/props/com.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L7)
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 • `Const` **LINEAR\_COEFFS**: *string*= "golem.com.pricing.model.linear.coeffs"
 
-Defined in: [yajsapi/props/com.ts:6](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/com.ts#L6)
+Defined in: [yajsapi/props/com.ts:6](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L6)
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 • `Const` **PRICE\_MODEL**: *string*= "golem.com.pricing.model"
 
-Defined in: [yajsapi/props/com.ts:4](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/com.ts#L4)
+Defined in: [yajsapi/props/com.ts:4](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L4)
 
 ___
 
@@ -52,4 +52,4 @@ ___
 
 • `Const` **SCHEME**: *string*= "golem.com.scheme"
 
-Defined in: [yajsapi/props/com.ts:3](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/com.ts#L3)
+Defined in: [yajsapi/props/com.ts:3](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L3)

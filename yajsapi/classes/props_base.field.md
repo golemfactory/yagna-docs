@@ -40,13 +40,18 @@
 
 #### Parameters:
 
-Name | Type | Default value |
------- | ------ | ------ |
-`__namedParameters` | { `metadata?`: *undefined* \| *object* ; `name?`: *undefined* \| *string* ; `type?`: *undefined* \| *object* ; `value?`: *any*  } | ... |
+• **__namedParameters**: *object*
+
+Name | Type |
+------ | ------ |
+`metadata?` | *undefined* \| *object* |
+`name?` | *undefined* \| *string* |
+`type?` | *undefined* \| *object* |
+`value?` | *any* |
 
 **Returns:** [*Field*](props_base.field.md)
 
-Defined in: [yajsapi/props/base.ts:23](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L23)
+Defined in: [yajsapi/props/base.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L27)
 
 ## Properties
 
@@ -54,7 +59,7 @@ Defined in: [yajsapi/props/base.ts:23](https://github.com/golemfactory/yajsapi/b
 
 • `Private` **\_metadata**: *any*
 
-Defined in: [yajsapi/props/base.ts:21](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L21)
+Defined in: [yajsapi/props/base.ts:25](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L25)
 
 ___
 
@@ -62,7 +67,7 @@ ___
 
 • `Private` **\_name**: *any*
 
-Defined in: [yajsapi/props/base.ts:22](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L22)
+Defined in: [yajsapi/props/base.ts:26](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L26)
 
 ___
 
@@ -70,7 +75,7 @@ ___
 
 • `Private` **\_type**: *any*
 
-Defined in: [yajsapi/props/base.ts:23](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L23)
+Defined in: [yajsapi/props/base.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L27)
 
 ___
 
@@ -78,7 +83,7 @@ ___
 
 • `Private` **\_value**: *any*
 
-Defined in: [yajsapi/props/base.ts:20](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L20)
+Defined in: [yajsapi/props/base.ts:24](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L24)
 
 ## Accessors
 
@@ -88,7 +93,7 @@ Defined in: [yajsapi/props/base.ts:20](https://github.com/golemfactory/yajsapi/b
 
 **Returns:** *any*
 
-Defined in: [yajsapi/props/base.ts:48](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L48)
+Defined in: [yajsapi/props/base.ts:52](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L52)
 
 ___
 
@@ -98,7 +103,7 @@ ___
 
 **Returns:** *any*
 
-Defined in: [yajsapi/props/base.ts:56](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L56)
+Defined in: [yajsapi/props/base.ts:60](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L60)
 
 • **name**(`x`: *any*): *void*
 
@@ -110,7 +115,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/props/base.ts:52](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L52)
+Defined in: [yajsapi/props/base.ts:56](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L56)
 
 ___
 
@@ -120,7 +125,7 @@ ___
 
 **Returns:** *any*
 
-Defined in: [yajsapi/props/base.ts:60](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L60)
+Defined in: [yajsapi/props/base.ts:64](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L64)
 
 ___
 
@@ -130,7 +135,7 @@ ___
 
 **Returns:** *any*
 
-Defined in: [yajsapi/props/base.ts:44](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L44)
+Defined in: [yajsapi/props/base.ts:48](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L48)
 
 • **value**(`x`: *any*): *void*
 
@@ -142,7 +147,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/props/base.ts:35](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L35)
+Defined in: [yajsapi/props/base.ts:39](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L39)
 
 ## Methods
 
@@ -152,4 +157,4 @@ Defined in: [yajsapi/props/base.ts:35](https://github.com/golemfactory/yajsapi/b
 
 **Returns:** *any*
 
-Defined in: [yajsapi/props/base.ts:64](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L64)
+Defined in: [yajsapi/props/base.ts:68](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L68)

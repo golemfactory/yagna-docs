@@ -48,7 +48,7 @@ Name | Type | Default value |
 
 **Returns:** [*Subscription*](rest_market.subscription.md)
 
-Defined in: [yajsapi/rest/market.ts:187](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L187)
+Defined in: [yajsapi/rest/market.ts:188](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L188)
 
 ## Properties
 
@@ -56,7 +56,7 @@ Defined in: [yajsapi/rest/market.ts:187](https://github.com/golemfactory/yajsapi
 
 • **\_api**: *RequestorApi*
 
-Defined in: [yajsapi/rest/market.ts:183](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L183)
+Defined in: [yajsapi/rest/market.ts:184](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L184)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 • `Private` **\_deleted**: *boolean*
 
-Defined in: [yajsapi/rest/market.ts:186](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L186)
+Defined in: [yajsapi/rest/market.ts:187](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L187)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 • `Private` **\_details**: *any*
 
-Defined in: [yajsapi/rest/market.ts:187](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L187)
+Defined in: [yajsapi/rest/market.ts:188](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L188)
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 • `Private` **\_id**: *string*
 
-Defined in: [yajsapi/rest/market.ts:184](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L184)
+Defined in: [yajsapi/rest/market.ts:185](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L185)
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 • `Private` **\_open**: *boolean*
 
-Defined in: [yajsapi/rest/market.ts:185](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L185)
+Defined in: [yajsapi/rest/market.ts:186](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L186)
 
 ## Methods
 
@@ -98,7 +98,7 @@ Defined in: [yajsapi/rest/market.ts:185](https://github.com/golemfactory/yajsapi
 
 **Returns:** *void*
 
-Defined in: [yajsapi/rest/market.ts:205](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L205)
+Defined in: [yajsapi/rest/market.ts:206](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L206)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/rest/market.ts:222](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L222)
+Defined in: [yajsapi/rest/market.ts:223](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L223)
 
 ___
 
@@ -118,7 +118,7 @@ ___
 
 **Returns:** Demand
 
-Defined in: [yajsapi/rest/market.ts:217](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L217)
+Defined in: [yajsapi/rest/market.ts:218](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L218)
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/rest/market.ts:213](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L213)
+Defined in: [yajsapi/rest/market.ts:214](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L214)
 
 ___
 
@@ -144,7 +144,7 @@ Name | Type |
 
 **Returns:** *AsyncGenerator*<[*OfferProposal*](rest_market.offerproposal.md), *any*, *unknown*\>
 
-Defined in: [yajsapi/rest/market.ts:229](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L229)
+Defined in: [yajsapi/rest/market.ts:230](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L230)
 
 ___
 
@@ -154,7 +154,7 @@ ___
 
 **Returns:** *string*
 
-Defined in: [yajsapi/rest/market.ts:201](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L201)
+Defined in: [yajsapi/rest/market.ts:202](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L202)
 
 ___
 
@@ -164,4 +164,4 @@ ___
 
 **Returns:** *Promise*<[*Subscription*](rest_market.subscription.md)\>
 
-Defined in: [yajsapi/rest/market.ts:209](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/market.ts#L209)
+Defined in: [yajsapi/rest/market.ts:210](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L210)

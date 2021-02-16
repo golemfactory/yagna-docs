@@ -42,4 +42,4 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<[*Destination*](storage.destination.md)\>
 
-Defined in: [yajsapi/storage/index.ts:98](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L98)
+Defined in: [yajsapi/storage/index.ts:98](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L98)

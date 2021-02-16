@@ -23,4 +23,4 @@ Name | Type |
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/utils/asyncWith.ts:2](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/asyncWith.ts#L2)
+Defined in: [yajsapi/utils/asyncWith.ts:2](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncWith.ts#L2)

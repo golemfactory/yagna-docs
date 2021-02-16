@@ -19,6 +19,7 @@
 ### Properties
 
 - [agr\_id](executor_events.paymentfailed.md#agr_id)
+- [reason](executor_events.paymentfailed.md#reason)
 
 ### Methods
 
@@ -32,13 +33,11 @@
 
 #### Parameters:
 
-Name | Type |
------- | ------ |
-`__namedParameters` | *Object* |
+• **__namedParameters**: *Object*
 
 **Returns:** [*PaymentFailed*](executor_events.paymentfailed.md)
 
-Defined in: [yajsapi/executor/events.ts:167](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L167)
+Defined in: [yajsapi/executor/events.ts:182](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L182)
 
 ## Properties
 
@@ -46,7 +45,15 @@ Defined in: [yajsapi/executor/events.ts:167](https://github.com/golemfactory/yaj
 
 • `Optional` **agr\_id**: *undefined* \| *string*
 
-Defined in: [yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L123)
+Defined in: [yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L123)
+
+___
+
+### reason
+
+• **reason**: *string*
+
+Defined in: [yajsapi/executor/events.ts:182](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L182)
 
 ## Methods
 
@@ -60,4 +67,4 @@ Extract exception information from this event.
 
 The extracted exception information and a copy of the event without the exception information.
 
-Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L17)
+Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L17)

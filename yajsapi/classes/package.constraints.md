@@ -31,7 +31,7 @@
 
 **Returns:** [*Constraints*](package.constraints.md)
 
-Defined in: [yajsapi/package/index.ts:15](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L15)
+Defined in: [yajsapi/package/index.ts:19](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L19)
 
 ## Properties
 
@@ -39,7 +39,7 @@ Defined in: [yajsapi/package/index.ts:15](https://github.com/golemfactory/yajsap
 
 • **inner**: *string*[]
 
-Defined in: [yajsapi/package/index.ts:15](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L15)
+Defined in: [yajsapi/package/index.ts:19](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L19)
 
 ## Methods
 
@@ -55,7 +55,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/package/index.ts:21](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L21)
+Defined in: [yajsapi/package/index.ts:25](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L25)
 
 ___
 
@@ -65,4 +65,4 @@ ___
 
 **Returns:** *string*
 
-Defined in: [yajsapi/package/index.ts:25](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L25)
+Defined in: [yajsapi/package/index.ts:29](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L29)

@@ -45,7 +45,7 @@ Name | Type |
 
 **Returns:** [*CommandExecutionError*](rest_activity.commandexecutionerror.md)
 
-Defined in: [yajsapi/rest/activity.ts:342](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L342)
+Defined in: [yajsapi/rest/activity.ts:347](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L347)
 
 ## Properties
 
@@ -53,7 +53,7 @@ Defined in: [yajsapi/rest/activity.ts:342](https://github.com/golemfactory/yajsa
 
 • **command**: *string*
 
-Defined in: [yajsapi/rest/activity.ts:341](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L341)
+Defined in: [yajsapi/rest/activity.ts:346](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L346)
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 • **message**: *string*
 
-Defined in: [yajsapi/rest/activity.ts:342](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L342)
+Defined in: [yajsapi/rest/activity.ts:347](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L347)
 
 ___
 
@@ -126,4 +126,4 @@ ___
 
 **Returns:** *string*
 
-Defined in: [yajsapi/rest/activity.ts:348](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L348)
+Defined in: [yajsapi/rest/activity.ts:353](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L353)

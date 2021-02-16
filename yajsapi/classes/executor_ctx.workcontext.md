@@ -52,7 +52,7 @@ Name | Type | Default value |
 
 **Returns:** [*WorkContext*](executor_ctx.workcontext.md)
 
-Defined in: [yajsapi/executor/ctx.ts:284](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L284)
+Defined in: [yajsapi/executor/ctx.ts:284](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L284)
 
 ## Properties
 
@@ -60,7 +60,7 @@ Defined in: [yajsapi/executor/ctx.ts:284](https://github.com/golemfactory/yajsap
 
 • `Private` **\_emitter**: *null* \| [*default*](../interfaces/utils_callable.default.md)<[StorageEvent], *void*\>
 
-Defined in: [yajsapi/executor/ctx.ts:284](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L284)
+Defined in: [yajsapi/executor/ctx.ts:284](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L284)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 • `Private` **\_id**: *any*
 
-Defined in: [yajsapi/executor/ctx.ts:280](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L280)
+Defined in: [yajsapi/executor/ctx.ts:280](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L280)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • `Private` **\_pending\_steps**: [*Work*](executor_ctx.work.md)[]
 
-Defined in: [yajsapi/executor/ctx.ts:282](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L282)
+Defined in: [yajsapi/executor/ctx.ts:282](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L282)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 • `Private` **\_started**: *boolean*
 
-Defined in: [yajsapi/executor/ctx.ts:283](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L283)
+Defined in: [yajsapi/executor/ctx.ts:283](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L283)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 • `Private` **\_storage**: [*StorageProvider*](storage.storageprovider.md)
 
-Defined in: [yajsapi/executor/ctx.ts:281](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L281)
+Defined in: [yajsapi/executor/ctx.ts:281](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L281)
 
 ## Methods
 
@@ -102,7 +102,7 @@ Defined in: [yajsapi/executor/ctx.ts:281](https://github.com/golemfactory/yajsap
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/ctx.ts:297](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L297)
+Defined in: [yajsapi/executor/ctx.ts:297](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L297)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/ctx.ts:303](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L303)
+Defined in: [yajsapi/executor/ctx.ts:303](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L303)
 
 ___
 
@@ -124,15 +124,17 @@ Creates sequence of commands to be sent to provider.
 
 #### Parameters:
 
+• **__namedParameters**: *object*
+
 Name | Type |
 ------ | ------ |
-`__namedParameters` | { `timeout?`: *undefined* \| *number*  } |
+`timeout?` | *undefined* \| *number* |
 
 **Returns:** [*Work*](executor_ctx.work.md)
 
 Work object (the latter contains sequence commands added before calling this method)
 
-Defined in: [yajsapi/executor/ctx.ts:368](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L368)
+Defined in: [yajsapi/executor/ctx.ts:368](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L368)
 
 ___
 
@@ -151,7 +153,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/ctx.ts:347](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L347)
+Defined in: [yajsapi/executor/ctx.ts:347](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L347)
 
 ___
 
@@ -167,7 +169,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/ctx.ts:359](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L359)
+Defined in: [yajsapi/executor/ctx.ts:359](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L359)
 
 ___
 
@@ -187,7 +189,7 @@ Name | Type | Default value | Description |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/ctx.ts:334](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L334)
+Defined in: [yajsapi/executor/ctx.ts:334](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L334)
 
 ___
 
@@ -206,7 +208,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/ctx.ts:322](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L322)
+Defined in: [yajsapi/executor/ctx.ts:322](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L322)
 
 ___
 
@@ -225,7 +227,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/ctx.ts:311](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L311)
+Defined in: [yajsapi/executor/ctx.ts:311](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L311)
 
 ___
 
@@ -235,4 +237,4 @@ ___
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/ctx.ts:354](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/ctx.ts#L354)
+Defined in: [yajsapi/executor/ctx.ts:354](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L354)

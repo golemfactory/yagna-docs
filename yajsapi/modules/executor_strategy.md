@@ -23,7 +23,7 @@
 
 • `Const` **CFF\_DEFAULT\_PRICE\_FOR\_COUNTER**: *Map*<[*Counter*](../enums/props_com.counter.md), *number*\>
 
-Defined in: [yajsapi/executor/strategy.ts:17](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L17)
+Defined in: [yajsapi/executor/strategy.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L17)
 
 ___
 
@@ -31,7 +31,7 @@ ___
 
 • `Const` **SCORE\_NEUTRAL**: *number*= 0.0
 
-Defined in: [yajsapi/executor/strategy.ts:13](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L13)
+Defined in: [yajsapi/executor/strategy.ts:13](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L13)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 • `Const` **SCORE\_REJECTED**: *number*= -1.0
 
-Defined in: [yajsapi/executor/strategy.ts:14](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L14)
+Defined in: [yajsapi/executor/strategy.ts:14](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L14)
 
 ___
 
@@ -47,4 +47,4 @@ ___
 
 • `Const` **SCORE\_TRUSTED**: *number*= 100.0
 
-Defined in: [yajsapi/executor/strategy.ts:15](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L15)
+Defined in: [yajsapi/executor/strategy.ts:15](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L15)

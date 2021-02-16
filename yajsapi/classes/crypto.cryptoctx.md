@@ -40,7 +40,7 @@ Name | Type |
 
 **Returns:** [*CryptoCtx*](crypto.cryptoctx.md)
 
-Defined in: [yajsapi/crypto.ts:77](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L77)
+Defined in: [yajsapi/crypto.ts:77](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L77)
 
 ## Properties
 
@@ -48,7 +48,7 @@ Defined in: [yajsapi/crypto.ts:77](https://github.com/golemfactory/yajsapi/blob/
 
 • **ephem\_key**: *Buffer*
 
-Defined in: [yajsapi/crypto.ts:71](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L71)
+Defined in: [yajsapi/crypto.ts:71](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L71)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 • **priv\_key**: [*PrivateKey*](crypto.privatekey.md)
 
-Defined in: [yajsapi/crypto.ts:70](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L70)
+Defined in: [yajsapi/crypto.ts:70](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L70)
 
 ## Methods
 
@@ -72,7 +72,7 @@ Name | Type |
 
 **Returns:** *Buffer*
 
-Defined in: [yajsapi/crypto.ts:106](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L106)
+Defined in: [yajsapi/crypto.ts:106](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L106)
 
 ___
 
@@ -88,7 +88,7 @@ Name | Type |
 
 **Returns:** *Buffer*
 
-Defined in: [yajsapi/crypto.ts:84](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L84)
+Defined in: [yajsapi/crypto.ts:84](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L84)
 
 ___
 
@@ -105,4 +105,4 @@ Name | Type |
 
 **Returns:** *Promise*<[*CryptoCtx*](crypto.cryptoctx.md)\>
 
-Defined in: [yajsapi/crypto.ts:73](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L73)
+Defined in: [yajsapi/crypto.ts:73](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L73)

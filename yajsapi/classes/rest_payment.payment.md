@@ -23,7 +23,9 @@
 - [accounts](rest_payment.payment.md#accounts)
 - [allocation](rest_payment.payment.md#allocation)
 - [allocations](rest_payment.payment.md#allocations)
+- [debit\_note](rest_payment.payment.md#debit_note)
 - [decorate\_demand](rest_payment.payment.md#decorate_demand)
+- [incoming\_debit\_notes](rest_payment.payment.md#incoming_debit_notes)
 - [incoming\_invoices](rest_payment.payment.md#incoming_invoices)
 - [invoice](rest_payment.payment.md#invoice)
 - [invoices](rest_payment.payment.md#invoices)
@@ -43,7 +45,7 @@ Name | Type |
 
 **Returns:** [*Payment*](rest_payment.payment.md)
 
-Defined in: [yajsapi/rest/payment.ts:156](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L156)
+Defined in: [yajsapi/rest/payment.ts:202](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L202)
 
 ## Properties
 
@@ -51,7 +53,7 @@ Defined in: [yajsapi/rest/payment.ts:156](https://github.com/golemfactory/yajsap
 
 • `Private` **\_api**: *RequestorApi*
 
-Defined in: [yajsapi/rest/payment.ts:156](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L156)
+Defined in: [yajsapi/rest/payment.ts:202](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L202)
 
 ## Methods
 
@@ -61,7 +63,7 @@ Defined in: [yajsapi/rest/payment.ts:156](https://github.com/golemfactory/yajsap
 
 **Returns:** *AsyncGenerator*<Account, *any*, *unknown*\>
 
-Defined in: [yajsapi/rest/payment.ts:224](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L224)
+Defined in: [yajsapi/rest/payment.ts:278](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L278)
 
 ___
 
@@ -77,7 +79,7 @@ Name | Type |
 
 **Returns:** *Promise*<[*Allocation*](rest_payment.allocation.md)\>
 
-Defined in: [yajsapi/rest/payment.ts:207](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L207)
+Defined in: [yajsapi/rest/payment.ts:257](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L257)
 
 ___
 
@@ -87,7 +89,23 @@ ___
 
 **Returns:** *AsyncGenerator*<[*Allocation*](rest_payment.allocation.md), *any*, *unknown*\>
 
-Defined in: [yajsapi/rest/payment.ts:189](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L189)
+Defined in: [yajsapi/rest/payment.ts:235](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L235)
+
+___
+
+### debit\_note
+
+▸ **debit_note**(`debit_note_id`: *string*): *Promise*<[*DebitNote*](rest_payment.debitnote.md)\>
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`debit_note_id` | *string* |
+
+**Returns:** *Promise*<[*DebitNote*](rest_payment.debitnote.md)\>
+
+Defined in: [yajsapi/rest/payment.ts:292](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L292)
 
 ___
 
@@ -103,7 +121,23 @@ Name | Type |
 
 **Returns:** *Promise*<MarketDecoration\>
 
-Defined in: [yajsapi/rest/payment.ts:231](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L231)
+Defined in: [yajsapi/rest/payment.ts:285](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L285)
+
+___
+
+### incoming\_debit\_notes
+
+▸ **incoming_debit_notes**(`cancellationToken`: *any*): *AsyncGenerator*<[*DebitNote*](rest_payment.debitnote.md), *any*, *unknown*\>
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`cancellationToken` | *any* |
+
+**Returns:** *AsyncGenerator*<[*DebitNote*](rest_payment.debitnote.md), *any*, *unknown*\>
+
+Defined in: [yajsapi/rest/payment.ts:354](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L354)
 
 ___
 
@@ -119,7 +153,7 @@ Name | Type |
 
 **Returns:** *AsyncGenerator*<[*Invoice*](rest_payment.invoice.md), *any*, *unknown*\>
 
-Defined in: [yajsapi/rest/payment.ts:254](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L254)
+Defined in: [yajsapi/rest/payment.ts:315](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L315)
 
 ___
 
@@ -135,7 +169,7 @@ Name | Type |
 
 **Returns:** *Promise*<[*Invoice*](rest_payment.invoice.md)\>
 
-Defined in: [yajsapi/rest/payment.ts:247](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L247)
+Defined in: [yajsapi/rest/payment.ts:308](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L308)
 
 ___
 
@@ -145,7 +179,7 @@ ___
 
 **Returns:** *AsyncGenerator*<[*Invoice*](rest_payment.invoice.md), *any*, *unknown*\>
 
-Defined in: [yajsapi/rest/payment.ts:238](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L238)
+Defined in: [yajsapi/rest/payment.ts:299](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L299)
 
 ___
 
@@ -165,4 +199,4 @@ Name | Type | Default value |
 
 **Returns:** [*ResourceCtx*](rest_resource.resourcectx.md)<[*Allocation*](rest_payment.allocation.md)\>
 
-Defined in: [yajsapi/rest/payment.ts:162](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L162)
+Defined in: [yajsapi/rest/payment.ts:208](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L208)

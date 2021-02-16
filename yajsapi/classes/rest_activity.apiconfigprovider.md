@@ -41,7 +41,7 @@ Name | Type |
 
 **Returns:** [*ApiConfigProvider*](rest_activity.apiconfigprovider.md)
 
-Defined in: [yajsapi/rest/activity.ts:586](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L586)
+Defined in: [yajsapi/rest/activity.ts:602](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L602)
 
 ## Properties
 
@@ -75,7 +75,7 @@ Defined in: node_modules/ya-ts-client/dist/ya-activity/base.d.ts:42
 
 **Returns:** *Promise*<*undefined* \| *string*\>
 
-Defined in: [yajsapi/rest/activity.ts:598](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L598)
+Defined in: [yajsapi/rest/activity.ts:614](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L614)
 
 ___
 
@@ -85,4 +85,4 @@ ___
 
 **Returns:** *string*
 
-Defined in: [yajsapi/rest/activity.ts:592](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L592)
+Defined in: [yajsapi/rest/activity.ts:608](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L608)

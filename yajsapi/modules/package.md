@@ -16,7 +16,11 @@
 
 ### Variables
 
-- [DEFAULT\_REPO\_URL](package.md#default_repo_url)
+- [DEFAULT\_REPO\_SRV](package.md#default_repo_srv)
+
+### Functions
+
+- [resolve\_repo\_srv](package.md#resolve_repo_srv)
 
 ## Type aliases
 
@@ -33,12 +37,26 @@ Name | Type |
 `min_mem_gib` | *number* |
 `min_storage_gib` | *number* |
 
-Defined in: [yajsapi/package/index.ts:7](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L7)
+Defined in: [yajsapi/package/index.ts:11](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L11)
 
 ## Variables
 
-### DEFAULT\_REPO\_URL
+### DEFAULT\_REPO\_SRV
 
-• `Const` **DEFAULT\_REPO\_URL**: *http://3.249.139.167:8000*= "http://3.249.139.167:8000"
+• `Const` **DEFAULT\_REPO\_SRV**: *_girepo._tcp.dev.golem.network*= "\_girepo.\_tcp.dev.golem.network"
 
-Defined in: [yajsapi/package/index.ts:5](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L5)
+Defined in: [yajsapi/package/index.ts:9](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L9)
+
+## Functions
+
+### resolve\_repo\_srv
+
+▸ `Const`**resolve_repo_srv**(`__namedParameters`: *Object*): *Promise*<*unknown*\>
+
+#### Parameters:
+
+• **__namedParameters**: *Object*
+
+**Returns:** *Promise*<*unknown*\>
+
+Defined in: [yajsapi/package/index.ts:75](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L75)

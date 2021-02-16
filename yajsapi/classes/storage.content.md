@@ -38,7 +38,7 @@ Name | Type |
 
 **Returns:** [*Content*](storage.content.md)
 
-Defined in: [yajsapi/storage/index.ts:8](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L8)
+Defined in: [yajsapi/storage/index.ts:8](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L8)
 
 ## Properties
 
@@ -46,7 +46,7 @@ Defined in: [yajsapi/storage/index.ts:8](https://github.com/golemfactory/yajsapi
 
 • **length**: *number*
 
-Defined in: [yajsapi/storage/index.ts:7](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L7)
+Defined in: [yajsapi/storage/index.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L7)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 • **stream**: *any*
 
-Defined in: [yajsapi/storage/index.ts:8](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L8)
+Defined in: [yajsapi/storage/index.ts:8](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L8)
 
 ## Methods
 
@@ -71,4 +71,4 @@ Name | Type |
 
 **Returns:** [*Content*](storage.content.md)
 
-Defined in: [yajsapi/storage/index.ts:15](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L15)
+Defined in: [yajsapi/storage/index.ts:15](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L15)

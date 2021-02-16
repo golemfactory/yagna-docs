@@ -45,7 +45,7 @@ Name | Type |
 
 Inherited from: [Model](props_base.model.md)
 
-Defined in: [yajsapi/props/inf.ts:56](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L56)
+Defined in: [yajsapi/props/inf.ts:56](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L56)
 
 ## Properties
 
@@ -53,7 +53,7 @@ Defined in: [yajsapi/props/inf.ts:56](https://github.com/golemfactory/yajsapi/bl
 
 • **package\_url**: [*Field*](props_base.field.md)
 
-Defined in: [yajsapi/props/inf.ts:54](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L54)
+Defined in: [yajsapi/props/inf.ts:54](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L54)
 
 ## Methods
 
@@ -72,7 +72,7 @@ Name | Type |
 
 Inherited from: [Model](props_base.model.md)
 
-Defined in: [yajsapi/props/base.ts:107](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L107)
+Defined in: [yajsapi/props/base.ts:111](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L111)
 
 ___
 
@@ -90,7 +90,7 @@ Name | Type |
 
 Inherited from: [Model](props_base.model.md)
 
-Defined in: [yajsapi/props/base.ts:109](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L109)
+Defined in: [yajsapi/props/base.ts:113](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L113)
 
 ___
 
@@ -117,7 +117,7 @@ Name | Type | Description |
 
 Inherited from: [Model](props_base.model.md)
 
-Defined in: [yajsapi/props/base.ts:133](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L133)
+Defined in: [yajsapi/props/base.ts:137](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L137)
 
 ___
 
@@ -145,4 +145,4 @@ a mapping between the model's field names and the property keys
 
 Inherited from: [Model](props_base.model.md)
 
-Defined in: [yajsapi/props/base.ts:178](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L178)
+Defined in: [yajsapi/props/base.ts:182](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L182)

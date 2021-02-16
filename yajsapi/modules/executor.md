@@ -57,7 +57,7 @@ Name | Type |
 `task_package` | [*Package*](../classes/package.package-1.md) |
 `timeout?` | Number \| String |
 
-Defined in: [yajsapi/executor/index.ts:97](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L97)
+Defined in: [yajsapi/executor/index.ts:102](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L102)
 
 ## Variables
 
@@ -65,9 +65,9 @@ Defined in: [yajsapi/executor/index.ts:97](https://github.com/golemfactory/yajsa
 
 • `Const` **sgx**: [*package/sgx*](package_sgx.md)
 
-Defined in: [yajsapi/executor/index.ts:32](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L32)
+Defined in: [yajsapi/executor/index.ts:32](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L32)
 
-Defined in: [yajsapi/index.ts:8](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/index.ts#L8)
+Defined in: [yajsapi/index.ts:15](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/index.ts#L15)
 
 ___
 
@@ -75,6 +75,6 @@ ___
 
 • `Const` **vm**: [*package/vm*](package_vm.md)
 
-Defined in: [yajsapi/executor/index.ts:33](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L33)
+Defined in: [yajsapi/executor/index.ts:33](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L33)
 
-Defined in: [yajsapi/index.ts:8](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/index.ts#L8)
+Defined in: [yajsapi/index.ts:15](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/index.ts#L15)

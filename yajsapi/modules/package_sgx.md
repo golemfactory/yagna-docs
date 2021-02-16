@@ -22,7 +22,7 @@
 
 • `Const` **SGX\_CONFIG**: *SgxConfig*
 
-Defined in: [yajsapi/package/sgx.ts:73](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/sgx.ts#L73)
+Defined in: [yajsapi/package/sgx.ts:73](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/sgx.ts#L73)
 
 ## Functions
 
@@ -32,10 +32,8 @@ Defined in: [yajsapi/package/sgx.ts:73](https://github.com/golemfactory/yajsapi/
 
 #### Parameters:
 
-Name | Type |
------- | ------ |
-`__namedParameters` | [*RepoOpts*](package.md#repoopts) |
+• **__namedParameters**: [*RepoOpts*](package.md#repoopts)
 
 **Returns:** *Promise*<[*Package*](../classes/package.package-1.md)\>
 
-Defined in: [yajsapi/package/sgx.ts:91](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/sgx.ts#L91)
+Defined in: [yajsapi/package/sgx.ts:91](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/sgx.ts#L91)

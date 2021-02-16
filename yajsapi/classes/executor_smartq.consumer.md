@@ -52,7 +52,7 @@ Name | Type |
 
 **Returns:** [*Consumer*](executor_smartq.consumer.md)<Item\>
 
-Defined in: [yajsapi/executor/smartq.ts:153](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/smartq.ts#L153)
+Defined in: [yajsapi/executor/smartq.ts:167](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L167)
 
 ## Properties
 
@@ -60,7 +60,7 @@ Defined in: [yajsapi/executor/smartq.ts:153](https://github.com/golemfactory/yaj
 
 • `Private` `Optional` **\_fetched**: *undefined* \| *null* \| [*Handle*](executor_smartq.handle.md)<Item\>
 
-Defined in: [yajsapi/executor/smartq.ts:153](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/smartq.ts#L153)
+Defined in: [yajsapi/executor/smartq.ts:167](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L167)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 • `Private` **\_queue**: *any*
 
-Defined in: [yajsapi/executor/smartq.ts:152](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/smartq.ts#L152)
+Defined in: [yajsapi/executor/smartq.ts:166](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L166)
 
 ## Methods
 
@@ -78,7 +78,7 @@ Defined in: [yajsapi/executor/smartq.ts:152](https://github.com/golemfactory/yaj
 
 **Returns:** *AsyncGenerator*<[*Handle*](executor_smartq.handle.md)<Item\>, *any*, *any*\>
 
-Defined in: [yajsapi/executor/smartq.ts:173](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/smartq.ts#L173)
+Defined in: [yajsapi/executor/smartq.ts:187](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L187)
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 **Returns:** *null*
 
-Defined in: [yajsapi/executor/smartq.ts:164](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/smartq.ts#L164)
+Defined in: [yajsapi/executor/smartq.ts:178](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L178)
 
 ___
 
@@ -98,7 +98,7 @@ ___
 
 **Returns:** *null* \| Item
 
-Defined in: [yajsapi/executor/smartq.ts:169](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/smartq.ts#L169)
+Defined in: [yajsapi/executor/smartq.ts:183](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L183)
 
 ___
 
@@ -108,4 +108,4 @@ ___
 
 **Returns:** [*Consumer*](executor_smartq.consumer.md)<Item\>
 
-Defined in: [yajsapi/executor/smartq.ts:160](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/smartq.ts#L160)
+Defined in: [yajsapi/executor/smartq.ts:174](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L174)

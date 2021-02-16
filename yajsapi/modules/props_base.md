@@ -27,4 +27,4 @@ Name | Type |
 
 **Returns:** *string*[]
 
-Defined in: [yajsapi/props/base.ts:3](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L3)
+Defined in: [yajsapi/props/base.ts:3](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L3)

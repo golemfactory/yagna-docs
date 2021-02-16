@@ -41,8 +41,8 @@ Task executor
 
 ### Methods
 
-- [\_allocation\_for\_invoice](executor.executor-1.md#_allocation_for_invoice)
 - [\_create\_allocations](executor.executor-1.md#_create_allocations)
+- [\_get\_allocation](executor.executor-1.md#_get_allocation)
 - [\_get\_common\_payment\_platforms](executor.executor-1.md#_get_common_payment_platforms)
 - [done](executor.executor-1.md#done)
 - [ready](executor.executor-1.md#ready)
@@ -58,13 +58,11 @@ Create new executor
 
 #### Parameters:
 
-Name | Type |
------- | ------ |
-`__namedParameters` | [*ExecutorOpts*](../modules/executor.md#executoropts) |
+• **__namedParameters**: [*ExecutorOpts*](../modules/executor.md#executoropts)
 
 **Returns:** [*Executor*](executor.executor-1.md)
 
-Defined in: [yajsapi/executor/index.ts:134](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L134)
+Defined in: [yajsapi/executor/index.ts:139](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L139)
 
 ## Properties
 
@@ -72,7 +70,7 @@ Defined in: [yajsapi/executor/index.ts:134](https://github.com/golemfactory/yajs
 
 • `Private` **\_activity\_api**: *any*
 
-Defined in: [yajsapi/executor/index.ts:128](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L128)
+Defined in: [yajsapi/executor/index.ts:133](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L133)
 
 ___
 
@@ -80,7 +78,7 @@ ___
 
 • `Private` **\_api\_config**: *any*
 
-Defined in: [yajsapi/executor/index.ts:120](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L120)
+Defined in: [yajsapi/executor/index.ts:125](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L125)
 
 ___
 
@@ -88,7 +86,7 @@ ___
 
 • `Private` **\_budget\_allocations**: [*Allocation*](rest_payment.allocation.md)[]
 
-Defined in: [yajsapi/executor/index.ts:126](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L126)
+Defined in: [yajsapi/executor/index.ts:131](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L131)
 
 ___
 
@@ -96,7 +94,7 @@ ___
 
 • `Private` **\_budget\_amount**: *any*
 
-Defined in: [yajsapi/executor/index.ts:125](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L125)
+Defined in: [yajsapi/executor/index.ts:130](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L130)
 
 ___
 
@@ -104,7 +102,7 @@ ___
 
 • `Private` **\_cancellation\_token**: [*default*](utils_cancellationtoken.default.md)
 
-Defined in: [yajsapi/executor/index.ts:133](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L133)
+Defined in: [yajsapi/executor/index.ts:138](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L138)
 
 ___
 
@@ -112,7 +110,7 @@ ___
 
 • `Private` **\_conf**: *any*
 
-Defined in: [yajsapi/executor/index.ts:123](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L123)
+Defined in: [yajsapi/executor/index.ts:128](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L128)
 
 ___
 
@@ -120,7 +118,7 @@ ___
 
 • `Private` **\_driver**: *any*
 
-Defined in: [yajsapi/executor/index.ts:116](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L116)
+Defined in: [yajsapi/executor/index.ts:121](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L121)
 
 ___
 
@@ -128,7 +126,7 @@ ___
 
 • `Private` **\_expires**: *any*
 
-Defined in: [yajsapi/executor/index.ts:124](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L124)
+Defined in: [yajsapi/executor/index.ts:129](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L129)
 
 ___
 
@@ -136,7 +134,7 @@ ___
 
 • `Private` **\_market\_api**: *any*
 
-Defined in: [yajsapi/executor/index.ts:129](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L129)
+Defined in: [yajsapi/executor/index.ts:134](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L134)
 
 ___
 
@@ -144,7 +142,7 @@ ___
 
 • `Private` **\_network**: *any*
 
-Defined in: [yajsapi/executor/index.ts:117](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L117)
+Defined in: [yajsapi/executor/index.ts:122](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L122)
 
 ___
 
@@ -152,7 +150,7 @@ ___
 
 • `Private` **\_payment\_api**: *any*
 
-Defined in: [yajsapi/executor/index.ts:130](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L130)
+Defined in: [yajsapi/executor/index.ts:135](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L135)
 
 ___
 
@@ -160,7 +158,7 @@ ___
 
 • `Private` **\_stack**: *any*
 
-Defined in: [yajsapi/executor/index.ts:121](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L121)
+Defined in: [yajsapi/executor/index.ts:126](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L126)
 
 ___
 
@@ -168,7 +166,7 @@ ___
 
 • `Private` **\_strategy**: *any*
 
-Defined in: [yajsapi/executor/index.ts:119](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L119)
+Defined in: [yajsapi/executor/index.ts:124](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L124)
 
 ___
 
@@ -176,7 +174,7 @@ ___
 
 • `Private` **\_stream\_output**: *any*
 
-Defined in: [yajsapi/executor/index.ts:118](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L118)
+Defined in: [yajsapi/executor/index.ts:123](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L123)
 
 ___
 
@@ -184,7 +182,7 @@ ___
 
 • `Private` **\_subnet**: *any*
 
-Defined in: [yajsapi/executor/index.ts:115](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L115)
+Defined in: [yajsapi/executor/index.ts:120](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L120)
 
 ___
 
@@ -192,7 +190,7 @@ ___
 
 • `Private` **\_task\_package**: *any*
 
-Defined in: [yajsapi/executor/index.ts:122](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L122)
+Defined in: [yajsapi/executor/index.ts:127](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L127)
 
 ___
 
@@ -200,7 +198,7 @@ ___
 
 • `Private` **\_worker\_cancellation\_token**: [*default*](utils_cancellationtoken.default.md)
 
-Defined in: [yajsapi/executor/index.ts:134](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L134)
+Defined in: [yajsapi/executor/index.ts:139](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L139)
 
 ___
 
@@ -208,25 +206,9 @@ ___
 
 • `Private` **\_wrapped\_consumer**: *any*
 
-Defined in: [yajsapi/executor/index.ts:132](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L132)
+Defined in: [yajsapi/executor/index.ts:137](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L137)
 
 ## Methods
-
-### \_allocation\_for\_invoice
-
-▸ **_allocation_for_invoice**(`invoice`: [*Invoice*](rest_payment.invoice.md)): [*Allocation*](rest_payment.allocation.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`invoice` | [*Invoice*](rest_payment.invoice.md) |
-
-**Returns:** [*Allocation*](rest_payment.allocation.md)
-
-Defined in: [yajsapi/executor/index.ts:788](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L788)
-
-___
 
 ### \_create\_allocations
 
@@ -234,7 +216,23 @@ ___
 
 **Returns:** *Promise*<MarketDecoration\>
 
-Defined in: [yajsapi/executor/index.ts:737](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L737)
+Defined in: [yajsapi/executor/index.ts:811](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L811)
+
+___
+
+### \_get\_allocation
+
+▸ **_get_allocation**(`item`: [*Invoice*](rest_payment.invoice.md) \| [*DebitNote*](rest_payment.debitnote.md)): [*Allocation*](rest_payment.allocation.md)
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`item` | [*Invoice*](rest_payment.invoice.md) \| [*DebitNote*](rest_payment.debitnote.md) |
+
+**Returns:** [*Allocation*](rest_payment.allocation.md)
+
+Defined in: [yajsapi/executor/index.ts:862](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L862)
 
 ___
 
@@ -250,7 +248,7 @@ Name | Type |
 
 **Returns:** *string*[]
 
-Defined in: [yajsapi/executor/index.ts:769](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L769)
+Defined in: [yajsapi/executor/index.ts:843](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L843)
 
 ___
 
@@ -260,7 +258,7 @@ ___
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/executor/index.ts:820](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L820)
+Defined in: [yajsapi/executor/index.ts:894](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L894)
 
 ___
 
@@ -270,7 +268,7 @@ ___
 
 **Returns:** *Promise*<[*Executor*](executor.executor-1.md)\>
 
-Defined in: [yajsapi/executor/index.ts:802](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L802)
+Defined in: [yajsapi/executor/index.ts:876](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L876)
 
 ___
 
@@ -291,4 +289,4 @@ Name | Type | Description |
 
 yields computation progress events
 
-Defined in: [yajsapi/executor/index.ts:204](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L204)
+Defined in: [yajsapi/executor/index.ts:213](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L213)

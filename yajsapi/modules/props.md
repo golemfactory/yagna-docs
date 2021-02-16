@@ -37,7 +37,7 @@ Re-exports: [Model](../classes/props_base.model.md)
 
 • `Const` **ActivityKeys**: *any*
 
-Defined in: [yajsapi/props/index.ts:63](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/index.ts#L63)
+Defined in: [yajsapi/props/index.ts:63](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/index.ts#L63)
 
 ___
 
@@ -45,4 +45,4 @@ ___
 
 • `Const` **NodeInfoKeys**: *any*
 
-Defined in: [yajsapi/props/index.ts:21](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/index.ts#L21)
+Defined in: [yajsapi/props/index.ts:21](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/index.ts#L21)

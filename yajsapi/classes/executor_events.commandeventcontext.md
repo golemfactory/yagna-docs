@@ -38,7 +38,7 @@ Name | Type |
 
 **Returns:** [*CommandEventContext*](executor_events.commandeventcontext.md)
 
-Defined in: [yajsapi/executor/events.ts:320](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L320)
+Defined in: [yajsapi/executor/events.ts:335](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L335)
 
 ## Properties
 
@@ -46,7 +46,7 @@ Defined in: [yajsapi/executor/events.ts:320](https://github.com/golemfactory/yaj
 
 • **evt**: [*CommandEvent*](executor_events.commandevent.md)
 
-Defined in: [yajsapi/executor/events.ts:320](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L320)
+Defined in: [yajsapi/executor/events.ts:335](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L335)
 
 ## Methods
 
@@ -62,7 +62,7 @@ Name | Type |
 
 **Returns:** *boolean*
 
-Defined in: [yajsapi/executor/events.ts:369](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L369)
+Defined in: [yajsapi/executor/events.ts:389](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L389)
 
 ___
 
@@ -80,7 +80,7 @@ Name | Type |
 
 **Returns:** [*CommandEvent*](executor_events.commandevent.md)
 
-Defined in: [yajsapi/executor/events.ts:379](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L379)
+Defined in: [yajsapi/executor/events.ts:399](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L399)
 
 ___
 
@@ -96,4 +96,4 @@ Name | Type |
 
 **Returns:** [*CommandEventContext*](executor_events.commandeventcontext.md)
 
-Defined in: [yajsapi/executor/events.ts:325](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L325)
+Defined in: [yajsapi/executor/events.ts:340](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L340)

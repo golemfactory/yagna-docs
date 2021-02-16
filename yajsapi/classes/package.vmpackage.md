@@ -36,15 +36,13 @@
 
 #### Parameters:
 
-Name | Type |
------- | ------ |
-`__namedParameters` | *Object* |
+• **__namedParameters**: *Object*
 
 **Returns:** [*VmPackage*](package.vmpackage.md)
 
 Inherited from: [Package](package.package-1.md)
 
-Defined in: [yajsapi/package/index.ts:43](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L43)
+Defined in: [yajsapi/package/index.ts:47](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L47)
 
 ## Properties
 
@@ -52,7 +50,7 @@ Defined in: [yajsapi/package/index.ts:43](https://github.com/golemfactory/yajsap
 
 • **constraints**: [*Constraints*](package.constraints.md)
 
-Defined in: [yajsapi/package/index.ts:42](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L42)
+Defined in: [yajsapi/package/index.ts:46](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L46)
 
 ___
 
@@ -60,7 +58,7 @@ ___
 
 • **image\_hash**: *string*
 
-Defined in: [yajsapi/package/index.ts:41](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L41)
+Defined in: [yajsapi/package/index.ts:45](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L45)
 
 ___
 
@@ -68,7 +66,7 @@ ___
 
 • **repo\_url**: *string*
 
-Defined in: [yajsapi/package/index.ts:40](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L40)
+Defined in: [yajsapi/package/index.ts:44](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L44)
 
 ___
 
@@ -76,7 +74,7 @@ ___
 
 • **secure**: *boolean*
 
-Defined in: [yajsapi/package/index.ts:43](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L43)
+Defined in: [yajsapi/package/index.ts:47](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L47)
 
 ## Methods
 
@@ -94,7 +92,7 @@ Name | Type |
 
 Overrides: [Package](package.package-1.md)
 
-Defined in: [yajsapi/package/index.ts:64](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L64)
+Defined in: [yajsapi/package/index.ts:68](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L68)
 
 ___
 
@@ -106,4 +104,4 @@ ___
 
 Overrides: [Package](package.package-1.md)
 
-Defined in: [yajsapi/package/index.ts:53](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/index.ts#L53)
+Defined in: [yajsapi/package/index.ts:57](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L57)

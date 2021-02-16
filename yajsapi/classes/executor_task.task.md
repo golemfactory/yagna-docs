@@ -78,7 +78,7 @@ Name | Type | Description |
 
 **Returns:** [*Task*](executor_task.task.md)<TaskData, TaskResult\>
 
-Defined in: [yajsapi/executor/task.ts:38](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L38)
+Defined in: [yajsapi/executor/task.ts:38](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L38)
 
 ## Properties
 
@@ -86,7 +86,7 @@ Defined in: [yajsapi/executor/task.ts:38](https://github.com/golemfactory/yajsap
 
 • `Private` **\_callbacks**: *Set*<*null* \| Function\>
 
-Defined in: [yajsapi/executor/task.ts:31](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L31)
+Defined in: [yajsapi/executor/task.ts:31](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L31)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 • `Private` **\_data**: *any*
 
-Defined in: [yajsapi/executor/task.ts:37](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L37)
+Defined in: [yajsapi/executor/task.ts:37](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L37)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 • `Private` **\_emit\_event**: *any*
 
-Defined in: [yajsapi/executor/task.ts:30](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L30)
+Defined in: [yajsapi/executor/task.ts:30](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L30)
 
 ___
 
@@ -110,7 +110,7 @@ ___
 
 • `Private` **\_finished**: *null* \| *number*
 
-Defined in: [yajsapi/executor/task.ts:29](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L29)
+Defined in: [yajsapi/executor/task.ts:29](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L29)
 
 ___
 
@@ -118,7 +118,7 @@ ___
 
 • `Private` `Optional` **\_handle**: *undefined* \| [[*Handle*](executor_smartq.handle.md)<[*Task*](executor_task.task.md)<TaskData, TaskResult\>\>, [*SmartQueue*](executor_smartq.smartqueue.md)<[*Task*](executor_task.task.md)<TaskData, TaskResult\>\>]
 
-Defined in: [yajsapi/executor/task.ts:32](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L32)
+Defined in: [yajsapi/executor/task.ts:32](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L32)
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 • `Private` `Optional` **\_result**: *undefined* \| *null* \| TaskResult
 
-Defined in: [yajsapi/executor/task.ts:36](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L36)
+Defined in: [yajsapi/executor/task.ts:36](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L36)
 
 ___
 
@@ -134,7 +134,7 @@ ___
 
 • `Private` **\_started**: *null* \| *number*
 
-Defined in: [yajsapi/executor/task.ts:28](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L28)
+Defined in: [yajsapi/executor/task.ts:28](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L28)
 
 ___
 
@@ -142,7 +142,7 @@ ___
 
 • `Private` **\_status**: [*TaskStatus*](../enums/executor_task.taskstatus.md)
 
-Defined in: [yajsapi/executor/task.ts:38](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L38)
+Defined in: [yajsapi/executor/task.ts:38](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L38)
 
 ___
 
@@ -150,7 +150,7 @@ ___
 
 • **id**: *number*= 0
 
-Defined in: [yajsapi/executor/task.ts:27](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L27)
+Defined in: [yajsapi/executor/task.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L27)
 
 ___
 
@@ -158,17 +158,17 @@ ___
 
 ▪ `Static` **count**: *number*= 0
 
-Defined in: [yajsapi/executor/task.ts:26](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L26)
+Defined in: [yajsapi/executor/task.ts:26](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L26)
 
 ## Accessors
 
 ### counter
 
-• **counter**(): *number*
+• `Static`**counter**(): *number*
 
 **Returns:** *number*
 
-Defined in: [yajsapi/executor/task.ts:150](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L150)
+Defined in: [yajsapi/executor/task.ts:150](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L150)
 
 ## Methods
 
@@ -184,7 +184,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/task.ts:59](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L59)
+Defined in: [yajsapi/executor/task.ts:59](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L59)
 
 ___
 
@@ -200,7 +200,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/task.ts:63](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L63)
+Defined in: [yajsapi/executor/task.ts:63](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L63)
 
 ___
 
@@ -216,7 +216,7 @@ Name | Type | Default value |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/task.ts:70](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L70)
+Defined in: [yajsapi/executor/task.ts:70](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L70)
 
 ___
 
@@ -236,7 +236,7 @@ Name | Type | Default value | Description |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/task.ts:120](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L120)
+Defined in: [yajsapi/executor/task.ts:120](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L120)
 
 ___
 
@@ -246,7 +246,7 @@ ___
 
 **Returns:** TaskData
 
-Defined in: [yajsapi/executor/task.ts:95](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L95)
+Defined in: [yajsapi/executor/task.ts:95](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L95)
 
 ___
 
@@ -267,7 +267,7 @@ Name | Type | Default value | Description |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/executor/task.ts:139](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L139)
+Defined in: [yajsapi/executor/task.ts:139](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L139)
 
 ___
 
@@ -277,7 +277,7 @@ ___
 
 **Returns:** *undefined* \| *null* \| TaskResult
 
-Defined in: [yajsapi/executor/task.ts:99](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L99)
+Defined in: [yajsapi/executor/task.ts:99](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L99)
 
 ___
 
@@ -287,7 +287,7 @@ ___
 
 **Returns:** *null* \| *number*
 
-Defined in: [yajsapi/executor/task.ts:103](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L103)
+Defined in: [yajsapi/executor/task.ts:103](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L103)
 
 ___
 
@@ -297,7 +297,7 @@ ___
 
 **Returns:** [*TaskStatus*](../enums/executor_task.taskstatus.md)
 
-Defined in: [yajsapi/executor/task.ts:91](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L91)
+Defined in: [yajsapi/executor/task.ts:91](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L91)
 
 ___
 
@@ -315,4 +315,4 @@ Name | Type |
 
 **Returns:** [*Task*](executor_task.task.md)<*TaskData*, *TaskResult*\>
 
-Defined in: [yajsapi/executor/task.ts:80](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/task.ts#L80)
+Defined in: [yajsapi/executor/task.ts:80](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L80)

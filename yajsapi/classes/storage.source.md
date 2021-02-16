@@ -35,7 +35,7 @@
 
 **Returns:** *Promise*<*number*\>
 
-Defined in: [yajsapi/storage/index.ts:31](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L31)
+Defined in: [yajsapi/storage/index.ts:31](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L31)
 
 ___
 
@@ -45,4 +45,4 @@ ___
 
 **Returns:** *string*
 
-Defined in: [yajsapi/storage/index.ts:27](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L27)
+Defined in: [yajsapi/storage/index.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L27)

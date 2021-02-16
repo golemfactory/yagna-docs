@@ -40,7 +40,7 @@
 
 Inherited from: [Model](props_base.model.md)
 
-Defined in: [yajsapi/props/base.ts:104](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L104)
+Defined in: [yajsapi/props/base.ts:108](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L108)
 
 ## Properties
 
@@ -48,7 +48,7 @@ Defined in: [yajsapi/props/base.ts:104](https://github.com/golemfactory/yajsapi/
 
 • **price\_model**: [*Field*](props_base.field.md)
 
-Defined in: [yajsapi/props/com.ts:27](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/com.ts#L27)
+Defined in: [yajsapi/props/com.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L27)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 • **scheme**: [*Field*](props_base.field.md)
 
-Defined in: [yajsapi/props/com.ts:26](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/com.ts#L26)
+Defined in: [yajsapi/props/com.ts:26](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L26)
 
 ## Methods
 
@@ -75,7 +75,7 @@ Name | Type |
 
 Inherited from: [Model](props_base.model.md)
 
-Defined in: [yajsapi/props/base.ts:107](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L107)
+Defined in: [yajsapi/props/base.ts:111](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L111)
 
 ___
 
@@ -93,7 +93,7 @@ Name | Type |
 
 Inherited from: [Model](props_base.model.md)
 
-Defined in: [yajsapi/props/base.ts:109](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L109)
+Defined in: [yajsapi/props/base.ts:113](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L113)
 
 ___
 
@@ -120,7 +120,7 @@ Name | Type | Description |
 
 Inherited from: [Model](props_base.model.md)
 
-Defined in: [yajsapi/props/base.ts:133](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L133)
+Defined in: [yajsapi/props/base.ts:137](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L137)
 
 ___
 
@@ -148,4 +148,4 @@ a mapping between the model's field names and the property keys
 
 Inherited from: [Model](props_base.model.md)
 
-Defined in: [yajsapi/props/base.ts:178](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L178)
+Defined in: [yajsapi/props/base.ts:182](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L182)

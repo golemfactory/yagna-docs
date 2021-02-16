@@ -20,16 +20,16 @@
 
 - [message](executor.nopaymentaccounterror.md#message)
 - [name](executor.nopaymentaccounterror.md#name)
-- [prepareStackTrace](executor.nopaymentaccounterror.md#preparestacktrace)
 - [required\_driver](executor.nopaymentaccounterror.md#required_driver)
 - [required\_network](executor.nopaymentaccounterror.md#required_network)
 - [stack](executor.nopaymentaccounterror.md#stack)
+- [prepareStackTrace](executor.nopaymentaccounterror.md#preparestacktrace)
 - [stackTraceLimit](executor.nopaymentaccounterror.md#stacktracelimit)
 
 ### Methods
 
-- [captureStackTrace](executor.nopaymentaccounterror.md#capturestacktrace)
 - [toString](executor.nopaymentaccounterror.md#tostring)
+- [captureStackTrace](executor.nopaymentaccounterror.md#capturestacktrace)
 
 ## Constructors
 
@@ -46,7 +46,7 @@ Name | Type |
 
 **Returns:** [*NoPaymentAccountError*](executor.nopaymentaccounterror.md)
 
-Defined in: [yajsapi/executor/index.ts:58](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L58)
+Defined in: [yajsapi/executor/index.ts:63](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L63)
 
 ## Properties
 
@@ -66,23 +66,11 @@ Defined in: node_modules/typescript/lib/lib.es5.d.ts:973
 
 ___
 
-### prepareStackTrace
-
-• `Optional` **prepareStackTrace**: *undefined* \| (`err`: Error, `stackTraces`: CallSite[]) => *any*
-
-Optional override for formatting stack traces
-
-**`see`** https://github.com/v8/v8/wiki/Stack%20Trace%20API#customizing-stack-traces
-
-Defined in: node_modules/@types/node/globals.d.ts:11
-
-___
-
 ### required\_driver
 
 • **required\_driver**: *string*
 
-Defined in: [yajsapi/executor/index.ts:56](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L56)
+Defined in: [yajsapi/executor/index.ts:61](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L61)
 
 ___
 
@@ -90,7 +78,7 @@ ___
 
 • **required\_network**: *string*
 
-Defined in: [yajsapi/executor/index.ts:58](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L58)
+Defined in: [yajsapi/executor/index.ts:63](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L63)
 
 ___
 
@@ -102,17 +90,39 @@ Defined in: node_modules/typescript/lib/lib.es5.d.ts:975
 
 ___
 
+### prepareStackTrace
+
+▪ `Optional` `Static` **prepareStackTrace**: *undefined* \| (`err`: Error, `stackTraces`: CallSite[]) => *any*
+
+Optional override for formatting stack traces
+
+**`see`** https://github.com/v8/v8/wiki/Stack%20Trace%20API#customizing-stack-traces
+
+Defined in: node_modules/@types/node/globals.d.ts:11
+
+___
+
 ### stackTraceLimit
 
-• **stackTraceLimit**: *number*
+▪ `Static` **stackTraceLimit**: *number*
 
 Defined in: node_modules/@types/node/globals.d.ts:13
 
 ## Methods
 
+### toString
+
+▸ **toString**(): *string*
+
+**Returns:** *string*
+
+Defined in: [yajsapi/executor/index.ts:71](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L71)
+
+___
+
 ### captureStackTrace
 
-▸ **captureStackTrace**(`targetObject`: *object*, `constructorOpt?`: Function): *void*
+▸ `Static`**captureStackTrace**(`targetObject`: *object*, `constructorOpt?`: Function): *void*
 
 Create .stack property on a target object
 
@@ -126,13 +136,3 @@ Name | Type |
 **Returns:** *void*
 
 Defined in: node_modules/@types/node/globals.d.ts:4
-
-___
-
-### toString
-
-▸ **toString**(): *string*
-
-**Returns:** *string*
-
-Defined in: [yajsapi/executor/index.ts:66](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L66)

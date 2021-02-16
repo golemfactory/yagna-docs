@@ -6,7 +6,7 @@
 
 ### Classes
 
-- [CryptoCtx FIX2](../classes/crypto.cryptoctx.md)
+- [CryptoCtx](../classes/crypto.cryptoctx.md)
 - [PrivateKey](../classes/crypto.privatekey.md)
 - [PublicKey](../classes/crypto.publickey.md)
 
@@ -28,4 +28,4 @@ Name | Type |
 
 **Returns:** *string*
 
-Defined in: [yajsapi/crypto.ts:5](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/crypto.ts#L5)
+Defined in: [yajsapi/crypto.ts:5](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L5)

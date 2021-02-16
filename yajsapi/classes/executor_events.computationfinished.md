@@ -30,7 +30,7 @@
 
 Inherited from: [YaEvent](executor_events.yaevent.md)
 
-Defined in: [yajsapi/executor/events.ts:9](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L9)
+Defined in: [yajsapi/executor/events.ts:9](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L9)
 
 ## Methods
 
@@ -46,4 +46,4 @@ The extracted exception information and a copy of the event without the exceptio
 
 Inherited from: [YaEvent](executor_events.yaevent.md)
 
-Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L17)
+Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L17)

@@ -44,7 +44,7 @@
 
 • **\_api**: *RequestorApi*
 
-Defined in: [yajsapi/rest/payment.ts:51](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L51)
+Defined in: [yajsapi/rest/payment.ts:89](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L89)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 • **amount**: *number*
 
-Defined in: [yajsapi/rest/payment.ts:65](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L65)
+Defined in: [yajsapi/rest/payment.ts:103](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L103)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 • `Optional` **expires**: *undefined* \| Date
 
-Defined in: [yajsapi/rest/payment.ts:74](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L74)
+Defined in: [yajsapi/rest/payment.ts:112](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L112)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 • **id**: *string*
 
-Defined in: [yajsapi/rest/payment.ts:62](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L62)
+Defined in: [yajsapi/rest/payment.ts:100](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L100)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • `Optional` **payment\_address**: *undefined* \| *string*
 
-Defined in: [yajsapi/rest/payment.ts:71](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L71)
+Defined in: [yajsapi/rest/payment.ts:109](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L109)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 • `Optional` **payment\_platform**: *undefined* \| *string*
 
-Defined in: [yajsapi/rest/payment.ts:68](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L68)
+Defined in: [yajsapi/rest/payment.ts:106](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L106)
 
 ## Methods
 
@@ -94,7 +94,7 @@ Defined in: [yajsapi/rest/payment.ts:68](https://github.com/golemfactory/yajsapi
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/rest/payment.ts:94](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L94)
+Defined in: [yajsapi/rest/payment.ts:132](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L132)
 
 ___
 
@@ -104,4 +104,4 @@ ___
 
 **Returns:** *Promise*<*AllocationDetails*\>
 
-Defined in: [yajsapi/rest/payment.ts:77](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/payment.ts#L77)
+Defined in: [yajsapi/rest/payment.ts:115](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L115)

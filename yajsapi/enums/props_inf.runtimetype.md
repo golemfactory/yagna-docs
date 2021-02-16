@@ -23,7 +23,7 @@
 
 • **EMSCRIPTEN**: = "emscripten"
 
-Defined in: [yajsapi/props/inf.ts:12](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L12)
+Defined in: [yajsapi/props/inf.ts:12](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L12)
 
 ___
 
@@ -31,7 +31,7 @@ ___
 
 • **SGX**: = "sgx"
 
-Defined in: [yajsapi/props/inf.ts:14](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L14)
+Defined in: [yajsapi/props/inf.ts:14](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L14)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 • **SGX\_JS**: = "sgx-js"
 
-Defined in: [yajsapi/props/inf.ts:15](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L15)
+Defined in: [yajsapi/props/inf.ts:15](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L15)
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 • **SGX\_WASI**: = "sgx-wasi"
 
-Defined in: [yajsapi/props/inf.ts:17](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L17)
+Defined in: [yajsapi/props/inf.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L17)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 • **SGX\_WASM**: = "sgx-wasm"
 
-Defined in: [yajsapi/props/inf.ts:16](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L16)
+Defined in: [yajsapi/props/inf.ts:16](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L16)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 • **UNKNOWN**: = ""
 
-Defined in: [yajsapi/props/inf.ts:10](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L10)
+Defined in: [yajsapi/props/inf.ts:10](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L10)
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 • **VM**: = "vm"
 
-Defined in: [yajsapi/props/inf.ts:13](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L13)
+Defined in: [yajsapi/props/inf.ts:13](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L13)
 
 ___
 
@@ -79,4 +79,4 @@ ___
 
 • **WASMTIME**: = "wasmtime"
 
-Defined in: [yajsapi/props/inf.ts:11](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L11)
+Defined in: [yajsapi/props/inf.ts:11](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L11)

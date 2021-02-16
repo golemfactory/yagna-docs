@@ -17,7 +17,7 @@
 
 • **GVMKIT\_SQUASH**: = "gvmkit-squash"
 
-Defined in: [yajsapi/props/inf.ts:65](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L65)
+Defined in: [yajsapi/props/inf.ts:65](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L65)
 
 ___
 
@@ -25,4 +25,4 @@ ___
 
 • **UNKNOWN**: = ""
 
-Defined in: [yajsapi/props/inf.ts:64](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L64)
+Defined in: [yajsapi/props/inf.ts:64](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L64)

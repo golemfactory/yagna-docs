@@ -42,7 +42,7 @@ Name | Type |
 
 **Returns:** [*ActivityService*](rest_activity.activityservice.md)
 
-Defined in: [yajsapi/rest/activity.ts:28](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L28)
+Defined in: [yajsapi/rest/activity.ts:29](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L29)
 
 ## Properties
 
@@ -50,7 +50,7 @@ Defined in: [yajsapi/rest/activity.ts:28](https://github.com/golemfactory/yajsap
 
 • `Private` **\_api**: *RequestorControlApi*
 
-Defined in: [yajsapi/rest/activity.ts:27](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L27)
+Defined in: [yajsapi/rest/activity.ts:28](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L28)
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 • `Private` **\_state**: *RequestorStateApi*
 
-Defined in: [yajsapi/rest/activity.ts:28](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L28)
+Defined in: [yajsapi/rest/activity.ts:29](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L29)
 
 ## Methods
 
@@ -76,7 +76,7 @@ Name | Type |
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/rest/activity.ts:108](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L108)
+Defined in: [yajsapi/rest/activity.ts:109](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L109)
 
 ___
 
@@ -92,7 +92,7 @@ Name | Type |
 
 **Returns:** *Promise*<*Activity*\>
 
-Defined in: [yajsapi/rest/activity.ts:58](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L58)
+Defined in: [yajsapi/rest/activity.ts:59](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L59)
 
 ___
 
@@ -108,7 +108,7 @@ Name | Type |
 
 **Returns:** *Promise*<*SecureActivity*\>
 
-Defined in: [yajsapi/rest/activity.ts:65](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L65)
+Defined in: [yajsapi/rest/activity.ts:66](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L66)
 
 ___
 
@@ -129,4 +129,4 @@ Name | Type | Default value | Description |
 
 Activity
 
-Defined in: [yajsapi/rest/activity.ts:42](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/activity.ts#L42)
+Defined in: [yajsapi/rest/activity.ts:43](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L43)

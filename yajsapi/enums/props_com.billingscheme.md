@@ -16,4 +16,4 @@
 
 • **PAYU**: = "payu"
 
-Defined in: [yajsapi/props/com.ts:10](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/com.ts#L10)
+Defined in: [yajsapi/props/com.ts:10](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L10)

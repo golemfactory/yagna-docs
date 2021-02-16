@@ -36,7 +36,7 @@ Name | Type |
 
 **Returns:** [*\_ExecutorConfig*](executor._executorconfig.md)
 
-Defined in: [yajsapi/executor/index.ts:75](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L75)
+Defined in: [yajsapi/executor/index.ts:80](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L80)
 
 ## Properties
 
@@ -44,7 +44,7 @@ Defined in: [yajsapi/executor/index.ts:75](https://github.com/golemfactory/yajsa
 
 • **get\_offers\_timeout**: *number*
 
-Defined in: [yajsapi/executor/index.ts:74](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L74)
+Defined in: [yajsapi/executor/index.ts:79](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L79)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 • **max\_workers**: Number= 5
 
-Defined in: [yajsapi/executor/index.ts:72](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L72)
+Defined in: [yajsapi/executor/index.ts:77](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L77)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 • **timeout**: *number*
 
-Defined in: [yajsapi/executor/index.ts:73](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L73)
+Defined in: [yajsapi/executor/index.ts:78](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L78)
 
 ___
 
@@ -68,4 +68,4 @@ ___
 
 • **traceback**: *boolean*= false
 
-Defined in: [yajsapi/executor/index.ts:75](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/index.ts#L75)
+Defined in: [yajsapi/executor/index.ts:80](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L80)

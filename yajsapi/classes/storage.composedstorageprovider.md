@@ -45,7 +45,7 @@ Name | Type |
 
 **Returns:** [*ComposedStorageProvider*](storage.composedstorageprovider.md)
 
-Defined in: [yajsapi/storage/index.ts:123](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L123)
+Defined in: [yajsapi/storage/index.ts:123](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L123)
 
 ## Properties
 
@@ -53,7 +53,7 @@ Defined in: [yajsapi/storage/index.ts:123](https://github.com/golemfactory/yajsa
 
 • `Private` **\_input**: *any*
 
-Defined in: [yajsapi/storage/index.ts:122](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L122)
+Defined in: [yajsapi/storage/index.ts:122](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L122)
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 • `Private` **\_output**: *any*
 
-Defined in: [yajsapi/storage/index.ts:123](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L123)
+Defined in: [yajsapi/storage/index.ts:123](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L123)
 
 ## Methods
 
@@ -77,7 +77,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<[*Destination*](storage.destination.md)\>
 
-Defined in: [yajsapi/storage/index.ts:147](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L147)
+Defined in: [yajsapi/storage/index.ts:147](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L147)
 
 ___
 
@@ -93,7 +93,7 @@ Name | Type |
 
 **Returns:** *Promise*<[*Source*](storage.source.md)\>
 
-Defined in: [yajsapi/storage/index.ts:132](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L132)
+Defined in: [yajsapi/storage/index.ts:132](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L132)
 
 ___
 
@@ -109,7 +109,7 @@ Name | Type |
 
 **Returns:** *Promise*<[*Source*](storage.source.md)\>
 
-Defined in: [yajsapi/storage/index.ts:143](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L143)
+Defined in: [yajsapi/storage/index.ts:143](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L143)
 
 ___
 
@@ -126,4 +126,4 @@ Name | Type |
 
 **Returns:** *Promise*<[*Source*](storage.source.md)\>
 
-Defined in: [yajsapi/storage/index.ts:136](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/storage/index.ts#L136)
+Defined in: [yajsapi/storage/index.ts:136](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L136)

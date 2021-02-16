@@ -19,7 +19,7 @@
 
 • **GRAPHENE**: = "sgx"
 
-Defined in: [yajsapi/package/sgx.ts:76](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/sgx.ts#L76)
+Defined in: [yajsapi/package/sgx.ts:76](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/sgx.ts#L76)
 
 ___
 
@@ -27,7 +27,7 @@ ___
 
 • **JS**: = "sgx-js"
 
-Defined in: [yajsapi/package/sgx.ts:77](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/sgx.ts#L77)
+Defined in: [yajsapi/package/sgx.ts:77](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/sgx.ts#L77)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 • **WASI**: = "sgx-wasi"
 
-Defined in: [yajsapi/package/sgx.ts:79](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/sgx.ts#L79)
+Defined in: [yajsapi/package/sgx.ts:79](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/sgx.ts#L79)
 
 ___
 
@@ -43,4 +43,4 @@ ___
 
 • **WASM**: = "sgx-wasm"
 
-Defined in: [yajsapi/package/sgx.ts:78](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/package/sgx.ts#L78)
+Defined in: [yajsapi/package/sgx.ts:78](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/sgx.ts#L78)

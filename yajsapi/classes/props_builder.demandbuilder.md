@@ -63,7 +63,7 @@ console.log(builder);
 
 **Returns:** [*DemandBuilder*](props_builder.demandbuilder.md)
 
-Defined in: [yajsapi/props/builder.ts:35](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/builder.ts#L35)
+Defined in: [yajsapi/props/builder.ts:35](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L35)
 
 ## Properties
 
@@ -71,7 +71,7 @@ Defined in: [yajsapi/props/builder.ts:35](https://github.com/golemfactory/yajsap
 
 • **\_constraints**: *string*[]
 
-Defined in: [yajsapi/props/builder.ts:35](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/builder.ts#L35)
+Defined in: [yajsapi/props/builder.ts:35](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L35)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 • **\_properties**: Object
 
-Defined in: [yajsapi/props/builder.ts:34](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/builder.ts#L34)
+Defined in: [yajsapi/props/builder.ts:34](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L34)
 
 ## Methods
 
@@ -95,7 +95,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/props/builder.ts:66](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/builder.ts#L66)
+Defined in: [yajsapi/props/builder.ts:66](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L66)
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 **Returns:** *string*
 
-Defined in: [yajsapi/props/builder.ts:47](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/builder.ts#L47)
+Defined in: [yajsapi/props/builder.ts:47](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L47)
 
 ___
 
@@ -121,7 +121,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/props/builder.ts:61](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/builder.ts#L61)
+Defined in: [yajsapi/props/builder.ts:61](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L61)
 
 ___
 
@@ -131,7 +131,7 @@ ___
 
 **Returns:** *object*
 
-Defined in: [yajsapi/props/builder.ts:42](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/builder.ts#L42)
+Defined in: [yajsapi/props/builder.ts:42](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L42)
 
 ___
 
@@ -147,4 +147,4 @@ Name | Type |
 
 **Returns:** *Promise*<[*Subscription*](rest_market.subscription.md)\>
 
-Defined in: [yajsapi/props/builder.ts:90](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/builder.ts#L90)
+Defined in: [yajsapi/props/builder.ts:90](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L90)

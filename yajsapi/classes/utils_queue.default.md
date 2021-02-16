@@ -22,11 +22,12 @@ Name |
 
 ### Properties
 
-- [\_cancellationToken](utils_queue.default.md#_cancellationtoken)
+- [\_\_new\_items](utils_queue.default.md#__new_items)
 - [\_tasks](utils_queue.default.md#_tasks)
 
 ### Methods
 
+- [close](utils_queue.default.md#close)
 - [empty](utils_queue.default.md#empty)
 - [get](utils_queue.default.md#get)
 - [put](utils_queue.default.md#put)
@@ -35,7 +36,7 @@ Name |
 
 ### constructor
 
-\+ **new default**<T\>(`list?`: *never*[], `cancellationToken`: *any*): [*default*](utils_queue.default.md)<T\>
+\+ **new default**<T\>(`list?`: *never*[]): [*default*](utils_queue.default.md)<T\>
 
 #### Type parameters:
 
@@ -48,19 +49,18 @@ Name |
 Name | Type | Default value |
 ------ | ------ | ------ |
 `list` | *never*[] | ... |
-`cancellationToken` | *any* | - |
 
 **Returns:** [*default*](utils_queue.default.md)<T\>
 
-Defined in: [yajsapi/utils/queue.ts:5](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/queue.ts#L5)
+Defined in: [yajsapi/utils/queue.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L7)
 
 ## Properties
 
-### \_cancellationToken
+### \_\_new\_items
 
-• `Private` **\_cancellationToken**: *any*
+• `Private` **\_\_new\_items**: *any*
 
-Defined in: [yajsapi/utils/queue.ts:5](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/queue.ts#L5)
+Defined in: [yajsapi/utils/queue.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L7)
 
 ___
 
@@ -68,9 +68,19 @@ ___
 
 • `Private` **\_tasks**: *any*
 
-Defined in: [yajsapi/utils/queue.ts:4](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/queue.ts#L4)
+Defined in: [yajsapi/utils/queue.ts:6](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L6)
 
 ## Methods
+
+### close
+
+▸ **close**(): *void*
+
+**Returns:** *void*
+
+Defined in: [yajsapi/utils/queue.ts:42](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L42)
+
+___
 
 ### empty
 
@@ -78,7 +88,7 @@ Defined in: [yajsapi/utils/queue.ts:4](https://github.com/golemfactory/yajsapi/b
 
 **Returns:** *boolean*
 
-Defined in: [yajsapi/utils/queue.ts:33](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/queue.ts#L33)
+Defined in: [yajsapi/utils/queue.ts:38](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L38)
 
 ___
 
@@ -88,7 +98,7 @@ ___
 
 **Returns:** *Promise*<T\>
 
-Defined in: [yajsapi/utils/queue.ts:20](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/queue.ts#L20)
+Defined in: [yajsapi/utils/queue.ts:25](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L25)
 
 ___
 
@@ -104,4 +114,4 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/utils/queue.ts:16](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/queue.ts#L16)
+Defined in: [yajsapi/utils/queue.ts:19](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L19)

@@ -18,6 +18,7 @@
 - [getAllProperties](utils.md#getallproperties)
 - [logUtils](utils.md#logutils)
 - [logger](utils.md#logger)
+- [promisify](utils.md#promisify)
 - [range](utils.md#range)
 - [sleep](utils.md#sleep)
 
@@ -92,6 +93,12 @@ ___
 ### logger
 
 Renames and exports: [default](utils_log.md#default)
+
+___
+
+### promisify
+
+Renames and exports: [default](utils_promisify.md#default)
 
 ___
 

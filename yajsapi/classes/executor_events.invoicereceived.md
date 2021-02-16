@@ -34,13 +34,11 @@
 
 #### Parameters:
 
-Name | Type |
------- | ------ |
-`__namedParameters` | *Object* |
+• **__namedParameters**: *Object*
 
 **Returns:** [*InvoiceReceived*](executor_events.invoicereceived.md)
 
-Defined in: [yajsapi/executor/events.ts:194](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L194)
+Defined in: [yajsapi/executor/events.ts:209](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L209)
 
 ## Properties
 
@@ -48,7 +46,7 @@ Defined in: [yajsapi/executor/events.ts:194](https://github.com/golemfactory/yaj
 
 • `Optional` **agr\_id**: *undefined* \| *string*
 
-Defined in: [yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L123)
+Defined in: [yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L123)
 
 ___
 
@@ -56,7 +54,7 @@ ___
 
 • `Optional` **amount**: *undefined* \| *string*
 
-Defined in: [yajsapi/executor/events.ts:194](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L194)
+Defined in: [yajsapi/executor/events.ts:209](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L209)
 
 ___
 
@@ -64,7 +62,7 @@ ___
 
 • `Optional` **inv\_id**: *undefined* \| *string*
 
-Defined in: [yajsapi/executor/events.ts:193](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L193)
+Defined in: [yajsapi/executor/events.ts:208](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L208)
 
 ## Methods
 
@@ -78,4 +76,4 @@ Extract exception information from this event.
 
 The extracted exception information and a copy of the event without the exception information.
 
-Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L17)
+Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L17)

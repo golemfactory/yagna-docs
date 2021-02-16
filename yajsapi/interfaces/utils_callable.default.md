@@ -27,6 +27,4 @@ Name | Type |
 
 **Returns:** R
 
-Defined in: [yajsapi/utils/callable.ts:1](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/callable.ts#L1)
-
-## Table of contents
+Defined in: [yajsapi/utils/callable.ts:1](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/callable.ts#L1)

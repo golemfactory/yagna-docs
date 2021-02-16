@@ -42,7 +42,7 @@
 
 • **cores**: [*Field*](props_base.field.md)
 
-Defined in: [yajsapi/props/inf.ts:21](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L21)
+Defined in: [yajsapi/props/inf.ts:21](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L21)
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 • **mem**: [*Field*](props_base.field.md)
 
-Defined in: [yajsapi/props/inf.ts:22](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L22)
+Defined in: [yajsapi/props/inf.ts:22](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L22)
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 • **runtime**: [*Field*](props_base.field.md)
 
-Defined in: [yajsapi/props/inf.ts:23](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L23)
+Defined in: [yajsapi/props/inf.ts:23](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L23)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 • `Optional` **storage**: *undefined* \| [*Field*](props_base.field.md)
 
-Defined in: [yajsapi/props/inf.ts:25](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L25)
+Defined in: [yajsapi/props/inf.ts:25](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L25)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 • **transfers**: [*Field*](props_base.field.md)
 
-Defined in: [yajsapi/props/inf.ts:26](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L26)
+Defined in: [yajsapi/props/inf.ts:26](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L26)
 
 ## Methods
 
@@ -91,4 +91,4 @@ Name | Type |
 
 **Returns:** *object*
 
-Defined in: [yajsapi/props/inf.ts:28](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/inf.ts#L28)
+Defined in: [yajsapi/props/inf.ts:28](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L28)

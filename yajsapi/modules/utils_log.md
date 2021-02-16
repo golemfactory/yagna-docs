@@ -19,9 +19,9 @@
 
 • `Const` **default**: *Logger*
 
-Defined in: [yajsapi/utils/log.ts:78](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/log.ts#L78)
+Defined in: [yajsapi/utils/log.ts:74](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/log.ts#L74)
 
-Defined in: [yajsapi/utils/index.ts:25](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/index.ts#L25)
+Defined in: [yajsapi/utils/index.ts:26](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/index.ts#L26)
 
 ## Functions
 
@@ -37,7 +37,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/utils/log.ts:344](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/log.ts#L344)
+Defined in: [yajsapi/utils/log.ts:354](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/log.ts#L354)
 
 ___
 
@@ -53,4 +53,4 @@ Name | Type |
 
 **Returns:** *function*
 
-Defined in: [yajsapi/utils/log.ts:328](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/log.ts#L328)
+Defined in: [yajsapi/utils/log.ts:347](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/log.ts#L347)

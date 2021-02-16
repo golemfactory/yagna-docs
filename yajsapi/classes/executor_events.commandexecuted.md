@@ -37,15 +37,13 @@
 
 #### Parameters:
 
-Name | Type |
------- | ------ |
-`__namedParameters` | *Object* |
+• **__namedParameters**: *Object*
 
 **Returns:** [*CommandExecuted*](executor_events.commandexecuted.md)
 
 Inherited from: [CommandEvent](executor_events.commandevent.md)
 
-Defined in: [yajsapi/executor/events.ts:309](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L309)
+Defined in: [yajsapi/executor/events.ts:324](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L324)
 
 ## Properties
 
@@ -55,7 +53,7 @@ Defined in: [yajsapi/executor/events.ts:309](https://github.com/golemfactory/yaj
 
 Inherited from: [CommandEvent](executor_events.commandevent.md).[agr_id](executor_events.commandevent.md#agr_id)
 
-Defined in: [yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L123)
+Defined in: [yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L123)
 
 ___
 
@@ -65,7 +63,7 @@ ___
 
 Inherited from: [CommandEvent](executor_events.commandevent.md).[cmd_idx](executor_events.commandevent.md#cmd_idx)
 
-Defined in: [yajsapi/executor/events.ts:297](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L297)
+Defined in: [yajsapi/executor/events.ts:312](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L312)
 
 ___
 
@@ -73,7 +71,7 @@ ___
 
 • `Optional` **command**: *any*
 
-Defined in: [yajsapi/executor/events.ts:307](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L307)
+Defined in: [yajsapi/executor/events.ts:322](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L322)
 
 ___
 
@@ -81,7 +79,7 @@ ___
 
 • `Optional` **message**: *undefined* \| *string*
 
-Defined in: [yajsapi/executor/events.ts:309](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L309)
+Defined in: [yajsapi/executor/events.ts:324](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L324)
 
 ___
 
@@ -89,7 +87,7 @@ ___
 
 • `Optional` **success**: *undefined* \| *boolean*
 
-Defined in: [yajsapi/executor/events.ts:308](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L308)
+Defined in: [yajsapi/executor/events.ts:323](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L323)
 
 ___
 
@@ -99,7 +97,7 @@ ___
 
 Inherited from: [CommandEvent](executor_events.commandevent.md).[task_id](executor_events.commandevent.md#task_id)
 
-Defined in: [yajsapi/executor/events.ts:267](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L267)
+Defined in: [yajsapi/executor/events.ts:282](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L282)
 
 ## Methods
 
@@ -115,4 +113,4 @@ The extracted exception information and a copy of the event without the exceptio
 
 Inherited from: [CommandEvent](executor_events.commandevent.md)
 
-Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L17)
+Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L17)

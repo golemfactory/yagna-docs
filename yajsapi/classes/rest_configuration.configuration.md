@@ -51,7 +51,7 @@ Name | Type | Default value |
 
 **Returns:** [*Configuration*](rest_configuration.configuration.md)
 
-Defined in: [yajsapi/rest/configuration.ts:26](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L26)
+Defined in: [yajsapi/rest/configuration.ts:26](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L26)
 
 ## Properties
 
@@ -59,7 +59,7 @@ Defined in: [yajsapi/rest/configuration.ts:26](https://github.com/golemfactory/y
 
 • `Private` **\_\_activity\_url**: *string*
 
-Defined in: [yajsapi/rest/configuration.ts:25](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L25)
+Defined in: [yajsapi/rest/configuration.ts:25](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L25)
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 • `Private` **\_\_app\_key**: *null* \| *string*
 
-Defined in: [yajsapi/rest/configuration.ts:21](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L21)
+Defined in: [yajsapi/rest/configuration.ts:21](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L21)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 • `Private` **\_\_axios\_opts**: *object*
 
-Defined in: [yajsapi/rest/configuration.ts:26](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L26)
+Defined in: [yajsapi/rest/configuration.ts:26](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L26)
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 • `Private` **\_\_market\_url**: *string*
 
-Defined in: [yajsapi/rest/configuration.ts:23](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L23)
+Defined in: [yajsapi/rest/configuration.ts:23](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L23)
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 • `Private` **\_\_payment\_url**: *string*
 
-Defined in: [yajsapi/rest/configuration.ts:24](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L24)
+Defined in: [yajsapi/rest/configuration.ts:24](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L24)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 • `Private` **\_\_url**: *any*
 
-Defined in: [yajsapi/rest/configuration.ts:22](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L22)
+Defined in: [yajsapi/rest/configuration.ts:22](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L22)
 
 ## Methods
 
@@ -109,7 +109,7 @@ Defined in: [yajsapi/rest/configuration.ts:22](https://github.com/golemfactory/y
 
 **Returns:** *Configuration*
 
-Defined in: [yajsapi/rest/configuration.ts:111](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L111)
+Defined in: [yajsapi/rest/configuration.ts:111](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L111)
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 **Returns:** *string*
 
-Defined in: [yajsapi/rest/configuration.ts:87](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L87)
+Defined in: [yajsapi/rest/configuration.ts:87](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L87)
 
 ___
 
@@ -129,7 +129,7 @@ ___
 
 **Returns:** *null* \| *string*
 
-Defined in: [yajsapi/rest/configuration.ts:75](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L75)
+Defined in: [yajsapi/rest/configuration.ts:75](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L75)
 
 ___
 
@@ -139,7 +139,7 @@ ___
 
 **Returns:** *Configuration*
 
-Defined in: [yajsapi/rest/configuration.ts:91](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L91)
+Defined in: [yajsapi/rest/configuration.ts:91](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L91)
 
 ___
 
@@ -149,7 +149,7 @@ ___
 
 **Returns:** *null* \| *string*
 
-Defined in: [yajsapi/rest/configuration.ts:79](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L79)
+Defined in: [yajsapi/rest/configuration.ts:79](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L79)
 
 ___
 
@@ -159,7 +159,7 @@ ___
 
 **Returns:** *Configuration*
 
-Defined in: [yajsapi/rest/configuration.ts:101](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L101)
+Defined in: [yajsapi/rest/configuration.ts:101](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L101)
 
 ___
 
@@ -169,4 +169,4 @@ ___
 
 **Returns:** *string*
 
-Defined in: [yajsapi/rest/configuration.ts:83](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/rest/configuration.ts#L83)
+Defined in: [yajsapi/rest/configuration.ts:83](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/configuration.ts#L83)

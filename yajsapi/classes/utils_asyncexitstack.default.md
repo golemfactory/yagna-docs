@@ -37,7 +37,7 @@
 
 • `Private` **\_stack**: *any*[]
 
-Defined in: [yajsapi/utils/asyncExitStack.ts:2](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/asyncExitStack.ts#L2)
+Defined in: [yajsapi/utils/asyncExitStack.ts:2](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncExitStack.ts#L2)
 
 ## Methods
 
@@ -47,7 +47,7 @@ Defined in: [yajsapi/utils/asyncExitStack.ts:2](https://github.com/golemfactory/
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/utils/asyncExitStack.ts:9](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/asyncExitStack.ts#L9)
+Defined in: [yajsapi/utils/asyncExitStack.ts:9](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncExitStack.ts#L9)
 
 ___
 
@@ -63,4 +63,4 @@ Name | Type |
 
 **Returns:** *Promise*<*any*\>
 
-Defined in: [yajsapi/utils/asyncExitStack.ts:3](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/asyncExitStack.ts#L3)
+Defined in: [yajsapi/utils/asyncExitStack.ts:3](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncExitStack.ts#L3)

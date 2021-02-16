@@ -23,6 +23,7 @@
 - [ComputationFailed](../classes/executor_events.computationfailed.md)
 - [ComputationFinished](../classes/executor_events.computationfinished.md)
 - [ComputationStarted](../classes/executor_events.computationstarted.md)
+- [DebitNoteReceived](../classes/executor_events.debitnotereceived.md)
 - [DownloadFinished](../classes/executor_events.downloadfinished.md)
 - [DownloadStarted](../classes/executor_events.downloadstarted.md)
 - [GettingResults](../classes/executor_events.gettingresults.md)

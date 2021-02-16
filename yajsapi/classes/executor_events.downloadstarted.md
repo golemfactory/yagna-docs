@@ -32,15 +32,13 @@
 
 #### Parameters:
 
-Name | Type |
------- | ------ |
-`__namedParameters` | *Object* |
+• **__namedParameters**: *Object*
 
 **Returns:** [*DownloadStarted*](executor_events.downloadstarted.md)
 
 Inherited from: [YaEvent](executor_events.yaevent.md)
 
-Defined in: [yajsapi/executor/events.ts:458](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L458)
+Defined in: [yajsapi/executor/events.ts:478](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L478)
 
 ## Properties
 
@@ -48,7 +46,7 @@ Defined in: [yajsapi/executor/events.ts:458](https://github.com/golemfactory/yaj
 
 • `Optional` **path**: *undefined* \| *string*
 
-Defined in: [yajsapi/executor/events.ts:458](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L458)
+Defined in: [yajsapi/executor/events.ts:478](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L478)
 
 ## Methods
 
@@ -64,4 +62,4 @@ The extracted exception information and a copy of the event without the exceptio
 
 Inherited from: [YaEvent](executor_events.yaevent.md)
 
-Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/events.ts#L17)
+Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L17)

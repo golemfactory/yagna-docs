@@ -41,7 +41,7 @@ Name | Type |
 
 **Returns:** *Promise*<*void*\>
 
-Defined in: [yajsapi/executor/strategy.ts:25](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L25)
+Defined in: [yajsapi/executor/strategy.ts:25](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L25)
 
 ___
 
@@ -57,4 +57,4 @@ Name | Type |
 
 **Returns:** *Promise*<Number\>
 
-Defined in: [yajsapi/executor/strategy.ts:27](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/executor/strategy.ts#L27)
+Defined in: [yajsapi/executor/strategy.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L27)

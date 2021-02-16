@@ -23,4 +23,4 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [yajsapi/utils/applyMixins.ts:1](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/applyMixins.ts#L1)
+Defined in: [yajsapi/utils/applyMixins.ts:1](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/applyMixins.ts#L1)

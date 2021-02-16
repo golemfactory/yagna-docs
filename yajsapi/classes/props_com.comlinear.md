@@ -40,7 +40,7 @@
 
 Inherited from: [Com](props_com.com.md)
 
-Defined in: [yajsapi/props/base.ts:104](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L104)
+Defined in: [yajsapi/props/base.ts:108](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L108)
 
 ## Properties
 
@@ -48,7 +48,7 @@ Defined in: [yajsapi/props/base.ts:104](https://github.com/golemfactory/yajsapi/
 
 • **fixed\_price**: *number*
 
-Defined in: [yajsapi/props/com.ts:31](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/com.ts#L31)
+Defined in: [yajsapi/props/com.ts:31](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L31)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 • **price\_for**: Object
 
-Defined in: [yajsapi/props/com.ts:32](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/com.ts#L32)
+Defined in: [yajsapi/props/com.ts:32](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L32)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 Inherited from: [Com](props_com.com.md).[price_model](props_com.com.md#price_model)
 
-Defined in: [yajsapi/props/com.ts:27](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/com.ts#L27)
+Defined in: [yajsapi/props/com.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L27)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 Inherited from: [Com](props_com.com.md).[scheme](props_com.com.md#scheme)
 
-Defined in: [yajsapi/props/com.ts:26](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/com.ts#L26)
+Defined in: [yajsapi/props/com.ts:26](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L26)
 
 ## Methods
 
@@ -95,7 +95,7 @@ Name | Type |
 
 Overrides: [Com](props_com.com.md)
 
-Defined in: [yajsapi/props/com.ts:34](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/com.ts#L34)
+Defined in: [yajsapi/props/com.ts:34](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L34)
 
 ___
 
@@ -113,7 +113,7 @@ Name | Type |
 
 Inherited from: [Com](props_com.com.md)
 
-Defined in: [yajsapi/props/base.ts:109](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L109)
+Defined in: [yajsapi/props/base.ts:113](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L113)
 
 ___
 
@@ -140,7 +140,7 @@ Name | Type | Description |
 
 Inherited from: [Com](props_com.com.md)
 
-Defined in: [yajsapi/props/base.ts:133](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L133)
+Defined in: [yajsapi/props/base.ts:137](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L137)
 
 ___
 
@@ -168,4 +168,4 @@ a mapping between the model's field names and the property keys
 
 Inherited from: [Com](props_com.com.md)
 
-Defined in: [yajsapi/props/base.ts:178](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/props/base.ts#L178)
+Defined in: [yajsapi/props/base.ts:182](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L182)

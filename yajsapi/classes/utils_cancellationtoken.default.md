@@ -41,7 +41,7 @@ Name | Type |
 
 **Returns:** [*default*](utils_cancellationtoken.default.md)
 
-Defined in: [yajsapi/utils/cancellationToken.ts:3](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/cancellationToken.ts#L3)
+Defined in: [yajsapi/utils/cancellationToken.ts:3](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/cancellationToken.ts#L3)
 
 ## Properties
 
@@ -49,7 +49,7 @@ Defined in: [yajsapi/utils/cancellationToken.ts:3](https://github.com/golemfacto
 
 • `Private` **\_cancelled**: *boolean*
 
-Defined in: [yajsapi/utils/cancellationToken.ts:3](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/cancellationToken.ts#L3)
+Defined in: [yajsapi/utils/cancellationToken.ts:3](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/cancellationToken.ts#L3)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 • `Private` **\_parent**: *any*
 
-Defined in: [yajsapi/utils/cancellationToken.ts:2](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/cancellationToken.ts#L2)
+Defined in: [yajsapi/utils/cancellationToken.ts:2](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/cancellationToken.ts#L2)
 
 ## Accessors
 
@@ -67,7 +67,7 @@ Defined in: [yajsapi/utils/cancellationToken.ts:2](https://github.com/golemfacto
 
 **Returns:** *boolean*
 
-Defined in: [yajsapi/utils/cancellationToken.ts:9](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/cancellationToken.ts#L9)
+Defined in: [yajsapi/utils/cancellationToken.ts:9](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/cancellationToken.ts#L9)
 
 ## Methods
 
@@ -77,4 +77,4 @@ Defined in: [yajsapi/utils/cancellationToken.ts:9](https://github.com/golemfacto
 
 **Returns:** *void*
 
-Defined in: [yajsapi/utils/cancellationToken.ts:16](https://github.com/golemfactory/yajsapi/blob/0a8d8c8/yajsapi/utils/cancellationToken.ts#L16)
+Defined in: [yajsapi/utils/cancellationToken.ts:16](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/cancellationToken.ts#L16)
