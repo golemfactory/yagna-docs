@@ -34,7 +34,7 @@ python3 --version
 
 If you have an older version of python and you'd like to keep that version in your system, consider using [pyenv](https://github.com/pyenv/pyenv). You can use [pyenv-installer](https://github.com/pyenv/pyenv-installer) to facilitate the process.
 
-{% hint style="danger" %}
+{% hint style="warning" %}
 On Windows, you may need to just use `python` instead of `python3`
 {% endhint %}
 {% endtab %}
