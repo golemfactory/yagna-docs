@@ -1,25 +1,28 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / utils/getAllProperties
-
 # Module: utils/getAllProperties
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / utils/getAllProperties
+
+## Module: utils/getAllProperties
+
+### Table of contents
+
+#### Functions
+
+* [default](utils_getallproperties.md#default)
 
 ### Functions
 
-- [default](utils_getallproperties.md#default)
+#### default
 
-## Functions
+▸ **default**\(`obj`: _any_\): _any_
 
-### default
+**Parameters:**
 
-▸ **default**(`obj`: *any*): *any*
+| Name | Type |
+| :--- | :--- |
+| `obj` | _any_ |
 
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`obj` | *any* |
-
-**Returns:** *any*
+**Returns:** _any_
 
 Defined in: [yajsapi/utils/getAllProperties.ts:1](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/getAllProperties.ts#L1)
+

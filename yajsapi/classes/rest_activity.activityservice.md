@@ -1,132 +1,127 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [rest/activity](../modules/rest_activity.md) / ActivityService
-
 # Class: ActivityService
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/activity](../modules/rest_activity.md) / ActivityService
+
+## Class: ActivityService
 
 [rest/activity](../modules/rest_activity.md).ActivityService
 
 A convenience helper to facilitate the creation of an Activity.
 
-## Hierarchy
+### Hierarchy
 
 * **ActivityService**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](rest_activity.activityservice.md#constructor)
+
+#### Properties
+
+* [\_api](rest_activity.activityservice.md#_api)
+* [\_state](rest_activity.activityservice.md#_state)
+
+#### Methods
+
+* [\_attest](rest_activity.activityservice.md#_attest)
+* [\_create\_activity](rest_activity.activityservice.md#_create_activity)
+* [\_create\_secure\_activity](rest_activity.activityservice.md#_create_secure_activity)
+* [new\_activity](rest_activity.activityservice.md#new_activity)
 
 ### Constructors
 
-- [constructor](rest_activity.activityservice.md#constructor)
+#### constructor
+
++ **new ActivityService**\(`cfg`: _Configuration_\): [_ActivityService_](rest_activity.activityservice.md)
+
+**Parameters:**
+
+| Name | Type |
+| :--- | :--- |
+| `cfg` | _Configuration_ |
+
+**Returns:** [_ActivityService_](rest_activity.activityservice.md)
+
+Defined in: [yajsapi/rest/activity.ts:29](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L29)
 
 ### Properties
 
-- [\_api](rest_activity.activityservice.md#_api)
-- [\_state](rest_activity.activityservice.md#_state)
+#### \_api
 
-### Methods
-
-- [\_attest](rest_activity.activityservice.md#_attest)
-- [\_create\_activity](rest_activity.activityservice.md#_create_activity)
-- [\_create\_secure\_activity](rest_activity.activityservice.md#_create_secure_activity)
-- [new\_activity](rest_activity.activityservice.md#new_activity)
-
-## Constructors
-
-### constructor
-
-\+ **new ActivityService**(`cfg`: *Configuration*): [*ActivityService*](rest_activity.activityservice.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`cfg` | *Configuration* |
-
-**Returns:** [*ActivityService*](rest_activity.activityservice.md)
-
-Defined in: [yajsapi/rest/activity.ts:29](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L29)
-
-## Properties
-
-### \_api
-
-• `Private` **\_api**: *RequestorControlApi*
+• `Private` **\_api**: _RequestorControlApi_
 
 Defined in: [yajsapi/rest/activity.ts:28](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L28)
 
-___
+#### \_state
 
-### \_state
-
-• `Private` **\_state**: *RequestorStateApi*
+• `Private` **\_state**: _RequestorStateApi_
 
 Defined in: [yajsapi/rest/activity.ts:29](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L29)
 
-## Methods
+### Methods
 
-### \_attest
+#### \_attest
 
-▸ **_attest**(`activity_id`: *string*, `agreement`: [*Agreement*](rest_market.agreement.md), `credentials`: Credentials): *Promise*<*void*\>
+▸ **\_attest**\(`activity_id`: _string_, `agreement`: [_Agreement_](rest_market.agreement.md), `credentials`: Credentials\): _Promise_&lt;_void_&gt;
 
-#### Parameters:
+**Parameters:**
 
-Name | Type |
------- | ------ |
-`activity_id` | *string* |
-`agreement` | [*Agreement*](rest_market.agreement.md) |
-`credentials` | Credentials |
+| Name | Type |
+| :--- | :--- |
+| `activity_id` | _string_ |
+| `agreement` | [_Agreement_](rest_market.agreement.md) |
+| `credentials` | Credentials |
 
-**Returns:** *Promise*<*void*\>
+**Returns:** _Promise_&lt;_void_&gt;
 
 Defined in: [yajsapi/rest/activity.ts:109](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L109)
 
-___
+#### \_create\_activity
 
-### \_create\_activity
+▸ **\_create\_activity**\(`agreement_id`: _string_\): _Promise_&lt;_Activity_&gt;
 
-▸ **_create_activity**(`agreement_id`: *string*): *Promise*<*Activity*\>
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `agreement_id` | _string_ |
 
-Name | Type |
------- | ------ |
-`agreement_id` | *string* |
-
-**Returns:** *Promise*<*Activity*\>
+**Returns:** _Promise_&lt;_Activity_&gt;
 
 Defined in: [yajsapi/rest/activity.ts:59](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L59)
 
-___
+#### \_create\_secure\_activity
 
-### \_create\_secure\_activity
+▸ **\_create\_secure\_activity**\(`agreement`: [_Agreement_](rest_market.agreement.md)\): _Promise_&lt;_SecureActivity_&gt;
 
-▸ **_create_secure_activity**(`agreement`: [*Agreement*](rest_market.agreement.md)): *Promise*<*SecureActivity*\>
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `agreement` | [_Agreement_](rest_market.agreement.md) |
 
-Name | Type |
------- | ------ |
-`agreement` | [*Agreement*](rest_market.agreement.md) |
-
-**Returns:** *Promise*<*SecureActivity*\>
+**Returns:** _Promise_&lt;_SecureActivity_&gt;
 
 Defined in: [yajsapi/rest/activity.ts:66](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L66)
 
-___
+#### new\_activity
 
-### new\_activity
-
-▸ **new_activity**(`agreement`: [*Agreement*](rest_market.agreement.md), `secure?`: *boolean*): *Promise*<*Activity*\>
+▸ **new\_activity**\(`agreement`: [_Agreement_](rest_market.agreement.md), `secure?`: _boolean_\): _Promise_&lt;_Activity_&gt;
 
 Create an activity within bounds of the specified agreement.
 
-#### Parameters:
+**Parameters:**
 
-Name | Type | Default value | Description |
------- | ------ | ------ | ------ |
-`agreement` | [*Agreement*](rest_market.agreement.md) | - | -   |
-`secure` | *boolean* | false | -   |
+| Name | Type | Default value | Description |
+| :--- | :--- | :--- | :--- |
+| `agreement` | [_Agreement_](rest_market.agreement.md) | - | - |
+| `secure` | _boolean_ | false | - |
 
-**Returns:** *Promise*<*Activity*\>
+**Returns:** _Promise_&lt;_Activity_&gt;
 
 Activity
 
 Defined in: [yajsapi/rest/activity.ts:43](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/activity.ts#L43)
+

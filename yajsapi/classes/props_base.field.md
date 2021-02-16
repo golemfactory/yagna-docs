@@ -1,160 +1,151 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [props/base](../modules/props_base.md) / Field
-
 # Class: Field
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [props/base](../modules/props_base.md) / Field
+
+## Class: Field
 
 [props/base](../modules/props_base.md).Field
 
-## Hierarchy
+### Hierarchy
 
 * **Field**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](props_base.field.md#constructor)
+
+#### Properties
+
+* [\_metadata](props_base.field.md#_metadata)
+* [\_name](props_base.field.md#_name)
+* [\_type](props_base.field.md#_type)
+* [\_value](props_base.field.md#_value)
+
+#### Accessors
+
+* [metadata](props_base.field.md#metadata)
+* [name](props_base.field.md#name)
+* [type](props_base.field.md#type)
+* [value](props_base.field.md#value)
+
+#### Methods
+
+* [valueOf](props_base.field.md#valueof)
 
 ### Constructors
 
-- [constructor](props_base.field.md#constructor)
+#### constructor
+
++ **new Field**\(`__namedParameters?`: { `metadata?`: _undefined_ \| _object_ ; `name?`: _undefined_ \| _string_ ; `type?`: _undefined_ \| _object_ ; `value?`: _any_ }\): [_Field_](props_base.field.md)
+
+**Parameters:**
+
+• **\_\_namedParameters**: _object_
+
+| Name | Type |
+| :--- | :--- |
+| `metadata?` | _undefined_ \| _object_ |
+| `name?` | _undefined_ \| _string_ |
+| `type?` | _undefined_ \| _object_ |
+| `value?` | _any_ |
+
+**Returns:** [_Field_](props_base.field.md)
+
+Defined in: [yajsapi/props/base.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L27)
 
 ### Properties
 
-- [\_metadata](props_base.field.md#_metadata)
-- [\_name](props_base.field.md#_name)
-- [\_type](props_base.field.md#_type)
-- [\_value](props_base.field.md#_value)
+#### \_metadata
 
-### Accessors
-
-- [metadata](props_base.field.md#metadata)
-- [name](props_base.field.md#name)
-- [type](props_base.field.md#type)
-- [value](props_base.field.md#value)
-
-### Methods
-
-- [valueOf](props_base.field.md#valueof)
-
-## Constructors
-
-### constructor
-
-\+ **new Field**(`__namedParameters?`: { `metadata?`: *undefined* \| *object* ; `name?`: *undefined* \| *string* ; `type?`: *undefined* \| *object* ; `value?`: *any*  }): [*Field*](props_base.field.md)
-
-#### Parameters:
-
-• **__namedParameters**: *object*
-
-Name | Type |
------- | ------ |
-`metadata?` | *undefined* \| *object* |
-`name?` | *undefined* \| *string* |
-`type?` | *undefined* \| *object* |
-`value?` | *any* |
-
-**Returns:** [*Field*](props_base.field.md)
-
-Defined in: [yajsapi/props/base.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L27)
-
-## Properties
-
-### \_metadata
-
-• `Private` **\_metadata**: *any*
+• `Private` **\_metadata**: _any_
 
 Defined in: [yajsapi/props/base.ts:25](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L25)
 
-___
+#### \_name
 
-### \_name
-
-• `Private` **\_name**: *any*
+• `Private` **\_name**: _any_
 
 Defined in: [yajsapi/props/base.ts:26](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L26)
 
-___
+#### \_type
 
-### \_type
-
-• `Private` **\_type**: *any*
+• `Private` **\_type**: _any_
 
 Defined in: [yajsapi/props/base.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L27)
 
-___
+#### \_value
 
-### \_value
-
-• `Private` **\_value**: *any*
+• `Private` **\_value**: _any_
 
 Defined in: [yajsapi/props/base.ts:24](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L24)
 
-## Accessors
+### Accessors
 
-### metadata
+#### metadata
 
-• **metadata**(): *any*
+• **metadata**\(\): _any_
 
-**Returns:** *any*
+**Returns:** _any_
 
 Defined in: [yajsapi/props/base.ts:52](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L52)
 
-___
+#### name
 
-### name
+• **name**\(\): _any_
 
-• **name**(): *any*
-
-**Returns:** *any*
+**Returns:** _any_
 
 Defined in: [yajsapi/props/base.ts:60](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L60)
 
-• **name**(`x`: *any*): *void*
+• **name**\(`x`: _any_\): _void_
 
-#### Parameters:
+**Parameters:**
 
-Name | Type |
------- | ------ |
-`x` | *any* |
+| Name | Type |
+| :--- | :--- |
+| `x` | _any_ |
 
-**Returns:** *void*
+**Returns:** _void_
 
 Defined in: [yajsapi/props/base.ts:56](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L56)
 
-___
+#### type
 
-### type
+• **type**\(\): _any_
 
-• **type**(): *any*
-
-**Returns:** *any*
+**Returns:** _any_
 
 Defined in: [yajsapi/props/base.ts:64](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L64)
 
-___
+#### value
 
-### value
+• **value**\(\): _any_
 
-• **value**(): *any*
-
-**Returns:** *any*
+**Returns:** _any_
 
 Defined in: [yajsapi/props/base.ts:48](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L48)
 
-• **value**(`x`: *any*): *void*
+• **value**\(`x`: _any_\): _void_
 
-#### Parameters:
+**Parameters:**
 
-Name | Type |
------- | ------ |
-`x` | *any* |
+| Name | Type |
+| :--- | :--- |
+| `x` | _any_ |
 
-**Returns:** *void*
+**Returns:** _void_
 
 Defined in: [yajsapi/props/base.ts:39](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L39)
 
-## Methods
+### Methods
 
-### valueOf
+#### valueOf
 
-▸ **valueOf**(): *any*
+▸ **valueOf**\(\): _any_
 
-**Returns:** *any*
+**Returns:** _any_
 
 Defined in: [yajsapi/props/base.ts:68](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L68)
+

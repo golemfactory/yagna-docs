@@ -1,61 +1,64 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor/events](../modules/executor_events.md) / PaymentQueued
-
 # Class: PaymentQueued
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/events](../modules/executor_events.md) / PaymentQueued
+
+## Class: PaymentQueued
 
 [executor/events](../modules/executor_events.md).PaymentQueued
 
-## Hierarchy
+### Hierarchy
 
-* *AgreementEvent*
+* _AgreementEvent_
 
   ↳ **PaymentQueued**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](executor_events.paymentqueued.md#constructor)
+
+#### Properties
+
+* [agr\_id](executor_events.paymentqueued.md#agr_id)
+
+#### Methods
+
+* [extract\_exc\_info](executor_events.paymentqueued.md#extract_exc_info)
 
 ### Constructors
 
-- [constructor](executor_events.paymentqueued.md#constructor)
+#### constructor
 
-### Properties
++ **new PaymentQueued**\(`__namedParameters`: _Object_\): [_PaymentQueued_](executor_events.paymentqueued.md)
 
-- [agr\_id](executor_events.paymentqueued.md#agr_id)
+**Parameters:**
 
-### Methods
+• **\_\_namedParameters**: _Object_
 
-- [extract\_exc\_info](executor_events.paymentqueued.md#extract_exc_info)
-
-## Constructors
-
-### constructor
-
-\+ **new PaymentQueued**(`__namedParameters`: *Object*): [*PaymentQueued*](executor_events.paymentqueued.md)
-
-#### Parameters:
-
-• **__namedParameters**: *Object*
-
-**Returns:** [*PaymentQueued*](executor_events.paymentqueued.md)
+**Returns:** [_PaymentQueued_](executor_events.paymentqueued.md)
 
 Defined in: [yajsapi/executor/events.ts:197](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L197)
 
-## Properties
+### Properties
 
-### agr\_id
+#### agr\_id
 
-• `Optional` **agr\_id**: *undefined* \| *string*
+• `Optional` **agr\_id**: _undefined_ \| _string_
 
 Defined in: [yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L123)
 
-## Methods
+### Methods
 
-### extract\_exc\_info
+#### extract\_exc\_info
 
-▸ **extract_exc_info**(): [*undefined* \| *null* \| Error, [*YaEvent*](executor_events.yaevent.md)]
+▸ **extract\_exc\_info**\(\): \[_undefined_ \| _null_ \| Error, [_YaEvent_](executor_events.yaevent.md)\]
 
 Extract exception information from this event.
 
-**Returns:** [*undefined* \| *null* \| Error, [*YaEvent*](executor_events.yaevent.md)]
+**Returns:** \[_undefined_ \| _null_ \| Error, [_YaEvent_](executor_events.yaevent.md)\]
 
 The extracted exception information and a copy of the event without the exception information.
 
 Defined in: [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L17)
+

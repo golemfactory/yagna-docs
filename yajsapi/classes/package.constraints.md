@@ -1,68 +1,69 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [package](../modules/package.md) / Constraints
-
 # Class: Constraints
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [package](../modules/package.md) / Constraints
+
+## Class: Constraints
 
 [package](../modules/package.md).Constraints
 
-## Hierarchy
+### Hierarchy
 
 * **Constraints**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](package.constraints.md#constructor)
+
+#### Properties
+
+* [inner](package.constraints.md#inner)
+
+#### Methods
+
+* [extend](package.constraints.md#extend)
+* [toString](package.constraints.md#tostring)
 
 ### Constructors
 
-- [constructor](package.constraints.md#constructor)
+#### constructor
+
++ **new Constraints**\(\): [_Constraints_](package.constraints.md)
+
+**Returns:** [_Constraints_](package.constraints.md)
+
+Defined in: [yajsapi/package/index.ts:19](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L19)
 
 ### Properties
 
-- [inner](package.constraints.md#inner)
+#### inner
+
+• **inner**: _string_\[\]
+
+Defined in: [yajsapi/package/index.ts:19](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L19)
 
 ### Methods
 
-- [extend](package.constraints.md#extend)
-- [toString](package.constraints.md#tostring)
+#### extend
 
-## Constructors
+▸ **extend**\(`items`: _string_\[\]\): _void_
 
-### constructor
+**Parameters:**
 
-\+ **new Constraints**(): [*Constraints*](package.constraints.md)
+| Name | Type |
+| :--- | :--- |
+| `items` | _string_\[\] |
 
-**Returns:** [*Constraints*](package.constraints.md)
-
-Defined in: [yajsapi/package/index.ts:19](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L19)
-
-## Properties
-
-### inner
-
-• **inner**: *string*[]
-
-Defined in: [yajsapi/package/index.ts:19](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L19)
-
-## Methods
-
-### extend
-
-▸ **extend**(`items`: *string*[]): *void*
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`items` | *string*[] |
-
-**Returns:** *void*
+**Returns:** _void_
 
 Defined in: [yajsapi/package/index.ts:25](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L25)
 
-___
+#### toString
 
-### toString
+▸ **toString**\(\): _string_
 
-▸ **toString**(): *string*
-
-**Returns:** *string*
+**Returns:** _string_
 
 Defined in: [yajsapi/package/index.ts:29](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L29)
+

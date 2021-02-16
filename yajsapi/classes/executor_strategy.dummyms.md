@@ -1,199 +1,182 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor/strategy](../modules/executor_strategy.md) / DummyMS
-
 # Class: DummyMS
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/strategy](../modules/executor_strategy.md) / DummyMS
+
+## Class: DummyMS
 
 [executor/strategy](../modules/executor_strategy.md).DummyMS
 
-## Hierarchy
+### Hierarchy
 
-* *MarketGeneral*
+* _MarketGeneral_
 
   ↳ **DummyMS**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](executor_strategy.dummyms.md#constructor)
+
+#### Properties
+
+* [\_activity](executor_strategy.dummyms.md#_activity)
+* [constructor](executor_strategy.dummyms.md#constructor)
+* [max\_fixed](executor_strategy.dummyms.md#max_fixed)
+* [max\_for\_counter](executor_strategy.dummyms.md#max_for_counter)
+
+#### Methods
+
+* [decorate\_demand](executor_strategy.dummyms.md#decorate_demand)
+* [hasOwnProperty](executor_strategy.dummyms.md#hasownproperty)
+* [isPrototypeOf](executor_strategy.dummyms.md#isprototypeof)
+* [propertyIsEnumerable](executor_strategy.dummyms.md#propertyisenumerable)
+* [score\_offer](executor_strategy.dummyms.md#score_offer)
+* [toLocaleString](executor_strategy.dummyms.md#tolocalestring)
+* [toString](executor_strategy.dummyms.md#tostring)
+* [valueOf](executor_strategy.dummyms.md#valueof)
 
 ### Constructors
 
-- [constructor](executor_strategy.dummyms.md#constructor)
+#### constructor
+
++ **new DummyMS**\(\): [_DummyMS_](executor_strategy.dummyms.md)
+
+**Returns:** [_DummyMS_](executor_strategy.dummyms.md)
 
 ### Properties
 
-- [\_activity](executor_strategy.dummyms.md#_activity)
-- [constructor](executor_strategy.dummyms.md#constructor)
-- [max\_fixed](executor_strategy.dummyms.md#max_fixed)
-- [max\_for\_counter](executor_strategy.dummyms.md#max_for_counter)
+#### \_activity
 
-### Methods
-
-- [decorate\_demand](executor_strategy.dummyms.md#decorate_demand)
-- [hasOwnProperty](executor_strategy.dummyms.md#hasownproperty)
-- [isPrototypeOf](executor_strategy.dummyms.md#isprototypeof)
-- [propertyIsEnumerable](executor_strategy.dummyms.md#propertyisenumerable)
-- [score\_offer](executor_strategy.dummyms.md#score_offer)
-- [toLocaleString](executor_strategy.dummyms.md#tolocalestring)
-- [toString](executor_strategy.dummyms.md#tostring)
-- [valueOf](executor_strategy.dummyms.md#valueof)
-
-## Constructors
-
-### constructor
-
-\+ **new DummyMS**(): [*DummyMS*](executor_strategy.dummyms.md)
-
-**Returns:** [*DummyMS*](executor_strategy.dummyms.md)
-
-## Properties
-
-### \_activity
-
-• `Optional` **\_activity**: *undefined* \| [*Activity*](props.activity.md)
+• `Optional` **\_activity**: _undefined_ \| [_Activity_](props.activity.md)
 
 Defined in: [yajsapi/executor/strategy.ts:40](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L40)
 
-___
-
-### constructor
+#### constructor
 
 • **constructor**: Function
 
 The initial value of Object.prototype.constructor is the standard built-in Object constructor.
 
-Defined in: node_modules/typescript/lib/lib.es5.d.ts:122
+Defined in: node\_modules/typescript/lib/lib.es5.d.ts:122
 
-___
-
-### max\_fixed
+#### max\_fixed
 
 • **max\_fixed**: Number
 
 Defined in: [yajsapi/executor/strategy.ts:39](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L39)
 
-___
+#### max\_for\_counter
 
-### max\_for\_counter
-
-• **max\_for\_counter**: *Map*<[*Counter*](../enums/props_com.counter.md), Number\>
+• **max\_for\_counter**: _Map_&lt;[_Counter_](../enumeration/props_com.counter.md), Number&gt;
 
 Defined in: [yajsapi/executor/strategy.ts:38](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L38)
 
-## Methods
+### Methods
 
-### decorate\_demand
+#### decorate\_demand
 
-▸ **decorate_demand**(`demand`: [*DemandBuilder*](props_builder.demandbuilder.md)): *Promise*<*void*\>
+▸ **decorate\_demand**\(`demand`: [_DemandBuilder_](props_builder.demandbuilder.md)\): _Promise_&lt;_void_&gt;
 
-#### Parameters:
+**Parameters:**
 
-Name | Type |
------- | ------ |
-`demand` | [*DemandBuilder*](props_builder.demandbuilder.md) |
+| Name | Type |
+| :--- | :--- |
+| `demand` | [_DemandBuilder_](props_builder.demandbuilder.md) |
 
-**Returns:** *Promise*<*void*\>
+**Returns:** _Promise_&lt;_void_&gt;
 
 Defined in: [yajsapi/executor/strategy.ts:42](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L42)
 
-___
+#### hasOwnProperty
 
-### hasOwnProperty
-
-▸ **hasOwnProperty**(`v`: *string* \| *number* \| *symbol*): *boolean*
+▸ **hasOwnProperty**\(`v`: _string_ \| _number_ \| _symbol_\): _boolean_
 
 Determines whether an object has a property with the specified name.
 
-#### Parameters:
+**Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`v` | *string* \| *number* \| *symbol* | A property name.    |
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `v` | _string_ \| _number_ \| _symbol_ | A property name. |
 
-**Returns:** *boolean*
+**Returns:** _boolean_
 
-Defined in: node_modules/typescript/lib/lib.es5.d.ts:137
+Defined in: node\_modules/typescript/lib/lib.es5.d.ts:137
 
-___
+#### isPrototypeOf
 
-### isPrototypeOf
-
-▸ **isPrototypeOf**(`v`: Object): *boolean*
+▸ **isPrototypeOf**\(`v`: Object\): _boolean_
 
 Determines whether an object exists in another object's prototype chain.
 
-#### Parameters:
+**Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`v` | Object | Another object whose prototype chain is to be checked.    |
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `v` | Object | Another object whose prototype chain is to be checked. |
 
-**Returns:** *boolean*
+**Returns:** _boolean_
 
-Defined in: node_modules/typescript/lib/lib.es5.d.ts:143
+Defined in: node\_modules/typescript/lib/lib.es5.d.ts:143
 
-___
+#### propertyIsEnumerable
 
-### propertyIsEnumerable
-
-▸ **propertyIsEnumerable**(`v`: *string* \| *number* \| *symbol*): *boolean*
+▸ **propertyIsEnumerable**\(`v`: _string_ \| _number_ \| _symbol_\): _boolean_
 
 Determines whether a specified property is enumerable.
 
-#### Parameters:
+**Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`v` | *string* \| *number* \| *symbol* | A property name.    |
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `v` | _string_ \| _number_ \| _symbol_ | A property name. |
 
-**Returns:** *boolean*
+**Returns:** _boolean_
 
-Defined in: node_modules/typescript/lib/lib.es5.d.ts:149
+Defined in: node\_modules/typescript/lib/lib.es5.d.ts:149
 
-___
+#### score\_offer
 
-### score\_offer
+▸ **score\_offer**\(`offer`: [_OfferProposal_](rest_market.offerproposal.md)\): _Promise_
 
-▸ **score_offer**(`offer`: [*OfferProposal*](rest_market.offerproposal.md)): *Promise*<Number\>
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `offer` | [_OfferProposal_](rest_market.offerproposal.md) |
 
-Name | Type |
------- | ------ |
-`offer` | [*OfferProposal*](rest_market.offerproposal.md) |
-
-**Returns:** *Promise*<Number\>
+**Returns:** _Promise_
 
 Defined in: [yajsapi/executor/strategy.ts:47](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L47)
 
-___
+#### toLocaleString
 
-### toLocaleString
-
-▸ **toLocaleString**(): *string*
+▸ **toLocaleString**\(\): _string_
 
 Returns a date converted to a string using the current locale.
 
-**Returns:** *string*
+**Returns:** _string_
 
-Defined in: node_modules/typescript/lib/lib.es5.d.ts:128
+Defined in: node\_modules/typescript/lib/lib.es5.d.ts:128
 
-___
+#### toString
 
-### toString
-
-▸ **toString**(): *string*
+▸ **toString**\(\): _string_
 
 Returns a string representation of an object.
 
-**Returns:** *string*
+**Returns:** _string_
 
-Defined in: node_modules/typescript/lib/lib.es5.d.ts:125
+Defined in: node\_modules/typescript/lib/lib.es5.d.ts:125
 
-___
+#### valueOf
 
-### valueOf
-
-▸ **valueOf**(): Object
+▸ **valueOf**\(\): Object
 
 Returns the primitive value of the specified object.
 
 **Returns:** Object
 
-Defined in: node_modules/typescript/lib/lib.es5.d.ts:131
+Defined in: node\_modules/typescript/lib/lib.es5.d.ts:131
+

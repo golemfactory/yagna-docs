@@ -41,10 +41,8 @@
 
 ## yajsapi - Java Script high-level API <a id="yajsapi"></a>
 
-* [](yajsapi/yajsapi.md)
-
-* [Introduction to Golem's high-level Java Script API](yajsapi/README.md)
-* [Modules](yajsapi/modules.md)
+* [Introduction to Golem's high-level Java Script API](yajsapi/yajsapi.md)
+* [Modules](yajsapi/modules/README.md)
   * [Module: crypto](yajsapi/modules/crypto.md)
   * [Module: executor](yajsapi/modules/executor.md)
   * [Module: executor/ctx](yajsapi/modules/executor_ctx.md)
@@ -84,7 +82,7 @@
   * [Module: utils/queue](yajsapi/modules/utils_queue.md)
   * [Module: utils/range](yajsapi/modules/utils_range.md)
   * [Module: utils/sleep](yajsapi/modules/utils_sleep.md)
-* Classes
+* [Classes](yajsapi/classes/README.md)
   * [Class: CryptoCtx](yajsapi/classes/crypto.cryptoctx.md)
   * [Class: PrivateKey](yajsapi/classes/crypto.privatekey.md)
   * [Class: PublicKey](yajsapi/classes/crypto.publickey.md)
@@ -139,13 +137,13 @@
   * [Class: WorkerFinished](yajsapi/classes/executor_events.workerfinished.md)
   * [Class: WorkerStarted](yajsapi/classes/executor_events.workerstarted.md)
   * [Class: YaEvent](yajsapi/classes/executor_events.yaevent.md)
-  * [Class: Consumer<Item\>](yajsapi/classes/executor_smartq.consumer.md)
-  * [Class: Handle<Item\>](yajsapi/classes/executor_smartq.handle.md)
-  * [Class: SmartQueue<Item\>](yajsapi/classes/executor_smartq.smartqueue.md)
+  * [Class: Consumer](yajsapi/classes/executor_smartq.consumer.md)
+  * [Class: Handle](yajsapi/classes/executor_smartq.handle.md)
+  * [Class: SmartQueue](yajsapi/classes/executor_smartq.smartqueue.md)
   * [Class: DummyMS](yajsapi/classes/executor_strategy.dummyms.md)
   * [Class: LeastExpensiveLinearPayuMS](yajsapi/classes/executor_strategy.leastexpensivelinearpayums.md)
   * [Class: MarketStrategy](yajsapi/classes/executor_strategy.marketstrategy.md)
-  * [Class: Task<TaskData, TaskResult\>](yajsapi/classes/executor_task.task.md)
+  * [Class: Task](yajsapi/classes/executor_task.task.md)
   * [Class: Constraints](yajsapi/classes/package.constraints.md)
   * [Class: Package](yajsapi/classes/package.package-1.md)
   * [Class: VmPackage](yajsapi/classes/package.vmpackage.md)
@@ -172,7 +170,7 @@
   * [Class: DebitNote](yajsapi/classes/rest_payment.debitnote.md)
   * [Class: Invoice](yajsapi/classes/rest_payment.invoice.md)
   * [Class: Payment](yajsapi/classes/rest_payment.payment.md)
-  * [Class: ResourceCtx<_T\>](yajsapi/classes/rest_resource.resourcectx.md)
+  * [Class: ResourceCtx](yajsapi/classes/rest_resource.resourcectx.md)
   * [Class: ComposedStorageProvider](yajsapi/classes/storage.composedstorageprovider.md)
   * [Class: Content](yajsapi/classes/storage.content.md)
   * [Class: Destination](yajsapi/classes/storage.destination.md)
@@ -181,17 +179,17 @@
   * [Class: Source](yajsapi/classes/storage.source.md)
   * [Class: StorageProvider](yajsapi/classes/storage.storageprovider.md)
   * [Class: default](yajsapi/classes/utils_cancellationtoken.default.md)
-  * [Class: default<T\>](yajsapi/classes/utils_queue.default.md)
-* Enumeration
-  * [Enumeration: TaskStatus](yajsapi/enums/executor_task.taskstatus.md)
-  * [Enumeration: SgxEngine](yajsapi/enums/package_sgx.sgxengine.md)
-  * [Enumeration: BillingScheme](yajsapi/enums/props_com.billingscheme.md)
-  * [Enumeration: Counter](yajsapi/enums/props_com.counter.md)
-  * [Enumeration: PriceModel](yajsapi/enums/props_com.pricemodel.md)
-  * [Enumeration: RuntimeType](yajsapi/enums/props_inf.runtimetype.md)
-  * [Enumeration: VmPackageFormat](yajsapi/enums/props_inf.vmpackageformat.md)
-* Interface
-  * [Interface: default<T, R\>](yajsapi/interfaces/utils_callable.default.md)
+  * [Class: default](yajsapi/classes/utils_queue.default.md)
+* [Enumeration](yajsapi/enumeration/README.md)
+  * [Enumeration: TaskStatus](yajsapi/enumeration/executor_task.taskstatus.md)
+  * [Enumeration: SgxEngine](yajsapi/enumeration/package_sgx.sgxengine.md)
+  * [Enumeration: BillingScheme](yajsapi/enumeration/props_com.billingscheme.md)
+  * [Enumeration: Counter](yajsapi/enumeration/props_com.counter.md)
+  * [Enumeration: PriceModel](yajsapi/enumeration/props_com.pricemodel.md)
+  * [Enumeration: RuntimeType](yajsapi/enumeration/props_inf.runtimetype.md)
+  * [Enumeration: VmPackageFormat](yajsapi/enumeration/props_inf.vmpackageformat.md)
+* [Interface](yajsapi/interface/README.md)
+  * [Interface: default](yajsapi/interface/utils_callable.default.md)
 
 ## Reference
 
@@ -203,7 +201,7 @@
 
 ## Yagna Contributor Guide
 
-* [How to write payment driver](yagna-contributor-guide/payment-driver-getting-started.md)
+* [How to a write payment driver](yagna-contributor-guide/payment-driver-getting-started.md)
 
 ## See also
 

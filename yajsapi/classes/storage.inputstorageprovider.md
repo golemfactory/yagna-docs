@@ -1,80 +1,79 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [storage](../modules/storage.md) / InputStorageProvider
-
 # Class: InputStorageProvider
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [storage](../modules/storage.md) / InputStorageProvider
+
+## Class: InputStorageProvider
 
 [storage](../modules/storage.md).InputStorageProvider
 
-## Hierarchy
+### Hierarchy
 
 * **InputStorageProvider**
 
-  ↳ [*StorageProvider*](storage.storageprovider.md)
+  ↳ [_StorageProvider_](storage.storageprovider.md)
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](storage.inputstorageprovider.md#constructor)
+
+#### Methods
+
+* [upload\_bytes](storage.inputstorageprovider.md#upload_bytes)
+* [upload\_file](storage.inputstorageprovider.md#upload_file)
+* [upload\_stream](storage.inputstorageprovider.md#upload_stream)
 
 ### Constructors
 
-- [constructor](storage.inputstorageprovider.md#constructor)
+#### constructor
+
++ **new InputStorageProvider**\(\): [_InputStorageProvider_](storage.inputstorageprovider.md)
+
+**Returns:** [_InputStorageProvider_](storage.inputstorageprovider.md)
 
 ### Methods
 
-- [upload\_bytes](storage.inputstorageprovider.md#upload_bytes)
-- [upload\_file](storage.inputstorageprovider.md#upload_file)
-- [upload\_stream](storage.inputstorageprovider.md#upload_stream)
+#### upload\_bytes
 
-## Constructors
+▸ **upload\_bytes**\(`data`: _Buffer_\): _Promise_&lt;[_Source_](storage.source.md)&gt;
 
-### constructor
+**Parameters:**
 
-\+ **new InputStorageProvider**(): [*InputStorageProvider*](storage.inputstorageprovider.md)
+| Name | Type |
+| :--- | :--- |
+| `data` | _Buffer_ |
 
-**Returns:** [*InputStorageProvider*](storage.inputstorageprovider.md)
-
-## Methods
-
-### upload\_bytes
-
-▸ **upload_bytes**(`data`: *Buffer*): *Promise*<[*Source*](storage.source.md)\>
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`data` | *Buffer* |
-
-**Returns:** *Promise*<[*Source*](storage.source.md)\>
+**Returns:** _Promise_&lt;[_Source_](storage.source.md)&gt;
 
 Defined in: [yajsapi/storage/index.ts:69](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L69)
 
-___
+#### upload\_file
 
-### upload\_file
+▸ **upload\_file**\(`path`: _string_\): _Promise_&lt;[_Source_](storage.source.md)&gt;
 
-▸ **upload_file**(`path`: *string*): *Promise*<[*Source*](storage.source.md)\>
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `path` | _string_ |
 
-Name | Type |
------- | ------ |
-`path` | *string* |
-
-**Returns:** *Promise*<[*Source*](storage.source.md)\>
+**Returns:** _Promise_&lt;[_Source_](storage.source.md)&gt;
 
 Defined in: [yajsapi/storage/index.ts:77](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L77)
 
-___
+#### upload\_stream
 
-### upload\_stream
+▸ **upload\_stream**\(`length`: _number_, `stream`: _AsyncGenerator_&lt;_Buffer_, _any_, _unknown_&gt;\): _Promise_&lt;[_Source_](storage.source.md)&gt;
 
-▸ **upload_stream**(`length`: *number*, `stream`: *AsyncGenerator*<*Buffer*, *any*, *unknown*\>): *Promise*<[*Source*](storage.source.md)\>
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `length` | _number_ |
+| `stream` | _AsyncGenerator_&lt;_Buffer_, _any_, _unknown_&gt; |
 
-Name | Type |
------- | ------ |
-`length` | *number* |
-`stream` | *AsyncGenerator*<*Buffer*, *any*, *unknown*\> |
-
-**Returns:** *Promise*<[*Source*](storage.source.md)\>
+**Returns:** _Promise_&lt;[_Source_](storage.source.md)&gt;
 
 Defined in: [yajsapi/storage/index.ts:62](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L62)
+

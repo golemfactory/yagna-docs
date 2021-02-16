@@ -1,48 +1,47 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / props
-
 # Module: props
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / props
+
+## Module: props
+
+### Table of contents
+
+#### References
+
+* [DemandBuilder](props.md#demandbuilder)
+* [Model](props.md#model)
+
+#### Classes
+
+* [Activity](../classes/props.activity.md)
+* [NodeInfo](../classes/props.nodeinfo.md)
+
+#### Variables
+
+* [ActivityKeys](props.md#activitykeys)
+* [NodeInfoKeys](props.md#nodeinfokeys)
 
 ### References
 
-- [DemandBuilder](props.md#demandbuilder)
-- [Model](props.md#model)
-
-### Classes
-
-- [Activity](../classes/props.activity.md)
-- [NodeInfo](../classes/props.nodeinfo.md)
-
-### Variables
-
-- [ActivityKeys](props.md#activitykeys)
-- [NodeInfoKeys](props.md#nodeinfokeys)
-
-## References
-
-### DemandBuilder
+#### DemandBuilder
 
 Re-exports: [DemandBuilder](../classes/props_builder.demandbuilder.md)
 
-___
-
-### Model
+#### Model
 
 Re-exports: [Model](../classes/props_base.model.md)
 
-## Variables
+### Variables
 
-### ActivityKeys
+#### ActivityKeys
 
-• `Const` **ActivityKeys**: *any*
+• `Const` **ActivityKeys**: _any_
 
 Defined in: [yajsapi/props/index.ts:63](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/index.ts#L63)
 
-___
+#### NodeInfoKeys
 
-### NodeInfoKeys
-
-• `Const` **NodeInfoKeys**: *any*
+• `Const` **NodeInfoKeys**: _any_
 
 Defined in: [yajsapi/props/index.ts:21](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/index.ts#L21)
+

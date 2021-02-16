@@ -6,7 +6,7 @@ description: 'Version: 0.1 (Draft)'
 
 ## Intro
 
-For summary of default compatibility guidelines refer [here](https://app.gitbook.com/@golem-network/s/golem-sdk-develop/see-also/compatibility-guidelines).
+For summary of the default compatibility guidelines refer [here](https://app.gitbook.com/@golem-network/s/golem-sdk-develop/see-also/compatibility-guidelines).
 
 The purpose of the compatibility policy is to make promises to the users of Yagna software regarding the compatibility of Yagna packages against their software \(a proprietary app referencing a ya\*api library may or may not be compatible with subsequent versions of the library\) and against each other \(Requestor nodes running one version of Yagna may or may not be compatible with Provider nodes running a different version\).
 
@@ -36,7 +36,7 @@ This implies we are not considering the compatibility between specific versions 
   * ya-provider agent application
   * ExeUnit and runtime modules
 
- This implies we are not considering the compatibility between specific versions of ya-provider application and different versions of yagna daemon and exeunit runtimes.
+ This implies we are not considering the compatibility between specific versions of ya-provider application and different versions of yagna daemon and ExeUnit runtimes.
 
 ### Versioning scheme
 

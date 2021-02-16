@@ -1,167 +1,150 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [rest/market](../modules/rest_market.md) / Subscription
-
 # Class: Subscription
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/market](../modules/rest_market.md) / Subscription
+
+## Class: Subscription
 
 [rest/market](../modules/rest_market.md).Subscription
 
-## Hierarchy
+### Hierarchy
 
 * **Subscription**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](rest_market.subscription.md#constructor)
+
+#### Properties
+
+* [\_api](rest_market.subscription.md#_api)
+* [\_deleted](rest_market.subscription.md#_deleted)
+* [\_details](rest_market.subscription.md#_details)
+* [\_id](rest_market.subscription.md#_id)
+* [\_open](rest_market.subscription.md#_open)
+
+#### Methods
+
+* [close](rest_market.subscription.md#close)
+* [delete](rest_market.subscription.md#delete)
+* [details](rest_market.subscription.md#details)
+* [done](rest_market.subscription.md#done)
+* [events](rest_market.subscription.md#events)
+* [id](rest_market.subscription.md#id)
+* [ready](rest_market.subscription.md#ready)
 
 ### Constructors
 
-- [constructor](rest_market.subscription.md#constructor)
+#### constructor
+
++ **new Subscription**\(`api`: _RequestorApi_, `subscription_id`: _string_, `_details?`: _null_ \| Demand\): [_Subscription_](rest_market.subscription.md)
+
+**Parameters:**
+
+| Name | Type | Default value |
+| :--- | :--- | :--- |
+| `api` | _RequestorApi_ | - |
+| `subscription_id` | _string_ | - |
+| `_details` | _null_ \| Demand | null |
+
+**Returns:** [_Subscription_](rest_market.subscription.md)
+
+Defined in: [yajsapi/rest/market.ts:188](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L188)
 
 ### Properties
 
-- [\_api](rest_market.subscription.md#_api)
-- [\_deleted](rest_market.subscription.md#_deleted)
-- [\_details](rest_market.subscription.md#_details)
-- [\_id](rest_market.subscription.md#_id)
-- [\_open](rest_market.subscription.md#_open)
+#### \_api
 
-### Methods
-
-- [close](rest_market.subscription.md#close)
-- [delete](rest_market.subscription.md#delete)
-- [details](rest_market.subscription.md#details)
-- [done](rest_market.subscription.md#done)
-- [events](rest_market.subscription.md#events)
-- [id](rest_market.subscription.md#id)
-- [ready](rest_market.subscription.md#ready)
-
-## Constructors
-
-### constructor
-
-\+ **new Subscription**(`api`: *RequestorApi*, `subscription_id`: *string*, `_details?`: *null* \| Demand): [*Subscription*](rest_market.subscription.md)
-
-#### Parameters:
-
-Name | Type | Default value |
------- | ------ | ------ |
-`api` | *RequestorApi* | - |
-`subscription_id` | *string* | - |
-`_details` | *null* \| Demand | null |
-
-**Returns:** [*Subscription*](rest_market.subscription.md)
-
-Defined in: [yajsapi/rest/market.ts:188](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L188)
-
-## Properties
-
-### \_api
-
-• **\_api**: *RequestorApi*
+• **\_api**: _RequestorApi_
 
 Defined in: [yajsapi/rest/market.ts:184](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L184)
 
-___
+#### \_deleted
 
-### \_deleted
-
-• `Private` **\_deleted**: *boolean*
+• `Private` **\_deleted**: _boolean_
 
 Defined in: [yajsapi/rest/market.ts:187](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L187)
 
-___
+#### \_details
 
-### \_details
-
-• `Private` **\_details**: *any*
+• `Private` **\_details**: _any_
 
 Defined in: [yajsapi/rest/market.ts:188](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L188)
 
-___
+#### \_id
 
-### \_id
-
-• `Private` **\_id**: *string*
+• `Private` **\_id**: _string_
 
 Defined in: [yajsapi/rest/market.ts:185](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L185)
 
-___
+#### \_open
 
-### \_open
-
-• `Private` **\_open**: *boolean*
+• `Private` **\_open**: _boolean_
 
 Defined in: [yajsapi/rest/market.ts:186](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L186)
 
-## Methods
+### Methods
 
-### close
+#### close
 
-▸ **close**(): *void*
+▸ **close**\(\): _void_
 
-**Returns:** *void*
+**Returns:** _void_
 
 Defined in: [yajsapi/rest/market.ts:206](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L206)
 
-___
+#### delete
 
-### delete
+▸ **delete**\(\): _Promise_&lt;_void_&gt;
 
-▸ **delete**(): *Promise*<*void*\>
-
-**Returns:** *Promise*<*void*\>
+**Returns:** _Promise_&lt;_void_&gt;
 
 Defined in: [yajsapi/rest/market.ts:223](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L223)
 
-___
+#### details
 
-### details
-
-▸ **details**(): Demand
+▸ **details**\(\): Demand
 
 **Returns:** Demand
 
 Defined in: [yajsapi/rest/market.ts:218](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L218)
 
-___
+#### done
 
-### done
+▸ **done**\(\): _Promise_&lt;_void_&gt;
 
-▸ **done**(): *Promise*<*void*\>
-
-**Returns:** *Promise*<*void*\>
+**Returns:** _Promise_&lt;_void_&gt;
 
 Defined in: [yajsapi/rest/market.ts:214](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L214)
 
-___
+#### events
 
-### events
+▸ **events**\(`cancellationToken?`: _any_\): _AsyncGenerator_&lt;[_OfferProposal_](rest_market.offerproposal.md), _any_, _unknown_&gt;
 
-▸ **events**(`cancellationToken?`: *any*): *AsyncGenerator*<[*OfferProposal*](rest_market.offerproposal.md), *any*, *unknown*\>
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `cancellationToken?` | _any_ |
 
-Name | Type |
------- | ------ |
-`cancellationToken?` | *any* |
-
-**Returns:** *AsyncGenerator*<[*OfferProposal*](rest_market.offerproposal.md), *any*, *unknown*\>
+**Returns:** _AsyncGenerator_&lt;[_OfferProposal_](rest_market.offerproposal.md), _any_, _unknown_&gt;
 
 Defined in: [yajsapi/rest/market.ts:230](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L230)
 
-___
+#### id
 
-### id
+▸ **id**\(\): _string_
 
-▸ **id**(): *string*
-
-**Returns:** *string*
+**Returns:** _string_
 
 Defined in: [yajsapi/rest/market.ts:202](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L202)
 
-___
+#### ready
 
-### ready
+▸ **ready**\(\): _Promise_&lt;[_Subscription_](rest_market.subscription.md)&gt;
 
-▸ **ready**(): *Promise*<[*Subscription*](rest_market.subscription.md)\>
-
-**Returns:** *Promise*<[*Subscription*](rest_market.subscription.md)\>
+**Returns:** _Promise_&lt;[_Subscription_](rest_market.subscription.md)&gt;
 
 Defined in: [yajsapi/rest/market.ts:210](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/market.ts#L210)
+

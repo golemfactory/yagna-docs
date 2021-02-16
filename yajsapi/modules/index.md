@@ -1,71 +1,58 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / index
-
 # Module: index
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / index
+
+## Module: index
+
+### Table of contents
+
+#### References
+
+* [Executor](index.md#executor)
+* [Task](index.md#task)
+* [WorkContext](index.md#workcontext)
+* [props](index.md#props)
+* [rest](index.md#rest)
+* [sgx](index.md#sgx)
+* [storage](index.md#storage)
+* [utils](index.md#utils)
+* [vm](index.md#vm)
 
 ### References
 
-- [Executor](index.md#executor)
-- [Task](index.md#task)
-- [WorkContext](index.md#workcontext)
-- [props](index.md#props)
-- [rest](index.md#rest)
-- [sgx](index.md#sgx)
-- [storage](index.md#storage)
-- [utils](index.md#utils)
-- [vm](index.md#vm)
-
-## References
-
-### Executor
+#### Executor
 
 Re-exports: [Executor](../classes/executor.executor-1.md)
 
-___
-
-### Task
+#### Task
 
 Re-exports: [Task](../classes/executor_task.task.md)
 
-___
-
-### WorkContext
+#### WorkContext
 
 Re-exports: [WorkContext](../classes/executor_ctx.workcontext.md)
 
-___
-
-### props
+#### props
 
 Re-exports: [props](props.md)
 
-___
-
-### rest
+#### rest
 
 Re-exports: [rest](rest.md)
 
-___
-
-### sgx
+#### sgx
 
 Re-exports: [sgx](executor.md#sgx)
 
-___
-
-### storage
+#### storage
 
 Re-exports: [storage](storage.md)
 
-___
-
-### utils
+#### utils
 
 Re-exports: [utils](utils.md)
 
-___
-
-### vm
+#### vm
 
 Re-exports: [vm](executor.md#vm)
+

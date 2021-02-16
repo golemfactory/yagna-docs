@@ -1,136 +1,129 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [crypto](../modules/crypto.md) / PrivateKey
-
 # Class: PrivateKey
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [crypto](../modules/crypto.md) / PrivateKey
+
+## Class: PrivateKey
 
 [crypto](../modules/crypto.md).PrivateKey
 
-## Hierarchy
+### Hierarchy
 
 * **PrivateKey**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](crypto.privatekey.md#constructor)
+
+#### Properties
+
+* [inner](crypto.privatekey.md#inner)
+
+#### Methods
+
+* [derive](crypto.privatekey.md#derive)
+* [publicKey](crypto.privatekey.md#publickey)
+* [sign](crypto.privatekey.md#sign)
+* [toString](crypto.privatekey.md#tostring)
+* [from](crypto.privatekey.md#from)
+* [fromHex](crypto.privatekey.md#fromhex)
 
 ### Constructors
 
-- [constructor](crypto.privatekey.md#constructor)
+#### constructor
+
++ **new PrivateKey**\(\): [_PrivateKey_](crypto.privatekey.md)
+
+**Returns:** [_PrivateKey_](crypto.privatekey.md)
+
+Defined in: [yajsapi/crypto.ts:11](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L11)
 
 ### Properties
 
-- [inner](crypto.privatekey.md#inner)
+#### inner
+
+• **inner**: _Buffer_
+
+Defined in: [yajsapi/crypto.ts:11](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L11)
 
 ### Methods
 
-- [derive](crypto.privatekey.md#derive)
-- [publicKey](crypto.privatekey.md#publickey)
-- [sign](crypto.privatekey.md#sign)
-- [toString](crypto.privatekey.md#tostring)
-- [from](crypto.privatekey.md#from)
-- [fromHex](crypto.privatekey.md#fromhex)
+#### derive
 
-## Constructors
+▸ **derive**\(`publicKey`: [_PublicKey_](crypto.publickey.md)\): _Promise_&lt;_Buffer_&gt;
 
-### constructor
+**Parameters:**
 
-\+ **new PrivateKey**(): [*PrivateKey*](crypto.privatekey.md)
+| Name | Type |
+| :--- | :--- |
+| `publicKey` | [_PublicKey_](crypto.publickey.md) |
 
-**Returns:** [*PrivateKey*](crypto.privatekey.md)
-
-Defined in: [yajsapi/crypto.ts:11](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L11)
-
-## Properties
-
-### inner
-
-• **inner**: *Buffer*
-
-Defined in: [yajsapi/crypto.ts:11](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L11)
-
-## Methods
-
-### derive
-
-▸ **derive**(`publicKey`: [*PublicKey*](crypto.publickey.md)): *Promise*<*Buffer*\>
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`publicKey` | [*PublicKey*](crypto.publickey.md) |
-
-**Returns:** *Promise*<*Buffer*\>
+**Returns:** _Promise_&lt;_Buffer_&gt;
 
 Defined in: [yajsapi/crypto.ts:35](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L35)
 
-___
+#### publicKey
 
-### publicKey
+▸ **publicKey**\(`compressed?`: _boolean_\): [_PublicKey_](crypto.publickey.md)
 
-▸ **publicKey**(`compressed?`: *boolean*): [*PublicKey*](crypto.publickey.md)
+**Parameters:**
 
-#### Parameters:
+| Name | Type | Default value |
+| :--- | :--- | :--- |
+| `compressed` | _boolean_ | true |
 
-Name | Type | Default value |
------- | ------ | ------ |
-`compressed` | *boolean* | true |
-
-**Returns:** [*PublicKey*](crypto.publickey.md)
+**Returns:** [_PublicKey_](crypto.publickey.md)
 
 Defined in: [yajsapi/crypto.ts:28](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L28)
 
-___
+#### sign
 
-### sign
+▸ **sign**\(`msg`: _Buffer_\): _Promise_&lt;_Buffer_&gt;
 
-▸ **sign**(`msg`: *Buffer*): *Promise*<*Buffer*\>
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `msg` | _Buffer_ |
 
-Name | Type |
------- | ------ |
-`msg` | *Buffer* |
-
-**Returns:** *Promise*<*Buffer*\>
+**Returns:** _Promise_&lt;_Buffer_&gt;
 
 Defined in: [yajsapi/crypto.ts:39](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L39)
 
-___
+#### toString
 
-### toString
+▸ **toString**\(\): _string_
 
-▸ **toString**(): *string*
-
-**Returns:** *string*
+**Returns:** _string_
 
 Defined in: [yajsapi/crypto.ts:43](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L43)
 
-___
+#### from
 
-### from
+▸ `Static`**from**\(`buffer`: _Buffer_\): [_PrivateKey_](crypto.privatekey.md)
 
-▸ `Static`**from**(`buffer`: *Buffer*): [*PrivateKey*](crypto.privatekey.md)
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `buffer` | _Buffer_ |
 
-Name | Type |
------- | ------ |
-`buffer` | *Buffer* |
-
-**Returns:** [*PrivateKey*](crypto.privatekey.md)
+**Returns:** [_PrivateKey_](crypto.privatekey.md)
 
 Defined in: [yajsapi/crypto.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L17)
 
-___
+#### fromHex
 
-### fromHex
+▸ `Static`**fromHex**\(`hex`: _string_\): [_PublicKey_](crypto.publickey.md)
 
-▸ `Static`**fromHex**(`hex`: *string*): [*PublicKey*](crypto.publickey.md)
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `hex` | _string_ |
 
-Name | Type |
------- | ------ |
-`hex` | *string* |
-
-**Returns:** [*PublicKey*](crypto.publickey.md)
+**Returns:** [_PublicKey_](crypto.publickey.md)
 
 Defined in: [yajsapi/crypto.ts:23](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L23)
+

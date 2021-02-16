@@ -1,17 +1,18 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [props/builder](../modules/props_builder.md) / DemandBuilder
-
 # Class: DemandBuilder
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [props/builder](../modules/props_builder.md) / DemandBuilder
+
+## Class: DemandBuilder
 
 [props/builder](../modules/props_builder.md).DemandBuilder
 
 Builds an object of properties and constraints from high-level models.
 
-**`description`** The object represents a Demand object, which is later matched by the new Golem's
- market implementation against Offers coming from providers to find those providers
- who can satisfy the requestor's demand.
+**`description`** The object represents a Demand object, which is later matched by the new Golem's market implementation against Offers coming from providers to find those providers who can satisfy the requestor's demand.
 
-**`example`** 
-```js
+**`example`**
+
+```javascript
 import dayjs from "dayjs"
 import { props } from "yajsapi"
 
@@ -32,119 +33,110 @@ console.log(builder);
 //  'constraints': []}
 ```
 
-## Hierarchy
+### Hierarchy
 
 * **DemandBuilder**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](props_builder.demandbuilder.md#constructor)
+
+#### Properties
+
+* [\_constraints](props_builder.demandbuilder.md#_constraints)
+* [\_properties](props_builder.demandbuilder.md#_properties)
+
+#### Methods
+
+* [add](props_builder.demandbuilder.md#add)
+* [constraints](props_builder.demandbuilder.md#constraints)
+* [ensure](props_builder.demandbuilder.md#ensure)
+* [properties](props_builder.demandbuilder.md#properties)
+* [subscribe](props_builder.demandbuilder.md#subscribe)
 
 ### Constructors
 
-- [constructor](props_builder.demandbuilder.md#constructor)
+#### constructor
+
++ **new DemandBuilder**\(\): [_DemandBuilder_](props_builder.demandbuilder.md)
+
+**Returns:** [_DemandBuilder_](props_builder.demandbuilder.md)
+
+Defined in: [yajsapi/props/builder.ts:35](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L35)
 
 ### Properties
 
-- [\_constraints](props_builder.demandbuilder.md#_constraints)
-- [\_properties](props_builder.demandbuilder.md#_properties)
+#### \_constraints
 
-### Methods
-
-- [add](props_builder.demandbuilder.md#add)
-- [constraints](props_builder.demandbuilder.md#constraints)
-- [ensure](props_builder.demandbuilder.md#ensure)
-- [properties](props_builder.demandbuilder.md#properties)
-- [subscribe](props_builder.demandbuilder.md#subscribe)
-
-## Constructors
-
-### constructor
-
-\+ **new DemandBuilder**(): [*DemandBuilder*](props_builder.demandbuilder.md)
-
-**Returns:** [*DemandBuilder*](props_builder.demandbuilder.md)
+• **\_constraints**: _string_\[\]
 
 Defined in: [yajsapi/props/builder.ts:35](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L35)
 
-## Properties
-
-### \_constraints
-
-• **\_constraints**: *string*[]
-
-Defined in: [yajsapi/props/builder.ts:35](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L35)
-
-___
-
-### \_properties
+#### \_properties
 
 • **\_properties**: Object
 
 Defined in: [yajsapi/props/builder.ts:34](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L34)
 
-## Methods
+### Methods
 
-### add
+#### add
 
-▸ **add**(`m`: *any*): *void*
+▸ **add**\(`m`: _any_\): _void_
 
-#### Parameters:
+**Parameters:**
 
-Name | Type |
------- | ------ |
-`m` | *any* |
+| Name | Type |
+| :--- | :--- |
+| `m` | _any_ |
 
-**Returns:** *void*
+**Returns:** _void_
 
 Defined in: [yajsapi/props/builder.ts:66](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L66)
 
-___
+#### constraints
 
-### constraints
+▸ **constraints**\(\): _string_
 
-▸ **constraints**(): *string*
-
-**Returns:** *string*
+**Returns:** _string_
 
 Defined in: [yajsapi/props/builder.ts:47](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L47)
 
-___
+#### ensure
 
-### ensure
+▸ **ensure**\(`constraint`: _string_\): _void_
 
-▸ **ensure**(`constraint`: *string*): *void*
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `constraint` | _string_ |
 
-Name | Type |
------- | ------ |
-`constraint` | *string* |
-
-**Returns:** *void*
+**Returns:** _void_
 
 Defined in: [yajsapi/props/builder.ts:61](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L61)
 
-___
+#### properties
 
-### properties
+▸ **properties**\(\): _object_
 
-▸ **properties**(): *object*
-
-**Returns:** *object*
+**Returns:** _object_
 
 Defined in: [yajsapi/props/builder.ts:42](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L42)
 
-___
+#### subscribe
 
-### subscribe
+▸ **subscribe**\(`market`: [_Market_](rest_market.market.md)\): _Promise_&lt;[_Subscription_](rest_market.subscription.md)&gt;
 
-▸ **subscribe**(`market`: [*Market*](rest_market.market.md)): *Promise*<[*Subscription*](rest_market.subscription.md)\>
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `market` | [_Market_](rest_market.market.md) |
 
-Name | Type |
------- | ------ |
-`market` | [*Market*](rest_market.market.md) |
-
-**Returns:** *Promise*<[*Subscription*](rest_market.subscription.md)\>
+**Returns:** _Promise_&lt;[_Subscription_](rest_market.subscription.md)&gt;
 
 Defined in: [yajsapi/props/builder.ts:90](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/builder.ts#L90)
+

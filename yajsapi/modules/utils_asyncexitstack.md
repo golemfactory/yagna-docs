@@ -1,9 +1,12 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / utils/asyncExitStack
-
 # Module: utils/asyncExitStack
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / utils/asyncExitStack
 
-### Classes
+## Module: utils/asyncExitStack
 
-- [default](../classes/utils_asyncexitstack.default.md)
+### Table of contents
+
+#### Classes
+
+* [default](https://github.com/golemfactory/yagna-docs/tree/f181b6ad5340c6acfcb5541c36763d5ccf816255/yajsapi/classes/utils_asyncexitstack.default.md)
+

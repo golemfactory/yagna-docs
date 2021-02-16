@@ -1,99 +1,98 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor/events](../modules/executor_events.md) / CommandEventContext
-
 # Class: CommandEventContext
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/events](../modules/executor_events.md) / CommandEventContext
+
+## Class: CommandEventContext
 
 [executor/events](../modules/executor_events.md).CommandEventContext
 
-## Hierarchy
+### Hierarchy
 
 * **CommandEventContext**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](executor_events.commandeventcontext.md#constructor)
+
+#### Properties
+
+* [evt](executor_events.commandeventcontext.md#evt)
+
+#### Methods
+
+* [computation\_finished](executor_events.commandeventcontext.md#computation_finished)
+* [event](executor_events.commandeventcontext.md#event)
+* [fromJson](executor_events.commandeventcontext.md#fromjson)
 
 ### Constructors
 
-- [constructor](executor_events.commandeventcontext.md#constructor)
+#### constructor
+
++ **new CommandEventContext**\(`evt_cls`: _any_\): [_CommandEventContext_](executor_events.commandeventcontext.md)
+
+**Parameters:**
+
+| Name | Type |
+| :--- | :--- |
+| `evt_cls` | _any_ |
+
+**Returns:** [_CommandEventContext_](executor_events.commandeventcontext.md)
+
+Defined in: [yajsapi/executor/events.ts:335](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L335)
 
 ### Properties
 
-- [evt](executor_events.commandeventcontext.md#evt)
+#### evt
+
+• **evt**: [_CommandEvent_](executor_events.commandevent.md)
+
+Defined in: [yajsapi/executor/events.ts:335](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L335)
 
 ### Methods
 
-- [computation\_finished](executor_events.commandeventcontext.md#computation_finished)
-- [event](executor_events.commandeventcontext.md#event)
-- [fromJson](executor_events.commandeventcontext.md#fromjson)
+#### computation\_finished
 
-## Constructors
+▸ **computation\_finished**\(`last_idx`: _any_\): _boolean_
 
-### constructor
+**Parameters:**
 
-\+ **new CommandEventContext**(`evt_cls`: *any*): [*CommandEventContext*](executor_events.commandeventcontext.md)
+| Name | Type |
+| :--- | :--- |
+| `last_idx` | _any_ |
 
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`evt_cls` | *any* |
-
-**Returns:** [*CommandEventContext*](executor_events.commandeventcontext.md)
-
-Defined in: [yajsapi/executor/events.ts:335](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L335)
-
-## Properties
-
-### evt
-
-• **evt**: [*CommandEvent*](executor_events.commandevent.md)
-
-Defined in: [yajsapi/executor/events.ts:335](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L335)
-
-## Methods
-
-### computation\_finished
-
-▸ **computation_finished**(`last_idx`: *any*): *boolean*
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`last_idx` | *any* |
-
-**Returns:** *boolean*
+**Returns:** _boolean_
 
 Defined in: [yajsapi/executor/events.ts:389](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L389)
 
-___
+#### event
 
-### event
+▸ **event**\(`agr_id`: _string_, `task_id`: _string_, `cmds`: _any_\[\]\): [_CommandEvent_](executor_events.commandevent.md)
 
-▸ **event**(`agr_id`: *string*, `task_id`: *string*, `cmds`: *any*[]): [*CommandEvent*](executor_events.commandevent.md)
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `agr_id` | _string_ |
+| `task_id` | _string_ |
+| `cmds` | _any_\[\] |
 
-Name | Type |
------- | ------ |
-`agr_id` | *string* |
-`task_id` | *string* |
-`cmds` | *any*[] |
-
-**Returns:** [*CommandEvent*](executor_events.commandevent.md)
+**Returns:** [_CommandEvent_](executor_events.commandevent.md)
 
 Defined in: [yajsapi/executor/events.ts:399](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L399)
 
-___
+#### fromJson
 
-### fromJson
+▸ `Static`**fromJson**\(`json`: _string_\): [_CommandEventContext_](executor_events.commandeventcontext.md)
 
-▸ `Static`**fromJson**(`json`: *string*): [*CommandEventContext*](executor_events.commandeventcontext.md)
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `json` | _string_ |
 
-Name | Type |
------- | ------ |
-`json` | *string* |
-
-**Returns:** [*CommandEventContext*](executor_events.commandeventcontext.md)
+**Returns:** [_CommandEventContext_](executor_events.commandeventcontext.md)
 
 Defined in: [yajsapi/executor/events.ts:340](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L340)
+

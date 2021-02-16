@@ -1,94 +1,89 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [props/inf](../modules/props_inf.md) / InfBase
-
 # Class: InfBase
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [props/inf](../modules/props_inf.md) / InfBase
+
+## Class: InfBase
 
 [props/inf](../modules/props_inf.md).InfBase
 
-## Hierarchy
+### Hierarchy
 
 * **InfBase**
 
-  ↳ [*InfVm*](props_inf.infvm.md)
+  ↳ [_InfVm_](props_inf.infvm.md)
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](props_inf.infbase.md#constructor)
+
+#### Properties
+
+* [cores](props_inf.infbase.md#cores)
+* [mem](props_inf.infbase.md#mem)
+* [runtime](props_inf.infbase.md#runtime)
+* [storage](props_inf.infbase.md#storage)
+* [transfers](props_inf.infbase.md#transfers)
+
+#### Methods
+
+* [fields](props_inf.infbase.md#fields)
 
 ### Constructors
 
-- [constructor](props_inf.infbase.md#constructor)
+#### constructor
+
++ **new InfBase**\(\): [_InfBase_](props_inf.infbase.md)
+
+**Returns:** [_InfBase_](props_inf.infbase.md)
 
 ### Properties
 
-- [cores](props_inf.infbase.md#cores)
-- [mem](props_inf.infbase.md#mem)
-- [runtime](props_inf.infbase.md#runtime)
-- [storage](props_inf.infbase.md#storage)
-- [transfers](props_inf.infbase.md#transfers)
+#### cores
 
-### Methods
-
-- [fields](props_inf.infbase.md#fields)
-
-## Constructors
-
-### constructor
-
-\+ **new InfBase**(): [*InfBase*](props_inf.infbase.md)
-
-**Returns:** [*InfBase*](props_inf.infbase.md)
-
-## Properties
-
-### cores
-
-• **cores**: [*Field*](props_base.field.md)
+• **cores**: [_Field_](props_base.field.md)
 
 Defined in: [yajsapi/props/inf.ts:21](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L21)
 
-___
+#### mem
 
-### mem
-
-• **mem**: [*Field*](props_base.field.md)
+• **mem**: [_Field_](props_base.field.md)
 
 Defined in: [yajsapi/props/inf.ts:22](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L22)
 
-___
+#### runtime
 
-### runtime
-
-• **runtime**: [*Field*](props_base.field.md)
+• **runtime**: [_Field_](props_base.field.md)
 
 Defined in: [yajsapi/props/inf.ts:23](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L23)
 
-___
+#### storage
 
-### storage
-
-• `Optional` **storage**: *undefined* \| [*Field*](props_base.field.md)
+• `Optional` **storage**: _undefined_ \| [_Field_](props_base.field.md)
 
 Defined in: [yajsapi/props/inf.ts:25](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L25)
 
-___
+#### transfers
 
-### transfers
-
-• **transfers**: [*Field*](props_base.field.md)
+• **transfers**: [_Field_](props_base.field.md)
 
 Defined in: [yajsapi/props/inf.ts:26](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L26)
 
-## Methods
+### Methods
 
-### fields
+#### fields
 
-▸ `Static`**fields**(`inf`: [*InfBase*](props_inf.infbase.md), `keys`: *string*[]): *object*
+▸ `Static`**fields**\(`inf`: [_InfBase_](props_inf.infbase.md), `keys`: _string_\[\]\): _object_
 
-#### Parameters:
+**Parameters:**
 
-Name | Type |
------- | ------ |
-`inf` | [*InfBase*](props_inf.infbase.md) |
-`keys` | *string*[] |
+| Name | Type |
+| :--- | :--- |
+| `inf` | [_InfBase_](props_inf.infbase.md) |
+| `keys` | _string_\[\] |
 
-**Returns:** *object*
+**Returns:** _object_
 
 Defined in: [yajsapi/props/inf.ts:28](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L28)
+

@@ -1,66 +1,67 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor/ctx](../modules/executor_ctx.md) / CommandContainer
-
 # Class: CommandContainer
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/ctx](../modules/executor_ctx.md) / CommandContainer
+
+## Class: CommandContainer
 
 [executor/ctx](../modules/executor_ctx.md).CommandContainer
 
-## Hierarchy
+### Hierarchy
 
 * **CommandContainer**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](executor_ctx.commandcontainer.md#constructor)
+
+#### Properties
+
+* [\_commands](executor_ctx.commandcontainer.md#_commands)
+
+#### Methods
+
+* [commands](executor_ctx.commandcontainer.md#commands)
+* [getattr](executor_ctx.commandcontainer.md#getattr)
 
 ### Constructors
 
-- [constructor](executor_ctx.commandcontainer.md#constructor)
+#### constructor
+
++ **new CommandContainer**\(\): [_CommandContainer_](executor_ctx.commandcontainer.md)
+
+**Returns:** [_CommandContainer_](executor_ctx.commandcontainer.md)
+
+Defined in: [yajsapi/executor/ctx.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L7)
 
 ### Properties
 
-- [\_commands](executor_ctx.commandcontainer.md#_commands)
+#### \_commands
+
+• `Private` **\_commands**: _any_
+
+Defined in: [yajsapi/executor/ctx.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L7)
 
 ### Methods
 
-- [commands](executor_ctx.commandcontainer.md#commands)
-- [getattr](executor_ctx.commandcontainer.md#getattr)
+#### commands
 
-## Constructors
+▸ **commands**\(\): _any_
 
-### constructor
-
-\+ **new CommandContainer**(): [*CommandContainer*](executor_ctx.commandcontainer.md)
-
-**Returns:** [*CommandContainer*](executor_ctx.commandcontainer.md)
-
-Defined in: [yajsapi/executor/ctx.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L7)
-
-## Properties
-
-### \_commands
-
-• `Private` **\_commands**: *any*
-
-Defined in: [yajsapi/executor/ctx.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L7)
-
-## Methods
-
-### commands
-
-▸ **commands**(): *any*
-
-**Returns:** *any*
+**Returns:** _any_
 
 Defined in: [yajsapi/executor/ctx.ts:14](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L14)
 
-___
+#### getattr
 
-### getattr
+▸ **getattr**\(\): _object_
 
-▸ **getattr**(): *object*
+**Returns:** _object_
 
-**Returns:** *object*
-
-Name | Type |
------- | ------ |
-`get` | (`target`: *any*, `name`: *any*) => *any* |
+| Name | Type |
+| :--- | :--- |
+| `get` | \(`target`: _any_, `name`: _any_\) =&gt; _any_ |
 
 Defined in: [yajsapi/executor/ctx.ts:18](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/ctx.ts#L18)
+

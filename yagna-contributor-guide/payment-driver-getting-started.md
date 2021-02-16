@@ -1,34 +1,34 @@
-# How to write payment driver
+# How to a write payment driver
 
-This document aims to provide guidelines to develop a payment driver based on boilerplate code from [Yagna repository](https://github.com/golemfactory/yagna). It assumes the reader has some experience in [Rust language](https://www.rust-lang.org/) and also Yagna project's codebase. We're providing an information for payment driver that will be integrated into Yagna daemon codebase and gains from reusing a lot of already provided components. It's also possible to develop stand-alone driver application that communicates with the Yagna daemon via TCP, but it won't be described here.
+This document aims to provide guidelines to developing a payment driver based on boilerplate code from the [Yagna repository](https://github.com/golemfactory/yagna). It assumes the reader has some experience in the [Rust language](https://www.rust-lang.org/) and also the Yagna project's codebase. We're providing an information for payment driver that will be integrated into the Yagna daemon codebase and gains from reusing a lot of already provided components. It's also possible to develop stand-alone driver application that communicates with the Yagna daemon via TCP, but it won't be described here.
 
 ## Overview
 
-Payment service of Yagna daemon expects that payment driver will handle all communication with particular L2 network provider \(but it's not limited to Ethereum ecosystem\). You might assume that payment driver should:
+The payment service of the Yagna daemon expects that payment driver will handle all communication with any particular L2 network provider \(but it's not limited to the Ethereum ecosystem\). You might assume that payment driver should:
 
-* communicate with daemon services over Golem Service Bus \(GSB\),
-* provide operation like deposits, exits, transfer, account unlocking,
-* delegate transaction's signing to the Identity service,
-* notify Payment service about committed transactions,
-* retry operations that failed due to non-critical causes.
+* Communicate with daemon services over Golem Service Bus \(GSB\),
+* Provide operation like deposits, exits, transfer, account unlocking,
+* Delegate transaction's signing to the Identity service,
+* Notify Payment service about committed transactions,
+* Retry operations that failed due to non-critical causes.
 
 Here is a checklist that driver implementors would want to follow:
 
 * Fork the Yagna repository and clone it locally to start working on the code,
 * Create a new crate for your driver in the `core/payment-drivers` directory,
-* Implement all methods from `PaymentDriver` trait, some of them are described in the section below,
-* Your implementation can also benefit from database handling code and background tasks in `cron` module, but it is not mandatory to use them,
-* Make a new driver build and start with the Yagna daemon. See instructions bellow,
-* Test and verify it's working using instructions from the section bellow,
+* Implement all methods from the `PaymentDriver` trait. Some of them are described in the section below,
+* Your implementation can also benefit from database handling code and background tasks in the `cron` module, but it is not mandatory to use them,
+* Make a new driver build and start with the Yagna daemon. See instructions below.
+* Test and verify it's working using the instructions from the section below.
 * Send us a Pull Request.
 
 ## Codebase
 
-Clone [Yagna](https://github.com/golemfactory/yagna) git repository from GitHub. Most interesting parts are located in `core/payment-driver` directory. Here's what can be found there:
+Clone the [Yagna](https://github.com/golemfactory/yagna) git repository from GitHub. The most interesting parts are located in the `core/payment-driver` directory. Here's what can be found there:
 
-* `core/payment-driver/base` - base driver components which defines database schema and operations, registers to GSB events, helps with creation of background jobs and some utility code.
+* `core/payment-driver/base` - base driver components which defines the database schema and operations, registers to GSB events, help with creation of background jobs and some utility code.
 * `core/payment-driver/zksync` - provides a reference driver implementation of [Zk-Sync](https://zksync.io) L2 network.
-* `core/payment-driver/base/driver.rs` - declares a Rust's trait that a new driver hast to implement
+* `core/payment-driver/base/driver.rs` - declares a Rust's trait that a new driver has to implement
 * `core/payment-driver/base/cron.rs` - declares a driver's periodical operation trait. It's optional to use it.
 * `core/payment-driver/base/bus.rs` - declares the driver's operations to other daemon services, e.g. `register_account`, `sign`, `notify_payment`.
 * `core/payment-driver/base/dao` - handy functions to DB \(sqlite\) interaction. It's optional to use it.
@@ -63,11 +63,11 @@ The payment driver receives all requests via the GSB. This is also a communicati
 
 ## Starting a new driver with Yagna
 
-Add a new block in `start_payment_drivers` function in [`core/serv/src/main.rs`](https://github.com/golemfactory/yagna/blob/master/core/serv/src/main.rs#L216) file. It should follow the convention and declares its own compilation flag. Don't forget to set this flag during the compilation :wink:.
+Add a new block in `start_payment_drivers` function in the [`core/serv/src/main.rs`](https://github.com/golemfactory/yagna/blob/master/core/serv/src/main.rs#L216) file. It should follow the convention and declares its own compilation flag. Don't forget to set this flag during the compilation :wink:.
 
 ## Testing a new driver
 
-When you consider your work is done, take some time to actually see it in action. Be sure we will scrupulously test the driver behavior in the following scenarios, including the error messages written in logs and returned from CLI. Don't hesitate to ask questions, we are here to help.
+When you consider your work done, take some time to actually see it in action. Be sure we will scrupulously test the driver behavior in the following scenarios, including the error messages written in logs and returned from CLI. Don't hesitate to ask questions, we are here to help.
 
 We will run the following tests \(happy paths and providing invalid parameters to make it fail\).
 

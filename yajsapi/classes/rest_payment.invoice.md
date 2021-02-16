@@ -1,184 +1,161 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [rest/payment](../modules/rest_payment.md) / Invoice
-
 # Class: Invoice
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/payment](../modules/rest_payment.md) / Invoice
+
+## Class: Invoice
 
 [rest/payment](../modules/rest_payment.md).Invoice
 
-## Hierarchy
+### Hierarchy
 
-* *yInvoice*
+* _yInvoice_
 
   ↳ **Invoice**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](rest_payment.invoice.md#constructor)
+
+#### Properties
+
+* [\_api](rest_payment.invoice.md#_api)
+* [activityIds](rest_payment.invoice.md#activityids)
+* [agreementId](rest_payment.invoice.md#agreementid)
+* [amount](rest_payment.invoice.md#amount)
+* [invoiceId](rest_payment.invoice.md#invoiceid)
+* [issuerId](rest_payment.invoice.md#issuerid)
+* [lastDebitNoteId](rest_payment.invoice.md#lastdebitnoteid)
+* [payeeAddr](rest_payment.invoice.md#payeeaddr)
+* [payerAddr](rest_payment.invoice.md#payeraddr)
+* [paymentDueDate](rest_payment.invoice.md#paymentduedate)
+* [paymentPlatform](rest_payment.invoice.md#paymentplatform)
+* [recipientId](rest_payment.invoice.md#recipientid)
+* [status](rest_payment.invoice.md#status)
+* [timestamp](rest_payment.invoice.md#timestamp)
+
+#### Methods
+
+* [accept](rest_payment.invoice.md#accept)
 
 ### Constructors
 
-- [constructor](rest_payment.invoice.md#constructor)
+#### constructor
+
++ **new Invoice**\(`_api`: _RequestorApi_, `_base`: Invoice\): [_Invoice_](rest_payment.invoice.md)
+
+**Parameters:**
+
+| Name | Type |
+| :--- | :--- |
+| `_api` | _RequestorApi_ |
+| `_base` | Invoice |
+
+**Returns:** [_Invoice_](rest_payment.invoice.md)
+
+Defined in: [yajsapi/rest/payment.ts:45](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L45)
 
 ### Properties
 
-- [\_api](rest_payment.invoice.md#_api)
-- [activityIds](rest_payment.invoice.md#activityids)
-- [agreementId](rest_payment.invoice.md#agreementid)
-- [amount](rest_payment.invoice.md#amount)
-- [invoiceId](rest_payment.invoice.md#invoiceid)
-- [issuerId](rest_payment.invoice.md#issuerid)
-- [lastDebitNoteId](rest_payment.invoice.md#lastdebitnoteid)
-- [payeeAddr](rest_payment.invoice.md#payeeaddr)
-- [payerAddr](rest_payment.invoice.md#payeraddr)
-- [paymentDueDate](rest_payment.invoice.md#paymentduedate)
-- [paymentPlatform](rest_payment.invoice.md#paymentplatform)
-- [recipientId](rest_payment.invoice.md#recipientid)
-- [status](rest_payment.invoice.md#status)
-- [timestamp](rest_payment.invoice.md#timestamp)
+#### \_api
 
-### Methods
-
-- [accept](rest_payment.invoice.md#accept)
-
-## Constructors
-
-### constructor
-
-\+ **new Invoice**(`_api`: *RequestorApi*, `_base`: Invoice): [*Invoice*](rest_payment.invoice.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`_api` | *RequestorApi* |
-`_base` | Invoice |
-
-**Returns:** [*Invoice*](rest_payment.invoice.md)
+• `Private` **\_api**: _RequestorApi_
 
 Defined in: [yajsapi/rest/payment.ts:45](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L45)
 
-## Properties
+#### activityIds
 
-### \_api
-
-• `Private` **\_api**: *RequestorApi*
-
-Defined in: [yajsapi/rest/payment.ts:45](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L45)
-
-___
-
-### activityIds
-
-• `Optional` **activityIds**: *undefined* \| *string*[]
+• `Optional` **activityIds**: _undefined_ \| _string_\[\]
 
 Defined in: [yajsapi/rest/payment.ts:21](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L21)
 
-___
+#### agreementId
 
-### agreementId
-
-• **agreementId**: *string*
+• **agreementId**: _string_
 
 Defined in: [yajsapi/rest/payment.ts:20](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L20)
 
-___
+#### amount
 
-### amount
-
-• **amount**: *string*
+• **amount**: _string_
 
 Defined in: [yajsapi/rest/payment.ts:22](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L22)
 
-___
+#### invoiceId
 
-### invoiceId
-
-• **invoiceId**: *string*
+• **invoiceId**: _string_
 
 Defined in: [yajsapi/rest/payment.ts:12](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L12)
 
-___
+#### issuerId
 
-### issuerId
-
-• **issuerId**: *string*
+• **issuerId**: _string_
 
 Defined in: [yajsapi/rest/payment.ts:13](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L13)
 
-___
+#### lastDebitNoteId
 
-### lastDebitNoteId
-
-• `Optional` **lastDebitNoteId**: *undefined* \| *string*
+• `Optional` **lastDebitNoteId**: _undefined_ \| _string_
 
 Defined in: [yajsapi/rest/payment.ts:18](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L18)
 
-___
+#### payeeAddr
 
-### payeeAddr
-
-• `Optional` **payeeAddr**: *undefined* \| *string*
+• `Optional` **payeeAddr**: _undefined_ \| _string_
 
 Defined in: [yajsapi/rest/payment.ts:15](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L15)
 
-___
+#### payerAddr
 
-### payerAddr
-
-• `Optional` **payerAddr**: *undefined* \| *string*
+• `Optional` **payerAddr**: _undefined_ \| _string_
 
 Defined in: [yajsapi/rest/payment.ts:16](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L16)
 
-___
+#### paymentDueDate
 
-### paymentDueDate
-
-• **paymentDueDate**: *string*
+• **paymentDueDate**: _string_
 
 Defined in: [yajsapi/rest/payment.ts:23](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L23)
 
-___
+#### paymentPlatform
 
-### paymentPlatform
-
-• `Optional` **paymentPlatform**: *undefined* \| *string*
+• `Optional` **paymentPlatform**: _undefined_ \| _string_
 
 Defined in: [yajsapi/rest/payment.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L17)
 
-___
+#### recipientId
 
-### recipientId
-
-• **recipientId**: *string*
+• **recipientId**: _string_
 
 Defined in: [yajsapi/rest/payment.ts:14](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L14)
 
-___
-
-### status
+#### status
 
 • **status**: InvoiceStatus
 
 Defined in: [yajsapi/rest/payment.ts:24](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L24)
 
-___
+#### timestamp
 
-### timestamp
-
-• **timestamp**: *string*
+• **timestamp**: _string_
 
 Defined in: [yajsapi/rest/payment.ts:19](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L19)
 
-## Methods
+### Methods
 
-### accept
+#### accept
 
-▸ **accept**(`amount`: *string* \| *number*, `allocation`: [*Allocation*](rest_payment.allocation.md)): *Promise*<*void*\>
+▸ **accept**\(`amount`: _string_ \| _number_, `allocation`: [_Allocation_](rest_payment.allocation.md)\): _Promise_&lt;_void_&gt;
 
-#### Parameters:
+**Parameters:**
 
-Name | Type |
------- | ------ |
-`amount` | *string* \| *number* |
-`allocation` | [*Allocation*](rest_payment.allocation.md) |
+| Name | Type |
+| :--- | :--- |
+| `amount` | _string_ \| _number_ |
+| `allocation` | [_Allocation_](rest_payment.allocation.md) |
 
-**Returns:** *Promise*<*void*\>
+**Returns:** _Promise_&lt;_void_&gt;
 
 Defined in: [yajsapi/rest/payment.ts:54](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L54)
+

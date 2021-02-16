@@ -1,56 +1,57 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / utils/log
-
 # Module: utils/log
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / utils/log
+
+## Module: utils/log
+
+### Table of contents
+
+#### Variables
+
+* [default](utils_log.md#default)
+
+#### Functions
+
+* [changeLogLevel](utils_log.md#changeloglevel)
+* [logSummary](utils_log.md#logsummary)
 
 ### Variables
 
-- [default](utils_log.md#default)
+#### default
 
-### Functions
-
-- [changeLogLevel](utils_log.md#changeloglevel)
-- [logSummary](utils_log.md#logsummary)
-
-## Variables
-
-### default
-
-• `Const` **default**: *Logger*
+• `Const` **default**: _Logger_
 
 Defined in: [yajsapi/utils/log.ts:74](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/log.ts#L74)
 
 Defined in: [yajsapi/utils/index.ts:26](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/index.ts#L26)
 
-## Functions
+### Functions
 
-### changeLogLevel
+#### changeLogLevel
 
-▸ `Const`**changeLogLevel**(`level`: *string*): *void*
+▸ `Const`**changeLogLevel**\(`level`: _string_\): _void_
 
-#### Parameters:
+**Parameters:**
 
-Name | Type |
------- | ------ |
-`level` | *string* |
+| Name | Type |
+| :--- | :--- |
+| `level` | _string_ |
 
-**Returns:** *void*
+**Returns:** _void_
 
 Defined in: [yajsapi/utils/log.ts:354](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/log.ts#L354)
 
-___
+#### logSummary
 
-### logSummary
+▸ **logSummary**\(`wrapped_emitter?`: [_default_](../interface/utils_callable.default.md)&lt;\[[_YaEvent_](../classes/executor_events.yaevent.md)\], _void_&gt; \| _null_\): _function_
 
-▸ **logSummary**(`wrapped_emitter?`: [*default*](../interfaces/utils_callable.default.md)<[[*YaEvent*](../classes/executor_events.yaevent.md)], *void*\> \| *null*): *function*
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `wrapped_emitter?` | [_default_](../interface/utils_callable.default.md)&lt;\[[_YaEvent_](../classes/executor_events.yaevent.md)\], _void_&gt; \| _null_ |
 
-Name | Type |
------- | ------ |
-`wrapped_emitter?` | [*default*](../interfaces/utils_callable.default.md)<[[*YaEvent*](../classes/executor_events.yaevent.md)], *void*\> \| *null* |
-
-**Returns:** *function*
+**Returns:** _function_
 
 Defined in: [yajsapi/utils/log.ts:347](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/log.ts#L347)
+

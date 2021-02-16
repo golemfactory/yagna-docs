@@ -1,9 +1,12 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / utils/callable
-
 # Module: utils/callable
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / utils/callable
 
-### Interfaces
+## Module: utils/callable
 
-- [default](../interfaces/utils_callable.default.md)
+### Table of contents
+
+#### Interfaces
+
+* [default](../interface/utils_callable.default.md)
+

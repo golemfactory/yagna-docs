@@ -1,35 +1,38 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [rest/resource](../modules/rest_resource.md) / ResourceCtx
+# Class: ResourceCtx
 
-# Class: ResourceCtx<_T\>
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/resource](../modules/rest_resource.md) / ResourceCtx
+
+## Class: ResourceCtx
 
 [rest/resource](../modules/rest_resource.md).ResourceCtx
 
-## Type parameters
+### Type parameters
 
-Name |
------- |
-`_T` |
+| Name |
+| :--- |
+| `_T` |
 
-## Hierarchy
+### Hierarchy
 
 * **ResourceCtx**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](rest_resource.resourcectx.md#constructor)
 
 ### Constructors
 
-- [constructor](rest_resource.resourcectx.md#constructor)
+#### constructor
 
-## Constructors
++ **new ResourceCtx**\(\): [_ResourceCtx_](rest_resource.resourcectx.md)&lt;\_T&gt;
 
-### constructor
+**Type parameters:**
 
-\+ **new ResourceCtx**<_T\>(): [*ResourceCtx*](rest_resource.resourcectx.md)<\_T\>
+| Name |
+| :--- |
+| `_T` |
 
-#### Type parameters:
+**Returns:** [_ResourceCtx_](rest_resource.resourcectx.md)&lt;\_T&gt;
 
-Name |
------- |
-`_T` |
-
-**Returns:** [*ResourceCtx*](rest_resource.resourcectx.md)<\_T\>

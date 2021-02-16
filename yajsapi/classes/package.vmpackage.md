@@ -1,107 +1,102 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [package](../modules/package.md) / VmPackage
-
 # Class: VmPackage
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [package](../modules/package.md) / VmPackage
+
+## Class: VmPackage
 
 [package](../modules/package.md).VmPackage
 
-## Hierarchy
+### Hierarchy
 
-* [*Package*](package.package-1.md)
+* [_Package_](package.package-1.md)
 
   ↳ **VmPackage**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](package.vmpackage.md#constructor)
+
+#### Properties
+
+* [constraints](package.vmpackage.md#constraints)
+* [image\_hash](package.vmpackage.md#image_hash)
+* [repo\_url](package.vmpackage.md#repo_url)
+* [secure](package.vmpackage.md#secure)
+
+#### Methods
+
+* [decorate\_demand](package.vmpackage.md#decorate_demand)
+* [resolve\_url](package.vmpackage.md#resolve_url)
 
 ### Constructors
 
-- [constructor](package.vmpackage.md#constructor)
+#### constructor
 
-### Properties
++ **new VmPackage**\(`__namedParameters`: _Object_\): [_VmPackage_](package.vmpackage.md)
 
-- [constraints](package.vmpackage.md#constraints)
-- [image\_hash](package.vmpackage.md#image_hash)
-- [repo\_url](package.vmpackage.md#repo_url)
-- [secure](package.vmpackage.md#secure)
+**Parameters:**
 
-### Methods
+• **\_\_namedParameters**: _Object_
 
-- [decorate\_demand](package.vmpackage.md#decorate_demand)
-- [resolve\_url](package.vmpackage.md#resolve_url)
-
-## Constructors
-
-### constructor
-
-\+ **new VmPackage**(`__namedParameters`: *Object*): [*VmPackage*](package.vmpackage.md)
-
-#### Parameters:
-
-• **__namedParameters**: *Object*
-
-**Returns:** [*VmPackage*](package.vmpackage.md)
+**Returns:** [_VmPackage_](package.vmpackage.md)
 
 Inherited from: [Package](package.package-1.md)
 
 Defined in: [yajsapi/package/index.ts:47](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L47)
 
-## Properties
+### Properties
 
-### constraints
+#### constraints
 
-• **constraints**: [*Constraints*](package.constraints.md)
+• **constraints**: [_Constraints_](package.constraints.md)
 
 Defined in: [yajsapi/package/index.ts:46](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L46)
 
-___
+#### image\_hash
 
-### image\_hash
-
-• **image\_hash**: *string*
+• **image\_hash**: _string_
 
 Defined in: [yajsapi/package/index.ts:45](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L45)
 
-___
+#### repo\_url
 
-### repo\_url
-
-• **repo\_url**: *string*
+• **repo\_url**: _string_
 
 Defined in: [yajsapi/package/index.ts:44](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L44)
 
-___
+#### secure
 
-### secure
-
-• **secure**: *boolean*
+• **secure**: _boolean_
 
 Defined in: [yajsapi/package/index.ts:47](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L47)
 
-## Methods
+### Methods
 
-### decorate\_demand
+#### decorate\_demand
 
-▸ **decorate_demand**(`demand`: [*DemandBuilder*](props_builder.demandbuilder.md)): *Promise*<*void*\>
+▸ **decorate\_demand**\(`demand`: [_DemandBuilder_](props_builder.demandbuilder.md)\): _Promise_&lt;_void_&gt;
 
-#### Parameters:
+**Parameters:**
 
-Name | Type |
------- | ------ |
-`demand` | [*DemandBuilder*](props_builder.demandbuilder.md) |
+| Name | Type |
+| :--- | :--- |
+| `demand` | [_DemandBuilder_](props_builder.demandbuilder.md) |
 
-**Returns:** *Promise*<*void*\>
+**Returns:** _Promise_&lt;_void_&gt;
 
 Overrides: [Package](package.package-1.md)
 
 Defined in: [yajsapi/package/index.ts:68](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L68)
 
-___
+#### resolve\_url
 
-### resolve\_url
+▸ **resolve\_url**\(\): _Promise_&lt;_string_&gt;
 
-▸ **resolve_url**(): *Promise*<*string*\>
-
-**Returns:** *Promise*<*string*\>
+**Returns:** _Promise_&lt;_string_&gt;
 
 Overrides: [Package](package.package-1.md)
 
 Defined in: [yajsapi/package/index.ts:57](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L57)
+

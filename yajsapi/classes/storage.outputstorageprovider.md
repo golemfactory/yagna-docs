@@ -1,45 +1,48 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [storage](../modules/storage.md) / OutputStorageProvider
-
 # Class: OutputStorageProvider
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [storage](../modules/storage.md) / OutputStorageProvider
+
+## Class: OutputStorageProvider
 
 [storage](../modules/storage.md).OutputStorageProvider
 
-## Hierarchy
+### Hierarchy
 
 * **OutputStorageProvider**
 
-  ↳ [*StorageProvider*](storage.storageprovider.md)
+  ↳ [_StorageProvider_](storage.storageprovider.md)
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](storage.outputstorageprovider.md#constructor)
+
+#### Methods
+
+* [new\_destination](storage.outputstorageprovider.md#new_destination)
 
 ### Constructors
 
-- [constructor](storage.outputstorageprovider.md#constructor)
+#### constructor
+
++ **new OutputStorageProvider**\(\): [_OutputStorageProvider_](storage.outputstorageprovider.md)
+
+**Returns:** [_OutputStorageProvider_](storage.outputstorageprovider.md)
 
 ### Methods
 
-- [new\_destination](storage.outputstorageprovider.md#new_destination)
+#### new\_destination
 
-## Constructors
+▸ **new\_destination**\(`destination_file?`: _null_ \| _string_\): _Promise_&lt;[_Destination_](storage.destination.md)&gt;
 
-### constructor
+**Parameters:**
 
-\+ **new OutputStorageProvider**(): [*OutputStorageProvider*](storage.outputstorageprovider.md)
+| Name | Type | Default value |
+| :--- | :--- | :--- |
+| `destination_file` | _null_ \| _string_ | null |
 
-**Returns:** [*OutputStorageProvider*](storage.outputstorageprovider.md)
-
-## Methods
-
-### new\_destination
-
-▸ **new_destination**(`destination_file?`: *null* \| *string*): *Promise*<[*Destination*](storage.destination.md)\>
-
-#### Parameters:
-
-Name | Type | Default value |
------- | ------ | ------ |
-`destination_file` | *null* \| *string* | null |
-
-**Returns:** *Promise*<[*Destination*](storage.destination.md)\>
+**Returns:** _Promise_&lt;[_Destination_](storage.destination.md)&gt;
 
 Defined in: [yajsapi/storage/index.ts:98](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L98)
+

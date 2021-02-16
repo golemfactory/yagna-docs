@@ -1,62 +1,63 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [package](../modules/package.md) / Package
-
 # Class: Package
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [package](../modules/package.md) / Package
+
+## Class: Package
 
 [package](../modules/package.md).Package
 
-## Hierarchy
+### Hierarchy
 
 * **Package**
 
-  ↳ [*VmPackage*](package.vmpackage.md)
+  ↳ [_VmPackage_](package.vmpackage.md)
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](package.package-1.md#constructor)
+
+#### Methods
+
+* [decorate\_demand](package.package-1.md#decorate_demand)
+* [resolve\_url](package.package-1.md#resolve_url)
 
 ### Constructors
 
-- [constructor](package.package-1.md#constructor)
+#### constructor
+
++ **new Package**\(\): [_Package_](package.package-1.md)
+
+**Returns:** [_Package_](package.package-1.md)
 
 ### Methods
 
-- [decorate\_demand](package.package-1.md#decorate_demand)
-- [resolve\_url](package.package-1.md#resolve_url)
+#### decorate\_demand
 
-## Constructors
+▸ **decorate\_demand**\(`demand`: [_DemandBuilder_](props_builder.demandbuilder.md)\): _Promise_&lt;_void_&gt;
 
-### constructor
+**Parameters:**
 
-\+ **new Package**(): [*Package*](package.package-1.md)
+| Name | Type |
+| :--- | :--- |
+| `demand` | [_DemandBuilder_](props_builder.demandbuilder.md) |
 
-**Returns:** [*Package*](package.package-1.md)
-
-## Methods
-
-### decorate\_demand
-
-▸ **decorate_demand**(`demand`: [*DemandBuilder*](props_builder.demandbuilder.md)): *Promise*<*void*\>
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`demand` | [*DemandBuilder*](props_builder.demandbuilder.md) |
-
-**Returns:** *Promise*<*void*\>
+**Returns:** _Promise_&lt;_void_&gt;
 
 Defined in: [yajsapi/package/index.ts:40](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L40)
 
-___
+#### resolve\_url
 
-### resolve\_url
+▸ **resolve\_url**\(`self`: _any_\): _Promise_&lt;_string_ \| _void_&gt;
 
-▸ **resolve_url**(`self`: *any*): *Promise*<*string* \| *void*\>
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `self` | _any_ |
 
-Name | Type |
------- | ------ |
-`self` | *any* |
-
-**Returns:** *Promise*<*string* \| *void*\>
+**Returns:** _Promise_&lt;_string_ \| _void_&gt;
 
 Defined in: [yajsapi/package/index.ts:37](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L37)
+

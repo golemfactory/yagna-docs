@@ -1,9 +1,12 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / utils/cancellationToken
-
 # Module: utils/cancellationToken
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / utils/cancellationToken
 
-### Classes
+## Module: utils/cancellationToken
 
-- [default](../classes/utils_cancellationtoken.default.md)
+### Table of contents
+
+#### Classes
+
+* [default](../classes/utils_cancellationtoken.default.md)
+

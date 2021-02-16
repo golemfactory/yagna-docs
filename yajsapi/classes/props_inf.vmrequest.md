@@ -1,142 +1,134 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [props/inf](../modules/props_inf.md) / VmRequest
-
 # Class: VmRequest
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [props/inf](../modules/props_inf.md) / VmRequest
+
+## Class: VmRequest
 
 [props/inf](../modules/props_inf.md).VmRequest
 
-## Hierarchy
+### Hierarchy
 
-* [*ExeUnitRequest*](props_inf.exeunitrequest.md)
+* [_ExeUnitRequest_](props_inf.exeunitrequest.md)
 
   ↳ **VmRequest**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](props_inf.vmrequest.md#constructor)
+
+#### Properties
+
+* [package\_format](props_inf.vmrequest.md#package_format)
+* [package\_url](props_inf.vmrequest.md#package_url)
+
+#### Methods
+
+* [\_custom\_mapping](props_inf.vmrequest.md#_custom_mapping)
+* [fields](props_inf.vmrequest.md#fields)
+* [from\_properties](props_inf.vmrequest.md#from_properties)
+* [keys](props_inf.vmrequest.md#keys)
 
 ### Constructors
 
-- [constructor](props_inf.vmrequest.md#constructor)
+#### constructor
 
-### Properties
++ **new VmRequest**\(`package_url`: _string_, `package_format`: [_VmPackageFormat_](../enumeration/props_inf.vmpackageformat.md)\): [_VmRequest_](props_inf.vmrequest.md)
 
-- [package\_format](props_inf.vmrequest.md#package_format)
-- [package\_url](props_inf.vmrequest.md#package_url)
+**Parameters:**
 
-### Methods
+| Name | Type |
+| :--- | :--- |
+| `package_url` | _string_ |
+| `package_format` | [_VmPackageFormat_](../enumeration/props_inf.vmpackageformat.md) |
 
-- [\_custom\_mapping](props_inf.vmrequest.md#_custom_mapping)
-- [fields](props_inf.vmrequest.md#fields)
-- [from\_properties](props_inf.vmrequest.md#from_properties)
-- [keys](props_inf.vmrequest.md#keys)
-
-## Constructors
-
-### constructor
-
-\+ **new VmRequest**(`package_url`: *string*, `package_format`: [*VmPackageFormat*](../enums/props_inf.vmpackageformat.md)): [*VmRequest*](props_inf.vmrequest.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`package_url` | *string* |
-`package_format` | [*VmPackageFormat*](../enums/props_inf.vmpackageformat.md) |
-
-**Returns:** [*VmRequest*](props_inf.vmrequest.md)
+**Returns:** [_VmRequest_](props_inf.vmrequest.md)
 
 Inherited from: [ExeUnitRequest](props_inf.exeunitrequest.md)
 
 Defined in: [yajsapi/props/inf.ts:71](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L71)
 
-## Properties
+### Properties
 
-### package\_format
+#### package\_format
 
-• **package\_format**: [*Field*](props_base.field.md)
+• **package\_format**: [_Field_](props_base.field.md)
 
 Defined in: [yajsapi/props/inf.ts:69](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L69)
 
-___
+#### package\_url
 
-### package\_url
+• **package\_url**: [_Field_](props_base.field.md)
 
-• **package\_url**: [*Field*](props_base.field.md)
-
-Inherited from: [ExeUnitRequest](props_inf.exeunitrequest.md).[package_url](props_inf.exeunitrequest.md#package_url)
+Inherited from: [ExeUnitRequest](props_inf.exeunitrequest.md).[package\_url](props_inf.exeunitrequest.md#package_url)
 
 Defined in: [yajsapi/props/inf.ts:54](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L54)
 
-## Methods
+### Methods
 
-### \_custom\_mapping
+#### \_custom\_mapping
 
-▸ **_custom_mapping**(`props`: *object*, `data`: *object*): *void*
+▸ **\_custom\_mapping**\(`props`: _object_, `data`: _object_\): _void_
 
-#### Parameters:
+**Parameters:**
 
-Name | Type |
------- | ------ |
-`props` | *object* |
-`data` | *object* |
+| Name | Type |
+| :--- | :--- |
+| `props` | _object_ |
+| `data` | _object_ |
 
-**Returns:** *void*
+**Returns:** _void_
 
 Inherited from: [ExeUnitRequest](props_inf.exeunitrequest.md)
 
 Defined in: [yajsapi/props/base.ts:111](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L111)
 
-___
+#### fields
 
-### fields
+▸ **fields**\(`cls`: _any_\): [_Field_](props_base.field.md)\[\]
 
-▸ **fields**(`cls`: *any*): [*Field*](props_base.field.md)[]
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `cls` | _any_ |
 
-Name | Type |
------- | ------ |
-`cls` | *any* |
-
-**Returns:** [*Field*](props_base.field.md)[]
+**Returns:** [_Field_](props_base.field.md)\[\]
 
 Inherited from: [ExeUnitRequest](props_inf.exeunitrequest.md)
 
 Defined in: [yajsapi/props/base.ts:113](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L113)
 
-___
+#### from\_properties
 
-### from\_properties
-
-▸ **from_properties**(`props`: *object*): *any*
+▸ **from\_properties**\(`props`: _object_\): _any_
 
 Initialize the model from an object representation.
 
-**`description`** When provided with an object of properties, it will find the matching keys
-   within it and fill the model fields with the values from the object.
+**`description`** When provided with an object of properties, it will find the matching keys within it and fill the model fields with the values from the object.
 
-   It ignores non-matching keys - i.e. doesn't require filtering of the properties'
-   object before the model is fed with the data. Thus, several models can be
-   initialized from the same object and all models will only load their own data.
+It ignores non-matching keys - i.e. doesn't require filtering of the properties' object before the model is fed with the data. Thus, several models can be initialized from the same object and all models will only load their own data.
 
-#### Parameters:
+**Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`props` | *object* |     |
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `props` | _object_ |  |
 
-**Returns:** *any*
+**Returns:** _any_
 
 Inherited from: [ExeUnitRequest](props_inf.exeunitrequest.md)
 
 Defined in: [yajsapi/props/base.ts:137](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L137)
 
-___
+#### keys
 
-### keys
+▸ **keys**\(\): _any_
 
-▸ **keys**(): *any*
+**`example`**
 
-**`example`** 
-```js
+```javascript
 import { props } from "yajsapi"
 const { Field, Model } = props;
 export class NodeInfo extends Model {
@@ -149,10 +141,11 @@ new NodeInfo().keys().name()
 // Output: 'golem.node.id.name'
 ```
 
-**Returns:** *any*
+**Returns:** _any_
 
 a mapping between the model's field names and the property keys
 
 Inherited from: [ExeUnitRequest](props_inf.exeunitrequest.md)
 
 Defined in: [yajsapi/props/base.ts:182](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L182)
+

@@ -1,117 +1,112 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [utils/queue](../modules/utils_queue.md) / default
+# Class: default
 
-# Class: default<T\>
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [utils/queue](../modules/utils_queue.md) / default
+
+## Class: default
 
 [utils/queue](../modules/utils_queue.md).default
 
-## Type parameters
+### Type parameters
 
-Name |
------- |
-`T` |
+| Name |
+| :--- |
+| `T` |
 
-## Hierarchy
+### Hierarchy
 
 * **default**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](utils_queue.default.md#constructor)
+
+#### Properties
+
+* [\_\_new\_items](utils_queue.default.md#__new_items)
+* [\_tasks](utils_queue.default.md#_tasks)
+
+#### Methods
+
+* [close](utils_queue.default.md#close)
+* [empty](utils_queue.default.md#empty)
+* [get](utils_queue.default.md#get)
+* [put](utils_queue.default.md#put)
 
 ### Constructors
 
-- [constructor](utils_queue.default.md#constructor)
+#### constructor
+
++ **new default**\(`list?`: _never_\[\]\): [_default_](utils_queue.default.md)
+
+**Type parameters:**
+
+| Name |
+| :--- |
+| `T` |
+
+**Parameters:**
+
+| Name | Type | Default value |
+| :--- | :--- | :--- |
+| `list` | _never_\[\] | ... |
+
+**Returns:** [_default_](utils_queue.default.md)
+
+Defined in: [yajsapi/utils/queue.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L7)
 
 ### Properties
 
-- [\_\_new\_items](utils_queue.default.md#__new_items)
-- [\_tasks](utils_queue.default.md#_tasks)
+#### \_\_new\_items
 
-### Methods
-
-- [close](utils_queue.default.md#close)
-- [empty](utils_queue.default.md#empty)
-- [get](utils_queue.default.md#get)
-- [put](utils_queue.default.md#put)
-
-## Constructors
-
-### constructor
-
-\+ **new default**<T\>(`list?`: *never*[]): [*default*](utils_queue.default.md)<T\>
-
-#### Type parameters:
-
-Name |
------- |
-`T` |
-
-#### Parameters:
-
-Name | Type | Default value |
------- | ------ | ------ |
-`list` | *never*[] | ... |
-
-**Returns:** [*default*](utils_queue.default.md)<T\>
+• `Private` **\_\_new\_items**: _any_
 
 Defined in: [yajsapi/utils/queue.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L7)
 
-## Properties
+#### \_tasks
 
-### \_\_new\_items
-
-• `Private` **\_\_new\_items**: *any*
-
-Defined in: [yajsapi/utils/queue.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L7)
-
-___
-
-### \_tasks
-
-• `Private` **\_tasks**: *any*
+• `Private` **\_tasks**: _any_
 
 Defined in: [yajsapi/utils/queue.ts:6](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L6)
 
-## Methods
+### Methods
 
-### close
+#### close
 
-▸ **close**(): *void*
+▸ **close**\(\): _void_
 
-**Returns:** *void*
+**Returns:** _void_
 
 Defined in: [yajsapi/utils/queue.ts:42](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L42)
 
-___
+#### empty
 
-### empty
+▸ **empty**\(\): _boolean_
 
-▸ **empty**(): *boolean*
-
-**Returns:** *boolean*
+**Returns:** _boolean_
 
 Defined in: [yajsapi/utils/queue.ts:38](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L38)
 
-___
+#### get
 
-### get
+▸ **get**\(\): _Promise_
 
-▸ **get**(): *Promise*<T\>
-
-**Returns:** *Promise*<T\>
+**Returns:** _Promise_
 
 Defined in: [yajsapi/utils/queue.ts:25](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L25)
 
-___
+#### put
 
-### put
+▸ **put**\(`item`: T\): _void_
 
-▸ **put**(`item`: T): *void*
+**Parameters:**
 
-#### Parameters:
+| Name | Type |
+| :--- | :--- |
+| `item` | T |
 
-Name | Type |
------- | ------ |
-`item` | T |
-
-**Returns:** *void*
+**Returns:** _void_
 
 Defined in: [yajsapi/utils/queue.ts:19](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/queue.ts#L19)
+

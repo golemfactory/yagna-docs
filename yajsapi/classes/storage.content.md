@@ -1,74 +1,75 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [storage](../modules/storage.md) / Content
-
 # Class: Content
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [storage](../modules/storage.md) / Content
+
+## Class: Content
 
 [storage](../modules/storage.md).Content
 
-## Hierarchy
+### Hierarchy
 
 * **Content**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](storage.content.md#constructor)
+
+#### Properties
+
+* [length](storage.content.md#length)
+* [stream](storage.content.md#stream)
+
+#### Methods
+
+* [from\_reader](storage.content.md#from_reader)
 
 ### Constructors
 
-- [constructor](storage.content.md#constructor)
+#### constructor
+
++ **new Content**\(`length`: _any_, `stream`: _any_\): [_Content_](storage.content.md)
+
+**Parameters:**
+
+| Name | Type |
+| :--- | :--- |
+| `length` | _any_ |
+| `stream` | _any_ |
+
+**Returns:** [_Content_](storage.content.md)
+
+Defined in: [yajsapi/storage/index.ts:8](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L8)
 
 ### Properties
 
-- [length](storage.content.md#length)
-- [stream](storage.content.md#stream)
+#### length
 
-### Methods
-
-- [from\_reader](storage.content.md#from_reader)
-
-## Constructors
-
-### constructor
-
-\+ **new Content**(`length`: *any*, `stream`: *any*): [*Content*](storage.content.md)
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`length` | *any* |
-`stream` | *any* |
-
-**Returns:** [*Content*](storage.content.md)
-
-Defined in: [yajsapi/storage/index.ts:8](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L8)
-
-## Properties
-
-### length
-
-• **length**: *number*
+• **length**: _number_
 
 Defined in: [yajsapi/storage/index.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L7)
 
-___
+#### stream
 
-### stream
-
-• **stream**: *any*
+• **stream**: _any_
 
 Defined in: [yajsapi/storage/index.ts:8](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L8)
 
-## Methods
+### Methods
 
-### from\_reader
+#### from\_reader
 
-▸ **from_reader**(`length`: *number*, `s`: *any*): [*Content*](storage.content.md)
+▸ **from\_reader**\(`length`: _number_, `s`: _any_\): [_Content_](storage.content.md)
 
-#### Parameters:
+**Parameters:**
 
-Name | Type |
------- | ------ |
-`length` | *number* |
-`s` | *any* |
+| Name | Type |
+| :--- | :--- |
+| `length` | _number_ |
+| `s` | _any_ |
 
-**Returns:** [*Content*](storage.content.md)
+**Returns:** [_Content_](storage.content.md)
 
 Defined in: [yajsapi/storage/index.ts:15](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L15)
+
