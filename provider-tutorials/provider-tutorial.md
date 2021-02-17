@@ -80,10 +80,20 @@ Congrats, your initial setup has been completed! You will see that default prese
 
 ## Running the provider
 
-To run a Golem provider, type the following in the terminal:
+### Mainnet
+
+To run the Golem provider on the mainnet, type the following in the terminal:
 
 ```text
 golemsp run
+```
+
+### Testnet
+
+To run the Golem provider on the testnet, type the following in the terminal:
+
+```text
+golemsp run --payment-network rinkeby
 ```
 
 {% hint style="success" %}
