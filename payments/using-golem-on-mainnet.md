@@ -90,6 +90,26 @@ Again, unless you have good reasons not to, we recommend using zkSync for much l
 The initialization must be performed after every restart of the `yagna` daemon.
 {% endhint %}
 
+## Checking the status of your accounts
+
+Depending on whether you're mainly running a provider node or a requestor one, your default network \(blockchain\) may be different.
+
+Because of that, when you run `yagna payment status` to verify the state of your payment account and the amount of GLM tokens you have in your disposal, you may need to add the specific `network` and `driver` parameters to point to the network/driver combination that you're interested in.
+
+In the context of running Golem on mainnet, that would mean using:
+
+```text
+yagna payment status --network=mainnet --driver=zksync
+```
+
+to retrieve the status for the default zkSync \(Layer2\) driver, or:
+
+```text
+yagna payment status --network=mainnet --driver=erc20
+```
+
+to see the status for the ERC-20 driver.
+
 ## Getting your funds out of the Golem node
 
 ### zkSync
