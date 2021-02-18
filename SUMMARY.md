@@ -16,6 +16,12 @@
 ## Provider tutorials
 
 * [Becoming a provider](provider-tutorials/provider-tutorial.md)
+* [Provider CLI reference](provider-tutorials/provider-cli.md)
+
+## troubleshooting
+
+* [Provider Troubleshooting](troubleshooting/provider-troubleshooting.md)
+* [Requestor Troubleshooting](troubleshooting/common-issues.md)
 
 ## Requestor tutorials
 
@@ -188,14 +194,6 @@
   * [Enumeration: VmPackageFormat](yajsapi/enumeration/props_inf.vmpackageformat.md)
 * [Interface](yajsapi/interface/README.md)
   * [Interface: default](yajsapi/interface/utils_callable.default.md)
-
-## Reference
-
-* [Provider CLI reference](reference/provider-cli.md)
-
-## troubleshooting
-
-* [Common issues](troubleshooting/common-issues.md)
 
 ## Yagna Contributor Guide
 

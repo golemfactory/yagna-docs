@@ -28,8 +28,8 @@ _\(not needed for running examples\)_
 
 #### Installation
 
-* `cd examples`         will take you to examples folder
-* `yarn`                will install dependencies for the examples
+* `cd examples`  will take you to examples folder
+* `yarn`   will install dependencies for the examples
 * add `YAGNA_APPKEY` as environment variable; 
 
   ```text
@@ -40,8 +40,8 @@ _\(not needed for running examples\)_
 
 * `npm run js:blender`  will start blender javascript example
 * `npm run ts:blender`  will start blender typescript example
-* `npm run js:low`      will start javascript low level api example
-* `npm run ts:low`      will start typescript low level api example
+* `npm run js:low`   will start javascript low level api example
+* `npm run ts:low`   will start typescript low level api example
 
 #### Need more logs
 
@@ -50,4 +50,8 @@ Call `-d` or `--debug` flag on your example script, e.g. `npm run ts:blender -- 
 #### Subnet
 
 Use the `--subnet-tag` option, e.g. `npm run ts:blender -- --subnet-tag YOUR_SUBNET`.
+
+#### Network
+
+Use the `--network` option, e.g. `npm run ts:blender -- --network rinkeby`.
 

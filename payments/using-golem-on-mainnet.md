@@ -4,9 +4,9 @@ description: How to move and ensure safety of your funds when operating on mainn
 
 # Using Golem on Mainnet
 
-Okay, so we've seen Golem requestors hand out tasks to providers and saw them pay those providers for the successfully executed tasks. We've also seen how we could use layer 2 \(zkSync\) to speed up those payments and significantly cut the transactions fees.
+Okay, so we've seen Golem requestors hand out tasks to providers and saw them pay those providers for the successfully executed tasks. We've also seen how we could utilize layer 2 \(zkSync\) to speed up those payments and significantly cut the transactions fees.
 
-Still, in a context of running Golem on the Ethereum mainnet, a few important questions remain largely unanswered:
+Still, in the context of running Golem on the Ethereum mainnet, a few important questions remain largely unanswered:
 
 * how do you **get funds to your requestor** so you can use them to pay for the tasks?
 * how do you **get funds out of a Golem node** if you don't need them there anymore?
@@ -23,7 +23,7 @@ Of course, if you're willing to accept that disproportion, you may continue to u
 ## Your Golem wallet
 
 {% hint style="info" %}
-All instructions below assume that you have your daemon launched on another terminal. In case your forgot the command to run the daemon, it's:  
+All instructions below assume that you have your daemon launched on another terminal. In case you forgot the command to run the daemon, it's:  
   
 `yagna service run`
 
@@ -46,9 +46,9 @@ The value described as `nodeId` in the output is the Ethereum address of your Go
 
 So far the only supported way to enable your requestor wallet to operate on zkSync is to reach out to us to get your address funded with some GLM tokens.
 
-Using the address you obtained in the previous sesction, reach out to us on our Discord at [https://chat.golem.network](https://chat.golem.network) where, after a short verification process, you'll be issued some GLM tokens directly to your zkSync wallet and your Golem node will be good to go!
+Using the address you obtained in the previous section, reach out to us on our Discord at [https://chat.golem.network](https://chat.golem.network) where, after a short verification process, you'll be issued some GLM tokens directly to your zkSync wallet and your Golem node will be good to go!
 
-The same instruction, already containing your mainnet adress can be obtained by running:
+The same instruction, already containing your mainnet address can be obtained by running:
 
 ```text
 yagna payment fund --network=mainnet --driver=zksync
@@ -58,7 +58,7 @@ yagna payment fund --network=mainnet --driver=zksync
 
 On the other hand, if you'd like to use the regular ERC-20 transactions to pay the providers, you'll need to supply your address with some actual GLM tokens, plus some ETH to pay for all the gas fees. Just use you regular wallet to send some GLM and ETH tokens to the node's address.
 
-Again, you'll get the same instruction plus your mainnet address if you just run:
+Again, you'll get the same instruction plus your mainnet address if you run:
 
 ```text
 yagna payment fund --network=mainnet --driver=erc20
@@ -120,7 +120,7 @@ We don't currently support direct, ERC-20 withdraws from the Golem wallet. Soon,
 
 As you're probably aware, in the Ethereum universe, your funds are only as secure as the private key for the account that holds them. Because of that, to ensure that you don't lose access to your GLM/ETH tokens stored on your Golem account, it's crucial for you to be able to back-up your Golem wallet and store the key in a safe storage, separate from the node itself.
 
-To create a backup of your Golem wallet, export it with:
+To create a backup of your Golem wallet, export the keystore with:
 
 ```text
 yagna id export --file-path=./key.json

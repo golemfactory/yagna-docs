@@ -2,15 +2,13 @@
 description: Symptoms and solutions of known issues.
 ---
 
-# Common issues
+# Requestor Troubleshooting
 
-## No access to VM
+{% hint style="info" %}
+## Requestor Issues
 
-_**Description:**_ No access to VM
-
-_**Solution:**_ `curl -o setup-kvm.sh https://join.golem.network/setup-kvm.sh && chmod +x ./setup-kvm.sh && ./setup-kvm.sh`
-
-Note: make sure `qemu-vm` is installed first with `apt install qemu-kvm`.
+Don't miss the [debugging section by using the log file](../requestor-tutorials/debugging.md#reading-the-log-file).
+{% endhint %}
 
 ## IO error: No such file or directory
 
@@ -57,15 +55,16 @@ _**Os:**_ All, requestor only
 
 _**Description:**_ Since our newest addition to Golem - the integration with zkSync, layer 2 payment solution - is, so far, a highly experimental feature, it may still sometimes happen that the yagna daemon fails to initialize itself correctly.
 
-This will manifest itself either by a failure of the regular initialization with`yagna payment init --sender` or through an error you'll receive when running `yagna payment status`.
+This will manifest itself either by a failure of the regular initialization with`yagna payment fund` or through an error you'll receive when running `yagna payment status`.
 
 _**Solution:**_ In such a case, we're providing you with a fallback to normal payments, i.e. regular GLM token transfer on the Ethereum chain.
 
 To enable it run:
 
 ```text
-yagna payment init --sender --driver=erc20
-yagna payment status --driver=erc20
+yagna payment fund --driver erc20
+yagna payment status --driver erc20
+yagna payment init --sender --driver erc20
 ```
 
 After you confirm you have the funds, proceed with running the examples or your own requestor agent code normally. The providers are configured to accept both zkSync and the regular tokens and will adjust accordingly.

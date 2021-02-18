@@ -41,8 +41,8 @@ For instructions on how to do it, consult our [guide on using Golem on Mainnet](
 If you have previously launched **Golem Alpha** on your machine run the command below which will purge its working directories since our newest version is incompatible with the old database structure:
 
 ```text
-rm -rf $HOME/.local/share/yagna
-rm -rf $HOME/.local/share/ya-provider
+read -e -p "Have you backed up your keys? (type "yes" and hit Enter): " YN
+[[ $YN == "yes" ]] && rm -rf $HOME/.local/share/{yagna,ya-provider}
 ```
 
 #### Run the installation command
@@ -80,10 +80,20 @@ Congrats, your initial setup has been completed! You will see that default prese
 
 ## Running the provider
 
-To run a Golem provider, type the following in the terminal:
+### Mainnet
+
+To run the Golem provider on the mainnet, type the following in the terminal:
 
 ```text
 golemsp run
+```
+
+### Testnet
+
+To run the Golem provider on the testnet, type the following in the terminal:
+
+```text
+golemsp run --payment-network rinkeby
 ```
 
 {% hint style="success" %}
@@ -147,37 +157,11 @@ Although zk-sync is from now on the main payment operator in Golem you may recei
 If in the **Offers/Tasks** column you see your active Offers count, and either tasks in progress or processed then you have successfully computed! If not, give it some time as there is still a limited number of tasks in the network - and then run the command again.
 {% endhint %}
 
-#### Known issues
-
-* Type `golemsp status` in your terminal window and check the status of your VM
-
-**When there is other status than `valid`**
-
-a\) If: `the user has no access to /dev/kvm` run
-
-```text
-curl -o setup-kvm.sh https://join.golem.network/setup-kvm.sh && chmod +x ./setup-kvm.sh && ./setup-kvm.sh
-```
-
-Afterwards, log out and log in again into your OS and then, rerun `golemsp run`
-
-b\) If: `running inside Docker without access to /dev/kvm` run
-
-```text
-docker run --privileged
-```
-
-c\) If: `unsupported virtualization type: XEN` We do not support **xen hypervisor**
-
-* In any other case with the virtualisation we recommend:
-
-`sudo apt install cpu-checker && sudo kvm-ok` command and follow the steps as given in the terminal interface.
-
 ## Provider CLI
 
 To check out additional commands available in the CLI, have a look at the reference page:
 
-{% page-ref page="../reference/provider-cli.md" %}
+{% page-ref page="provider-cli.md" %}
 
 ## Next steps
 
