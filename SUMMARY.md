@@ -45,7 +45,7 @@
 * [Low-Level](yapapi/low-level-api.md)
 * [API Reference](yapapi/api-reference.md)
 
-## yajsapi - Java Script high-level API <a id="yajsapi"></a>
+## yajsapi - JavaScript high-level API <a id="yajsapi"></a>
 
 * [Introduction to Golem's high-level Java Script API](yajsapi/yajsapi.md)
 * [Modules](yajsapi/modules/README.md)

@@ -19,7 +19,7 @@ While it's possible that you'll be successful running Golem and this tutorial on
 #### Languages
 
 {% hint style="info" %}
-If you are JS developer, please switch to **NodeJS** tab
+If you are a JS developer, please switch to **NodeJS** tab
 {% endhint %}
 
 {% tabs %}
@@ -90,7 +90,7 @@ If you'd like to give us feedback, suggestions, have some errors to report or if
 ## Running the `yagna` daemon
 
 {% hint style="info" %}
-Yagna is the main service of the new Golem that's responsible for maintaing the marketplace and keeping connections with all the other nodes in the network.
+Yagna is the main service of the new Golem that's responsible for maintaining the marketplace and keeping connections with all the other nodes in the network.
 {% endhint %}
 
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon.
