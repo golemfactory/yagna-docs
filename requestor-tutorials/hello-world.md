@@ -286,12 +286,12 @@ Here we specify our base Docker image. We use the official `python` image since 
 VOLUME /golem/input /golem/output 
 ```
 
-This line defines two volumes in the image: `/golem/input` and `/golem/output`. Volumes are directories that can be shared with the host machine. For a Golem VM, the image must define at least one volume.
+This line defines two volumes in the image: `/golem/input` and `/golem/output`. Volumes are directories that can be shared with the host machine and, more importantly, through which the execution environment supervisor \(the process on the provider's host machine\) will be able to transfer data to and out of the VM. For a Golem VM, the image must define at least one volume.
 
 {% hint style="warning" %}
-Note that the paths within the Docker image associated with volumes will always mask any content in those paths in the image itself.
+Note that, contrarily to what you may expect and, notably, differently from Docker's own behavior in that matter, the paths within the Docker image associated with volumes will always mask any content in those paths in the image itself.
 
-\[ TO BE CONFIRMED WITH MAREK \]
+So, be sure to provide different paths for any files already contained in your VM image and for the paths that will be mounted as volumes that are shared with the host environment.
 {% endhint %}
 
 ```text
@@ -307,7 +307,7 @@ WORKDIR /golem/entrypoint
 Defines `/golem/entrypoint` as the working directory of the image. It will be the default location for commands executed by this image.
 
 {% hint style="info" %}
-Since version **0.2.5** of Golem's VM runtime execution environment - and of the compatible `gvmkit-build` tool, the WORKDIR _doesn't_ _need_ to be present in which case the working directory will be set to `/.` and the paths to the binaries run will need to be absolute.
+Since version **0.2.5** of Golem's VM runtime execution environment - and of the compatible `gvmkit-build` tool - the WORKDIR _doesn't_ _need_ to be present in which case the working directory will be set to `/.` and the paths to the binaries run will need to be absolute.
 {% endhint %}
 
 ### Building and publishing the image
