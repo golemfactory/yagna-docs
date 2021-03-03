@@ -405,3 +405,9 @@ On the other hand, if you'd like to deploy your own dockerized apps to our alpha
 
 {% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
 
+Finally, you can hone your newly-acquired knowledge by following our newest workshop:
+
+{% page-ref page="hello-world.md" %}
+
+And by all means, **have fun with Golem!**
+
