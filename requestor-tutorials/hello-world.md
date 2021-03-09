@@ -21,9 +21,9 @@ The application we'll build and run on Golem will be a very simple, quick-and-di
 {% hint style="info" %}
 For the sake of clarity for those less versed with the terminology, a short explanation is due.
 
-A [**dictionary attack**](https://en.wikipedia.org/wiki/Dictionary_attack) involves running some \(usually known\) hashing function on each word from some input dictionary in the hope that one of the resulting hashes will match the one that we're matching against. Getting a match means we have found the original plaintext string that's hidden behind that hash.
+A [**dictionary attack**](https://en.wikipedia.org/wiki/Dictionary_attack) involves running some \(usually known\) hashing function on each word from some input dictionary in the hope that one of the resulting hashes will match the one that we're matching against. Getting a match means we have found the original plain text string that's hidden behind that hash.
 
-The string might have been a password or some other secret that's usually stored only in an encrypted \(well, technically, hashed\) form to prevent someone who got into possession of such string from being able to read the secret directly.
+The string might have been a password or some other secret that's usually stored only in an encrypted \(well, technically, hashed\) form to prevent someone who got into possession of such a string from being able to read the secret directly.
 
 The only way to recover the original password then would be to perform a brute-force attack against such a hash, using _all_ possible character combinations up until some arbitrary character length. The caveat is that such attacks are usually - and by design - prohibitively expensive computation-time-wise.
 
@@ -227,7 +227,7 @@ WORDS_PATH = Path("data/words-short.json")
 RESULT_PATH = Path("data/out.json")
 ```
 
-Now, let's try running the `worker.py` script \(needs to be executed from the projects root directory\):
+Now, let's try running the `worker.py` script \(needs to be executed from the project's root directory\):
 
 ```bash
 python worker.py
