@@ -6,8 +6,6 @@ description: 'Creating your first, simple app on Golem'
 
 _This tutorial is the textual counterpart to a workshop originally prepared by Jakub Mazurek, a Software Developer at Golem Factory and presented during the Hello Decentralization conference in Feb, 2021._
 
-_\[ add link to/embed the original conference video and/or to GolemFactory's recording thereof \]_
-
 Now that we've seen how easy it is to [run a Golem requestor agent](flash-tutorial-of-requestor-development.md), then had a look at [how this stuff works under the hood](requestor-tutorial.md) and finally learned how to go about [creating your own Golem VM application image](convert-a-docker-image-into-a-golem-image.md), we can put this knowledge to the test and build the most bare-bones Golem app.
 
 {% hint style="info" %}
@@ -25,7 +23,7 @@ For the sake of clarity for those less versed with the terminology, a short expl
 
 A [**dictionary attack**](https://en.wikipedia.org/wiki/Dictionary_attack) involves running some \(usually known\) hashing function on each word from some input dictionary in the hope that one of the resulting hashes will match the one that we're matching against. Getting a match means we have found the original plaintext string that's hidden behind that hash.
 
-The string might have been a password or some other secret that's usually stored only in a hashed form to prevent someone who got into possession of such string from being able to read the secret directly.
+The string might have been a password or some other secret that's usually stored only in an encrypted \(well, technically, hashed\) form to prevent someone who got into possession of such string from being able to read the secret directly.
 
 The only way to recover the original password then would be to perform a brute-force attack against such a hash, using _all_ possible character combinations up until some arbitrary character length. The caveat is that such attacks are usually - and by design - prohibitively expensive computation-time-wise.
 
@@ -53,7 +51,7 @@ For convenience, in our example here, both pieces are written in Python but that
 
 ### Our simple hash cracker
 
-In our dictionary attack example, the **requestor agent**'s task will be to take a list of words \(within which we hope to find one that matches our target hash\) and split that list into parts that will be sent as part of the execution package to the providers.
+In our dictionary attack example, the **requestor agent**'s task will be to take the list of words within which we hope to find the one that matches the provided hash and split that list into smaller pieces that will be sent as part of the execution package to the providers.
 
 On the other end, the **worker** part will go through the specific part of the list it received, compute hashes for each word and compare it to the original hash. In case it finds the matching one, it will return the match to the requestor.
 
@@ -63,7 +61,7 @@ Finally, the requestor agent will present the solution to the user.
 
 #### Docker
 
-Since we're building the app from scratch we'll need to prepare the worker code along with a VM image to run it. To create this image we're going to need Docker installed:
+Since we're building the whole app from scratch, that includes preparing the worker code and the VM image that includes it. To prepare such image, we'll need Docker:
 
 {% embed url="https://www.docker.com/products/docker-desktop" %}
 
@@ -136,11 +134,11 @@ if __name__ == "__main__":
         json.dump(result, f)
 ```
 
-As the comment at the top of the file mentions, this code is included in the VM image of the app that's run on the provider nodes.
+As the comment at the top of this boilerplate mentions, this code is included in the VM image of the app that's run on the provider nodes.
 
 Skipping over the imports at the top, what we have there are a couple of constants - `HASH_PATH`, `WORDS_PATH` and `RESULT_PATH` - those are the paths to the locations _**within the Docker image**_ that contain the hash to be cracked, the slice of the dictionary we want this node to process and finally, the path to the result file - in case a result is found within the processed slice of the dictionary.
 
-The reason these refer to the paths within the Docker image and not on your local machine is that this code will run on the virtual machine on the provider node. We'll show you a way to map and transfer them there later on.
+The reason these paths refer to the locations within the Docker image and not on your local machine is that this code will run on the virtual machine on the provider node. We'll show you a way to map and transfer them there later on.
 
 Next, we have your standard-issue invocation of a Python context manager for a `Path` object:
 
@@ -190,13 +188,13 @@ Let's replace it with code that performs the hashing and comparison:
                 break
 ```
 
-What it does is:
+What the above does is:
 
-* iterates through the lines in input slice of the dictionary
-* converts each of those lines into a UTF-8-encoded string of bytes \(`line_bytes` variable\)
-* computes a SHA-256 hash of those bytes and converts that to a hexadecimal string \(`line_hash` variable\)
-* compares the resulting hex-encoded hash to the hash we're trying to find a match for
-* if a match is found it saves the corresponding word as the result and finishes processing
+* it iterates through the lines in input slice of the dictionary,
+* converts each of those lines into a UTF-8-encoded string of bytes \(`line_bytes` variable\),
+* then, it computes a SHA-256 hash of those bytes and converts that to a hexadecimal string \(`line_hash` variable\),
+* compares the resultant hex-encoded hash to the hash we're trying to find a match for,
+* and finally, if a match is found it saves the corresponding word as the result and finishes processing.
 
 One last thing - since the code uses the `sha256` function from the `hashlib` library \(bundled with Python\), we need to import it by adding a line to our imports at the top of the file:
 
@@ -229,7 +227,7 @@ WORDS_PATH = Path("data/words-short.json")
 RESULT_PATH = Path("data/out.json")
 ```
 
-Now, let's try running the `worker.py` script:
+Now, let's try running the `worker.py` script \(needs to be executed from the projects root directory\):
 
 ```bash
 python worker.py
@@ -336,12 +334,12 @@ We have now created and made public the VM image that our providers will utilize
 
 All right, our payload is ready and the most important remaining piece is the requestor agent part which will be responsible for handling our computational task on the requestor's end - distributing fragments of the task to providers and getting results back from them.
 
-The low-level parts of our requestor agent \(i.e. tracking info about the providers' market, picking offers and signing agreements, making payments\) are performed by the `yagna` daemon, which is controlled through REST using our high-level API.
+The low-level part of the requestor agent's job - that is - keeping and processing information about the providers' market, choosing offers, signing agreements, executing payments and basically communicating with all the other nodes in the network is performed by the `yagna` daemon and handled by our high-level API via the daemon's REST API.
 
-However, there are two main responsibilities that are too specific for each application to be handled by our high- or low-level APIs or by the daemon itself. Those are:
+However, there are two main responsibilities that are too specific for each application to be provided by our high- or low-level APIs or by the daemon itself. Those are:
 
 * **splitting the computation** and wrapping its fragments with `Task` objects that directly represent the singular jobs that are given to provider nodes.
-* **specifying the exe-script** - or in other words - the sequence of operations like sending files or parameters, calling commands within the VM on provider's end, requesting results back etc. These are necessary for the task's correct execution.
+* **specifying the exe-script** - or in other words - the sequence of operations like sending files or parameters, calling commands within the VM on provider's end, requesting results back, etc - which in their entirety cause the specific task to get successfully executed on provider's end.
 
 We will need to supply the code for them as part of our app's **requestor agent** and, fortunately, we already have the perfect place designed for them in our `requestor.py` file.
 
@@ -437,7 +435,7 @@ And finally, we have some code that actually launches the `main` routine and doe
 
 ### The task fragments
 
-First, let's fill in the `data` function. It accepts the `words_file` path and the `chunk_size` , which is the size of each dictionary slice defined in its line count. `data` function produces a generator yielding `Task` objects that describe each task fragment.
+First, let's fill in the `data` function. It accepts the `words_file` path and the `chunk_size`, which is the size of each dictionary slice defined by its line count. `data` function produces a generator yielding `Task` objects that describe each task fragment.
 
 To perform the above, we can use following piece of code:
 
@@ -469,7 +467,7 @@ The function performing this job is called `steps` in our example. It accepts `c
 
 `WorkContext` gives us a simple interface to construct a script that translates directly to commands interacting with the execution unit on provider's end. Each such work context refers to one activity started on one provider node. While constructing such a script, we can define those steps that need to happen once per a worker run \(in other words, _once per provider node_\) - those are placed outside of the loop iterating over `tasks`.
 
-So let's now have a look at how we're going to define those:
+So now, let's take a look at how we're going to define those:
 
 ```python
 context.send_file(str(args.hash), str(worker.HASH_PATH))
@@ -495,13 +493,13 @@ As you can see, there's one command that's uniform for all tasks - the first `.s
 
 Then we define a few steps that will take place for each task in our list:
 
-* `.send_json()` which tells the exe-unit to store a subset of words as a JSON-serialized file in another path within the VM that we had defined in `worker.py` \(`worker.WORDS_PATH`, note that in this function the destination comes first, followed by an object to be serialized\),
+* `.send_json()` which tells the exe-unit to store the given subset of words as a JSON-serialized file in another path within the VM that we had defined in `worker.py` \(`worker.WORDS_PATH`, note that in this function the destination comes first, followed by an object to be serialized\),
 * `.run()` call which is the one that actually executes the `worker.py` script inside the provider's VM, which in turn produces output \(as you remember, this may be empty or may contain our solution\),
 * then we have `.download_file()` call which transfers that solution file back to a temporary file on the requestor's end,
 
-With these steps ready, we call `.commit()` on our work context and yield that to the calling code \(the processing inside the `Executor` class\) which takes our script and orchestrates its execution on provider's end.
+With the steps ready, we call `.commit()` on our work context and yield that to the calling code \(the processing inside the `Executor` class\) which takes our script and orchestrates its execution on provider's end.
 
-When the execution returns to our `steps` function, the `task` has already been completed. Finally, we call `Task.accept_result()` with the result coming from the temporary file transferred from the provider. This ensures that the result is what's yielded from the `Executor` to the final loop in our `main` function that we'll define next.
+When the execution returns to our `steps` function, the `task` has already been completed. Now, we only need to call `Task.accept_result()` with the result coming from the temporary file transferred from the provider. This ensures that the result is what's yielded from the `Executor` to the final loop in our `main` function that we'll define next.
 
 ### The execution
 
@@ -509,7 +507,7 @@ So, here comes the last remaining part of the **requestor agent** code that we n
 
 #### Defining the VM image for provider-end execution
 
-If you followed through the whole of this tutorial so far, you have also built and published the VM image of your app. We asked you to "note down the hash of the published image". If you have done that, you may replace the hash in the `vm.repo()` invocation with the noted-down one:
+If you followed through the whole of our tutorial so far, you have also built and published the VM image of your app. We asked you then to "note down the hash of the published image". If you have done that, you may replace the hash in the `vm.repo()` invocation with the noted-down one:
 
 ```python
 package = await vm.repo(
