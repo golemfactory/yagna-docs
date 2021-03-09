@@ -153,16 +153,14 @@ If you had run a previous version of `yagna` in the past, you'll need to purge i
 
 {% tabs %}
 {% tab title="Ubuntu" %}
-```text
-read -e -p "Have you backed up your keys? (type "yes" and hit Enter): " YN
-[[ $YN == "yes" ]] && rm -rf $HOME/.local/share/yagna
+```bash
+read -e -p "Backed up keys? (type "yes"): " YN && [[ $YN == "yes" ]] && rm -rf $HOME/.local/share/yagna
 ```
 {% endtab %}
 
 {% tab title="mac OS X" %}
 ```text
-read -e -p "Have you backed up your keys? (type "yes" and hit Enter): " YN
-[[ $YN == "yes" ]] && rm -rf $HOME/Library/Application\ Support/GolemFactory.yagna
+read -e -p "Backed up keys? (type "yes"): " YN && [[ $YN == "yes" ]] && rm -rf $HOME/Library/Application\ Support/GolemFactory.yagna
 ```
 {% endtab %}
 
