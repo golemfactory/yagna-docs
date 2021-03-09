@@ -41,8 +41,7 @@ For instructions on how to do it, consult our [guide on using Golem on Mainnet](
 If you have previously launched **Golem Alpha** on your machine run the command below which will purge its working directories since our newest version is incompatible with the old database structure:
 
 ```text
-read -e -p "Have you backed up your keys? (type "yes" and hit Enter): " YN
-[[ $YN == "yes" ]] && rm -rf $HOME/.local/share/{yagna,ya-provider}
+read -e -p "Backed up keys? (type "yes"): " YN && [[ $YN == "yes" ]] && rm -rf $HOME/.local/share/{yagna,ya-provider}
 ```
 
 #### Run the installation command
