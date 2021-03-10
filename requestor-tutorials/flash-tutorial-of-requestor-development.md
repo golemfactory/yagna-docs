@@ -272,7 +272,7 @@ python -m venv --clear %HOMEDRIVE%%HOMEPATH%\.envs\yagna-python-tutorial
 Install the dependencies:
 
 ```text
-pip3 install -U pip
+pip install -U pip
 pip install yapapi
 ```
 
@@ -311,7 +311,7 @@ The example we're showcasing here resides in the `examples/blender` directory wi
 
 ```bash
 cd examples/blender
-python3 blender.py
+python blender.py
 ```
 
 Once you launch the example, you should see some messages reflecting the progress of your task's execution - agreement confirmations, task dispatches and finally task completions.
