@@ -28,6 +28,7 @@
 * [Requestor development: a quick primer](requestor-tutorials/flash-tutorial-of-requestor-development.md)
 * [How does it work? A more in-depth look at an example requestor agent](requestor-tutorials/requestor-tutorial.md)
 * [How to convert a Docker image into a Golem image?](requestor-tutorials/convert-a-docker-image-into-a-golem-image.md)
+* [Hello World from Golem](requestor-tutorials/hello-world.md)
 * [Create your own application on Golem](requestor-tutorials/create-your-own-application-on-golem/README.md)
   * [Golem application - the basics](requestor-tutorials/create-your-own-application-on-golem/golem-application-how-to.md)
   * [Hashcat](requestor-tutorials/create-your-own-application-on-golem/hashcat.md)
@@ -43,7 +44,7 @@
 * [Low-Level](yapapi/low-level-api.md)
 * [API Reference](yapapi/api-reference.md)
 
-## yajsapi - Java Script high-level API <a id="yajsapi"></a>
+## yajsapi - JavaScript high-level API <a id="yajsapi"></a>
 
 * [Introduction to Golem's high-level Java Script API](yajsapi/yajsapi.md)
 * [Modules](yajsapi/modules/README.md)

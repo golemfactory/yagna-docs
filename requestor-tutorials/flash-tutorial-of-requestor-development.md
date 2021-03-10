@@ -19,7 +19,7 @@ While it's possible that you'll be successful running Golem and this tutorial on
 #### Languages
 
 {% hint style="info" %}
-If you are JS developer, please switch to **NodeJS** tab
+If you are a JS developer, please switch to **NodeJS** tab
 {% endhint %}
 
 {% tabs %}
@@ -96,7 +96,7 @@ If you'd like to give us feedback, suggestions, have some errors to report or if
 ## Running the `yagna` daemon
 
 {% hint style="info" %}
-Yagna is the main service of the new Golem that's responsible for maintaing the marketplace and keeping connections with all the other nodes in the network.
+Yagna is the main service of the new Golem that's responsible for maintaining the marketplace and keeping connections with all the other nodes in the network.
 {% endhint %}
 
 In order to follow our requestor agent tutorial, you'll first need to run the `yagna` daemon.
@@ -119,7 +119,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.6.0](https://github.com/golemfactory/yagna/releases/tag/v0.6.0)
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.6.1](https://github.com/golemfactory/yagna/releases/tag/v0.6.1)
 
 Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
@@ -135,7 +135,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.6.0 (ed55e851 2021-02-15 build #113)`
+It should output: `yagna 0.6.1 (a282c32b 2021-03-08 build #125)`
 
 Please also verify that you have the correct version of the `gftp` binary used for file transfers in the Golem network.
 
@@ -143,7 +143,7 @@ Please also verify that you have the correct version of the `gftp` binary used f
 gftp --version
 ```
 
-It should output: `gftp 0.6.0 (ed55e851 2021-02-15 build #113)`
+It should output: `gftp 0.6.1 (a282c32b 2021-03-08 build #125)`
 
 ### Purge the stale working directories
 
@@ -159,16 +159,14 @@ If you had run a previous version of `yagna` in the past, you'll need to purge i
 
 {% tabs %}
 {% tab title="Ubuntu" %}
-```text
-read -e -p "Have you backed up your keys? (type "yes" and hit Enter): " YN
-[[ $YN == "yes" ]] && rm -rf $HOME/.local/share/yagna
+```bash
+read -e -p "Backed up keys? (type "yes"): " YN && [[ $YN == "yes" ]] && rm -rf $HOME/.local/share/yagna
 ```
 {% endtab %}
 
 {% tab title="mac OS X" %}
 ```text
-read -e -p "Have you backed up your keys? (type "yes" and hit Enter): " YN
-[[ $YN == "yes" ]] && rm -rf $HOME/Library/Application\ Support/GolemFactory.yagna
+read -e -p "Backed up keys? (type "yes"): " YN && [[ $YN == "yes" ]] && rm -rf $HOME/Library/Application\ Support/GolemFactory.yagna
 ```
 {% endtab %}
 
@@ -280,7 +278,7 @@ python -m venv --clear %HOMEDRIVE%%HOMEPATH%\.envs\yagna-python-tutorial
 Install the dependencies:
 
 ```text
-pip3 install -U pip
+pip install -U pip
 pip install yapapi
 ```
 
@@ -319,7 +317,7 @@ The example we're showcasing here resides in the `examples/blender` directory wi
 
 ```bash
 cd examples/blender
-python3 blender.py
+python blender.py
 ```
 
 Once you launch the example, you should see some messages reflecting the progress of your task's execution - agreement confirmations, task dispatches and finally task completions.
@@ -410,4 +408,10 @@ If you'd like to understand, extend and play around with our example, please con
 On the other hand, if you'd like to deploy your own dockerized apps to our alpha testnet, have a look at:
 
 {% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
+
+Finally, you can hone your newly-acquired knowledge by following our newest workshop:
+
+{% page-ref page="hello-world.md" %}
+
+And by all means, **have fun with Golem!**
 

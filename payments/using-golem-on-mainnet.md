@@ -234,6 +234,24 @@ yagna id show
 
 The `nodeId` property should display the Ethereum address of your backed-up wallet.
 
+{% hint style="warning" %}
+If your key is password-protected, you'll need to unlock it before it can be used for payments. In such case, `yagna id show` command above will report:  
+  
+   `isLocked: true`
+
+To unlock your key, you can use:
+
+```text
+yagna id unlock
+```
+
+and supply the key's password.
+
+This will unlock your key and `yagna` will be able to use it for outgoing payments. You can confirm that the operation succeeded by verifying that the output now reports:
+
+   `isLocked: false`
+{% endhint %}
+
 ## Running your requestor on mainnet
 
 {% hint style="info" %}
