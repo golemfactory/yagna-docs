@@ -247,13 +247,7 @@ yagna id unlock
 
 and supply the key's password.
 
-This will unlock your key and `yagna` will be able to use it for outgoing payments. You can confirm that the operation succeeded by running:
-
-```text
-yagna id show
-```
-
-and verifying that it now returns:
+This will unlock your key and `yagna` will be able to use it for outgoing payments. You can confirm that the operation succeeded by verifying that the output now reports:
 
    `isLocked: false`
 {% endhint %}
