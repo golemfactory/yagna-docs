@@ -28,7 +28,7 @@
 
 #### constructor
 
-+ **new InputStorageProvider**\(\): [_InputStorageProvider_](storage.inputstorageprovider.md)
+* **new InputStorageProvider**\(\): [_InputStorageProvider_](storage.inputstorageprovider.md)
 
 **Returns:** [_InputStorageProvider_](storage.inputstorageprovider.md)
 

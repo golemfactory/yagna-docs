@@ -38,7 +38,7 @@
 
 #### constructor
 
-+ **new default**\(`list?`: _never_\[\]\): [_default_](utils_queue.default.md)
+* **new default**\(`list?`: _never_\[\]\): [_default_](utils_queue.default.md)
 
 **Type parameters:**
 

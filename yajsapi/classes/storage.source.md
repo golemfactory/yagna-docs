@@ -25,7 +25,7 @@
 
 #### constructor
 
-+ **new Source**\(\): [_Source_](storage.source.md)
+* **new Source**\(\): [_Source_](storage.source.md)
 
 **Returns:** [_Source_](storage.source.md)
 

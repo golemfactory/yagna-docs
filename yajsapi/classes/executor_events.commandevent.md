@@ -40,7 +40,7 @@
 
 #### constructor
 
-+ **new CommandEvent**\(`__namedParameters`: _Object_\): [_CommandEvent_](executor_events.commandevent.md)
+* **new CommandEvent**\(`__namedParameters`: _Object_\): [_CommandEvent_](executor_events.commandevent.md)
 
 **Parameters:**
 

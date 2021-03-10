@@ -36,7 +36,7 @@
 
 #### constructor
 
-+ **new Com**\(\): [_Com_](props_com.com.md)
+* **new Com**\(\): [_Com_](props_com.com.md)
 
 **Returns:** [_Com_](props_com.com.md)
 

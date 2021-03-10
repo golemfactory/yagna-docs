@@ -25,7 +25,7 @@
 
 #### constructor
 
-+ **new MarketStrategy**\(\): [_MarketStrategy_](executor_strategy.marketstrategy.md)
+* **new MarketStrategy**\(\): [_MarketStrategy_](executor_strategy.marketstrategy.md)
 
 **Returns:** [_MarketStrategy_](executor_strategy.marketstrategy.md)
 

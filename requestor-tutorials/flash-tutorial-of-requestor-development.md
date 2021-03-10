@@ -403,11 +403,7 @@ So, you have successfully completed your first task as a requestor on the new Go
 
 If you'd like to understand, extend and play around with our example, please consult:
 
-{% page-ref page="requestor-tutorial.md" %}
-
 On the other hand, if you'd like to deploy your own dockerized apps to our alpha testnet, have a look at:
-
-{% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
 
 Finally, you can hone your newly-acquired knowledge by following our newest workshop:
 

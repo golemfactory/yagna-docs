@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new ProposalConfirmed**\(`__namedParameters`: _Object_\): [_ProposalConfirmed_](executor_events.proposalconfirmed.md)
+* **new ProposalConfirmed**\(`__namedParameters`: _Object_\): [_ProposalConfirmed_](executor_events.proposalconfirmed.md)
 
 **Parameters:**
 

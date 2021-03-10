@@ -34,7 +34,7 @@
 
 #### constructor
 
-+ **new VmRequest**\(`package_url`: _string_, `package_format`: [_VmPackageFormat_](../enumeration/props_inf.vmpackageformat.md)\): [_VmRequest_](props_inf.vmrequest.md)
+* **new VmRequest**\(`package_url`: _string_, `package_format`: [_VmPackageFormat_](../enumeration/props_inf.vmpackageformat.md)\): [_VmRequest_](props_inf.vmrequest.md)
 
 **Parameters:**
 

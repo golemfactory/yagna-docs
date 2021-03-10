@@ -14,15 +14,13 @@ For the provider end, we currently, officially support:
 
 * Ubuntu 18.04 LTS and 20.04 LTS
 
-but you are welcome to try out and run it on other Linux distributions. 
+but you are welcome to try out and run it on other Linux distributions.
 
 {% hint style="warning" %}
-To run a Golem provider node we recommend a physical machine as you may encounter issues and limitations when running it on a virtual machine. Because we expect most apps to use vm-based payloads, we don't recommend running a provider on non-Linux platforms. 
+To run a Golem provider node we recommend a physical machine as you may encounter issues and limitations when running it on a virtual machine. Because we expect most apps to use vm-based payloads, we don't recommend running a provider on non-Linux platforms.
 
 It is possible to use macOS and Windows as provider hosts, but only with WASI execution environment.
 {% endhint %}
-
-
 
 {% hint style="info" %}
 For this release we have enabled the providers to expect payments on the Ethereum mainnet by default. It means that by running a provider node and executing tasks, you'll be **earning real GLM tokens** - either as pure ERC-20 tokens or on zkSync.

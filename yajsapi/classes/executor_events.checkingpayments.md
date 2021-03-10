@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new CheckingPayments**\(\): [_CheckingPayments_](executor_events.checkingpayments.md)
+* **new CheckingPayments**\(\): [_CheckingPayments_](executor_events.checkingpayments.md)
 
 **Returns:** [_CheckingPayments_](executor_events.checkingpayments.md)
 

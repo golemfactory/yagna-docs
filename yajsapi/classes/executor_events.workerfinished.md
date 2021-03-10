@@ -31,7 +31,7 @@
 
 #### constructor
 
-+ **new WorkerFinished**\(`__namedParameters`: _Object_\): [_WorkerFinished_](executor_events.workerfinished.md)
+* **new WorkerFinished**\(`__namedParameters`: _Object_\): [_WorkerFinished_](executor_events.workerfinished.md)
 
 **Parameters:**
 

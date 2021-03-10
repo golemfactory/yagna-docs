@@ -43,7 +43,7 @@
 
 #### constructor
 
-+ **new Invoice**\(`_api`: _RequestorApi_, `_base`: Invoice\): [_Invoice_](rest_payment.invoice.md)
+* **new Invoice**\(`_api`: _RequestorApi_, `_base`: Invoice\): [_Invoice_](rest_payment.invoice.md)
 
 **Parameters:**
 

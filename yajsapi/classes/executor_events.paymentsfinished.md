@@ -26,7 +26,7 @@
 
 #### constructor
 
-+ **new PaymentsFinished**\(\): [_PaymentsFinished_](executor_events.paymentsfinished.md)
+* **new PaymentsFinished**\(\): [_PaymentsFinished_](executor_events.paymentsfinished.md)
 
 **Returns:** [_PaymentsFinished_](executor_events.paymentsfinished.md)
 

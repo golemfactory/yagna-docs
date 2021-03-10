@@ -38,7 +38,7 @@
 
 #### constructor
 
-+ **new Handle**\(`__namedParameters`: _Object_\): [_Handle_](executor_smartq.handle.md)
+* **new Handle**\(`__namedParameters`: _Object_\): [_Handle_](executor_smartq.handle.md)
 
 **Type parameters:**
 

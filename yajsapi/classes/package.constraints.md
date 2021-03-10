@@ -29,7 +29,7 @@
 
 #### constructor
 
-+ **new Constraints**\(\): [_Constraints_](package.constraints.md)
+* **new Constraints**\(\): [_Constraints_](package.constraints.md)
 
 **Returns:** [_Constraints_](package.constraints.md)
 

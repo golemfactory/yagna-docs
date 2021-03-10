@@ -29,7 +29,7 @@
 
 #### constructor
 
-+ **new CommandContainer**\(\): [_CommandContainer_](executor_ctx.commandcontainer.md)
+* **new CommandContainer**\(\): [_CommandContainer_](executor_ctx.commandcontainer.md)
 
 **Returns:** [_CommandContainer_](executor_ctx.commandcontainer.md)
 

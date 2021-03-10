@@ -32,7 +32,7 @@
 
 #### constructor
 
-+ **new AgreementCreated**\(`__namedParameters`: _Object_\): [_AgreementCreated_](executor_events.agreementcreated.md)
+* **new AgreementCreated**\(`__namedParameters`: _Object_\): [_AgreementCreated_](executor_events.agreementcreated.md)
 
 **Parameters:**
 

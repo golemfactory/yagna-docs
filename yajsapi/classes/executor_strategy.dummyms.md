@@ -40,7 +40,7 @@
 
 #### constructor
 
-+ **new DummyMS**\(\): [_DummyMS_](executor_strategy.dummyms.md)
+* **new DummyMS**\(\): [_DummyMS_](executor_strategy.dummyms.md)
 
 **Returns:** [_DummyMS_](executor_strategy.dummyms.md)
 

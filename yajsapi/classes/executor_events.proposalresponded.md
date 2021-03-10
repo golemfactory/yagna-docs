@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new ProposalResponded**\(`__namedParameters`: _Object_\): [_ProposalResponded_](executor_events.proposalresponded.md)
+* **new ProposalResponded**\(`__namedParameters`: _Object_\): [_ProposalResponded_](executor_events.proposalresponded.md)
 
 **Parameters:**
 

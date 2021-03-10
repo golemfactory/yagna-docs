@@ -34,7 +34,7 @@
 
 #### constructor
 
-+ **new NodeInfo**\(`subnet_tag?`: _string_, `name?`: _string_\): [_NodeInfo_](props.nodeinfo.md)
+* **new NodeInfo**\(`subnet_tag?`: _string_, `name?`: _string_\): [_NodeInfo_](props.nodeinfo.md)
 
 **Parameters:**
 

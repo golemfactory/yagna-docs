@@ -37,7 +37,7 @@
 
 #### constructor
 
-+ **new NoPaymentAccountError**\(`required_driver`: _any_, `required_network`: _any_\): [_NoPaymentAccountError_](executor.nopaymentaccounterror.md)
+* **new NoPaymentAccountError**\(`required_driver`: _any_, `required_network`: _any_\): [_NoPaymentAccountError_](executor.nopaymentaccounterror.md)
 
 **Parameters:**
 

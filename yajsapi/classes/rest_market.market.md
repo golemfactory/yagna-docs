@@ -29,7 +29,7 @@
 
 #### constructor
 
-+ **new Market**\(`cfg`: _Configuration_\): [_Market_](rest_market.market.md)
+* **new Market**\(`cfg`: _Configuration_\): [_Market_](rest_market.market.md)
 
 **Parameters:**
 

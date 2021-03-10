@@ -112,7 +112,7 @@ This makes `/golem/work` a location we will use for our input/output file transf
 ![](../../.gitbook/assets/tnm-docs-infographics-08%20%281%29.jpg)
 
 {% hint style="info" %}
-On the provider side, all the content of the VOLUME directories is stored in the provider's os file system. 
+On the provider side, all the content of the VOLUME directories is stored in the provider's os file system.
 
 All the changes in other \(non VOLUME mounted\) container directories content are kept in RAM. The rest of the VM image file system \(not changed, non VOLUME mounted\) content is stored as VM image in the provider's os file system.
 {% endhint %}
@@ -366,7 +366,6 @@ if __name__ == "__main__":
             )
         except KeyboardInterrupt:
             pass
-
 ```
 
 ## So what is happening here?

@@ -33,7 +33,7 @@
 
 #### constructor
 
-+ **new ApiConfigProvider**\(`api`: _BaseAPI_\): [_ApiConfigProvider_](rest_activity.apiconfigprovider.md)
+* **new ApiConfigProvider**\(`api`: _BaseAPI_\): [_ApiConfigProvider_](rest_activity.apiconfigprovider.md)
 
 **Parameters:**
 

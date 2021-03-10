@@ -26,7 +26,7 @@
 
 #### constructor
 
-+ **new Destination**\(\): [_Destination_](storage.destination.md)
+* **new Destination**\(\): [_Destination_](storage.destination.md)
 
 **Returns:** [_Destination_](storage.destination.md)
 

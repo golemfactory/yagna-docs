@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new AgreementTerminated**\(`__namedParameters`: _Object_\): [_AgreementTerminated_](executor_events.agreementterminated.md)
+* **new AgreementTerminated**\(`__namedParameters`: _Object_\): [_AgreementTerminated_](executor_events.agreementterminated.md)
 
 **Parameters:**
 

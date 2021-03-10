@@ -33,7 +33,7 @@
 
 #### constructor
 
-+ **new PrivateKey**\(\): [_PrivateKey_](crypto.privatekey.md)
+* **new PrivateKey**\(\): [_PrivateKey_](crypto.privatekey.md)
 
 **Returns:** [_PrivateKey_](crypto.privatekey.md)
 

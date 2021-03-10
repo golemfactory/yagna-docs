@@ -49,7 +49,7 @@
 
 #### constructor
 
-+ **new SmartQueue**\(`items`: Item\[\], `retry_cnt?`: _number_, ...`rest`: _any_\[\]\): [_SmartQueue_](executor_smartq.smartqueue.md)
+* **new SmartQueue**\(`items`: Item\[\], `retry_cnt?`: _number_, ...`rest`: _any_\[\]\): [_SmartQueue_](executor_smartq.smartqueue.md)
 
 **Type parameters:**
 

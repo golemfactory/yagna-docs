@@ -27,7 +27,7 @@
 
 #### constructor
 
-+ **new Package**\(\): [_Package_](package.package-1.md)
+* **new Package**\(\): [_Package_](package.package-1.md)
 
 **Returns:** [_Package_](package.package-1.md)
 

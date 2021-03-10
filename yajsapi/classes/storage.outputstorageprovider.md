@@ -26,7 +26,7 @@
 
 #### constructor
 
-+ **new OutputStorageProvider**\(\): [_OutputStorageProvider_](storage.outputstorageprovider.md)
+* **new OutputStorageProvider**\(\): [_OutputStorageProvider_](storage.outputstorageprovider.md)
 
 **Returns:** [_OutputStorageProvider_](storage.outputstorageprovider.md)
 

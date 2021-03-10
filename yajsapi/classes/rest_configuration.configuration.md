@@ -39,7 +39,7 @@
 
 #### constructor
 
-+ **new Configuration**\(`app_key?`: _null_, `url?`: _string_, `market_url?`: _string_, `payment_url?`: _string_, `activity_url?`: _string_\): [_Configuration_](rest_configuration.configuration.md)
+* **new Configuration**\(`app_key?`: _null_, `url?`: _string_, `market_url?`: _string_, `payment_url?`: _string_, `activity_url?`: _string_\): [_Configuration_](rest_configuration.configuration.md)
 
 **Parameters:**
 

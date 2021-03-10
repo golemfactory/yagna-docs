@@ -29,7 +29,7 @@
 
 #### constructor
 
-+ **new LeastExpensiveLinearPayuMS**\(`expected_time_secs?`: _number_\): [_LeastExpensiveLinearPayuMS_](executor_strategy.leastexpensivelinearpayums.md)
+* **new LeastExpensiveLinearPayuMS**\(`expected_time_secs?`: _number_\): [_LeastExpensiveLinearPayuMS_](executor_strategy.leastexpensivelinearpayums.md)
 
 **Parameters:**
 

@@ -5,10 +5,10 @@ description: Making use of goth's interactive mode
 # Using Test Harness to test Golem apps
 
 {% hint style="danger" %}
-What you're going to try is still considered experimental.   
-  
-We're assuming here that you were able to run both `goth` and a requestor app correctly on your machine earlier and thus, you have all the components up and running without issues.  
-  
+What you're going to try is still considered experimental.
+
+We're assuming here that you were able to run both `goth` and a requestor app correctly on your machine earlier and thus, you have all the components up and running without issues.
+
 If you hadn't tried those yet though, please have a look at the earlier parts of our handbook:
 
 {% page-ref page="../flash-tutorial-of-requestor-development.md" %}

@@ -61,7 +61,7 @@ One computation unit.
 
 #### constructor
 
-+ **new Task**\(`data`: TaskData\): [_Task_](executor_task.task.md)
+* **new Task**\(`data`: TaskData\): [_Task_](executor_task.task.md)
 
 Create a new Task object.
 

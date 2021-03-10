@@ -31,7 +31,7 @@
 
 #### constructor
 
-+ **new TaskAccepted**\(`__namedParameters`: _Object_\): [_TaskAccepted_](executor_events.taskaccepted.md)
+* **new TaskAccepted**\(`__namedParameters`: _Object_\): [_TaskAccepted_](executor_events.taskaccepted.md)
 
 **Parameters:**
 

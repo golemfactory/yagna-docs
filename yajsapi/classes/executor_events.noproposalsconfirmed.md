@@ -31,7 +31,7 @@
 
 #### constructor
 
-+ **new NoProposalsConfirmed**\(`__namedParameters`: _Object_\): [_NoProposalsConfirmed_](executor_events.noproposalsconfirmed.md)
+* **new NoProposalsConfirmed**\(`__namedParameters`: _Object_\): [_NoProposalsConfirmed_](executor_events.noproposalsconfirmed.md)
 
 **Parameters:**
 

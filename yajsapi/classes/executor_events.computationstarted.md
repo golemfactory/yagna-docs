@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new ComputationStarted**\(`__namedParameters`: _Object_\): [_ComputationStarted_](executor_events.computationstarted.md)
+* **new ComputationStarted**\(`__namedParameters`: _Object_\): [_ComputationStarted_](executor_events.computationstarted.md)
 
 **Parameters:**
 

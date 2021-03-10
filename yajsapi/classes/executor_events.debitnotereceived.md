@@ -32,7 +32,7 @@
 
 #### constructor
 
-+ **new DebitNoteReceived**\(`__namedParameters`: _Object_\): [_DebitNoteReceived_](executor_events.debitnotereceived.md)
+* **new DebitNoteReceived**\(`__namedParameters`: _Object_\): [_DebitNoteReceived_](executor_events.debitnotereceived.md)
 
 **Parameters:**
 

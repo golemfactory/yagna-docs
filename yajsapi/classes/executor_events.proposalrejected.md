@@ -31,7 +31,7 @@
 
 #### constructor
 
-+ **new ProposalRejected**\(`__namedParameters`: _Object_\): [_ProposalRejected_](executor_events.proposalrejected.md)
+* **new ProposalRejected**\(`__namedParameters`: _Object_\): [_ProposalRejected_](executor_events.proposalrejected.md)
 
 **Parameters:**
 

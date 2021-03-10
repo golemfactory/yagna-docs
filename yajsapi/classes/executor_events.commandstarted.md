@@ -33,7 +33,7 @@
 
 #### constructor
 
-+ **new CommandStarted**\(`__namedParameters`: _Object_\): [_CommandStarted_](executor_events.commandstarted.md)
+* **new CommandStarted**\(`__namedParameters`: _Object_\): [_CommandStarted_](executor_events.commandstarted.md)
 
 **Parameters:**
 

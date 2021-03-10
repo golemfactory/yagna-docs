@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new ActivityCreateFailed**\(`__namedParameters`: _Object_\): [_ActivityCreateFailed_](executor_events.activitycreatefailed.md)
+* **new ActivityCreateFailed**\(`__namedParameters`: _Object_\): [_ActivityCreateFailed_](executor_events.activitycreatefailed.md)
 
 **Parameters:**
 

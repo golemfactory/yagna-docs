@@ -32,7 +32,7 @@
 
 #### constructor
 
-+ **new InvoiceReceived**\(`__namedParameters`: _Object_\): [_InvoiceReceived_](executor_events.invoicereceived.md)
+* **new InvoiceReceived**\(`__namedParameters`: _Object_\): [_InvoiceReceived_](executor_events.invoicereceived.md)
 
 **Parameters:**
 

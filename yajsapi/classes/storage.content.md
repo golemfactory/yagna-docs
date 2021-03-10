@@ -29,7 +29,7 @@
 
 #### constructor
 
-+ **new Content**\(`length`: _any_, `stream`: _any_\): [_Content_](storage.content.md)
+* **new Content**\(`length`: _any_, `stream`: _any_\): [_Content_](storage.content.md)
 
 **Parameters:**
 

@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new AgreementConfirmed**\(`__namedParameters`: _Object_\): [_AgreementConfirmed_](executor_events.agreementconfirmed.md)
+* **new AgreementConfirmed**\(`__namedParameters`: _Object_\): [_AgreementConfirmed_](executor_events.agreementconfirmed.md)
 
 **Parameters:**
 

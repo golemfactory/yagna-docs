@@ -26,7 +26,7 @@
 
 #### constructor
 
-+ **new ComputationFinished**\(\): [_ComputationFinished_](executor_events.computationfinished.md)
+* **new ComputationFinished**\(\): [_ComputationFinished_](executor_events.computationfinished.md)
 
 **Returns:** [_ComputationFinished_](executor_events.computationfinished.md)
 

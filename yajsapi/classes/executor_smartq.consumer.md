@@ -38,7 +38,7 @@
 
 #### constructor
 
-+ **new Consumer**\(`queue`: [_SmartQueue_](executor_smartq.smartqueue.md)\): [_Consumer_](executor_smartq.consumer.md)
+* **new Consumer**\(`queue`: [_SmartQueue_](executor_smartq.smartqueue.md)\): [_Consumer_](executor_smartq.consumer.md)
 
 **Type parameters:**
 

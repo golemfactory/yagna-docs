@@ -37,7 +37,7 @@
 
 #### constructor
 
-+ **new Activity**\(\): [_Activity_](props.activity.md)
+* **new Activity**\(\): [_Activity_](props.activity.md)
 
 **Returns:** [_Activity_](props.activity.md)
 

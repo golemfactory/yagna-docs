@@ -33,7 +33,7 @@
 
 #### constructor
 
-+ **new Agreement**\(`api`: _RequestorApi_, `subscription`: [_Subscription_](rest_market.subscription.md), `agreement_id`: _string_\): [_Agreement_](rest_market.agreement.md)
+* **new Agreement**\(`api`: _RequestorApi_, `subscription`: [_Subscription_](rest_market.subscription.md), `agreement_id`: _string_\): [_Agreement_](rest_market.agreement.md)
 
 **Parameters:**
 

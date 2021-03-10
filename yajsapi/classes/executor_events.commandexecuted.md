@@ -35,7 +35,7 @@
 
 #### constructor
 
-+ **new CommandExecuted**\(`__namedParameters`: _Object_\): [_CommandExecuted_](executor_events.commandexecuted.md)
+* **new CommandExecuted**\(`__namedParameters`: _Object_\): [_CommandExecuted_](executor_events.commandexecuted.md)
 
 **Parameters:**
 

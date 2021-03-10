@@ -36,7 +36,7 @@
 
 #### constructor
 
-+ **new CommandExecutionError**\(`command`: _string_, `message?`: _string_\): [_CommandExecutionError_](rest_activity.commandexecutionerror.md)
+* **new CommandExecutionError**\(`command`: _string_, `message?`: _string_\): [_CommandExecutionError_](rest_activity.commandexecutionerror.md)
 
 **Parameters:**
 

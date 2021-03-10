@@ -31,7 +31,7 @@
 
 #### constructor
 
-+ **new ActivityCreated**\(`__namedParameters`: _Object_\): [_ActivityCreated_](executor_events.activitycreated.md)
+* **new ActivityCreated**\(`__namedParameters`: _Object_\): [_ActivityCreated_](executor_events.activitycreated.md)
 
 **Parameters:**
 

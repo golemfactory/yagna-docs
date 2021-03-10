@@ -38,7 +38,7 @@ The net effect is that, with orders of magnitude smaller costs and much higher t
 
 ZkSync is enabled as the default platform to pay for and receive payments for computations in the new Golem. How you'd use it though, depends on whether you're running on testnet or on mainnet.
 
-The current default for providers is running on mainnet and provider accounts are ready to receive both erc20 tokens and zkSync payments out of the box. 
+The current default for providers is running on mainnet and provider accounts are ready to receive both erc20 tokens and zkSync payments out of the box.
 
 On the other hand, because we assume requestors will first start by testing the ground using their just-created apps on the Ethereum testnet, the default network for those nodes is Rinkeby.
 

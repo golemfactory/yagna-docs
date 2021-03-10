@@ -197,7 +197,6 @@ if __name__ == "__main__":
             )
         except (asyncio.CancelledError, KeyboardInterrupt):
             pass
-
 ```
 {% endtab %}
 
@@ -532,7 +531,6 @@ except BatchTimeoutError:
         f"Task {task} timed out on {ctx.provider_name}, time: {task.running_time}"
     )
     raise
-
 ```
 {% endtab %}
 
@@ -593,7 +591,6 @@ await asyncWith(
     network: "rinkeby",
     event_consumer: logUtils.logSummary(),
   }),
-
 ```
 {% endtab %}
 {% endtabs %}

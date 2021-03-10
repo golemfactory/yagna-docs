@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new WorkerStarted**\(`__namedParameters`: _Object_\): [_WorkerStarted_](executor_events.workerstarted.md)
+* **new WorkerStarted**\(`__namedParameters`: _Object_\): [_WorkerStarted_](executor_events.workerstarted.md)
 
 **Parameters:**
 

@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new DownloadFinished**\(`__namedParameters`: _Object_\): [_DownloadFinished_](executor_events.downloadfinished.md)
+* **new DownloadFinished**\(`__namedParameters`: _Object_\): [_DownloadFinished_](executor_events.downloadfinished.md)
 
 **Parameters:**
 
