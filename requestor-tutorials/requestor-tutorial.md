@@ -273,7 +273,7 @@ async function main() {
       max_workers: 6,
       timeout: timeout,
       budget: "10.0",
-      subnet_tag: "community.4",
+      subnet_tag: "devnet-beta.1",
       driver: "zksync",
       network: "rinkeby",
       event_consumer: logUtils.logSummary(),
