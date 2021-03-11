@@ -63,7 +63,7 @@ After installing all required components you will be asked to set up your node. 
 
 `Node name (default=generated_name):` - Type in the name of your new node and press Enter
 
-`subnet (default=community.4):` - It is important that you use "community.4"
+`subnet (default=public-beta):` - It is important that you use "public-beta"
 
 `Ethereum wallet address (default=internal wallet):`  - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty an address will be created for you on your local system.
 
@@ -120,7 +120,7 @@ As an output you will get the information about your node's current state as sho
 │  Build      113                                  │
 │                                                  │
 │  Node Name  tenuous-condition                    │
-│  Subnet     community.4                          │
+│  Subnet     public-beta                          │
 │  VM         valid                                │
 ├──────────────────────────────────────────────────┤
 │  Wallet                                          │
