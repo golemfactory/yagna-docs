@@ -112,7 +112,7 @@ Example output:
 │  Build      113                                  │
 │                                                  │
 │  Node Name  tenuous-condition                    │
-│  Subnet     community.4                          │
+│  Subnet     public-beta                          │
 │  VM         valid                                │
 ├──────────────────────────────────────────────────┤
 │  Wallet                                          │
