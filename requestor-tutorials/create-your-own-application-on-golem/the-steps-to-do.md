@@ -608,7 +608,7 @@ The above run should return "pas" as the recovered password. The computations wi
 A more computation-intensive example is:
 
 ```python
-python3 yacat.py '?a?a?a?a' '$H$5ZDzPE45C.e3TjJ2Qi58Aaozha6cs30' --subnet-tag community.3 --number-of-providers 8
+python3 yacat.py '?a?a?a?a' '$H$5ZDzPE45C.e3TjJ2Qi58Aaozha6cs30' --number-of-providers 8
 ```
 
 The above command should execute computations on 8 providers and return "ABCD".

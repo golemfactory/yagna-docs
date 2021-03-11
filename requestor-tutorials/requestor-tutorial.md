@@ -169,7 +169,7 @@ if __name__ == "__main__":
 
     loop = asyncio.get_event_loop()
     task = loop.create_task(
-        main(subnet_tag="community.4", driver="zksync", network="rinkeby")
+        main(subnet_tag="devnet-beta.1", driver="zksync", network="rinkeby")
     )
 
     try:
@@ -272,7 +272,7 @@ async function main() {
       max_workers: 6,
       timeout: timeout,
       budget: "10.0",
-      subnet_tag: "community.4",
+      subnet_tag: "devnet-beta.1",
       driver: "zksync",
       network: "rinkeby",
       event_consumer: logUtils.logSummary(),
@@ -586,7 +586,7 @@ await asyncWith(
     max_workers: 6,
     timeout: timeout,
     budget: "10.0",
-    subnet_tag: "community.4",
+    subnet_tag: "devnet-beta.1",
     driver: "zksync",
     network: "rinkeby",
     event_consumer: logUtils.logSummary(),
