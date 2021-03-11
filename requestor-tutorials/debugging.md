@@ -206,15 +206,11 @@ msg: ExeScript command exited with code 255
 now below that, there are the log entries we were looking for:
 
 ```python
-[2021-01-22 15:20:16,383 DEBUG yapapi.events] 
-CommandStdErr(agr_id='b39318a4c682010ea9be37201b8f428fad81b28cfe949ca11cca9912a465d34c', 
-task_id='1', cmd_idx=3, 
-output="hashcat: unrecognized option '--keeyspace'\n\x1b[31mInvalid argument specified.\x1b[0m\n\n")
-[2021-01-22 15:20:16,385 DEBUG yapapi.events] 
-CommandExecuted(agr_id='b39318a4c682010ea9be37201b8f428fad81b28cfe949ca11cca9912a465d34c', 
-task_id='1', cmd_idx=3, command={'run': {'entry_point': '/bin/sh', 'args': 
-('/golem/work/keyspace.sh',), 'capture': {'stdout': {'stream': {}}, 'stderr': {'stream': {}}}}}, 
-success=False, message='ExeScript command exited with code 255')
+2021-03-01 17:38:53 [yajsapi] debug: Command {"run":{"entry_point":"/bin/sh",
+"args":["-c","hashcat --keeyspace -a 3 '?a?a?a' -m 400"],
+"capture":{"stdout":{"atEnd":{"format":"str"}},"stderr":{"atEnd":{"format":"str"}}}}}: 
+stdout: null, stderr: hashcat: unrecognized option '--keeyspace'
+Invalid argument specified.
 ```
 
 There are two parts of those log entries that are most important:
