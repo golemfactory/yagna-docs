@@ -590,7 +590,7 @@ await asyncWith(
     max_workers: 6,
     timeout: timeout,
     budget: "10.0",
-    subnet_tag: "public-beta",
+    subnet_tag: "devnet-beta.1",
     driver: "zksync",
     network: "rinkeby",
     event_consumer: logUtils.logSummary(),
