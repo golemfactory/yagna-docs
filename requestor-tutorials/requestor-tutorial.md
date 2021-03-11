@@ -169,7 +169,7 @@ if __name__ == "__main__":
 
     loop = asyncio.get_event_loop()
     task = loop.create_task(
-        main(subnet_tag="public-beta", driver="zksync", network="rinkeby")
+        main(subnet_tag="devnet-beta.1", driver="zksync", network="rinkeby")
     )
 
     try:
