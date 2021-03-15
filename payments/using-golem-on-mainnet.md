@@ -262,31 +262,43 @@ After you have taken care of the above, the one last thing that you'll need to d
 
 The examples we bundle with our APIs \(the Blender rendering and Hashcat password recovery\) expose two command-line arguments, analogous to yagna daemon itself: `--driver` and `--network`.
 
-Therefore, in order to run them on mainnet, you'd launch them using e.g.:
+{% hint style="danger" %}
+There is a an additional caveat here though.
+
+In order to clearly separate our production network, to which the majority of the provider nodes run by our users connect by default, from the testnet subnet the sole purpose of which should be testing your apps, we have introduced a concept of a "subnet tag".
+
+Whereas the limited number of our own test providers that we make available to our prospective requestors use the `devnet-beta.1` subnet \(which is included by default in our requestor-facing examples\), the mainnet providers use `public-beta` subnet by default.
+
+Thus, to leverage the computing power of the mainnet providers in the Golem network, you must provide the subnet tag used by those mainnet provider nodes - `public-beta`.
+{% endhint %}
+
+
+
+Therefore, in order to run our examples on mainnet, you'd launch them using e.g.:
 
 {% tabs %}
 {% tab title="Python / Blender" %}
 ```text
-python3 blender.py --network=mainnet
+python3 blender.py --network=mainnet --subnet-tag=public-beta
 ```
 {% endtab %}
 
 {% tab title="Python / Hashcat" %}
 ```text
-python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --network=mainnet --number-of-providers 4 --log-file yacat-debug.log
+python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --network=mainnet --number-of-providers 4 --log-file yacat-debug.log --subnet-tag=public-beta
 ```
 {% endtab %}
 
 {% tab title="JS / Blender" %}
 ```text
-yarn js:blender --network mainnet
+yarn js:blender --network mainnet --subnet-tag public-beta
 ```
 {% endtab %}
 {% endtabs %}
 
 ### Requestor agent code
 
-As for your own requestor agent code, you'll need to supply appropriate `driver` and `network` parameters to the `Executor` .
+As for your own requestor agent code, you'll need to supply appropriate `driver` , `network` and `subnet_tag` parameters to the `Executor` .
 
 {% tabs %}
 {% tab title="Python" %}
@@ -295,6 +307,7 @@ async with Executor(
     [...],
     network="mainnet",
     driver="zksync",
+    subnet_tag="public-beta",
 )
 ```
 {% endtab %}
@@ -304,6 +317,7 @@ async with Executor(
 new Executor({
     driver: "zksync",
     network: "mainnet",
+    subnet_tag: "public-beta",
 })
 ```
 {% endtab %}
