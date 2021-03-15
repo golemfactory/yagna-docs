@@ -272,9 +272,7 @@ Whereas the limited number of our own test providers that we make available to o
 Thus, to leverage the computing power of the mainnet providers in the Golem network, you must provide the subnet tag used by those mainnet provider nodes - `public-beta`.
 {% endhint %}
 
-
-
-Therefore, in order to run our examples on mainnet, you'd launch them using e.g.:
+Therefore, combining those parameters, in order to run our examples on mainnet, you'd launch them using e.g.:
 
 {% tabs %}
 {% tab title="Python / Blender" %}
@@ -298,7 +296,7 @@ yarn js:blender --network mainnet --subnet-tag public-beta
 
 ### Requestor agent code
 
-As for your own requestor agent code, you'll need to supply appropriate `driver` , `network` and `subnet_tag` parameters to the `Executor` .
+As for your own requestor agent code, you'll need to supply the appropriate `driver` , `network` and `subnet_tag` parameters to the `Executor` .
 
 {% tabs %}
 {% tab title="Python" %}
