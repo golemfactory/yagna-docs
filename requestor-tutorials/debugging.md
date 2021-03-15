@@ -16,7 +16,7 @@ The good news is that Golem's high-level API supports log files. The log files c
 
 ## How to enable logging?
 
-The logging infrastructure in Golem's high-level API is quite universal and thus somewhat comples, but for most of the cases using the `SummaryLogger` will do the job. 
+The logging infrastructure in Golem's high-level API is quite universal and thus somewhat complex, but for most of the cases using the `SummaryLogger` will do the job. 
 
 {% hint style="info" %}
 The `SummaryLogger`is an event listener that listens to all the atomic events and combines them into the more aggregated track of events that is easier to grasp by humans.
