@@ -160,7 +160,7 @@ In the three columns, you can check the basic information regarding the status o
 
 #### Offers
 
-* Number of currently subscribed \(ie. published\) Offers by your node.  
+* Number of currently subscribed \(ie. published\) offers by your node.  
 
 #### Tasks
 

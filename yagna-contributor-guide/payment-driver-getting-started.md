@@ -83,5 +83,5 @@ As another option to testing is to run [Payment service examples](https://github
 2. Start an example payment service \(each test assumes running from scratch\)  `rm payment.db* && cargo run --example payment_api -- --driver=<DRIVER> --platform=<PLATFORM>`
 3. Start _invoice flow_ example \(restart above `platform_api` on each test\)  `cargo run --example invoice_flow -- --platform=<PLATFORM>`
 4. Start _debit note flow_ example \(restart above `platform_api` on each test\)  `cargo run --example debit_note_flow -- --platform=<PLATFORM>`
-5. Don't be afraid to try other examples as well ;\)
+5. Don't be afraid to try the other examples as well ;\)
 
