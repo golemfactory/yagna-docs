@@ -39,6 +39,7 @@
   * [Using Test Harness to test Golem apps](requestor-tutorials/interactive-testing-environment/running-goths-interactive-mode.md)
 * [Writing your own market strategy](requestor-tutorials/writing-your-own-providers-market-strategy.md)
 * [SGX secure enclave application development](requestor-tutorials/sgx-secure-enclave-application-development.md)
+* [Debugging a Golem image](requestor-tutorials/gvmi-debugging.md)
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
