@@ -197,6 +197,7 @@ if __name__ == "__main__":
             )
         except (asyncio.CancelledError, KeyboardInterrupt):
             pass
+
 ```
 {% endtab %}
 
@@ -219,7 +220,7 @@ async function main() {
     min_storage_gib: 2.0,
   });
 
-  async function* worker(ctx, tasks) {
+  async function* worker(ctx: WorkContext, tasks) {
     ctx.send_file(
       path.join(__dirname, "./cubes.blend"),
       "/golem/resource/scene.blend"
@@ -355,7 +356,7 @@ async def worker(ctx: WorkContext, tasks):
 
 {% tab title="NodeJS" %}
 ```typescript
-async function* worker(ctx, tasks) {
+async function* worker(ctx: WorkContext, tasks) {
 ```
 {% endtab %}
 {% endtabs %}
@@ -425,12 +426,14 @@ ctx.send_json(
         "OUTPUT_DIR": "/golem/output",
     },
 )
+
 ```
 {% endtab %}
 
 {% tab title="NodeJS" %}
 ```typescript
 let frame = task.data();
+ctx.begin();
 let crops = [
   {
     outfilebasename: "out",
@@ -531,6 +534,7 @@ except BatchTimeoutError:
         f"Task {task} timed out on {ctx.provider_name}, time: {task.running_time}"
     )
     raise
+
 ```
 {% endtab %}
 
@@ -591,6 +595,7 @@ await asyncWith(
     network: "rinkeby",
     event_consumer: logUtils.logSummary(),
   }),
+
 ```
 {% endtab %}
 {% endtabs %}
@@ -609,7 +614,7 @@ With the `Executor` in place, we can finally tell it what we want to execute and
 {% tab title="Python" %}
 ```python
 async for task in executor.submit(worker, [Task(data=frame) for frame in frames]):
-    print(f"Task computed: {task}, result: {task.result}, time: {task.running_time}")
+    print(f"Task computed: {task}, result: {task.result}")
 ```
 {% endtab %}
 
@@ -641,7 +646,11 @@ With this, our requestor agent is complete and we can use it to run our computat
 
 Are you hooked up? Then go ahead and follow up with our tutorial on using your own - or generally any other - Docker image and using our `gvmkit-builder` tool to build and push the image to our repository:
 
+{% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
+
 or jump right into our "Hello World" workshop:
 
 {% page-ref page="hello-world.md" %}
+
+
 
