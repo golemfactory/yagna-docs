@@ -638,4 +638,3 @@ For next steps, here a couple of leads:
 {% embed url="https://chat.golem.network/" %}
 
 **Have fun with Golem!**
-
