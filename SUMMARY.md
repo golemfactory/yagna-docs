@@ -18,7 +18,7 @@
 * [Becoming a provider](provider-tutorials/provider-tutorial.md)
 * [Provider CLI reference](provider-tutorials/provider-cli.md)
 
-## troubleshooting
+## Troubleshooting
 
 * [Provider Troubleshooting](troubleshooting/provider-troubleshooting.md)
 * [Requestor Troubleshooting](troubleshooting/common-issues.md)
