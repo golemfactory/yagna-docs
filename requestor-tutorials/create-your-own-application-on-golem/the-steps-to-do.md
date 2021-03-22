@@ -10,8 +10,6 @@ This section contains steps you need to execute in order to run our hashcat pass
 
 In order to develop applications for the Golem network, you need to install yagna daemon on your machine. We're going to assume you're already familiar with the setup of the environment required to run Python high-level API examples. If you're not, please make sure you proceed through our quick primer to get up to speed:
 
-{% page-ref page="../flash-tutorial-of-requestor-development.md" %}
-
 Once you're done with the tutorial above, make sure you're again in yapapi's main directory and move to:
 
 ```text
@@ -112,14 +110,14 @@ This makes `/golem/work` a location we will use for our input/output file transf
 ![](../../.gitbook/assets/tnm-docs-infographics-08%20%281%29.jpg)
 
 {% hint style="info" %}
-On the provider side, all the content of the VOLUME directories is stored in the provider's os file system. 
+On the provider side, all the content of the VOLUME directories is stored in the provider's os file system.
 
 All the changes in other \(non VOLUME mounted\) container directories content are kept in RAM. The rest of the VM image file system \(not changed, non VOLUME mounted\) content is stored as VM image in the provider's os file system.
 {% endhint %}
 
 {% hint style="danger" %}
-Please mind that tasks within a single worker instance - so effectively part of the same activity on a given provider node - run within the same virtual machine and share the contents of a VOLUME between each other.  
-  
+Please mind that tasks within a single worker instance - so effectively part of the same activity on a given provider node - run within the same virtual machine and share the contents of a VOLUME between each other.
+
 That means that as long as the execution takes place on the same provider, and thus, on the same filesystem, files in the VOLUME left over from one task execution will be present in a subsequent run.
 {% endhint %}
 
@@ -154,8 +152,6 @@ This hash will identify our image when our Golem application is run. Please copy
 {% endhint %}
 
 The details of docker image conversion are described here:
-
-{% page-ref page="../convert-a-docker-image-into-a-golem-image.md" %}
 
 ## The requestor agent code
 
@@ -366,7 +362,6 @@ if __name__ == "__main__":
             )
         except KeyboardInterrupt:
             pass
-
 ```
 
 ## So what is happening here?
@@ -441,7 +436,6 @@ async with Executor(
     network=args.network,
     event_consumer=log_summary(log_event_repr),
 ) as executor:
-
 ```
 
 ### Main loop
@@ -513,7 +507,6 @@ async for task in executor.submit(
     print(
         f"{TEXT_COLOR_CYAN}Task computed: {task}, result: {task.result}{TEXT_COLOR_DEFAULT}"
     )
-
 ```
 
 After the `hashcat.potfile` file is returned for all the fragments, we need to scan over them, as one of them possibly contains the password we are looking for:
@@ -602,7 +595,7 @@ Please note that on Windows, you need to:
 So the windows version is:
 
 ```python
-python yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/ 
+python yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/
 ```
 {% endhint %}
 
