@@ -37,6 +37,7 @@
 * [Interactive testing environment](requestor-tutorials/interactive-testing-environment/README.md)
   * [Running Goth](requestor-tutorials/interactive-testing-environment/running-goth.md)
   * [Using Test Harness to test Golem apps](requestor-tutorials/interactive-testing-environment/running-goths-interactive-mode.md)
+* [Debugging a Golem image](requestor-tutorials/gvmi-debugging.md)
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
