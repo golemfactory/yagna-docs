@@ -631,7 +631,7 @@ For next steps, here a couple of leads:
 
 {% page-ref page="create-your-own-application-on-golem/" %}
 
-2. Our high-level API reference to assist you on your way:
+2. Our high-level Python API reference to help you on your way
 
 3. And in case you get stuck or need help, please reach out to us on our Discord chat and we'll be delighted to help you out :\)
 
