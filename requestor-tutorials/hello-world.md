@@ -34,9 +34,9 @@ We'll use this idea mainly because it scales in a very straightforward manner - 
 
 We chose it also because we can do it using Python's bundled modules, without depending on any external libraries \(apart from `yapapi` - [Golem's high-level API](https://github.com/golemfactory/yapapi) - and its dependencies in the requestor agent, of course\).
 
-For your convenience, we're providing some boilerplate code in a Github repository created specifically for the purpose of the original workshop and our piece here:
+For your convenience, we're providing some boilerplate code in a  Github repository created specifically for the purpose of the original workshop and our piece here:
 
-{% embed url="https://github.com/golemfactory/hash-cracker" caption="" %}
+{% embed url="https://github.com/golemfactory/hash-cracker" %}
 
 We're going to be using the code from this repository later on in the course of this tutorial.
 
@@ -63,7 +63,7 @@ Finally, the requestor agent will present the solution to the user.
 
 Since we're building the whole app from scratch, that includes preparing the worker code and the VM image that includes it. To prepare such image, we'll need Docker:
 
-{% embed url="https://www.docker.com/products/docker-desktop" caption="" %}
+{% embed url="https://www.docker.com/products/docker-desktop" %}
 
 #### Python 3.7+
 
@@ -210,7 +210,7 @@ We're done with our worker code!
 
 As an option, before we bundle that code into the VM image, we may want to run it locally first.
 
-Here, we're going to test it with a shorter list of words \(`data/words-short.json`\), which is also included in our example alongside with a sample hash derived from one of the words in that shorter list \(`data/hash-short.json`\). The hash should match the word `test` from that list.
+Here, we're going to test it with a shorter list of words \(`data/words-short.json`\), which is also included in our example alongside with a sample hash derived from one of the words in that shorter list \(`data/hash-short.json`\). The hash should match the word `test` from that list. 
 
 {% hint style="info" %}
 The input list of words \(`data/words-short.json`\) is a JSON file as this is the format which our `worker.py` script expects. It corresponds to a single slice of the original word list.
@@ -259,6 +259,7 @@ FROM python:3.8.7-slim
 VOLUME /golem/input /golem/output
 COPY worker.py /golem/entrypoint/
 WORKDIR /golem/entrypoint
+
 ```
 
 Let's go through these instructions one by one.
@@ -267,10 +268,10 @@ Let's go through these instructions one by one.
 FROM python:3.8.7-slim
 ```
 
-Here we specify our base Docker image. We use the official `python` image since we want it to run our `worker.py` script and choose the `slim` variant to reduce the image's size.
+Here we specify our base Docker image. We use the official `python` image since we want it to run our `worker.py` script and choose the `slim` variant to reduce the image's size. 
 
 ```text
-VOLUME /golem/input /golem/output
+VOLUME /golem/input /golem/output 
 ```
 
 This line defines two volumes in the image: `/golem/input` and `/golem/output`. Volumes are directories that can be shared with the host machine and, more importantly, through which the execution environment supervisor \(the process on the provider's host machine\) will be able to transfer data to and out of the VM. For a Golem VM, the image must define at least one volume.
@@ -282,13 +283,13 @@ Therefore, be sure to provide different paths for any files already contained in
 {% endhint %}
 
 ```text
-COPY worker.py /golem/entrypoint/
+COPY worker.py /golem/entrypoint/ 
 ```
 
-This line will copy our `worker.py` script to the path `/golem/entrypoint` within the image. Later on we'll see how the requestor code uses this path to run our script.
+This line will copy our `worker.py` script to the path `/golem/entrypoint` within the image. Later on we'll see how the requestor code uses this path to run our script. 
 
 ```text
-WORKDIR /golem/entrypoint
+WORKDIR /golem/entrypoint 
 ```
 
 Defines `/golem/entrypoint` as the working directory of the image. It will be the default location for commands executed by this image.
@@ -299,7 +300,7 @@ Since version **0.2.5** of Golem's VM runtime execution environment - and of the
 
 ### Building and publishing the image
 
-To make our image available to providers within the Golem network we need to take the following steps:
+To make our image available to providers within the Golem network we need to take the following steps: 
 
 1. Build a Docker image using our `Dockerfile`. 
 2. Convert the Docker image to a `.gvmi` file using `gvmkit-build`. 
@@ -454,13 +455,13 @@ As you can see, it first opens the file containing the input dictionary - which 
 
 With the file open, it creates an empty list \(`chunk`\) which it fills with the lines from said file, stripping them of any preceding or trailing whitespace or newline characters \(`line.strip()`\).
 
-Once the number of appended lines reaches the `chunk_size`- or once all lines have been read from the input file - it then yields the respective `Task` with its `data` set to the just-constructed list.
+Once the number of appended lines reaches the `chunk_size`- or once all lines have been read from the input file -  it then yields the respective `Task` with its `data` set to the just-constructed list.
 
 That's all we need for those fragments to be defined.
 
 ### The recipe for each step
 
-Let's now proceed to the recipe that defines what exactly needs to happen in order for the provider node to process each `Task`.
+Let's now proceed to the recipe that defines what exactly needs to happen in order for the provider node to process each `Task`. 
 
 The function performing this job is called `steps` in our example. It accepts `context`, which is a `WorkContext` instance and `tasks` - an iterable of `Tasks` which will be filled with task fragments coming from our `data` function that we defined in the previous step.
 
@@ -631,9 +632,10 @@ For next steps, here a couple of leads:
 {% page-ref page="create-your-own-application-on-golem/" %}
 
 2. Our high-level API reference to help you on your way:
+
 3. And in case you get stuck or need help, please reach out to us on our Discord chat and we'll be delighted to help you out :\)
 
-{% embed url="https://chat.golem.network/" caption="" %}
+{% embed url="https://chat.golem.network/" %}
 
 **Have fun with Golem!**
 
