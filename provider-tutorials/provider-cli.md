@@ -14,7 +14,7 @@ Run `golemsp help` without arguments to see top-level usage information:
 
 ```css
 $ golemsp help
-golemsp 0.6.1 (a282c32b 2021-03-08 build #125)
+golemsp 0.6.2 (6947e449 2021-03-22 build #127)
 User friedly CLI for running Golem Provider
 
 USAGE:
@@ -106,55 +106,55 @@ When the node is not runnig you'll see:
 
 ```text
 $ golemsp status
-┌─────────────────────────────┐
-│  Status                     │
-│                             │
-│  Service    is not running  │
-│  Version    0.6.1           │
-│  Commit     a282c32b        │
-│  Date       2021-03-08      │
-│  Build      125             │
-│                             │
-│  Node Name  awful-flame     │
-│  Subnet     devnet-beta.1   │
-│  VM         valid           │
-└─────────────────────────────┘
+┌──────────────────────────────┐
+│  Status                      │
+│                              │
+│  Service    is not running   │
+│  Version    0.6.2            │
+│  Commit     6947e449         │
+│  Date       2021-03-22       │
+│  Build      127              │
+│                              │
+│  Node Name  friendly-winter  │
+│  Subnet     public-beta      │
+│  VM         valid            │
+└──────────────────────────────┘
 ```
 
 When your node is already running `golemsp status` will show:
 
 ```text
 $ golemsp status
-┌───────────────────────────────────────────────────┐
-│  Status                                           │
-│                                                   │
-│  Service    is running                            │
-│  Version    0.6.1                                 │
-│  Commit     a282c32b                              │
-│  Date       2021-03-08                            │
-│  Build      125                                   │
-│                                                   │
-│  Node Name  awful-flame                           │
-│  Subnet     devnet-beta.1                         │
-│  VM         valid                                 │
-├───────────────────────────────────────────────────┤
-│  Wallet                                           │
-│  0x981749fa2e85a06ae91e6a1d4915e83b2cd055aa       │
-│                                                   │
-│  network               rinkeby                    │
-│  amount (total)        0.084133451277681667 tGLM  │
-│      (on-chain)        0.002982871922666667 tGLM  │
-│       (zk-sync)        0.081150579355015 tGLM     │
-│                                                   │
-│  pending               0 tGLM (0)                 │
-│  issued                0 tGLM (0)                 │
-├───────────────────────────────────────────────────┤
-│  Tasks                                            │
-│                                                   │
-│  last 1h processed    0                           │
-│  last 1h in progress  0                           │
-│  total processed      767                         │
-└───────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────┐
+│  Status                                              │
+│                                                      │
+│  Service    is running                               │
+│  Version    0.6.2                                    │
+│  Commit     6947e449                                 │
+│  Date       2021-03-22                               │
+│  Build      127                                      │
+│                                                      │
+│  Node Name  friendly-winter                          │
+│  Subnet     public-beta                              │
+│  VM         valid                                    │
+├──────────────────────────────────────────────────────┤
+│  Wallet                                              │
+│  0x979db95461652299c34e15df09441b8dfc4edf7a          │
+│                                                      │
+│  network               mainnet                       │
+│  amount (total)        16.578402018187077818 GLM     │
+│      (on-chain)        3.727634841182177818 GLM      │
+│       (zk-sync)        12.8507671770049 GLM          │
+│                                                      │
+│  pending               0.001311061811122222 GLM (1)  │
+│  issued                0 GLM (0)                     │
+├──────────────────────────────────────────────────────┤
+│  Tasks                                               │
+│                                                      │
+│  last 1h processed    3                              │
+│  last 1h in progress  0                              │
+│  total processed      3                              │
+└──────────────────────────────────────────────────────┘
 ```
 
 In the three columns, you can check the basic information regarding the status of your node
