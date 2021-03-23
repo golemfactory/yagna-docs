@@ -565,12 +565,12 @@ Having completed the **requestor agent** part, you now have all the pieces of yo
 Now, it's time for the final piece of infrastructure necessary for our requestor node setup - the `yagna` daemon itself.
 
 {% hint style="warning" %}
-
 Unless you have actually done it before, you'll need to first install and fund your `yagna`deamon. Please go to:
 
 {% page-ref page="flash-tutorial-of-requestor-development.md" %}
 
 and proceed with the initial part. You can stop before the "Running the requestor and your first task on the New Golem Network" as we're going to take it from there here.
+{% endhint %}
 
 For those who _had_ already initialized their daemon and/or completed the quick primer, just start your daemon:
 
@@ -630,8 +630,8 @@ For next steps, here a couple of leads:
 
 {% page-ref page="create-your-own-application-on-golem/" %}
 
-1. Our high-level API reference to help you on your way:
-2. And in case you get stuck or need help, please reach out to us on our Discord chat and we'll be delighted to help you out :\)
+2. Our high-level API reference to help you on your way:
+3. And in case you get stuck or need help, please reach out to us on our Discord chat and we'll be delighted to help you out :\)
 
 {% embed url="https://chat.golem.network/" caption="" %}
 

@@ -85,7 +85,37 @@ We are going to simulate some bug in the code now. We will take a fully working 
 {% tab title="Python" %}
 Let's look at the code of yacat that is part of the Golem high-level Python API repository. All the code that enables logging is already there. We just need to use `--log-file` command-line switch.
 
-{% embed url="https://github.com/golemfactory/yapapi/blob/master/examples/yacat/yacat.py" caption="" %}
+{% embed url="https://github.com/golemfactory/yapapi/blob/master/examples/yacat/yacat.py" %}
+
+In line 29 we are generating the body of `keyspace.sh` script to be executed on the provider:
+
+```python
+def write_keyspace_check_script(mask):
+    with open("keyspace.sh", "w") as f:
+        f.write(f"hashcat --keyspace -a 3 {mask} -m 400 > /golem/work/keyspace.txt")
+```
+
+Now, we'll simulate a typo in the code. Instead of:
+
+`hashcat --keyspace -a 3 {mask} -m 400 > /golem/work/keyspace.txt`
+
+let's have the following:
+
+`hashcat --keeyspace -a 3 {mask} -m 400 > /golem/work/keyspace.txt`
+
+So just an additional character - `e` - that has passed unnoticed. A typical developer day.
+
+Save the file and run yacat with some example mask and hash:
+
+```python
+python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --log-file log.txt
+```
+
+On Windows please use:
+
+```
+python yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/ --log-file log.txt
+```
 {% endtab %}
 
 {% tab title="JS" %}
