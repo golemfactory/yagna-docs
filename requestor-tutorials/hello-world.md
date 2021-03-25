@@ -9,10 +9,10 @@ _This tutorial is the textual counterpart to a workshop originally prepared by J
 Now that we've seen how easy it is to [run a Golem requestor agent](flash-tutorial-of-requestor-development.md), then had a look at [how this stuff works under the hood](requestor-tutorial.md) and finally learned how to go about [creating your own Golem VM application image](convert-a-docker-image-into-a-golem-image.md), we can put this knowledge to the test and build the most bare-bones Golem app.
 
 {% hint style="info" %}
-
 If you'd rather like to have a more general introduction on the idea behind Golem or would like to learn what components constitute a Golem node and the Golem network, please have a look at:
 
 {% page-ref page="../introduction/golem-overview.md" %}
+{% endhint %}
 
 ## Step 0. What are we building?
 
@@ -630,8 +630,9 @@ For next steps, here a couple of leads:
 
 {% page-ref page="create-your-own-application-on-golem/" %}
 
-1. Our high-level API reference to help you on your way:
-2. And in case you get stuck or need help, please reach out to us on our Discord chat and we'll be delighted to help you out :\)
+2. Our high-level API reference to help you on your way:
+
+3. And in case you get stuck or need help, please reach out to us on our Discord chat and we'll be delighted to help you out :\)
 
 {% embed url="https://chat.golem.network/" caption="" %}
 
