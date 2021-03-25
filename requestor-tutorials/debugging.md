@@ -85,7 +85,7 @@ We are going to simulate some bug in the code now. We will take a fully working 
 {% tab title="Python" %}
 Let's look at the code of yacat that is part of the Golem high-level Python API repository. All the code that enables logging is already there. We just need to use `--log-file` command-line switch.
 
-{% embed url="https://github.com/golemfactory/yapapi/blob/master/examples/yacat/yacat.py" %}
+{% embed url="https://github.com/golemfactory/yapapi/blob/master/examples/yacat/yacat.py" caption="" %}
 
 In line 29 we are generating the body of `keyspace.sh` script to be executed on the provider:
 
@@ -113,7 +113,7 @@ python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --log-file log.tx
 
 On Windows please use:
 
-```
+```text
 python yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/ --log-file log.txt
 ```
 {% endtab %}
