@@ -14,7 +14,7 @@ Run `golemsp help` without arguments to see top-level usage information:
 
 ```css
 $ golemsp help
-golemsp 0.6.3 (6cee83e7 2021-03-25 build #129)
+golemsp 0.6.4 (4fc72117 2021-04-15 build #135)
 User friedly CLI for running Golem Provider
 
 USAGE:
@@ -86,16 +86,17 @@ example
 $ golemsp settings show
 node name: "friendly-winter"
 Shared resources:
-    cores:    7
-    memory:    10.597366839647291 GiB
-    disk:    124.24331665039063 GiB
+	cores:	7
+	memory:	10.597366839647291 GiB
+	disk:	138.55942993164064 GiB
 
 
 Pricing:
 
-        0 GLM for start
-     0.02 GLM per hour
-      0.1 GLM per cpu hour
+	    0 GLM for start
+	 0.02 GLM per hour
+	  0.1 GLM per cpu hour
+
 ```
 
 ### Status
@@ -106,19 +107,20 @@ When the node is not runnig you'll see:
 
 ```text
 $ golemsp status
-┌─────────────────────────────┐
-│  Status                     │
-│                             │
-│  Service    is not running  │
-│  Version    0.6.3           │
-│  Commit     a282c32b        │
-│  Date       2021-03-08      │
-│  Build      125             │
-│                             │
-│  Node Name  awful-flame     │
-│  Subnet     devnet-beta.1   │
-│  VM         valid           │
-└─────────────────────────────┘
+┌──────────────────────────────┐
+│  Status                      │
+│                              │
+│  Service    is not running   │
+│  Version    0.6.4            │
+│  Commit     4fc72117         │
+│  Date       2021-04-15       │
+│  Build      135              │
+│                              │
+│  Node Name  friendly-winter  │
+│  Subnet     public-beta      │
+│  VM         valid            │
+└──────────────────────────────┘
+
 ```
 
 When your node is already running `golemsp status` will show:
@@ -129,32 +131,33 @@ $ golemsp status
 │  Status                                           │
 │                                                   │
 │  Service    is running                            │
-│  Version    0.6.3                                 │
-│  Commit     a282c32b                              │
-│  Date       2021-03-08                            │
-│  Build      125                                   │
+│  Version    0.6.4                                 │
+│  Commit     4fc72117                              │
+│  Date       2021-04-15                            │
+│  Build      135                                   │
 │                                                   │
-│  Node Name  awful-flame                           │
-│  Subnet     devnet-beta.1                         │
+│  Node Name  friendly-winter                       │
+│  Subnet     public-beta                           │
 │  VM         valid                                 │
 ├───────────────────────────────────────────────────┤
 │  Wallet                                           │
-│  0x981749fa2e85a06ae91e6a1d4915e83b2cd055aa       │
+│  0x979db95461652299c34e15df09441b8dfc4edf7a       │
 │                                                   │
-│  network               rinkeby                    │
-│  amount (total)        0.084133451277681667 tGLM  │
-│      (on-chain)        0.002982871922666667 tGLM  │
-│       (zk-sync)        0.081150579355015 tGLM     │
+│  network               mainnet                    │
+│  amount (total)        29.850818924744477818 GLM  │
+│      (on-chain)        3.727634841182177818 GLM   │
+│       (zk-sync)        26.1231840835623 GLM       │
 │                                                   │
-│  pending               0 tGLM (0)                 │
-│  issued                0 tGLM (0)                 │
+│  pending               0 GLM (0)                  │
+│  issued                0 GLM (0)                  │
 ├───────────────────────────────────────────────────┤
 │  Tasks                                            │
 │                                                   │
 │  last 1h processed    0                           │
 │  last 1h in progress  0                           │
-│  total processed      767                         │
+│  total processed      211                         │
 └───────────────────────────────────────────────────┘
+
 ```
 
 In the three columns, you can check the basic information regarding the status of your node

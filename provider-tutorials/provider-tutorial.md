@@ -113,31 +113,31 @@ $ golemsp status
 │  Status                                           │
 │                                                   │
 │  Service    is running                            │
-│  Version    0.6.3                                 │
-│  Commit     a282c32b                              │
-│  Date       2021-03-08                            │
-│  Build      125                                   │
+│  Version    0.6.4                                 │
+│  Commit     4fc72117                              │
+│  Date       2021-04-15                            │
+│  Build      135                                   │
 │                                                   │
-│  Node Name  awful-flame                           │
-│  Subnet     devnet-beta.1                         │
+│  Node Name  friendly-winter                       │
+│  Subnet     public-beta                           │
 │  VM         valid                                 │
 ├───────────────────────────────────────────────────┤
 │  Wallet                                           │
-│  0x981749fa2e85a06ae91e6a1d4915e83b2cd055aa       │
+│  0x979db95461652299c34e15df09441b8dfc4edf7a       │
 │                                                   │
-│  network               rinkeby                    │
-│  amount (total)        0.084133451277681667 tGLM  │
-│      (on-chain)        0.002982871922666667 tGLM  │
-│       (zk-sync)        0.081150579355015 tGLM     │
+│  network               mainnet                    │
+│  amount (total)        29.850818924744477818 GLM  │
+│      (on-chain)        3.727634841182177818 GLM   │
+│       (zk-sync)        26.1231840835623 GLM       │
 │                                                   │
-│  pending               0 tGLM (0)                 │
-│  issued                0 tGLM (0)                 │
+│  pending               0 GLM (0)                  │
+│  issued                0 GLM (0)                  │
 ├───────────────────────────────────────────────────┤
 │  Tasks                                            │
 │                                                   │
 │  last 1h processed    0                           │
 │  last 1h in progress  0                           │
-│  total processed      767                         │
+│  total processed      211                         │
 └───────────────────────────────────────────────────┘
 ```
 
