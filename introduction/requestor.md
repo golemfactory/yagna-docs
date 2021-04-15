@@ -84,7 +84,7 @@ The main or most typical benefit for the requestor is to have instant access to 
 Remember that one requestor can use the hardware from many providers at the same time.
 {% endhint %}
 
-For instance, you could think of training a large ML model in seconds instead of hours, there are many interesting business use cases described in the:
+For instance, you could think of training a large ML model in seconds instead of hours.
 
 ## How does a Requestor work?
 
