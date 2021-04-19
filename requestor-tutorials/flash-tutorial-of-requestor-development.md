@@ -119,7 +119,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.6.3](https://github.com/golemfactory/yagna/releases/tag/v0.6.3)
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.6.4](https://github.com/golemfactory/yagna/releases/tag/v0.6.4)
 
 Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
@@ -135,7 +135,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.6.3 (6cee83e7 2021-03-25 build #129)`
+It should output: `yagna 0.6.4 (4fc72117 2021-04-15 build #135)`
 
 Please also verify that you have the correct version of the `gftp` binary used for file transfers in the Golem network.
 
@@ -143,7 +143,7 @@ Please also verify that you have the correct version of the `gftp` binary used f
 gftp --version
 ```
 
-It should output: `gftp 0.6.3 (6cee83e7 2021-03-25 build #129)`
+It should output: `gftp 0.6.4 (4fc72117 2021-04-15 build #135)`
 
 ### Purge the stale working directories
 
