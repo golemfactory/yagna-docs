@@ -16,7 +16,9 @@ _**Os:**_ Any
 
 _**Description:**_  Local service error: Transfer error: IO error: No such file or directory \(os error 2\)
 
-_**Solution:**_  Something went wrong with the computation. Check that you're following the [Define your task's steps](https://handbook.golem.network/requestor-tutorials/requestor-tutorial#define-your-tasks-steps) correctly and that you remembered to define a place \(or places\) in the container file system that will be used for the file transfer, [as shown here](https://handbook.golem.network/requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do#volume-the-input-output). 
+_**Solution:**_  Something went wrong with the computation. We have a "[Debugging with the use of log files](https://handbook.golem.network/requestor-tutorials/debugging)" guide in our requestor tutorials to assist with debugging.
+
+You can also check that you're following the [Define your task's steps](https://handbook.golem.network/requestor-tutorials/requestor-tutorial#define-your-tasks-steps) correctly and that you remembered to define a place \(or places\) in the container file system that will be used for the file transfer, [as shown here](https://handbook.golem.network/requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do#volume-the-input-output). 
 
 With `ctx.run()`  make sure that you don't have multiple arguments in one string. Either `ctx.run("/bin/sh", "-c", "a", "b", "c" ...)` or use the syntax the [example gives](https://handbook.golem.network/requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do#the-requestor-agent-code) where it parses in lines.
 
