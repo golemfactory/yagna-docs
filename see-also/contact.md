@@ -9,7 +9,7 @@ description: >-
 
 Email: [contact@golem.network](mailto:contact@golem.network)
 
-Chat: [https://chat.golem.network/](https://chat.golem.network)
+Discord: [https://chat.golem.network/](https://chat.golem.network)
 
 Reddit: [https://www.reddit.com/r/GolemProject/](https://www.reddit.com/r/GolemProject/)
 
