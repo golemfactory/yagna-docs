@@ -11,7 +11,7 @@ We're assuming here that you were able to run both `goth` and a requestor app co
   
 If you hadn't tried those yet though, please have a look at the earlier parts of our handbook:
 
-{% page-ref page="../flash-tutorial-of-requestor-development.md" %}
+{% page-ref page="../flash-tutorial-of-requestor-development/" %}
 
 {% page-ref page="running-goth.md" %}
 {% endhint %}

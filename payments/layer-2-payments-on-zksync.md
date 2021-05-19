@@ -44,7 +44,7 @@ On the other hand, because we assume requestors will first start by testing the 
 
 When you run `yagna payment fund` \(you don't have to add `--driver=zksync` since it's the default\) on Rinkeby, Golem initializes a new account from our custom faucet \(a service that transfers test tokens to an address that asks for it\) which provides it with test GLM tokens that are already transferred to zkSync. Then all payments are performed through zkSync and in consequence, all the providers receive all the payments to their zkSync accounts.
 
-Of course, you also need to enable your accounts' sender mode, which is done using `yagna payment init --sender`. All this is covered in [our requestor introduction](../requestor-tutorials/flash-tutorial-of-requestor-development.md).
+Of course, you also need to enable your accounts' sender mode, which is done using `yagna payment init --sender`. All this is covered in [our requestor introduction](../requestor-tutorials/flash-tutorial-of-requestor-development/).
 
 If you're interested in running a requestor on the Ethereum mainnet, to be able to leverage the main pool of Golem providers, please refer to:
 

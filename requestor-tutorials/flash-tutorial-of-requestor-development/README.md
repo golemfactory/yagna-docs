@@ -78,7 +78,7 @@ git --version
 {% hint style="info" %}
 During development, you'll most likely want to run your tasks on the Rinkeby Testnet. In that case, you won't need any real ETH or GLM tokens to start this tutorial. These test assets are acquired by the daemon in one of the steps below.
 
-Should you later want to run your tasks on the mainnet, to leverage the potential of all Golem's provider nodes, please have a look at: ["Using Golem on Mainnet"](../payments/using-golem-on-mainnet.md)
+Should you later want to run your tasks on the mainnet, to leverage the potential of all Golem's provider nodes, please have a look at: ["Using Golem on Mainnet"](../../payments/using-golem-on-mainnet.md)
 {% endhint %}
 
 ### Can we help you? Do you have feedback for Golem?
@@ -183,10 +183,10 @@ yagna service run
 Important: After you launch the daemon, leave it running in the background while you proceed with the tutorial.
 {% endhint %}
 
-You can now proceed to [Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key).
+You can now proceed to [Generate the app key](./#generate-the-app-key).
 
 {% hint style="warning" %}
-Sometimes, you may notice errors while running the yagna daemon or the example script. Unless they cause your task to be aborted or never finished they are usually no reason to worry. In case of doubt, please consult our [list of "Common Issues" in the Troubleshooting section.](../troubleshooting/common-issues.md)
+Sometimes, you may notice errors while running the yagna daemon or the example script. Unless they cause your task to be aborted or never finished they are usually no reason to worry. In case of doubt, please consult our [list of "Common Issues" in the Troubleshooting section.](../../troubleshooting/common-issues.md)
 {% endhint %}
 
 ## Generate the app key
@@ -227,7 +227,7 @@ yagna payment status
 
 If, after a few minutes, you still can't see the tokens, re-run the `yagna payment fund` command above and check again after a few more minutes.
 
-As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver or our faucet, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../troubleshooting/common-issues.md#payment-driver-initialization-issue).
+As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver or our faucet, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../../troubleshooting/common-issues.md#payment-driver-initialization-issue).
 
 ### Enable the daemon as a requestor
 
@@ -293,7 +293,7 @@ git checkout b0.5
 
 ### Set the yagna app key
 
-In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key)" step above:
+In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](./#generate-the-app-key)" step above:
 
 ```text
 export YAGNA_APPKEY=insert-your-32-char-app-key-here
@@ -339,7 +339,7 @@ git checkout b0.3
 
 ### Set the yagna app key
 
-In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](flash-tutorial-of-requestor-development.md#generate-the-app-key)" step above:
+In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](./#generate-the-app-key)" step above:
 
 ```text
 export YAGNA_APPKEY=insert-your-32-char-app-key-here
@@ -379,7 +379,7 @@ You can verify that the task is indeed done by examining the generated output fi
 
 Here is an example rendered frame, provided here for reference:
 
-![](../.gitbook/assets/output_0.png)
+![](../../.gitbook/assets/output_0.png)
 
 #### Payments
 
@@ -397,15 +397,15 @@ So, you have successfully completed your first task as a requestor on the new Go
 
 If you'd like to understand, extend and play around with our example, please consult:
 
-{% page-ref page="requestor-tutorial.md" %}
+{% page-ref page="../requestor-tutorial.md" %}
 
 On the other hand, if you'd like to deploy your own dockerized apps to our alpha testnet, have a look at:
 
-{% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
+{% page-ref page="../convert-a-docker-image-into-a-golem-image.md" %}
 
 Finally, you can hone your newly-acquired knowledge by following our newest workshop:
 
-{% page-ref page="hello-world.md" %}
+{% page-ref page="../hello-world.md" %}
 
 And by all means, **have fun with Golem!**
 

@@ -10,7 +10,7 @@ This section contains steps you need to execute in order to run our hashcat pass
 
 In order to develop applications for the Golem network, you need to install yagna daemon on your machine. We're going to assume you're already familiar with the setup of the environment required to run Python high-level API examples. If you're not, please make sure you proceed through our quick primer to get up to speed:
 
-{% page-ref page="../flash-tutorial-of-requestor-development.md" %}
+{% page-ref page="../flash-tutorial-of-requestor-development/" %}
 
 Once you're done with the tutorial above, make sure you're again in yapapi's main directory and move to:
 

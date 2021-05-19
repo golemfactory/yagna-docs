@@ -7,7 +7,7 @@ description: Introducing Golem Network
 {% hint style="info" %}
 ## REQUESTORS
 
-Looking for a quick start? [Dive into our requestor development primer!](requestor-tutorials/flash-tutorial-of-requestor-development.md)
+Looking for a quick start? [Dive into our requestor development primer!](requestor-tutorials/flash-tutorial-of-requestor-development/)
 {% endhint %}
 
 {% hint style="info" %}
@@ -48,7 +48,7 @@ Ensuring that the development of products based on Golem is smooth and effortles
 
 **Plus, there are no licensing fees.**
 
-To get up to speed on Golem application development, start with our [quick primer to requestor development](requestor-tutorials/flash-tutorial-of-requestor-development.md) and follow up with the rest of our tutorials targeted at requestors.
+To get up to speed on Golem application development, start with our [quick primer to requestor development](requestor-tutorials/flash-tutorial-of-requestor-development/) and follow up with the rest of our tutorials targeted at requestors.
 
 ### **2. Become a Golem provider**
 

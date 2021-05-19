@@ -53,7 +53,7 @@ yarn build
 
 * Run `yagna` as described in the
 
-{% page-ref page="flash-tutorial-of-requestor-development.md" %}
+{% page-ref page="flash-tutorial-of-requestor-development/" %}
 
 {% hint style="success" %}
 So now, we're going to assume that:
