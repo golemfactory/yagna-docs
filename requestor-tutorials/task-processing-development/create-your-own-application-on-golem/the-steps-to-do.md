@@ -10,7 +10,7 @@ This section contains steps you need to execute in order to run our hashcat pass
 
 In order to develop applications for the Golem network, you need to install yagna daemon on your machine. We're going to assume you're already familiar with the setup of the environment required to run Python high-level API examples. If you're not, please make sure you proceed through our quick primer to get up to speed:
 
-{% page-ref page="../flash-tutorial-of-requestor-development/" %}
+{% page-ref page="../../flash-tutorial-of-requestor-development/" %}
 
 Once you're done with the tutorial above, make sure you're again in yapapi's main directory and move to:
 
@@ -109,7 +109,7 @@ VOLUME /golem/work /golem/output /golem/resource
 
 This makes `/golem/work` a location we will use for our input/output file transfer. For the requestor agent code, which we are going to discuss in the next chapter, we need to know the volume \(or volumes\) name\(s\) and use it as a directory for the file transfers.
 
-![](../../.gitbook/assets/tnm-docs-infographics-08%20%281%29.jpg)
+![](../../../.gitbook/assets/tnm-docs-infographics-08%20%281%29.jpg)
 
 {% hint style="info" %}
 On the provider side, all the content of the VOLUME directories is stored in the provider's os file system. 
@@ -379,7 +379,7 @@ The first step is to **check the keyspace size**. This is done in 3 steps, execu
 2. Execute the `keyspace.sh` script on the provider's container.
 3. Transfer the `keyspace.txt` file back to the requestor.
 
-![](../../.gitbook/assets/tutorial-04.jpg)
+![](../../../.gitbook/assets/tutorial-04.jpg)
 
 Knowing the keyspace size, we can start looking for the password using multiple workers, running on multiple providers at the same time.
 
@@ -391,7 +391,7 @@ In order to look for passwords in the given keyspace range, for each of the work
 * Execute`hashcat` with proper `--skip` and `--limit` values
 * Get the `hashcat_{skip}.potfile` from the provider to the requestor
 
-![](../../.gitbook/assets/tutorial-03.jpg)
+![](../../../.gitbook/assets/tutorial-03.jpg)
 
 ### read\_password
 
@@ -638,7 +638,7 @@ The yacat example is written in Python using Golem's Python High-Level API \([YA
 
 The complete reference of the Python High-Level API \(yapapi\) is available here:
 
-{% page-ref page="../../yapapi/yapapi.md" %}
+{% page-ref page="../../../yapapi/yapapi.md" %}
 
 You can also have a look at our JavaScript/TypeScript API if you're interested in developing your requestor agent in JS/TS:
 

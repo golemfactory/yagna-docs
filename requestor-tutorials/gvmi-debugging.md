@@ -8,7 +8,7 @@ description: How to test and debug a .gvmi image on your machine
 
 When creating your own Golem app, one of the steps is defining a Docker image for your application. You can find a more detailed description of this process in our `Hello World` requestor tutorial.
 
-{% page-ref page="hello-world.md" %}
+{% page-ref page="task-processing-development/create-your-own-application-on-golem/hello-world.md" %}
 
 Such a Docker image, after being converted to Golem's `.gvmi` format, is going to be used by providers within the Golem network.
 
@@ -86,7 +86,7 @@ gvmkit-build runtime-dbg-example:latest
 
 To learn more about `gvmkit-build` \(and how to install it\), please refer to this page from the handbook:
 
-{% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
+{% page-ref page="task-processing-development/convert-a-docker-image-into-a-golem-image.md" %}
 
 Once the above command is finished we should have a `.gvmi` file in the directory from which we invoked the command. This file is ready to be used together with Golem's VM runtime.
 

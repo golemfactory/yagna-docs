@@ -245,7 +245,7 @@ With this completed, you're good to go!
 
 ## Next steps
 
-Now you are ready to run computations on Golem. This can be done either in task/batch processing model or interactive service model:
+Now you are ready to run computations on Golem. This can be done either in batch processing/**task model** or interactive **service model**:
 
 {% page-ref page="run-first-task-on-golem.md" %}
 

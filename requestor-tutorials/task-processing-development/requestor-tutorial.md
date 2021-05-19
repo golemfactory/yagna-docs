@@ -1,8 +1,8 @@
 ---
-description: Development and deployment of a New Golem network requestor agent
+description: Development and deployment of a Golem requestor agent (task model)
 ---
 
-# How does it work? A more in-depth look at an example requestor agent
+# How does it work? Dive into requestor agent \(task model\)
 
 How can I run my tasks over the New Golem network?
 
@@ -301,7 +301,7 @@ Now to the question:
 
 Here's the flow diagram of all the interactions that need to happen between the requestor and the provider\(s\) in order for the task to be completed:
 
-![requestor agent - sequential diagram](../.gitbook/assets/requestor-tutorial-sequence.png)
+![requestor agent - sequential diagram](../../.gitbook/assets/requestor-tutorial-sequence.png)
 
 Having learned what is _about_ to happen, let's examine the code itself.
 
@@ -650,7 +650,7 @@ Are you hooked up? Then go ahead and follow up with our tutorial on using your o
 
 or jump right into our "Hello World" workshop:
 
-{% page-ref page="hello-world.md" %}
+{% page-ref page="create-your-own-application-on-golem/hello-world.md" %}
 
 
 

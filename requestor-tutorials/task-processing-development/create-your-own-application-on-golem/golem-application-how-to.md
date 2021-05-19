@@ -16,7 +16,7 @@ So far, said orchestration takes the form of one of three types of actions:
 * running commands on the execution unit
 * getting output files back from the execution unit
 
-![](../../.gitbook/assets/tutorial-05.jpg)
+![](../../../.gitbook/assets/tutorial-05.jpg)
 
 ## How does a Golem VM application work?
 
@@ -65,21 +65,21 @@ The agent then combines all the data transferred from providers to form the fina
 
 To learn about some additional details on how different parts of Golem work together, please have a look at:
 
-{% page-ref page="../../introduction/provider.md" %}
+{% page-ref page="../../../introduction/provider.md" %}
 
-{% page-ref page="../../introduction/requestor.md" %}
+{% page-ref page="../../../introduction/requestor.md" %}
 
-{% page-ref page="../../introduction/golem-overview.md" %}
+{% page-ref page="../../../introduction/golem-overview.md" %}
 
 ## How do I start?
 
 First, you need to think about your computational problem in terms of parallel execution. Let's visualize your computational problem:
 
-![](../../.gitbook/assets/tutorial-01.jpg)
+![](../../../.gitbook/assets/tutorial-01.jpg)
 
 Next, you need to find a way how to divide the whole problem into fragments. Each fragment is a distinct part of the whole and may be processed by a different provider, independently from other fragments:
 
-![](../../.gitbook/assets/tutorial-02.jpg)
+![](../../../.gitbook/assets/tutorial-02.jpg)
 
 In order to proceed further, you'll be required to design your app in such a way that it's able to:
 

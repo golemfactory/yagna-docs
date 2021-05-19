@@ -8,12 +8,12 @@ _This tutorial is the textual counterpart to a workshop originally prepared by J
 
 {% embed url="https://www.youtube.com/watch?v=gWRqu7IvYfk" caption="Jakub\'s workshop during Hello Decentralization" %}
 
-Now that we've seen how easy it is to [run a Golem requestor agent](flash-tutorial-of-requestor-development/), then had a look at [how this stuff works under the hood](requestor-tutorial.md) and finally learned how to go about [creating your own Golem VM application image](convert-a-docker-image-into-a-golem-image.md), we can put this knowledge to the test and build the most bare-bones Golem app.
+Now that we've seen how easy it is to [run a Golem requestor agent](../../flash-tutorial-of-requestor-development/), then had a look at [how this stuff works under the hood](../requestor-tutorial.md) and finally learned how to go about [creating your own Golem VM application image](../convert-a-docker-image-into-a-golem-image.md), we can put this knowledge to the test and build the most bare-bones Golem app.
 
 {% hint style="info" %}
 If you'd rather like to have a more general introduction on the idea behind Golem or would like to learn what components constitute a Golem node and the Golem network, please have a look at:
 
-{% page-ref page="../introduction/golem-overview.md" %}
+{% page-ref page="../../../introduction/golem-overview.md" %}
 {% endhint %}
 
 ## Step 0. What are we building?
@@ -44,7 +44,7 @@ We're going to be using the code from this repository later on in the course of 
 
 ### Anatomy of a Golem app
 
-To give you a quick glimpse into what a typical Golem application looks like \([you can read about this topic at length in our more advanced tutorial](create-your-own-application-on-golem/golem-application-how-to.md#what-is-a-golem-application)\), what you need to know for now is that it consists of two distinct components:
+To give you a quick glimpse into what a typical Golem application looks like \([you can read about this topic at length in our more advanced tutorial](golem-application-how-to.md#what-is-a-golem-application)\), what you need to know for now is that it consists of two distinct components:
 
 * the **requestor agent** part that runs on your requestor node and is responsible for preparing the tasks for the providers and processing their output,
 * the **worker** part that runs within VMs on the provider nodes and performs the actual computations. 
@@ -570,7 +570,7 @@ Now, it's time for the final piece of infrastructure necessary for our requestor
 {% hint style="warning" %}
 Unless you have actually done it before, you'll need to first install and fund your `yagna`deamon. Please go to:
 
-{% page-ref page="flash-tutorial-of-requestor-development/" %}
+{% page-ref page="../../flash-tutorial-of-requestor-development/" %}
 
 and proceed with the initial part. You can stop before the "Running the requestor and your first task on the New Golem Network" as we're going to take it from there here.
 {% endhint %}
@@ -631,7 +631,7 @@ For next steps, here a couple of leads:
 
 1. A slightly more advanced tutorial on both designing and then implementing your own Golem app:
 
-{% page-ref page="create-your-own-application-on-golem/" %}
+{% page-ref page="./" %}
 
 2. Our high-level Python API reference to help you on your way:
 
