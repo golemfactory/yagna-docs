@@ -4,9 +4,9 @@ description: Development and deployment of a Golem requestor agent (task model)
 
 # How does it work? Dive into requestor agent \(task model\)
 
-How can I run my tasks over the New Golem network?
+How can I run my tasks over the Golem network?
 
-In order to run your own payload over the New Golem network, you need to write a requestor agent suited to the work you'd like to have executed by the network's providers.
+In order to run your own payload over the Golem network, you need to write a requestor agent suited to the work you'd like to have executed by the network's providers.
 
 In this tutorial, we'll show you how to do that.
 

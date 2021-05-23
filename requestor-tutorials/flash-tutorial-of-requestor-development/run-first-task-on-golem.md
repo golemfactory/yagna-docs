@@ -50,7 +50,7 @@ git checkout b0.5
 
 ### Set the yagna app key
 
-In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](./#generate-the-app-key)" step above:
+In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](./#generate-the-app-key)" step in the quick primer article:
 
 ```text
 export YAGNA_APPKEY=insert-your-32-char-app-key-here

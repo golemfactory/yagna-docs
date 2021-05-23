@@ -23,20 +23,20 @@
 * [Provider Troubleshooting](troubleshooting/provider-troubleshooting.md)
 * [Requestor Troubleshooting](troubleshooting/common-issues.md)
 
-## Requestor tutorials
+## Developer tutorials <a id="requestor-tutorials"></a>
 
 * [Requestor development: a quick primer](requestor-tutorials/flash-tutorial-of-requestor-development/README.md)
   * [Run first task on Golem](requestor-tutorials/flash-tutorial-of-requestor-development/run-first-task-on-golem.md)
   * [Run first service on Golem](requestor-tutorials/flash-tutorial-of-requestor-development/run-first-service-on-golem.md)
-* [Task Processing development](requestor-tutorials/task-processing-development/README.md)
+* [Task Model development](requestor-tutorials/task-processing-development/README.md)
   * [How does it work? Dive into requestor agent \(task model\)](requestor-tutorials/task-processing-development/requestor-tutorial.md)
-  * [Create your own application on Golem](requestor-tutorials/task-processing-development/create-your-own-application-on-golem/README.md)
-    * [Golem application - the basics](requestor-tutorials/task-processing-development/create-your-own-application-on-golem/golem-application-how-to.md)
+  * [Create your own task application on Golem](requestor-tutorials/task-processing-development/create-your-own-application-on-golem/README.md)
+    * [Golem task application - the basics](requestor-tutorials/task-processing-development/create-your-own-application-on-golem/golem-application-how-to.md)
     * [Hello World from Golem](requestor-tutorials/task-processing-development/create-your-own-application-on-golem/hello-world.md)
     * [Hashcat](requestor-tutorials/task-processing-development/create-your-own-application-on-golem/hashcat.md)
     * [Tutorial steps](requestor-tutorials/task-processing-development/create-your-own-application-on-golem/the-steps-to-do.md)
   * [How to convert a Docker image into a Golem image?](requestor-tutorials/task-processing-development/convert-a-docker-image-into-a-golem-image.md)
-* [Service development](requestor-tutorials/service-development/README.md)
+* [Service Model development](requestor-tutorials/service-development/README.md)
   * [How does it work? Dive into requestor agent \(service model\)](requestor-tutorials/service-development/how-does-it-work-dive-into-requestor-agent-service-model.md)
 * [Debugging with the use of log files](requestor-tutorials/debugging.md)
 * [Interactive testing environment](requestor-tutorials/interactive-testing-environment/README.md)

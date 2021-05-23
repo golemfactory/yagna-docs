@@ -2,9 +2,9 @@
 description: Overview of a typical Golem application.
 ---
 
-# Golem application - the basics
+# Golem task application - the basics
 
-## What is a Golem application?
+## What is a Golem task application?
 
 A Golem application consists of a certain number of execution units - e.g. VMs capable of running Docker images - launched within the network's provider nodes that are orchestrated by a requestor agent - a piece of code talking directly to the REST API on a requestor node.
 

@@ -2,7 +2,7 @@
 description: Your own thing on golem.
 ---
 
-# Create your own application on Golem
+# Create your own task application on Golem
 
 ## Introduction
 
