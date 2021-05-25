@@ -1,0 +1,2 @@
+# Simple service on VM
+
