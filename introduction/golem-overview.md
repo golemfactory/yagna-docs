@@ -32,8 +32,8 @@ The provider logic is implemented as a **provider agent** which is a piece of co
 
 The provider can make its resources available to the requestors with the help of many types of **execution units** \(exe-unit for short\). Currently, Golem supports:
 
-* VM exe unit that runs Docker images and allows for an interaction with the running container,
-* and WASM exe unit that runs WASM code
+* VM exe unit \(or VM runtime\) that runs Docker images and allows for an interaction with the running container,
+* and WASM exe unit \(or WASM runtime\) that runs WASM code
 
 _Please note the "ALT" frames in the diagram above: the provider uses only one exe unit at the same time out of the two available._
 

@@ -22,7 +22,7 @@ To proceed with this tutorial, you'll first need to ensure the following prerequ
 * You have the `yagna` daemon running - this is the main service of the new Golem that's responsible for keeping connections with all the other nodes in the network. It exposes its REST API to allow both the provider and the requestor agents to connect to it.
 * You have the `yagna` app key generated and noted down so you can use it while running the requestor agent.
 * You have the `gftp` binary used to transport files over the New Golem network
-* You have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over the New Golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now. For details on how to do that with any Docker images, please have a look at this tutorial:  [How to convert a Docker image into a Golem image?](convert-a-docker-image-into-a-golem-image.md)
+* You have your docker image prepared using our `gvmkit` - a tool that converts a docker image to an optimized format better suited for distribution over the New Golem network. This tutorial uses an already converted image containing the Blender renderer which we'll be using to run our tasks, so you can skip this step for now. For details on how to do that with any Docker images, please have a look at this tutorial:  [How to convert a Docker image into a Golem image?](../convert-a-docker-image-into-a-golem-image.md)
 
 {% hint style="info" %}
 If you are JS developer, please click to **NodeJS**
@@ -43,6 +43,10 @@ If you are JS developer, please click to **NodeJS**
 {% endtabs %}
 
 ## Requestor agent code
+
+{% hint style="info" %}
+This example uses the standard VM runtime.
+{% endhint %}
 
 The complete code of the requestor agent \(no worries, you do not need to copy and paste it as it is already in repo\) is:
 
@@ -646,11 +650,11 @@ With this, our requestor agent is complete and we can use it to run our computat
 
 Are you hooked up? Then go ahead and follow up with our tutorial on using your own - or generally any other - Docker image and using our `gvmkit-builder` tool to build and push the image to our repository:
 
-{% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
+{% page-ref page="../convert-a-docker-image-into-a-golem-image.md" %}
 
 or jump right into our "Hello World" workshop:
 
-{% page-ref page="create-your-own-application-on-golem/hello-world.md" %}
+{% page-ref page="hello-world.md" %}
 
 
 
