@@ -95,13 +95,12 @@ Once started, the Service moves in Running mode - a normal state of operation. I
             stats = results[0].stdout.strip()
             plot = results[1].stdout.strip().strip('"')
 
-            print(f"{TEXT_COLOR_CYAN}stats: {stats}{TEXT_COLOR_DEFAULT}")
-
+        
             plot_filename = (
                     "".join(random.choice(string.ascii_letters) for _ in
                             range(10)) + ".png"
             )
-            print(f"{TEXT_COLOR_CYAN}downloading plot: {plot} to {plot_filename}{TEXT_COLOR_DEFAULT}")
+        
             self._ctx.download_file(plot, str(pathlib.Path(__file__).resolve().parent / plot_filename))
 
             steps = self._ctx.commit()

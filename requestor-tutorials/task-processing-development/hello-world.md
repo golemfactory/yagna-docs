@@ -2,11 +2,22 @@
 description: 'Creating your first, simple app on Golem'
 ---
 
-# Task Example 2: Hello World
+# Task Example 2: Simple hash cracker
 
 _This tutorial is the textual counterpart to a workshop originally prepared by Jakub Mazurek, a Software Developer at Golem Factory and presented during the Hello Decentralization conference in February, 2021._
 
 {% embed url="https://www.youtube.com/watch?v=gWRqu7IvYfk" caption="Jakub\'s workshop during Hello Decentralization" %}
+
+{% hint style="info" %}
+This example illustrates following Golem features & aspects:
+
+* VM runtime
+* Task execution
+  * Parallel task execution
+  * Low-level work item timeouts
+  * Early exit from task execution
+* File transfer to/from Provider exe unit
+{% endhint %}
 
 Now that we've seen how easy it is to [run a Golem requestor agent](../flash-tutorial-of-requestor-development/), then had a look at [how this stuff works under the hood](requestor-tutorial.md) and finally learned how to go about [creating your own Golem VM application image](../convert-a-docker-image-into-a-golem-image.md), we can put this knowledge to the test and build the most bare-bones Golem app.
 

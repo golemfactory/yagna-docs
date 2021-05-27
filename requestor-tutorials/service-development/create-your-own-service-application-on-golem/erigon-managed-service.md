@@ -1,2 +1,0 @@
-# Erigon managed service
-
