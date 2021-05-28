@@ -37,7 +37,7 @@ Clone the [Yagna](https://github.com/golemfactory/yagna) git repository from Git
 
 Let's see what a driver's trait exposes:
 
-* `init` - Initializes the account to be used with the driver service. After successful intialization the account should be ready to send and/or receive payments (depending on the `mode` parameter). It should call `bus::register_account` to notify Payment service about the driver readiness. Driver should be able to handle multiple accounts. Called by CLI.
+* `init` - Initializes the account to be used with the driver service. After successful intialization the account should be ready to send and/or receive payments \(depending on the `mode` parameter\). It should call `bus::register_account` to notify Payment service about the driver readiness. Driver should be able to handle multiple accounts. Called by CLI.
 * `enter` - Deposits the funds from Ethereum L1 into the driver's supported network. Called by CLI.
 * `exit` - Exits the funds outside the driver's supported network \(most likely to L1\). Called by CLI.
 * `get_account_balance` - Gets the balance of the account.
@@ -49,9 +49,9 @@ Let's see what a driver's trait exposes:
 * `account_event` - Called by the Identity service to notify the driver that specified account is _locked_ / _unlocked_. Identity service holds accounts private keys and signs transactions.
 * `recv_init_required` - Tells whether account initialization is needed for receiving payments.
 * `sign_payment` - Signs Yagna's payment message with the same key that was used to sign the blockchain transaction. Driver trait provides a default implementation of this method so it's not required to implement it.
-* `verify_signature` - Verifies the signature on payment message (see `sign_payment`). Driver trait provides a default implementation of this method so it's not required to implement it.
+* `verify_signature` - Verifies the signature on payment message \(see `sign_payment`\). Driver trait provides a default implementation of this method so it's not required to implement it.
 * `get_name` - Returns driver's name. It should be lowercase, ASCII-only with no whitespace.
-* `get_networks` - Returns networks supported by the driver (e.g. mainnet, rinkeby, ropsten).
+* `get_networks` - Returns networks supported by the driver \(e.g. mainnet, rinkeby, ropsten\).
 * `get_default_network` - Returns default network for the dirver. It should be one of the networks returned by `get_networks`.
 * `shut_down` - Performs all neccesary shutdown routines. It is recommended that the driver sends out all pending transactions on shutdown.
 

@@ -1,5 +1,5 @@
 ---
-description: 'Version: 0.1 (Draft)'
+description: 'Version: 0.2 (Draft)'
 ---
 
 # Compatibility Policy
@@ -23,17 +23,17 @@ For the purposes of this policy we make no distinction between the App Developer
 
 ## Yagna packages
 
-A Yagna release includes Requestor and Provider packages. Each package contains a set of binaries required to setup a Requestor or Provider node, respectively.
+A Yagna release includes Requestor and Provider packages. Each package contains a set of **components** required to setup a Requestor or Provider node, respectively.
 
 This policy assumes a number of simplifications, without sacrificing generality:
 
-* By **Requestor version** we consider a bundle of specific versions of following components intended to be running on Requestor node:
+* By **Requestor version** we consider a bundle of specific versions of following **components** intended to be running on Requestor node:
   * yagna daemon
   * ya\*api libraries
 
 This implies we are not considering the compatibility between specific versions of ya\*api libraries and different versions of yagna daemon modules.
 
-* By **Provider version** we consider a bundle of specific versions of following components meant to be running on Provider node:
+* By **Provider version** we consider a bundle of specific versions of following **components** meant to be running on Provider node:
 
   * yagna daemon
   * ya-provider agent application
@@ -138,7 +138,8 @@ A matrix indicating the compatibility between Requestor and Provider versions sh
       </td>
       <td style="text-align:left">N</td>
       <td style="text-align:left">Y</td>
-      <td style="text-align:left">N</td>
+      <td style="text-align:left"><b>Y</b>
+      </td>
       <td style="text-align:left">Y</td>
       <td style="text-align:left">N</td>
       <td style="text-align:left">N</td>
@@ -207,7 +208,7 @@ The rules above imply a generic guideline for the Providers: by default **upgrad
 
 ### Deprecation policy
 
-The behavior of an API or a package must not change between any two consecutive releases unless it is going through the deprecation process as described below:
+The behavior of an API or a component must not change between any two consecutive releases unless it is going through the deprecation process as described below:
 
 * An API or component cannot be removed without notice between any two consecutive releases
 * When a breaking change is required, the following process will be observed:
