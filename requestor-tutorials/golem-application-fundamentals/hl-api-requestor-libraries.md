@@ -1,2 +1,0 @@
-# HL API: Requestor libraries
-

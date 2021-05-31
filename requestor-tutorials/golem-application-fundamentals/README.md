@@ -35,9 +35,9 @@ The application's execution starts on the Requestor's end when the user runs the
 
 After specifying and publishing a demand to Golem's market, the requestor agent receives offers from providers that meet its needs - e.g. having a sufficient amount of RAM.
 
-#### Docker image
+#### Payload 
 
-Once agreements with the selected providers are finalized, which happens in the course of an automated negotiation process, the providers are asked to load the appropriate image.
+Once agreements with the selected providers are finalized, which happens in the course of an automated negotiation process, the providers are asked to deploy "payload" - the application component that will be executed \(eg. in case of VM runtime-based applications- load the appropriate image\).
 
 {% hint style="info" %}
 _If this is a subsequent run of the image, the image could already be cached by some of the providers._
@@ -45,7 +45,7 @@ _If this is a subsequent run of the image, the image could already be cached by 
 
 #### Input data
 
-The task is then split into fragments and each provider can receive one or more of such fragments. Each fragment is described by a certain set of input data - part of which can be common for the whole task and part of which may be specific for the given fragment. The prepared data is then sent - either directly from the memory, or from requestor's local file system - to the provider and further, into the Docker container's file system on the provider's execution unit.
+The task is then split into fragments and each provider can receive one or more of such fragments. Each fragment is described by a certain set of input data - part of which can be common for the whole task and part of which may be specific for the given fragment. The prepared data is then sent - either directly from the memory, or from requestor's local file system - to the provider and further, into eg. the Docker container's file system on the provider's execution unit.
 
 #### Execution script
 
@@ -61,6 +61,10 @@ The requestor agent needs to transfer the output files from the provider's docke
 
 The agent then combines all the data transferred from providers to form the final output that can be consumed by the application user.
 
+#### Payments
+
+As the provider executes the payload, it also expects the requestor to pay for the activity. The payments are driven by invoice & debit note artifacts issued by the provider, which must be acknowledged and accepted by the requestor agent. The Golem implementation orchestrates payments for the accepted invoices to be made using the payment platform/driver negotiated during the negotiation stage - so the requestor agent does not need to dive into the nuances of payments. 
+
 To learn about some additional details on how different parts of Golem work together, please have a look at:
 
 {% page-ref page="../../introduction/requestor.md" %}
@@ -69,15 +73,28 @@ To learn about some additional details on how different parts of Golem work toge
 
 {% page-ref page="../../introduction/golem-overview.md" %}
 
-## High Level API libraries
+## High-level API libraries
 
-TODO
+The low-level mechanics of the Golem market are quite complex, and building robust applications using the low-level APIs, while possible, may not be the most efficient approach. For this reason, a concept of High-level API libraries has been designed, as "bindings" of specific programming languages with Golem platform.
+
+The purpose of a high-level API is to wrap the intricacies of Golem APIs with more efficient programming models, based on computation models more intuitive, than Golem market, activity and payment concepts. A developer using these libraries should have a basic understanding of Golem platform's fundamental concepts \(Demand/Offer market matching, activity execution, payment-related logic\), but all the low-level logic is implemented in a high-level API library.
+
+Following high-level API libraries are supported by Golem Factory:
+
+{% page-ref page="../../yapapi/yapapi.md" %}
+
+{% page-ref page="../../yajsapi/yajsapi.md" %}
 
 ## Task Model vs Service Model
 
-TODO
+Two basic computation models are supported by Golem high-level APIs.
 
+* **Task model** is designed to support **batch processing**, where an application is expected to perform a set of "computation jobs" on Golem network. A high-level API library provides structure for a developer to define batch tasks, which are then efficiently orchestrated across a selected number of providers available in Golem network. Batch jobs may require input data to be shipped onto the provider side, and may produce output data, which needs to be fetched once the computation is complete.
+* **Service model** is an abstraction over interactive processes which get launched, and operate in order to respond to requests. A service generally is expected to be active until explicitly stopped, however all the concepts of input/output data transfer also do apply.
 
+Please refer to following sections for a dive into those two Golem programming models:
 
+{% page-ref page="../task-processing-development/" %}
 
+{% page-ref page="../service-development/" %}
 
