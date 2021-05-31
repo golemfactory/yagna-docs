@@ -31,7 +31,7 @@
 
 #### constructor
 
-+ **new ScriptFinished**\(`__namedParameters`: _Object_\): [_ScriptFinished_](executor_events.scriptfinished.md)
+* **new ScriptFinished**\(`__namedParameters`: _Object_\): [_ScriptFinished_](executor_events.scriptfinished.md)
 
 **Parameters:**
 

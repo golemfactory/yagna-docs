@@ -42,7 +42,7 @@ An object used to schedule commands to be sent to provider.
 
 #### constructor
 
-+ **new WorkContext**\(`ctx_id`: _string_, `storage`: [_StorageProvider_](storage.storageprovider.md), `emitter?`: _null_ \| [_default_](../interface/utils_callable.default.md)&lt;\[StorageEvent\], _void_&gt;\): [_WorkContext_](executor_ctx.workcontext.md)
+* **new WorkContext**\(`ctx_id`: _string_, `storage`: [_StorageProvider_](storage.storageprovider.md), `emitter?`: _null_ \| [_default_](../interface/utils_callable.default.md)&lt;\[StorageEvent\], _void_&gt;\): [_WorkContext_](executor_ctx.workcontext.md)
 
 **Parameters:**
 

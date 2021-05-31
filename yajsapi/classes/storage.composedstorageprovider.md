@@ -36,7 +36,7 @@
 
 #### constructor
 
-+ **new ComposedStorageProvider**\(`input_storage`: [_InputStorageProvider_](storage.inputstorageprovider.md), `output_storage`: [_OutputStorageProvider_](storage.outputstorageprovider.md)\): [_ComposedStorageProvider_](storage.composedstorageprovider.md)
+* **new ComposedStorageProvider**\(`input_storage`: [_InputStorageProvider_](storage.inputstorageprovider.md), `output_storage`: [_OutputStorageProvider_](storage.outputstorageprovider.md)\): [_ComposedStorageProvider_](storage.composedstorageprovider.md)
 
 **Parameters:**
 

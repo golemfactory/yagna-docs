@@ -33,7 +33,7 @@
 
 #### constructor
 
-+ **new CommandStdOut**\(`__namedParameters`: _Object_\): [_CommandStdOut_](executor_events.commandstdout.md)
+* **new CommandStdOut**\(`__namedParameters`: _Object_\): [_CommandStdOut_](executor_events.commandstdout.md)
 
 **Parameters:**
 

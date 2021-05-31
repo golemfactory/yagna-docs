@@ -4,7 +4,7 @@ description: How to test and debug a .gvmi image on your machine
 
 # VM runtime: Debugging a Golem image
 
-### Introduction
+## Introduction
 
 When creating your own Golem app, one of the steps is defining a Docker image for your application. You can find a more detailed description of this process in our `Hello World` requestor tutorial.
 
@@ -18,7 +18,7 @@ There's one problem here - once you have a `.gvmi` image, how do you efficiently
 This tutorial assumes that you're already familiar with Docker and the basics of building a Golem application.
 {% endhint %}
 
-### Installation
+## Installation
 
 {% hint style="warning" %}
 `ya-runtime-dbg` is currently available for Linux **only**.
@@ -50,11 +50,11 @@ Alternatively, you can download a runtime package manually from its releases pag
 
 Later on we're going to see how to specify the runtime to be used by the debugger.
 
-### Running an image
+## Running an image
 
 For the purpose of this tutorial we're going to focus on VM runtime debugging.
 
-#### 1. Building an image
+### 1. Building an image
 
 Let's start with creating our image. We're going to use the following `Dockerfile`:
 
@@ -90,7 +90,7 @@ To learn more about `gvmkit-build` \(and how to install it\), please refer to th
 
 Once the above command is finished we should have a `.gvmi` file in the directory from which we invoked the command. This file is ready to be used together with Golem's VM runtime.
 
-#### 2.  Running the debugger
+### 2.  Running the debugger
 
 Let's now see how we can use `ya-runtime-dbg` together with our image. We can learn about the program's required arguments by calling `ya-runtime-dbg --help`:
 
@@ -134,7 +134,7 @@ Running the command should produce output similar to this:
 
 Followed by a prompt character \(`▶`\). This indicates the debugger is now ready to be used!
 
-#### 3. Using the debugger
+### 3. Using the debugger
 
 With the debugger running we now have full access to our virtual machine!
 
@@ -187,7 +187,7 @@ Success! Our input data is there and can be read by the VM.
 
 Once you're done debugging or want to restart the VM, press `Ctrl+D` while in the debugger prompt.
 
-### Summary
+## Summary
 
 `ya-runtime-dbg` provides us with the **exact same** environment a provider would use to execute our image. This allows for more accurate testing compared to running the original Docker image manually.
 

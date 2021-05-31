@@ -44,7 +44,7 @@
 
 #### constructor
 
-+ **new DebitNote**\(`_api`: _RequestorApi_, `_base`: DebitNote\): [_DebitNote_](rest_payment.debitnote.md)
+* **new DebitNote**\(`_api`: _RequestorApi_, `_base`: DebitNote\): [_DebitNote_](rest_payment.debitnote.md)
 
 **Parameters:**
 

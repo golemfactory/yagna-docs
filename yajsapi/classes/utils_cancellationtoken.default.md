@@ -33,7 +33,7 @@
 
 #### constructor
 
-+ **new default**\(`parent?`: _any_\): [_default_](utils_cancellationtoken.default.md)
+* **new default**\(`parent?`: _any_\): [_default_](utils_cancellationtoken.default.md)
 
 **Parameters:**
 

@@ -35,7 +35,7 @@
 
 #### constructor
 
-+ **new ExeUnitRequest**\(`package_url`: _any_\): [_ExeUnitRequest_](props_inf.exeunitrequest.md)
+* **new ExeUnitRequest**\(`package_url`: _any_\): [_ExeUnitRequest_](props_inf.exeunitrequest.md)
 
 **Parameters:**
 

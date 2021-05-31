@@ -1,6 +1,6 @@
 # How to a write payment driver
 
-This document aims to provide guidelines to developing a payment driver based on boilerplate code from the [Yagna repository](https://github.com/golemfactory/yagna). It assumes the reader has some experience in the [Rust language](https://www.rust-lang.org/) and also the Yagna project's codebase. We're providing an information for payment driver that will be integrated into the Yagna daemon codebase and gains from reusing a lot of already provided components. It's also possible to develop stand-alone driver application that communicates with the Yagna daemon via TCP, but it won't be described here.
+This document aims to provide guidelines to developing a payment driver based on boilerplate code from the [Yagna repository](https://github.com/golemfactory/yagna). It assumes the reader has some experience in the [Rust language](https://www.rust-lang.org/) and also the Yagna project's codebase. We're providing an information for payment driver that will be integrated into the Yagna daemon codebase and gains from reusing a lot of already provided components. It's also possible to develop stand-alone driver application that communicates with the Yagna daemon via socket, but it won't be described here.
 
 ## Overview
 
@@ -37,18 +37,23 @@ Clone the [Yagna](https://github.com/golemfactory/yagna) git repository from Git
 
 Let's see what a driver's trait exposes:
 
-* `init` - Initializes the account to be used with the driver service. It should call `bus::register_account` to notify Payment service about the driver readiness. Driver can handle multiple accounts.
-* `enter` - Deposits the funds into the driver's supported network. Called by CLI.
-* `exit` - Exits the funds outside the driver's supported network \(most likely L1\). Called by CLI.
+* `init` - Initializes the account to be used with the driver service. After successful intialization the account should be ready to send and/or receive payments \(depending on the `mode` parameter\). It should call `bus::register_account` to notify Payment service about the driver readiness. Driver should be able to handle multiple accounts. Called by CLI.
+* `enter` - Deposits the funds from Ethereum L1 into the driver's supported network. Called by CLI.
+* `exit` - Exits the funds outside the driver's supported network \(most likely to L1\). Called by CLI.
 * `get_account_balance` - Gets the balance of the account.
 * `transfer` - Transfers the funds between specified accounts. Called by CLI.
 * `fund` - Funds the account from faucet when run on testnet. Provides instructions how to fund on mainnet.
-* `schedule_payment` - Schedules the payment between specified accounts. Payments are processed by the `cron` job. Payment tracking is done by cron job, see: `PaymentDriverCron::confirm_payments`. Returns an `order_id`. See also `notify_payment`
+* `schedule_payment` - Schedules the payment between specified accounts. Payments are processed by the `cron` job. Payment tracking is done by cron job, see: `PaymentDriverCron::confirm_payments`. Returns an `order_id`. See also `notify_payment`.
 * `verify_payment` - Verifies the payment transaction specified by transaction's confirmation \(transaction's identifier\).
 * `validate_allocation` - Validates that allocated funds are still sufficient to cover the costs of the task \(including the transaction fees, e.g. Ethereum's Gas\). Allocation is created when the requestor publishes the task on the market.
 * `account_event` - Called by the Identity service to notify the driver that specified account is _locked_ / _unlocked_. Identity service holds accounts private keys and signs transactions.
 * `recv_init_required` - Tells whether account initialization is needed for receiving payments.
-* `get_transaction_balance` - Deprecated. Drivers should return very big number \(e.g. `1_000_000_000_000_000_000u64` or the whole token supply\).
+* `sign_payment` - Signs Yagna's payment message with the same key that was used to sign the blockchain transaction. Driver trait provides a default implementation of this method so it's not required to implement it.
+* `verify_signature` - Verifies the signature on payment message \(see `sign_payment`\). Driver trait provides a default implementation of this method so it's not required to implement it.
+* `get_name` - Returns driver's name. It should be lowercase, ASCII-only with no whitespace.
+* `get_networks` - Returns networks supported by the driver \(e.g. mainnet, rinkeby, ropsten\).
+* `get_default_network` - Returns default network for the dirver. It should be one of the networks returned by `get_networks`.
+* `shut_down` - Performs all neccesary shutdown routines. It is recommended that the driver sends out all pending transactions on shutdown.
 
 The following driver's operations are processed periodically by the cron jobs. It is not mandatory to implement `PaymentDriverCron` trait as long as the driver can operate without the cron.
 
@@ -83,5 +88,5 @@ As another option to testing is to run [Payment service examples](https://github
 2. Start an example payment service \(each test assumes running from scratch\)  `rm payment.db* && cargo run --example payment_api -- --driver=<DRIVER> --platform=<PLATFORM>`
 3. Start _invoice flow_ example \(restart above `platform_api` on each test\)  `cargo run --example invoice_flow -- --platform=<PLATFORM>`
 4. Start _debit note flow_ example \(restart above `platform_api` on each test\)  `cargo run --example debit_note_flow -- --platform=<PLATFORM>`
-5. Don't be afraid to try other examples as well ;\)
+5. Don't be afraid to try the other examples as well ;\)
 

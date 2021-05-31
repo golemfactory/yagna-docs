@@ -32,7 +32,7 @@
 
 #### constructor
 
-+ **new PaymentAccepted**\(`__namedParameters`: _Object_\): [_PaymentAccepted_](executor_events.paymentaccepted.md)
+* **new PaymentAccepted**\(`__namedParameters`: _Object_\): [_PaymentAccepted_](executor_events.paymentaccepted.md)
 
 **Parameters:**
 

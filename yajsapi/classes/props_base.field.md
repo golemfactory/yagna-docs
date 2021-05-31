@@ -38,7 +38,7 @@
 
 #### constructor
 
-+ **new Field**\(`__namedParameters?`: { `metadata?`: _undefined_ \| _object_ ; `name?`: _undefined_ \| _string_ ; `type?`: _undefined_ \| _object_ ; `value?`: _any_ }\): [_Field_](props_base.field.md)
+* **new Field**\(`__namedParameters?`: { `metadata?`: _undefined_ \| _object_ ; `name?`: _undefined_ \| _string_ ; `type?`: _undefined_ \| _object_ ; `value?`: _any_ }\): [_Field_](props_base.field.md)
 
 **Parameters:**
 

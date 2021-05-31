@@ -34,7 +34,7 @@
 
 #### constructor
 
-+ **new VmPackage**\(`__namedParameters`: _Object_\): [_VmPackage_](package.vmpackage.md)
+* **new VmPackage**\(`__namedParameters`: _Object_\): [_VmPackage_](package.vmpackage.md)
 
 **Parameters:**
 

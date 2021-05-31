@@ -36,7 +36,7 @@
 
 #### constructor
 
-+ **new OfferProposal**\(`subscription`: [_Subscription_](rest_market.subscription.md), `proposal`: ProposalEvent\): [_OfferProposal_](rest_market.offerproposal.md)
+* **new OfferProposal**\(`subscription`: [_Subscription_](rest_market.subscription.md), `proposal`: ProposalEvent\): [_OfferProposal_](rest_market.offerproposal.md)
 
 **Parameters:**
 

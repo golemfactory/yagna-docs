@@ -36,7 +36,7 @@
 
 #### constructor
 
-+ **new ComLinear**\(\): [_ComLinear_](props_com.comlinear.md)
+* **new ComLinear**\(\): [_ComLinear_](props_com.comlinear.md)
 
 **Returns:** [_ComLinear_](props_com.comlinear.md)
 

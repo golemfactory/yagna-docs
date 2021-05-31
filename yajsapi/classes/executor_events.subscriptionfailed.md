@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new SubscriptionFailed**\(`__namedParameters`: _Object_\): [_SubscriptionFailed_](executor_events.subscriptionfailed.md)
+* **new SubscriptionFailed**\(`__namedParameters`: _Object_\): [_SubscriptionFailed_](executor_events.subscriptionfailed.md)
 
 **Parameters:**
 

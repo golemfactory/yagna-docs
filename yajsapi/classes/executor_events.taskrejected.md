@@ -31,7 +31,7 @@
 
 #### constructor
 
-+ **new TaskRejected**\(`__namedParameters`: _Object_\): [_TaskRejected_](executor_events.taskrejected.md)
+* **new TaskRejected**\(`__namedParameters`: _Object_\): [_TaskRejected_](executor_events.taskrejected.md)
 
 **Parameters:**
 

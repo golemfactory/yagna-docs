@@ -32,7 +32,7 @@
 
 #### constructor
 
-+ **new Work**\(\): [_Work_](executor_ctx.work.md)
+* **new Work**\(\): [_Work_](executor_ctx.work.md)
 
 **Returns:** [_Work_](executor_ctx.work.md)
 

@@ -2,7 +2,7 @@
 
 Here's what you need to do in order to set up `goth` and ensure it's running properly on your system.
 
-### Clone the repository
+## Clone the repository
 
 Before you begin, clone the `goth`'s repository:
 
@@ -10,9 +10,9 @@ Before you begin, clone the `goth`'s repository:
 git clone https://github.com/golemfactory/goth.git
 ```
 
-### Python setup
+## Python setup
 
-#### Python 3.8
+### Python 3.8
 
 The test runner requires Python 3.8+ to be installed on the system. You can check your currently installed Python version by running:
 
@@ -24,7 +24,7 @@ If you don't have Python installed, download the appropriate package and follow 
 
 For the sake of compatibility with other projects and/or your local Python 3 installation you can install [`pyenv`](https://github.com/pyenv/pyenv) to manage and switch between multiple Python versions. The `pyenv` installer can be found [here](https://github.com/pyenv/pyenv-installer). You can also use your preferred way of managing Python virtual environments to achieve this.
 
-#### Project installation
+### Project installation
 
 `goth` is not \(yet\) available as a standalone package, therefore you will need to set up its development environment in order to use it.
 
@@ -50,9 +50,9 @@ To install the project's dependencies run in the directory where you checked-out
 poetry install
 ```
 
-### Docker setup
+## Docker setup
 
-#### Docker Engine
+### Docker Engine
 
 The tests are performed on live Yagna nodes running in an isolated network. Currently, this setup is achieved by running a number of Docker containers locally using Docker Compose.
 
@@ -62,16 +62,16 @@ To run the test containers you will need to have both Docker and Docker Compose 
 docker run hello-world
 ```
 
-#### Docker Compose
+### Docker Compose
 
-Docker Compose is a separate binary which needs to be available on your system in order to run Yagna integration tests. `goth` requires `docker-compose` **version 1.27** or higher. There are two ways you can install it: 
+Docker Compose is a separate binary which needs to be available on your system in order to run Yagna integration tests. `goth` requires `docker-compose` **version 1.27** or higher. There are two ways you can install it:
 
 1. Download the appropriate executable from the [releases page](https://github.com/docker/compose/releases) and make sure its present on your system's `PATH`.
 2. Use the `docker-compose` installed to your `goth` Python environment \(you will need to activate the environment in the shell from which you run your tests\).
 
-### Running the test network
+## Running the test network
 
-#### Getting a GitHub API token
+### Getting a GitHub API token
 
 When first starting the test network, `goth` uses the GitHub API to fetch metadata and download artifacts and images. Although all of these assets are public, using the GitHub API still requires basic authentication. Therefore, you need to provide `goth` with a personal access token.
 
@@ -82,9 +82,9 @@ Once your token is generated you need to do two things:
 1. Log in to GitHub's Docker registry by calling: `docker login docker.pkg.github.com -u {username}`, replacing `{username}` with your GitHub username and **pasting in your access token as the password** \(iow, _don't_ use your regular github password here\). You only need to do this once on your development machine.
 2. Export an environment variable named `GITHUB_API_TOKEN` and use the access token as its value. This environment variable will need to be available in the shell from which you run `goth`.
 
-### Running the integration tests
+## Running the integration tests
 
-With project dependencies installed and environment set up you are now ready to launch  the end-to-end integration tests which will confirm that your installation of goth and your development environment is correct.
+With project dependencies installed and environment set up you are now ready to launch the end-to-end integration tests which will confirm that your installation of goth and your development environment is correct.
 
 All tests related to `yagna` can be found under `test/yagna` with end-to-end tests located in `test/yagna/e2e`. To run them, issue the below command from the project's root directory:
 
@@ -94,19 +94,19 @@ poetry run poe e2e_test
 
 Every test run consists of the following steps:
 
-1.  `docker-compose` is used to start the so-called "static" containers \(e.g. local blockchain, HTTP proxy\) and create a common Docker network for all containers participating in the test. 
+1. `docker-compose` is used to start the so-called "static" containers \(e.g. local blockchain, HTTP proxy\) and create a common Docker network for all containers participating in the test. 
 2. The test runner creates a number of Yagna containers \(as defined in the test's topology\) which are connected to the `docker-compose` network. 
 3. For each Yagna container started a so-called "probe" object is created and made available inside the test via the `Runner` object.
 4. The integration test scenario is executed as defined in the function called by `pytest`.
 5. Once the test is finished, all previously started Docker containers \(both "static" and "dynamic"\) are removed.
 
 {% hint style="success" %}
-If the test run succeeded, your development environment is now ready to [test your own apps using goth's interactive mode](running-goths-interactive-mode.md).  
-  
-If anything failed, please refer to the troubleshooting section below or reach out to us on one of our regular support channels. 
+If the test run succeeded, your development environment is now ready to [test your own apps using goth's interactive mode](running-goths-interactive-mode.md).
+
+If anything failed, please refer to the troubleshooting section below or reach out to us on one of our regular support channels.
 {% endhint %}
 
-### Other tests
+## Other tests
 
 The tool that we're using above to run the tests, is [`poethepoet`](https://github.com/nat-n/poethepoet), a task runner for `poetry`. If you'd like see all the tasks configured in goth, run `poe` with no arguments:
 
@@ -122,9 +122,9 @@ pytest -svx test/yagna/e2e/test_e2e_wasm.py
 
 The test runner of choice for `goth` is `pytest`, therefore each test is defined as a separate Python function in a given `.py` file.
 
-### Custom test options
+## Custom test options
 
-#### Assets path
+### Assets path
 
 It's possible to provide a custom assets directory which will be mounted in all Yagna containers used for the test. The assets include files such as the exe script definition \(`exe-script.json`\) or payment configuration \(`accounts.json`\).
 
@@ -134,7 +134,7 @@ To override the default path, use the `--assets-path` parameter, passing in the 
 poetry run poe e2e_test --assets-path test/custom_assets/some_directory
 ```
 
-#### Log level
+### Log level
 
 By default, the test runner will use `INFO` log level. To override it and enable more verbose logging, use the `--log-cli-level` parameter:
 
@@ -142,7 +142,7 @@ By default, the test runner will use `INFO` log level. To override it and enable
 poetry run poe e2e_test --log-cli-level DEBUG
 ```
 
-#### Logs path
+### Logs path
 
 The destination path for all test logs can be overridden using the option `--logs-path`:
 
@@ -150,7 +150,7 @@ The destination path for all test logs can be overridden using the option `--log
 poetry run poe e2e_test --logs-path your/custom/path
 ```
 
-#### Yagna binary path
+### Yagna binary path
 
 By default, a set of yagna binaries is downloaded from GitHub to be used for a given test session. The option `--yagna-binary-path` allows you to use binaries from the local file system instead. Its value must be a path to either a directory tree containing yagna binaries \(e.g. `target` directory from a local `cargo` build\) or a `.zip` archive file \(e.g. downloaded manually from GitHub Actions\):
 
@@ -158,7 +158,7 @@ By default, a set of yagna binaries is downloaded from GitHub to be used for a g
 poetry run poe e2e_test --yagna-binary-path /path/to/binaries
 ```
 
-#### Yagna commit hash
+### Yagna commit hash
 
 By default, `goth` uses a `yagna` binary from the latest GitHub Actions successful build on `master` branch. This option can be used to override that behaviour. The value here needs to be a git commit hash being the head for one of the build workflow runs:
 
@@ -166,7 +166,7 @@ By default, `goth` uses a `yagna` binary from the latest GitHub Actions successf
 poetry run poe e2e_test --yagna-commit-hash b0ac62f
 ```
 
-#### Yagna .deb path
+### Yagna .deb path
 
 Path to a local .deb file or a directory containing a number of such archives. All of these .deb files will be installed in the Docker image used for Yagna nodes in the tests. To specify the path, use the option `--yagna-deb-path`:
 
@@ -174,7 +174,7 @@ Path to a local .deb file or a directory containing a number of such archives. A
 poetry run poe e2e_test --yagna-deb-path path/to/yagna.deb
 ```
 
-### Troubleshooting integration test runs
+## Troubleshooting integration test runs
 
 All components launched during the integration test run record their logs in a pre-determined location. By default, this location is: `$TEMP_DIR/goth-tests`, where `$TEMP_DIR` is the path of the directory used for temporary files. This path will depend either on the shell environment or the operating system on which the tests are being run \(see [`tempfile.gettempdir`](https://docs.python.org/3/library/tempfile.html) for more details\). This default location can be overridden using the option `--logs-path` when running tests.
 

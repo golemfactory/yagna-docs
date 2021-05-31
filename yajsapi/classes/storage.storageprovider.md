@@ -34,7 +34,7 @@
 
 #### constructor
 
-+ **new StorageProvider**\(\): [_StorageProvider_](storage.storageprovider.md)
+* **new StorageProvider**\(\): [_StorageProvider_](storage.storageprovider.md)
 
 **Returns:** [_StorageProvider_](storage.storageprovider.md)
 

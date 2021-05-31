@@ -31,7 +31,7 @@
 
 #### constructor
 
-+ **new CollectFailed**\(`__namedParameters`: _Object_\): [_CollectFailed_](executor_events.collectfailed.md)
+* **new CollectFailed**\(`__namedParameters`: _Object_\): [_CollectFailed_](executor_events.collectfailed.md)
 
 **Parameters:**
 

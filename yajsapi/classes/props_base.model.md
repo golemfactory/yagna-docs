@@ -39,7 +39,7 @@ Base class from which all property models inherit.
 
 #### constructor
 
-+ **new Model**\(\): [_Model_](props_base.model.md)
+* **new Model**\(\): [_Model_](props_base.model.md)
 
 **Returns:** [_Model_](props_base.model.md)
 

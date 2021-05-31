@@ -31,7 +31,7 @@
 
 #### constructor
 
-+ **new PaymentFailed**\(`__namedParameters`: _Object_\): [_PaymentFailed_](executor_events.paymentfailed.md)
+* **new PaymentFailed**\(`__namedParameters`: _Object_\): [_PaymentFailed_](executor_events.paymentfailed.md)
 
 **Parameters:**
 

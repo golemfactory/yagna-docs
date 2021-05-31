@@ -26,7 +26,7 @@
 
 #### constructor
 
-+ **new \_BufferItem**\(`ts`: _any_, `score`: _any_, `proposal`: _any_\): [_\_BufferItem_](executor._bufferitem.md)
+* **new \_BufferItem**\(`ts`: _any_, `score`: _any_, `proposal`: _any_\): [_\_BufferItem_](executor._bufferitem.md)
 
 **Parameters:**
 

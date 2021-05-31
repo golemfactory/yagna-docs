@@ -34,7 +34,7 @@
 
 #### constructor
 
-+ **new InfBase**\(\): [_InfBase_](props_inf.infbase.md)
+* **new InfBase**\(\): [_InfBase_](props_inf.infbase.md)
 
 **Returns:** [_InfBase_](props_inf.infbase.md)
 

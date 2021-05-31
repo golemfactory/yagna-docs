@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new PaymentQueued**\(`__namedParameters`: _Object_\): [_PaymentQueued_](executor_events.paymentqueued.md)
+* **new PaymentQueued**\(`__namedParameters`: _Object_\): [_PaymentQueued_](executor_events.paymentqueued.md)
 
 **Parameters:**
 

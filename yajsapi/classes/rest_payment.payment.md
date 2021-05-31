@@ -37,7 +37,7 @@
 
 #### constructor
 
-+ **new Payment**\(`cfg`: _Configuration_\): [_Payment_](rest_payment.payment.md)
+* **new Payment**\(`cfg`: _Configuration_\): [_Payment_](rest_payment.payment.md)
 
 **Parameters:**
 

@@ -14,15 +14,13 @@ For the provider end, we currently, officially support:
 
 * Ubuntu 18.04 LTS and 20.04 LTS
 
-but you are welcome to try out and run it on other Linux distributions. 
+but you are welcome to try out and run it on other Linux distributions.
 
 {% hint style="warning" %}
-To run a Golem provider node we recommend a physical machine as you may encounter issues and limitations when running it on a virtual machine. Because we expect most apps to use vm-based payloads, we don't recommend running a provider on non-Linux platforms. 
+To run a Golem provider node we recommend a physical machine as you may encounter issues and limitations when running it on a virtual machine. Because we expect most apps to use vm-based payloads, we don't recommend running a provider on non-Linux platforms.
 
 It is possible to use macOS and Windows as provider hosts, but only with WASI execution environment.
 {% endhint %}
-
-
 
 {% hint style="info" %}
 For this release we have enabled the providers to expect payments on the Ethereum mainnet by default. It means that by running a provider node and executing tasks, you'll be **earning real GLM tokens** - either as pure ERC-20 tokens or on zkSync.
@@ -65,7 +63,7 @@ After installing all required components you will be asked to set up your node. 
 
 `subnet (default=public-beta):` - It is important that you use "public-beta"
 
-`Ethereum wallet address (default=internal wallet):`  - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty an address will be created for you on your local system.
+`Ethereum wallet address (default=internal wallet):` - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty an address will be created for you on your local system.
 
 {% hint style="info" %}
 This is especially important now that the providers are by default using **Ethereum mainnet** - this way, you can have your earned GLM tokens sent directly e.g. to your MetaMask or Ledger account and you can manage them from there without Golem ever needing to touch your wallet - do that especially if you don't plan on becoming a Requestor.
@@ -92,7 +90,7 @@ golemsp run
 To run the Golem provider on the testnet, type the following in the terminal:
 
 ```text
-golemsp run --payment-network rinkeby
+golemsp run --payment-network rinkeby --subnet devnet-beta.1
 ```
 
 {% hint style="success" %}
@@ -144,7 +142,7 @@ $ golemsp status
 ```
 
 {% hint style="info" %}
-Under your address you can see both **on-chain** and **zk-sync** values listed. 
+Under your address you can see both **on-chain** and **zk-sync** values listed.
 
 Although zk-sync is from now on the main payment operator in Golem you may receive on-chain transactions as well. To confirm the correctness of the listed values head over to [https://etherscan.io/](https://etherscan.io/) \(on-chain\) and [https://zkscan.io/](https://zkscan.io/) \(for zk-sync\).
 {% endhint %}

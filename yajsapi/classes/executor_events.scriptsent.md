@@ -32,7 +32,7 @@
 
 #### constructor
 
-+ **new ScriptSent**\(`__namedParameters`: _Object_\): [_ScriptSent_](executor_events.scriptsent.md)
+* **new ScriptSent**\(`__namedParameters`: _Object_\): [_ScriptSent_](executor_events.scriptsent.md)
 
 **Parameters:**
 

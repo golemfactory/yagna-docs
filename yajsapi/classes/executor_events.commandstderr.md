@@ -33,7 +33,7 @@
 
 #### constructor
 
-+ **new CommandStdErr**\(`__namedParameters`: _Object_\): [_CommandStdErr_](executor_events.commandstderr.md)
+* **new CommandStdErr**\(`__namedParameters`: _Object_\): [_CommandStdErr_](executor_events.commandstderr.md)
 
 **Parameters:**
 

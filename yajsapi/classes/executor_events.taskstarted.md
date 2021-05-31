@@ -32,7 +32,7 @@
 
 #### constructor
 
-+ **new TaskStarted**\(`__namedParameters`: _Object_\): [_TaskStarted_](executor_events.taskstarted.md)
+* **new TaskStarted**\(`__namedParameters`: _Object_\): [_TaskStarted_](executor_events.taskstarted.md)
 
 **Parameters:**
 

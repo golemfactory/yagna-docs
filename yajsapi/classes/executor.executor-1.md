@@ -54,7 +54,7 @@ Task executor
 
 #### constructor
 
-+ **new Executor**\(`__namedParameters`: [_ExecutorOpts_](../modules/executor.md#executoropts)\): [_Executor_](executor.executor-1.md)
+* **new Executor**\(`__namedParameters`: [_ExecutorOpts_](../modules/executor.md#executoropts)\): [_Executor_](executor.executor-1.md)
 
 Create new executor
 

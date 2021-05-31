@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new ComputationFailed**\(\): [_ComputationFailed_](executor_events.computationfailed.md)
+* **new ComputationFailed**\(\): [_ComputationFailed_](executor_events.computationfailed.md)
 
 **Returns:** [_ComputationFailed_](executor_events.computationfailed.md)
 

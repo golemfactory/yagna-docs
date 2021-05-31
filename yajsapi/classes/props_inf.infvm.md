@@ -34,7 +34,7 @@
 
 #### constructor
 
-+ **new InfVm**\(\): [_InfVm_](props_inf.infvm.md)
+* **new InfVm**\(\): [_InfVm_](props_inf.infvm.md)
 
 **Returns:** [_InfVm_](props_inf.infvm.md)
 

@@ -46,7 +46,7 @@ An abstract base class for types of events emitted by `Executor.submit()`.
 
 #### constructor
 
-+ **new YaEvent**\(\): [_YaEvent_](executor_events.yaevent.md)
+* **new YaEvent**\(\): [_YaEvent_](executor_events.yaevent.md)
 
 **Returns:** [_YaEvent_](executor_events.yaevent.md)
 

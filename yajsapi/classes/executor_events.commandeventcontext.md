@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new CommandEventContext**\(`evt_cls`: _any_\): [_CommandEventContext_](executor_events.commandeventcontext.md)
+* **new CommandEventContext**\(`evt_cls`: _any_\): [_CommandEventContext_](executor_events.commandeventcontext.md)
 
 **Parameters:**
 

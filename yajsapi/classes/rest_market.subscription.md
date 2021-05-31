@@ -38,7 +38,7 @@
 
 #### constructor
 
-+ **new Subscription**\(`api`: _RequestorApi_, `subscription_id`: _string_, `_details?`: _null_ \| Demand\): [_Subscription_](rest_market.subscription.md)
+* **new Subscription**\(`api`: _RequestorApi_, `subscription_id`: _string_, `_details?`: _null_ \| Demand\): [_Subscription_](rest_market.subscription.md)
 
 **Parameters:**
 

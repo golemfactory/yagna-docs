@@ -10,17 +10,17 @@ description: Symptoms and solutions of known issues.
 Don't miss the [debugging section by using the log file](../requestor-tutorials/debugging.md#reading-the-log-file).
 {% endhint %}
 
-### IO error: No such file or directory
+## IO error: No such file or directory
 
 _**Os:**_ Any
 
-_**Description:**_  Local service error: Transfer error: IO error: No such file or directory \(os error 2\)
+_**Description:**_ Local service error: Transfer error: IO error: No such file or directory \(os error 2\)
 
 _**Solution:**_  Something went wrong with the computation. We have a "[Debugging with the use of log files](https://handbook.golem.network/requestor-tutorials/debugging)" guide in our requestor tutorials to assist with debugging.
 
 You can also check that you're following the [Define your task's steps](https://handbook.golem.network/requestor-tutorials/requestor-tutorial#define-your-tasks-steps) correctly and that you remembered to define a place \(or places\) in the container file system that will be used for the file transfer, [as shown here](https://handbook.golem.network/requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do#volume-the-input-output). 
 
-With `ctx.run()`  make sure that you don't have multiple arguments in one string. Either `ctx.run("/bin/sh", "-c", "a", "b", "c" ...)` or use the syntax the [example gives](https://handbook.golem.network/requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do#the-requestor-agent-code) where it parses in lines.
+With `ctx.run()` make sure that you don't have multiple arguments in one string. Either `ctx.run("/bin/sh", "-c", "a", "b", "c" ...)` or use the syntax the [example gives](https://handbook.golem.network/requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do#the-requestor-agent-code) where it parses in lines.
 
 In the scenario that you're still stuck, you always have the option to investigate what is happening deeper by pulling the logs back instead of your output file. For example:
 
@@ -35,7 +35,7 @@ ctx.download_file("/golem/output/log.txt", "log.txt")
 #ctx.download_file("/golem/output/output.file", output_file)
 ```
 
-### Symlink issues
+## Symlink issues
 
 _**Os:** Ubuntu_
 
@@ -43,7 +43,7 @@ _**Description:**_ If you run the Golem Provider one-line installer on a minimal
 
 _**Solution:** See_ [_this guide_](https://websiteforstudents.com/setup-and-manage-symlinks-on-ubuntu-18-04-16-04/) _on setting up and managing Simlinks._
 
-### Connectivity issue
+## Connectivity issue
 
 _**Os:** All_
 
@@ -51,7 +51,7 @@ _**Description:**_ When someone is not receiving tasks at all, has correct subne
 
 _**Solution:**_ Kill and restart the process
 
-### Payment driver initialization issue
+## Payment driver initialization issue
 
 _**Os:**_ All, requestor only
 
@@ -61,7 +61,7 @@ This will manifest itself either by a failure of the regular initialization with
 
 _**Solution:**_ In such a case, we're providing you with a fallback to normal payments, i.e. regular GLM token transfer on the Ethereum chain.
 
-To enable it, first **stop and re-start the yagna daemon** and then run:
+To enable it run:
 
 ```text
 yagna payment fund --driver erc20
@@ -73,11 +73,11 @@ After you confirm you have the funds, proceed with running the examples or your 
 
 Just remember to use [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) instead of the zkSync explorer, should you wish to verify that the payment went through.
 
-### Bind error: already registered
+## Bind error: already registered
 
 _**Os:** Ubuntu_
 
-_**Description:**_ If the user has an obsolete/incorrect version of `gftp`  in `$PATH` they will get a repeating error when they try to request a task:
+_**Description:**_ If the user has an obsolete/incorrect version of `gftp` in `$PATH` they will get a repeating error when they try to request a task:
 
 ```text
 [2020-11-27 15:43:11,509 INFO yapapi.summary] Received proposals from 9 providers so far
@@ -91,9 +91,7 @@ _**Description:**_ If the user has an obsolete/incorrect version of `gftp`  in `
 [2020-11-27 15:43:15,199 WARNING yapapi.summary] Activity failed on provider 'ada', reason: (-32000, "bad request: No service registered under given address '/private/identity/Get'.", {'jsonrpc': '2.0', 'id': 1935240589707464482, 'error': {'code': -32000, 'message': "bad request: No service registered under given address '/private/identity/Get'."}})
 ```
 
- _**Solution:**_ Type `which gftp` to find the obsolete version of `gftp` and then remove it. Then restart your daemon and the issue should be fixed!
-
-
+_**Solution:**_ Type `which gftp` to find the obsolete version of `gftp` and then remove it. Then restart your daemon and the issue should be fixed!
 
 ### Multiprocessing Python library not working on providers
 
@@ -101,6 +99,6 @@ _**Os:**_ All, requestor only
 
 A temporary fix is to run the following lines prior to running your actual code to make sure that the filesystem is properly mounted before actual usage of it.
 
-`ctx.run("/bin/mkdir", "-p", "/dev/shm")`   
+`ctx.run("/bin/mkdir", "-p", "/dev/shm")`  
 `ctx.run("/bin/mount", "-t", "tmpfs", "tmpfs", "/dev/shm")`
 

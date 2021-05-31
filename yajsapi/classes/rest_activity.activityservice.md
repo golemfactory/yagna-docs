@@ -34,7 +34,7 @@ A convenience helper to facilitate the creation of an Activity.
 
 #### constructor
 
-+ **new ActivityService**\(`cfg`: _Configuration_\): [_ActivityService_](rest_activity.activityservice.md)
+* **new ActivityService**\(`cfg`: _Configuration_\): [_ActivityService_](rest_activity.activityservice.md)
 
 **Parameters:**
 

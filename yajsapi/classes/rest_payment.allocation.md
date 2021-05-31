@@ -36,7 +36,7 @@
 
 #### constructor
 
-+ **new Allocation**\(\): [_Allocation_](rest_payment.allocation.md)
+* **new Allocation**\(\): [_Allocation_](rest_payment.allocation.md)
 
 **Returns:** [_Allocation_](rest_payment.allocation.md)
 

@@ -26,7 +26,7 @@
 
 #### constructor
 
-+ **new ResourceCtx**\(\): [_ResourceCtx_](rest_resource.resourcectx.md)&lt;\_T&gt;
+* **new ResourceCtx**\(\): [_ResourceCtx_](rest_resource.resourcectx.md)&lt;\_T&gt;
 
 **Type parameters:**
 

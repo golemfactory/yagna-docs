@@ -27,7 +27,7 @@
 
 #### constructor
 
-+ **new \_ExecutorConfig**\(`max_workers`: _any_, `timeout`: _any_\): [_\_ExecutorConfig_](executor._executorconfig.md)
+* **new \_ExecutorConfig**\(`max_workers`: _any_, `timeout`: _any_\): [_\_ExecutorConfig_](executor._executorconfig.md)
 
 **Parameters:**
 

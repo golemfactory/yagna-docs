@@ -60,7 +60,7 @@ console.log(builder);
 
 #### constructor
 
-+ **new DemandBuilder**\(\): [_DemandBuilder_](props_builder.demandbuilder.md)
+* **new DemandBuilder**\(\): [_DemandBuilder_](props_builder.demandbuilder.md)
 
 **Returns:** [_DemandBuilder_](props_builder.demandbuilder.md)
 

@@ -9,5 +9,7 @@ description: 'Version: 0.1 (Draft)'
   * Publish Requestor and Provider package dependency information with their Apps.
   * Follow the [Release Notes](https://github.com/golemfactory/yagna/releases) for feature deprecation notifications, and update their applications accordingly.
 
-For detailed summary of Yagna compatibility aspects refer to the [Policy](https://app.gitbook.com/@golem-network/s/golem-sdk-develop/see-also/compatibility-policy).
+For detailed summary of Yagna compatibility aspects refer to the
+
+{% page-ref page="compatibility-policy.md" %}
 

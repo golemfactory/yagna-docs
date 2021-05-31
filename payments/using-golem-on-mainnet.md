@@ -23,8 +23,8 @@ Of course, if you're willing to accept that disproportion, you may continue to u
 ## Your Golem wallet
 
 {% hint style="info" %}
-All instructions below assume that you have your daemon launched on another terminal. In case you forgot the command to run the daemon, it's:  
-  
+All instructions below assume that you have your daemon launched on another terminal. In case you forgot the command to run the daemon, it's:
+
 `yagna service run`
 
 If you get any errors while running the other commands here, first always ensure that your daemon is still running correctly.
@@ -80,7 +80,7 @@ or
 yagna payment init --sender --network=mainnet --driver=erc20
 ```
 
-to enable the zkSync or the ERC-20 mainnet drivers respectively. 
+to enable the zkSync or the ERC-20 mainnet drivers respectively.
 
 {% hint style="warning" %}
 Again, unless you have good reasons not to, we recommend using zkSync for much lower transaction fees.
@@ -214,13 +214,13 @@ rm $HOME/Library/Application\ Support/GolemFactory.yagna/accounts.json
 {% endtab %}
 
 {% tab title="Windows" %}
-```
+```text
 del %APPDATA%\GolemFactory\yagna\data\accounts.json
 ```
 {% endtab %}
 {% endtabs %}
 
-4. **Start your yagna daemon again** \(as usual, do it in a separate command line terminal and allow it to run in the background\)
+**4. Start your yagna daemon again** \(as usual, do it in a separate command line terminal and allow it to run in the background\)
 
 ```text
 yagna service run
@@ -235,9 +235,9 @@ yagna id show
 The `nodeId` property should display the Ethereum address of your backed-up wallet.
 
 {% hint style="warning" %}
-If your key is password-protected, you'll need to unlock it before it can be used for payments. In such case, `yagna id show` command above will report:  
-  
-   `isLocked: true`
+If your key is password-protected, you'll need to unlock it before it can be used for payments. In such case, `yagna id show` command above will report:
+
+`isLocked: true`
 
 To unlock your key, you can use:
 
@@ -249,7 +249,7 @@ and supply the key's password.
 
 This will unlock your key and `yagna` will be able to use it for outgoing payments. You can confirm that the operation succeeded by verifying that the output now reports:
 
-   `isLocked: false`
+`isLocked: false`
 {% endhint %}
 
 ## Running your requestor on mainnet

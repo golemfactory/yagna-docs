@@ -31,7 +31,7 @@
 
 #### constructor
 
-+ **new GettingResults**\(`__namedParameters`: _Object_\): [_GettingResults_](executor_events.gettingresults.md)
+* **new GettingResults**\(`__namedParameters`: _Object_\): [_GettingResults_](executor_events.gettingresults.md)
 
 **Parameters:**
 

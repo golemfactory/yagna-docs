@@ -31,7 +31,7 @@
 
 #### constructor
 
-+ `Private`**new CryptoCtx**\(`priv_key`: [_PrivateKey_](crypto.privatekey.md), `ephem_key`: _Buffer_\): [_CryptoCtx_](crypto.cryptoctx.md)
+* `Private`**new CryptoCtx**\(`priv_key`: [_PrivateKey_](crypto.privatekey.md), `ephem_key`: _Buffer_\): [_CryptoCtx_](crypto.cryptoctx.md)
 
 **Parameters:**
 

@@ -201,7 +201,6 @@ if __name__ == "__main__":
             )
         except (asyncio.CancelledError, KeyboardInterrupt):
             pass
-
 ```
 {% endtab %}
 
@@ -430,7 +429,6 @@ ctx.send_json(
         "OUTPUT_DIR": "/golem/output",
     },
 )
-
 ```
 {% endtab %}
 
@@ -538,7 +536,6 @@ except BatchTimeoutError:
         f"Task {task} timed out on {ctx.provider_name}, time: {task.running_time}"
     )
     raise
-
 ```
 {% endtab %}
 
@@ -599,7 +596,6 @@ await asyncWith(
     network: "rinkeby",
     event_consumer: logUtils.logSummary(),
   }),
-
 ```
 {% endtab %}
 {% endtabs %}
@@ -655,6 +651,4 @@ Are you hooked up? Then go ahead and follow up with our tutorial on using your o
 or jump right into our "Hello World" workshop:
 
 {% page-ref page="hello-world.md" %}
-
-
 

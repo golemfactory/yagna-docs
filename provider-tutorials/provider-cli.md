@@ -30,7 +30,6 @@ SUBCOMMANDS:
     settings    Manage settings
     status      Show provider status
     help        Prints this message or the help of the given subcommand(s)
-
 ```
 
 ### Run
@@ -57,7 +56,6 @@ SUBCOMMANDS:
     set     Change settings
     show    Show current settings
     help    Prints this message or the help of the given subcommand(s)
-
 ```
 
 #### Settings set
@@ -88,17 +86,16 @@ example
 $ golemsp settings show
 node name: "friendly-winter"
 Shared resources:
-	cores:	7
-	memory:	10.597366839647291 GiB
-	disk:	138.55942993164064 GiB
+    cores:    7
+    memory:    10.597366839647291 GiB
+    disk:    138.55942993164064 GiB
 
 
 Pricing:
 
-	    0 GLM for start
-	 0.02 GLM per hour
-	  0.1 GLM per cpu hour
-
+        0 GLM for start
+     0.02 GLM per hour
+      0.1 GLM per cpu hour
 ```
 
 ### Status
@@ -122,7 +119,6 @@ $ golemsp status
 │  Subnet     public-beta      │
 │  VM         valid            │
 └──────────────────────────────┘
-
 ```
 
 When your node is already running `golemsp status` will show:
@@ -159,7 +155,6 @@ $ golemsp status
 │  last 1h in progress  0                           │
 │  total processed      211                         │
 └───────────────────────────────────────────────────┘
-
 ```
 
 In the three columns, you can check the basic information regarding the status of your node

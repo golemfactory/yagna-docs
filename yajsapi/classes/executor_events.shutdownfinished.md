@@ -20,7 +20,7 @@
 
 #### constructor
 
-+ **new ShutdownFinished**\(\): [_ShutdownFinished_](executor_events.shutdownfinished.md)
+* **new ShutdownFinished**\(\): [_ShutdownFinished_](executor_events.shutdownfinished.md)
 
 **Returns:** [_ShutdownFinished_](executor_events.shutdownfinished.md)
 

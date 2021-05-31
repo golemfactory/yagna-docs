@@ -53,6 +53,12 @@ If you have an older version of node and you'd like to keep that version in your
 * [https://github.com/nvm-sh/nvm\#install--update-script](https://github.com/nvm-sh/nvm#install--update-script) \(Linux/macOS X\)
 * [https://github.com/coreybutler/nvm-windows/\#node-version-manager-nvm-for-windows](https://github.com/coreybutler/nvm-windows/#node-version-manager-nvm-for-windows) \(Windows\)
 
+Once you have `nvm` installed on your machine, run:
+
+```text
+nvm install v12
+```
+
 **Yarn 1.22.3+**
 
 Verify that with:

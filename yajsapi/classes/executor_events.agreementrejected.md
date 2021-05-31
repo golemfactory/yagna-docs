@@ -30,7 +30,7 @@
 
 #### constructor
 
-+ **new AgreementRejected**\(`__namedParameters`: _Object_\): [_AgreementRejected_](executor_events.agreementrejected.md)
+* **new AgreementRejected**\(`__namedParameters`: _Object_\): [_AgreementRejected_](executor_events.agreementrejected.md)
 
 **Parameters:**
 
