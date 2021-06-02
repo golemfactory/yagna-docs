@@ -30,7 +30,7 @@
   * [Run first service on Golem](requestor-tutorials/flash-tutorial-of-requestor-development/run-first-service-on-golem.md)
 * [Golem application fundamentals](requestor-tutorials/golem-application-fundamentals/README.md)
   * [HL API: Work generator pattern](requestor-tutorials/golem-application-fundamentals/hl-api-work-generator-pattern.md)
-  * [ExeUnit SDK: Bespoke service wrapper](requestor-tutorials/golem-application-fundamentals/exeunit-sdk-bespoke-service-wrapper.md)
+  * [ExeUnit SDK: Service wrapper](requestor-tutorials/golem-application-fundamentals/exeunit-sdk-bespoke-service-wrapper.md)
 * [Task Model development](requestor-tutorials/task-processing-development/README.md)
   * [How does it work? Dive into requestor agent \(task model\)](requestor-tutorials/task-processing-development/requestor-tutorial.md)
   * [Golem task application - the basics](requestor-tutorials/task-processing-development/golem-application-how-to/README.md)

@@ -1,2 +1,2 @@
-# ExeUnit SDK: Bespoke service wrapper
+# ExeUnit SDK: Service wrapper
 
