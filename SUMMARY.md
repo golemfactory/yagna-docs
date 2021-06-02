@@ -43,7 +43,7 @@
   * [Create your own service application on Golem](requestor-tutorials/service-development/create-your-own-service-application-on-golem.md)
   * [Service Example 0: Hello world?](requestor-tutorials/service-development/service-example-0-hello-world.md)
   * [Service Example 1: Simple service](requestor-tutorials/service-development/service-example-1-simple-service.md)
-  * [Service Example 2: Managed Epigon](requestor-tutorials/service-development/service-example-2-managed-epigon.md)
+  * [Service Example 2: Managed Erigon](requestor-tutorials/service-development/service-example-2-managed-erigon.md)
 * [Debugging with the use of log files](requestor-tutorials/debugging.md)
 * [Interactive testing environment](requestor-tutorials/interactive-testing-environment/README.md)
   * [Running Goth](requestor-tutorials/interactive-testing-environment/running-goth.md)
