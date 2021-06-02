@@ -145,38 +145,6 @@ gftp --version
 
 It should output: `gftp 0.6.4 (4fc72117 2021-04-15 build #135)`
 
-### Purge the stale working directories
-
-{% hint style="danger" %}
-**WARNING**
-
-Skip this step if you have ever funded your Golem account with mainnet ETH or GLM. If your accounts contains mainnet tokens, you'll lose your funds.
-
-Proceed with the purge only if you're sure you never ran Golem on mainnet and never funded your address with mainnet tokens before.
-{% endhint %}
-
-If you had run a previous version of `yagna` in the past, you'll need to purge its working directories since our newest version is incompatible with the old database structure:
-
-{% tabs %}
-{% tab title="Ubuntu" %}
-```bash
-read -e -p "Backed up keys? (type "yes"): " YN && [[ $YN == "yes" ]] && rm -rf $HOME/.local/share/yagna
-```
-{% endtab %}
-
-{% tab title="mac OS X" %}
-```text
-read -e -p "Backed up keys? (type "yes"): " YN && [[ $YN == "yes" ]] && rm -rf $HOME/Library/Application\ Support/GolemFactory.yagna
-```
-{% endtab %}
-
-{% tab title="Windows" %}
-```text
-rmdir /s %APPDATA%\GolemFactory\yagna
-```
-{% endtab %}
-{% endtabs %}
-
 ### Run the daemon
 
 Now, you can run the daemon:
