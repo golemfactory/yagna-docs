@@ -27,7 +27,6 @@
 
 * [Requestor development: a quick primer](requestor-tutorials/flash-tutorial-of-requestor-development/README.md)
   * [Run first task on Golem](requestor-tutorials/flash-tutorial-of-requestor-development/run-first-task-on-golem.md)
-  * [Run first service on Golem](requestor-tutorials/flash-tutorial-of-requestor-development/run-first-service-on-golem.md)
 * [Golem application fundamentals](requestor-tutorials/golem-application-fundamentals/README.md)
   * [HL API: Work generator pattern](requestor-tutorials/golem-application-fundamentals/hl-api-work-generator-pattern.md)
   * [ExeUnit SDK: Service wrapper](requestor-tutorials/golem-application-fundamentals/exeunit-sdk-bespoke-service-wrapper.md)
