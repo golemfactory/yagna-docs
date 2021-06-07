@@ -89,7 +89,7 @@ Following high-level API libraries are supported by Golem Factory:
 
 Two basic computation models are supported by Golem high-level APIs.
 
-* **Task model** is designed to support **batch processing**, where an application is expected to perform a set of "computation jobs" on Golem network. A high-level API library provides structure for a developer to define batch tasks, which are then efficiently orchestrated across a selected number of providers available in Golem network. Batch jobs may require input data to be shipped onto the provider side, and may produce output data, which needs to be fetched once the computation is complete.
+* **Task model** is designed to support **batch processing**, where an application is expected to perform a set of "computation jobs" on Golem network. A high-level API library provides structure for a developer to define batch tasks, which are then efficiently distributed across a selected number of providers available in Golem network. Batch jobs may require input data to be shipped onto the provider side, and may produce output data, which needs to be fetched once the computation is complete.
 * **Service model** is an abstraction over **interactive processes** which get launched, and operate in order to respond to requests. A service generally is expected to be active until explicitly stopped, however all the concepts of input/output data transfer also do apply.
 
 Please refer to following sections for a dive into those two Golem programming models:
