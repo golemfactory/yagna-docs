@@ -22,19 +22,6 @@ You can also check that you're following the [Define your task's steps](https://
 
 With `ctx.run()` make sure that you don't have multiple arguments in one string. Either `ctx.run("/bin/sh", "-c", "a", "b", "c" ...)` or use the syntax the [example gives](https://handbook.golem.network/requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do#the-requestor-agent-code) where it parses in lines.
 
-In the scenario that you're still stuck, you always have the option to investigate what is happening deeper by pulling the logs back instead of your output file. For example:
-
-```text
-commands = (
-    f"somecommand input.file output.file >> /golem/output/log.txt 2>&1"
-)
-
-ctx.run("/bin/sh", "-c", commands)
-
-ctx.download_file("/golem/output/log.txt", "log.txt")
-#ctx.download_file("/golem/output/output.file", output_file)
-```
-
 ## Symlink issues
 
 _**Os:** Ubuntu_
