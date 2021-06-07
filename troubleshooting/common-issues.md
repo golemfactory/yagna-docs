@@ -22,6 +22,14 @@ You can also check that you're following the [Define your task's steps](https://
 
 With `ctx.run()` make sure that you don't have multiple arguments in one string. Either `ctx.run("/bin/sh", "-c", "a", "b", "c" ...)` or use the syntax the [example gives](https://handbook.golem.network/requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do#the-requestor-agent-code) where it parses in lines.
 
+## Send error: send failed because receiver is gone
+
+If you manage to receive a message that says:
+
+`Activity failed on provider [..] failed on provider with message 'Local service error: Transfer error: Send error: send failed because receiver is gone'`
+
+That most likely means you're trying to send a transfer command \(`upload_file` / `download_file`\) to/from a location that's not a VOLUME. The reason is that only the volumes are accessible to the exe unit runner and other locations in the image simply cannot be read or written to.
+
 ## Symlink issues
 
 _**Os:** Ubuntu_
