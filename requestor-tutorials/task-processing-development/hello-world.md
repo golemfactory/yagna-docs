@@ -301,6 +301,12 @@ COPY worker.py /golem/entrypoint/
 
 This line will copy our `worker.py` script to the path `/golem/entrypoint` within the image. Later on we'll see how the requestor code uses this path to run our script. 
 
+{% hint style="warning" %}
+During development, it may be beneficial not to include the Python script \(`worker.py` above\) in the image itself. Instead, one can push it to individual providers at runtime using the work context's `.run()` command.
+
+Each update of any content that goes inside the VM image necessitates rebuilding the image, regenerating the GVMI file, re-uploading the file into the repository and finally, updating the image hash that your requestor agent uses.
+{% endhint %}
+
 ```text
 WORKDIR /golem/entrypoint 
 ```
