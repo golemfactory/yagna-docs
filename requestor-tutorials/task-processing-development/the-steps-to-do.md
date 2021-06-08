@@ -541,6 +541,10 @@ ctx.run(f"/bin/sh", "-c", commands)
 
 If from the previous container execution \(possibly on the same provider\) there are any `*.potfiles` left, we are deleting them as they might interfere with current execution.
 
+{% hint style="warning" %}
+The commands here are passed to an explicitly-referenced `/bin/sh` shell. That's because any commands specified within `ctx.run()` are not, by themselves, run inside any shell.
+{% endhint %}
+
 We also need to execute the `touch /golem/work/hashcat.potfile` command in order to have `/golem/work/hashcat.potfile` file present in the file system even if there is no password output by Hashcat.
 
 The last step is downloading the `/golem/work/hashcat.potfile` file.

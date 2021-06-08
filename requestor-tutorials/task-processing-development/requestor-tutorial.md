@@ -489,6 +489,10 @@ Which, of course, causes a specific `run` command to be executed by the Docker c
 
 Still, you could just as well run any other command in the container's shell, by also providing its arguments as subsequent parameters to the `run()` function.
 
+{% hint style="warning" %}
+Contrary to what you might expect, especially if you have some experience with Docker's `run` or `exec` commands, the commands that you issue to Golem's VM exeunit using the `run` command are not executed inside a shell, and, because of that, you need to supply a full path to a given executable. 
+{% endhint %}
+
 After the command finishes its execution, it's time to pass the results back to the requestor:
 
 {% tabs %}

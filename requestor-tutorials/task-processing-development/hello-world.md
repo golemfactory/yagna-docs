@@ -525,6 +525,10 @@ Then we define a few steps that will take place for each task in our list:
 * `.run()` call which is the one that actually executes the `worker.py` script inside the provider's VM, which in turn produces output \(as you remember, this may be empty or may contain our solution\),
 * then we have `.download_file()` call which transfers that solution file back to a temporary file on the requestor's end,
 
+{% hint style="warning" %}
+Please keep in mind that any commands specified in the `.run()` call to the VM execution unit must directly refer to a given executable, which usually means specifying their full, absolute path. There's no shell \(and hence, no PATH\) there to rely upon. 
+{% endhint %}
+
 With the steps ready, we call `.commit()` on our work context and yield that to the calling code \(the processing inside the `Executor` class\) which takes our script and orchestrates its execution on provider's end.
 
 When the execution returns to our `steps` function, the `task` has already been completed. Now, we only need to call `Task.accept_result()` with the result coming from the temporary file transferred from the provider. This ensures that the result is what's yielded from the `Executor` to the final loop in our `main` function that we'll define next.
