@@ -326,6 +326,12 @@ Defines `/golem/entrypoint` as the working directory of the image. It will be th
 Since version **0.2.5** of Golem's VM runtime execution environment - and of the compatible `gvmkit-build` tool - the `WORKDIR` _doesn't_ _need_ to be present, in which case the working directory will be set to `/` and the paths to the binaries run will need to be absolute.
 {% endhint %}
 
+### Important note about Docker's ENTRYPOINT
+
+As previously stated in the Hashcat example, because of how Golem's VM execution unit works, the Docker's usual `ENTRYPOINT` statement - if present in your Dockerfile - is effectively ignored and replaced with the exeunit's own entrypoint.
+
+That means that at present, if you need some initialization to be done, you can pass the relevant commands from the requestor agent as part of the execution script after the image is deployed and started on provider's VM. This will be shown in Step 3 of this tutorial.
+
 ### Building and publishing the image
 
 To make our image available to providers within the Golem network we need to take the following steps: 

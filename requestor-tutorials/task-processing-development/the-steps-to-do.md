@@ -96,6 +96,12 @@ That means that as long as the execution takes place on the same provider, and t
 If your provider side code creates large temporary files, you should store them in the directory defined as VOLUME. Otherwise, the large files will be stored in RAM. RAM usually has a capacity limit much lower than disk space.
 {% endhint %}
 
+### Important note about Docker's ENTRYPOINT
+
+Because of how Golem's VM execution unit works, the Docker's usual `ENTRYPOINT` statement present in the Dockerfiles is effectively ignored and replaced with the exeunit's own entrypoint.
+
+The net effect for you, the developer, is that - at least for the time being - you cannot rely on that feature in your Dockerfiles. Instead, you can pass the relevant commands from the requestor agent as part of the execution script after the image is deployed and started on provider's VM. This will be shown in the next step of this tutorial.
+
 ### Build process
 
 Now we may proceed with a regular Docker build, using `yacat.Dockerfile`:
