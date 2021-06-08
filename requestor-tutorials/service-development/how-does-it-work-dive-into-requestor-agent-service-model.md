@@ -71,7 +71,9 @@ Once a Golem activity starts and the Service instance begins its life, the Reque
 {% endtab %}
 {% endtabs %}
 
-The `start()` method follows a 'work generator' pattern. It uses `WorkContext` instance \(accessed via `_ctx`\) to build a sequence of actions which then gets returned to the service execution engine to be asynchronously relayed to the Provider's runtime. Please take a look at the methods provided by the `WorkContext` to get familiar with the possible work steps that can be actioned via Golem APIs.
+The `start()` method follows a 'work generator' pattern. It uses `WorkContext` instance \(accessed via `_ctx`\) to build a sequence of actions which then gets returned to the service execution engine to be asynchronously relayed to the Provider's runtime. Please take a look at the methods provided by the `WorkContext` to get familiar with the possible work steps that can be actioned via Golem APIs:
+
+{% page-ref page="../golem-application-fundamentals/hl-api-work-generator-pattern.md" %}
 
 The `start()` sequence of actions is executed only once in Service's lifecycle, and must result either with success, or indication of failure, in which case the Service immediately moves to `Terminated` state. 
 
@@ -114,6 +116,10 @@ Once started, the Service moves in Running mode - a normal state of operation. I
 
 Note that the Requestor Agent may at some point decide to end the service while it is in `Running` state - this ends the actions specified for `Running` state and triggers the transition to `Stopping` state.
 
+{% hint style="info" %}
+This method also follows the _work generator_ pattern.
+{% endhint %}
+
 ### Define Stopping logic
 
 In case the service gets halted, either by Requestor's decision, or due to Provider-triggered termination, the Service moves to a `Stopping` state, in which a Requestor Agent still may have an ability to eg. recover some artifacts from the service, or perform some general cleansweep.
@@ -133,6 +139,10 @@ In case the service gets halted, either by Requestor's decision, or due to Provi
 {% endtabs %}
 
 Note that the `Stopping` actions are executed only once in Service's lifecycle.   
+
+{% hint style="info" %}
+Again, _work generator_ pattern here.
+{% endhint %}
 
 ### Provisioning the service
 

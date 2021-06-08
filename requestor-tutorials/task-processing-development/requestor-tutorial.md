@@ -364,9 +364,13 @@ async function* worker(ctx: WorkContext, tasks) {
 {% endtab %}
 {% endtabs %}
 
-The routine is called with a `ctx` object that contains the work context for a single provider who executes the fragments of the task assigned to them.
+The routine is called with a `ctx` object that contains the `WorkContext` for a single provider who executes the fragments of the task assigned to them.
 
 `tasks` is a generator that provides tasks from a common queue in an asynchronous way, so that each provider can take another task from the queue as soon as they finish the previous one. The execution continues for as long as there are tasks in the queue.
+
+The work generator and WorkContext are described in more detail in the following article:
+
+{% page-ref page="../golem-application-fundamentals/hl-api-work-generator-pattern.md" %}
 
 In this example, we're using a single scene file which all task fragments use, so it only needs to be sent and attached to the provider when the container is first deployed on the provider's end:
 
