@@ -58,7 +58,7 @@ Note that some programming languages do not support receiving responses from a `
 ### WorkContext APIs
 
 {% hint style="info" %}
-**Note t**hat implementation of WorkContext APIs is specific to a ExeUnit/runtime which we communicate with. Ie. run\(\) on VM runtime means calling a shell command, while in a different ExeUnit it may have a different semantic, or may not be implemented at all.
+**Note** that implementation of WorkContext APIs is specific to a ExeUnit/runtime which we communicate with. Ie. run\(\) on VM runtime means calling a shell command, while in a different ExeUnit it may have a different semantic, or may not be implemented at all.
 {% endhint %}
 
 The `WorkContext` is a facade which exposes APIs to build various commands. Some useful methods are listed below:
