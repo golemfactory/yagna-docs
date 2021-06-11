@@ -45,10 +45,6 @@ Once agreements with the selected providers are finalized, which happens in the 
 _If this is a subsequent run of the image, the image could already be cached by some of the providers._
 {% endhint %}
 
-#### Input data
-
-The task is then split into fragments and each provider can receive one or more of such fragments. Each fragment is described by a certain set of input data - part of which can be common for the whole task and part of which may be specific for the given fragment. The prepared data is then sent - either directly from the memory, or from requestor's local file system - to the provider and further, into eg. the Docker container's file system on the provider's execution unit.
-
 #### Execution script
 
 A script consisting of one or more commands is executed by the execution unit using the providers' docker containers.
@@ -57,15 +53,15 @@ A script consisting of one or more commands is executed by the execution unit us
 It is expected that in the result of the command execution, in the docker container's file system there are some files that can be transferred to the requestor.
 {% endhint %}
 
-#### Output
+#### Input and output
 
-The requestor agent needs to transfer the output files from the provider's docker container's file systems to its local file system.
+As part of the execution script, the requestors may wish to supply the providers with additional data \(be it files or execution parameters\) that need to be transferred to the providers. Similarly, once some task has been executed on a provider node, the requestor agent may wish to transfer the output files from the provider to its local file system.
 
-The agent then combines all the data transferred from providers to form the final output that can be consumed by the application user.
+Appropriate upload/download commands are showcased in our more detailed tutorials in which we describe our two major development models: [the task model](../task-processing-development/) and [the service model](../service-development/).
 
 #### Payments
 
-As the provider executes the payload, it also expects the requestor to pay for the activity. The payments are driven by invoice & debit note artifacts issued by the provider, which must be acknowledged and accepted by the requestor agent. The Golem implementation orchestrates payments for the accepted invoices to be made using the payment platform/driver negotiated during the negotiation stage - so the requestor agent does not need to dive into the nuances of payments. 
+As the provider executes the payload, it also expects the requestor to pay for the activity. The payments are triggered by invoices and debit notes issued by the provider, which must be acknowledged and accepted by the requestor agent. Golem's high-level API orchestrates payments for the accepted invoices to be made using the payment platform/driver negotiated during the negotiation stage - so the requestor agent does not need to dive into the nuances of payments. 
 
 To learn about some additional details on how different parts of Golem work together, please have a look at:
 
