@@ -34,9 +34,6 @@ The Requestor Agent app must define the "payload" - the details specification of
 {% tab title="Python" %}
 ```python
 class SimpleService(Service):
-    STATS_PATH = "/golem/out/stats"
-    PLOT_INFO_PATH = "/golem/out/plot"
-    SIMPLE_SERVICE = "/golem/run/simple_service.py"
 
     @staticmethod    
     async def get_payload():
@@ -71,7 +68,7 @@ Once a Golem activity starts and the Service instance begins its life, the Reque
 {% endtab %}
 {% endtabs %}
 
-The `start()` method follows a 'work generator' pattern. It uses `WorkContext` instance \(accessed via `_ctx`\) to build a sequence of actions which then gets returned to the service execution engine to be asynchronously relayed to the Provider's runtime. Please take a look at the methods provided by the `WorkContext` to get familiar with the possible work steps that can be actioned via Golem APIs:
+The `start()` method follows a 'work generator' pattern. It uses `WorkContext` instance \(accessed via `_ctx`\) to build a sequence of actions which then gets returned to the service execution engine to be asynchronously relayed to the Provider's runtime. Please take a look at the methods provided by the `WorkContext` to get familiar with the possible work steps that can be performed via Golem APIs:
 
 {% page-ref page="../golem-application-fundamentals/hl-api-work-generator-pattern.md" %}
 
@@ -79,7 +76,7 @@ The `start()` sequence of actions is executed only once in Service's lifecycle, 
 
 ### Define Running logic
 
-Once started, the Service moves in Running mode - a normal state of operation. In this state, the Requestor Agent may eg. monitor & control the service \(either via Golem APIs or contacting the service directly via other means\).
+Once started, the Service moves in Running mode - a normal state of operation. In this state, the Requestor Agent may e.g. monitor & control the service \(either via Golem APIs or contacting the service directly via other means\).
 
 {% tabs %}
 {% tab title="Python" %}
@@ -89,24 +86,12 @@ Once started, the Service moves in Running mode - a normal state of operation. I
     async def run(self):
         while True:
             await asyncio.sleep(10)
-            self._ctx.run(self.SIMPLE_SERVICE, "--stats")  # idx 0
-            self._ctx.run(self.SIMPLE_SERVICE, "--plot", "dist")  # idx 1
+            self._ctx.run("/golem/run/simple_service.py", "--stats")  # idx 0
 
             future_results = yield self._ctx.commit()
             results = await future_results
             stats = results[0].stdout.strip()
-            plot = results[1].stdout.strip().strip('"')
-
-        
-            plot_filename = (
-                    "".join(random.choice(string.ascii_letters) for _ in
-                            range(10)) + ".png"
-            )
-        
-            self._ctx.download_file(plot, str(pathlib.Path(__file__).resolve().parent / plot_filename))
-
-            steps = self._ctx.commit()
-            yield steps
+            print(stats)
             
    ...
 
@@ -117,12 +102,12 @@ Once started, the Service moves in Running mode - a normal state of operation. I
 Note that the Requestor Agent may at some point decide to end the service while it is in `Running` state - this ends the actions specified for `Running` state and triggers the transition to `Stopping` state.
 
 {% hint style="info" %}
-This method also follows the _work generator_ pattern.
+This method also follows the [_work generator_ ](../golem-application-fundamentals/hl-api-work-generator-pattern.md)pattern.
 {% endhint %}
 
 ### Define Stopping logic
 
-In case the service gets halted, either by Requestor's decision, or due to Provider-triggered termination, the Service moves to a `Stopping` state, in which a Requestor Agent still may have an ability to eg. recover some artifacts from the service, or perform some general cleansweep.
+In case the service gets halted, either by Requestor's decision, or due to Provider-triggered termination, provided the activity \(and thus, the attached `WorkContext` \) is still available, the Service moves to a `Stopping` state, in which a Requestor Agent still may have an ability to e.g. recover some artifacts from the service instance, or perform some general cleansweep.
 
 {% tabs %}
 {% tab title="Python" %}
@@ -138,10 +123,14 @@ In case the service gets halted, either by Requestor's decision, or due to Provi
 {% endtab %}
 {% endtabs %}
 
-Note that the `Stopping` actions are executed only once in Service's lifecycle.   
+Note that the `Stopping` actions are executed only once in Service's lifecycle.
 
 {% hint style="info" %}
-Again, _work generator_ pattern here.
+Again, [_work generator_](../golem-application-fundamentals/hl-api-work-generator-pattern.md) pattern here.
+{% endhint %}
+
+{% hint style="warning" %}
+In a situation where the termination happened abruptly - e.g. because the provider running the service stopped responding or already terminated the respective activity, Golem won't be able to transition the instance to the `stopping` state but rather directly to the `terminated` one. In this case, the `shutdown` handler won't be executed.
 {% endhint %}
 
 ### Provisioning the service
