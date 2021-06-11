@@ -20,7 +20,7 @@ If this was a real-life example, the data could come from some sensor connected 
 
 All components of the service itself - that is - the part that's actually running on a provider node, are included in a VM image and contained within the `simple_service` directory of the example. For the sake of simplicity, all the code is in Python and to limit the size of the VM image the providers need to download, we're relying on an official Python 3.8 slim image plus two additional Python libraries: `numpy` and `matplotlib`.
 
-#### Service back-end
+### Service back-end
 
 The back-end's code resides in `simple_service/simple_service.py` file in the example's directory. It's a simple script with a command-line interface which accepts one of five commands. The usage is as follows:
 
@@ -57,7 +57,7 @@ Example output of `--plot`:
 
 ![](../../.gitbook/assets/rulkfjiudp.png)
 
-#### Source of data
+### Source of data
 
 As mentioned, if this was a real-life example, the data could perhaps come from some external sensor, API, website or some other source that we'd like our service to monitor. In our case, the "daemon" is just a simple loop that simulates observations of such a source by generating random values once a second. 
 
@@ -80,11 +80,11 @@ while True:
     time.sleep(1)
 ```
 
-#### Control script
+### Control script
 
 The final piece of code is the daemon's control script `simple_service/simulate_observations_ctl.py` , the role of which is to enable starting and stopping the daemon. It's again a CLI tool that accepts just one of the two parameters: `--start` and `--stop` which, quite obviously, respectively start and stop the background process which generates the simulated observations.
 
-#### Dockerfile
+### Dockerfile
 
 Finally, we put all of the above components together using the following Dockerfile \(`simple_service/simple_service.Dockerfile`\), built on top of Python 3.8's slim image.
 
