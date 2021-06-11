@@ -6,7 +6,9 @@ Now that you have seen a simple Golem application in action, it is a good idea t
 
 A Golem application consists of a certain number of execution units - e.g. VMs capable of running Docker images - launched within the network's provider nodes that are orchestrated by a requestor agent - a piece of code talking directly to the REST API on a requestor node.
 
-Golem's execution units are theoretically capable of running code inside any environment that provides effective isolation of execution from the host. Currently Docker VMs and WASM are supported. 
+Golem's execution units are theoretically capable of running any kind of payload. Out of the box, we provide ability to execute code inside environments that provide effective isolation of execution from the host - currently, this support is limited to Docker VMs and WASM. 
+
+Other kinds of payloads are possible as long as the app developer is ready to implement an appropriate runtime and distribute it to willing providers.
 
 So far, said orchestration takes the form of one of three types of actions:
 
