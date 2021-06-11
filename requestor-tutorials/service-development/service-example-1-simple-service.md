@@ -112,6 +112,22 @@ What it does is:
 It's important to note that the `ENTRYPOINT` statement, though included, is there just for convenience when testing the image in Docker itself. That entrypoint is ignored by Golem's VM runtime and all commands need to be refered to by their absolute paths \(`/golem/run...`\)
 {% endhint %}
 
+## Building the image
+
+The requestor agent script included in the example already contains the hash of the image that has been built by us and uploaded to Golem's VM image repository. 
+
+When building your own application though, you'd need to create and upload that image yourself. For full information on how to do that, please refer to our tutorial on [converting a Docker image to Golem's format](../convert-a-docker-image-into-a-golem-image.md).
+
+If you'd like to play around with modifying the included image yourself, please remember to update the service definition's `get_payload` hook to point to your just-uploaded image:
+
+```python
+    async def get_payload():
+        return await vm.repo(
+        image_hash="your-image-hash-here",
+        ...
+    )
+```
+
 
 
 
