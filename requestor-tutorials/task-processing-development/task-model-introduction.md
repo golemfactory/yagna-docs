@@ -20,8 +20,10 @@ Next, you need to find a way how to divide the whole problem into fragments. Eac
 
 In order to proceed further, you'll be required to design your app in such a way that it's able to:
 
-1. Translate the problem fragments into input and output files the processing of which is performed independently in each of the providers.
-2. Combine all the output files into the final solution of the problem at hand.
+1. Translate the problem fragments into input and output files the processing of which can be performed independently on each of the provider nodes.
+2. Combine the individual outputs into the final solution of the problem at hand.
+
+It's worth noting here that the number of fragments does not necessarily need to depend on the number of provider nodes commissioned to perform our tasks. The high-level API will spawn activities on multiple providers as long as there are providers willing to fulfill our demand and up to the number of said fragments or up to the limit specified by `max_workers` parameter of `execute_tasks` \(Python\) / `submit` \(JS\). If the eventual number of fragments is higher than the number of workers, the API will take care of distributing those fragments against the available nodes in an optimum way.
 
 ## What do I need to create a VM application for Golem?
 
