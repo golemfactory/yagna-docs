@@ -219,7 +219,7 @@ await asyncWith(
 {% endtab %}
 {% endtabs %}
 
-Finally, as the last step of our `main()` function we create an instance of `Golem` \(or executor in the case of JS API\) and use it to request our tasks.
+Finally, as the last step of our `main()` function we create an instance of `Golem` \(or `Executor` in the case of JS API\) and use it to request our tasks.
 
 `Golem/Executor` is the heart of Golem's API - it handles communication with the local Golem node, processes payments for completed tasks and, most importantly, provides an easy way of requesting resources in the Golem network.
 
