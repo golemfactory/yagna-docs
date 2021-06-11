@@ -130,7 +130,7 @@ Again, [_work generator_](../golem-application-fundamentals/hl-api-work-generato
 {% endhint %}
 
 {% hint style="warning" %}
-In a situation where the termination happened abruptly - e.g. because the provider running the service stopped responding or already terminated the respective activity, Golem won't be able to transition the instance to the `stopping` state but rather directly to the `terminated` one. In this case, the `shutdown` handler won't be executed.
+In a situation where the termination happens abruptly - e.g. because the provider running the service stops responding or has already terminated the respective activity, Golem won't be able to transition the instance to the `stopping` state but rather directly to the `terminated` one. In this case, the `shutdown` handler won't be executed.
 {% endhint %}
 
 ### Provisioning the service
