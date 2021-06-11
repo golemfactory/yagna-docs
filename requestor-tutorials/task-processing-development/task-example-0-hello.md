@@ -1,0 +1,336 @@
+---
+description: Development and deployment of a task-based Golem requestor agent
+---
+
+# Task Example 0: Hello World!
+
+## Prerequisites
+
+The only assumption made in this article is that you have some familiarity with basic Golem application concepts. Here's a good starting point to learn about these: [Golem application fundamentals](../golem-application-fundamentals/)
+
+Here are the prerequisites in case you'd like to follow along and/or experiment with the code presented in this article:
+
+* you have a local `yagna` node set up \(instructions can be found here: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/)\)
+* you have the Python or JS Golem high-level API set up on your machine \(instructions here: [Run first task on Golem](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md)\)
+
+{% hint style="info" %}
+Golem's APIs rely heavily on coroutines and asynchronous execution \(`async/await`\). If you're unfamiliar with these concepts, chances are you'll find some parts of the code examples confusing.
+
+If you'd like to learn more about `async/await`, here's a good introduction to Python's generators and coroutines: [https://mleue.com/posts/yield-to-async-await/](https://mleue.com/posts/yield-to-async-await/)
+
+Although the blog post is focused on Python, most of the concepts presented there are still relevant for other programming languagues which support `async/await`.
+{% endhint %}
+
+## Requestor agent code
+
+Let's jump straight to the example:
+
+{% hint style="info" %}
+This example uses the standard VM runtime.
+{% endhint %}
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+#!/usr/bin/env python3
+import asyncio
+from typing import AsyncIterable
+
+from yapapi import Golem, Task, WorkContext
+from yapapi.log import enable_default_logger
+from yapapi.payload import vm
+
+
+async def worker(context: WorkContext, tasks: AsyncIterable[Task]):
+    async for task in tasks:
+        context.run("/bin/sh", "-c", "date")
+
+        future_results = yield context.commit()
+        results = await future_results
+        task.accept_result(result=results[-1])
+
+
+async def main():
+    package = await vm.repo(
+        image_hash="d646d7b93083d817846c2ae5c62c72ca0507782385a2e29291a3d376",
+    )
+
+    tasks = [Task(data=None)]
+
+    async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
+        async for completed in golem.execute_tasks(worker, tasks, payload=package):
+            print(completed.result.stdout)
+
+
+if __name__ == "__main__":
+    enable_default_logger(log_file="hello.log")
+
+    loop = asyncio.get_event_loop()
+    task = loop.create_task(main())
+    loop.run_until_complete(task)
+```
+{% endtab %}
+
+{% tab title="NodeJS" %}
+```javascript
+const { Executor, Task, utils: { asyncWith }, vm } = require("yajsapi");
+
+async function main() {
+  const package = await vm.repo({
+    image_hash: "d646d7b93083d817846c2ae5c62c72ca0507782385a2e29291a3d376"
+  });
+  const tasks = [new Task({})];
+
+  async function* worker(context, tasks) {
+    for await (let task of tasks) {
+      context.run("/bin/sh", ["-c", "date"]);
+      const future_result = yield context.commit();
+      const { results } = await future_result;
+      task.accept_result(results[results.length - 1])
+    }
+  }
+
+  await asyncWith(
+    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta.2" }),
+    async (executor) => {
+      for await (let completed of executor.submit(worker, tasks)) {
+        console.log(completed.result().stdout);
+      }
+    }
+  );
+}
+
+main();
+```
+{% endtab %}
+{% endtabs %}
+
+That's all we need in order to run a task on Golem!
+
+### How does it work?
+
+Here's the flow diagram of all the interactions that need to happen between the requestor and the provider\(s\) in order for a task to be completed:
+
+![requestor agent - sequential diagram](../../.gitbook/assets/requestor-tutorial-sequence.png)
+
+From a high-level perspective, a successful run of the above program performs the following steps:
+
+1. A single task is scheduled to be executed in the Golem network
+2. Once a suitable provider is found in the market, a lightweight VM is launched on that node
+3. When the execution environment is ready, the requestor's script is run inside it
+4. Once the script is finished, the result is retrieved from the provider and displayed to the terminal
+
+In this minimal example our script consists of a single command: the Linux `date` utility. This program returns a string representing the system's current time, e.g.: `Tue Jun 8 14:53:51 UTC 2021`.
+
+...
+
+All right, we'll skip over the imports at the top and boilerplate code at the bottom of the example and we'll jump straight into the body of the `main()` routine.
+
+## 1. The main\(\) function
+
+This function is our program's entry point and it performs three steps:
+
+1. Specifying the VM image to be launched by providers
+2. Defining an array of `Task` objects to be computed
+3. Creating a `Golem` instance and using it to execute our tasks
+
+Let's now go over these steps and learn some more about them.
+
+### VM image
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+package = vm.repo(
+    image_hash="d646d7b93083d817846c2ae5c62c72ca0507782385a2e29291a3d376",
+)
+```
+{% endtab %}
+
+{% tab title="NodeJS" %}
+```javascript
+const package = await vm.repo({
+    image_hash: "d646d7b93083d817846c2ae5c62c72ca0507782385a2e29291a3d376"
+});
+```
+{% endtab %}
+{% endtabs %}
+
+The routine is called with a `ctx` object that contains the `WorkContext` for a single provider who executes the fragments of the task assigned to them.
+
+Currently, Golem is using a public repository to store both official and community-authored VM images. Once an image is uploaded to this repository it can be referred to by its hash.
+
+This is what we're making use of here - by using the function `repo` from `vm`, we're getting a payload definition for our providers. The only input we must provide at this point is the image hash. In the case of this example we're using a pre-uploaded, minimal image based on Alpine Linux.
+
+The work generator and WorkContext are described in more detail in the following article:
+
+{% page-ref page="../golem-application-fundamentals/hl-api-work-generator-pattern.md" %}
+
+{% hint style="info" %}
+If you'd like to learn about creating and uploading Golem images yourself, take a look at this article: [VM runtime: How to convert a Docker image into a Golem image?](../convert-a-docker-image-into-a-golem-image.md)
+{% endhint %}
+
+### Tasks array
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+tasks = [Task(data=None)]
+```
+{% endtab %}
+
+{% tab title="NodeJS" %}
+```javascript
+const tasks = [new Task({})];
+```
+{% endtab %}
+{% endtabs %}
+
+Next comes the array of tasks to be computed. For simplicity, our `tasks` array contains a single item of type `Task` which has no data associated with it. This means we only need a single task to be computed and that the worker function does not need any additional parameters to execute this task.
+
+In general, each `Task` object refers to a single piece of computation within your app and typically holds some data. For example, in a program which operates on a huge file, a single `Task` could be holding one chunk of that file to be processed by one of many providers involved.
+
+{% hint style="info" %}
+To see a more involved example of this take a look at: [Task Example 1: Simple hash cracker](task-example-1-cracker.md#the-task-fragments)
+{% endhint %}
+
+### Golem/Executor
+
+{% tabs %}
+{% tab title="Python" %}
+```javascript
+async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
+    async for completed in golem.execute_tasks(worker, tasks, payload=package):
+        print(completed.result.stdout)
+```
+{% endtab %}
+
+{% tab title="NodeJS" %}
+```javascript
+await asyncWith(
+    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta.2" }),
+    async (executor) => {
+        for await (let completed of executor.submit(worker, tasks)) {
+            console.log(completed.result().stdout);
+        }
+    }
+);
+```
+{% endtab %}
+{% endtabs %}
+
+Finally, as the last step of our `main()` function we create an instance of `Golem` \(or executor in the case of JS API\) and use it to request our tasks.
+
+`Golem/Executor` is the heart of Golem's API - it handles communication with the local Golem node, processes payments for completed tasks and, most importantly, provides an easy way of requesting resources in the Golem network.
+
+#### Instantiation
+
+Let's first focus on the instantiation code:
+
+{% tabs %}
+{% tab title="Python" %}
+```javascript
+async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
+    ...
+```
+{% endtab %}
+
+{% tab title="NodeJS" %}
+```javascript
+await asyncWith(
+    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta.2" }),
+    ...
+);
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+`Golem/Executor` instances work as asynchronous [context managers](https://docs.python.org/3/reference/datamodel.html#context-managers). Since context managers are a concept native to Python, Golem's `yajsapi` provides a custom implementation in the form of the function `asyncWith`.
+
+Context managers are somewhat similar to `try-catch-finally` blocks. They allow for setup and teardown logic before using some resource. In our case this resource is the `Golem/Executor` instance, while the block of code inside `async with/asyncWith` is the context.
+{% endhint %}
+
+Our context manager needs to be declared asynchronous as its setup and teardown functions are coroutines. This is required since they involve some long running actions such as creating/deleting payment allocations or starting/stopping background services.
+
+As for the parameters passed to the `Golem/Executor` constructor:
+
+* `budget` specifies our desired budget \(in GLM\) for the total cost of all tasks computed using this `Golem/Executor` instance.
+* `subnet_tag` specifies the name of a Golem network sub-network we'd like to use for all Golem communication performed by this `Golem/Executor` instance.
+
+{% hint style="warning" %}
+In the JavaScript API, the current implementation of `Executor` requires `task_package` to be passed in to the constructor. This is likely to change in the future. More on this parameter in the next section.
+{% endhint %}
+
+#### Execution
+
+{% tabs %}
+{% tab title="Python" %}
+```javascript
+async for completed in golem.execute_tasks(worker, tasks, payload=package):
+    print(completed.result.stdout)
+```
+{% endtab %}
+
+{% tab title="NodeJS" %}
+```javascript
+async (executor) => {
+    for await (let completed of executor.submit(worker, tasks)) {
+        console.log(completed.result().stdout);
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+Having a `Golem/Executor` instance initialized we can now request some tasks!
+
+The function `execute_tasks/submit` is used here, it takes three parameters \(two in the case of JavaScript's `submit`\):
+
+* `worker` is the function which defines the steps that should happen for each provider node in order to process a `Task`
+* `tasks` is the array of `Task` objects we have created
+* `payload` is the payload definition for providers which we created using the function `vm.repo`
+
+{% hint style="warning" %}
+In the case of JavaScript API we already provided the `Executor` with a payload definition through the parameter `task_package`.
+{% endhint %}
+
+`execute_tasks/submit` returns an asynchronous iterator of `Task` objects, hence the `async for/for await` statement. Items returned by this iterator are successfully completed tasks in the order they were computed.
+
+Having a completed task we can inspect its result. The result's structure will depend on the execution environment we used. In our case it's the VM runtime and so the result contains the output of your executed command in `stdout`.
+
+## The worker\(\) function
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+async def worker(context: WorkContext, tasks: AsyncIterable[Task]):
+    async for task in tasks:
+        context.run("/bin/sh", "-c", "date")
+
+        future_results = yield context.commit()
+        results = await future_results
+        task.accept_result(result=results[-1])
+```
+{% endtab %}
+
+{% tab title="NodeJS" %}
+```javascript
+async function* worker(context, tasks) {
+    for await (let task of tasks) {
+        context.run("/bin/sh", ["-c", "date"]);
+        const future_result = yield context.commit();
+        const { results } = await future_result;
+        task.accept_result(results[results.length - 1])
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+The `worker` function is what defines the interaction between our requestor node and each provider computing one or more of our tasks. It's called once per provider node with which our requestor has struck an agreement. 
+
+`WorkContext` gives us a simple interface to construct a script that translates directly to commands interacting with the execution unit on provider's end. Using this object we can schedule commands such as transferring files, running programs etc.
+
+The sequence of `Task` objects yields tasks assigned to this provider. In a more complex scenario each `Task` object would be carrying its own piece of data to be used during computation.
+

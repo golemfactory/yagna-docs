@@ -16,23 +16,21 @@ In case of any doubts or problems, you can always contact us on discord.
 
 In order to make the journey through this tutorial easier to follow, we divided it into sections. If you are eager to get your hands dirty right away, feel free to jump directly to examples. Otherwise, read on:
 
-{% page-ref page="requestor-tutorial.md" %}
+{% page-ref page="task-example-0-hello.md" %}
 
 This is a detailed article explaining the mechanics of task-based requestor development, using a Blender example on VM runtime.
 
-{% page-ref page="golem-application-how-to/" %}
+{% page-ref page="task-model-introduction.md" %}
 
 This is a general introduction, pointing the developer's mind to the rails of Golem application development.
 
-{% page-ref page="golem-application-how-to/hashcat.md" %}
-
 Here we describe `hashcat` and show how we are going to make it work in parallel.
 
-{% page-ref page="the-steps-to-do.md" %}
+{% page-ref page="task-example-2-hashcat.md" %}
 
 This is the main course of this tutorial. The implementation steps needed to create your own Golem application!
 
-{% page-ref page="hello-world.md" %}
+{% page-ref page="task-example-1-cracker.md" %}
 
 This is another example of a VM runtime-based Golem task application.
 

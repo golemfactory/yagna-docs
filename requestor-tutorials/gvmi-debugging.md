@@ -8,7 +8,7 @@ description: How to test and debug a .gvmi image on your machine
 
 When creating your own Golem app, one of the steps is defining a Docker image for your application. You can find a more detailed description of this process in our `Hello World` requestor tutorial.
 
-{% page-ref page="task-processing-development/hello-world.md" %}
+{% page-ref page="task-processing-development/task-example-1-cracker.md" %}
 
 Such a Docker image, after being converted to Golem's `.gvmi` format, is going to be used by providers within the Golem network.
 
