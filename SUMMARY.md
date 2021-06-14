@@ -37,7 +37,6 @@
   * [Task Example 2: Hashcat on Golem](requestor-tutorials/task-processing-development/task-example-2-hashcat.md)
 * [Service Model development](requestor-tutorials/service-development/README.md)
   * [Introduction into the service model](requestor-tutorials/service-development/service-model-introduction.md)
-  * [Create your own service application on Golem](requestor-tutorials/service-development/create-your-own-service-application-on-golem.md)
   * [Service Example 0: Hello world?](requestor-tutorials/service-development/service-example-0-hello-world.md)
   * [Service Example 1: Simple service](requestor-tutorials/service-development/service-example-1-simple-service.md)
   * [Service Example 2: Managed Erigon](requestor-tutorials/service-development/service-example-2-managed-erigon.md)
