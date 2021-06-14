@@ -58,28 +58,28 @@ Note that some programming languages do not support receiving responses from a `
 ### WorkContext APIs
 
 {% hint style="info" %}
-**Note** that implementation of WorkContext APIs is specific to a ExeUnit/runtime which we communicate with. In other words, `run()` on a VM runtime means calling a shell command, while for a different runtime/ExeUnit it may have a different semantic, or may not be implemented at all.
+**Note** that implementation of WorkContext APIs is specific to a ExeUnit/runtime which we communicate with. In other words, `run()` on a VM runtime may have a different semantic than on other runtimes, and in some ExeUnits it may not even be implemented at all.
 {% endhint %}
 
-The `WorkContext` is a facade which exposes APIs to build various commands. Some useful methods are listed below:
+The `WorkContext` is a facade which exposes APIs to build various commands.  Some useful methods are listed below:
 
 #### `run(statement(, arguments))`
 
-TBC
+Execute an arbitrary statement \(with arguments\) in the ExeUnit/runtime. 
+
+{% hint style="info" %}
+The semantics of the command is specific to a runtime, eg. for VM runtime this command executes a shell statement and returns results from `stdout` and `stderr`.
+{% endhint %}
 
 #### `send_*(location, <content>)`
 
-TBC
+A group of commands responsible for sending content to the ExeUnit. These are utility methods, which conveniently allow for sending eg. local files, binary content or JSON content.
 
 #### `download_*(<content>, location)`
 
-TBC
+A group of commands responsible for downloading content from the ExeUnit. As with  `send_*()`, these are utility methods which allow for convenient transfer and conversion of remote content into local files, bytes or JSON objects.
 
 #### `commit()`
 
-TBC
-
-...others...
-
-
+Majority of `WorkContext` methods listed above are command builders, which build a respective command and put it in a list of steps to be submitted. A call to `commit()` wraps the queued commands in a single batch which then can be `yield` returned.
 
