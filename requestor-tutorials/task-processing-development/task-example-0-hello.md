@@ -8,6 +8,13 @@ description: Development and deployment of a task-based Golem requestor agent
 
 The only assumption made in this article is that you have some familiarity with basic Golem application concepts. Here's a good starting point to learn about these: [Golem application fundamentals](../golem-application-fundamentals/)
 
+{% hint style="info" %}
+This example illustrates following Golem features & aspects:
+
+* VM runtime
+* Task execution
+{% endhint %}
+
 Here are the prerequisites in case you'd like to follow along and/or experiment with the code presented in this article:
 
 * you have a local `yagna` node set up \(instructions can be found here: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/)\)

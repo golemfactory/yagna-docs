@@ -7,6 +7,14 @@ description: A proof-of-concept service running within a VM-based runtime.
 The idea behind this proof-of-concept, toy-like service is to demonstrate the basic features of the high-level API's Service model running on a regular VM runtime. In other words, utilizing only the existing features of both yagna and the API itself without relying on any additional resources \(like custom runtime/ExeUnit implementation\).
 
 {% hint style="info" %}
+This example illustrates following Golem features & aspects:
+
+* VM runtime
+* Service execution
+  * Interactive command results processing
+{% endhint %}
+
+{% hint style="info" %}
 The code and components of this POC are included as an example within yapapi: [https://github.com/golemfactory/yapapi/tree/master/examples/simple-service-poc](https://github.com/golemfactory/yapapi/tree/master/examples/simple-service-poc)
 {% endhint %}
 
