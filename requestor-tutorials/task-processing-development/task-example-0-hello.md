@@ -13,6 +13,7 @@ This example illustrates following Golem features & aspects:
 
 * VM runtime
 * Task execution
+* Retrieving command output from provider's exe unit
 {% endhint %}
 
 Here are the prerequisites in case you'd like to follow along and/or experiment with the code presented in this article:

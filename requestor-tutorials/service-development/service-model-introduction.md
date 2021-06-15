@@ -2,7 +2,7 @@
 description: Development and deployment of a Golem service
 ---
 
-# Introduction into the service model
+# Introduction to the service model
 
 How can I host services in Golem network?
 
