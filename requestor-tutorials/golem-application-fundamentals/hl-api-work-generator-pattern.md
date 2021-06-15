@@ -1,4 +1,4 @@
-# HL API: Work generator pattern and WorkContext
+# Work generator pattern and WorkContext
 
 ### Intro
 
