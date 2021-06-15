@@ -1,5 +1,5 @@
 ---
-description: A proof-of-concept service running within a VM-based runtime.
+description: A proof-of-concept service running within a VM-based runtime
 ---
 
 # Service Example 1: Simple service

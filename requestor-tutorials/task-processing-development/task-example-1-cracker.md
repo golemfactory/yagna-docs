@@ -1,7 +1,3 @@
----
-description: 'Creating your first, simple app on Golem'
----
-
 # Task Example 1: Simple hash cracker
 
 _This tutorial is the textual counterpart to a workshop originally prepared by Jakub Mazurek, a Software Developer at Golem Factory and presented during the Hello Decentralization conference in February, 2021._

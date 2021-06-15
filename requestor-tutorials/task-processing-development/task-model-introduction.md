@@ -1,5 +1,5 @@
 ---
-description: Overview of a typical Golem task application.
+description: Overview of a typical Golem task application
 ---
 
 # Introduction to the task model

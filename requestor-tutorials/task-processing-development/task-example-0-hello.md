@@ -1,5 +1,5 @@
 ---
-description: Development and deployment of a task-based Golem requestor agent
+description: A minimal example of a functional Golem requestor agent
 ---
 
 # Task Example 0: Hello World!
