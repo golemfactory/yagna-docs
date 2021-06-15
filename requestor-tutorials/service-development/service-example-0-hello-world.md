@@ -94,3 +94,25 @@ if __name__ == "__main__":
 {% endtab %}
 {% endtabs %}
 
+Besides the usual boilerplate in the form of imports and the entry function there are two crucial pieces to this program:
+
+1. `DateService` class, which is the implementation of our example service. It defines how the service should be started and what action it should perform.
+2. `main()` function, which creates an instance of `Golem` to take care of provisioning our service using the Golem network.
+
+Let's now take a closer look at both of the components mentioned above.
+
+## Service implementation
+
+In the Golem API, services are implemented by extending the base `Service` class. By overriding certain methods from that class we can define our service's life cycle, as well as its payload. Here's an overview of this interface:
+
+* `get_payload() -> Optional[Payload]` returns the `Payload` object which describes the execution environment we want our service instances to run on. In the case of the VM runtime this will include a hash of the VM image to be deployed. If we choose not to implement this method our payload will need to be specified when running the service through `Golem.run_service`.
+* `start() -> None` called for each service instance when it enters the `starting` state. This should contain the sequence of steps which need to be taken in order for our service to be started.
+* `run() -> None` called for each service instance when it enters the `running` state. This is where the main loop of our service should be implemented.
+* `shutdown() -> None` called for each service instance when it enters the `stopping` state. In case our service requires some cleanup logic to be run before an instance is terminated, this is where it should be placed.
+
+All three life cycle methods \(i.e. `start`, `run` and `shutdown`\) are optional, although in most cases a service will require at least `start` and `run` to be implemented.
+
+{% hint style="info" %}
+
+{% endhint %}
+

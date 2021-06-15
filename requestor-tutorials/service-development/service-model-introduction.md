@@ -20,7 +20,7 @@ Transitions from one state to another take place as a result of certain events. 
 
 ## Requestor Agent service application layout
 
-The developer of a Golem service application needs to follow a certain pattern to implement fundamental aspects of service definition and control. A Service application includes an ExeUnit running on Provider node, and Requestor exercising control over that ExeUnit via Golem APIs. The ExeUnit can be eg. a VM hosting a specific payload application, or a bespoke ExeUnit controller/wraper which integrates a third-party service software with Golem ecosystem. In any case, the Service provisioned on Golem network will require certain aspects to be specified in the Requestor Agent application.
+The developer of a Golem service application needs to follow a certain pattern to implement fundamental aspects of service definition and control. A Service application includes an ExeUnit running on Provider node, and Requestor exercising control over that ExeUnit via Golem APIs. The ExeUnit can be eg. a VM hosting a specific payload application, or a bespoke ExeUnit controller/wrapper which integrates a third-party service software with Golem ecosystem. In any case, the Service provisioned on Golem network will require certain aspects to be specified in the Requestor Agent application.
 
 In order to define a Golem Service, the developer must create a class/object to indicate the fundamental aspects of the Service to be provisioned. The class must include methods responsible for payload specification \(the details of the Demand indicating eg. the ExeUnit/runtime to be sought on the market\), and logic to be executed in "active" states of the service lifecycle. 
 

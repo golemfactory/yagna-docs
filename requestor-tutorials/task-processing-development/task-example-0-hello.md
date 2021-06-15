@@ -134,7 +134,7 @@ In this minimal example our script consists of a single command: the Linux `date
 
 All right, we'll skip over the imports at the top and boilerplate code at the bottom of the example and we'll jump straight into the body of the `main()` routine.
 
-## 1. The main\(\) function
+## The main\(\) function
 
 This function is our program's entry point and it performs three steps:
 
