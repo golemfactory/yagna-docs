@@ -151,7 +151,7 @@ async def start(self):
 {% endtab %}
 {% endtabs %}
 
-Our `start` function is responsible for starting a background process on the provider's exe unit. In the case of `DateService` this process is going to be the following `bash` command:
+Our `start` function is responsible for starting a background process on the provider's exe unit. In the case of `DateService` this process is going to be the following shell command:
 
 {% tabs %}
 {% tab title="Bash" %}
@@ -185,4 +185,22 @@ async def run(self):
 ```
 {% endtab %}
 {% endtabs %}
+
+This function is where the requestor agent has a chance to monitor and control each running service instance. In the case of our example we periodically monitor values generated on a service instance by printing them out to the console.
+
+To retrieve the last sample we run the shell command `cat /golem/work/date.txt` in the provider's exe unit and then retrieve its output by awaiting on `future_results`. This gives us an array of objects containing command results which we can use to get the output we need.
+
+## Service provisioning
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+async def main():
+    async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
+        cluster = await golem.run_service(DateService, num_instances=1)
+```
+{% endtab %}
+{% endtabs %}
+
+
 
