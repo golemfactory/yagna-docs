@@ -369,7 +369,11 @@ while cnt < 10 and still_running():
 
 ## Next steps
 
-That's basically all it takes for a developer to run a service on a Golem VM. As a final note here, it may be worth to mention some current limitations in this regard.
+{% hint style="success" %}
+That's basically all it takes for a developer to run a service on a Golem VM. 
+{% endhint %}
+
+As a final note here, it may be worth to mention some current limitations in this regard.
 
 Firstly, our VM-based runtimes currently offer no network access - be it communication between the instances and the requestor agent and communications with the outside world. Good thing is that we're already working hard on bringing those features to you in one of the next releases of yagna and our APIs.
 
