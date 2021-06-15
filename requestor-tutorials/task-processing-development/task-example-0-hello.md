@@ -4,10 +4,6 @@ description: A minimal example of a functional Golem requestor agent
 
 # Task Example 0: Hello World!
 
-## Prerequisites
-
-The only assumption made in this article is that you have some familiarity with basic Golem application concepts. Here's a good starting point to learn about these: [Golem application fundamentals](../golem-application-fundamentals/)
-
 {% hint style="info" %}
 This example illustrates following Golem features & aspects:
 
@@ -15,6 +11,12 @@ This example illustrates following Golem features & aspects:
 * Task execution
 * Retrieving command output from provider's exe unit
 {% endhint %}
+
+## Prerequisites
+
+The only assumption made in this article is that you have some familiarity with basic Golem application concepts. Here's a good starting point to learn about these:
+
+{% page-ref page="../golem-application-fundamentals/" %}
 
 Here are the prerequisites in case you'd like to follow along and/or experiment with the code presented in this article:
 
