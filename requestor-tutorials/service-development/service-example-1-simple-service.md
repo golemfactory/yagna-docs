@@ -375,9 +375,9 @@ That's basically all it takes for a developer to run a service on a Golem VM.
 
 As a final note here, it may be worth to mention some current limitations in this regard.
 
-Firstly, our VM-based runtimes currently offer no network access - be it communication between the instances and the requestor agent and communications with the outside world. Good thing is that we're already working hard on bringing those features to you in one of the next releases of yagna and our APIs.
+Firstly, our VM-based runtimes currently offer no network access - be it communication between the instances and the requestor agent or communications with the outside world. Good thing is that we're already working hard on bringing those features to you in one of the next releases of yagna and our APIs.
 
-Secondly, the lifetime of a service on Golem is limited to the maximum lifetime of an activity on the provider's node which currently, be default is set to a maximum of 3 hours and can be manually extended by each provider if they wish to.
+Secondly, the lifetime of a service on Golem is limited to the maximum lifetime of an activity on the provider's node which currently, be default is set to a maximum of 3 hours and can only be manually extended by each provider if they wish to.
 
 ### Custom runtimes
 
