@@ -113,6 +113,76 @@ In the Golem API, services are implemented by extending the base `Service` class
 All three life cycle methods \(i.e. `start`, `run` and `shutdown`\) are optional, although in most cases a service will require at least `start` and `run` to be implemented.
 
 {% hint style="info" %}
+To control service instances running on remote exe units, all life cycle methods require access to a `WorkContext` object tied to some active instance.
 
+This `WorkContext` instance is provided through the field `self._ctx` of the `Service` class. This means that, behind the scenes, an object of our `Service` subclass is spawned for each service instance running on a provider.
 {% endhint %}
+
+### payload definition
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+@staticmethod
+async def get_payload():
+    return await vm.repo(
+        image_hash="d646d7b93083d817846c2ae5c62c72ca0507782385a2e29291a3d376"
+    )
+```
+{% endtab %}
+{% endtabs %}
+
+Our `DateService` uses the same image hash as the [Task Example 0: Hello World!](../task-processing-development/task-example-0-hello.md). This hash points to a pre-uploaded, minimal image based on Alpine Linux.
+
+### start\(\) function
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+async def start(self):
+    # every `DATE_POLL_INTERVAL` write output of `date` to `DATE_OUTPUT_PATH`
+    self._ctx.run(
+        "/bin/sh",
+        "-c",
+        f"while true; do date > {DATE_OUTPUT_PATH}; sleep {REFRESH_INTERVAL_SEC}; done &",
+    )
+    yield self._ctx.commit()
+```
+{% endtab %}
+{% endtabs %}
+
+Our `start` function is responsible for starting a background process on the provider's exe unit. In the case of `DateService` this process is going to be the following `bash` command:
+
+{% tabs %}
+{% tab title="Bash" %}
+```bash
+while true; do date > /golem/work/date.txt; sleep 5; done &
+```
+{% endtab %}
+{% endtabs %}
+
+The above command has its placeholders substituted with their actual default values. When run in the provider's exe unit, this will keep rewriting the file `/golem/work/date.txt` with the output of `date` every 5 seconds.
+
+The file `/golem/work/date.txt` will be our source of data which we'll later on read in our service's `run` function.
+
+### run\(\) function
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+async def run(self):
+    while True:
+        await asyncio.sleep(REFRESH_INTERVAL_SEC)
+        self._ctx.run(
+            "/bin/sh",
+            "-c",
+            f"cat {DATE_OUTPUT_PATH}",
+        )
+
+        future_results = yield self._ctx.commit()
+        results = await future_results
+        print(results[0].stdout.strip())
+```
+{% endtab %}
+{% endtabs %}
 
