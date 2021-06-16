@@ -480,7 +480,7 @@ The first step in the computation is to **check the keyspace size**. For this we
 
 ### Define the tasks
 
-Knowing the keyspace size we define the list of **tasks** to execute on providers. Recall from section [Doing things in parallel](task-example-2-hashcat.md#doings-things-in-parallel) that we can run `hashcat` on a fragment of the whole keyspace, using the `--skip` and `--limit` parameters. In this step for each such fragment we define a separate task.  
+Knowing the keyspace size we define the list of **tasks** to execute on providers. Recall from the section [Doing things in parallel](task-example-2-hashcat.md#doings-things-in-parallel) that we can run `hashcat` on a fragment of the whole keyspace, using the `--skip` and `--limit` parameters. In this step for each such fragment we define a separate task.  
 
 Knowing the number of tasks we can also determine the number of providers required to execute them in parallel. In this example we decided that the number of providers contracted for the work will be equal to the number of tasks divided by two. This does not necessarily mean that every provider will get exactly two tasks, even if the overall number of tasks is even, because:
 
@@ -627,7 +627,7 @@ The first worker is similar to the one that we've seen in [Hello World!](task-ex
 hashcat --keyspace -a {HASHCAT_ATTACK_MODE} -m {args.hash_type} {args.mask}
 ```
 
-This will instruct `hashcat` to compute and print the keyspace size. The following code sends the command to the provider, waits until it completes, and retrieves it's stdout:
+This instructs `hashcat` to compute and print the keyspace size. The following code sends the command to the provider, waits until it completes, and retrieves it's standard output:
 
 ```python
         cmd = f"hashcat --keyspace " f"-a {HASHCAT_ATTACK_MODE} -m {args.hash_type} {args.mask}"
@@ -664,7 +664,7 @@ The second worker function, `perform_mask_attack` is more interesting. Unlike `c
 The commands here are passed to an explicitly referenced `/bin/sh` shell. That's because any commands specified within `ctx.run()` are not, by themselves, run inside any shell.
 {% endhint %}
 
-The exact command to be run spans multiple lines so we construct it in a separate function `_make_attack_command` so the worker code is easier to follow. Let's take a look!
+The exact command to be run spans multiple lines so we construct it in a separate function `_make_attack_command` to make the worker code easier to follow. Let's take a look!
 
 ```python
 def _make_attack_command(skip: int, limit: int, output_path: str) -> str:
@@ -745,7 +745,7 @@ except KeyboardInterrupt:
 
 
 {% hint style="success" %}
-Now, as we know how the yacat works, let's run it!
+Now, as we know how `yacat.py` works, let's run it!
 {% endhint %}
 
 ## Example run
