@@ -1,6 +1,6 @@
 # Run first task on Golem
 
-## start\_workerRunning the requestor and your first task on the New Golem Network
+## Running the requestor and your first task on the New Golem Network
 
 Now you have the `yagna` daemon running, you may proceed with running a task as a requestor.
 
