@@ -316,6 +316,10 @@ After those commands are executed, we receive an instance of `Cluster` which is 
 
 Otherwise, we could say or work here is done. The Golem engine will take care of finding the providers to run our service instances and after those instances are deployed, will automatically run our "`start`", "`run`" and "`shutdown`" handlers on them.
 
+{% hint style="success" %}
+We have just managed to run a service on Golem!
+{% endhint %}
+
 #### Controlling and monitoring our service
 
 The rest of the `main` function in `simple_service.py` is just devoted to tracking the state of the commissioned instances for a short while and then instructing the cluster to stop:
