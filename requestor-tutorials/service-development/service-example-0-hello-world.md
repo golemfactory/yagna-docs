@@ -270,3 +270,5 @@ Wed Jun 16 11:42:53 UTC 2021
 
 In the case of our example we run a single instance of the service. Once that instance changes its state to `running` we start seeing output from the `date` command running inside the VM. After our set period of time \(i.e. 1 minute\) the agreement gets terminated and, after paying for the invoice, our program exits.
 
+The next article takes a close look at a more complete example, including error handling and more complex service control.
+
