@@ -71,7 +71,7 @@ To learn about some additional details on how different parts of Golem work toge
 
 The low-level mechanics of the Golem market are quite complex, and building robust applications directly using the low-level APIs, while possible, may not be the most efficient approach. For this reason, a concept of High-level API libraries has been designed, as "bindings" of specific programming languages with Golem platform.
 
-The purpose of a high-level API is to wrap the intricacies of Golem APIs with more efficient programming models, based on computation models more intuitive, than Golem market, activity and payment concepts. A developer using these libraries should have a basic understanding of Golem platform's fundamental concepts \(Demand/Offer market matching, activity execution, payment-related logic\), but all the low-level logic is implemented in a high-level API library.
+The purpose of a high-level API is to wrap the intricacies of Golem APIs with more efficient programming models, based on computation models more intuitive than Golem market, activity and payment concepts. A developer using these libraries should have a basic understanding of Golem platform's fundamental concepts \(Demand/Offer market matching, activity execution, payment-related logic\), but all the low-level logic is implemented in a high-level API library.
 
 Following high-level API libraries are supported by Golem Factory:
 
