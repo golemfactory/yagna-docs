@@ -182,7 +182,6 @@ $ golemsp status
 │  last 1h in progress  0                      │
 │  total processed      1                      │
 └──────────────────────────────────────────────┘
-
 ```
 
 In the three columns, you can check the basic information regarding the status of your node

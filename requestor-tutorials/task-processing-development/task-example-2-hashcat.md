@@ -143,7 +143,6 @@ FROM dizcza/docker-hashcat:intel-cpu
 
 VOLUME /golem/input /golem/output
 WORKDIR /golem/entrypoint
-
 ```
 
 As Golem does not need any specific elements in the Dockerfile,`yacat.Dockerfile`is more or less a standard Dockerfile.
@@ -163,14 +162,14 @@ This makes `/golem/input` and `/golem/output` locations we will use for our inpu
 ![](../../.gitbook/assets/tnm-docs-infographics-08%20%281%29.jpg)
 
 {% hint style="info" %}
-On the provider side, all the content of the VOLUME directories is stored in the provider's os file system. 
+On the provider side, all the content of the VOLUME directories is stored in the provider's os file system.
 
 All the changes in other \(non VOLUME mounted\) container directories content are kept in RAM. The rest of the VM image file system \(not changed, non VOLUME mounted\) content is stored as VM image in the provider's os file system.
 {% endhint %}
 
 {% hint style="danger" %}
-Please mind that tasks within a single worker instance - so effectively part of the same activity on a given provider node - run within the same virtual machine and share the contents of a VOLUME between each other.  
-  
+Please mind that tasks within a single worker instance - so effectively part of the same activity on a given provider node - run within the same virtual machine and share the contents of a VOLUME between each other.
+
 That means that as long as the execution takes place on the same provider, and thus, on the same filesystem, files in the VOLUME left over from one task execution will be present in a subsequent run.
 {% endhint %}
 
@@ -480,7 +479,7 @@ The first step in the computation is to **check the keyspace size**. For this we
 
 ### Define the tasks
 
-Knowing the keyspace size we define the list of **tasks** to execute on providers. Recall from the section [Doing things in parallel](task-example-2-hashcat.md#doings-things-in-parallel) that we can run `hashcat` on a fragment of the whole keyspace, using the `--skip` and `--limit` parameters. In this step for each such fragment we define a separate task.  
+Knowing the keyspace size we define the list of **tasks** to execute on providers. Recall from the section [Doing things in parallel](task-example-2-hashcat.md#doings-things-in-parallel) that we can run `hashcat` on a fragment of the whole keyspace, using the `--skip` and `--limit` parameters. In this step for each such fragment we define a separate task.
 
 Knowing the number of tasks we can also determine the number of providers required to execute them in parallel. In this example we decided that the number of providers contracted for the work will be equal to the number of tasks divided by two. This does not necessarily mean that every provider will get exactly two tasks, even if the overall number of tasks is even, because:
 
@@ -559,7 +558,7 @@ completed = golem.execute_tasks(
 )
 ```
 
-This call tells `Golem` to execute a single task `Task(data="compute_keyspace")`. The task's `data`  is not really used for keyspace size computation, it will be however printed to the console when the requestor app logs its progress, so we set it to be an informative description of the task.
+This call tells `Golem` to execute a single task `Task(data="compute_keyspace")`. The task's `data` is not really used for keyspace size computation, it will be however printed to the console when the requestor app logs its progress, so we set it to be an informative description of the task.
 
 The other arguments are:
 
@@ -679,7 +678,7 @@ def _make_attack_command(skip: int, limit: int, output_path: str) -> str:
     )
 ```
 
-Couple of things to note here. The command `touch {output_path}` is there to make sure that the file `{output_path}` exists even if `hashcat` does not write any output \(that happens if it does not find any password matching given hash\). 
+Couple of things to note here. The command `touch {output_path}` is there to make sure that the file `{output_path}` exists even if `hashcat` does not write any output \(that happens if it does not find any password matching given hash\).
 
 The trailing `|| true` is a standard trick to make sure that the exit code from the whole command is always `0`-- `hashcat` returns a non-zero exit code if it fails to find any matching password and it causes the exe unit to report a command error to the requestor.
 
@@ -705,7 +704,7 @@ Golem high-level API that we use to interact with the Golem network uses asynchr
         loop.run_until_complete(task)
 ```
 
-which schedules execution of `main(args)` in the event loop. 
+which schedules execution of `main(args)` in the event loop.
 
 We catch the `KeyboardInterrupt` twice because after normal break, we ideally want the code to finalize the cleanup but if the user is determined to break the execution at all cost, we'd like to catch the exception there too:
 
@@ -744,8 +743,6 @@ except KeyboardInterrupt:
         pass
 ```
 
-
-
 {% hint style="success" %}
 Now, as we know how `yacat.py` works, let's run it!
 {% endhint %}
@@ -767,7 +764,7 @@ Please note that on Windows, you need to:
 So the windows version is:
 
 ```python
-python yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/ 
+python yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/
 ```
 {% endhint %}
 

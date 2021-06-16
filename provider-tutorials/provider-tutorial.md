@@ -139,7 +139,6 @@ $ golemsp status
 │  last 1h in progress  0                      │
 │  total processed      1                      │
 └──────────────────────────────────────────────┘
-
 ```
 
 {% hint style="info" %}

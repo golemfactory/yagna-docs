@@ -16,7 +16,7 @@ First, some introduction is due to get you familiar with the concepts and assump
 
 {% page-ref page="service-model-introduction.md" %}
 
-Then, have a look at a minimal example of a service running on a Golem VM: 
+Then, have a look at a minimal example of a service running on a Golem VM:
 
 {% page-ref page="service-example-0-hello-world.md" %}
 

@@ -14,7 +14,7 @@ In case of any doubts or problems, you can always contact us on Discord.
 [https://chat.golem.network](https://chat.golem.network/)
 {% endhint %}
 
-In order to make the journey through this tutorial easier to follow we divided it into sections. 
+In order to make the journey through this tutorial easier to follow we divided it into sections.
 
 The first one is a general introduction, pointing the developer's mind to the rails of Golem application development.
 

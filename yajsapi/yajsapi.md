@@ -2,7 +2,7 @@
 
 yajsapi / [Exports](modules/)
 
-## ya_JS_api
+## ya\_JS\_api
 
 The JS/TS port of [yapapi, Golem's Python API](https://github.com/golemfactory/yapapi)
 
@@ -39,7 +39,7 @@ _\(not needed for running examples\)_
 
 * `cd examples`         will take you to examples folder
 * `yarn`                will install dependencies for the examples
-* add `YAGNA_APPKEY` as environment variable; 
+* add `YAGNA_APPKEY` as environment variable;
 
   ```text
   export YAGNA_APPKEY=your_yagna_app_key_here

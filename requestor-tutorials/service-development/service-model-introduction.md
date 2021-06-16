@@ -22,13 +22,13 @@ Transitions from one state to another take place as a result of certain events. 
 
 The developer of a Golem service application needs to follow a certain pattern to implement fundamental aspects of service definition and control. A Service application includes an ExeUnit running on the Provider node, and a Requestor exercising control over that ExeUnit via Golem APIs. The ExeUnit can be eg. a VM hosting a specific payload application, or a custom ExeUnit controller/wrapper which integrates a third-party service software with the Golem ecosystem. In any case, the Service provisioned on the Golem network will require certain aspects to be specified in the Requestor Agent application.
 
-In order to define a Golem Service, the developer must create a class/object to indicate the fundamental aspects of the Service to be provisioned. The class must include methods responsible for payload specification \(the details of the Demand indicating eg. the ExeUnit/runtime to be sought on the market\), and logic to be executed in "active" states of the service lifecycle. 
+In order to define a Golem Service, the developer must create a class/object to indicate the fundamental aspects of the Service to be provisioned. The class must include methods responsible for payload specification \(the details of the Demand indicating eg. the ExeUnit/runtime to be sought on the market\), and logic to be executed in "active" states of the service lifecycle.
 
-The code snippets below are illustrating a very basic service \(a `SimpleService`\), hosted in a standard Golem VM runtime, where service "requests" are the shell commands executed repeatedly on the VM while the service is running. 
+The code snippets below are illustrating a very basic service \(a `SimpleService`\), hosted in a standard Golem VM runtime, where service "requests" are the shell commands executed repeatedly on the VM while the service is running.
 
 ### Specify Demand
 
-The Requestor Agent app must define the "payload" - the detailed specification of the service which is to be provisioned. This specification is then wrapped in a `Demand` structure and published on the Golem market. 
+The Requestor Agent app must define the "payload" - the detailed specification of the service which is to be provisioned. This specification is then wrapped in a `Demand` structure and published on the Golem market.
 
 {% tabs %}
 {% tab title="Python" %}
@@ -42,13 +42,13 @@ class SimpleService(Service):
         min_mem_gib=0.5,
         min_storage_gib=2.0,
     )
-    
+
     ...
 ```
 {% endtab %}
 {% endtabs %}
 
-A HL API library controls all aspects of Provider finding, negotiations, and instantiating an Activity. The app needs to indicate the actions to be executed in subsequent "active" states of the Service's lifecycle. 
+A HL API library controls all aspects of Provider finding, negotiations, and instantiating an Activity. The app needs to indicate the actions to be executed in subsequent "active" states of the Service's lifecycle.
 
 ### Define Starting logic
 
@@ -58,11 +58,11 @@ Once a Golem activity starts and the Service instance begins its life, the Reque
 {% tab title="Python" %}
 ```python
     ...
-    
+
     async def start(self):
         self._ctx.run("/golem/run/simulate_observations_ctl.py", "--start")
         yield self._ctx.commit()
-        
+
     ...
 ```
 {% endtab %}
@@ -72,7 +72,7 @@ The `start()` method follows a 'work generator' pattern. It uses `WorkContext` i
 
 {% page-ref page="../golem-application-fundamentals/hl-api-work-generator-pattern.md" %}
 
-The `start()` sequence of actions is executed only once in Service's lifecycle and must result either with success, or indication of failure, in which case the Service immediately moves to `Terminated` state. 
+The `start()` sequence of actions is executed only once in Service's lifecycle and must result either with success, or indication of failure, in which case the Service immediately moves to `Terminated` state.
 
 ### Define Running logic
 
@@ -92,9 +92,8 @@ Once started, the Service moves in Running mode - a normal state of operation. I
             results = await future_results
             stats = results[0].stdout.strip()
             print(stats)
-            
-   ...
 
+   ...
 ```
 {% endtab %}
 {% endtabs %}
@@ -152,7 +151,7 @@ Once a service specification class/object is defined, the service can be provisi
             SimpleService,
             num_instances=NUM_INSTANCES,
             expiration=datetime.now(timezone.utc) + timedelta(minutes=15))
-            
+
     ...
 ```
 {% endtab %}
@@ -160,5 +159,5 @@ Once a service specification class/object is defined, the service can be provisi
 
 The `Golem` call returns a `Cluster` of \(in this case\) `SimpleService` objects, each representing an instance of the service, as provisioned on the Golem network. The `Cluster` can be used to control the state of the services \(e.g. to stop services when required\).
 
-This is how a Requestor Agent for rudimentary VM-based service is built. Take a look at more sophisticated service examples, eg. including custom runtimes. 
+This is how a Requestor Agent for rudimentary VM-based service is built. Take a look at more sophisticated service examples, eg. including custom runtimes.
 

@@ -30,7 +30,7 @@ If you'd like to run the included example, please make sure that you have follow
 In reality, the provider part could be using some off-the-shelf Docker image with minor modifications to accommodate Golem \(see the [services hello world example](service-example-0-hello-world.md) for the minimum needed modifications\). The reason we're building our own toy/POC service here just to have a simple, tangible tool that we can interact with to show you the example usage of our Services API.
 {% endhint %}
 
-The service itself is rather simplistic and designed to reflect a mechanism that periodically polls some external data source and accumulates those observations in a database that can then be queried by the agent which has commissioned it. 
+The service itself is rather simplistic and designed to reflect a mechanism that periodically polls some external data source and accumulates those observations in a database that can then be queried by the agent which has commissioned it.
 
 If this was a real-life example, the data could come from some sensor connected to the provider's machine or be effect of the service e.g. polling some external API or web service. Here in our POC, it's just a background process that produces a stream of random numbers with a certain normal distribution.
 
@@ -77,7 +77,7 @@ Example output of `--plot`:
 
 ### Source of data
 
-As mentioned, if this was a real-life example, the data could perhaps come from some external sensor, API, website or some other source that we'd like our service to monitor. In our case, the "daemon" is just a simple loop that simulates observations of such a source by generating random values once a second. 
+As mentioned, if this was a real-life example, the data could perhaps come from some external sensor, API, website or some other source that we'd like our service to monitor. In our case, the "daemon" is just a simple loop that simulates observations of such a source by generating random values once a second.
 
 All generated values are then appended to the database by calling the back-end with the `--add` parameter.
 
@@ -116,7 +116,6 @@ RUN pip install numpy matplotlib
 RUN chmod +x /golem/run/*
 RUN /golem/run/simple_service.py --init
 ENTRYPOINT ["sh"]
-
 ```
 
 What it does is:
@@ -132,7 +131,7 @@ It's important to note that the `ENTRYPOINT` statement, though included, is ther
 
 ### Building the image
 
-The requestor agent script included in the example already contains the hash of the image that has been built by us and uploaded to Golem's VM image repository. 
+The requestor agent script included in the example already contains the hash of the image that has been built by us and uploaded to Golem's VM image repository.
 
 When building your own application though, you'd need to create and upload that image yourself. For full information on how to do that, please refer to our tutorial on [converting a Docker image to Golem's format](../convert-a-docker-image-into-a-golem-image.md).
 
@@ -154,7 +153,7 @@ If you'd like to play around with modifying the included image yourself, please 
 
 We've seen what our little toy service looks like and we have its VM image ready. Now, we can move on to the more juicy stage where we **build the requestor agent** using the Golem's high-level Services API.
 
-The full source code of the requestor agent is available in yapapi's github repo: [https://github.com/golemfactory/yapapi/blob/b0.6/examples/simple-service-poc/simple\_service.py](https://github.com/golemfactory/yapapi/blob/b0.6/examples/simple-service-poc/simple_service.py). 
+The full source code of the requestor agent is available in yapapi's github repo: [https://github.com/golemfactory/yapapi/blob/b0.6/examples/simple-service-poc/simple\_service.py](https://github.com/golemfactory/yapapi/blob/b0.6/examples/simple-service-poc/simple_service.py).
 
 Here, we're going to go through the most important excerpts.
 
@@ -193,7 +192,7 @@ async def get_payload():
     )
 ```
 
-Here, it's a VM-image defined through a helper function \(`vm.repo`\) and using the hash of the file uploaded to [Golem's image repository](../convert-a-docker-image-into-a-golem-image.md). 
+Here, it's a VM-image defined through a helper function \(`vm.repo`\) and using the hash of the file uploaded to [Golem's image repository](../convert-a-docker-image-into-a-golem-image.md).
 
 It's worth noting though, that the payload can be anything that inherits from `Payload` and contains a set of properties and constraints that define the execution environment in which we want our service to run. The `vm.repo` function does exactly that for a VM runtime but as long as the requestor and provider agree, it can be almost anything. We'll be showing you how to define your own provider-end runtime and interact with it from the requestor's end in one of our future tutorials.
 
@@ -280,10 +279,9 @@ async def shutdown(self):
     # handler reponsible for executing operations on shutdown
     self._ctx.run(self.SIMPLE_SERVICE_CTL, "--stop")
     yield self._ctx.commit()
-
 ```
 
-Lastly, when our service is requested to stop, we can issue any commands that perform a shutdown, cleanup or e.g. preserve the state of the service instance. 
+Lastly, when our service is requested to stop, we can issue any commands that perform a shutdown, cleanup or e.g. preserve the state of the service instance.
 
 Here, we're just issuing a command which stops the background process that we had started in the "starting" phase. \(Technically, we don't need to do that in case of the VM runtime since the whole VM is stopped when the activity is released by the requestor agent but we're including this step for illustration purposes.\)
 
@@ -314,7 +312,7 @@ The first one creates the Golem as a context manager, configured with the approp
 
 The second one instructs the Golem engine to create a cluster of service instances based on our service definition class \(`SimpleService`\).
 
-After those commands are executed, we receive an instance of `Cluster` which is an object which can be queried to get the state of and to control the instances that we thus commissioned. 
+After those commands are executed, we receive an instance of `Cluster` which is an object which can be queried to get the state of and to control the instances that we thus commissioned.
 
 Otherwise, we could say or work here is done. The Golem engine will take care of finding the providers to run our service instances and after those instances are deployed, will automatically run our "`start`", "`run`" and "`shutdown`" handlers on them.
 
@@ -370,7 +368,7 @@ while cnt < 10 and still_running():
 ## Next steps
 
 {% hint style="success" %}
-That's basically all it takes for a developer to run a service on a Golem VM. 
+That's basically all it takes for a developer to run a service on a Golem VM.
 {% endhint %}
 
 As a final note here, it may be worth to mention some current limitations in this regard.

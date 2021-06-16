@@ -6,7 +6,7 @@ Now that you have seen a simple Golem application in action, it is a good idea t
 
 A Golem application consists of a certain number of execution units - e.g. VMs capable of running Docker images - launched within the network's provider nodes that are orchestrated by a requestor agent - a piece of code talking directly to the REST API on a requestor node.
 
-Golem's execution units are theoretically capable of running any kind of payload. Out of the box, we provide ability to execute code inside environments that provide effective isolation of execution from the host - currently, this support is limited to Docker VMs and WASM. 
+Golem's execution units are theoretically capable of running any kind of payload. Out of the box, we provide ability to execute code inside environments that provide effective isolation of execution from the host - currently, this support is limited to Docker VMs and WASM.
 
 Other kinds of payloads are possible as long as the app developer is ready to implement an appropriate runtime and distribute it to willing providers.
 
@@ -37,7 +37,7 @@ The application's execution starts on the requestor's end when the user runs the
 
 After specifying and publishing a demand to Golem's market, the requestor agent receives offers from providers that meet its needs - e.g. having a sufficient amount of RAM.
 
-#### Payload 
+#### Payload
 
 Once agreements with the selected providers are finalized, which happens in the course of an automated negotiation process, the providers are asked to deploy "payload" - the application component that will be executed \(eg. in case of VM runtime-based applications - load the appropriate image\).
 
@@ -57,7 +57,7 @@ Appropriate upload/download commands are showcased in our more detailed tutorial
 
 #### Payments
 
-As the provider executes the payload, it also expects the requestor to pay for the activity. The payments are triggered by invoices and debit notes issued by the provider, which must be acknowledged and accepted by the requestor agent. Golem's high-level API orchestrates payments for the accepted invoices to be made using the payment platform/driver negotiated during the negotiation stage - so the requestor agent does not need to dive into the nuances of payments. 
+As the provider executes the payload, it also expects the requestor to pay for the activity. The payments are triggered by invoices and debit notes issued by the provider, which must be acknowledged and accepted by the requestor agent. Golem's high-level API orchestrates payments for the accepted invoices to be made using the payment platform/driver negotiated during the negotiation stage - so the requestor agent does not need to dive into the nuances of payments.
 
 To learn about some additional details on how different parts of Golem work together, please have a look at:
 
