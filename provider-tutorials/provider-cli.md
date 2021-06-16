@@ -63,6 +63,7 @@ SUBCOMMANDS:
 `golemsp settings set --help` - to see how to change settings. Invoking this will prompt usage, flags, and options.
 
 example
+
 ```css
 $ golemsp settings set --help
 golemsp-settings-set 0.2.0

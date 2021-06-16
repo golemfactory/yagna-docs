@@ -204,9 +204,34 @@ async def main():
 {% endtab %}
 {% endtabs %}
 
-In the function `main` we start by creating an instance of `Golem`, specifying our budget and target subnet. We then use it as a context manager to use the function `run_service`.
+In the function `main` we start by creating an instance of `Golem`, specifying our budget and target subnet. We then use it as a context manager to run our service.
 
 {% hint style="info" %}
-If you are not familiar with the `Golem` class and how it's used, take a look at [Task Example 0: Hello World!](../task-processing-development/task-example-0-hello.md#golem-executor) \(this links to a section about `Golem/Executor` classes\).
+If you are not familiar with the `Golem` class and/or how it's used in these examples, take a look at [Task Example 0: Hello World!](../task-processing-development/task-example-0-hello.md#golem-executor) \(this links to a section about `Golem/Executor` classes\).
 {% endhint %}
+
+Provisioning our service is done using the method `run_service` which, in our example, is given two parameters:
+
+* `service_class` is the class extending `Service` which will be used as the definition for each of our instantiated .
+* `num_instances` is the number of service instances we'd like to create.
+
+Awaiting on `run_service` returns a `Cluster` object. This is a wrapper around a collection of `Service` objects, in our case these will be `DateService` objects. Each of these objects represents a single instance of our service provisioned on the Golem network. The `Cluster` can be used to control the state of those service instances \(e.g. to stop services if necessary\).
+
+### Monitoring service state
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+cluster = await golem.run_service(DateService, num_instances=1)
+start_time = datetime.now()
+
+while datetime.now() < start_time + timedelta(minutes=1):
+    for num, instance in enumerate(cluster.instances):
+        print(f"Instance {num} is {instance.state.value} on {instance.provider_name}")
+    await asyncio.sleep(REFRESH_INTERVAL_SEC)
+```
+{% endtab %}
+{% endtabs %}
+
+Using the `Cluster` object's `instances` field we can iterate over our service instances and inspect their state. `instance.state` gives us a `StateMachine` associated with the given instance. It can be in one of five states: `starting`, `running`, `stopping`, `terminated` and `unresponsive`.
 

@@ -13,7 +13,7 @@ Other kinds of payloads are possible as long as the app developer is ready to im
 So far, said orchestration takes the form of one of three types of actions:
 
 * sending input files to the execution unit
-* running commands on the execution unit
+* running commands on the execution unit and reading from their standard output or standard error streams
 * getting output files back from the execution unit
 
 ![](../../.gitbook/assets/tutorial-05.jpg)
