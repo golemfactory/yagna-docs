@@ -6,10 +6,6 @@ description: Overview of a typical Golem task application
 
 ## How do I start?
 
-{% hint style="info" %}
-This example uses the standard VM runtime.
-{% endhint %}
-
 First, you need to think about your computational problem in terms of parallel execution. Let's visualize your computational problem:
 
 ![](../../.gitbook/assets/tutorial-01.jpg)
