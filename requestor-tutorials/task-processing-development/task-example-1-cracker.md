@@ -17,7 +17,7 @@ _This tutorial is the textual counterpart to a workshop originally prepared by J
 
 {% embed url="https://www.youtube.com/watch?v=gWRqu7IvYfk" caption="Jakub\'s workshop during Hello Decentralization" %}
 
-Now that we've seen how easy it is to [run a Golem requestor agent](../flash-tutorial-of-requestor-development/), then had a look at [how this stuff works under the hood](task-example-0-hello.md) and finally learned how to go about [creating your own Golem VM application image](../convert-a-docker-image-into-a-golem-image.md), we can put this knowledge to the test and build the most bare-bones Golem app.
+Now that we've seen how easy it is to [run a Golem  requestor agent](../flash-tutorial-of-requestor-development/), then had a look at[ how this stuff works under the hood](../golem-application-fundamentals/) we can put this knowledge to the test and build a simple Golem app that is a bit more realistic than our [Hello World](task-example-0-hello.md).
 
 {% hint style="info" %}
 If you'd rather like to have a more general introduction on the idea behind Golem or would like to learn what components constitute a Golem node and the Golem network, please have a look at:
@@ -84,7 +84,7 @@ Our example requires Python 3.7 or higher. You may use [pyenv](https://github.co
 
 Let's now install the dependencies that will be used throughout the remainder of the tutorial.
 
-We'll start by cloning the example app's repo and checking out the workshop branch:
+We'll start by cloning the example app's repo and checking out the `workshop` branch:
 
 ```text
 git clone https://github.com/golemfactory/hash-cracker.git
@@ -93,7 +93,7 @@ git checkout workshop
 ```
 
 {% hint style="info" %}
-The `workshop` branch contains a template for the application with some boilerplate filled in for you. If you'd like to take a look at the finished implementation instead, please use the repo's `master` branch.
+The`workshop` branch contains a template for the application with some boilerplate filled in for you. If you'd like to take a look at the finished implementation instead, please use the repo's `master` branch.
 {% endhint %}
 
 Next, we'll create the virtual environment and install the project's dependencies. In order to do that, please ensure your Python interpreter is the active one in your shell and then go with:
@@ -396,14 +396,14 @@ from typing import AsyncIterable, Iterator
 
 from yapapi import Task, WorkContext
 from yapapi.log import enable_default_logger
-from yapapi.package import vm
+from yapapi.payload import vm
 
 import worker
 
 # CLI arguments definition
 arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument("--hash", type=Path, default=Path("data/hash.json"))
-arg_parser.add_argument("--subnet", type=str, default="devnet-beta.1")
+arg_parser.add_argument("--subnet", type=str, default="devnet-beta.2")
 arg_parser.add_argument("--words", type=Path, default=Path("data/words.txt"))
 
 # Container object for parsed arguments
@@ -461,7 +461,7 @@ Then, it seems we have missed the truth just a tiny bit by claiming the boilerpl
 
 Then, we have those two, so far empty, functions - `data` and `steps` - the filling of which will be our main task in this section.
 
-Furthermore, we have our `main` which we will _also_ need to supplement with a proper call to our API's `Executor` class to bind the previous two together.
+Furthermore, we have our `main` which we will _also_ need to supplement with a proper call to our API's `Golem` class to bind the previous two together.
 
 And finally, we have some code that actually launches the `main` routine and does some rudimentary error handling just in case something goes amiss and we're forced to abort our task with a somewhat rude Ctrl-C.
 
@@ -533,9 +533,9 @@ Then we define a few steps that will take place for each task in our list:
 Please keep in mind that any commands specified in the `.run()` call to the VM execution unit must directly refer to a given executable, which usually means specifying their full, absolute path. There's no shell \(and hence, no PATH\) there to rely upon. 
 {% endhint %}
 
-With the steps ready, we call `.commit()` on our work context and yield that to the calling code \(the processing inside the `Executor` class\) which takes our script and orchestrates its execution on provider's end.
+With the steps ready, we call `.commit()` on our work context and yield that to the calling code \(the processing inside the `Golem` class\) which takes our script and orchestrates its execution on provider's end.
 
-When the execution returns to our `steps` function, the `task` has already been completed. Now, we only need to call `Task.accept_result()` with the result coming from the temporary file transferred from the provider. This ensures that the result is what's yielded from the `Executor` to the final loop in our `main` function that we'll define next.
+When the execution returns to our `steps` function, the `task` has already been completed. Now, we only need to call `Task.accept_result()` with the result coming from the temporary file transferred from the provider. This ensures that the result is what's yielded from the `Golem` to the final loop in our `main` function that we'll define next.
 
 ### The execution
 
@@ -563,18 +563,21 @@ If you have _not_ published your image, for the purpose of this workshop you can
 
 And then, the remaining code is the following and the explanation comes below:
 
-```python
-executor = Executor(
-    package=package,
-    budget=1,
-    subnet_tag=args.subnet,
-    event_consumer=log_summary(log_event_repr),
-    timeout=TASK_TIMEOUT,
-)
+{% hint style="info" %}
+There has been some changes in the Golem's high-level API since Jakub recorded the workshop video. The code below has been updated to reflect those changes and is different  from the corresponding code snippet shown in the video. \(The following explanation has also been updated accordingly.\)
+{% endhint %}
 
-result = ""
-async with executor:
-    async for task in executor.submit(steps, data(args.words)):
+```python
+async with Golem(budget=1, subnet_tag=args.subnet) as golem:
+
+    result = ""
+    
+    async for task in golem.execute_tasks(
+        steps,
+        data(args.words),
+        payload=package,
+        timeout=TASK_TIMEOUT
+    ):
         # Every task object we receive here represents a computed task
         if task.result:
             result = task.result
@@ -587,9 +590,13 @@ async with executor:
         print("No matching words found.")
 ```
 
-We first instantiate our `Executor` engine. It is given a number of parameters: the `package` mentioned above, our GLM `budget` for the whole task, the `subnet_tag` - a subnet identifier for the collection of nodes that we want to utilize to run our tasks - unless you know what you're doing, you're better-off leaving this at the value defined as the default parameter in our boilerplate code. Then, there's `event_consumer` that we won't go into here - it suffices to say that it's going to provide us with some textual feedback while our requestor agent is running the computation. And finally, there's the `timeout` in which we expect the whole processing on all nodes to have finished.
+In the first line we instantiate our `Golem` engine. It is given our GLM `budget` and the `subnet_tag` - a subnet identifier for the collection of nodes that we want to utilize to run our tasks - unless you know what you're doing, you're better-off leaving this at the value defined as the default parameter in our boilerplate code. 
 
-Finally, within an asynchronous context manager \(`async with`\) we send all our tasks to the `executor` and when the computation completes, we check if the result is there and break our loop early if it is.
+Our `golem` is used with `async with`as an [asynchronous context manager](https://docs.python.org/3/reference/datamodel.html#async-context-managers). This guarantees that all internal mechanisms the engine needs for computing our tasks are started before the code in the body of `async with`is executed, and are properly shut down afterwards.
+
+With `golem` started, we are ready to call its `execute_tasks` method. Here we instruct `golem` to use the `steps` function for producing commands for each task, and the iterator produced by `data(args.words)` to provide the tasks themselves. We also tell it that the provider nodes need to use the `payload` specified by the `package` we defined above. And finally, there's the `timeout` in which we expect the whole processing on all nodes to have finished.
+
+With `async for` we iterate over tasks computed by `execute_tasks` and check their results. As soon as we encounter a task with `task.result` set to a non-empty string we can `break` from the loop instead of waiting until the remaining tasks are computed.
 
 Once the loop completes, the `result` should contain our solution and the solution is printed to your console. \(Unless of course it happens that the hash we're trying to break is not found within the dictionary that we have initially assumed it would come from - which we assure you is _not_ the case for our example hash ;\) \).
 

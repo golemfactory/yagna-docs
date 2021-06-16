@@ -11,10 +11,11 @@ This example illustrates following Golem features & aspects:
 
 * VM runtime
 * Task execution
-  * Parallel task execution
-  * Low-level work item timeouts
-* File transfer to/from Provider exe unit
-* Multi-stage task processing
+* Parallel task execution on multiple provider
+* Submitting multiple task sequences to a single`Golem` engine
+* Setting timeout for commands run on a provider
+* Reading output from commands run on a provider
+* File transfer to/from provider's exe unit
 {% endhint %}
 
 ## What is hashcat?
@@ -48,13 +49,13 @@ That means that the password consists of 3 alphanumeric characters.
 Now we can try to find the password, matching the given hash and mask, by calling:
 
 ```text
-./hashcat -a 3 -m 400 in.hash ?a?a?a
+hashcat -a 3 -m 400 in.hash ?a?a?a
 ```
 
 The parameters are:
 
 * `a 3` - use a brute-force attack. There are 5 other types of attacks.
-* `m 400` - password is hashed with the phpass algorithm. There are 320 other alghoritms supported by Hashcat.
+* `m 400` - password is hashed with the phpass algorithm. There are 320 other alghoritms supported by hashcat.
 * `in.hash` - name of a file containing the hashed password
 * `?a?a?a` - mask to use
 
@@ -74,11 +75,11 @@ where `pas` is the password which had been unknown to us and was just retrieved 
 Obviously, for longer passwords, the presented usage of hashcat could be problematic as it would require a lot more processing time \(e.g. days or even months\) to find a password with such a naive method.
 {% endhint %}
 
-To showcase how a similar problem can be resolved faster, we created the Golem version of Hashcat. It uses the computing power of many providers at the same time. Parallelized password recovery can be much quicker - instead of days or months, this Golem version is likely to solve the problem in hours.
+To showcase how a similar problem can be resolved faster, we created the Golem version of hashcat. It uses the computing power of many providers at the same time. Parallelized password recovery can be much quicker - instead of days or months, this Golem version is likely to solve the problem in hours.
 
 ## Doings things in parallel
 
-How to make Hashcat work in parallel? The answer is quite simple: the keyspace concept. We can ask the tool to tell us what the size of the possibility space \(keyspace\) is for the given mask and algorithm:
+How to make hashcat work in parallel? The answer is quite simple: the keyspace concept. We can ask the tool to tell us what the size of the possibility space \(keyspace\) is for the given mask and algorithm:
 
 ```text
 hashcat --keyspace -a 3 ?a?a?a -m 400
@@ -95,7 +96,7 @@ Now we can divide the `0..9025` space into separate fragments. Assuming we want 
 To process only the part of the whole `0..9025` space, we use the `--skip` and `--limit` options:
 
 ```text
-./hashcat -a 3 -m 400 in.hash --skip 3009 --limit 6016  ?a?a?a
+hashcat -a 3 -m 400 in.hash --skip 3009 --limit 6016  ?a?a?a
 ```
 
 The above call will process the `3009..6016` part. If there is any result in that range it will be written to the `hashcat.potfile`.
@@ -174,7 +175,7 @@ That means that as long as the execution takes place on the same provider, and t
 {% endhint %}
 
 {% hint style="warning" %}
-If your provider side code creates large temporary files, you should store them in the directory defined as VOLUME. Otherwise, the large files will be stored in RAM. RAM usually has a capacity limit much lower than disk space.
+If your provider-side code creates large temporary files, you should store them in the directory defined as VOLUME. Otherwise, the large files will be stored in RAM. RAM usually has a capacity limit much lower than disk space.
 {% endhint %}
 
 ### Important note about Docker's ENTRYPOINT
@@ -223,16 +224,22 @@ The critical fragments of `yacat.py` will be described in the following sections
 
 ```python
 #!/usr/bin/env python3
+import argparse
 import asyncio
 from datetime import datetime, timedelta
-import pathlib
+import math
+from pathlib import Path
 import sys
+from tempfile import NamedTemporaryFile
+from typing import AsyncIterable, List, Optional
 
-from yapapi import Executor, NoPaymentAccountError, Task, WorkContext, windows_event_loop_fix
-from yapapi.log import enable_default_logger, log_summary, log_event_repr  # noqa
-from yapapi.package import vm
+from yapapi import Golem, NoPaymentAccountError, Task, WorkContext, windows_event_loop_fix
+from yapapi.events import CommandExecuted
+from yapapi.log import enable_default_logger
+from yapapi.payload import vm
+from yapapi.rest.activity import CommandExecutionError
 
-examples_dir = pathlib.Path(__file__).resolve().parent.parent
+examples_dir = Path(__file__).resolve().parent.parent
 sys.path.append(str(examples_dir))
 
 from utils import (
@@ -244,110 +251,146 @@ from utils import (
     TEXT_COLOR_YELLOW,
 )
 
+HASHCAT_ATTACK_MODE = 3  # stands for mask attack, hashcat -a option
+KEYSPACE_OUTPUT_PATH = Path("/golem/output/keyspace")
 
-def write_hash(hash):
-    with open("in.hash", "w") as f:
-        f.write(hash)
+# Ideally, this value should depend on the chunk size
+MASK_ATTACK_TIMEOUT: timedelta = timedelta(minutes=30)
+KEYSPACE_TIMEOUT: timedelta = timedelta(minutes=10)
+
+arg_parser = build_parser("Run a hashcat attack (mask mode) on Golem network.")
+arg_parser.epilog = (
+    "Example invocation: ./yacat.py --mask '?a?a?a' --hash '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/'"
+)
+arg_parser.add_argument("--hash", type=str, help="Target hash to be cracked", required=True)
+arg_parser.add_argument(
+    "--mask",
+    type=str,
+    help="Hashcat mask to be used for the attack. Example: a value of '?a?a?a' will "
+    "try all 3-character combinations, where each character is mixalpha-numeric "
+    "(lower and upper-case letters + digits) or a special character",
+    required=True,
+)
+arg_parser.add_argument(
+    "--chunk-size",  # affects skip and limit hashcat parameters
+    type=int,
+    help="Limit for the number of words to be checked as part of a single activity",
+    default=4096,
+)
+arg_parser.add_argument(
+    "--hash-type",
+    type=int,
+    help="Type of hashing algorithm to use (hashcat -m option). Default: 400 (phpass)",
+    default=400,
+)
+arg_parser.add_argument(
+    "--max-workers",
+    type=int,
+    help="The maximum number of nodes we want to perform the attack on (default is dynamic)",
+    default=None,
+)
+
+# Container object for parsed arguments
+args = argparse.Namespace()
 
 
-def write_keyspace_check_script(mask):
-    with open("keyspace.sh", "w") as f:
-        f.write(f"hashcat --keyspace -a 3 {mask} -m 400 > /golem/work/keyspace.txt")
+async def compute_keyspace(context: WorkContext, tasks: AsyncIterable[Task]):
+    """Worker script which computes the size of the keyspace for the mask attack.
+    This function is used as the `worker` parameter to `Golem#execute_tasks`.
+    It represents a sequence of commands to be executed on a remote provider node.
+    """
+    async for task in tasks:
+        cmd = f"hashcat --keyspace " f"-a {HASHCAT_ATTACK_MODE} -m {args.hash_type} {args.mask}"
+        context.run("/bin/bash", "-c", cmd)
+
+        try:
+            future_result = yield context.commit(timeout=KEYSPACE_TIMEOUT)
+
+            # each item is the result of a single command on the provider (including setup commands)
+            result: List[CommandExecuted] = await future_result
+            # we take the last item since it's the last command that was executed on the provider
+            cmd_result: CommandExecuted = result[-1]
+
+            keyspace = int(cmd_result.stdout)
+            task.accept_result(result=keyspace)
+        except CommandExecutionError as e:
+            raise RuntimeError(f"Failed to compute attack keyspace: {e}")
 
 
-def read_keyspace():
-    with open("keyspace.txt", "r") as f:
-        return int(f.readline())
+async def perform_mask_attack(ctx: WorkContext, tasks: AsyncIterable[Task]):
+    """Worker script which performs a hashcat mask attack against a target hash.
+    This function is used as the `worker` parameter to `Golem#execute_tasks`.
+    It represents a sequence of commands to be executed on a remote provider node.
+    """
+    async for task in tasks:
+        skip = task.data
+        limit = skip + args.chunk_size
+        worker_output_path = f"/golem/output/hashcat_{skip}.potfile"
+
+        ctx.run(f"/bin/sh", "-c", _make_attack_command(skip, limit, worker_output_path))
+        output_file = NamedTemporaryFile()
+        ctx.download_file(worker_output_path, output_file.name)
+
+        yield ctx.commit(timeout=MASK_ATTACK_TIMEOUT)
+
+        result = output_file.file.readline()
+        task.accept_result(result)
+        output_file.close()
 
 
-def read_password(ranges):
-    for r in ranges:
-        path = pathlib.Path(f"hashcat_{r}.potfile")
-        if not path.is_file():
-            continue
-        with open(path, "r") as f:
-            line = f.readline()
-        split_list = line.split(":")
-        if len(split_list) >= 2:
-            return split_list[1]
+def _make_attack_command(skip: int, limit: int, output_path: str) -> str:
+    return (
+        f"touch {output_path}; "
+        f"hashcat -a {HASHCAT_ATTACK_MODE} -m {args.hash_type} "
+        f"--self-test-disable --potfile-disable "
+        f"--skip={skip} --limit={limit} -o {output_path} "
+        f"'{args.hash}' '{args.mask}' || true"
+    )
+
+
+def _parse_result(potfile_line: bytes) -> Optional[str]:
+    """Helper function which parses a single .potfile line and returns the password part.
+    Hashcat uses its .potfile format to report results. In this format, each line consists of the
+    hash and its matching word, separated with a colon (e.g. `asdf1234:password`).
+    """
+    potfile_line = potfile_line.decode("utf-8")
+    if potfile_line:
+        return potfile_line.split(":")[-1].strip()
     return None
 
 
 async def main(args):
     package = await vm.repo(
-        image_hash="2c17589f1651baff9b82aa431850e296455777be265c2c5446c902e9",
+        image_hash="055911c811e56da4d75ffc928361a78ed13077933ffa8320fb1ec2db",
         min_mem_gib=0.5,
         min_storage_gib=2.0,
     )
 
-    async def worker_check_keyspace(ctx: WorkContext, tasks):
-        async for task in tasks:
-            keyspace_sh_filename = "keyspace.sh"
-            ctx.send_file(keyspace_sh_filename, "/golem/work/keyspace.sh")
-            ctx.run("/bin/sh", "/golem/work/keyspace.sh")
-            output_file = "keyspace.txt"
-            ctx.download_file("/golem/work/keyspace.txt", output_file)
-            yield ctx.commit(timeout=timedelta(minutes=10))
-            task.accept_result()
-
-    async def worker_find_password(ctx: WorkContext, tasks):
-        ctx.send_file("in.hash", "/golem/work/in.hash")
-
-        async for task in tasks:
-            skip = task.data
-            limit = skip + step
-
-            # Commands to be run on the provider
-            commands = (
-                "rm -f /golem/work/*.potfile ~/.hashcat/hashcat.potfile; "
-                f"touch /golem/work/hashcat_{skip}.potfile; "
-                f"hashcat -a 3 -m 400 /golem/work/in.hash {args.mask} --skip={skip} --limit={limit} --self-test-disable -o /golem/work/hashcat_{skip}.potfile || true"
-            )
-            ctx.run(f"/bin/sh", "-c", commands)
-
-            output_file = f"hashcat_{skip}.potfile"
-            ctx.download_file(f"/golem/work/hashcat_{skip}.potfile", output_file)
-            yield ctx.commit(timeout=timedelta(minutes=10))
-            task.accept_result(result=output_file)
-
-    # beginning of the main flow
-
-    write_hash(args.hash)
-    write_keyspace_check_script(args.mask)
-
-    # By passing `event_consumer=log_summary()` we enable summary logging.
-    # See the documentation of the `yapapi.log` module on how to set
-    # the level of detail and format of the logged information.
-    async with Executor(
-        package=package,
-        max_workers=args.number_of_providers,
+    async with Golem(
         budget=10.0,
-        # timeout should be keyspace / number of providers dependent
-        timeout=timedelta(minutes=10),
         subnet_tag=args.subnet_tag,
         driver=args.driver,
         network=args.network,
-        event_consumer=log_summary(log_event_repr),
-    ) as executor:
+    ) as golem:
 
-        sys.stderr.write(
+        print(
             f"Using subnet: {TEXT_COLOR_YELLOW}{args.subnet_tag}{TEXT_COLOR_DEFAULT}, "
-            f"payment driver: {TEXT_COLOR_YELLOW}{executor.driver}{TEXT_COLOR_DEFAULT}, "
-            f"and network: {TEXT_COLOR_YELLOW}{executor.network}{TEXT_COLOR_DEFAULT}\n"
+            f"payment driver: {TEXT_COLOR_YELLOW}{golem.driver}{TEXT_COLOR_DEFAULT}, "
+            f"and network: {TEXT_COLOR_YELLOW}{golem.network}{TEXT_COLOR_DEFAULT}\n"
         )
 
-        keyspace_computed = False
         start_time = datetime.now()
 
-        # This is not a typical use of executor.submit as there is only one task, with no data:
-        async for _task in executor.submit(worker_check_keyspace, [Task(data=None)]):
-            keyspace_computed = True
+        completed = golem.execute_tasks(
+            compute_keyspace,
+            [Task(data="compute_keyspace")],
+            payload=package,
+            max_workers=1,
+            timeout=KEYSPACE_TIMEOUT,
+        )
 
-        if not keyspace_computed:
-            # Assume the errors have been already reported and we may return quietly.
-            return
-
-        keyspace = read_keyspace()
+        async for task in completed:
+            keyspace = task.result
 
         print(
             f"{TEXT_COLOR_CYAN}"
@@ -355,35 +398,38 @@ async def main(args):
             f"{TEXT_COLOR_DEFAULT}"
         )
 
-        step = int(keyspace / args.number_of_providers) + 1
+        data = [Task(data=c) for c in range(0, keyspace, args.chunk_size)]
+        max_workers = args.max_workers or math.ceil(keyspace / args.chunk_size) // 2
 
-        ranges = range(0, keyspace, step)
+        completed = golem.execute_tasks(
+            perform_mask_attack,
+            data,
+            payload=package,
+            max_workers=max_workers,
+            timeout=MASK_ATTACK_TIMEOUT,
+        )
 
-        async for task in executor.submit(
-            worker_find_password, [Task(data=range) for range in ranges]
-        ):
+        password = None
+
+        async for task in completed:
             print(
                 f"{TEXT_COLOR_CYAN}Task computed: {task}, result: {task.result}{TEXT_COLOR_DEFAULT}"
             )
 
-        password = read_password(ranges)
+            result = _parse_result(task.result)
+            if result:
+                password = result
 
-        if password is None:
-            print(f"{TEXT_COLOR_RED}No password found{TEXT_COLOR_DEFAULT}")
-        else:
+        if password:
             print(f"{TEXT_COLOR_GREEN}Password found: {password}{TEXT_COLOR_DEFAULT}")
+        else:
+            print(f"{TEXT_COLOR_RED}No password found{TEXT_COLOR_DEFAULT}")
 
         print(f"{TEXT_COLOR_CYAN}Total time: {datetime.now() - start_time}{TEXT_COLOR_DEFAULT}")
 
 
 if __name__ == "__main__":
-    parser = build_parser("yacat")
-
-    parser.add_argument("--number-of-providers", dest="number_of_providers", type=int, default=3)
-    parser.add_argument("mask")
-    parser.add_argument("hash")
-
-    args = parser.parse_args()
+    args = arg_parser.parse_args()
 
     # This is only required when running on Windows with Python prior to 3.8:
     windows_event_loop_fix()
@@ -422,87 +468,244 @@ if __name__ == "__main__":
             )
         except KeyboardInterrupt:
             pass
-
 ```
 
 ## So what is happening here?
 
-### worker\_check\_keyspace
+We start with a high-level overview of the steps performed by the requestor agent. In the [next section](task-example-2-hashcat.md#how-does-the-code-work) we'll dig into the implementation details.
 
-The first step is to **check the keyspace size**. This is done in 3 steps, executed only once using one task fragment:
+### Compute keyspace size
 
-1. Preparing the `keyspace.sh` script which contains the password mask. As the `hashcat --keyspace -a 3 {mask} -m 400` command outputs the keyspace size to `stdout`, we just need to redirect the command output to the `keyspace.txt` file. The  `keyspace.sh` then looks like: `hashcat --keyspace -a 3 {mask} -m 400 > /golem/work/keyspace.txt`
-2. Execute the `keyspace.sh` script on the provider's container.
-3. Transfer the `keyspace.txt` file back to the requestor.
+The first step in the computation is to **check the keyspace size**. For this we only need to execute `hashcat` with `--keyspace`, as show in the section [Doing things in parallel](task-example-2-hashcat.md#doings-things-in-parallel) and read that command's output.
 
-![](../../.gitbook/assets/tutorial-04.jpg)
+### Define the tasks
 
-Knowing the keyspace size, we can start looking for the password using multiple workers, running on multiple providers at the same time.
+Knowing the keyspace size we define the list of **tasks** to execute on providers. Recall from section [Doing things in parallel](task-example-2-hashcat.md#doings-things-in-parallel) that we can run `hashcat` on a fragment of the whole keyspace, using the `--skip` and `--limit` parameters. In this step for each such fragment we define a separate task.  
 
-### worker\_find\_password
+Knowing the number of tasks we can also determine the number of providers required to execute them in parallel. In this example we decided that the number of providers contracted for the work will be equal to the number of tasks divided by two. This does not necessarily mean that every provider will get exactly two tasks, even if the overall number of tasks is even, because:
 
-In order to look for passwords in the given keyspace range, for each of the workers employed to perform our job, we are executing the following 3 steps:
+{% hint style="info" %}
+When a provider is ready to execute a task, it takes up the next task from a common pool of tasks, so a fast provider may end up executing more tasks than a slow one.
+{% endhint %}
 
-* Send the `in.hash` file that contains the password hash. 
-* Execute`hashcat` with proper `--skip` and `--limit` values
+### Perform mask attack
+
+Next, we can start looking for the password using multiple **workers**, executing the tasks on multiple providers at the same time.
+
+In order to look for passwords in the given keyspace range, for each of the workers employed to perform our job, we are executing the following two steps:
+
+* Execute`hashcat` with proper `--skip` and `--limit` values on the provider
 * Get the `hashcat_{skip}.potfile` from the provider to the requestor
-
-![](../../.gitbook/assets/tutorial-03.jpg)
-
-### read\_password
-
-The final action is to scan over all the received `*.potfiles` received. If there is a password, it will be displayed to the user.
+* Parse the result from the file
 
 ## How does the code work?
 
-### Package
+### The argument parser
 
-To tell the Golem platform, what our requirements against the providers are, we are using the `package` object. The `image_hash` parameter points to the image that we want the containers to run - here we use the hash received from `gvmkit-build`. The `min_mem_gib` and `min_storage_gib` parameters specify memory and storage requirements for the provider.
+The first big chunk of code, after imports and constants, is the definition of the argument parser that uses the `argparse` module for Python's standard library. The parser will allow us to pass arguments such as `--mask` and `--max-workers`, and it will print a nice argument description and an example invocation when we run the requestor script with `--help`.
+
+### The `main` function
+
+Let's now jump to the `main` function which contains the main body of the requestor app. Its sole argument, `args`, contains information on the command-line arguments read by the argument parser.
+
+```python
+async def main(args):
+```
+
+#### Package definition
+
+To tell the Golem platform what our requirements against the providers are, we are using the `package` object. The `image_hash` parameter points to the image that we want the containers to run - here we use the hash received from `gvmkit-build`. The `min_mem_gib` and `min_storage_gib` parameters specify memory and storage requirements for the provider.
 
 ```python
  package = await vm.repo(
-     image_hash="2c17589f1651baff9b82aa431850e296455777be265c2c5446c902e9",
+     image_hash="055911c811e56da4d75ffc928361a78ed13077933ffa8320fb1ec2db",
      min_mem_gib=0.5,
      min_storage_gib=2.0,
  )
 ```
 
-### Executor
+#### Golem engine
 
-The `package` object is passed to the `Executor` object with several other options, such as:
-
-* `budget`defines maximal spendings for executing all the tasks in the whole run on Golem
-* `max_workers` defines the maximal number of simultaneously running workers \(and that is, the maximum number of providers that the task fragments will be distributed to\).
-* `timeout` defines the timeout. It is important for the timeout to be large enough to include the image download time plus the computation time.
-* `subnet_tag` specifies the providers subnet to be used. It's best to leave the default value in place unless you mean to run your own network of test providers to test the app against,
-* next are the `driver` and `network` parameters that select the Ethereum blockchain and the payment driver for you. For example, you would not use the mainnet network for tests but you'll probably want to run the real-live tasks on the mainnet to be able to use all the providers that participate in the Golem network.
-
-{% hint style="danger" %}
-Due to current golem market implementation, please use `timeout` value between 8 and 30 minutes.
-{% endhint %}
-
-{% hint style="info" %}
-You can also specify the timeout value for the particular provider side execution batch that is triggered by `ctx.commit(timeout=timedelta(...))`.
-{% endhint %}
+To run our tasks on the Golem network we need to create a `Golem` instance.
 
 ```python
-async with Executor(
-    package=package,
-    max_workers=args.number_of_providers,
+async with Golem(
     budget=10.0,
-    # timeout should be keyspace / number of providers dependent
-    timeout=timedelta(minutes=10),
     subnet_tag=args.subnet_tag,
     driver=args.driver,
     network=args.network,
-    event_consumer=log_summary(log_event_repr),
-) as executor:
-
+) as golem:
 ```
 
-### Main loop
+The arguments are as follows:
 
-Golem high-level API that we use to interact with the Golem network uses asynchronous programming a lot. The asynchronous execution starting point is in line 162. We catch the KeyboardInterrupt twice because after normal break, we ideally want the code to finalize the cleanup but if the user is determined to break the execution at all cost, we'd like to catch the exception there too:
+* `budget`defines maximal spendings for executing all the tasks with `Golem`
+* `subnet_tag` specifies the providers subnet to be used; it's best to leave the default value in place unless you mean to run your own network of test providers to test the app against,
+* next are the `driver` and `network` parameters that select the Ethereum blockchain and the payment driver for you; for example, you would not use the mainnet network for tests but you'll probably want to run the real-live tasks on the mainnet to be able to use all the providers that participate in the Golem network.
+
+#### First call to `execute_tasks`: Computing keyspace size
+
+With `Golem` instance running we may proceed with sending tasks to providers. For this we use the `execute_tasks` method.
+
+```python
+completed = golem.execute_tasks(
+    compute_keyspace,
+    [Task(data="compute_keyspace")],
+    payload=package,
+    max_workers=1,
+    timeout=KEYSPACE_TIMEOUT,
+)
+```
+
+This call tells `Golem` to execute a single task `Task(data="compute_keyspace")`. The task's `data`  is not really used for keyspace size computation, it will be however printed to the console when the requestor app logs its progress, so we set it to be an informative description of the task.
+
+The other arguments are:
+
+* the **worker** function that tells `Golem` what steps to perform on a provider in order to execute the tasks \(in our case, there's only one task\); here we pass the `compute_keyspace` function,
+* the `package` that we defined before,
+* the maximum number of worker instances we'd like to create -- or the maximum number of providers we want the tasks to be distributed to \(for executing just one task it makes no sense to request more than one provider, so it's a bit redundant\),
+* the total `timeout` for executing all tasks.
+
+{% hint style="danger" %}
+Due to limitations of the current Golem market implementation, please use `timeout` value between 8 minutes and 3 hours.
+{% endhint %}
+
+{% hint style="info" %}
+You can also specify the timeout value for the particular provider-side execution batch that is triggered by `ctx.commit(timeout=...)`.
+{% endhint %}
+
+The keyspace size can be read from the `result` attribute of the executed task. We use `async for` loop here to iterate over the completed tasks \(even though we expect only one task\).
+
+```python
+        async for task in completed:
+            keyspace = task.result
+```
+
+#### Second call to `execute_tasks`: Performing the attack
+
+Now we can split the whole `keyspace` into chunks of size `args.chunk_size`. For each chunk we create a separate `Task`. We've also decided to use the number of providers equal to the number of tasks divided by 2, so we define `max_workers` accordingly:
+
+```python
+data = [Task(data=c) for c in range(0, keyspace, args.chunk_size)]
+max_workers = args.max_workers or math.ceil(keyspace / args.chunk_size) // 2
+```
+
+With the list of tasks prepared, we call `golem.execute_tasks` once more. This time, our worker function is `perform_mask_attack`:
+
+```python
+        completed = golem.execute_tasks(
+            perform_mask_attack,
+            data,
+            payload=package,
+            max_workers=max_workers,
+            timeout=MASK_ATTACK_TIMEOUT,
+        )
+```
+
+Each completed task will contain `hashcat`'s output for the keyspace chunk represented by the task. We can parse this output using the auxiliary `parse_result` function:
+
+```python
+        async for task in completed:
+            print(
+                f"{TEXT_COLOR_CYAN}Task computed: {task}, result: {task.result}{TEXT_COLOR_DEFAULT}"
+            )
+
+            result = _parse_result(task.result)
+            if result:
+                password = result
+```
+
+### Worker functions
+
+With the `main` function covered, let's now have a look at the worker functions `compute_keyspace` and `perform_mask_attack`. Recall that worker functions are passed as arguments to `execute_tasks`, and are called once for each provider on which tasks are executed \(more precisely, once for each **activity**, but in a typical scenario, including the current example, each provider executes just one activity\).
+
+#### compute\_keyspace
+
+The first worker is similar to the one that we've seen in [Hello World!](task-example-0-hello.md) example, but the command we need to run on the provider is not `date` but `hashcat` with appropriate options:
+
+```python
+hashcat --keyspace -a {HASHCAT_ATTACK_MODE} -m {args.hash_type} {args.mask}
+```
+
+This will instruct `hashcat` to compute and print the keyspace size. The following code sends the command to the provider, waits until it completes, and retrieves it's stdout:
+
+```python
+        cmd = f"hashcat --keyspace " f"-a {HASHCAT_ATTACK_MODE} -m {args.hash_type} {args.mask}"
+        context.run("/bin/bash", "-c", cmd)
+
+        try:
+            future_result = yield context.commit(timeout=KEYSPACE_TIMEOUT)
+
+            # each item is the result of a single command on the provider (including setup commands)
+            result: List[CommandExecuted] = await future_result
+            # we take the last item since it's the last command that was executed on the provider
+            cmd_result: CommandExecuted = result[-1]
+
+            keyspace = int(cmd_result.stdout)
+            task.accept_result(result=keyspace)
+        except CommandExecutionError as e:
+            raise RuntimeError(f"Failed to compute attack keyspace: {e}")
+```
+
+#### perform\_mask\_attack
+
+The second worker function, `perform_mask_attack` is more interesting. Unlike `compute_keyspace`, we make use of the `data` attribute that each `task` carries and use it to set `--skip` and `--limit`parameters to `hashcat`:
+
+```python
+    async for task in tasks:
+        skip = task.data
+        limit = skip + args.chunk_size
+        worker_output_path = f"/golem/output/hashcat_{skip}.potfile"
+
+        ctx.run(f"/bin/sh", "-c", _make_attack_command(skip, limit, worker_output_path))
+```
+
+{% hint style="warning" %}
+The commands here are passed to an explicitly referenced `/bin/sh` shell. That's because any commands specified within `ctx.run()` are not, by themselves, run inside any shell.
+{% endhint %}
+
+The exact command to be run spans multiple lines so we construct it in a separate function `_make_attack_command` so the worker code is easier to follow. Let's take a look!
+
+```python
+def _make_attack_command(skip: int, limit: int, output_path: str) -> str:
+    return (
+        f"touch {output_path}; "
+        f"hashcat -a {HASHCAT_ATTACK_MODE} -m {args.hash_type} "
+        f"--self-test-disable --potfile-disable "
+        f"--skip={skip} --limit={limit} -o {output_path} "
+        f"'{args.hash}' '{args.mask}' || true"
+    )
+```
+
+Couple of things to note here. The command `touch {output_path}` is there to make sure that the file `{output_path}` exists even if `hashcat` does not write any output \(that happens if it does not find any password matching given hash\). 
+
+The trailing `|| true` is a standard trick to make sure that the exit code from the whole command is always `0`-- `hashcat` returns a non-zero exit code if it fails to find any matching password and it causes the exe unit to report a command error to the requestor.
+
+The option `-o {output_path}` tells `hashcat` to write output to a file. In the worker function we download the contents of this file to a temporary file created on the requestor:
+
+```python
+        output_file = NamedTemporaryFile()
+        ctx.download_file(worker_output_path, output_file.name)
+```
+
+The first line of this file \(or the empty string\) becomes the result of the completed task:
+
+```python
+        result = output_file.file.readline()
+        task.accept_result(result)
+```
+
+### Running `main` in the event loop
+
+Golem high-level API that we use to interact with the Golem network uses asynchronous programming a lot. The asynchronous execution starting point is the line
+
+```python
+        loop.run_until_complete(task)
+```
+
+which schedules execution of `main(args)` in the event loop. 
+
+We catch the `KeyboardInterrupt` twice because after normal break, we ideally want the code to finalize the cleanup but if the user is determined to break the execution at all cost, we'd like to catch the exception there too:
 
 ```python
 loop = asyncio.get_event_loop()
@@ -539,107 +742,7 @@ except KeyboardInterrupt:
         pass
 ```
 
-In the `main` function, the most important fragment begins in line 119:
 
-```python
-async for _task in executor.submit(worker_check_keyspace, [Task(data=None)]):
-    keyspace_computed = True
-```
-
-This calls the `worker_check_keyspace` once with no additional task parameters. The next step is getting the `keyspace` variable from the `keyspace.txt` file:
-
-```python
-keyspace = read_keyspace()
-```
-
-Now we can split the whole `keyspace` by the `args.number_of_providers`:
-
-```python
- step = int(keyspace / args.number_of_providers) + 1
-
- ranges = range(0, keyspace, step)
-```
-
-Having the `ranges` list, we can call the `worker_find_password` for each of the fragments, passing only the given `range`:
-
-```python
-async for task in executor.submit(
-    worker_find_password, [Task(data=range) for range in ranges]
-):
-    print(
-        f"{TEXT_COLOR_CYAN}Task computed: {task}, result: {task.result}{TEXT_COLOR_DEFAULT}"
-    )
-
-```
-
-After the `hashcat.potfile` file is returned for all the fragments, we need to scan over them, as one of them possibly contains the password we are looking for:
-
-```python
-password = read_password(ranges)
-```
-
-### worker\_check\_keyspace
-
-The `worker_check_keyspace` is also interesting. Here we need to execute the following command on only one of the providers:
-
-```python
-hashcat --keyspace -a 3 {mask} -m 400
-```
-
-As this command is using the `stdout` to display the keyspace size information, we need the `stdout` to be captured.
-
-As we can not use `ctx.run` directly to redirect stdout to `keyspace.txt`, we are preparing `keyspace.sh` file with the following content:`hashcat --keyspace -a 3 {mask} -m 400 > keyspace.txt`.
-
-Next, we're going to send `keyspace.sh` to one of the providers running our image and have them execute a single command:
-
-```python
-ctx.run("/bin/sh","/golem/work/keyspace.sh")
-```
-
-Now we can transfer the `keyspace.txt` back to the requestor
-
-```python
-output_file = "keyspace.txt"
-ctx.download_file(f"/golem/work/keyspace.txt", output_file)
-```
-
-### worker\_find\_password
-
-This function is executed on each of the providers. First, we are sending them the `in.hash` file that contains the known hash. That needs only to be run once per worker run \(which usually means once per provider\).
-
-```python
-ctx.send_file("in.hash", "/golem/work/in.hash")
-```
-
-Then, for each task fragment that this worker is executing, we are preparing the `--skip` and `--limit` parameters, and executing the commands on the provider:
-
-```python
-skip = task.data
-limit = skip + step
-
-# Commands to be run on the provider
-commands = (
-    "rm -f /golem/work/*.potfile ~/.hashcat/hashcat.potfile; "
-    f"touch /golem/work/hashcat_{skip}.potfile; "
-    f"hashcat -a 3 -m 400 /golem/work/in.hash {args.mask} --skip={skip} --limit={limit} --self-test-disable -o /golem/work/hashcat_{skip}.potfile || true"
-)
-ctx.run(f"/bin/sh", "-c", commands)
-```
-
-If from the previous container execution \(possibly on the same provider\) there are any `*.potfiles` left, we are deleting them as they might interfere with current execution.
-
-{% hint style="warning" %}
-The commands here are passed to an explicitly-referenced `/bin/sh` shell. That's because any commands specified within `ctx.run()` are not, by themselves, run inside any shell.
-{% endhint %}
-
-We also need to execute the `touch /golem/work/hashcat.potfile` command in order to have `/golem/work/hashcat.potfile` file present in the file system even if there is no password output by Hashcat.
-
-The last step is downloading the `/golem/work/hashcat.potfile` file.
-
-```python
-output_file = f"hashcat_{skip}.potfile"
-ctx.download_file(f"/golem/work/hashcat_{skip}.potfile", output_file)
-```
 
 {% hint style="success" %}
 Now, as we know how the yacat works, let's run it!
@@ -650,7 +753,7 @@ Now, as we know how the yacat works, let's run it!
 While in the `/examples/yacat` directory, type the following:
 
 ```python
-python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/'
+python3 yacat.py  --mask 'a?a?a' --hash '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/'
 ```
 
 {% hint style="danger" %}
@@ -666,15 +769,15 @@ python yacat.py ?a?a?a $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/
 ```
 {% endhint %}
 
-The above run should return "pas" as the recovered password. The computations will be executed using the default number of workers \(which is 3\).
+The above run should return "pas" as the recovered password.
 
 A more computation-intensive example is:
 
 ```python
-python3 yacat.py '?a?a?a?a' '$H$5ZDzPE45C.e3TjJ2Qi58Aaozha6cs30' --number-of-providers 8
+python3 yacat.py --mask '?a?a?a?a' --hash '$H$5ZDzPE45C.e3TjJ2Qi58Aaozha6cs30' --chunk-size 10000
 ```
 
-The above command should execute computations on 8 providers and return "ABCD".
+The above command should execute 86 tasks on up to 43 providers and return "ABCD".
 
 `yacat.py` supports a few optional parameters. To get help on those, please type:
 
@@ -682,7 +785,7 @@ The above command should execute computations on 8 providers and return "ABCD".
 python3 yacat.py --help
 ```
 
-One of the interesting options is to have log output to a file. This can be achieved by adding the following option to the yacat.py run:
+One of the interesting options is to have log output to a file. This can be achieved by adding the following option to the `yacat.py` run:
 
 ```python
 --log-file LOG_FILE_NAME
