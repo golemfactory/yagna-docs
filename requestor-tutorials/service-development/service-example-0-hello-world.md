@@ -34,7 +34,7 @@ import asyncio
 from datetime import datetime, timedelta
 
 from yapapi import Golem
-from yapapi.executor.services import Service
+from yapapi.services import Service
 from yapapi.log import enable_default_logger
 from yapapi.payload import vm
 
@@ -248,4 +248,25 @@ We can now try running our service. Assuming you have a `yagna` node active loca
 ```text
 YAGNA_APPKEY={your_appkey_here} ./hello_service.py
 ```
+
+Once the service gets provisioned on a provider you should see log lines similar to the ones below \(some parts are abridged for clarity\):
+
+```text
+[2021-06-16 13:42:42,969 INFO yapapi.services] <DateService: eaddc033960d48d0a04801a91bdca489> commissioned
+[2021-06-16 13:42:42,970 INFO yapapi.summary] Task started on provider 'friendly-winter', task data: Service: DateService
+Instance 0 is starting on friendly-winter
+Instance 0 is running on friendly-winter
+Wed Jun 16 11:42:48 UTC 2021
+Instance 0 is running on friendly-winter
+Wed Jun 16 11:42:53 UTC 2021
+...
+[2021-06-16 13:43:50,890 INFO yapapi.summary] Terminated agreement with friendly-winter
+[2021-06-16 13:43:50,987 INFO yapapi.executor] Golem is shutting down...
+[2021-06-16 13:43:50,987 INFO yapapi.executor] All jobs have finished
+[2021-06-16 13:43:50,987 INFO yapapi.executor] 1 agreement still unpaid, waiting for invoices...
+[2021-06-16 13:43:52,960 INFO yapapi.summary] Accepted invoice from 'friendly-winter', amount: 0.002412786162893529
+...
+```
+
+In the case of our example we run a single instance of the service. Once that instance changes its state to `running` we start seeing output from the `date` command running inside the VM. After our set period of time \(i.e. 1 minute\) the agreement gets terminated and, after paying for the invoice, our program exits.
 
