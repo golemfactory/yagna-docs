@@ -121,7 +121,7 @@ That's all we need in order to run a task on Golem!
 
 Here's the flow diagram of all the interactions that need to happen between the requestor and the provider\(s\) in order for a task to be completed:
 
-![Sequence diagram of requestor -&amp;gt; provider interaction](../../.gitbook/assets/tutorial-07.jpg)
+![Sequence diagram of requestor -&amp;gt; provider interactions](../../.gitbook/assets/tutorial-07.jpg)
 
 From a high-level perspective, a successful run of the above program performs the following steps:
 
@@ -132,9 +132,7 @@ From a high-level perspective, a successful run of the above program performs th
 
 In this minimal example our script consists of a single command: the Linux `date` utility. This program returns a string representing the system's current time, e.g.: `Tue Jun 8 14:53:51 UTC 2021`.
 
-...
-
-All right, we'll skip over the imports at the top and boilerplate code at the bottom of the example and we'll jump straight into the body of the `main()` routine.
+Let's move on to exploring our example code!
 
 ## The main\(\) function
 
