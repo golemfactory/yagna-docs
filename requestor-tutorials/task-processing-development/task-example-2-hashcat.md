@@ -492,11 +492,13 @@ When a provider is ready to execute a task, it takes up the next task from a com
 
 Next, we can start looking for the password using multiple **workers**, executing the tasks on multiple providers at the same time.
 
-In order to look for passwords in the given keyspace range, for each of the workers employed to perform our job, we are executing the following two steps:
+In order to look for passwords in the given keyspace range, for each of the workers employed to perform our job, we are executing the following steps:
 
 * Execute`hashcat` with proper `--skip` and `--limit` values on the provider
 * Get the `hashcat_{skip}.potfile` from the provider to the requestor
-* Parse the result from the file
+* Parse the result from the `.potfile`
+
+![](../../.gitbook/assets/tutorial-03%20%281%29.jpg)
 
 ## How does the code work?
 
