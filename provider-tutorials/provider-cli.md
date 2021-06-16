@@ -60,7 +60,33 @@ SUBCOMMANDS:
 
 #### Settings set
 
-`golemsp settings set --help` - to see how to change settings.
+`golemsp settings set --help` - to see how to change settings. Invoking this will prompt usage, flags, and options.
+
+example
+```css
+$ golemsp settings set --help
+golemsp-settings-set 0.2.0
+Change settings
+
+USAGE:
+    golemsp settings set [OPTIONS]
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+        --node-name <node-name>             
+        --cores <num>                       Number of shared CPU cores
+        --memory <bytes (like "1.5GiB")>    Size of shared RAM
+        --disk <bytes (like "1.5GiB")>      Size of shared disk space
+        --starting-fee <GLM (float)>        Price for starting a task
+        --env-per-hour <GLM (float)>        Price for working environment per hour
+        --cpu-per-hour <GLM (float)>        Price for CPU per hour
+        --account <account>                 Account for payments [env: YA_ACCOUNT=]
+        --payment-network <network>         Payment network [env: YA_PAYMENT_NETWORK=]  [default: mainnet]
+                                            [possible values: mainnet, rinkeby]
+```
 
 In order to change a particular setting \(for eg. price settings\) type:
 
@@ -102,7 +128,7 @@ Pricing:
 
 `golemsp status` - Print out the status of your node.
 
-When the node is not runnig you'll see:
+When the node is not running you'll see:
 
 ```text
 $ golemsp status
@@ -110,10 +136,10 @@ $ golemsp status
 │  Status                      │
 │                              │
 │  Service    is not running   │
-│  Version    0.6.4            │
-│  Commit     4fc72117         │
-│  Date       2021-04-15       │
-│  Build      135              │
+│  Version    0.6.5            │
+│  Commit     6317bb3d         │
+│  Date       2021-05-16       │
+│  Build      141              │
 │                              │
 │  Node Name  friendly-winter  │
 │  Subnet     public-beta      │
@@ -129,10 +155,10 @@ $ golemsp status
 │  Status                                           │
 │                                                   │
 │  Service    is running                            │
-│  Version    0.6.4                                 │
-│  Commit     4fc72117                              │
-│  Date       2021-04-15                            │
-│  Build      135                                   │
+│  Version    0.6.5                                 │
+│  Commit     6317bb3d                              │
+│  Date       2021-05-16                            │
+│  Build      141                                   │
 │                                                   │
 │  Node Name  friendly-winter                       │
 │  Subnet     public-beta                           │
