@@ -1,88 +1,120 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / utils
+
 # Module: utils
 
-[yajsapi](../yajsapi.md) / [Exports](./) / utils
-
-## Module: utils
-
-### Table of contents
-
-#### References
-
-* [AsyncExitStack](utils.md#asyncexitstack)
-* [AsyncWrapper](utils.md#asyncwrapper)
-* [Callable](utils.md#callable)
-* [CancellationToken](utils.md#cancellationtoken)
-* [Queue](utils.md#queue)
-* [applyMixins](utils.md#applymixins)
-* [asyncWith](utils.md#asyncwith)
-* [changeLogLevel](utils.md#changeloglevel)
-* [eventLoop](utils.md#eventloop)
-* [getAllProperties](utils.md#getallproperties)
-* [logUtils](utils.md#logutils)
-* [logger](utils.md#logger)
-* [promisify](utils.md#promisify)
-* [range](utils.md#range)
-* [sleep](utils.md#sleep)
+## Table of contents
 
 ### References
 
-#### AsyncExitStack
+- [AsyncExitStack](utils.md#asyncexitstack)
+- [AsyncWrapper](utils.md#asyncwrapper)
+- [Callable](utils.md#callable)
+- [CancellationToken](utils.md#cancellationtoken)
+- [Lock](utils.md#lock)
+- [Queue](utils.md#queue)
+- [applyMixins](utils.md#applymixins)
+- [asyncWith](utils.md#asyncwith)
+- [changeLogLevel](utils.md#changeloglevel)
+- [eventLoop](utils.md#eventloop)
+- [getAllProperties](utils.md#getallproperties)
+- [logUtils](utils.md#logutils)
+- [logger](utils.md#logger)
+- [promisify](utils.md#promisify)
+- [range](utils.md#range)
+- [sleep](utils.md#sleep)
 
-Renames and exports: [default](https://github.com/golemfactory/yagna-docs/tree/f181b6ad5340c6acfcb5541c36763d5ccf816255/yajsapi/classes/utils_asyncexitstack.default.md)
+## References
 
-#### AsyncWrapper
+### AsyncExitStack
 
-Renames and exports: [default](https://github.com/golemfactory/yagna-docs/tree/f181b6ad5340c6acfcb5541c36763d5ccf816255/yajsapi/classes/utils_asyncwrapper.default.md)
+Renames and exports: [default](../classes/utils_asyncexitstack.default.md)
 
-#### Callable
+___
 
-Renames and exports: [default](../interface/utils_callable.default.md)
+### AsyncWrapper
 
-#### CancellationToken
+Renames and exports: [default](../classes/utils_asyncwrapper.default.md)
+
+___
+
+### Callable
+
+Renames and exports: [default](../interfaces/utils_callable.default.md)
+
+___
+
+### CancellationToken
 
 Renames and exports: [default](../classes/utils_cancellationtoken.default.md)
 
-#### Queue
+___
+
+### Lock
+
+Re-exports: [Lock](../classes/utils_lock.lock.md)
+
+___
+
+### Queue
 
 Renames and exports: [default](../classes/utils_queue.default.md)
 
-#### applyMixins
+___
+
+### applyMixins
 
 Renames and exports: [default](utils_applymixins.md#default)
 
-#### asyncWith
+___
+
+### asyncWith
 
 Renames and exports: [default](utils_asyncwith.md#default)
 
-#### changeLogLevel
+___
+
+### changeLogLevel
 
 Re-exports: [changeLogLevel](utils_log.md#changeloglevel)
 
-#### eventLoop
+___
+
+### eventLoop
 
 Renames and exports: [default](utils_eventloop.md#default)
 
-#### getAllProperties
+___
+
+### getAllProperties
 
 Renames and exports: [default](utils_getallproperties.md#default)
 
-#### logUtils
+___
+
+### logUtils
 
 Renames and exports: [utils/log](utils_log.md)
 
-#### logger
+___
+
+### logger
 
 Renames and exports: [default](utils_log.md#default)
 
-#### promisify
+___
+
+### promisify
 
 Renames and exports: [default](utils_promisify.md#default)
 
-#### range
+___
+
+### range
 
 Renames and exports: [default](utils_range.md#default)
 
-#### sleep
+___
+
+### sleep
 
 Renames and exports: [default](utils_sleep.md#default)
-

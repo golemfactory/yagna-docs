@@ -4,10 +4,6 @@
 
 [utils/asyncWrapper](../modules/utils_asyncwrapper.md).default
 
-## Hierarchy
-
-* **default**
-
 ## Table of contents
 
 ### Constructors
@@ -33,96 +29,122 @@
 
 ### constructor
 
-\+ **new default**(`wrapped`: [*default*](../interfaces/utils_callable.default.md)<*any*, *any*\>, `event_loop?`: *any*, `cancellationToken`: *any*): [*default*](utils_asyncwrapper.default.md)
+• **new default**(`wrapped`, `event_loop?`, `cancellationToken`)
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Default value |
------- | ------ | ------ |
-`wrapped` | [*default*](../interfaces/utils_callable.default.md)<*any*, *any*\> | - |
-`event_loop` | *any* | null |
-`cancellationToken` | *any* | - |
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `wrapped` | [default](../interfaces/utils_callable.default.md)<any, any\> | `undefined` |
+| `event_loop` | `any` | null |
+| `cancellationToken` | `any` | `undefined` |
 
-**Returns:** [*default*](utils_asyncwrapper.default.md)
+#### Defined in
 
-Defined in: [yajsapi/utils/asyncWrapper.ts:8](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncWrapper.ts#L8)
+[yajsapi/utils/asyncWrapper.ts:8](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncWrapper.ts#L8)
 
 ## Properties
 
 ### \_args\_buffer
 
-• `Private` **\_args\_buffer**: [*default*](utils_queue.default.md)<*any*\>
+• `Private` **\_args\_buffer**: [default](utils_queue.default.md)<any\>
 
-Defined in: [yajsapi/utils/asyncWrapper.ts:5](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncWrapper.ts#L5)
+#### Defined in
+
+[yajsapi/utils/asyncWrapper.ts:5](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncWrapper.ts#L5)
 
 ___
 
 ### \_cancellationToken
 
-• `Private` **\_cancellationToken**: *any*
+• `Private` **\_cancellationToken**: `any`
 
-Defined in: [yajsapi/utils/asyncWrapper.ts:8](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncWrapper.ts#L8)
+#### Defined in
+
+[yajsapi/utils/asyncWrapper.ts:8](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncWrapper.ts#L8)
 
 ___
 
 ### \_loop
 
-• `Private` **\_loop**: *any*
+• `Private` **\_loop**: `any`
 
-Defined in: [yajsapi/utils/asyncWrapper.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncWrapper.ts#L7)
+#### Defined in
+
+[yajsapi/utils/asyncWrapper.ts:7](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncWrapper.ts#L7)
 
 ___
 
 ### \_task
 
-• `Private` **\_task**: *any*
+• `Private` **\_task**: `any`
 
-Defined in: [yajsapi/utils/asyncWrapper.ts:6](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncWrapper.ts#L6)
+#### Defined in
+
+[yajsapi/utils/asyncWrapper.ts:6](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncWrapper.ts#L6)
 
 ___
 
 ### \_wrapped
 
-• `Private` **\_wrapped**: [*default*](../interfaces/utils_callable.default.md)<*any*, *any*\>
+• `Private` **\_wrapped**: [default](../interfaces/utils_callable.default.md)<any, any\>
 
-Defined in: [yajsapi/utils/asyncWrapper.ts:4](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncWrapper.ts#L4)
+#### Defined in
+
+[yajsapi/utils/asyncWrapper.ts:4](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncWrapper.ts#L4)
 
 ## Methods
 
 ### \_worker
 
-▸ **_worker**(): *Promise*<*void*\>
+▸ **_worker**(): `Promise`<void\>
 
-**Returns:** *Promise*<*void*\>
+#### Returns
 
-Defined in: [yajsapi/utils/asyncWrapper.ts:22](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncWrapper.ts#L22)
+`Promise`<void\>
+
+#### Defined in
+
+[yajsapi/utils/asyncWrapper.ts:22](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncWrapper.ts#L22)
 
 ___
 
 ### async\_call
 
-▸ **async_call**(): *void*
+▸ **async_call**(): `void`
 
-**Returns:** *void*
+#### Returns
 
-Defined in: [yajsapi/utils/asyncWrapper.ts:45](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncWrapper.ts#L45)
+`void`
+
+#### Defined in
+
+[yajsapi/utils/asyncWrapper.ts:45](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncWrapper.ts#L45)
 
 ___
 
 ### done
 
-▸ **done**(): *Promise*<*void*\>
+▸ **done**(): `Promise`<void\>
 
-**Returns:** *Promise*<*void*\>
+#### Returns
 
-Defined in: [yajsapi/utils/asyncWrapper.ts:37](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncWrapper.ts#L37)
+`Promise`<void\>
+
+#### Defined in
+
+[yajsapi/utils/asyncWrapper.ts:37](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncWrapper.ts#L37)
 
 ___
 
 ### ready
 
-▸ **ready**(): *Promise*<*void*\>
+▸ **ready**(): `Promise`<void\>
 
-**Returns:** *Promise*<*void*\>
+#### Returns
 
-Defined in: [yajsapi/utils/asyncWrapper.ts:31](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncWrapper.ts#L31)
+`Promise`<void\>
+
+#### Defined in
+
+[yajsapi/utils/asyncWrapper.ts:31](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncWrapper.ts#L31)

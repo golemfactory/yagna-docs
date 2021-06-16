@@ -1,12 +1,8 @@
 yajsapi / [Exports](modules.md)
 
-<div align="center">
-  <h1>Ya<b>JS</b>api</h1>
-  <p>
-    <strong>(Experimental/Alpha) Almost 1:1 Port of Yapapi to Typescript</strong>
-  </p>
-</div>
-<br/><br/>
+# ya*JS*api
+
+The JS/TS port of [yapapi, Golem's Python API](https://github.com/golemfactory/yapapi)
 
 ## Prerequisites
 
@@ -24,6 +20,14 @@ _(not needed for running examples)_
 - build is ready in `dist` folder!
 <br/><br/>
 
+### Testing
+| Command | Description |
+| --- | --- |
+| `yarn test:unit` | Run all unit test
+|`yarn cov` | Show tests coverage
+| `yarn cov:html` | GeneratedDetailed test coverage report (HTML in `coverage` directory)
+| `yarn cov:lcov` | Generate lcov.info file
+
 # Running Examples
 ### Installation
 - `cd examples`         will take you to examples folder
@@ -34,6 +38,7 @@ export YAGNA_APPKEY=your_yagna_app_key_here
 ```
 
 ### When ready
+- `npm run js:hello`    will start hello world javascript example
 - `npm run js:blender`  will start blender javascript example
 - `npm run ts:blender`  will start blender typescript example
 - `npm run js:low`      will start javascript low level api example

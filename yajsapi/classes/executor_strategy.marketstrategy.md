@@ -1,61 +1,63 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / [executor/strategy](../modules/executor_strategy.md) / MarketStrategy
+
 # Class: MarketStrategy
-
-[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/strategy](../modules/executor_strategy.md) / MarketStrategy
-
-## Class: MarketStrategy
 
 [executor/strategy](../modules/executor_strategy.md).MarketStrategy
 
-### Hierarchy
-
-* **MarketStrategy**
-
-### Table of contents
-
-#### Constructors
-
-* [constructor](executor_strategy.marketstrategy.md#constructor)
-
-#### Methods
-
-* [decorate\_demand](executor_strategy.marketstrategy.md#decorate_demand)
-* [score\_offer](executor_strategy.marketstrategy.md#score_offer)
+## Table of contents
 
 ### Constructors
 
-#### constructor
-
-* **new MarketStrategy**\(\): [_MarketStrategy_](executor_strategy.marketstrategy.md)
-
-**Returns:** [_MarketStrategy_](executor_strategy.marketstrategy.md)
+- [constructor](executor_strategy.marketstrategy.md#constructor)
 
 ### Methods
 
-#### decorate\_demand
+- [decorate\_demand](executor_strategy.marketstrategy.md#decorate_demand)
+- [score\_offer](executor_strategy.marketstrategy.md#score_offer)
 
-▸ **decorate\_demand**\(`demand`: [_DemandBuilder_](props_builder.demandbuilder.md)\): _Promise_&lt;_void_&gt;
+## Constructors
 
-**Parameters:**
+### constructor
 
-| Name | Type |
-| :--- | :--- |
-| `demand` | [_DemandBuilder_](props_builder.demandbuilder.md) |
+• **new MarketStrategy**()
 
-**Returns:** _Promise_&lt;_void_&gt;
+## Methods
 
-Defined in: [yajsapi/executor/strategy.ts:25](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L25)
+### decorate\_demand
 
-#### score\_offer
+▸ **decorate_demand**(`demand`): `Promise`<void\>
 
-▸ **score\_offer**\(`offer`: [_OfferProposal_](rest_market.offerproposal.md)\): _Promise_
-
-**Parameters:**
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `offer` | [_OfferProposal_](rest_market.offerproposal.md) |
+| :------ | :------ |
+| `demand` | [DemandBuilder](props_builder.demandbuilder.md) |
 
-**Returns:** _Promise_
+#### Returns
 
-Defined in: [yajsapi/executor/strategy.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L27)
+`Promise`<void\>
 
+#### Defined in
+
+[yajsapi/executor/strategy.ts:24](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/strategy.ts#L24)
+
+___
+
+### score\_offer
+
+▸ **score_offer**(`offer`, `history?`): `Promise`<Number\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `offer` | [OfferProposal](rest_market.offerproposal.md) |
+| `history?` | [ComputationHistory](../interfaces/executor_strategy.computationhistory.md) |
+
+#### Returns
+
+`Promise`<Number\>
+
+#### Defined in
+
+[yajsapi/executor/strategy.ts:26](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/strategy.ts#L26)

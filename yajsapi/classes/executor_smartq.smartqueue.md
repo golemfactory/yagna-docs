@@ -1,230 +1,309 @@
-# Class: SmartQueue
+[yajsapi](../README.md) / [Exports](../modules.md) / [executor/smartq](../modules/executor_smartq.md) / SmartQueue
 
-[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/smartq](../modules/executor_smartq.md) / SmartQueue
-
-## Class: SmartQueue
+# Class: SmartQueue<Item\>
 
 [executor/smartq](../modules/executor_smartq.md).SmartQueue
 
-### Type parameters
+## Type parameters
 
 | Name |
-| :--- |
+| :------ |
 | `Item` |
 
-### Hierarchy
-
-* **SmartQueue**
-
-### Table of contents
-
-#### Constructors
-
-* [constructor](executor_smartq.smartqueue.md#constructor)
-
-#### Properties
-
-* [\_\_done](executor_smartq.smartqueue.md#__done)
-* [\_\_eof](executor_smartq.smartqueue.md#__eof)
-* [\_\_new\_items](executor_smartq.smartqueue.md#__new_items)
-* [\_in\_progress](executor_smartq.smartqueue.md#_in_progress)
-* [\_items](executor_smartq.smartqueue.md#_items)
-* [\_rescheduled\_items](executor_smartq.smartqueue.md#_rescheduled_items)
-
-#### Methods
-
-* [\_\_find\_rescheduled\_item](executor_smartq.smartqueue.md#__find_rescheduled_item)
-* [\_\_have\_data](executor_smartq.smartqueue.md#__have_data)
-* [close](executor_smartq.smartqueue.md#close)
-* [get](executor_smartq.smartqueue.md#get)
-* [has\_unassigned\_items](executor_smartq.smartqueue.md#has_unassigned_items)
-* [mark\_done](executor_smartq.smartqueue.md#mark_done)
-* [new\_consumer](executor_smartq.smartqueue.md#new_consumer)
-* [reschedule](executor_smartq.smartqueue.md#reschedule)
-* [reschedule\_all](executor_smartq.smartqueue.md#reschedule_all)
-* [stats](executor_smartq.smartqueue.md#stats)
-* [wait\_until\_done](executor_smartq.smartqueue.md#wait_until_done)
+## Table of contents
 
 ### Constructors
 
-#### constructor
-
-* **new SmartQueue**\(`items`: Item\[\], `retry_cnt?`: _number_, ...`rest`: _any_\[\]\): [_SmartQueue_](executor_smartq.smartqueue.md)
-
-**Type parameters:**
-
-| Name |
-| :--- |
-| `Item` |
-
-**Parameters:**
-
-| Name | Type | Default value |
-| :--- | :--- | :--- |
-| `items` | Item\[\] | - |
-| `retry_cnt` | _number_ | 2 |
-| `...rest` | _any_\[\] | - |
-
-**Returns:** [_SmartQueue_](executor_smartq.smartqueue.md)
-
-Defined in: [yajsapi/executor/smartq.ts:38](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L38)
+- [constructor](executor_smartq.smartqueue.md#constructor)
 
 ### Properties
 
-#### \_\_done
-
-• `Private` **\_\_done**: _any_
-
-Defined in: [yajsapi/executor/smartq.ts:38](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L38)
-
-#### \_\_eof
-
-• `Private` **\_\_eof**: _any_
-
-Defined in: [yajsapi/executor/smartq.ts:37](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L37)
-
-#### \_\_new\_items
-
-• `Private` **\_\_new\_items**: _any_
-
-Defined in: [yajsapi/executor/smartq.ts:36](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L36)
-
-#### \_in\_progress
-
-• `Private` **\_in\_progress**: _Set_&lt;[_Handle_](executor_smartq.handle.md)&gt;
-
-Defined in: [yajsapi/executor/smartq.ts:35](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L35)
-
-#### \_items
-
-• `Private` **\_items**: _null_ \| Item\[\]
-
-Defined in: [yajsapi/executor/smartq.ts:33](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L33)
-
-#### \_rescheduled\_items
-
-• `Private` **\_rescheduled\_items**: _Set_&lt;[_Handle_](executor_smartq.handle.md)&gt;
-
-Defined in: [yajsapi/executor/smartq.ts:34](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L34)
+- [\_\_done](executor_smartq.smartqueue.md#__done)
+- [\_\_eof](executor_smartq.smartqueue.md#__eof)
+- [\_\_new\_items](executor_smartq.smartqueue.md#__new_items)
+- [\_in\_progress](executor_smartq.smartqueue.md#_in_progress)
+- [\_items](executor_smartq.smartqueue.md#_items)
+- [\_rescheduled\_items](executor_smartq.smartqueue.md#_rescheduled_items)
 
 ### Methods
 
-#### \_\_find\_rescheduled\_item
+- [\_\_find\_rescheduled\_item](executor_smartq.smartqueue.md#__find_rescheduled_item)
+- [\_\_have\_data](executor_smartq.smartqueue.md#__have_data)
+- [close](executor_smartq.smartqueue.md#close)
+- [get](executor_smartq.smartqueue.md#get)
+- [has\_unassigned\_items](executor_smartq.smartqueue.md#has_unassigned_items)
+- [mark\_done](executor_smartq.smartqueue.md#mark_done)
+- [new\_consumer](executor_smartq.smartqueue.md#new_consumer)
+- [reschedule](executor_smartq.smartqueue.md#reschedule)
+- [reschedule\_all](executor_smartq.smartqueue.md#reschedule_all)
+- [stats](executor_smartq.smartqueue.md#stats)
+- [wait\_until\_done](executor_smartq.smartqueue.md#wait_until_done)
 
-▸ **\_\_find\_rescheduled\_item**\(`consumer`: [_Consumer_](executor_smartq.consumer.md)\): _null_ \| [_Handle_](executor_smartq.handle.md)
+## Constructors
 
-**Parameters:**
+### constructor
+
+• **new SmartQueue**<Item\>(`items`, `retry_cnt?`, ...`rest`)
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `Item` |
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `items` | `Item`[] | `undefined` |
+| `retry_cnt` | `number` | 2 |
+| `...rest` | `any`[] | `undefined` |
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:38](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L38)
+
+## Properties
+
+### \_\_done
+
+• `Private` **\_\_done**: `any`
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:38](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L38)
+
+___
+
+### \_\_eof
+
+• `Private` **\_\_eof**: `any`
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:37](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L37)
+
+___
+
+### \_\_new\_items
+
+• `Private` **\_\_new\_items**: `any`
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:36](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L36)
+
+___
+
+### \_in\_progress
+
+• `Private` **\_in\_progress**: `Set`<[Handle](executor_smartq.handle.md)<Item\>\>
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:35](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L35)
+
+___
+
+### \_items
+
+• `Private` **\_items**: ``null`` \| `Item`[]
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:33](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L33)
+
+___
+
+### \_rescheduled\_items
+
+• `Private` **\_rescheduled\_items**: `Set`<[Handle](executor_smartq.handle.md)<Item\>\>
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:34](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L34)
+
+## Methods
+
+### \_\_find\_rescheduled\_item
+
+▸ **__find_rescheduled_item**(`consumer`): ``null`` \| [Handle](executor_smartq.handle.md)<Item\>
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `consumer` | [_Consumer_](executor_smartq.consumer.md) |
+| :------ | :------ |
+| `consumer` | [Consumer](executor_smartq.consumer.md)<Item\> |
 
-**Returns:** _null_ \| [_Handle_](executor_smartq.handle.md)
+#### Returns
 
-Defined in: [yajsapi/executor/smartq.ts:71](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L71)
+``null`` \| [Handle](executor_smartq.handle.md)<Item\>
 
-#### \_\_have\_data
+#### Defined in
 
-▸ **\_\_have\_data**\(\): _boolean_
+[yajsapi/executor/smartq.ts:73](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L73)
 
-**Returns:** _boolean_
+___
 
-Defined in: [yajsapi/executor/smartq.ts:63](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L63)
+### \_\_have\_data
 
-#### close
+▸ **__have_data**(): `boolean`
 
-▸ **close**\(\): _void_
+#### Returns
 
-**Returns:** _void_
+`boolean`
 
-Defined in: [yajsapi/executor/smartq.ts:50](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L50)
+#### Defined in
 
-#### get
+[yajsapi/executor/smartq.ts:65](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L65)
 
-▸ **get**\(`consumer`: [_Consumer_](executor_smartq.consumer.md), `callback`: _undefined_ \| _null_ \| Function\): _AsyncGenerator_&lt;[_Handle_](executor_smartq.handle.md), _any_, _unknown_&gt;
+___
 
-**Parameters:**
+### close
 
-| Name | Type |
-| :--- | :--- |
-| `consumer` | [_Consumer_](executor_smartq.consumer.md) |
-| `callback` | _undefined_ \| _null_ \| Function |
+▸ **close**(): `void`
 
-**Returns:** _AsyncGenerator_&lt;[_Handle_](executor_smartq.handle.md), _any_, _unknown_&gt;
+#### Returns
 
-Defined in: [yajsapi/executor/smartq.ts:78](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L78)
+`void`
 
-#### has\_unassigned\_items
+#### Defined in
 
-▸ **has\_unassigned\_items**\(\): _boolean_
+[yajsapi/executor/smartq.ts:50](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L50)
 
-**Returns:** _boolean_
+___
 
-Defined in: [yajsapi/executor/smartq.ts:160](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L160)
+### get
 
-#### mark\_done
+▸ **get**(`consumer`, `callback`): `AsyncGenerator`<[Handle](executor_smartq.handle.md)<Item\>, any, unknown\>
 
-▸ **mark\_done**\(`handle`: [_Handle_](executor_smartq.handle.md)\): _Promise_&lt;_void_&gt;
-
-**Parameters:**
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `handle` | [_Handle_](executor_smartq.handle.md) |
+| :------ | :------ |
+| `consumer` | [Consumer](executor_smartq.consumer.md)<Item\> |
+| `callback` | `undefined` \| ``null`` \| `Function` |
 
-**Returns:** _Promise_&lt;_void_&gt;
+#### Returns
 
-Defined in: [yajsapi/executor/smartq.ts:112](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L112)
+`AsyncGenerator`<[Handle](executor_smartq.handle.md)<Item\>, any, unknown\>
 
-#### new\_consumer
+#### Defined in
 
-▸ **new\_consumer**\(\): [_Consumer_](executor_smartq.consumer.md)
+[yajsapi/executor/smartq.ts:80](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L80)
 
-**Returns:** [_Consumer_](executor_smartq.consumer.md)
+___
 
-Defined in: [yajsapi/executor/smartq.ts:59](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L59)
+### has\_unassigned\_items
 
-#### reschedule
+▸ **has_unassigned_items**(): `boolean`
 
-▸ **reschedule**\(`handle`: [_Handle_](executor_smartq.handle.md)\): _Promise_&lt;_void_&gt;
+#### Returns
 
-**Parameters:**
+`boolean`
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:162](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L162)
+
+___
+
+### mark\_done
+
+▸ **mark_done**(`handle`): `Promise`<void\>
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `handle` | [_Handle_](executor_smartq.handle.md) |
+| :------ | :------ |
+| `handle` | [Handle](executor_smartq.handle.md)<Item\> |
 
-**Returns:** _Promise_&lt;_void_&gt;
+#### Returns
 
-Defined in: [yajsapi/executor/smartq.ts:124](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L124)
+`Promise`<void\>
 
-#### reschedule\_all
+#### Defined in
 
-▸ **reschedule\_all**\(`consumer`: [_Consumer_](executor_smartq.consumer.md)\): _Promise_&lt;_void_&gt;
+[yajsapi/executor/smartq.ts:114](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L114)
 
-**Parameters:**
+___
+
+### new\_consumer
+
+▸ **new_consumer**(): [Consumer](executor_smartq.consumer.md)<Item\>
+
+#### Returns
+
+[Consumer](executor_smartq.consumer.md)<Item\>
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:61](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L61)
+
+___
+
+### reschedule
+
+▸ **reschedule**(`handle`): `Promise`<void\>
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `consumer` | [_Consumer_](executor_smartq.consumer.md) |
+| :------ | :------ |
+| `handle` | [Handle](executor_smartq.handle.md)<Item\> |
 
-**Returns:** _Promise_&lt;_void_&gt;
+#### Returns
 
-Defined in: [yajsapi/executor/smartq.ts:132](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L132)
+`Promise`<void\>
 
-#### stats
+#### Defined in
 
-▸ **stats**\(\): _object_
+[yajsapi/executor/smartq.ts:126](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L126)
 
-**Returns:** _object_
+___
 
-Defined in: [yajsapi/executor/smartq.ts:146](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L146)
+### reschedule\_all
 
-#### wait\_until\_done
+▸ **reschedule_all**(`consumer`): `Promise`<void\>
 
-▸ **wait\_until\_done**\(\): _Promise_&lt;_void_&gt;
+#### Parameters
 
-**Returns:** _Promise_&lt;_void_&gt;
+| Name | Type |
+| :------ | :------ |
+| `consumer` | [Consumer](executor_smartq.consumer.md)<Item\> |
 
-Defined in: [yajsapi/executor/smartq.ts:154](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L154)
+#### Returns
 
+`Promise`<void\>
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:134](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L134)
+
+___
+
+### stats
+
+▸ **stats**(): `object`
+
+#### Returns
+
+`object`
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:148](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L148)
+
+___
+
+### wait\_until\_done
+
+▸ **wait_until_done**(): `Promise`<void\>
+
+#### Returns
+
+`Promise`<void\>
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:156](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L156)

@@ -1,63 +1,68 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / [package](../modules/package.md) / Package
+
 # Class: Package
-
-[yajsapi](../yajsapi.md) / [Exports](../modules/) / [package](../modules/package.md) / Package
-
-## Class: Package
 
 [package](../modules/package.md).Package
 
-### Hierarchy
+## Hierarchy
 
-* **Package**
+- **Package**
 
-  ↳ [_VmPackage_](package.vmpackage.md)
+  ↳ [VmPackage](package.vmpackage.md)
 
-### Table of contents
-
-#### Constructors
-
-* [constructor](package.package-1.md#constructor)
-
-#### Methods
-
-* [decorate\_demand](package.package-1.md#decorate_demand)
-* [resolve\_url](package.package-1.md#resolve_url)
+## Table of contents
 
 ### Constructors
 
-#### constructor
-
-* **new Package**\(\): [_Package_](package.package-1.md)
-
-**Returns:** [_Package_](package.package-1.md)
+- [constructor](package.package-1.md#constructor)
 
 ### Methods
 
-#### decorate\_demand
+- [decorate\_demand](package.package-1.md#decorate_demand)
+- [resolve\_url](package.package-1.md#resolve_url)
 
-▸ **decorate\_demand**\(`demand`: [_DemandBuilder_](props_builder.demandbuilder.md)\): _Promise_&lt;_void_&gt;
+## Constructors
 
-**Parameters:**
+### constructor
 
-| Name | Type |
-| :--- | :--- |
-| `demand` | [_DemandBuilder_](props_builder.demandbuilder.md) |
+• **new Package**()
 
-**Returns:** _Promise_&lt;_void_&gt;
+## Methods
 
-Defined in: [yajsapi/package/index.ts:40](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L40)
+### decorate\_demand
 
-#### resolve\_url
+▸ **decorate_demand**(`demand`): `Promise`<void\>
 
-▸ **resolve\_url**\(`self`: _any_\): _Promise_&lt;_string_ \| _void_&gt;
-
-**Parameters:**
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `self` | _any_ |
+| :------ | :------ |
+| `demand` | [DemandBuilder](props_builder.demandbuilder.md) |
 
-**Returns:** _Promise_&lt;_string_ \| _void_&gt;
+#### Returns
 
-Defined in: [yajsapi/package/index.ts:37](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L37)
+`Promise`<void\>
 
+#### Defined in
+
+[yajsapi/package/index.ts:40](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/index.ts#L40)
+
+___
+
+### resolve\_url
+
+▸ **resolve_url**(`self`): `Promise`<string \| void\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `self` | `any` |
+
+#### Returns
+
+`Promise`<string \| void\>
+
+#### Defined in
+
+[yajsapi/package/index.ts:37](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/index.ts#L37)

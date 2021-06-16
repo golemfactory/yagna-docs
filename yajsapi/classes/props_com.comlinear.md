@@ -1,143 +1,187 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / [props/com](../modules/props_com.md) / ComLinear
+
 # Class: ComLinear
-
-[yajsapi](../yajsapi.md) / [Exports](../modules/) / [props/com](../modules/props_com.md) / ComLinear
-
-## Class: ComLinear
 
 [props/com](../modules/props_com.md).ComLinear
 
-### Hierarchy
+## Hierarchy
 
-* [_Com_](props_com.com.md)
+- [Com](props_com.com.md)
 
   ↳ **ComLinear**
 
-### Table of contents
-
-#### Constructors
-
-* [constructor](props_com.comlinear.md#constructor)
-
-#### Properties
-
-* [fixed\_price](props_com.comlinear.md#fixed_price)
-* [price\_for](props_com.comlinear.md#price_for)
-* [price\_model](props_com.comlinear.md#price_model)
-* [scheme](props_com.comlinear.md#scheme)
-
-#### Methods
-
-* [\_custom\_mapping](props_com.comlinear.md#_custom_mapping)
-* [fields](props_com.comlinear.md#fields)
-* [from\_properties](props_com.comlinear.md#from_properties)
-* [keys](props_com.comlinear.md#keys)
+## Table of contents
 
 ### Constructors
 
-#### constructor
-
-* **new ComLinear**\(\): [_ComLinear_](props_com.comlinear.md)
-
-**Returns:** [_ComLinear_](props_com.comlinear.md)
-
-Inherited from: [Com](props_com.com.md)
-
-Defined in: [yajsapi/props/base.ts:108](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L108)
+- [constructor](props_com.comlinear.md#constructor)
 
 ### Properties
 
-#### fixed\_price
-
-• **fixed\_price**: _number_
-
-Defined in: [yajsapi/props/com.ts:31](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L31)
-
-#### price\_for
-
-• **price\_for**: Object
-
-Defined in: [yajsapi/props/com.ts:32](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L32)
-
-#### price\_model
-
-• **price\_model**: [_Field_](props_base.field.md)
-
-Inherited from: [Com](props_com.com.md).[price\_model](props_com.com.md#price_model)
-
-Defined in: [yajsapi/props/com.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L27)
-
-#### scheme
-
-• **scheme**: [_Field_](props_base.field.md)
-
-Inherited from: [Com](props_com.com.md).[scheme](props_com.com.md#scheme)
-
-Defined in: [yajsapi/props/com.ts:26](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L26)
+- [fixed\_price](props_com.comlinear.md#fixed_price)
+- [price\_for](props_com.comlinear.md#price_for)
+- [price\_model](props_com.comlinear.md#price_model)
+- [scheme](props_com.comlinear.md#scheme)
 
 ### Methods
 
-#### \_custom\_mapping
+- [\_custom\_mapping](props_com.comlinear.md#_custom_mapping)
+- [fields](props_com.comlinear.md#fields)
+- [from\_properties](props_com.comlinear.md#from_properties)
+- [keys](props_com.comlinear.md#keys)
 
-▸ **\_custom\_mapping**\(`props`: _any_, `data`: _any_\): _void_
+## Constructors
 
-**Parameters:**
+### constructor
+
+• **new ComLinear**()
+
+#### Inherited from
+
+[Com](props_com.com.md).[constructor](props_com.com.md#constructor)
+
+#### Defined in
+
+[yajsapi/props/base.ts:108](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/base.ts#L108)
+
+## Properties
+
+### fixed\_price
+
+• **fixed\_price**: `number`
+
+#### Defined in
+
+[yajsapi/props/com.ts:31](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L31)
+
+___
+
+### price\_for
+
+• **price\_for**: `Object`
+
+#### Defined in
+
+[yajsapi/props/com.ts:32](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L32)
+
+___
+
+### price\_model
+
+• **price\_model**: [Field](props_base.field.md)
+
+#### Inherited from
+
+[Com](props_com.com.md).[price_model](props_com.com.md#price_model)
+
+#### Defined in
+
+[yajsapi/props/com.ts:27](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L27)
+
+___
+
+### scheme
+
+• **scheme**: [Field](props_base.field.md)
+
+#### Inherited from
+
+[Com](props_com.com.md).[scheme](props_com.com.md#scheme)
+
+#### Defined in
+
+[yajsapi/props/com.ts:26](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L26)
+
+## Methods
+
+### \_custom\_mapping
+
+▸ **_custom_mapping**(`props`, `data`): `void`
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `props` | _any_ |
-| `data` | _any_ |
+| :------ | :------ |
+| `props` | `any` |
+| `data` | `any` |
 
-**Returns:** _void_
+#### Returns
 
-Overrides: [Com](props_com.com.md)
+`void`
 
-Defined in: [yajsapi/props/com.ts:34](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L34)
+#### Overrides
 
-#### fields
+[Com](props_com.com.md).[_custom_mapping](props_com.com.md#_custom_mapping)
 
-▸ **fields**\(`cls`: _any_\): [_Field_](props_base.field.md)\[\]
+#### Defined in
 
-**Parameters:**
+[yajsapi/props/com.ts:34](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L34)
+
+___
+
+### fields
+
+▸ **fields**(`cls`): [Field](props_base.field.md)[]
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `cls` | _any_ |
+| :------ | :------ |
+| `cls` | `any` |
 
-**Returns:** [_Field_](props_base.field.md)\[\]
+#### Returns
 
-Inherited from: [Com](props_com.com.md)
+[Field](props_base.field.md)[]
 
-Defined in: [yajsapi/props/base.ts:113](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L113)
+#### Inherited from
 
-#### from\_properties
+[Com](props_com.com.md).[fields](props_com.com.md#fields)
 
-▸ **from\_properties**\(`props`: _object_\): _any_
+#### Defined in
+
+[yajsapi/props/base.ts:113](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/base.ts#L113)
+
+___
+
+### from\_properties
+
+▸ **from_properties**(`props`): `any`
 
 Initialize the model from an object representation.
 
-**`description`** When provided with an object of properties, it will find the matching keys within it and fill the model fields with the values from the object.
+**`description`** When provided with an object of properties, it will find the matching keys
+   within it and fill the model fields with the values from the object.
 
-It ignores non-matching keys - i.e. doesn't require filtering of the properties' object before the model is fed with the data. Thus, several models can be initialized from the same object and all models will only load their own data.
+   It ignores non-matching keys - i.e. doesn't require filtering of the properties'
+   object before the model is fed with the data. Thus, several models can be
+   initialized from the same object and all models will only load their own data.
 
-**Parameters:**
+#### Parameters
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `props` | _object_ |  |
+| Name | Type |
+| :------ | :------ |
+| `props` | `object` |
 
-**Returns:** _any_
+#### Returns
 
-Inherited from: [Com](props_com.com.md)
+`any`
 
-Defined in: [yajsapi/props/base.ts:137](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L137)
+#### Inherited from
 
-#### keys
+[Com](props_com.com.md).[from_properties](props_com.com.md#from_properties)
 
-▸ **keys**\(\): _any_
+#### Defined in
+
+[yajsapi/props/base.ts:137](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/base.ts#L137)
+
+___
+
+### keys
+
+▸ **keys**(): `any`
 
 **`example`**
-
-```javascript
+```js
 import { props } from "yajsapi"
 const { Field, Model } = props;
 export class NodeInfo extends Model {
@@ -150,11 +194,16 @@ new NodeInfo().keys().name()
 // Output: 'golem.node.id.name'
 ```
 
-**Returns:** _any_
+#### Returns
+
+`any`
 
 a mapping between the model's field names and the property keys
 
-Inherited from: [Com](props_com.com.md)
+#### Inherited from
 
-Defined in: [yajsapi/props/base.ts:182](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L182)
+[Com](props_com.com.md).[keys](props_com.com.md#keys)
 
+#### Defined in
+
+[yajsapi/props/base.ts:182](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/base.ts#L182)

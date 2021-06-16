@@ -1,52 +1,63 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / props/com
+
 # Module: props/com
 
-[yajsapi](../yajsapi.md) / [Exports](./) / props/com
+## Table of contents
 
-## Module: props/com
+### Enumerations
 
-### Table of contents
+- [BillingScheme](../enums/props_com.billingscheme.md)
+- [Counter](../enums/props_com.counter.md)
+- [PriceModel](../enums/props_com.pricemodel.md)
 
-#### Enumerations
+### Classes
 
-* [BillingScheme](../enumeration/props_com.billingscheme.md)
-* [Counter](../enumeration/props_com.counter.md)
-* [PriceModel](../enumeration/props_com.pricemodel.md)
-
-#### Classes
-
-* [Com](../classes/props_com.com.md)
-* [ComLinear](../classes/props_com.comlinear.md)
-
-#### Variables
-
-* [DEFINED\_USAGES](props_com.md#defined_usages)
-* [LINEAR\_COEFFS](props_com.md#linear_coeffs)
-* [PRICE\_MODEL](props_com.md#price_model)
-* [SCHEME](props_com.md#scheme)
+- [Com](../classes/props_com.com.md)
+- [ComLinear](../classes/props_com.comlinear.md)
 
 ### Variables
 
-#### DEFINED\_USAGES
+- [DEFINED\_USAGES](props_com.md#defined_usages)
+- [LINEAR\_COEFFS](props_com.md#linear_coeffs)
+- [PRICE\_MODEL](props_com.md#price_model)
+- [SCHEME](props_com.md#scheme)
 
-• `Const` **DEFINED\_USAGES**: _string_= "golem.com.usage.vector"
+## Variables
 
-Defined in: [yajsapi/props/com.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L7)
+### DEFINED\_USAGES
 
-#### LINEAR\_COEFFS
+• `Const` **DEFINED\_USAGES**: `string` = "golem.com.usage.vector"
 
-• `Const` **LINEAR\_COEFFS**: _string_= "golem.com.pricing.model.linear.coeffs"
+#### Defined in
 
-Defined in: [yajsapi/props/com.ts:6](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L6)
+[yajsapi/props/com.ts:7](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L7)
 
-#### PRICE\_MODEL
+___
 
-• `Const` **PRICE\_MODEL**: _string_= "golem.com.pricing.model"
+### LINEAR\_COEFFS
 
-Defined in: [yajsapi/props/com.ts:4](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L4)
+• `Const` **LINEAR\_COEFFS**: `string` = "golem.com.pricing.model.linear.coeffs"
 
-#### SCHEME
+#### Defined in
 
-• `Const` **SCHEME**: _string_= "golem.com.scheme"
+[yajsapi/props/com.ts:6](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L6)
 
-Defined in: [yajsapi/props/com.ts:3](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L3)
+___
 
+### PRICE\_MODEL
+
+• `Const` **PRICE\_MODEL**: `string` = "golem.com.pricing.model"
+
+#### Defined in
+
+[yajsapi/props/com.ts:4](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L4)
+
+___
+
+### SCHEME
+
+• `Const` **SCHEME**: `string` = "golem.com.scheme"
+
+#### Defined in
+
+[yajsapi/props/com.ts:3](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L3)

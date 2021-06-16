@@ -1,33 +1,34 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / props/base
+
 # Module: props/base
 
-[yajsapi](../yajsapi.md) / [Exports](./) / props/base
+## Table of contents
 
-## Module: props/base
+### Classes
 
-### Table of contents
-
-#### Classes
-
-* [Field](../classes/props_base.field.md)
-* [Model](../classes/props_base.model.md)
-
-#### Functions
-
-* [as\_list](props_base.md#as_list)
+- [Field](../classes/props_base.field.md)
+- [Model](../classes/props_base.model.md)
 
 ### Functions
 
-#### as\_list
+- [as\_list](props_base.md#as_list)
 
-▸ **as\_list**\(`data`: _string_ \| _string_\[\]\): _string_\[\]
+## Functions
 
-**Parameters:**
+### as\_list
+
+▸ **as_list**(`data`): `string`[]
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `data` | _string_ \| _string_\[\] |
+| :------ | :------ |
+| `data` | `string` \| `string`[] |
 
-**Returns:** _string_\[\]
+#### Returns
 
-Defined in: [yajsapi/props/base.ts:3](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/base.ts#L3)
+`string`[]
 
+#### Defined in
+
+[yajsapi/props/base.ts:3](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/base.ts#L3)

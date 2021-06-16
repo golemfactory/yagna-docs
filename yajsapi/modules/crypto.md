@@ -1,34 +1,35 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / crypto
+
 # Module: crypto
 
-[yajsapi](../yajsapi.md) / [Exports](./) / crypto
+## Table of contents
 
-## Module: crypto
+### Classes
 
-### Table of contents
-
-#### Classes
-
-* [CryptoCtx](../classes/crypto.cryptoctx.md)
-* [PrivateKey](../classes/crypto.privatekey.md)
-* [PublicKey](../classes/crypto.publickey.md)
-
-#### Functions
-
-* [rand\_hex](crypto.md#rand_hex)
+- [CryptoCtx](../classes/crypto.cryptoctx.md)
+- [PrivateKey](../classes/crypto.privatekey.md)
+- [PublicKey](../classes/crypto.publickey.md)
 
 ### Functions
 
-#### rand\_hex
+- [rand\_hex](crypto.md#rand_hex)
 
-▸ **rand\_hex**\(`length`: _number_\): _string_
+## Functions
 
-**Parameters:**
+### rand\_hex
+
+▸ **rand_hex**(`length`): `string`
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `length` | _number_ |
+| :------ | :------ |
+| `length` | `number` |
 
-**Returns:** _string_
+#### Returns
 
-Defined in: [yajsapi/crypto.ts:5](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/crypto.ts#L5)
+`string`
 
+#### Defined in
+
+[yajsapi/crypto.ts:5](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L5)

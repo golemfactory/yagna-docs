@@ -1,65 +1,72 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / package
+
 # Module: package
 
-[yajsapi](../yajsapi.md) / [Exports](./) / package
+## Table of contents
 
-## Module: package
+### Classes
 
-### Table of contents
-
-#### Classes
-
-* [Constraints](../classes/package.constraints.md)
-* [Package](../classes/package.package-1.md)
-* [VmPackage](../classes/package.vmpackage.md)
-
-#### Type aliases
-
-* [RepoOpts](package.md#repoopts)
-
-#### Variables
-
-* [DEFAULT\_REPO\_SRV](package.md#default_repo_srv)
-
-#### Functions
-
-* [resolve\_repo\_srv](package.md#resolve_repo_srv)
+- [Constraints](../classes/package.constraints.md)
+- [Package](../classes/package.package-1.md)
+- [VmPackage](../classes/package.vmpackage.md)
 
 ### Type aliases
 
-#### RepoOpts
-
-Ƭ **RepoOpts**: { `engine?`: _string_ ; `image_hash`: _string_ ; `min_mem_gib`: _number_ ; `min_storage_gib`: _number_ }
-
-**Type declaration:**
-
-| Name | Type |
-| :--- | :--- |
-| `engine?` | _string_ |
-| `image_hash` | _string_ |
-| `min_mem_gib` | _number_ |
-| `min_storage_gib` | _number_ |
-
-Defined in: [yajsapi/package/index.ts:11](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L11)
+- [RepoOpts](package.md#repoopts)
 
 ### Variables
 
-#### DEFAULT\_REPO\_SRV
-
-• `Const` **DEFAULT\_REPO\_SRV**: _\_girepo.\_tcp.dev.golem.network_= "\_girepo.\_tcp.dev.golem.network"
-
-Defined in: [yajsapi/package/index.ts:9](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L9)
+- [DEFAULT\_REPO\_SRV](package.md#default_repo_srv)
 
 ### Functions
 
-#### resolve\_repo\_srv
+- [resolve\_repo\_srv](package.md#resolve_repo_srv)
 
-▸ `Const`**resolve\_repo\_srv**\(`__namedParameters`: _Object_\): _Promise_&lt;_unknown_&gt;
+## Type aliases
 
-**Parameters:**
+### RepoOpts
 
-• **\_\_namedParameters**: _Object_
+Ƭ **RepoOpts**: `Object`
 
-**Returns:** _Promise_&lt;_unknown_&gt;
+#### Type declaration
 
-Defined in: [yajsapi/package/index.ts:75](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/index.ts#L75)
+| Name | Type |
+| :------ | :------ |
+| `engine?` | `string` |
+| `image_hash` | `string` |
+| `min_mem_gib` | `number` |
+| `min_storage_gib` | `number` |
 
+#### Defined in
+
+[yajsapi/package/index.ts:11](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/index.ts#L11)
+
+## Variables
+
+### DEFAULT\_REPO\_SRV
+
+• `Const` **DEFAULT\_REPO\_SRV**: ``"_girepo._tcp.dev.golem.network"``
+
+#### Defined in
+
+[yajsapi/package/index.ts:9](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/index.ts#L9)
+
+## Functions
+
+### resolve\_repo\_srv
+
+▸ `Const` **resolve_repo_srv**(`__namedParameters`): `Promise`<unknown\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+
+#### Returns
+
+`Promise`<unknown\>
+
+#### Defined in
+
+[yajsapi/package/index.ts:75](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/index.ts#L75)

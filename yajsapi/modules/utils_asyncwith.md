@@ -1,29 +1,30 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / utils/asyncWith
+
 # Module: utils/asyncWith
 
-[yajsapi](../yajsapi.md) / [Exports](./) / utils/asyncWith
-
-## Module: utils/asyncWith
-
-### Table of contents
-
-#### Functions
-
-* [default](utils_asyncwith.md#default)
+## Table of contents
 
 ### Functions
 
-#### default
+- [default](utils_asyncwith.md#default)
 
-▸ **default**\(`expression`: _any_, `block`: _any_\): _Promise_&lt;_void_&gt;
+## Functions
 
-**Parameters:**
+### default
+
+▸ **default**(`expression`, `block`): `Promise`<void\>
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `expression` | _any_ |
-| `block` | _any_ |
+| :------ | :------ |
+| `expression` | `any` |
+| `block` | `any` |
 
-**Returns:** _Promise_&lt;_void_&gt;
+#### Returns
 
-Defined in: [yajsapi/utils/asyncWith.ts:2](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncWith.ts#L2)
+`Promise`<void\>
 
+#### Defined in
+
+[yajsapi/utils/asyncWith.ts:2](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncWith.ts#L2)

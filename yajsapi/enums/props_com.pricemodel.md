@@ -14,6 +14,8 @@
 
 ### LINEAR
 
-• **LINEAR**: = "linear"
+• **LINEAR** = "linear"
 
-Defined in: [yajsapi/props/com.ts:14](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L14)
+#### Defined in
+
+[yajsapi/props/com.ts:14](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L14)

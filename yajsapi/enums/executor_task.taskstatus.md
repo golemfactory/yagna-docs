@@ -17,30 +17,38 @@
 
 ### ACCEPTED
 
-• **ACCEPTED**: = "accept"
+• **ACCEPTED** = "accept"
 
-Defined in: [yajsapi/executor/task.ts:12](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L12)
+#### Defined in
+
+[yajsapi/executor/task.ts:12](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/task.ts#L12)
 
 ___
 
 ### REJECTED
 
-• **REJECTED**: = "reject"
+• **REJECTED** = "reject"
 
-Defined in: [yajsapi/executor/task.ts:13](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L13)
+#### Defined in
+
+[yajsapi/executor/task.ts:13](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/task.ts#L13)
 
 ___
 
 ### RUNNING
 
-• **RUNNING**: = "run"
+• **RUNNING** = "run"
 
-Defined in: [yajsapi/executor/task.ts:11](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L11)
+#### Defined in
+
+[yajsapi/executor/task.ts:11](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/task.ts#L11)
 
 ___
 
 ### WAITING
 
-• **WAITING**: = "wait"
+• **WAITING** = "wait"
 
-Defined in: [yajsapi/executor/task.ts:10](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/task.ts#L10)
+#### Defined in
+
+[yajsapi/executor/task.ts:10](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/task.ts#L10)

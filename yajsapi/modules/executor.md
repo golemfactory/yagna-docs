@@ -1,79 +1,83 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / executor
+
 # Module: executor
 
-[yajsapi](../yajsapi.md) / [Exports](./) / executor
-
-## Module: executor
-
-### Table of contents
-
-#### References
-
-* [Task](executor.md#task)
-* [TaskStatus](executor.md#taskstatus)
-
-#### Classes
-
-* [Executor](../classes/executor.executor-1.md)
-* [NoPaymentAccountError](../classes/executor.nopaymentaccounterror.md)
-* [\_BufferItem](../classes/executor._bufferitem.md)
-* [\_ExecutorConfig](../classes/executor._executorconfig.md)
-
-#### Type aliases
-
-* [ExecutorOpts](executor.md#executoropts)
-
-#### Variables
-
-* [sgx](executor.md#sgx)
-* [vm](executor.md#vm)
+## Table of contents
 
 ### References
 
-#### Task
+- [Task](executor.md#task)
+- [TaskStatus](executor.md#taskstatus)
 
-Re-exports: [Task](../classes/executor_task.task.md)
+### Classes
 
-#### TaskStatus
-
-Re-exports: [TaskStatus](../enumeration/executor_task.taskstatus.md)
+- [BatchResults](../classes/executor.batchresults.md)
+- [Executor](../classes/executor.executor-1.md)
+- [NoPaymentAccountError](../classes/executor.nopaymentaccounterror.md)
+- [SubmissionState](../classes/executor.submissionstate.md)
+- [\_ExecutorConfig](../classes/executor._executorconfig.md)
 
 ### Type aliases
 
-#### ExecutorOpts
-
-Ƭ **ExecutorOpts**: { `budget`: _string_ ; `driver?`: _string_ ; `event_consumer?`: [_default_](../interface/utils_callable.default.md)&lt;\[[_YaEvent_](../classes/executor_events.yaevent.md)\], _void_&gt; ; `max_workers?`: Number ; `network?`: _string_ ; `strategy?`: [_MarketStrategy_](../classes/executor_strategy.marketstrategy.md) ; `subnet_tag?`: _string_ ; `task_package`: [_Package_](../classes/package.package-1.md) ; `timeout?`: Number \| String }
-
-**Type declaration:**
-
-| Name | Type |
-| :--- | :--- |
-| `budget` | _string_ |
-| `driver?` | _string_ |
-| `event_consumer?` | [_default_](../interface/utils_callable.default.md)&lt;\[[_YaEvent_](../classes/executor_events.yaevent.md)\], _void_&gt; |
-| `max_workers?` | Number |
-| `network?` | _string_ |
-| `strategy?` | [_MarketStrategy_](../classes/executor_strategy.marketstrategy.md) |
-| `subnet_tag?` | _string_ |
-| `task_package` | [_Package_](../classes/package.package-1.md) |
-| `timeout?` | Number \| String |
-
-Defined in: [yajsapi/executor/index.ts:102](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L102)
+- [ExecutorOpts](executor.md#executoropts)
 
 ### Variables
 
-#### sgx
+- [sgx](executor.md#sgx)
+- [vm](executor.md#vm)
 
-• `Const` **sgx**: [_package/sgx_](package_sgx.md)
+## References
 
-Defined in: [yajsapi/executor/index.ts:32](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L32)
+### Task
 
-Defined in: [yajsapi/index.ts:15](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/index.ts#L15)
+Re-exports: [Task](../classes/executor_task.task.md)
 
-#### vm
+___
 
-• `Const` **vm**: [_package/vm_](package_vm.md)
+### TaskStatus
 
-Defined in: [yajsapi/executor/index.ts:33](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/index.ts#L33)
+Re-exports: [TaskStatus](../enums/executor_task.taskstatus.md)
 
-Defined in: [yajsapi/index.ts:15](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/index.ts#L15)
+## Type aliases
 
+### ExecutorOpts
+
+Ƭ **ExecutorOpts**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `budget` | `string` |
+| `driver?` | `string` |
+| `event_consumer?` | [default](../interfaces/utils_callable.default.md)<[[YaEvent](../classes/executor_events.yaevent.md)], void\> |
+| `max_workers?` | `Number` |
+| `network?` | `string` |
+| `strategy?` | [MarketStrategy](../classes/executor_strategy.marketstrategy.md) |
+| `subnet_tag?` | `string` |
+| `task_package` | [Package](../classes/package.package-1.md) |
+| `timeout?` | `Number` \| `String` |
+
+#### Defined in
+
+[yajsapi/executor/index.ts:115](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/index.ts#L115)
+
+## Variables
+
+### sgx
+
+• `Const` **sgx**: [package/sgx](package_sgx.md)
+
+#### Defined in
+
+[yajsapi/executor/index.ts:38](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/index.ts#L38)
+
+___
+
+### vm
+
+• `Const` **vm**: [package/vm](package_vm.md)
+
+#### Defined in
+
+[yajsapi/executor/index.ts:39](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/index.ts#L39)

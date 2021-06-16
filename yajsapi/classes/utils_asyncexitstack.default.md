@@ -4,10 +4,6 @@
 
 [utils/asyncExitStack](../modules/utils_asyncexitstack.md).default
 
-## Hierarchy
-
-* **default**
-
 ## Table of contents
 
 ### Constructors
@@ -27,40 +23,48 @@
 
 ### constructor
 
-\+ **new default**(): [*default*](utils_asyncexitstack.default.md)
-
-**Returns:** [*default*](utils_asyncexitstack.default.md)
+• **new default**()
 
 ## Properties
 
 ### \_stack
 
-• `Private` **\_stack**: *any*[]
+• `Private` **\_stack**: `any`[] = []
 
-Defined in: [yajsapi/utils/asyncExitStack.ts:2](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncExitStack.ts#L2)
+#### Defined in
+
+[yajsapi/utils/asyncExitStack.ts:2](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncExitStack.ts#L2)
 
 ## Methods
 
 ### aclose
 
-▸ **aclose**(): *Promise*<*void*\>
+▸ **aclose**(): `Promise`<void\>
 
-**Returns:** *Promise*<*void*\>
+#### Returns
 
-Defined in: [yajsapi/utils/asyncExitStack.ts:9](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncExitStack.ts#L9)
+`Promise`<void\>
+
+#### Defined in
+
+[yajsapi/utils/asyncExitStack.ts:9](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncExitStack.ts#L9)
 
 ___
 
 ### enter\_async\_context
 
-▸ **enter_async_context**(`ctx`: *any*): *Promise*<*any*\>
+▸ **enter_async_context**(`ctx`): `Promise`<any\>
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
------- | ------ |
-`ctx` | *any* |
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `any` |
 
-**Returns:** *Promise*<*any*\>
+#### Returns
 
-Defined in: [yajsapi/utils/asyncExitStack.ts:3](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/asyncExitStack.ts#L3)
+`Promise`<any\>
+
+#### Defined in
+
+[yajsapi/utils/asyncExitStack.ts:3](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/asyncExitStack.ts#L3)

@@ -1,14 +1,12 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / rest/activity
+
 # Module: rest/activity
 
-[yajsapi](../yajsapi.md) / [Exports](./) / rest/activity
+## Table of contents
 
-## Module: rest/activity
+### Classes
 
-### Table of contents
-
-#### Classes
-
-* [ActivityService](../classes/rest_activity.activityservice.md)
-* [ApiConfigProvider](../classes/rest_activity.apiconfigprovider.md)
-* [CommandExecutionError](../classes/rest_activity.commandexecutionerror.md)
-
+- [Activity](../classes/rest_activity.activity.md)
+- [ActivityService](../classes/rest_activity.activityservice.md)
+- [ApiConfigProvider](../classes/rest_activity.apiconfigprovider.md)
+- [CommandExecutionError](../classes/rest_activity.commandexecutionerror.md)

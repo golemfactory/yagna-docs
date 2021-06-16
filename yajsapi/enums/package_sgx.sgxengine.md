@@ -17,30 +17,38 @@
 
 ### GRAPHENE
 
-• **GRAPHENE**: = "sgx"
+• **GRAPHENE** = "sgx"
 
-Defined in: [yajsapi/package/sgx.ts:76](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/sgx.ts#L76)
+#### Defined in
+
+[yajsapi/package/sgx.ts:76](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/sgx.ts#L76)
 
 ___
 
 ### JS
 
-• **JS**: = "sgx-js"
+• **JS** = "sgx-js"
 
-Defined in: [yajsapi/package/sgx.ts:77](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/sgx.ts#L77)
+#### Defined in
+
+[yajsapi/package/sgx.ts:77](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/sgx.ts#L77)
 
 ___
 
 ### WASI
 
-• **WASI**: = "sgx-wasi"
+• **WASI** = "sgx-wasi"
 
-Defined in: [yajsapi/package/sgx.ts:79](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/sgx.ts#L79)
+#### Defined in
+
+[yajsapi/package/sgx.ts:79](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/sgx.ts#L79)
 
 ___
 
 ### WASM
 
-• **WASM**: = "sgx-wasm"
+• **WASM** = "sgx-wasm"
 
-Defined in: [yajsapi/package/sgx.ts:78](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/sgx.ts#L78)
+#### Defined in
+
+[yajsapi/package/sgx.ts:78](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/sgx.ts#L78)

@@ -1,106 +1,127 @@
-# Class: Consumer
+[yajsapi](../README.md) / [Exports](../modules.md) / [executor/smartq](../modules/executor_smartq.md) / Consumer
 
-[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/smartq](../modules/executor_smartq.md) / Consumer
-
-## Class: Consumer
+# Class: Consumer<Item\>
 
 [executor/smartq](../modules/executor_smartq.md).Consumer
 
-### Type parameters
+## Type parameters
 
 | Name |
-| :--- |
+| :------ |
 | `Item` |
 
-### Hierarchy
-
-* **Consumer**
-
-### Table of contents
-
-#### Constructors
-
-* [constructor](executor_smartq.consumer.md#constructor)
-
-#### Properties
-
-* [\_fetched](executor_smartq.consumer.md#_fetched)
-* [\_queue](executor_smartq.consumer.md#_queue)
-
-#### Methods
-
-* [\[Symbol.asyncIterator\]](executor_smartq.consumer.md#[symbol.asynciterator])
-* [done](executor_smartq.consumer.md#done)
-* [last\_item](executor_smartq.consumer.md#last_item)
-* [ready](executor_smartq.consumer.md#ready)
+## Table of contents
 
 ### Constructors
 
-#### constructor
-
-* **new Consumer**\(`queue`: [_SmartQueue_](executor_smartq.smartqueue.md)\): [_Consumer_](executor_smartq.consumer.md)
-
-**Type parameters:**
-
-| Name |
-| :--- |
-| `Item` |
-
-**Parameters:**
-
-| Name | Type |
-| :--- | :--- |
-| `queue` | [_SmartQueue_](executor_smartq.smartqueue.md) |
-
-**Returns:** [_Consumer_](executor_smartq.consumer.md)
-
-Defined in: [yajsapi/executor/smartq.ts:167](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L167)
+- [constructor](executor_smartq.consumer.md#constructor)
 
 ### Properties
 
-#### \_fetched
-
-• `Private` `Optional` **\_fetched**: _undefined_ \| _null_ \| [_Handle_](executor_smartq.handle.md)
-
-Defined in: [yajsapi/executor/smartq.ts:167](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L167)
-
-#### \_queue
-
-• `Private` **\_queue**: _any_
-
-Defined in: [yajsapi/executor/smartq.ts:166](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L166)
+- [\_fetched](executor_smartq.consumer.md#_fetched)
+- [\_queue](executor_smartq.consumer.md#_queue)
 
 ### Methods
 
-#### \[Symbol.asyncIterator\]
+- [[Symbol.asyncIterator]](executor_smartq.consumer.md#[symbol.asynciterator])
+- [done](executor_smartq.consumer.md#done)
+- [last\_item](executor_smartq.consumer.md#last_item)
+- [ready](executor_smartq.consumer.md#ready)
 
-▸ **\[Symbol.asyncIterator\]**\(\): _AsyncGenerator_&lt;[_Handle_](executor_smartq.handle.md), _any_, _any_&gt;
+## Constructors
 
-**Returns:** _AsyncGenerator_&lt;[_Handle_](executor_smartq.handle.md), _any_, _any_&gt;
+### constructor
 
-Defined in: [yajsapi/executor/smartq.ts:187](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L187)
+• **new Consumer**<Item\>(`queue`)
 
-#### done
+#### Type parameters
 
-▸ **done**\(\): _null_
+| Name |
+| :------ |
+| `Item` |
 
-**Returns:** _null_
+#### Parameters
 
-Defined in: [yajsapi/executor/smartq.ts:178](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L178)
+| Name | Type |
+| :------ | :------ |
+| `queue` | [SmartQueue](executor_smartq.smartqueue.md)<Item\> |
 
-#### last\_item
+#### Defined in
 
-▸ **last\_item**\(\): _null_ \| Item
+[yajsapi/executor/smartq.ts:169](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L169)
 
-**Returns:** _null_ \| Item
+## Properties
 
-Defined in: [yajsapi/executor/smartq.ts:183](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L183)
+### \_fetched
 
-#### ready
+• `Private` `Optional` **\_fetched**: ``null`` \| [Handle](executor_smartq.handle.md)<Item\>
 
-▸ **ready**\(\): [_Consumer_](executor_smartq.consumer.md)
+#### Defined in
 
-**Returns:** [_Consumer_](executor_smartq.consumer.md)
+[yajsapi/executor/smartq.ts:169](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L169)
 
-Defined in: [yajsapi/executor/smartq.ts:174](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L174)
+___
 
+### \_queue
+
+• `Private` **\_queue**: `any`
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:168](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L168)
+
+## Methods
+
+### [Symbol.asyncIterator]
+
+▸ **[Symbol.asyncIterator]**(): `AsyncGenerator`<[Handle](executor_smartq.handle.md)<Item\>, any, any\>
+
+#### Returns
+
+`AsyncGenerator`<[Handle](executor_smartq.handle.md)<Item\>, any, any\>
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:189](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L189)
+
+___
+
+### done
+
+▸ **done**(): ``null``
+
+#### Returns
+
+``null``
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:180](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L180)
+
+___
+
+### last\_item
+
+▸ **last_item**(): ``null`` \| `Item`
+
+#### Returns
+
+``null`` \| `Item`
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:185](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L185)
+
+___
+
+### ready
+
+▸ **ready**(): [Consumer](executor_smartq.consumer.md)<Item\>
+
+#### Returns
+
+[Consumer](executor_smartq.consumer.md)<Item\>
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:176](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L176)

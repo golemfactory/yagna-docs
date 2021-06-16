@@ -1,26 +1,27 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / utils/eventLoop
+
 # Module: utils/eventLoop
 
-[yajsapi](../yajsapi.md) / [Exports](./) / utils/eventLoop
-
-## Module: utils/eventLoop
-
-### Table of contents
-
-#### Functions
-
-* [default](utils_eventloop.md#default)
+## Table of contents
 
 ### Functions
 
-#### default
+- [default](utils_eventloop.md#default)
 
-▸ **default**\(\): _object_
+## Functions
 
-**Returns:** _object_
+### default
+
+▸ **default**(): `Object`
+
+#### Returns
+
+`Object`
 
 | Name | Type |
-| :--- | :--- |
-| `create_task` | _any_ |
+| :------ | :------ |
+| `create_task` | `any` |
 
-Defined in: [yajsapi/utils/eventLoop.ts:6](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/eventLoop.ts#L6)
+#### Defined in
 
+[yajsapi/utils/eventLoop.ts:6](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/eventLoop.ts#L6)

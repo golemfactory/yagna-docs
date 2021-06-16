@@ -6,25 +6,27 @@
 
 ## Type parameters
 
-Name |
------- |
-`T` |
-`R` |
-
-## Hierarchy
-
-* **default**
+| Name |
+| :------ |
+| `T` |
+| `R` |
 
 ## Callable
 
-▸ **default**(...`T`: *any*[]): R
+### default
 
-#### Parameters:
+▸ **default**(...`T`): `R`
 
-Name | Type |
------- | ------ |
-`...T` | *any*[] |
+#### Parameters
 
-**Returns:** R
+| Name | Type |
+| :------ | :------ |
+| `...T` | `any`[] |
 
-Defined in: [yajsapi/utils/callable.ts:1](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/callable.ts#L1)
+#### Returns
+
+`R`
+
+#### Defined in
+
+[yajsapi/utils/callable.ts:1](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/callable.ts#L1)

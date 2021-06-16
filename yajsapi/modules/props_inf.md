@@ -1,67 +1,86 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / props/inf
+
 # Module: props/inf
 
-[yajsapi](../yajsapi.md) / [Exports](./) / props/inf
+## Table of contents
 
-## Module: props/inf
+### Enumerations
 
-### Table of contents
+- [RuntimeType](../enums/props_inf.runtimetype.md)
+- [VmPackageFormat](../enums/props_inf.vmpackageformat.md)
 
-#### Enumerations
+### Classes
 
-* [RuntimeType](../enumeration/props_inf.runtimetype.md)
-* [VmPackageFormat](../enumeration/props_inf.vmpackageformat.md)
-
-#### Classes
-
-* [ExeUnitRequest](../classes/props_inf.exeunitrequest.md)
-* [InfBase](../classes/props_inf.infbase.md)
-* [InfVm](../classes/props_inf.infvm.md)
-* [VmRequest](../classes/props_inf.vmrequest.md)
-
-#### Variables
-
-* [INF\_CORES](props_inf.md#inf_cores)
-* [INF\_MEM](props_inf.md#inf_mem)
-* [INF\_RUNTIME](props_inf.md#inf_runtime)
-* [INF\_STORAGE](props_inf.md#inf_storage)
-* [InfVmKeys](props_inf.md#infvmkeys)
-* [TRANSFER\_CAPS](props_inf.md#transfer_caps)
+- [ExeUnitRequest](../classes/props_inf.exeunitrequest.md)
+- [InfBase](../classes/props_inf.infbase.md)
+- [InfVm](../classes/props_inf.infvm.md)
+- [VmRequest](../classes/props_inf.vmrequest.md)
 
 ### Variables
 
-#### INF\_CORES
+- [INF\_CORES](props_inf.md#inf_cores)
+- [INF\_MEM](props_inf.md#inf_mem)
+- [INF\_RUNTIME](props_inf.md#inf_runtime)
+- [INF\_STORAGE](props_inf.md#inf_storage)
+- [InfVmKeys](props_inf.md#infvmkeys)
+- [TRANSFER\_CAPS](props_inf.md#transfer_caps)
 
-• `Const` **INF\_CORES**: _string_= "golem.inf.cpu.cores"
+## Variables
 
-Defined in: [yajsapi/props/inf.ts:5](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L5)
+### INF\_CORES
 
-#### INF\_MEM
+• `Const` **INF\_CORES**: `string` = "golem.inf.cpu.cores"
 
-• `Const` **INF\_MEM**: _string_= "golem.inf.mem.gib"
+#### Defined in
 
-Defined in: [yajsapi/props/inf.ts:3](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L3)
+[yajsapi/props/inf.ts:5](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/inf.ts#L5)
 
-#### INF\_RUNTIME
+___
 
-• `Const` **INF\_RUNTIME**: _string_= "golem.runtime.name"
+### INF\_MEM
 
-Defined in: [yajsapi/props/inf.ts:6](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L6)
+• `Const` **INF\_MEM**: `string` = "golem.inf.mem.gib"
 
-#### INF\_STORAGE
+#### Defined in
 
-• `Const` **INF\_STORAGE**: _string_= "golem.inf.storage.gib"
+[yajsapi/props/inf.ts:3](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/inf.ts#L3)
 
-Defined in: [yajsapi/props/inf.ts:4](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L4)
+___
 
-#### InfVmKeys
+### INF\_RUNTIME
 
-• `Const` **InfVmKeys**: _object_
+• `Const` **INF\_RUNTIME**: `string` = "golem.runtime.name"
 
-Defined in: [yajsapi/props/inf.ts:39](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L39)
+#### Defined in
 
-#### TRANSFER\_CAPS
+[yajsapi/props/inf.ts:6](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/inf.ts#L6)
 
-• `Const` **TRANSFER\_CAPS**: _string_= "golem.activity.caps.transfer.protocol"
+___
 
-Defined in: [yajsapi/props/inf.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/inf.ts#L7)
+### INF\_STORAGE
 
+• `Const` **INF\_STORAGE**: `string` = "golem.inf.storage.gib"
+
+#### Defined in
+
+[yajsapi/props/inf.ts:4](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/inf.ts#L4)
+
+___
+
+### InfVmKeys
+
+• `Const` **InfVmKeys**: `Object`
+
+#### Defined in
+
+[yajsapi/props/inf.ts:39](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/inf.ts#L39)
+
+___
+
+### TRANSFER\_CAPS
+
+• `Const` **TRANSFER\_CAPS**: `string` = "golem.activity.caps.transfer.protocol"
+
+#### Defined in
+
+[yajsapi/props/inf.ts:7](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/inf.ts#L7)

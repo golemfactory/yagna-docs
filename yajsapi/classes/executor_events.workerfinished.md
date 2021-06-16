@@ -1,67 +1,88 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / [executor/events](../modules/executor_events.md) / WorkerFinished
+
 # Class: WorkerFinished
-
-[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/events](../modules/executor_events.md) / WorkerFinished
-
-## Class: WorkerFinished
 
 [executor/events](../modules/executor_events.md).WorkerFinished
 
-### Hierarchy
+## Hierarchy
 
-* _AgreementEvent_
+- `AgreementEvent`
 
   ↳ **WorkerFinished**
 
-### Table of contents
-
-#### Constructors
-
-* [constructor](executor_events.workerfinished.md#constructor)
-
-#### Properties
-
-* [agr\_id](executor_events.workerfinished.md#agr_id)
-* [exception](executor_events.workerfinished.md#exception)
-
-#### Methods
-
-* [extract\_exc\_info](executor_events.workerfinished.md#extract_exc_info)
+## Table of contents
 
 ### Constructors
 
-#### constructor
-
-* **new WorkerFinished**\(`__namedParameters`: _Object_\): [_WorkerFinished_](executor_events.workerfinished.md)
-
-**Parameters:**
-
-• **\_\_namedParameters**: _Object_
-
-**Returns:** [_WorkerFinished_](executor_events.workerfinished.md)
-
-Defined in: [yajsapi/executor/events.ts:262](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L262)
+- [constructor](executor_events.workerfinished.md#constructor)
 
 ### Properties
 
-#### agr\_id
-
-• `Optional` **agr\_id**: _undefined_ \| _string_
-
-Defined in: [yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L123)
-
-#### exception
-
-• `Optional` **exception**: _undefined_ \| _null_ \| Error= null
-
-Defined in: [yajsapi/executor/events.ts:262](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L262)
+- [agr\_id](executor_events.workerfinished.md#agr_id)
+- [exception](executor_events.workerfinished.md#exception)
 
 ### Methods
 
-#### extract\_exc\_info
+- [extract\_exc\_info](executor_events.workerfinished.md#extract_exc_info)
 
-▸ **extract\_exc\_info**\(\): \[_undefined_ \| _null_ \| Error, [_YaEvent_](executor_events.yaevent.md)\]
+## Constructors
 
-**Returns:** \[_undefined_ \| _null_ \| Error, [_YaEvent_](executor_events.yaevent.md)\]
+### constructor
 
-Defined in: [yajsapi/executor/events.ts:270](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/events.ts#L270)
+• **new WorkerFinished**(`__namedParameters`)
 
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+
+#### Overrides
+
+AgreementEvent.constructor
+
+#### Defined in
+
+[yajsapi/executor/events.ts:264](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L264)
+
+## Properties
+
+### agr\_id
+
+• `Optional` **agr\_id**: `string`
+
+#### Inherited from
+
+AgreementEvent.agr\_id
+
+#### Defined in
+
+[yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L123)
+
+___
+
+### exception
+
+• `Optional` **exception**: ``null`` \| `Error` = null
+
+#### Defined in
+
+[yajsapi/executor/events.ts:264](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L264)
+
+## Methods
+
+### extract\_exc\_info
+
+▸ **extract_exc_info**(): [`undefined` \| ``null`` \| `Error`, [YaEvent](executor_events.yaevent.md)]
+
+#### Returns
+
+[`undefined` \| ``null`` \| `Error`, [YaEvent](executor_events.yaevent.md)]
+
+#### Overrides
+
+AgreementEvent.extract\_exc\_info
+
+#### Defined in
+
+[yajsapi/executor/events.ts:272](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L272)

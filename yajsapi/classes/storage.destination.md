@@ -1,64 +1,71 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / [storage](../modules/storage.md) / Destination
+
 # Class: Destination
-
-[yajsapi](../yajsapi.md) / [Exports](../modules/) / [storage](../modules/storage.md) / Destination
-
-## Class: Destination
 
 [storage](../modules/storage.md).Destination
 
-### Hierarchy
-
-* **Destination**
-
-### Table of contents
-
-#### Constructors
-
-* [constructor](storage.destination.md#constructor)
-
-#### Methods
-
-* [download\_file](storage.destination.md#download_file)
-* [download\_stream](storage.destination.md#download_stream)
-* [upload\_url](storage.destination.md#upload_url)
+## Table of contents
 
 ### Constructors
 
-#### constructor
-
-* **new Destination**\(\): [_Destination_](storage.destination.md)
-
-**Returns:** [_Destination_](storage.destination.md)
+- [constructor](storage.destination.md#constructor)
 
 ### Methods
 
-#### download\_file
+- [download\_file](storage.destination.md#download_file)
+- [download\_stream](storage.destination.md#download_stream)
+- [upload\_url](storage.destination.md#upload_url)
 
-▸ **download\_file**\(`destination_file`: _string_\): _Promise_&lt;_void_&gt;
+## Constructors
 
-**Parameters:**
+### constructor
+
+• **new Destination**()
+
+## Methods
+
+### download\_file
+
+▸ **download_file**(`destination_file`): `Promise`<void\>
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `destination_file` | _string_ |
+| :------ | :------ |
+| `destination_file` | `string` |
 
-**Returns:** _Promise_&lt;_void_&gt;
+#### Returns
 
-Defined in: [yajsapi/storage/index.ts:45](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L45)
+`Promise`<void\>
 
-#### download\_stream
+#### Defined in
 
-▸ **download\_stream**\(\): _Promise_&lt;[_Content_](storage.content.md)&gt;
+[yajsapi/storage/index.ts:45](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/storage/index.ts#L45)
 
-**Returns:** _Promise_&lt;[_Content_](storage.content.md)&gt;
+___
 
-Defined in: [yajsapi/storage/index.ts:41](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L41)
+### download\_stream
 
-#### upload\_url
+▸ **download_stream**(): `Promise`<[Content](storage.content.md)\>
 
-▸ **upload\_url**\(\): _string_
+#### Returns
 
-**Returns:** _string_
+`Promise`<[Content](storage.content.md)\>
 
-Defined in: [yajsapi/storage/index.ts:37](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L37)
+#### Defined in
 
+[yajsapi/storage/index.ts:41](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/storage/index.ts#L41)
+
+___
+
+### upload\_url
+
+▸ **upload_url**(): `string`
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[yajsapi/storage/index.ts:37](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/storage/index.ts#L37)

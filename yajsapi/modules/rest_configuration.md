@@ -1,12 +1,9 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / rest/configuration
+
 # Module: rest/configuration
 
-[yajsapi](../yajsapi.md) / [Exports](./) / rest/configuration
+## Table of contents
 
-## Module: rest/configuration
+### Classes
 
-### Table of contents
-
-#### Classes
-
-* [Configuration](../classes/rest_configuration.configuration.md)
-
+- [Configuration](../classes/rest_configuration.configuration.md)

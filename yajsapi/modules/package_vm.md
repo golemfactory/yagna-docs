@@ -1,26 +1,29 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / package/vm
+
 # Module: package/vm
 
-[yajsapi](../yajsapi.md) / [Exports](./) / package/vm
-
-## Module: package/vm
-
-### Table of contents
-
-#### Functions
-
-* [repo](package_vm.md#repo)
+## Table of contents
 
 ### Functions
 
-#### repo
+- [repo](package_vm.md#repo)
 
-▸ **repo**\(`__namedParameters`: [_RepoOpts_](package.md#repoopts)\): _Promise_&lt;[_Package_](../classes/package.package-1.md)&gt;
+## Functions
 
-**Parameters:**
+### repo
 
-• **\_\_namedParameters**: [_RepoOpts_](package.md#repoopts)
+▸ **repo**(`__namedParameters`): `Promise`<[Package](../classes/package.package-1.md)\>
 
-**Returns:** _Promise_&lt;[_Package_](../classes/package.package-1.md)&gt;
+#### Parameters
 
-Defined in: [yajsapi/package/vm.ts:20](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/package/vm.ts#L20)
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | [RepoOpts](package.md#repoopts) |
 
+#### Returns
+
+`Promise`<[Package](../classes/package.package-1.md)\>
+
+#### Defined in
+
+[yajsapi/package/vm.ts:20](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/vm.ts#L20)

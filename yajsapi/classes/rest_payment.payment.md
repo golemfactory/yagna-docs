@@ -1,187 +1,240 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / [rest/payment](../modules/rest_payment.md) / Payment
+
 # Class: Payment
-
-[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/payment](../modules/rest_payment.md) / Payment
-
-## Class: Payment
 
 [rest/payment](../modules/rest_payment.md).Payment
 
-### Hierarchy
-
-* **Payment**
-
-### Table of contents
-
-#### Constructors
-
-* [constructor](rest_payment.payment.md#constructor)
-
-#### Properties
-
-* [\_api](rest_payment.payment.md#_api)
-
-#### Methods
-
-* [accounts](rest_payment.payment.md#accounts)
-* [allocation](rest_payment.payment.md#allocation)
-* [allocations](rest_payment.payment.md#allocations)
-* [debit\_note](rest_payment.payment.md#debit_note)
-* [decorate\_demand](rest_payment.payment.md#decorate_demand)
-* [incoming\_debit\_notes](rest_payment.payment.md#incoming_debit_notes)
-* [incoming\_invoices](rest_payment.payment.md#incoming_invoices)
-* [invoice](rest_payment.payment.md#invoice)
-* [invoices](rest_payment.payment.md#invoices)
-* [new\_allocation](rest_payment.payment.md#new_allocation)
+## Table of contents
 
 ### Constructors
 
-#### constructor
-
-* **new Payment**\(`cfg`: _Configuration_\): [_Payment_](rest_payment.payment.md)
-
-**Parameters:**
-
-| Name | Type |
-| :--- | :--- |
-| `cfg` | _Configuration_ |
-
-**Returns:** [_Payment_](rest_payment.payment.md)
-
-Defined in: [yajsapi/rest/payment.ts:202](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L202)
+- [constructor](rest_payment.payment.md#constructor)
 
 ### Properties
 
-#### \_api
-
-• `Private` **\_api**: _RequestorApi_
-
-Defined in: [yajsapi/rest/payment.ts:202](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L202)
+- [\_api](rest_payment.payment.md#_api)
 
 ### Methods
 
-#### accounts
+- [accounts](rest_payment.payment.md#accounts)
+- [allocation](rest_payment.payment.md#allocation)
+- [allocations](rest_payment.payment.md#allocations)
+- [debit\_note](rest_payment.payment.md#debit_note)
+- [decorate\_demand](rest_payment.payment.md#decorate_demand)
+- [incoming\_debit\_notes](rest_payment.payment.md#incoming_debit_notes)
+- [incoming\_invoices](rest_payment.payment.md#incoming_invoices)
+- [invoice](rest_payment.payment.md#invoice)
+- [invoices](rest_payment.payment.md#invoices)
+- [new\_allocation](rest_payment.payment.md#new_allocation)
 
-▸ **accounts**\(\): _AsyncGenerator_
+## Constructors
 
-**Returns:** _AsyncGenerator_
+### constructor
 
-Defined in: [yajsapi/rest/payment.ts:278](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L278)
+• **new Payment**(`cfg`)
 
-#### allocation
-
-▸ **allocation**\(`allocation_id`: _string_\): _Promise_&lt;[_Allocation_](rest_payment.allocation.md)&gt;
-
-**Parameters:**
-
-| Name | Type |
-| :--- | :--- |
-| `allocation_id` | _string_ |
-
-**Returns:** _Promise_&lt;[_Allocation_](rest_payment.allocation.md)&gt;
-
-Defined in: [yajsapi/rest/payment.ts:257](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L257)
-
-#### allocations
-
-▸ **allocations**\(\): _AsyncGenerator_&lt;[_Allocation_](rest_payment.allocation.md), _any_, _unknown_&gt;
-
-**Returns:** _AsyncGenerator_&lt;[_Allocation_](rest_payment.allocation.md), _any_, _unknown_&gt;
-
-Defined in: [yajsapi/rest/payment.ts:235](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L235)
-
-#### debit\_note
-
-▸ **debit\_note**\(`debit_note_id`: _string_\): _Promise_&lt;[_DebitNote_](rest_payment.debitnote.md)&gt;
-
-**Parameters:**
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `debit_note_id` | _string_ |
+| :------ | :------ |
+| `cfg` | `Configuration` |
 
-**Returns:** _Promise_&lt;[_DebitNote_](rest_payment.debitnote.md)&gt;
+#### Defined in
 
-Defined in: [yajsapi/rest/payment.ts:292](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L292)
+[yajsapi/rest/payment.ts:205](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L205)
 
-#### decorate\_demand
+## Properties
 
-▸ **decorate\_demand**\(`ids`: _string_\[\]\): _Promise_
+### \_api
 
-**Parameters:**
+• `Private` **\_api**: `RequestorApi`
 
-| Name | Type |
-| :--- | :--- |
-| `ids` | _string_\[\] |
+#### Defined in
 
-**Returns:** _Promise_
+[yajsapi/rest/payment.ts:205](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L205)
 
-Defined in: [yajsapi/rest/payment.ts:285](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L285)
+## Methods
 
-#### incoming\_debit\_notes
+### accounts
 
-▸ **incoming\_debit\_notes**\(`cancellationToken`: _any_\): _AsyncGenerator_&lt;[_DebitNote_](rest_payment.debitnote.md), _any_, _unknown_&gt;
+▸ **accounts**(): `AsyncGenerator`<Account, any, unknown\>
 
-**Parameters:**
+#### Returns
 
-| Name | Type |
-| :--- | :--- |
-| `cancellationToken` | _any_ |
+`AsyncGenerator`<Account, any, unknown\>
 
-**Returns:** _AsyncGenerator_&lt;[_DebitNote_](rest_payment.debitnote.md), _any_, _unknown_&gt;
+#### Defined in
 
-Defined in: [yajsapi/rest/payment.ts:354](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L354)
+[yajsapi/rest/payment.ts:281](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L281)
 
-#### incoming\_invoices
+___
 
-▸ **incoming\_invoices**\(`cancellationToken`: _any_\): _AsyncGenerator_&lt;[_Invoice_](rest_payment.invoice.md), _any_, _unknown_&gt;
+### allocation
 
-**Parameters:**
+▸ **allocation**(`allocation_id`): `Promise`<[Allocation](rest_payment.allocation.md)\>
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `cancellationToken` | _any_ |
+| :------ | :------ |
+| `allocation_id` | `string` |
 
-**Returns:** _AsyncGenerator_&lt;[_Invoice_](rest_payment.invoice.md), _any_, _unknown_&gt;
+#### Returns
 
-Defined in: [yajsapi/rest/payment.ts:315](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L315)
+`Promise`<[Allocation](rest_payment.allocation.md)\>
 
-#### invoice
+#### Defined in
 
-▸ **invoice**\(`invoice_id`: _string_\): _Promise_&lt;[_Invoice_](rest_payment.invoice.md)&gt;
+[yajsapi/rest/payment.ts:260](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L260)
 
-**Parameters:**
+___
+
+### allocations
+
+▸ **allocations**(): `AsyncGenerator`<[Allocation](rest_payment.allocation.md), any, unknown\>
+
+#### Returns
+
+`AsyncGenerator`<[Allocation](rest_payment.allocation.md), any, unknown\>
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:238](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L238)
+
+___
+
+### debit\_note
+
+▸ **debit_note**(`debit_note_id`): `Promise`<[DebitNote](rest_payment.debitnote.md)\>
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `invoice_id` | _string_ |
+| :------ | :------ |
+| `debit_note_id` | `string` |
 
-**Returns:** _Promise_&lt;[_Invoice_](rest_payment.invoice.md)&gt;
+#### Returns
 
-Defined in: [yajsapi/rest/payment.ts:308](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L308)
+`Promise`<[DebitNote](rest_payment.debitnote.md)\>
 
-#### invoices
+#### Defined in
 
-▸ **invoices**\(\): _AsyncGenerator_&lt;[_Invoice_](rest_payment.invoice.md), _any_, _unknown_&gt;
+[yajsapi/rest/payment.ts:295](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L295)
 
-**Returns:** _AsyncGenerator_&lt;[_Invoice_](rest_payment.invoice.md), _any_, _unknown_&gt;
+___
 
-Defined in: [yajsapi/rest/payment.ts:299](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L299)
+### decorate\_demand
 
-#### new\_allocation
+▸ **decorate_demand**(`ids`): `Promise`<MarketDecoration\>
 
-▸ **new\_allocation**\(`amount`: _number_, `payment_platform`: _string_, `payment_address`: _string_, `expires?`: _null_ \| Date, `make_deposit?`: _boolean_\): [_ResourceCtx_](rest_resource.resourcectx.md)&lt;[_Allocation_](rest_payment.allocation.md)&gt;
+#### Parameters
 
-**Parameters:**
+| Name | Type |
+| :------ | :------ |
+| `ids` | `string`[] |
+
+#### Returns
+
+`Promise`<MarketDecoration\>
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:288](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L288)
+
+___
+
+### incoming\_debit\_notes
+
+▸ **incoming_debit_notes**(`cancellationToken`): `AsyncGenerator`<[DebitNote](rest_payment.debitnote.md), any, unknown\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `cancellationToken` | `any` |
+
+#### Returns
+
+`AsyncGenerator`<[DebitNote](rest_payment.debitnote.md), any, unknown\>
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:359](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L359)
+
+___
+
+### incoming\_invoices
+
+▸ **incoming_invoices**(`cancellationToken`): `AsyncGenerator`<[Invoice](rest_payment.invoice.md), any, unknown\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `cancellationToken` | `any` |
+
+#### Returns
+
+`AsyncGenerator`<[Invoice](rest_payment.invoice.md), any, unknown\>
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:321](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L321)
+
+___
+
+### invoice
+
+▸ **invoice**(`invoice_id`): `Promise`<[Invoice](rest_payment.invoice.md)\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `invoice_id` | `string` |
+
+#### Returns
+
+`Promise`<[Invoice](rest_payment.invoice.md)\>
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:313](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L313)
+
+___
+
+### invoices
+
+▸ **invoices**(): `AsyncGenerator`<[Invoice](rest_payment.invoice.md), any, unknown\>
+
+#### Returns
+
+`AsyncGenerator`<[Invoice](rest_payment.invoice.md), any, unknown\>
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:304](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L304)
+
+___
+
+### new\_allocation
+
+▸ **new_allocation**(`amount`, `payment_platform`, `payment_address`, `expires?`, `make_deposit?`): [ResourceCtx](rest_resource.resourcectx.md)<[Allocation](rest_payment.allocation.md)\>
+
+#### Parameters
 
 | Name | Type | Default value |
-| :--- | :--- | :--- |
-| `amount` | _number_ | - |
-| `payment_platform` | _string_ | - |
-| `payment_address` | _string_ | - |
-| `expires` | _null_ \| Date | null |
-| `make_deposit` | _boolean_ | false |
+| :------ | :------ | :------ |
+| `amount` | `number` | `undefined` |
+| `payment_platform` | `string` | `undefined` |
+| `payment_address` | `string` | `undefined` |
+| `expires` | ``null`` \| `Date` | null |
+| `make_deposit` | `boolean` | false |
 
-**Returns:** [_ResourceCtx_](rest_resource.resourcectx.md)&lt;[_Allocation_](rest_payment.allocation.md)&gt;
+#### Returns
 
-Defined in: [yajsapi/rest/payment.ts:208](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L208)
+[ResourceCtx](rest_resource.resourcectx.md)<[Allocation](rest_payment.allocation.md)\>
 
+#### Defined in
+
+[yajsapi/rest/payment.ts:211](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L211)

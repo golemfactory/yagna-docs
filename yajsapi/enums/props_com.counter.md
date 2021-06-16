@@ -18,38 +18,48 @@
 
 ### CPU
 
-• **CPU**: = "golem.usage.cpu\_sec"
+• **CPU** = "golem.usage.cpu\_sec"
 
-Defined in: [yajsapi/props/com.ts:19](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L19)
+#### Defined in
+
+[yajsapi/props/com.ts:19](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L19)
 
 ___
 
 ### MAXMEM
 
-• **MAXMEM**: = "golem.usage.gib"
+• **MAXMEM** = "golem.usage.gib"
 
-Defined in: [yajsapi/props/com.ts:21](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L21)
+#### Defined in
+
+[yajsapi/props/com.ts:21](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L21)
 
 ___
 
 ### STORAGE
 
-• **STORAGE**: = "golem.usage.storage\_gib"
+• **STORAGE** = "golem.usage.storage\_gib"
 
-Defined in: [yajsapi/props/com.ts:20](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L20)
+#### Defined in
+
+[yajsapi/props/com.ts:20](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L20)
 
 ___
 
 ### TIME
 
-• **TIME**: = "golem.usage.duration\_sec"
+• **TIME** = "golem.usage.duration\_sec"
 
-Defined in: [yajsapi/props/com.ts:18](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L18)
+#### Defined in
+
+[yajsapi/props/com.ts:18](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L18)
 
 ___
 
 ### UNKNOWN
 
-• **UNKNOWN**: = ""
+• **UNKNOWN** = ""
 
-Defined in: [yajsapi/props/com.ts:22](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/props/com.ts#L22)
+#### Defined in
+
+[yajsapi/props/com.ts:22](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/props/com.ts#L22)

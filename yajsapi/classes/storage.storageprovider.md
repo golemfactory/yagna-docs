@@ -1,109 +1,137 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / [storage](../modules/storage.md) / StorageProvider
+
 # Class: StorageProvider
-
-[yajsapi](../yajsapi.md) / [Exports](../modules/) / [storage](../modules/storage.md) / StorageProvider
-
-## Class: StorageProvider
 
 [storage](../modules/storage.md).StorageProvider
 
-### Hierarchy
+## Hierarchy
 
-* [_InputStorageProvider_](storage.inputstorageprovider.md)
-* [_OutputStorageProvider_](storage.outputstorageprovider.md)
+- [InputStorageProvider](storage.inputstorageprovider.md)
+
+- [OutputStorageProvider](storage.outputstorageprovider.md)
 
   ↳ **StorageProvider**
 
-### Implemented by
+## Implemented by
 
-* [_ComposedStorageProvider_](storage.composedstorageprovider.md)
+- [ComposedStorageProvider](storage.composedstorageprovider.md)
 
-### Table of contents
-
-#### Constructors
-
-* [constructor](storage.storageprovider.md#constructor)
-
-#### Methods
-
-* [new\_destination](storage.storageprovider.md#new_destination)
-* [upload\_bytes](storage.storageprovider.md#upload_bytes)
-* [upload\_file](storage.storageprovider.md#upload_file)
-* [upload\_stream](storage.storageprovider.md#upload_stream)
+## Table of contents
 
 ### Constructors
 
-#### constructor
-
-* **new StorageProvider**\(\): [_StorageProvider_](storage.storageprovider.md)
-
-**Returns:** [_StorageProvider_](storage.storageprovider.md)
-
-Inherited from: [OutputStorageProvider](storage.outputstorageprovider.md)
+- [constructor](storage.storageprovider.md#constructor)
 
 ### Methods
 
-#### new\_destination
+- [new\_destination](storage.storageprovider.md#new_destination)
+- [upload\_bytes](storage.storageprovider.md#upload_bytes)
+- [upload\_file](storage.storageprovider.md#upload_file)
+- [upload\_stream](storage.storageprovider.md#upload_stream)
 
-▸ **new\_destination**\(`destination_file?`: _null_ \| _string_\): _Promise_&lt;[_Destination_](storage.destination.md)&gt;
+## Constructors
 
-**Parameters:**
+### constructor
+
+• **new StorageProvider**()
+
+#### Inherited from
+
+[OutputStorageProvider](storage.outputstorageprovider.md).[constructor](storage.outputstorageprovider.md#constructor)
+
+## Methods
+
+### new\_destination
+
+▸ **new_destination**(`destination_file?`): `Promise`<[Destination](storage.destination.md)\>
+
+#### Parameters
 
 | Name | Type | Default value |
-| :--- | :--- | :--- |
-| `destination_file` | _null_ \| _string_ | null |
+| :------ | :------ | :------ |
+| `destination_file` | ``null`` \| `string` | null |
 
-**Returns:** _Promise_&lt;[_Destination_](storage.destination.md)&gt;
+#### Returns
 
-Inherited from: [OutputStorageProvider](storage.outputstorageprovider.md)
+`Promise`<[Destination](storage.destination.md)\>
 
-Defined in: [yajsapi/storage/index.ts:98](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L98)
+#### Inherited from
 
-#### upload\_bytes
+[OutputStorageProvider](storage.outputstorageprovider.md).[new_destination](storage.outputstorageprovider.md#new_destination)
 
-▸ **upload\_bytes**\(`data`: _Buffer_\): _Promise_&lt;[_Source_](storage.source.md)&gt;
+#### Defined in
 
-**Parameters:**
+[yajsapi/storage/index.ts:98](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/storage/index.ts#L98)
 
-| Name | Type |
-| :--- | :--- |
-| `data` | _Buffer_ |
+___
 
-**Returns:** _Promise_&lt;[_Source_](storage.source.md)&gt;
+### upload\_bytes
 
-Inherited from: [InputStorageProvider](storage.inputstorageprovider.md)
+▸ **upload_bytes**(`data`): `Promise`<[Source](storage.source.md)\>
 
-Defined in: [yajsapi/storage/index.ts:69](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L69)
-
-#### upload\_file
-
-▸ **upload\_file**\(`path`: _string_\): _Promise_&lt;[_Source_](storage.source.md)&gt;
-
-**Parameters:**
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `path` | _string_ |
+| :------ | :------ |
+| `data` | `Buffer` |
 
-**Returns:** _Promise_&lt;[_Source_](storage.source.md)&gt;
+#### Returns
 
-Inherited from: [InputStorageProvider](storage.inputstorageprovider.md)
+`Promise`<[Source](storage.source.md)\>
 
-Defined in: [yajsapi/storage/index.ts:77](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L77)
+#### Inherited from
 
-#### upload\_stream
+[InputStorageProvider](storage.inputstorageprovider.md).[upload_bytes](storage.inputstorageprovider.md#upload_bytes)
 
-▸ **upload\_stream**\(`length`: _number_, `stream`: _AsyncGenerator_&lt;_Buffer_, _any_, _unknown_&gt;\): _Promise_&lt;[_Source_](storage.source.md)&gt;
+#### Defined in
 
-**Parameters:**
+[yajsapi/storage/index.ts:69](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/storage/index.ts#L69)
+
+___
+
+### upload\_file
+
+▸ **upload_file**(`path`): `Promise`<[Source](storage.source.md)\>
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `length` | _number_ |
-| `stream` | _AsyncGenerator_&lt;_Buffer_, _any_, _unknown_&gt; |
+| :------ | :------ |
+| `path` | `string` |
 
-**Returns:** _Promise_&lt;[_Source_](storage.source.md)&gt;
+#### Returns
 
-Inherited from: [InputStorageProvider](storage.inputstorageprovider.md)
+`Promise`<[Source](storage.source.md)\>
 
-Defined in: [yajsapi/storage/index.ts:62](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/storage/index.ts#L62)
+#### Inherited from
 
+[InputStorageProvider](storage.inputstorageprovider.md).[upload_file](storage.inputstorageprovider.md#upload_file)
+
+#### Defined in
+
+[yajsapi/storage/index.ts:77](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/storage/index.ts#L77)
+
+___
+
+### upload\_stream
+
+▸ **upload_stream**(`length`, `stream`): `Promise`<[Source](storage.source.md)\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `length` | `number` |
+| `stream` | `AsyncGenerator`<Buffer, any, unknown\> |
+
+#### Returns
+
+`Promise`<[Source](storage.source.md)\>
+
+#### Inherited from
+
+[InputStorageProvider](storage.inputstorageprovider.md).[upload_stream](storage.inputstorageprovider.md#upload_stream)
+
+#### Defined in
+
+[yajsapi/storage/index.ts:62](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/storage/index.ts#L62)

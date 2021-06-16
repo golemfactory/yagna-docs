@@ -1,47 +1,52 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / executor/strategy
+
 # Module: executor/strategy
 
-[yajsapi](../yajsapi.md) / [Exports](./) / executor/strategy
+## Table of contents
 
-## Module: executor/strategy
+### Classes
 
-### Table of contents
+- [DecreaseScoreForUnconfirmedAgreement](../classes/executor_strategy.decreasescoreforunconfirmedagreement.md)
+- [DummyMS](../classes/executor_strategy.dummyms.md)
+- [LeastExpensiveLinearPayuMS](../classes/executor_strategy.leastexpensivelinearpayums.md)
+- [MarketStrategy](../classes/executor_strategy.marketstrategy.md)
 
-#### Classes
+### Interfaces
 
-* [DummyMS](../classes/executor_strategy.dummyms.md)
-* [LeastExpensiveLinearPayuMS](../classes/executor_strategy.leastexpensivelinearpayums.md)
-* [MarketStrategy](../classes/executor_strategy.marketstrategy.md)
-
-#### Variables
-
-* [CFF\_DEFAULT\_PRICE\_FOR\_COUNTER](executor_strategy.md#cff_default_price_for_counter)
-* [SCORE\_NEUTRAL](executor_strategy.md#score_neutral)
-* [SCORE\_REJECTED](executor_strategy.md#score_rejected)
-* [SCORE\_TRUSTED](executor_strategy.md#score_trusted)
+- [ComputationHistory](../interfaces/executor_strategy.computationhistory.md)
 
 ### Variables
 
-#### CFF\_DEFAULT\_PRICE\_FOR\_COUNTER
+- [SCORE\_NEUTRAL](executor_strategy.md#score_neutral)
+- [SCORE\_REJECTED](executor_strategy.md#score_rejected)
+- [SCORE\_TRUSTED](executor_strategy.md#score_trusted)
 
-• `Const` **CFF\_DEFAULT\_PRICE\_FOR\_COUNTER**: _Map_&lt;[_Counter_](../enumeration/props_com.counter.md), _number_&gt;
+## Variables
 
-Defined in: [yajsapi/executor/strategy.ts:17](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L17)
+### SCORE\_NEUTRAL
 
-#### SCORE\_NEUTRAL
+• `Const` **SCORE\_NEUTRAL**: `number` = 0.0
 
-• `Const` **SCORE\_NEUTRAL**: _number_= 0.0
+#### Defined in
 
-Defined in: [yajsapi/executor/strategy.ts:13](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L13)
+[yajsapi/executor/strategy.ts:13](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/strategy.ts#L13)
 
-#### SCORE\_REJECTED
+___
 
-• `Const` **SCORE\_REJECTED**: _number_= -1.0
+### SCORE\_REJECTED
 
-Defined in: [yajsapi/executor/strategy.ts:14](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L14)
+• `Const` **SCORE\_REJECTED**: `number` = -1.0
 
-#### SCORE\_TRUSTED
+#### Defined in
 
-• `Const` **SCORE\_TRUSTED**: _number_= 100.0
+[yajsapi/executor/strategy.ts:14](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/strategy.ts#L14)
 
-Defined in: [yajsapi/executor/strategy.ts:15](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/strategy.ts#L15)
+___
 
+### SCORE\_TRUSTED
+
+• `Const` **SCORE\_TRUSTED**: `number` = 100.0
+
+#### Defined in
+
+[yajsapi/executor/strategy.ts:15](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/strategy.ts#L15)

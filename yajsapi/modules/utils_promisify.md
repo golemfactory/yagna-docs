@@ -1,28 +1,29 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / utils/promisify
+
 # Module: utils/promisify
 
-[yajsapi](../yajsapi.md) / [Exports](./) / utils/promisify
-
-## Module: utils/promisify
-
-### Table of contents
-
-#### Functions
-
-* [default](utils_promisify.md#default)
+## Table of contents
 
 ### Functions
 
-#### default
+- [default](utils_promisify.md#default)
 
-▸ **default**\(`fn`: Function\): Function
+## Functions
 
-**Parameters:**
+### default
+
+▸ **default**(`fn`): `Function`
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `fn` | Function |
+| :------ | :------ |
+| `fn` | `Function` |
 
-**Returns:** Function
+#### Returns
 
-Defined in: [yajsapi/utils/promisify.ts:1](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/utils/promisify.ts#L1)
+`Function`
 
+#### Defined in
+
+[yajsapi/utils/promisify.ts:1](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/promisify.ts#L1)

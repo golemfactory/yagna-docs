@@ -1,108 +1,129 @@
-# Class: Handle
+[yajsapi](../README.md) / [Exports](../modules.md) / [executor/smartq](../modules/executor_smartq.md) / Handle
 
-[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/smartq](../modules/executor_smartq.md) / Handle
-
-## Class: Handle
+# Class: Handle<Item\>
 
 [executor/smartq](../modules/executor_smartq.md).Handle
 
-### Type parameters
+## Type parameters
 
 | Name |
-| :--- |
+| :------ |
 | `Item` |
 
-### Hierarchy
-
-* **Handle**
-
-### Table of contents
-
-#### Constructors
-
-* [constructor](executor_smartq.handle.md#constructor)
-
-#### Properties
-
-* [\_consumer](executor_smartq.handle.md#_consumer)
-* [\_data](executor_smartq.handle.md#_data)
-* [\_prev\_consumers](executor_smartq.handle.md#_prev_consumers)
-
-#### Methods
-
-* [assign\_consumer](executor_smartq.handle.md#assign_consumer)
-* [consumer](executor_smartq.handle.md#consumer)
-* [data](executor_smartq.handle.md#data)
+## Table of contents
 
 ### Constructors
 
-#### constructor
-
-* **new Handle**\(`__namedParameters`: _Object_\): [_Handle_](executor_smartq.handle.md)
-
-**Type parameters:**
-
-| Name |
-| :--- |
-| `Item` |
-
-**Parameters:**
-
-• **\_\_namedParameters**: _Object_
-
-**Returns:** [_Handle_](executor_smartq.handle.md)
-
-Defined in: [yajsapi/executor/smartq.ts:9](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L9)
+- [constructor](executor_smartq.handle.md#constructor)
 
 ### Properties
 
-#### \_consumer
-
-• `Private` **\_consumer**: _null_ \| [_Consumer_](executor_smartq.consumer.md)
-
-Defined in: [yajsapi/executor/smartq.ts:7](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L7)
-
-#### \_data
-
-• `Private` **\_data**: Item
-
-Defined in: [yajsapi/executor/smartq.ts:8](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L8)
-
-#### \_prev\_consumers
-
-• `Private` **\_prev\_consumers**: _Set_&lt;[_Consumer_](executor_smartq.consumer.md)&gt;
-
-Defined in: [yajsapi/executor/smartq.ts:9](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L9)
+- [\_consumer](executor_smartq.handle.md#_consumer)
+- [\_data](executor_smartq.handle.md#_data)
+- [\_prev\_consumers](executor_smartq.handle.md#_prev_consumers)
 
 ### Methods
 
-#### assign\_consumer
+- [assign\_consumer](executor_smartq.handle.md#assign_consumer)
+- [consumer](executor_smartq.handle.md#consumer)
+- [data](executor_smartq.handle.md#data)
 
-▸ **assign\_consumer**\(`consumer`: [_Consumer_](executor_smartq.consumer.md)\): _void_
+## Constructors
 
-**Parameters:**
+### constructor
+
+• **new Handle**<Item\>(`__namedParameters`)
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `Item` |
+
+#### Parameters
 
 | Name | Type |
-| :--- | :--- |
-| `consumer` | [_Consumer_](executor_smartq.consumer.md) |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
 
-**Returns:** _void_
+#### Defined in
 
-Defined in: [yajsapi/executor/smartq.ts:22](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L22)
+[yajsapi/executor/smartq.ts:9](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L9)
 
-#### consumer
+## Properties
 
-▸ **consumer**\(\): _null_ \| [_Consumer_](executor_smartq.consumer.md)
+### \_consumer
 
-**Returns:** _null_ \| [_Consumer_](executor_smartq.consumer.md)
+• `Private` **\_consumer**: ``null`` \| [Consumer](executor_smartq.consumer.md)<Item\>
 
-Defined in: [yajsapi/executor/smartq.ts:18](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L18)
+#### Defined in
 
-#### data
+[yajsapi/executor/smartq.ts:7](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L7)
 
-▸ **data**\(\): Item
+___
 
-**Returns:** Item
+### \_data
 
-Defined in: [yajsapi/executor/smartq.ts:27](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/executor/smartq.ts#L27)
+• `Private` **\_data**: `Item`
 
+#### Defined in
+
+[yajsapi/executor/smartq.ts:8](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L8)
+
+___
+
+### \_prev\_consumers
+
+• `Private` **\_prev\_consumers**: `Set`<[Consumer](executor_smartq.consumer.md)<Item\>\>
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:9](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L9)
+
+## Methods
+
+### assign\_consumer
+
+▸ **assign_consumer**(`consumer`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `consumer` | [Consumer](executor_smartq.consumer.md)<Item\> |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:22](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L22)
+
+___
+
+### consumer
+
+▸ **consumer**(): ``null`` \| [Consumer](executor_smartq.consumer.md)<Item\>
+
+#### Returns
+
+``null`` \| [Consumer](executor_smartq.consumer.md)<Item\>
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:18](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L18)
+
+___
+
+### data
+
+▸ **data**(): `Item`
+
+#### Returns
+
+`Item`
+
+#### Defined in
+
+[yajsapi/executor/smartq.ts:27](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/smartq.ts#L27)

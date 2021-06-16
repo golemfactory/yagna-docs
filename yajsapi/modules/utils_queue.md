@@ -1,12 +1,9 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / utils/queue
+
 # Module: utils/queue
 
-[yajsapi](../yajsapi.md) / [Exports](./) / utils/queue
+## Table of contents
 
-## Module: utils/queue
+### Classes
 
-### Table of contents
-
-#### Classes
-
-* [default](../classes/utils_queue.default.md)
-
+- [default](../classes/utils_queue.default.md)

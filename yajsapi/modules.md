@@ -8,6 +8,7 @@
 
 - [crypto](modules/crypto.md)
 - [executor](modules/executor.md)
+- [executor/agreements\_pool](modules/executor_agreements_pool.md)
 - [executor/ctx](modules/executor_ctx.md)
 - [executor/events](modules/executor_events.md)
 - [executor/smartq](modules/executor_smartq.md)
@@ -24,6 +25,7 @@
 - [props/inf](modules/props_inf.md)
 - [rest](modules/rest.md)
 - [rest/activity](modules/rest_activity.md)
+- [rest/common](modules/rest_common.md)
 - [rest/configuration](modules/rest_configuration.md)
 - [rest/market](modules/rest_market.md)
 - [rest/payment](modules/rest_payment.md)
@@ -40,6 +42,7 @@
 - [utils/cancellationToken](modules/utils_cancellationtoken.md)
 - [utils/eventLoop](modules/utils_eventloop.md)
 - [utils/getAllProperties](modules/utils_getallproperties.md)
+- [utils/lock](modules/utils_lock.md)
 - [utils/log](modules/utils_log.md)
 - [utils/promisify](modules/utils_promisify.md)
 - [utils/queue](modules/utils_queue.md)

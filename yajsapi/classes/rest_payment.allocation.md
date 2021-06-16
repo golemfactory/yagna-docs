@@ -1,98 +1,133 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / [rest/payment](../modules/rest_payment.md) / Allocation
+
 # Class: Allocation
-
-[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/payment](../modules/rest_payment.md) / Allocation
-
-## Class: Allocation
 
 [rest/payment](../modules/rest_payment.md).Allocation
 
-### Hierarchy
+## Hierarchy
 
-* _\_Link_
+- `\_Link`
 
   ↳ **Allocation**
 
-### Table of contents
-
-#### Constructors
-
-* [constructor](rest_payment.allocation.md#constructor)
-
-#### Properties
-
-* [\_api](rest_payment.allocation.md#_api)
-* [amount](rest_payment.allocation.md#amount)
-* [expires](rest_payment.allocation.md#expires)
-* [id](rest_payment.allocation.md#id)
-* [payment\_address](rest_payment.allocation.md#payment_address)
-* [payment\_platform](rest_payment.allocation.md#payment_platform)
-
-#### Methods
-
-* [delete](rest_payment.allocation.md#delete)
-* [details](rest_payment.allocation.md#details)
+## Table of contents
 
 ### Constructors
 
-#### constructor
-
-* **new Allocation**\(\): [_Allocation_](rest_payment.allocation.md)
-
-**Returns:** [_Allocation_](rest_payment.allocation.md)
+- [constructor](rest_payment.allocation.md#constructor)
 
 ### Properties
 
-#### \_api
-
-• **\_api**: _RequestorApi_
-
-Defined in: [yajsapi/rest/payment.ts:89](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L89)
-
-#### amount
-
-• **amount**: _number_
-
-Defined in: [yajsapi/rest/payment.ts:103](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L103)
-
-#### expires
-
-• `Optional` **expires**: _undefined_ \| Date
-
-Defined in: [yajsapi/rest/payment.ts:112](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L112)
-
-#### id
-
-• **id**: _string_
-
-Defined in: [yajsapi/rest/payment.ts:100](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L100)
-
-#### payment\_address
-
-• `Optional` **payment\_address**: _undefined_ \| _string_
-
-Defined in: [yajsapi/rest/payment.ts:109](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L109)
-
-#### payment\_platform
-
-• `Optional` **payment\_platform**: _undefined_ \| _string_
-
-Defined in: [yajsapi/rest/payment.ts:106](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L106)
+- [\_api](rest_payment.allocation.md#_api)
+- [amount](rest_payment.allocation.md#amount)
+- [expires](rest_payment.allocation.md#expires)
+- [id](rest_payment.allocation.md#id)
+- [payment\_address](rest_payment.allocation.md#payment_address)
+- [payment\_platform](rest_payment.allocation.md#payment_platform)
 
 ### Methods
 
-#### delete
+- [delete](rest_payment.allocation.md#delete)
+- [details](rest_payment.allocation.md#details)
 
-▸ **delete**\(\): _Promise_&lt;_void_&gt;
+## Constructors
 
-**Returns:** _Promise_&lt;_void_&gt;
+### constructor
 
-Defined in: [yajsapi/rest/payment.ts:132](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L132)
+• **new Allocation**()
 
-#### details
+#### Inherited from
 
-▸ **details**\(\): _Promise_&lt;_AllocationDetails_&gt;
+\_Link.constructor
 
-**Returns:** _Promise_&lt;_AllocationDetails_&gt;
+## Properties
 
-Defined in: [yajsapi/rest/payment.ts:115](https://github.com/golemfactory/yajsapi/blob/289a25a/yajsapi/rest/payment.ts#L115)
+### \_api
 
+• **\_api**: `RequestorApi`
+
+#### Inherited from
+
+\_Link.\_api
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:94](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L94)
+
+___
+
+### amount
+
+• **amount**: `number`
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:108](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L108)
+
+___
+
+### expires
+
+• `Optional` **expires**: `Date`
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:117](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L117)
+
+___
+
+### id
+
+• **id**: `string`
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:105](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L105)
+
+___
+
+### payment\_address
+
+• `Optional` **payment\_address**: `string`
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:114](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L114)
+
+___
+
+### payment\_platform
+
+• `Optional` **payment\_platform**: `string`
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:111](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L111)
+
+## Methods
+
+### delete
+
+▸ **delete**(): `Promise`<void\>
+
+#### Returns
+
+`Promise`<void\>
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:132](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L132)
+
+___
+
+### details
+
+▸ **details**(): `Promise`<AllocationDetails\>
+
+#### Returns
+
+`Promise`<AllocationDetails\>
+
+#### Defined in
+
+[yajsapi/rest/payment.ts:120](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/payment.ts#L120)

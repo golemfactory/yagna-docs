@@ -1,12 +1,9 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / rest/resource
+
 # Module: rest/resource
 
-[yajsapi](../yajsapi.md) / [Exports](./) / rest/resource
+## Table of contents
 
-## Module: rest/resource
+### Classes
 
-### Table of contents
-
-#### Classes
-
-* [ResourceCtx](../classes/rest_resource.resourcectx.md)
-
+- [ResourceCtx](../classes/rest_resource.resourcectx.md)

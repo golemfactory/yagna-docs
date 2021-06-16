@@ -1,12 +1,9 @@
+[yajsapi](../README.md) / [Exports](../modules.md) / props/builder
+
 # Module: props/builder
 
-[yajsapi](../yajsapi.md) / [Exports](./) / props/builder
+## Table of contents
 
-## Module: props/builder
+### Classes
 
-### Table of contents
-
-#### Classes
-
-* [DemandBuilder](../classes/props_builder.demandbuilder.md)
-
+- [DemandBuilder](../classes/props_builder.demandbuilder.md)
