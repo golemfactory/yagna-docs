@@ -135,7 +135,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.6.4 (4fc72117 2021-04-15 build #135)`
+It should output: `yagna 0.7.0 (3d94857c 2021-06-15 build #155)`
 
 Please also verify that you have the correct version of the `gftp` binary used for file transfers in the Golem network.
 
@@ -143,7 +143,7 @@ Please also verify that you have the correct version of the `gftp` binary used f
 gftp --version
 ```
 
-It should output: `gftp 0.6.4 (4fc72117 2021-04-15 build #135)`
+It should output: `gftp 0.7.0 (3d94857c 2021-06-15 build #155)`
 
 ### Run the daemon
 
