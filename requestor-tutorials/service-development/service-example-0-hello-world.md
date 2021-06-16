@@ -190,6 +190,8 @@ This function is where the requestor agent has a chance to monitor and control e
 
 To retrieve the last sample we run the shell command `cat /golem/work/date.txt` in the provider's exe unit and then retrieve its output by awaiting on `future_results`. This gives us an array of objects containing command results which we can use to get the output we need.
 
+With the service implementation complete let's now take a look at how we can provision instances of this service.
+
 ## Service provisioning
 
 {% tabs %}
@@ -202,5 +204,9 @@ async def main():
 {% endtab %}
 {% endtabs %}
 
+In the function `main` we start by creating an instance of `Golem`, specifying our budget and target subnet. We then use it as a context manager to use the function `run_service`.
 
+{% hint style="info" %}
+If you are not familiar with the `Golem` class and how it's used, take a look at [Task Example 0: Hello World!](../task-processing-development/task-example-0-hello.md#golem-executor) \(this links to a section about `Golem/Executor` classes\).
+{% endhint %}
 
