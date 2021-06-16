@@ -1,8 +1,8 @@
 ---
 description: >-
   This tutorial will show you how to prepare your own Golem image based on just
-  any Docker image. This will allow you to port any apps that are able to work
-  within Docker containers to New Golem.
+  any Docker image. This will allow you to port apps that are able to work
+  within Docker containers to Golem.
 ---
 
 # VM runtime: How to convert a Docker image into a Golem image?
