@@ -36,5 +36,3 @@ When it comes to the implementation itself, any VM-based application for Golem i
 Now you know what a Golem VM application is and how it works.
 {% endhint %}
 
-Let's see how the implementation goes then! But first, let's understand how `hashcat`, the password-recovery tool which we are going to use, can be made to work in parallel.
-

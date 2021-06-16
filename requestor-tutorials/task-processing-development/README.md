@@ -6,7 +6,7 @@ description: Your own task on golem.
 
 ## Introduction
 
-This tutorial shows a typical experience of a developer who would like to create their own task-based application for Golem. To show you how things work here, we created yacat - Golem port of [Hashcat](https://hashcat.net/hashcat/) - open source password recovery tool.
+This tutorial shows a typical experience of a developer who would like to create their own task-based application for Golem.
 
 {% hint style="info" %}
 In case of any doubts or problems, you can always contact us on discord.
@@ -14,23 +14,23 @@ In case of any doubts or problems, you can always contact us on discord.
 [https://chat.golem.network](https://chat.golem.network/)
 {% endhint %}
 
-In order to make the journey through this tutorial easier to follow, we divided it into sections. If you are eager to get your hands dirty right away, feel free to jump directly to examples. Otherwise, read on:
+In order to make the journey through this tutorial easier to follow, we divided it into sections. 
 
-{% page-ref page="task-example-0-hello.md" %}
-
-This is a detailed article explaining the mechanics of task-based requestor development, using a Blender example on VM runtime.
+The first one is a general introduction, pointing the developer's mind to the rails of Golem application development.
 
 {% page-ref page="task-model-introduction.md" %}
 
-This is a general introduction, pointing the developer's mind to the rails of Golem application development.
+Next we explain the mechanics of task-based requestor development, with a simple example running on the VM runtime:
 
-Here we describe `hashcat` and show how we are going to make it work in parallel.
+{% page-ref page="task-example-0-hello.md" %}
 
-{% page-ref page="task-example-2-hashcat.md" %}
-
-This is the main course of this tutorial. The implementation steps needed to create your own Golem application!
+Then we proceed to complicate things a bit by showing you how to use Golem with a simple hash-cracker:
 
 {% page-ref page="task-example-1-cracker.md" %}
 
-This is another example of a VM runtime-based Golem task application.
+Last but not the least, we describe `hashcat` and show how we are going to make it work in parallel.
+
+{% page-ref page="task-example-2-hashcat.md" %}
+
+This is the main course of this tutorial. The implementation steps needed to create a full-fledged Golem application!
 
