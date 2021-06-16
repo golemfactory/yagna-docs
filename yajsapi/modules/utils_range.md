@@ -1,31 +1,34 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / utils/range
-
 # Module: utils/range
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / utils/range
+
+## Module: utils/range
+
+### Table of contents
+
+#### Functions
+
+* [default](utils_range.md#default)
 
 ### Functions
 
-- [default](utils_range.md#default)
+#### default
 
-## Functions
+▸ **default**\(`start`, `end`, `step?`\): `number`\[\]
 
-### default
-
-▸ **default**(`start`, `end`, `step?`): `number`[]
-
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
-| :------ | :------ | :------ |
+| :--- | :--- | :--- |
 | `start` | `number` | `undefined` |
 | `end` | `number` | `undefined` |
 | `step` | `number` | 1 |
 
-#### Returns
+**Returns**
 
-`number`[]
+`number`\[\]
 
-#### Defined in
+**Defined in**
 
 [yajsapi/utils/range.ts:1](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/range.ts#L1)
+

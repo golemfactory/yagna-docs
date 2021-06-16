@@ -1,9 +1,12 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / utils/lock
-
 # Module: utils/lock
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / utils/lock
 
-### Classes
+## Module: utils/lock
 
-- [Lock](../classes/utils_lock.lock.md)
+### Table of contents
+
+#### Classes
+
+* [Lock](../classes/utils_lock.lock.md)
+

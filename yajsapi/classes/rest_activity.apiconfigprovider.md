@@ -1,118 +1,115 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [rest/activity](../modules/rest_activity.md) / ApiConfigProvider
-
 # Class: ApiConfigProvider
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/activity](../modules/rest_activity.md) / ApiConfigProvider
+
+## Class: ApiConfigProvider
 
 [rest/activity](../modules/rest_activity.md).ApiConfigProvider
 
-## Hierarchy
+### Hierarchy
 
-- `BaseAPI`
+* `BaseAPI`
 
   ↳ **ApiConfigProvider**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](rest_activity.apiconfigprovider.md#constructor)
+
+#### Properties
+
+* [axios](rest_activity.apiconfigprovider.md#axios)
+* [basePath](rest_activity.apiconfigprovider.md#basepath)
+* [configuration](rest_activity.apiconfigprovider.md#configuration)
+
+#### Methods
+
+* [api\_key](rest_activity.apiconfigprovider.md#api_key)
+* [base\_path](rest_activity.apiconfigprovider.md#base_path)
 
 ### Constructors
 
-- [constructor](rest_activity.apiconfigprovider.md#constructor)
+#### constructor
 
-### Properties
+• **new ApiConfigProvider**\(`api`\)
 
-- [axios](rest_activity.apiconfigprovider.md#axios)
-- [basePath](rest_activity.apiconfigprovider.md#basepath)
-- [configuration](rest_activity.apiconfigprovider.md#configuration)
-
-### Methods
-
-- [api\_key](rest_activity.apiconfigprovider.md#api_key)
-- [base\_path](rest_activity.apiconfigprovider.md#base_path)
-
-## Constructors
-
-### constructor
-
-• **new ApiConfigProvider**(`api`)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `api` | `BaseAPI` |
 
-#### Overrides
+**Overrides**
 
 BaseAPI.constructor
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:618](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L618)
 
-## Properties
+### Properties
 
-### axios
+#### axios
 
 • `Protected` **axios**: `AxiosInstance`
 
-#### Inherited from
+**Inherited from**
 
 BaseAPI.axios
 
-#### Defined in
+**Defined in**
 
-node_modules/ya-ts-client/dist/ya-activity/base.d.ts:41
+node\_modules/ya-ts-client/dist/ya-activity/base.d.ts:41
 
-___
-
-### basePath
+#### basePath
 
 • `Protected` **basePath**: `string`
 
-#### Inherited from
+**Inherited from**
 
 BaseAPI.basePath
 
-#### Defined in
+**Defined in**
 
-node_modules/ya-ts-client/dist/ya-activity/base.d.ts:40
+node\_modules/ya-ts-client/dist/ya-activity/base.d.ts:40
 
-___
-
-### configuration
+#### configuration
 
 • `Protected` **configuration**: `undefined` \| `Configuration`
 
-#### Inherited from
+**Inherited from**
 
 BaseAPI.configuration
 
-#### Defined in
+**Defined in**
 
-node_modules/ya-ts-client/dist/ya-activity/base.d.ts:42
+node\_modules/ya-ts-client/dist/ya-activity/base.d.ts:42
 
-## Methods
+### Methods
 
-### api\_key
+#### api\_key
 
-▸ **api_key**(): `Promise`<undefined \| string\>
+▸ **api\_key**\(\): `Promise`
 
-#### Returns
+**Returns**
 
-`Promise`<undefined \| string\>
+`Promise`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:630](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L630)
 
-___
+#### base\_path
 
-### base\_path
+▸ **base\_path**\(\): `string`
 
-▸ **base_path**(): `string`
-
-#### Returns
+**Returns**
 
 `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:624](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L624)
+

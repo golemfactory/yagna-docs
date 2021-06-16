@@ -2,7 +2,7 @@
 
 ## General Concept
 
-![](../.gitbook/assets/gc-nodes.svg)
+![](../.gitbook/assets/gc-nodes%20%281%29%20%281%29%20%281%29.svg)
 
 ```python
 from yapapi.rest import Configuration, Market, Activity, Payment

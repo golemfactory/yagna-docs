@@ -1,9 +1,12 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / executor/agreements_pool
-
 # Module: executor/agreements\_pool
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / executor/agreements\_pool
 
-### Classes
+## Module: executor/agreements\_pool
 
-- [AgreementsPool](../classes/executor_agreements_pool.agreementspool.md)
+### Table of contents
+
+#### Classes
+
+* [AgreementsPool](../classes/executor_agreements_pool.agreementspool.md)
+

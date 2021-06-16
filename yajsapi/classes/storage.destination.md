@@ -1,71 +1,70 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [storage](../modules/storage.md) / Destination
-
 # Class: Destination
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [storage](../modules/storage.md) / Destination
+
+## Class: Destination
 
 [storage](../modules/storage.md).Destination
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](storage.destination.md#constructor)
+
+#### Methods
+
+* [download\_file](storage.destination.md#download_file)
+* [download\_stream](storage.destination.md#download_stream)
+* [upload\_url](storage.destination.md#upload_url)
 
 ### Constructors
 
-- [constructor](storage.destination.md#constructor)
+#### constructor
+
+• **new Destination**\(\)
 
 ### Methods
 
-- [download\_file](storage.destination.md#download_file)
-- [download\_stream](storage.destination.md#download_stream)
-- [upload\_url](storage.destination.md#upload_url)
+#### download\_file
 
-## Constructors
+▸ **download\_file**\(`destination_file`\): `Promise`
 
-### constructor
-
-• **new Destination**()
-
-## Methods
-
-### download\_file
-
-▸ **download_file**(`destination_file`): `Promise`<void\>
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `destination_file` | `string` |
 
-#### Returns
+**Returns**
 
-`Promise`<void\>
+`Promise`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/storage/index.ts:45](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/storage/index.ts#L45)
 
-___
+#### download\_stream
 
-### download\_stream
+▸ **download\_stream**\(\): `Promise`&lt;[Content](storage.content.md)&gt;
 
-▸ **download_stream**(): `Promise`<[Content](storage.content.md)\>
+**Returns**
 
-#### Returns
+`Promise`&lt;[Content](storage.content.md)&gt;
 
-`Promise`<[Content](storage.content.md)\>
-
-#### Defined in
+**Defined in**
 
 [yajsapi/storage/index.ts:41](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/storage/index.ts#L41)
 
-___
+#### upload\_url
 
-### upload\_url
+▸ **upload\_url**\(\): `string`
 
-▸ **upload_url**(): `string`
-
-#### Returns
+**Returns**
 
 `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/storage/index.ts:37](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/storage/index.ts#L37)
+

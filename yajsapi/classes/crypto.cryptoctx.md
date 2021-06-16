@@ -1,120 +1,117 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [crypto](../modules/crypto.md) / CryptoCtx
-
 # Class: CryptoCtx
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [crypto](../modules/crypto.md) / CryptoCtx
+
+## Class: CryptoCtx
 
 [crypto](../modules/crypto.md).CryptoCtx
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](crypto.cryptoctx.md#constructor)
+
+#### Properties
+
+* [ephem\_key](crypto.cryptoctx.md#ephem_key)
+* [priv\_key](crypto.cryptoctx.md#priv_key)
+
+#### Methods
+
+* [decrypt](crypto.cryptoctx.md#decrypt)
+* [encrypt](crypto.cryptoctx.md#encrypt)
+* [from](crypto.cryptoctx.md#from)
 
 ### Constructors
 
-- [constructor](crypto.cryptoctx.md#constructor)
+#### constructor
 
-### Properties
+• `Private` **new CryptoCtx**\(`priv_key`, `ephem_key`\)
 
-- [ephem\_key](crypto.cryptoctx.md#ephem_key)
-- [priv\_key](crypto.cryptoctx.md#priv_key)
-
-### Methods
-
-- [decrypt](crypto.cryptoctx.md#decrypt)
-- [encrypt](crypto.cryptoctx.md#encrypt)
-- [from](crypto.cryptoctx.md#from)
-
-## Constructors
-
-### constructor
-
-• `Private` **new CryptoCtx**(`priv_key`, `ephem_key`)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `priv_key` | [PrivateKey](crypto.privatekey.md) |
 | `ephem_key` | `Buffer` |
 
-#### Defined in
+**Defined in**
 
 [yajsapi/crypto.ts:77](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L77)
 
-## Properties
+### Properties
 
-### ephem\_key
+#### ephem\_key
 
 • **ephem\_key**: `Buffer`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/crypto.ts:71](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L71)
 
-___
-
-### priv\_key
+#### priv\_key
 
 • **priv\_key**: [PrivateKey](crypto.privatekey.md)
 
-#### Defined in
+**Defined in**
 
 [yajsapi/crypto.ts:70](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L70)
 
-## Methods
+### Methods
 
-### decrypt
+#### decrypt
 
-▸ **decrypt**(`data`): `Buffer`
+▸ **decrypt**\(`data`\): `Buffer`
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `data` | `Buffer` |
 
-#### Returns
+**Returns**
 
 `Buffer`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/crypto.ts:106](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L106)
 
-___
+#### encrypt
 
-### encrypt
+▸ **encrypt**\(`data`\): `Buffer`
 
-▸ **encrypt**(`data`): `Buffer`
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `data` | `Buffer` |
 
-#### Returns
+**Returns**
 
 `Buffer`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/crypto.ts:84](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L84)
 
-___
+#### from
 
-### from
+▸ `Static` **from**\(`pub_key`, `priv_key?`\): `Promise`&lt;[CryptoCtx](crypto.cryptoctx.md)&gt;
 
-▸ `Static` **from**(`pub_key`, `priv_key?`): `Promise`<[CryptoCtx](crypto.cryptoctx.md)\>
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `pub_key` | [PublicKey](crypto.publickey.md) |
 | `priv_key?` | [PrivateKey](crypto.privatekey.md) |
 
-#### Returns
+**Returns**
 
-`Promise`<[CryptoCtx](crypto.cryptoctx.md)\>
+`Promise`&lt;[CryptoCtx](crypto.cryptoctx.md)&gt;
 
-#### Defined in
+**Defined in**
 
 [yajsapi/crypto.ts:73](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L73)
+

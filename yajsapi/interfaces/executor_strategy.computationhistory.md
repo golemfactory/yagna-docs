@@ -1,39 +1,42 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor/strategy](../modules/executor_strategy.md) / ComputationHistory
-
 # Interface: ComputationHistory
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/strategy](../modules/executor_strategy.md) / ComputationHistory
+
+## Interface: ComputationHistory
 
 [executor/strategy](../modules/executor_strategy.md).ComputationHistory
 
-## Implemented by
+### Implemented by
 
-- [AgreementsPool](../classes/executor_agreements_pool.agreementspool.md)
+* [AgreementsPool](../classes/executor_agreements_pool.agreementspool.md)
 
-## Table of contents
+### Table of contents
+
+#### Properties
+
+* [rejected\_last\_agreement](executor_strategy.computationhistory.md#rejected_last_agreement)
 
 ### Properties
 
-- [rejected\_last\_agreement](executor_strategy.computationhistory.md#rejected_last_agreement)
+#### rejected\_last\_agreement
 
-## Properties
+• **rejected\_last\_agreement**: \(`string`: `any`\) =&gt; `boolean`
 
-### rejected\_last\_agreement
+**Type declaration**
 
-• **rejected\_last\_agreement**: (`string`: `any`) => `boolean`
+▸ \(`string`\): `boolean`
 
-#### Type declaration
-
-▸ (`string`): `boolean`
-
-##### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `string` | `any` |
 
-##### Returns
+**Returns**
 
 `boolean`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/strategy.ts:18](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/strategy.ts#L18)
+

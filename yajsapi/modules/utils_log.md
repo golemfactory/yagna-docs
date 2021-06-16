@@ -1,76 +1,77 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / utils/log
-
 # Module: utils/log
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / utils/log
+
+## Module: utils/log
+
+### Table of contents
+
+#### Variables
+
+* [default](utils_log.md#default)
+
+#### Functions
+
+* [changeLogLevel](utils_log.md#changeloglevel)
+* [logSummary](utils_log.md#logsummary)
 
 ### Variables
 
-- [default](utils_log.md#default)
-
-### Functions
-
-- [changeLogLevel](utils_log.md#changeloglevel)
-- [logSummary](utils_log.md#logsummary)
-
-## Variables
-
-### default
+#### default
 
 • `Const` **default**: `Logger`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/utils/log.ts:74](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/log.ts#L74)
 
-## Functions
+### Functions
 
-### changeLogLevel
+#### changeLogLevel
 
-▸ `Const` **changeLogLevel**(`level`): `void`
+▸ `Const` **changeLogLevel**\(`level`\): `void`
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `level` | `string` |
 
-#### Returns
+**Returns**
 
 `void`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/utils/log.ts:351](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/log.ts#L351)
 
-___
+#### logSummary
 
-### logSummary
+▸ **logSummary**\(`wrapped_emitter?`\): \(`event`: [YaEvent](../classes/executor_events.yaevent.md)\) =&gt; `void`
 
-▸ **logSummary**(`wrapped_emitter?`): (`event`: [YaEvent](../classes/executor_events.yaevent.md)) => `void`
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
-| `wrapped_emitter?` | [default](../interfaces/utils_callable.default.md)<[[YaEvent](../classes/executor_events.yaevent.md)], void\> \| ``null`` |
+| :--- | :--- |
+| `wrapped_emitter?` | [default](../interfaces/utils_callable.default.md)&lt;\[[YaEvent](../classes/executor_events.yaevent.md)\], void&gt; \| `null` |
 
-#### Returns
+**Returns**
 
 `fn`
 
-▸ (`event`): `void`
+▸ \(`event`\): `void`
 
-##### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `event` | [YaEvent](../classes/executor_events.yaevent.md) |
 
-##### Returns
+**Returns**
 
 `void`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/utils/log.ts:344](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/log.ts#L344)
+

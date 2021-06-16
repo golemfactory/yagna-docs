@@ -1,134 +1,127 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [rest/market](../modules/rest_market.md) / Agreement
-
 # Class: Agreement
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/market](../modules/rest_market.md) / Agreement
+
+## Class: Agreement
 
 [rest/market](../modules/rest_market.md).Agreement
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](rest_market.agreement.md#constructor)
+
+#### Properties
+
+* [\_api](rest_market.agreement.md#_api)
+* [\_id](rest_market.agreement.md#_id)
+* [\_subscription](rest_market.agreement.md#_subscription)
+
+#### Methods
+
+* [confirm](rest_market.agreement.md#confirm)
+* [details](rest_market.agreement.md#details)
+* [id](rest_market.agreement.md#id)
+* [terminate](rest_market.agreement.md#terminate)
 
 ### Constructors
 
-- [constructor](rest_market.agreement.md#constructor)
+#### constructor
 
-### Properties
+• **new Agreement**\(`api`, `subscription`, `agreement_id`\)
 
-- [\_api](rest_market.agreement.md#_api)
-- [\_id](rest_market.agreement.md#_id)
-- [\_subscription](rest_market.agreement.md#_subscription)
-
-### Methods
-
-- [confirm](rest_market.agreement.md#confirm)
-- [details](rest_market.agreement.md#details)
-- [id](rest_market.agreement.md#id)
-- [terminate](rest_market.agreement.md#terminate)
-
-## Constructors
-
-### constructor
-
-• **new Agreement**(`api`, `subscription`, `agreement_id`)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `api` | `RequestorApi` |
 | `subscription` | [Subscription](rest_market.subscription.md) |
 | `agreement_id` | `string` |
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:47](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L47)
 
-## Properties
+### Properties
 
-### \_api
+#### \_api
 
 • `Private` **\_api**: `any`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:45](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L45)
 
-___
-
-### \_id
+#### \_id
 
 • `Private` **\_id**: `any`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:47](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L47)
 
-___
-
-### \_subscription
+#### \_subscription
 
 • `Private` **\_subscription**: `any`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:46](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L46)
 
-## Methods
+### Methods
 
-### confirm
+#### confirm
 
-▸ **confirm**(): `Promise`<boolean\>
+▸ **confirm**\(\): `Promise`
 
-#### Returns
+**Returns**
 
-`Promise`<boolean\>
+`Promise`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:68](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L68)
 
-___
+#### details
 
-### details
+▸ **details**\(\): `Promise`
 
-▸ **details**(): `Promise`<AgreementDetails\>
+**Returns**
 
-#### Returns
+`Promise`
 
-`Promise`<AgreementDetails\>
-
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:63](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L63)
 
-___
+#### id
 
-### id
+▸ **id**\(\): `string`
 
-▸ **id**(): `string`
-
-#### Returns
+**Returns**
 
 `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:59](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L59)
 
-___
+#### terminate
 
-### terminate
+▸ **terminate**\(`reason?`\): `Promise`
 
-▸ **terminate**(`reason?`): `Promise`<boolean\>
-
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
-| :------ | :------ | :------ |
+| :--- | :--- | :--- |
 | `reason` | `string` | "Finished" |
 
-#### Returns
+**Returns**
 
-`Promise`<boolean\>
+`Promise`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:84](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L84)
+

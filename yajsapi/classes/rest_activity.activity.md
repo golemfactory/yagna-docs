@@ -1,212 +1,199 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [rest/activity](../modules/rest_activity.md) / Activity
-
 # Class: Activity
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/activity](../modules/rest_activity.md) / Activity
+
+## Class: Activity
 
 [rest/activity](../modules/rest_activity.md).Activity
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](rest_activity.activity.md#constructor)
+
+#### Properties
+
+* [\_api](rest_activity.activity.md#_api)
+* [\_credentials](rest_activity.activity.md#_credentials)
+* [\_id](rest_activity.activity.md#_id)
+* [\_state](rest_activity.activity.md#_state)
+
+#### Accessors
+
+* [credentials](rest_activity.activity.md#credentials)
+* [exeunitHashes](rest_activity.activity.md#exeunithashes)
+* [id](rest_activity.activity.md#id)
+
+#### Methods
+
+* [done](rest_activity.activity.md#done)
+* [ready](rest_activity.activity.md#ready)
+* [send](rest_activity.activity.md#send)
+* [state](rest_activity.activity.md#state)
 
 ### Constructors
 
-- [constructor](rest_activity.activity.md#constructor)
+#### constructor
 
-### Properties
+• **new Activity**\(`id`, `_api`, `_state`\)
 
-- [\_api](rest_activity.activity.md#_api)
-- [\_credentials](rest_activity.activity.md#_credentials)
-- [\_id](rest_activity.activity.md#_id)
-- [\_state](rest_activity.activity.md#_state)
-
-### Accessors
-
-- [credentials](rest_activity.activity.md#credentials)
-- [exeunitHashes](rest_activity.activity.md#exeunithashes)
-- [id](rest_activity.activity.md#id)
-
-### Methods
-
-- [done](rest_activity.activity.md#done)
-- [ready](rest_activity.activity.md#ready)
-- [send](rest_activity.activity.md#send)
-- [state](rest_activity.activity.md#state)
-
-## Constructors
-
-### constructor
-
-• **new Activity**(`id`, `_api`, `_state`)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `id` | `string` |
 | `_api` | `RequestorControlApi` |
 | `_state` | `RequestorStateApi` |
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:161](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L161)
 
-## Properties
+### Properties
 
-### \_api
+#### \_api
 
 • `Protected` **\_api**: `RequestorControlApi`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:158](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L158)
 
-___
-
-### \_credentials
+#### \_credentials
 
 • `Protected` `Optional` **\_credentials**: `object`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:161](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L161)
 
-___
-
-### \_id
+#### \_id
 
 • `Protected` **\_id**: `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:160](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L160)
 
-___
-
-### \_state
+#### \_state
 
 • `Protected` **\_state**: `RequestorStateApi`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:159](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L159)
 
-## Accessors
+### Accessors
 
-### credentials
+#### credentials
 
-• `get` **credentials**(): `undefined` \| `object`
+• `get` **credentials**\(\): `undefined` \| `object`
 
-#### Returns
+**Returns**
 
 `undefined` \| `object`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:181](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L181)
 
-___
+#### exeunitHashes
 
-### exeunitHashes
+• `get` **exeunitHashes**\(\): `undefined` \| `string`\[\]
 
-• `get` **exeunitHashes**(): `undefined` \| `string`[]
+**Returns**
 
-#### Returns
+`undefined` \| `string`\[\]
 
-`undefined` \| `string`[]
-
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:185](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L185)
 
-___
+#### id
 
-### id
+• `get` **id**\(\): `string`
 
-• `get` **id**(): `string`
-
-#### Returns
+**Returns**
 
 `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:177](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L177)
 
-• `set` **id**(`x`): `void`
+• `set` **id**\(`x`\): `void`
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `x` | `string` |
 
-#### Returns
+**Returns**
 
 `void`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:173](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L173)
 
-## Methods
+### Methods
 
-### done
+#### done
 
-▸ **done**(): `Promise`<void\>
+▸ **done**\(\): `Promise`
 
-#### Returns
+**Returns**
 
-`Promise`<void\>
+`Promise`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:239](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L239)
 
-___
+#### ready
 
-### ready
+▸ **ready**\(\): `Promise`&lt;[Activity](rest_activity.activity.md)&gt;
 
-▸ **ready**(): `Promise`<[Activity](rest_activity.activity.md)\>
+**Returns**
 
-#### Returns
+`Promise`&lt;[Activity](rest_activity.activity.md)&gt;
 
-`Promise`<[Activity](rest_activity.activity.md)\>
-
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:235](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L235)
 
-___
+#### send
 
-### send
+▸ **send**\(`script`, `stream`, `deadline?`, `cancellationToken?`\): `Promise`
 
-▸ **send**(`script`, `stream`, `deadline?`, `cancellationToken?`): `Promise`<any\>
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
-| `script` | `object`[] |
+| :--- | :--- |
+| `script` | `object`\[\] |
 | `stream` | `boolean` |
 | `deadline?` | `number` |
 | `cancellationToken?` | [default](utils_cancellationtoken.default.md) |
 
-#### Returns
+**Returns**
 
-`Promise`<any\>
+`Promise`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:195](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L195)
 
-___
+#### state
 
-### state
+▸ **state**\(\): `Promise`
 
-▸ **state**(): `Promise`<ActivityState\>
+**Returns**
 
-#### Returns
+`Promise`
 
-`Promise`<ActivityState\>
-
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:189](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L189)
+

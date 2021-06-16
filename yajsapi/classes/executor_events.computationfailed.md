@@ -1,71 +1,74 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor/events](../modules/executor_events.md) / ComputationFailed
-
 # Class: ComputationFailed
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/events](../modules/executor_events.md) / ComputationFailed
+
+## Class: ComputationFailed
 
 [executor/events](../modules/executor_events.md).ComputationFailed
 
-## Hierarchy
+### Hierarchy
 
-- [YaEvent](executor_events.yaevent.md)
+* [YaEvent](executor_events.yaevent.md)
 
   ↳ **ComputationFailed**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](executor_events.computationfailed.md#constructor)
+
+#### Properties
+
+* [reason](executor_events.computationfailed.md#reason)
+
+#### Methods
+
+* [extract\_exc\_info](executor_events.computationfailed.md#extract_exc_info)
 
 ### Constructors
 
-- [constructor](executor_events.computationfailed.md#constructor)
+#### constructor
 
-### Properties
+• **new ComputationFailed**\(\)
 
-- [reason](executor_events.computationfailed.md#reason)
-
-### Methods
-
-- [extract\_exc\_info](executor_events.computationfailed.md#extract_exc_info)
-
-## Constructors
-
-### constructor
-
-• **new ComputationFailed**()
-
-#### Inherited from
+**Inherited from**
 
 [YaEvent](executor_events.yaevent.md).[constructor](executor_events.yaevent.md#constructor)
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:9](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L9)
 
-## Properties
+### Properties
 
-### reason
+#### reason
 
 • `Optional` **reason**: `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:34](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L34)
 
-## Methods
+### Methods
 
-### extract\_exc\_info
+#### extract\_exc\_info
 
-▸ **extract_exc_info**(): [`undefined` \| ``null`` \| `Error`, [YaEvent](executor_events.yaevent.md)]
+▸ **extract\_exc\_info**\(\): \[`undefined` \| `null` \| `Error`, [YaEvent](executor_events.yaevent.md)\]
 
 Extract exception information from this event.
 
-#### Returns
+**Returns**
 
-[`undefined` \| ``null`` \| `Error`, [YaEvent](executor_events.yaevent.md)]
+\[`undefined` \| `null` \| `Error`, [YaEvent](executor_events.yaevent.md)\]
 
 The extracted exception information and a copy of the event without the exception information.
 
-#### Inherited from
+**Inherited from**
 
-[YaEvent](executor_events.yaevent.md).[extract_exc_info](executor_events.yaevent.md#extract_exc_info)
+[YaEvent](executor_events.yaevent.md).[extract\_exc\_info](executor_events.yaevent.md#extract_exc_info)
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L17)
+

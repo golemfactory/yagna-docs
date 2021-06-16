@@ -1,77 +1,80 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor/events](../modules/executor_events.md) / DownloadStarted
-
 # Class: DownloadStarted
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/events](../modules/executor_events.md) / DownloadStarted
+
+## Class: DownloadStarted
 
 [executor/events](../modules/executor_events.md).DownloadStarted
 
-## Hierarchy
+### Hierarchy
 
-- [YaEvent](executor_events.yaevent.md)
+* [YaEvent](executor_events.yaevent.md)
 
   ↳ **DownloadStarted**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](executor_events.downloadstarted.md#constructor)
+
+#### Properties
+
+* [path](executor_events.downloadstarted.md#path)
+
+#### Methods
+
+* [extract\_exc\_info](executor_events.downloadstarted.md#extract_exc_info)
 
 ### Constructors
 
-- [constructor](executor_events.downloadstarted.md#constructor)
+#### constructor
 
-### Properties
+• **new DownloadStarted**\(`__namedParameters`\)
 
-- [path](executor_events.downloadstarted.md#path)
-
-### Methods
-
-- [extract\_exc\_info](executor_events.downloadstarted.md#extract_exc_info)
-
-## Constructors
-
-### constructor
-
-• **new DownloadStarted**(`__namedParameters`)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `__namedParameters` | `Object` |
 
-#### Overrides
+**Overrides**
 
 [YaEvent](executor_events.yaevent.md).[constructor](executor_events.yaevent.md#constructor)
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:484](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L484)
 
-## Properties
+### Properties
 
-### path
+#### path
 
 • `Optional` **path**: `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:484](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L484)
 
-## Methods
+### Methods
 
-### extract\_exc\_info
+#### extract\_exc\_info
 
-▸ **extract_exc_info**(): [`undefined` \| ``null`` \| `Error`, [YaEvent](executor_events.yaevent.md)]
+▸ **extract\_exc\_info**\(\): \[`undefined` \| `null` \| `Error`, [YaEvent](executor_events.yaevent.md)\]
 
 Extract exception information from this event.
 
-#### Returns
+**Returns**
 
-[`undefined` \| ``null`` \| `Error`, [YaEvent](executor_events.yaevent.md)]
+\[`undefined` \| `null` \| `Error`, [YaEvent](executor_events.yaevent.md)\]
 
 The extracted exception information and a copy of the event without the exception information.
 
-#### Inherited from
+**Inherited from**
 
-[YaEvent](executor_events.yaevent.md).[extract_exc_info](executor_events.yaevent.md#extract_exc_info)
+[YaEvent](executor_events.yaevent.md).[extract\_exc\_info](executor_events.yaevent.md#extract_exc_info)
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L17)
+

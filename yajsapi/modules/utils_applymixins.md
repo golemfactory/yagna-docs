@@ -1,30 +1,33 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / utils/applyMixins
-
 # Module: utils/applyMixins
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / utils/applyMixins
+
+## Module: utils/applyMixins
+
+### Table of contents
+
+#### Functions
+
+* [default](utils_applymixins.md#default)
 
 ### Functions
 
-- [default](utils_applymixins.md#default)
+#### default
 
-## Functions
+▸ **default**\(`derivedCtor`, `constructors`\): `void`
 
-### default
-
-▸ **default**(`derivedCtor`, `constructors`): `void`
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `derivedCtor` | `any` |
-| `constructors` | `any`[] |
+| `constructors` | `any`\[\] |
 
-#### Returns
+**Returns**
 
 `void`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/utils/applyMixins.ts:1](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/applyMixins.ts#L1)
+

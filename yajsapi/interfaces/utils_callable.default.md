@@ -1,32 +1,35 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [utils/callable](../modules/utils_callable.md) / default
+# Interface: default
 
-# Interface: default<T, R\>
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [utils/callable](../modules/utils_callable.md) / default
+
+## Interface: default
 
 [utils/callable](../modules/utils_callable.md).default
 
-## Type parameters
+### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `T` |
 | `R` |
 
-## Callable
+### Callable
 
-### default
+#### default
 
-▸ **default**(...`T`): `R`
+▸ **default**\(...`T`\): `R`
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
-| `...T` | `any`[] |
+| :--- | :--- |
+| `...T` | `any`\[\] |
 
-#### Returns
+**Returns**
 
 `R`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/utils/callable.ts:1](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/utils/callable.ts#L1)
+

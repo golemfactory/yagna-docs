@@ -1,195 +1,182 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [rest/market](../modules/rest_market.md) / OfferProposal
-
 # Class: OfferProposal
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/market](../modules/rest_market.md) / OfferProposal
+
+## Class: OfferProposal
 
 [rest/market](../modules/rest_market.md).OfferProposal
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](rest_market.offerproposal.md#constructor)
+
+#### Properties
+
+* [\_proposal](rest_market.offerproposal.md#_proposal)
+* [\_subscription](rest_market.offerproposal.md#_subscription)
+
+#### Methods
+
+* [create\_agreement](rest_market.offerproposal.md#create_agreement)
+* [id](rest_market.offerproposal.md#id)
+* [is\_draft](rest_market.offerproposal.md#is_draft)
+* [issuer](rest_market.offerproposal.md#issuer)
+* [props](rest_market.offerproposal.md#props)
+* [reject](rest_market.offerproposal.md#reject)
+* [respond](rest_market.offerproposal.md#respond)
+* [state](rest_market.offerproposal.md#state)
 
 ### Constructors
 
-- [constructor](rest_market.offerproposal.md#constructor)
+#### constructor
 
-### Properties
+• **new OfferProposal**\(`subscription`, `proposal`\)
 
-- [\_proposal](rest_market.offerproposal.md#_proposal)
-- [\_subscription](rest_market.offerproposal.md#_subscription)
-
-### Methods
-
-- [create\_agreement](rest_market.offerproposal.md#create_agreement)
-- [id](rest_market.offerproposal.md#id)
-- [is\_draft](rest_market.offerproposal.md#is_draft)
-- [issuer](rest_market.offerproposal.md#issuer)
-- [props](rest_market.offerproposal.md#props)
-- [reject](rest_market.offerproposal.md#reject)
-- [respond](rest_market.offerproposal.md#respond)
-- [state](rest_market.offerproposal.md#state)
-
-## Constructors
-
-### constructor
-
-• **new OfferProposal**(`subscription`, `proposal`)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `subscription` | [Subscription](rest_market.subscription.md) |
 | `proposal` | `ProposalEvent` |
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:124](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L124)
 
-## Properties
+### Properties
 
-### \_proposal
+#### \_proposal
 
 • `Private` **\_proposal**: `ProposalEvent`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:123](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L123)
 
-___
-
-### \_subscription
+#### \_subscription
 
 • `Private` **\_subscription**: [Subscription](rest_market.subscription.md)
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:124](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L124)
 
-## Methods
+### Methods
 
-### create\_agreement
+#### create\_agreement
 
-▸ **create_agreement**(`timeout?`): `Promise`<[Agreement](rest_market.agreement.md)\>
+▸ **create\_agreement**\(`timeout?`\): `Promise`&lt;[Agreement](rest_market.agreement.md)&gt;
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
-| :------ | :------ | :------ |
+| :--- | :--- | :--- |
 | `timeout` | `number` | 3600 |
 
-#### Returns
+**Returns**
 
-`Promise`<[Agreement](rest_market.agreement.md)\>
+`Promise`&lt;[Agreement](rest_market.agreement.md)&gt;
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:183](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L183)
 
-___
+#### id
 
-### id
+▸ **id**\(\): `string`
 
-▸ **id**(): `string`
-
-#### Returns
+**Returns**
 
 `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:135](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L135)
 
-___
+#### is\_draft
 
-### is\_draft
+▸ **is\_draft**\(\): `boolean`
 
-▸ **is_draft**(): `boolean`
-
-#### Returns
+**Returns**
 
 `boolean`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:147](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L147)
 
-___
+#### issuer
 
-### issuer
+▸ **issuer**\(\): `string`
 
-▸ **issuer**(): `string`
-
-#### Returns
+**Returns**
 
 `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:131](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L131)
 
-___
+#### props
 
-### props
+▸ **props**\(\): `object`
 
-▸ **props**(): `object`
-
-#### Returns
+**Returns**
 
 `object`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:139](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L139)
 
-___
+#### reject
 
-### reject
+▸ **reject**\(`_reason?`\): `Promise`
 
-▸ **reject**(`_reason?`): `Promise`<void\>
-
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
-| :------ | :------ | :------ |
-| `_reason` | ``null`` \| `string` | null |
+| :--- | :--- | :--- |
+| `_reason` | `null` \| `string` | null |
 
-#### Returns
+**Returns**
 
-`Promise`<void\>
+`Promise`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:153](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L153)
 
-___
+#### respond
 
-### respond
+▸ **respond**\(`props`, `constraints`\): `Promise`
 
-▸ **respond**(`props`, `constraints`): `Promise`<string\>
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `props` | `object` |
 | `constraints` | `string` |
 
-#### Returns
+**Returns**
 
-`Promise`<string\>
+`Promise`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:167](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L167)
 
-___
+#### state
 
-### state
+▸ **state**\(\): `ProposalAllOfStateEnum`
 
-▸ **state**(): `ProposalAllOfStateEnum`
-
-#### Returns
+**Returns**
 
 `ProposalAllOfStateEnum`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:143](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L143)
+

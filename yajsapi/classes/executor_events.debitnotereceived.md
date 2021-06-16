@@ -1,103 +1,102 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor/events](../modules/executor_events.md) / DebitNoteReceived
-
 # Class: DebitNoteReceived
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/events](../modules/executor_events.md) / DebitNoteReceived
+
+## Class: DebitNoteReceived
 
 [executor/events](../modules/executor_events.md).DebitNoteReceived
 
-## Hierarchy
+### Hierarchy
 
-- `AgreementEvent`
+* `AgreementEvent`
 
   ↳ **DebitNoteReceived**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](executor_events.debitnotereceived.md#constructor)
+
+#### Properties
+
+* [agr\_id](executor_events.debitnotereceived.md#agr_id)
+* [amount](executor_events.debitnotereceived.md#amount)
+* [note\_id](executor_events.debitnotereceived.md#note_id)
+
+#### Methods
+
+* [extract\_exc\_info](executor_events.debitnotereceived.md#extract_exc_info)
 
 ### Constructors
 
-- [constructor](executor_events.debitnotereceived.md#constructor)
+#### constructor
 
-### Properties
+• **new DebitNoteReceived**\(`__namedParameters`\)
 
-- [agr\_id](executor_events.debitnotereceived.md#agr_id)
-- [amount](executor_events.debitnotereceived.md#amount)
-- [note\_id](executor_events.debitnotereceived.md#note_id)
-
-### Methods
-
-- [extract\_exc\_info](executor_events.debitnotereceived.md#extract_exc_info)
-
-## Constructors
-
-### constructor
-
-• **new DebitNoteReceived**(`__namedParameters`)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `__namedParameters` | `Object` |
 
-#### Overrides
+**Overrides**
 
 AgreementEvent.constructor
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:162](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L162)
 
-## Properties
+### Properties
 
-### agr\_id
+#### agr\_id
 
 • `Optional` **agr\_id**: `string`
 
-#### Inherited from
+**Inherited from**
 
 AgreementEvent.agr\_id
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L123)
 
-___
-
-### amount
+#### amount
 
 • **amount**: `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:162](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L162)
 
-___
-
-### note\_id
+#### note\_id
 
 • **note\_id**: `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:161](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L161)
 
-## Methods
+### Methods
 
-### extract\_exc\_info
+#### extract\_exc\_info
 
-▸ **extract_exc_info**(): [`undefined` \| ``null`` \| `Error`, [YaEvent](executor_events.yaevent.md)]
+▸ **extract\_exc\_info**\(\): \[`undefined` \| `null` \| `Error`, [YaEvent](executor_events.yaevent.md)\]
 
 Extract exception information from this event.
 
-#### Returns
+**Returns**
 
-[`undefined` \| ``null`` \| `Error`, [YaEvent](executor_events.yaevent.md)]
+\[`undefined` \| `null` \| `Error`, [YaEvent](executor_events.yaevent.md)\]
 
 The extracted exception information and a copy of the event without the exception information.
 
-#### Inherited from
+**Inherited from**
 
 AgreementEvent.extract\_exc\_info
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L17)
+

@@ -1,42 +1,43 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor](../modules/executor.md) / BatchResults
-
 # Class: BatchResults
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor](../modules/executor.md) / BatchResults
+
+## Class: BatchResults
 
 [executor](../modules/executor.md).BatchResults
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](executor.batchresults.md#constructor)
+
+#### Properties
+
+* [error](executor.batchresults.md#error)
+* [results](executor.batchresults.md#results)
 
 ### Constructors
 
-- [constructor](executor.batchresults.md#constructor)
+#### constructor
+
+• **new BatchResults**\(\)
 
 ### Properties
 
-- [error](executor.batchresults.md#error)
-- [results](executor.batchresults.md#results)
-
-## Constructors
-
-### constructor
-
-• **new BatchResults**()
-
-## Properties
-
-### error
+#### error
 
 • `Optional` **error**: `any`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/index.ts:104](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/index.ts#L104)
 
-___
+#### results
 
-### results
+• `Optional` **results**: [CommandEvent](executor_events.commandevent.md)\[\]
 
-• `Optional` **results**: [CommandEvent](executor_events.commandevent.md)[]
-
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/index.ts:103](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/index.ts#L103)
+

@@ -1,107 +1,106 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor/events](../modules/executor_events.md) / ScriptSent
-
 # Class: ScriptSent
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/events](../modules/executor_events.md) / ScriptSent
+
+## Class: ScriptSent
 
 [executor/events](../modules/executor_events.md).ScriptSent
 
-## Hierarchy
+### Hierarchy
 
-- `ScriptEvent`
+* `ScriptEvent`
 
   ↳ **ScriptSent**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](executor_events.scriptsent.md#constructor)
+
+#### Properties
+
+* [agr\_id](executor_events.scriptsent.md#agr_id)
+* [cmds](executor_events.scriptsent.md#cmds)
+* [task\_id](executor_events.scriptsent.md#task_id)
+
+#### Methods
+
+* [extract\_exc\_info](executor_events.scriptsent.md#extract_exc_info)
 
 ### Constructors
 
-- [constructor](executor_events.scriptsent.md#constructor)
+#### constructor
 
-### Properties
+• **new ScriptSent**\(`__namedParameters`\)
 
-- [agr\_id](executor_events.scriptsent.md#agr_id)
-- [cmds](executor_events.scriptsent.md#cmds)
-- [task\_id](executor_events.scriptsent.md#task_id)
-
-### Methods
-
-- [extract\_exc\_info](executor_events.scriptsent.md#extract_exc_info)
-
-## Constructors
-
-### constructor
-
-• **new ScriptSent**(`__namedParameters`)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `__namedParameters` | `Object` |
 
-#### Overrides
+**Overrides**
 
 ScriptEvent.constructor
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:288](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L288)
 
-## Properties
+### Properties
 
-### agr\_id
+#### agr\_id
 
 • `Optional` **agr\_id**: `string`
 
-#### Inherited from
+**Inherited from**
 
 ScriptEvent.agr\_id
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:123](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L123)
 
-___
-
-### cmds
+#### cmds
 
 • `Optional` **cmds**: `any`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:288](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L288)
 
-___
+#### task\_id
 
-### task\_id
+• `Optional` **task\_id**: `null` \| `string`
 
-• `Optional` **task\_id**: ``null`` \| `string`
-
-#### Inherited from
+**Inherited from**
 
 ScriptEvent.task\_id
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:284](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L284)
 
-## Methods
+### Methods
 
-### extract\_exc\_info
+#### extract\_exc\_info
 
-▸ **extract_exc_info**(): [`undefined` \| ``null`` \| `Error`, [YaEvent](executor_events.yaevent.md)]
+▸ **extract\_exc\_info**\(\): \[`undefined` \| `null` \| `Error`, [YaEvent](executor_events.yaevent.md)\]
 
 Extract exception information from this event.
 
-#### Returns
+**Returns**
 
-[`undefined` \| ``null`` \| `Error`, [YaEvent](executor_events.yaevent.md)]
+\[`undefined` \| `null` \| `Error`, [YaEvent](executor_events.yaevent.md)\]
 
 The extracted exception information and a copy of the event without the exception information.
 
-#### Inherited from
+**Inherited from**
 
 ScriptEvent.extract\_exc\_info
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L17)
+

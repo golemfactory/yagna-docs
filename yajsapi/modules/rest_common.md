@@ -1,77 +1,76 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / rest/common
-
 # Module: rest/common
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / rest/common
+
+## Module: rest/common
+
+### Table of contents
+
+#### Functions
+
+* [is\_intermittent\_error](rest_common.md#is_intermittent_error)
+* [repeat\_on\_error](rest_common.md#repeat_on_error)
+* [suppress\_exceptions](rest_common.md#suppress_exceptions)
 
 ### Functions
 
-- [is\_intermittent\_error](rest_common.md#is_intermittent_error)
-- [repeat\_on\_error](rest_common.md#repeat_on_error)
-- [suppress\_exceptions](rest_common.md#suppress_exceptions)
+#### is\_intermittent\_error
 
-## Functions
+▸ **is\_intermittent\_error**\(`e`\): `boolean`
 
-### is\_intermittent\_error
-
-▸ **is_intermittent_error**(`e`): `boolean`
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `e` | `any` |
 
-#### Returns
+**Returns**
 
 `boolean`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/common.ts:3](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/common.ts#L3)
 
-___
+#### repeat\_on\_error
 
-### repeat\_on\_error
+▸ **repeat\_on\_error**\(`block`, `max_tries?`, `max_duration_ms?`, `interval_ms?`, `condition?`\): `Promise`
 
-▸ **repeat_on_error**(`block`, `max_tries?`, `max_duration_ms?`, `interval_ms?`, `condition?`): `Promise`<any\>
-
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
-| :------ | :------ | :------ |
-| `block` | [default](../interfaces/utils_callable.default.md)<void, any\> | `undefined` |
+| :--- | :--- | :--- |
+| `block` | [default](../interfaces/utils_callable.default.md) | `undefined` |
 | `max_tries` | `number` | 5 |
 | `max_duration_ms` | `number` | 15000 |
 | `interval_ms` | `number` | 1000 |
-| `condition` | [default](../interfaces/utils_callable.default.md)<Error, boolean\> | `undefined` |
+| `condition` | [default](../interfaces/utils_callable.default.md) | `undefined` |
 
-#### Returns
+**Returns**
 
-`Promise`<any\>
+`Promise`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/common.ts:27](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/common.ts#L27)
 
-___
+#### suppress\_exceptions
 
-### suppress\_exceptions
+▸ **suppress\_exceptions**\(`condition`, `block`, `report_exceptions?`\): `Promise`
 
-▸ **suppress_exceptions**(`condition`, `block`, `report_exceptions?`): `Promise`<any\>
-
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
-| :------ | :------ | :------ |
-| `condition` | [default](../interfaces/utils_callable.default.md)<Error, boolean\> | `undefined` |
-| `block` | [default](../interfaces/utils_callable.default.md)<void, any\> | `undefined` |
+| :--- | :--- | :--- |
+| `condition` | [default](../interfaces/utils_callable.default.md) | `undefined` |
+| `block` | [default](../interfaces/utils_callable.default.md) | `undefined` |
 | `report_exceptions` | `boolean` | true |
 
-#### Returns
+**Returns**
 
-`Promise`<any\>
+`Promise`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/common.ts:11](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/common.ts#L11)
+

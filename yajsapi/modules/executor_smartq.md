@@ -1,11 +1,14 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / executor/smartq
-
 # Module: executor/smartq
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / executor/smartq
 
-### Classes
+## Module: executor/smartq
 
-- [Consumer](../classes/executor_smartq.consumer.md)
-- [Handle](../classes/executor_smartq.handle.md)
-- [SmartQueue](../classes/executor_smartq.smartqueue.md)
+### Table of contents
+
+#### Classes
+
+* [Consumer](../classes/executor_smartq.consumer.md)
+* [Handle](../classes/executor_smartq.handle.md)
+* [SmartQueue](../classes/executor_smartq.smartqueue.md)
+

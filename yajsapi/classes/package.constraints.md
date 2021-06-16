@@ -1,74 +1,75 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [package](../modules/package.md) / Constraints
-
 # Class: Constraints
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [package](../modules/package.md) / Constraints
+
+## Class: Constraints
 
 [package](../modules/package.md).Constraints
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](package.constraints.md#constructor)
+
+#### Properties
+
+* [inner](package.constraints.md#inner)
+
+#### Methods
+
+* [extend](package.constraints.md#extend)
+* [toString](package.constraints.md#tostring)
 
 ### Constructors
 
-- [constructor](package.constraints.md#constructor)
+#### constructor
+
+• **new Constraints**\(\)
+
+**Defined in**
+
+[yajsapi/package/index.ts:19](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/index.ts#L19)
 
 ### Properties
 
-- [inner](package.constraints.md#inner)
+#### inner
+
+• **inner**: `string`\[\]
+
+**Defined in**
+
+[yajsapi/package/index.ts:19](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/index.ts#L19)
 
 ### Methods
 
-- [extend](package.constraints.md#extend)
-- [toString](package.constraints.md#tostring)
+#### extend
 
-## Constructors
+▸ **extend**\(`items`\): `void`
 
-### constructor
-
-• **new Constraints**()
-
-#### Defined in
-
-[yajsapi/package/index.ts:19](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/index.ts#L19)
-
-## Properties
-
-### inner
-
-• **inner**: `string`[]
-
-#### Defined in
-
-[yajsapi/package/index.ts:19](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/index.ts#L19)
-
-## Methods
-
-### extend
-
-▸ **extend**(`items`): `void`
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
-| `items` | `string`[] |
+| :--- | :--- |
+| `items` | `string`\[\] |
 
-#### Returns
+**Returns**
 
 `void`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/package/index.ts:25](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/index.ts#L25)
 
-___
+#### toString
 
-### toString
+▸ **toString**\(\): `string`
 
-▸ **toString**(): `string`
-
-#### Returns
+**Returns**
 
 `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/package/index.ts:29](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/index.ts#L29)
+

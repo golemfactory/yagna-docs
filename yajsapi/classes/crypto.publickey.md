@@ -1,95 +1,94 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [crypto](../modules/crypto.md) / PublicKey
-
 # Class: PublicKey
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [crypto](../modules/crypto.md) / PublicKey
+
+## Class: PublicKey
 
 [crypto](../modules/crypto.md).PublicKey
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](crypto.publickey.md#constructor)
+
+#### Properties
+
+* [inner](crypto.publickey.md#inner)
+
+#### Methods
+
+* [toString](crypto.publickey.md#tostring)
+* [from](crypto.publickey.md#from)
+* [fromHex](crypto.publickey.md#fromhex)
 
 ### Constructors
 
-- [constructor](crypto.publickey.md#constructor)
+#### constructor
+
+• `Private` **new PublicKey**\(\)
+
+**Defined in**
+
+[yajsapi/crypto.ts:49](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L49)
 
 ### Properties
 
-- [inner](crypto.publickey.md#inner)
-
-### Methods
-
-- [toString](crypto.publickey.md#tostring)
-- [from](crypto.publickey.md#from)
-- [fromHex](crypto.publickey.md#fromhex)
-
-## Constructors
-
-### constructor
-
-• `Private` **new PublicKey**()
-
-#### Defined in
-
-[yajsapi/crypto.ts:49](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L49)
-
-## Properties
-
-### inner
+#### inner
 
 • **inner**: `Buffer`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/crypto.ts:49](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L49)
 
-## Methods
+### Methods
 
-### toString
+#### toString
 
-▸ **toString**(): `string`
+▸ **toString**\(\): `string`
 
-#### Returns
+**Returns**
 
 `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/crypto.ts:64](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L64)
 
-___
+#### from
 
-### from
+▸ `Static` **from**\(`buffer`\): [PublicKey](crypto.publickey.md)
 
-▸ `Static` **from**(`buffer`): [PublicKey](crypto.publickey.md)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `buffer` | `Buffer` |
 
-#### Returns
+**Returns**
 
 [PublicKey](crypto.publickey.md)
 
-#### Defined in
+**Defined in**
 
 [yajsapi/crypto.ts:53](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L53)
 
-___
+#### fromHex
 
-### fromHex
+▸ `Static` **fromHex**\(`hex`\): [PublicKey](crypto.publickey.md)
 
-▸ `Static` **fromHex**(`hex`): [PublicKey](crypto.publickey.md)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `hex` | `string` |
 
-#### Returns
+**Returns**
 
 [PublicKey](crypto.publickey.md)
 
-#### Defined in
+**Defined in**
 
 [yajsapi/crypto.ts:59](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/crypto.ts#L59)
+

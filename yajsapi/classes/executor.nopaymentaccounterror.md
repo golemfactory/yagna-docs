@@ -1,203 +1,192 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor](../modules/executor.md) / NoPaymentAccountError
-
 # Class: NoPaymentAccountError
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor](../modules/executor.md) / NoPaymentAccountError
+
+## Class: NoPaymentAccountError
 
 [executor](../modules/executor.md).NoPaymentAccountError
 
-## Hierarchy
+### Hierarchy
 
-- `Error`
+* `Error`
 
   ↳ **NoPaymentAccountError**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](executor.nopaymentaccounterror.md#constructor)
+
+#### Properties
+
+* [message](executor.nopaymentaccounterror.md#message)
+* [name](executor.nopaymentaccounterror.md#name)
+* [required\_driver](executor.nopaymentaccounterror.md#required_driver)
+* [required\_network](executor.nopaymentaccounterror.md#required_network)
+* [stack](executor.nopaymentaccounterror.md#stack)
+* [prepareStackTrace](executor.nopaymentaccounterror.md#preparestacktrace)
+* [stackTraceLimit](executor.nopaymentaccounterror.md#stacktracelimit)
+
+#### Methods
+
+* [toString](executor.nopaymentaccounterror.md#tostring)
+* [captureStackTrace](executor.nopaymentaccounterror.md#capturestacktrace)
 
 ### Constructors
 
-- [constructor](executor.nopaymentaccounterror.md#constructor)
+#### constructor
 
-### Properties
+• **new NoPaymentAccountError**\(`required_driver`, `required_network`\)
 
-- [message](executor.nopaymentaccounterror.md#message)
-- [name](executor.nopaymentaccounterror.md#name)
-- [required\_driver](executor.nopaymentaccounterror.md#required_driver)
-- [required\_network](executor.nopaymentaccounterror.md#required_network)
-- [stack](executor.nopaymentaccounterror.md#stack)
-- [prepareStackTrace](executor.nopaymentaccounterror.md#preparestacktrace)
-- [stackTraceLimit](executor.nopaymentaccounterror.md#stacktracelimit)
-
-### Methods
-
-- [toString](executor.nopaymentaccounterror.md#tostring)
-- [captureStackTrace](executor.nopaymentaccounterror.md#capturestacktrace)
-
-## Constructors
-
-### constructor
-
-• **new NoPaymentAccountError**(`required_driver`, `required_network`)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `required_driver` | `any` |
 | `required_network` | `any` |
 
-#### Overrides
+**Overrides**
 
 Error.constructor
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/index.ts:78](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/index.ts#L78)
 
-## Properties
+### Properties
 
-### message
+#### message
 
 • **message**: `string`
 
-#### Inherited from
+**Inherited from**
 
 Error.message
 
-#### Defined in
+**Defined in**
 
-node_modules/typescript/lib/lib.es5.d.ts:974
+node\_modules/typescript/lib/lib.es5.d.ts:974
 
-___
-
-### name
+#### name
 
 • **name**: `string`
 
-#### Inherited from
+**Inherited from**
 
 Error.name
 
-#### Defined in
+**Defined in**
 
-node_modules/typescript/lib/lib.es5.d.ts:973
+node\_modules/typescript/lib/lib.es5.d.ts:973
 
-___
-
-### required\_driver
+#### required\_driver
 
 • **required\_driver**: `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/index.ts:76](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/index.ts#L76)
 
-___
-
-### required\_network
+#### required\_network
 
 • **required\_network**: `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/index.ts:78](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/index.ts#L78)
 
-___
-
-### stack
+#### stack
 
 • `Optional` **stack**: `string`
 
-#### Inherited from
+**Inherited from**
 
 Error.stack
 
-#### Defined in
+**Defined in**
 
-node_modules/typescript/lib/lib.es5.d.ts:975
+node\_modules/typescript/lib/lib.es5.d.ts:975
 
-___
+#### prepareStackTrace
 
-### prepareStackTrace
-
-▪ `Static` `Optional` **prepareStackTrace**: (`err`: `Error`, `stackTraces`: `CallSite`[]) => `any`
+▪ `Static` `Optional` **prepareStackTrace**: \(`err`: `Error`, `stackTraces`: `CallSite`\[\]\) =&gt; `any`
 
 Optional override for formatting stack traces
 
-**`see`** https://github.com/v8/v8/wiki/Stack%20Trace%20API#customizing-stack-traces
+**`see`** [https://github.com/v8/v8/wiki/Stack Trace API\#customizing-stack-traces](https://github.com/v8/v8/wiki/Stack%20Trace%20API#customizing-stack-traces)
 
-#### Type declaration
+**Type declaration**
 
-▸ (`err`, `stackTraces`): `any`
+▸ \(`err`, `stackTraces`\): `any`
 
-##### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `err` | `Error` |
-| `stackTraces` | `CallSite`[] |
+| `stackTraces` | `CallSite`\[\] |
 
-##### Returns
+**Returns**
 
 `any`
 
-#### Inherited from
+**Inherited from**
 
 Error.prepareStackTrace
 
-#### Defined in
+**Defined in**
 
-node_modules/@types/node/globals.d.ts:11
+node\_modules/@types/node/globals.d.ts:11
 
-___
-
-### stackTraceLimit
+#### stackTraceLimit
 
 ▪ `Static` **stackTraceLimit**: `number`
 
-#### Inherited from
+**Inherited from**
 
 Error.stackTraceLimit
 
-#### Defined in
+**Defined in**
 
-node_modules/@types/node/globals.d.ts:13
+node\_modules/@types/node/globals.d.ts:13
 
-## Methods
+### Methods
 
-### toString
+#### toString
 
-▸ **toString**(): `string`
+▸ **toString**\(\): `string`
 
-#### Returns
+**Returns**
 
 `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/index.ts:86](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/index.ts#L86)
 
-___
+#### captureStackTrace
 
-### captureStackTrace
-
-▸ `Static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
+▸ `Static` **captureStackTrace**\(`targetObject`, `constructorOpt?`\): `void`
 
 Create .stack property on a target object
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `targetObject` | `object` |
 | `constructorOpt?` | `Function` |
 
-#### Returns
+**Returns**
 
 `void`
 
-#### Inherited from
+**Inherited from**
 
 Error.captureStackTrace
 
-#### Defined in
+**Defined in**
 
-node_modules/@types/node/globals.d.ts:4
+node\_modules/@types/node/globals.d.ts:4
+

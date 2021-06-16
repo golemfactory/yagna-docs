@@ -1,192 +1,183 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [rest/activity](../modules/rest_activity.md) / CommandExecutionError
-
 # Class: CommandExecutionError
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/activity](../modules/rest_activity.md) / CommandExecutionError
+
+## Class: CommandExecutionError
 
 [rest/activity](../modules/rest_activity.md).CommandExecutionError
 
-## Hierarchy
+### Hierarchy
 
-- `Error`
+* `Error`
 
   ↳ **CommandExecutionError**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](rest_activity.commandexecutionerror.md#constructor)
+
+#### Properties
+
+* [command](rest_activity.commandexecutionerror.md#command)
+* [message](rest_activity.commandexecutionerror.md#message)
+* [name](rest_activity.commandexecutionerror.md#name)
+* [stack](rest_activity.commandexecutionerror.md#stack)
+* [prepareStackTrace](rest_activity.commandexecutionerror.md#preparestacktrace)
+* [stackTraceLimit](rest_activity.commandexecutionerror.md#stacktracelimit)
+
+#### Methods
+
+* [toString](rest_activity.commandexecutionerror.md#tostring)
+* [captureStackTrace](rest_activity.commandexecutionerror.md#capturestacktrace)
 
 ### Constructors
 
-- [constructor](rest_activity.commandexecutionerror.md#constructor)
+#### constructor
 
-### Properties
+• **new CommandExecutionError**\(`command`, `message?`\)
 
-- [command](rest_activity.commandexecutionerror.md#command)
-- [message](rest_activity.commandexecutionerror.md#message)
-- [name](rest_activity.commandexecutionerror.md#name)
-- [stack](rest_activity.commandexecutionerror.md#stack)
-- [prepareStackTrace](rest_activity.commandexecutionerror.md#preparestacktrace)
-- [stackTraceLimit](rest_activity.commandexecutionerror.md#stacktracelimit)
-
-### Methods
-
-- [toString](rest_activity.commandexecutionerror.md#tostring)
-- [captureStackTrace](rest_activity.commandexecutionerror.md#capturestacktrace)
-
-## Constructors
-
-### constructor
-
-• **new CommandExecutionError**(`command`, `message?`)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `command` | `string` |
 | `message?` | `string` |
 
-#### Overrides
+**Overrides**
 
 Error.constructor
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:355](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L355)
 
-## Properties
+### Properties
 
-### command
+#### command
 
 • **command**: `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:354](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L354)
 
-___
-
-### message
+#### message
 
 • **message**: `string`
 
-#### Overrides
+**Overrides**
 
 Error.message
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:355](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L355)
 
-___
-
-### name
+#### name
 
 • **name**: `string`
 
-#### Inherited from
+**Inherited from**
 
 Error.name
 
-#### Defined in
+**Defined in**
 
-node_modules/typescript/lib/lib.es5.d.ts:973
+node\_modules/typescript/lib/lib.es5.d.ts:973
 
-___
-
-### stack
+#### stack
 
 • `Optional` **stack**: `string`
 
-#### Inherited from
+**Inherited from**
 
 Error.stack
 
-#### Defined in
+**Defined in**
 
-node_modules/typescript/lib/lib.es5.d.ts:975
+node\_modules/typescript/lib/lib.es5.d.ts:975
 
-___
+#### prepareStackTrace
 
-### prepareStackTrace
-
-▪ `Static` `Optional` **prepareStackTrace**: (`err`: `Error`, `stackTraces`: `CallSite`[]) => `any`
+▪ `Static` `Optional` **prepareStackTrace**: \(`err`: `Error`, `stackTraces`: `CallSite`\[\]\) =&gt; `any`
 
 Optional override for formatting stack traces
 
-**`see`** https://github.com/v8/v8/wiki/Stack%20Trace%20API#customizing-stack-traces
+**`see`** [https://github.com/v8/v8/wiki/Stack Trace API\#customizing-stack-traces](https://github.com/v8/v8/wiki/Stack%20Trace%20API#customizing-stack-traces)
 
-#### Type declaration
+**Type declaration**
 
-▸ (`err`, `stackTraces`): `any`
+▸ \(`err`, `stackTraces`\): `any`
 
-##### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `err` | `Error` |
-| `stackTraces` | `CallSite`[] |
+| `stackTraces` | `CallSite`\[\] |
 
-##### Returns
+**Returns**
 
 `any`
 
-#### Inherited from
+**Inherited from**
 
 Error.prepareStackTrace
 
-#### Defined in
+**Defined in**
 
-node_modules/@types/node/globals.d.ts:11
+node\_modules/@types/node/globals.d.ts:11
 
-___
-
-### stackTraceLimit
+#### stackTraceLimit
 
 ▪ `Static` **stackTraceLimit**: `number`
 
-#### Inherited from
+**Inherited from**
 
 Error.stackTraceLimit
 
-#### Defined in
+**Defined in**
 
-node_modules/@types/node/globals.d.ts:13
+node\_modules/@types/node/globals.d.ts:13
 
-## Methods
+### Methods
 
-### toString
+#### toString
 
-▸ **toString**(): `string`
+▸ **toString**\(\): `string`
 
-#### Returns
+**Returns**
 
 `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/activity.ts:361](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/activity.ts#L361)
 
-___
+#### captureStackTrace
 
-### captureStackTrace
-
-▸ `Static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
+▸ `Static` **captureStackTrace**\(`targetObject`, `constructorOpt?`\): `void`
 
 Create .stack property on a target object
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `targetObject` | `object` |
 | `constructorOpt?` | `Function` |
 
-#### Returns
+**Returns**
 
 `void`
 
-#### Inherited from
+**Inherited from**
 
 Error.captureStackTrace
 
-#### Defined in
+**Defined in**
 
-node_modules/@types/node/globals.d.ts:4
+node\_modules/@types/node/globals.d.ts:4
+

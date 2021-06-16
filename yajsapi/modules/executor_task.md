@@ -1,13 +1,16 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / executor/task
-
 # Module: executor/task
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / executor/task
 
-### Enumerations
+## Module: executor/task
 
-- [TaskStatus](../enums/executor_task.taskstatus.md)
+### Table of contents
 
-### Classes
+#### Enumerations
 
-- [Task](../classes/executor_task.task.md)
+* [TaskStatus](../enumeration/executor_task.taskstatus.md)
+
+#### Classes
+
+* [Task](../classes/executor_task.task.md)
+

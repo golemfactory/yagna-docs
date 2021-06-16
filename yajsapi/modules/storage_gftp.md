@@ -1,23 +1,26 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / storage/gftp
-
 # Module: storage/gftp
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / storage/gftp
+
+## Module: storage/gftp
+
+### Table of contents
+
+#### Functions
+
+* [provider](storage_gftp.md#provider)
 
 ### Functions
 
-- [provider](storage_gftp.md#provider)
+#### provider
 
-## Functions
+▸ **provider**\(\): `any`
 
-### provider
-
-▸ **provider**(): `any`
-
-#### Returns
+**Returns**
 
 `any`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/storage/gftp.ts:332](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/storage/gftp.ts#L332)
+

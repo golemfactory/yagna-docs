@@ -1,29 +1,32 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [rest/resource](../modules/rest_resource.md) / ResourceCtx
+# Class: ResourceCtx
 
-# Class: ResourceCtx<_T\>
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/resource](../modules/rest_resource.md) / ResourceCtx
+
+## Class: ResourceCtx
 
 [rest/resource](../modules/rest_resource.md).ResourceCtx
 
-## Type parameters
+### Type parameters
 
 | Name |
-| :------ |
+| :--- |
 | `_T` |
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](rest_resource.resourcectx.md#constructor)
 
 ### Constructors
 
-- [constructor](rest_resource.resourcectx.md#constructor)
+#### constructor
 
-## Constructors
+• **new ResourceCtx**\(\)
 
-### constructor
-
-• **new ResourceCtx**<_T\>()
-
-#### Type parameters
+**Type parameters**
 
 | Name |
-| :------ |
+| :--- |
 | `_T` |
+

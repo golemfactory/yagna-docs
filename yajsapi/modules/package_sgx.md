@@ -1,47 +1,50 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / package/sgx
-
 # Module: package/sgx
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / package/sgx
 
-### Enumerations
+## Module: package/sgx
 
-- [SgxEngine](../enums/package_sgx.sgxengine.md)
+### Table of contents
+
+#### Enumerations
+
+* [SgxEngine](../enumeration/package_sgx.sgxengine.md)
+
+#### Variables
+
+* [SGX\_CONFIG](package_sgx.md#sgx_config)
+
+#### Functions
+
+* [repo](package_sgx.md#repo)
 
 ### Variables
 
-- [SGX\_CONFIG](package_sgx.md#sgx_config)
-
-### Functions
-
-- [repo](package_sgx.md#repo)
-
-## Variables
-
-### SGX\_CONFIG
+#### SGX\_CONFIG
 
 • `Const` **SGX\_CONFIG**: `SgxConfig`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/package/sgx.ts:73](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/sgx.ts#L73)
 
-## Functions
+### Functions
 
-### repo
+#### repo
 
-▸ **repo**(`__namedParameters`): `Promise`<[Package](../classes/package.package-1.md)\>
+▸ **repo**\(`__namedParameters`\): `Promise`&lt;[Package](../classes/package.package-1.md)&gt;
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `__namedParameters` | [RepoOpts](package.md#repoopts) |
 
-#### Returns
+**Returns**
 
-`Promise`<[Package](../classes/package.package-1.md)\>
+`Promise`&lt;[Package](../classes/package.package-1.md)&gt;
 
-#### Defined in
+**Defined in**
 
 [yajsapi/package/sgx.ts:91](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/package/sgx.ts#L91)
+

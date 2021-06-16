@@ -1,71 +1,58 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / rest
-
 # Module: rest
 
-## Table of contents
+[yajsapi](../yajsapi.md) / [Exports](./) / rest
+
+## Module: rest
+
+### Table of contents
+
+#### References
+
+* [Activity](rest.md#activity)
+* [ActivityService](rest.md#activityservice)
+* [Configuration](rest.md#configuration)
+* [Invoice](rest.md#invoice)
+* [InvoiceStatus](rest.md#invoicestatus)
+* [Market](rest.md#market)
+* [Payment](rest.md#payment)
+* [sgx](rest.md#sgx)
+* [vm](rest.md#vm)
 
 ### References
 
-- [Activity](rest.md#activity)
-- [ActivityService](rest.md#activityservice)
-- [Configuration](rest.md#configuration)
-- [Invoice](rest.md#invoice)
-- [InvoiceStatus](rest.md#invoicestatus)
-- [Market](rest.md#market)
-- [Payment](rest.md#payment)
-- [sgx](rest.md#sgx)
-- [vm](rest.md#vm)
-
-## References
-
-### Activity
+#### Activity
 
 Re-exports: [Activity](../classes/rest_activity.activity.md)
 
-___
-
-### ActivityService
+#### ActivityService
 
 Re-exports: [ActivityService](../classes/rest_activity.activityservice.md)
 
-___
-
-### Configuration
+#### Configuration
 
 Re-exports: [Configuration](../classes/rest_configuration.configuration.md)
 
-___
-
-### Invoice
+#### Invoice
 
 Re-exports: [Invoice](../classes/rest_payment.invoice.md)
 
-___
-
-### InvoiceStatus
+#### InvoiceStatus
 
 Re-exports: [InvoiceStatus](rest_payment.md#invoicestatus)
 
-___
-
-### Market
+#### Market
 
 Re-exports: [Market](../classes/rest_market.market.md)
 
-___
-
-### Payment
+#### Payment
 
 Re-exports: [Payment](../classes/rest_payment.payment.md)
 
-___
-
-### sgx
+#### sgx
 
 Renames and exports: [package/sgx](package_sgx.md)
 
-___
-
-### vm
+#### vm
 
 Renames and exports: [package/vm](package_vm.md)
+

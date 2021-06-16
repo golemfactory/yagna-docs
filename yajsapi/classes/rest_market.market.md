@@ -1,81 +1,82 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [rest/market](../modules/rest_market.md) / Market
-
 # Class: Market
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [rest/market](../modules/rest_market.md) / Market
+
+## Class: Market
 
 [rest/market](../modules/rest_market.md).Market
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](rest_market.market.md#constructor)
+
+#### Properties
+
+* [\_api](rest_market.market.md#_api)
+
+#### Methods
+
+* [subscribe](rest_market.market.md#subscribe)
+* [subscriptions](rest_market.market.md#subscriptions)
 
 ### Constructors
 
-- [constructor](rest_market.market.md#constructor)
+#### constructor
+
+• **new Market**\(`cfg`\)
+
+**Parameters**
+
+| Name | Type |
+| :--- | :--- |
+| `cfg` | `Configuration` |
+
+**Defined in**
+
+[yajsapi/rest/market.ts:286](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L286)
 
 ### Properties
 
-- [\_api](rest_market.market.md#_api)
-
-### Methods
-
-- [subscribe](rest_market.market.md#subscribe)
-- [subscriptions](rest_market.market.md#subscriptions)
-
-## Constructors
-
-### constructor
-
-• **new Market**(`cfg`)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `cfg` | `Configuration` |
-
-#### Defined in
-
-[yajsapi/rest/market.ts:286](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L286)
-
-## Properties
-
-### \_api
+#### \_api
 
 • `Private` **\_api**: `RequestorApi`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:286](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L286)
 
-## Methods
+### Methods
 
-### subscribe
+#### subscribe
 
-▸ **subscribe**(`props`, `constraints`): `Promise`<[Subscription](rest_market.subscription.md)\>
+▸ **subscribe**\(`props`, `constraints`\): `Promise`&lt;[Subscription](rest_market.subscription.md)&gt;
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `props` | `Object` |
 | `constraints` | `string` |
 
-#### Returns
+**Returns**
 
-`Promise`<[Subscription](rest_market.subscription.md)\>
+`Promise`&lt;[Subscription](rest_market.subscription.md)&gt;
 
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:291](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L291)
 
-___
+#### subscriptions
 
-### subscriptions
+▸ **subscriptions**\(\): `AsyncGenerator`&lt;[Subscription](rest_market.subscription.md), any, unknown&gt;
 
-▸ **subscriptions**(): `AsyncGenerator`<[Subscription](rest_market.subscription.md), any, unknown\>
+**Returns**
 
-#### Returns
+`AsyncGenerator`&lt;[Subscription](rest_market.subscription.md), any, unknown&gt;
 
-`AsyncGenerator`<[Subscription](rest_market.subscription.md), any, unknown\>
-
-#### Defined in
+**Defined in**
 
 [yajsapi/rest/market.ts:309](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/rest/market.ts#L309)
+

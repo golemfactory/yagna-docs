@@ -1,92 +1,93 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor/events](../modules/executor_events.md) / TaskRejected
-
 # Class: TaskRejected
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/events](../modules/executor_events.md) / TaskRejected
+
+## Class: TaskRejected
 
 [executor/events](../modules/executor_events.md).TaskRejected
 
-## Hierarchy
+### Hierarchy
 
-- `TaskEvent`
+* `TaskEvent`
 
   ↳ **TaskRejected**
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](executor_events.taskrejected.md#constructor)
+
+#### Properties
+
+* [reason](executor_events.taskrejected.md#reason)
+* [task\_id](executor_events.taskrejected.md#task_id)
+
+#### Methods
+
+* [extract\_exc\_info](executor_events.taskrejected.md#extract_exc_info)
 
 ### Constructors
 
-- [constructor](executor_events.taskrejected.md#constructor)
+#### constructor
 
-### Properties
+• **new TaskRejected**\(`__namedParameters`\)
 
-- [reason](executor_events.taskrejected.md#reason)
-- [task\_id](executor_events.taskrejected.md#task_id)
-
-### Methods
-
-- [extract\_exc\_info](executor_events.taskrejected.md#extract_exc_info)
-
-## Constructors
-
-### constructor
-
-• **new TaskRejected**(`__namedParameters`)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `__namedParameters` | `Object` |
 
-#### Overrides
+**Overrides**
 
 TaskEvent.constructor
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:475](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L475)
 
-## Properties
+### Properties
 
-### reason
+#### reason
 
-• `Optional` **reason**: ``null`` \| `string`
+• `Optional` **reason**: `null` \| `string`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:475](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L475)
 
-___
-
-### task\_id
+#### task\_id
 
 • `Optional` **task\_id**: `string`
 
-#### Inherited from
+**Inherited from**
 
 TaskEvent.task\_id
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:244](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L244)
 
-## Methods
+### Methods
 
-### extract\_exc\_info
+#### extract\_exc\_info
 
-▸ **extract_exc_info**(): [`undefined` \| ``null`` \| `Error`, [YaEvent](executor_events.yaevent.md)]
+▸ **extract\_exc\_info**\(\): \[`undefined` \| `null` \| `Error`, [YaEvent](executor_events.yaevent.md)\]
 
 Extract exception information from this event.
 
-#### Returns
+**Returns**
 
-[`undefined` \| ``null`` \| `Error`, [YaEvent](executor_events.yaevent.md)]
+\[`undefined` \| `null` \| `Error`, [YaEvent](executor_events.yaevent.md)\]
 
 The extracted exception information and a copy of the event without the exception information.
 
-#### Inherited from
+**Inherited from**
 
 TaskEvent.extract\_exc\_info
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/events.ts:17](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/events.ts#L17)
+

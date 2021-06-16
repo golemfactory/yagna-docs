@@ -1,111 +1,106 @@
-[yajsapi](../README.md) / [Exports](../modules.md) / [executor/ctx](../modules/executor_ctx.md) / Work
-
 # Class: Work
+
+[yajsapi](../yajsapi.md) / [Exports](../modules/) / [executor/ctx](../modules/executor_ctx.md) / Work
+
+## Class: Work
 
 [executor/ctx](../modules/executor_ctx.md).Work
 
-## Table of contents
+### Table of contents
+
+#### Constructors
+
+* [constructor](executor_ctx.work.md#constructor)
+
+#### Properties
+
+* [attestation](executor_ctx.work.md#attestation)
+* [output](executor_ctx.work.md#output)
+
+#### Methods
+
+* [post](executor_ctx.work.md#post)
+* [prepare](executor_ctx.work.md#prepare)
+* [register](executor_ctx.work.md#register)
+* [timeout](executor_ctx.work.md#timeout)
 
 ### Constructors
 
-- [constructor](executor_ctx.work.md#constructor)
+#### constructor
+
+• **new Work**\(\)
 
 ### Properties
 
-- [attestation](executor_ctx.work.md#attestation)
-- [output](executor_ctx.work.md#output)
-
-### Methods
-
-- [post](executor_ctx.work.md#post)
-- [prepare](executor_ctx.work.md#prepare)
-- [register](executor_ctx.work.md#register)
-- [timeout](executor_ctx.work.md#timeout)
-
-## Constructors
-
-### constructor
-
-• **new Work**()
-
-## Properties
-
-### attestation
+#### attestation
 
 • `Optional` **attestation**: `object`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/ctx.ts:50](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/ctx.ts#L50)
 
-___
+#### output
 
-### output
+• **output**: `object`\[\] = \[\]
 
-• **output**: `object`[] = []
-
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/ctx.ts:49](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/ctx.ts#L49)
 
-## Methods
+### Methods
 
-### post
+#### post
 
-▸ **post**(): `Promise`<void\>
+▸ **post**\(\): `Promise`
 
-#### Returns
+**Returns**
 
-`Promise`<void\>
+`Promise`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/ctx.ts:59](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/ctx.ts#L59)
 
-___
+#### prepare
 
-### prepare
+▸ **prepare**\(\): `Promise`
 
-▸ **prepare**(): `Promise`<void\>
+**Returns**
 
-#### Returns
+`Promise`
 
-`Promise`<void\>
-
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/ctx.ts:53](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/ctx.ts#L53)
 
-___
+#### register
 
-### register
+▸ **register**\(`commands`\): `void`
 
-▸ **register**(`commands`): `void`
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
-| :------ | :------ |
+| :--- | :--- |
 | `commands` | [CommandContainer](executor_ctx.commandcontainer.md) |
 
-#### Returns
+**Returns**
 
 `void`
 
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/ctx.ts:56](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/ctx.ts#L56)
 
-___
+#### timeout
 
-### timeout
+▸ **timeout**\(\): `null`
 
-▸ **timeout**(): ``null``
+**Returns**
 
-#### Returns
+`null`
 
-``null``
-
-#### Defined in
+**Defined in**
 
 [yajsapi/executor/ctx.ts:61](https://github.com/golemfactory/yajsapi/blob/8f42a91/yajsapi/executor/ctx.ts#L61)
+
