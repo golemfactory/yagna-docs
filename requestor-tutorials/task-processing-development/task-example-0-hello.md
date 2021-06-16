@@ -121,7 +121,7 @@ That's all we need in order to run a task on Golem!
 
 Here's the flow diagram of all the interactions that need to happen between the requestor and the provider\(s\) in order for a task to be completed:
 
-![requestor agent - sequential diagram](../../.gitbook/assets/requestor-tutorial-sequence.png)
+![Sequence diagram of requestor -&amp;gt; provider interaction](../../.gitbook/assets/tutorial-07.jpg)
 
 From a high-level perspective, a successful run of the above program performs the following steps:
 
