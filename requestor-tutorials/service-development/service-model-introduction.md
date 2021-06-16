@@ -159,5 +159,15 @@ Once a service specification class/object is defined, the service can be provisi
 
 The `Golem` call returns a `Cluster` of \(in this case\) `SimpleService` objects, each representing an instance of the service, as provisioned on the Golem network. The `Cluster` can be used to control the state of the services \(e.g. to stop services when required\).
 
-This is how a Requestor Agent for rudimentary VM-based service is built. Take a look at more sophisticated service examples, eg. including custom runtimes.
+This is all it takees to build a Requestor Agent for rudimentary VM-based service. Soon, we'll show you a bit more sophisticated service examples, eg. including custom runtimes. Stay tuned!
+
+For now, you may wish to jump to:
+
+{% page-ref page="service-example-0-hello-world.md" %}
+
+and
+
+{% page-ref page="service-example-1-simple-service.md" %}
+
+Have fun exploring the new Service API!
 
