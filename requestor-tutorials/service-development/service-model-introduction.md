@@ -162,5 +162,3 @@ The `Golem` call returns a `Cluster` of \(in this case\) `SimpleService` objects
 
 This is how a Requestor Agent for rudimentary VM-based service is built. Take a look at more sophisticated service examples, eg. including custom runtimes. 
 
-
-
