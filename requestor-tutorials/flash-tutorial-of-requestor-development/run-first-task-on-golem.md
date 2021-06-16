@@ -8,7 +8,7 @@ Now you have the `yagna` daemon running, you may proceed with running a task as 
 {% tab title="Python" %}
 ### Get the environment set up
 
-Ensure you're running python &gt;= 3.6 and you have the `venv` module installed \(it's normally included in the python distribution\).
+Ensure you're running Python &gt;= 3.6 and you have the `venv` module installed \(it's normally included in the Python distribution\).
 
 Prepare a virtual environment for the tutorial script:
 
@@ -45,12 +45,12 @@ and make sure you're working on the version corresponding with the latest releas
 
 ```text
 cd yapapi
-git checkout b0.5
+git checkout b0.6
 ```
 
 ### Set the yagna app key
 
-In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](./#generate-the-app-key)" step in the quick primer article:
+In order for the requestor agent to connect with the `yagna` daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](./#generate-the-app-key)" step in the quick primer article:
 
 ```text
 export YAGNA_APPKEY=insert-your-32-char-app-key-here
@@ -71,9 +71,9 @@ cd examples/blender
 python blender.py
 ```
 
-Once you launch the example, you should see some messages reflecting the progress of your task's execution - agreement confirmations, task dispatches and finally task completions.
+Once you launch the example, you should see some messages reflecting the progress of your tasks' execution - agreement confirmations, task dispatches and finally task completions.
 
-The example in question generates six discrete jobs for providers to execute so after those six activities are completed and results returned, the whole task is finished.
+The example in question generates six discrete tasks for providers to execute so after those six activities are completed and results returned, the whole job is finished.
 
 If everything goes right, after what could be anything from half-a-minute to a few minutes, you'll hopefully see the message announcing the successful completion of your assignment including a short summary of what had happened during the execution, which providers took part in the execution and the accumulated GNT cost of the whole task, e.g.:
 
