@@ -44,8 +44,6 @@
 * [Interactive testing environment](requestor-tutorials/interactive-testing-environment/README.md)
   * [Running Goth](requestor-tutorials/interactive-testing-environment/running-goth.md)
   * [Using Test Harness to test Golem apps](requestor-tutorials/interactive-testing-environment/running-goths-interactive-mode.md)
-* [Writing your own market strategy](requestor-tutorials/writing-your-own-market-strategy.md)
-* [SGX secure enclave application development](requestor-tutorials/sgx-secure-enclave-application-development.md)
 * [VM runtime: How to convert a Docker image into a Golem image?](requestor-tutorials/convert-a-docker-image-into-a-golem-image.md)
 * [VM runtime: Debugging a Golem image](requestor-tutorials/gvmi-debugging.md)
 
