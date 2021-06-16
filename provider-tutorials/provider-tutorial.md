@@ -109,36 +109,37 @@ As an output you will get the information about your node's current state as sho
 
 ```text
 $ golemsp status
-┌───────────────────────────────────────────────────┐
-│  Status                                           │
-│                                                   │
-│  Service    is running                            │
-│  Version    0.6.4                                 │
-│  Commit     4fc72117                              │
-│  Date       2021-04-15                            │
-│  Build      135                                   │
-│                                                   │
-│  Node Name  friendly-winter                       │
-│  Subnet     public-beta                           │
-│  VM         valid                                 │
-├───────────────────────────────────────────────────┤
-│  Wallet                                           │
-│  0x979db95461652299c34e15df09441b8dfc4edf7a       │
-│                                                   │
-│  network               mainnet                    │
-│  amount (total)        29.850818924744477818 GLM  │
-│      (on-chain)        3.727634841182177818 GLM   │
-│       (zk-sync)        26.1231840835623 GLM       │
-│                                                   │
-│  pending               0 GLM (0)                  │
-│  issued                0 GLM (0)                  │
-├───────────────────────────────────────────────────┤
-│  Tasks                                            │
-│                                                   │
-│  last 1h processed    0                           │
-│  last 1h in progress  0                           │
-│  total processed      211                         │
-└───────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────┐
+│  Status                                      │
+│                                              │
+│  Service    is running                       │
+│  Version    0.7.0                            │
+│  Commit     3d94857c                         │
+│  Date       2021-06-15                       │
+│  Build      155                              │
+│                                              │
+│  Node Name  awesome-summer                   │
+│  Subnet     public-beta                      │
+│  VM         valid                            │
+├──────────────────────────────────────────────┤
+│  Wallet                                      │
+│  0xc8e9d25c61706b4bdbd6029de9b40bfa45f77fba  │
+│                                              │
+│  network               mainnet               │
+│  amount (total)        0 GLM                 │
+│      (on-chain)        0 GLM                 │
+│       (zk-sync)        0 GLM                 │
+│                                              │
+│  pending               0 GLM (0)             │
+│  issued                0 GLM (0)             │
+├──────────────────────────────────────────────┤
+│  Tasks                                       │
+│                                              │
+│  last 1h processed    0                      │
+│  last 1h in progress  0                      │
+│  total processed      1                      │
+└──────────────────────────────────────────────┘
+
 ```
 
 {% hint style="info" %}

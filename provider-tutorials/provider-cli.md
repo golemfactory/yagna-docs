@@ -14,7 +14,7 @@ Run `golemsp help` without arguments to see top-level usage information:
 
 ```css
 $ golemsp help
-golemsp 0.6.4 (4fc72117 2021-04-15 build #135)
+golemsp 0.7.0 (3d94857c 2021-06-15 build #155)
 User friedly CLI for running Golem Provider
 
 USAGE:
@@ -133,55 +133,56 @@ When the node is not running you'll see:
 
 ```text
 $ golemsp status
-┌──────────────────────────────┐
-│  Status                      │
-│                              │
-│  Service    is not running   │
-│  Version    0.6.5            │
-│  Commit     6317bb3d         │
-│  Date       2021-05-16       │
-│  Build      141              │
-│                              │
-│  Node Name  friendly-winter  │
-│  Subnet     public-beta      │
-│  VM         valid            │
-└──────────────────────────────┘
+┌─────────────────────────────┐
+│  Status                     │
+│                             │
+│  Service    is not running  │
+│  Version    0.7.0           │
+│  Commit     3d94857c        │
+│  Date       2021-06-15      │
+│  Build      155             │
+│                             │
+│  Node Name  awesome-summer  │
+│  Subnet     public-beta     │
+│  VM         valid           │
+└─────────────────────────────┘
 ```
 
 When your node is already running `golemsp status` will show:
 
 ```text
 $ golemsp status
-┌───────────────────────────────────────────────────┐
-│  Status                                           │
-│                                                   │
-│  Service    is running                            │
-│  Version    0.6.5                                 │
-│  Commit     6317bb3d                              │
-│  Date       2021-05-16                            │
-│  Build      141                                   │
-│                                                   │
-│  Node Name  friendly-winter                       │
-│  Subnet     public-beta                           │
-│  VM         valid                                 │
-├───────────────────────────────────────────────────┤
-│  Wallet                                           │
-│  0x979db95461652299c34e15df09441b8dfc4edf7a       │
-│                                                   │
-│  network               mainnet                    │
-│  amount (total)        29.850818924744477818 GLM  │
-│      (on-chain)        3.727634841182177818 GLM   │
-│       (zk-sync)        26.1231840835623 GLM       │
-│                                                   │
-│  pending               0 GLM (0)                  │
-│  issued                0 GLM (0)                  │
-├───────────────────────────────────────────────────┤
-│  Tasks                                            │
-│                                                   │
-│  last 1h processed    0                           │
-│  last 1h in progress  0                           │
-│  total processed      211                         │
-└───────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────┐
+│  Status                                      │
+│                                              │
+│  Service    is running                       │
+│  Version    0.7.0                            │
+│  Commit     3d94857c                         │
+│  Date       2021-06-15                       │
+│  Build      155                              │
+│                                              │
+│  Node Name  awesome-summer                   │
+│  Subnet     public-beta                      │
+│  VM         valid                            │
+├──────────────────────────────────────────────┤
+│  Wallet                                      │
+│  0xc8e9d25c61706b4bdbd6029de9b40bfa45f77fba  │
+│                                              │
+│  network               mainnet               │
+│  amount (total)        0 GLM                 │
+│      (on-chain)        0 GLM                 │
+│       (zk-sync)        0 GLM                 │
+│                                              │
+│  pending               0 GLM (0)             │
+│  issued                0 GLM (0)             │
+├──────────────────────────────────────────────┤
+│  Tasks                                       │
+│                                              │
+│  last 1h processed    0                      │
+│  last 1h in progress  0                      │
+│  total processed      1                      │
+└──────────────────────────────────────────────┘
+
 ```
 
 In the three columns, you can check the basic information regarding the status of your node
