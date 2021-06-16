@@ -49,10 +49,6 @@ _If this is a subsequent run of the image, the image could already be cached by 
 
 A script consisting of one or more commands is executed by the execution unit using the providers' docker containers.
 
-{% hint style="info" %}
-It is expected that in the result of the command execution, in the docker container's file system there are some files that can be transferred to the requestor.
-{% endhint %}
-
 #### Input and output
 
 As part of the execution script, the requestors may wish to supply the providers with additional data \(be it files or execution parameters\) that need to be transferred to the providers. Similarly, once some task has been executed on a provider node, the requestor agent may wish to transfer the output files from the provider to its local file system.
