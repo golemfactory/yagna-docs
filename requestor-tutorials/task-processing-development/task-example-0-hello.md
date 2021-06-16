@@ -142,8 +142,6 @@ This function is our program's entry point and it performs three steps:
 2. Defining an array of `Task` objects to be computed
 3. Creating a `Golem` instance and using it to execute our tasks
 
-Let's now go over these steps and learn some more about them.
-
 ### VM image
 
 {% tabs %}
@@ -188,12 +186,12 @@ const tasks = [new Task({})];
 {% endtab %}
 {% endtabs %}
 
-Next comes the array of tasks to be computed. For simplicity, our `tasks` array contains a single item of type `Task` which has no data associated with it. This means we only need a single task to be computed and that the worker function does not need any additional parameters to execute this task.
+Next comes the array of task fragments to be computed. For simplicity, our `tasks` array contains a single item of type `Task` which has no data associated with it. This means we only need a single item to be computed and that the worker function does not need any additional parameters.
 
 In general, each `Task` object refers to a single piece of computation within your app and typically holds some data. For example, in a program which operates on a huge file, a single `Task` could be holding one chunk of that file to be processed by one of many providers involved.
 
 {% hint style="info" %}
-To see a more involved example of this take a look at: [Task Example 1: Simple hash cracker](task-example-1-cracker.md#the-task-fragments)
+To see a more involved example of this take a look at: [Task Example 1: Simple hash cracker](task-example-1-cracker.md#the-task-fragments) \(this links to a section on task fragments\)
 {% endhint %}
 
 ### Golem/Executor
@@ -333,7 +331,7 @@ async function* worker(context, tasks) {
 The `worker` function is what defines the interaction between our requestor node and each provider computing one or more of our tasks. It's called once per provider node with which our requestor has struck an agreement.
 
 {% hint style="info" %}
-This method follows the "work generator" pattern. If you're unfamiliar with it in the context of Golem you can learn more about it in this article: [HL API: Work generator pattern and WorkContext](../golem-application-fundamentals/hl-api-work-generator-pattern.md)
+This method follows the "work generator" pattern. If you're unfamiliar with it in the context of Golem you can learn more in this article: [HL API: Work generator pattern and WorkContext](../golem-application-fundamentals/hl-api-work-generator-pattern.md)
 {% endhint %}
 
 `WorkContext` gives us a simple interface to construct a script that translates directly to commands interacting with the execution unit on provider's end. Using this object we can schedule commands such as transferring files, running programs etc.
@@ -348,7 +346,7 @@ Finally, we make a call to `task.accept_result` to mark the task as successfully
 
 ## All done!
 
-That's all there is to this example!
+That's all there is to the example!
 
 To run it on your local machine make sure you have a `yagna` node running and set up as a requestor \(take a look here in case of any doubts: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/)\). You can then issue the following command:
 
