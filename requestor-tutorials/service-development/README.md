@@ -4,7 +4,7 @@ description: Running services on Golem
 
 # Service Model development
 
-Apart from the previously-supported task-based model described in the previous chapter, we're now presenting a **Services-based API** to allow developers define their own services to be run on Golem.
+Apart from the previously-supported task-based model described in the previous chapter, we're now presenting a **Services-based API** to allow the developers to define their own Golem services in a convenient way.
 
 Theoretically, one can try using the task-based model to run services and the services model to run tasks as the models and their usage are not entirely disjoint. The reason why we decided to differentiate them is mostly for convenience and ease of use.
 
