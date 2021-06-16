@@ -212,7 +212,7 @@ If you are not familiar with the `Golem` class and/or how it's used in these exa
 
 Provisioning our service is done using the method `run_service` which, in our example, is given two parameters:
 
-* `service_class` is the class extending `Service` which will be used as the definition for each of our instantiated .
+* `service_class` is the class extending `Service` which will be used as the definition for each of our service instances.
 * `num_instances` is the number of service instances we'd like to create.
 
 Awaiting on `run_service` returns a `Cluster` object. This is a wrapper around a collection of `Service` objects, in our case these will be `DateService` objects. Each of these objects represents a single instance of our service provisioned on the Golem network. The `Cluster` can be used to control the state of those service instances \(e.g. to stop services if necessary\).
@@ -233,5 +233,19 @@ while datetime.now() < start_time + timedelta(minutes=1):
 {% endtab %}
 {% endtabs %}
 
+To monitor our cluster we're going to periodically query the instances' state and print relevant information to the console.
+
+Apart from monitoring itself this part also controls the time for which we want to keep our service running. In our case, the `while` loop will run for a minute, relative to `start_time`. After this time the loop will break and we'll exit `Golem`'s context manager, triggering its cleanup logic.
+
 Using the `Cluster` object's `instances` field we can iterate over our service instances and inspect their state. `instance.state` gives us a `StateMachine` associated with the given instance. It can be in one of five states: `starting`, `running`, `stopping`, `terminated` and `unresponsive`.
+
+## All done!
+
+That's it!
+
+We can now try running our service. Assuming you have a `yagna` node active locally \(refer to [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/) in case of any doubts\) you can start the example by running the below command from the example's directory:
+
+```text
+YAGNA_APPKEY={your_appkey_here} ./hello_service.py
+```
 
