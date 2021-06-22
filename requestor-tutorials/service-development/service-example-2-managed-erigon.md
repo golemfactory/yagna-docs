@@ -58,6 +58,127 @@ The design presented above excludes making any payments for the service by its e
 
 ## Runtime implementation
 
+Here we demonstrate how self-contained Exe-Unit runtimes can be implemented, tested and finally plugged into the Provider's daemon.
+
+:warning: Please be aware that custom Exe-Unit runtime doesn't provide the level of isolation comparable with gvmi image. It's just executable running with the same privileges that daemon does.
+
+### Erigon runtime
+
+First, lets discuss what is the purpose of the Erigon runtime to gain some high level overview.
+
+* accepts the Ethereum network's name from the requestor agent,
+* starts Erigon binaries to sync with the chosen network and serve Erigon RPC endpoint,
+* generates credentials for basic authentication which is implemented with nginx
+* credentials are returned to the requestor agent so user of the service can connect to the Erigon RPC.
+
+Please refer to the "Provider's node" in the above Architecture overview diagram.
+
+### Implementation
+
+You might want to review simpler [example runtime](https://github.com/golemfactory/ya-runtime-sdk/blob/main/examples/example-runtime/src/main.rs) available in the [ya-runtime-sdk](https://github.com/golemfactory/ya-runtime-sdk/) repository.
+
+Erigon runtime declares two structures
+
+* `ErigonConf` - containing runtime configuration with default values,
+* `ErigonRuntime` - derives from `RuntimeDef` implements the required methods from `ya-runtime-sdk::Runtime` trait
+
+At least this methods from the `Runtime` trail has to be implemented but SDK provides default implementation to several others (TODO: link runtime SDK docs)
+
+* `deploy` - usually called before any command is send to the runtime, but it's possible to call it explicitly by agent SDKs.
+   It's run only once per activity, does not accept parameters (but there are plans to add them in the future release), return value is not passed to the requestor agent. In the Erigon runtime this method creates directories for Erigon data.
+
+* `start` - called once per activity, accepts parameters, return value is not passed to the requestor agent. Analogically with `deploy` if not run explicitly via the SDK is run without parameters before any command is send to the runtime. In the Erigon runtime we use `start` method to receive the `network` parameter from the requestor, start Erigon's binaries and generate new credentials for nginx basic auth.
+
+* `run_command` - called every time the corresponding agent SDK [`run`](runhttps://github.com/golemfactory/yagna-docs/blob/master/yapapi/api-reference.md#run) is called on the `WorkContext` object. Result can be obtained from the `WorkContext`'s results array after sequence of commands is executed by `commit`. In the Erigon runtime this method is used to provide Erigon service's credentials to the agent.
+
+* `stop` - can be called explicitly by the requestor agent or automatically due to agreement termination. In the Erigon runtime `stop` method is used to kill Erigon processes started in `start`.
+
+Note that the difference between `deploy` and `start` regarding the Erigon runtime might not be obvious. It's easier to think of them in terms of VM runtimes where `deploy` is needed for runtime preparation, e.g. download the image, after `start` runtime should be ready to run the commands.
+
+### Extentions
+
+Above methods corresponds to [`CLI::Command` enum](https://github.com/golemfactory/ya-runtime-sdk/blob/main/ya-runtime-sdk/src/cli.rs#L11). One can extend the default `CLI` by 
+
+* derive `StructOps` on the `CLI` struct
+* decorate the runtime struct with `#[cli(<struct_name>)]`
+* custom CLI arguments will be passed to each command by `Runtime::Context`
+
+Default [`RuntimeMode`](https://github.com/golemfactory/ya-runtime-sdk/blob/4be7534b61cd47ab8d1764d6fd840480744dbfba/ya-runtime-sdk/src/runtime.rs#L73) is `Server`.
+In this mode runtime is deployed and then communicates with the `ExeUnit` via the `Runtime` API.
+Another option is `RuntimeMode::Command` where each command is a separate invocation of the runtime binary. 
+
+### Runtime configuration
+
+During runtime startup the configuration file located in `$HOME/.local/share/ya-runtime-erigon/ya-runtime-erigon.json` is parsed and is initialising the instance of `ErigonConf` structure. If the file does not exists it will be created and initialized with default values during the first start of the runtime.
+
+#### Example configuration file
+
+```json
+{
+  "public_addr": "https://0.erigon.golem.network:8545",
+  "data_dir": "/data/erigon",
+  "passwd_tool_path": "htpasswd",
+  "passwd_file_path": "/etc/nginx/erigon_htpasswd",
+  "password_default_length": 15,
+  "erigon_http_addr": "127.0.0.1",
+  "erigon_http_port": "8555"
+}
+```
+
+### Testing the runtime
+
+Once needed SDK methods are implemented we can give our runtime a try in the [debugger](https://github.com/golemfactory/ya-runtime-dbg/).
+For example our Erigon runtime can be executed in the debugger shell running the following command.
+
+```bash
+ya-ya-runtime-dbg \
+  --runtime ./target/debug/ya-runtime-erigon \
+  --workdir ./target/debug \
+  --start-arg '{"network": "goerli"}'
+```
+
+Please mind it requires Erigon binaries present in the same directory (all needed binaries for Ubuntu Linux can be downloaded from the [binary release](https://github.com/golemfactory/yagna-service-erigon/releases/tag/ya-runtime-erigon-v0.1.0)). Also `htpasswd` from the `apache-tools` is needed to be present in the `PATH` but for the local testing you can mock it with `echo` changing configuration file property `"passwd_tool_path": "echo",`
+
+
+### Pluging the runtime into `golemsp`
+
+In the `$HOME/.local/lib/yagna/plugins/` directory create
+
+* file `ya-runtime-erigon.json` where you describe the plugin
+```json
+[
+  {
+    "name": "erigon",
+    "version": "0.1.0",
+    "supervisor-path": "exe-unit",
+    "runtime-path": "ya-runtime-erigon/ya-runtime-erigon",
+    "description": "Service wrapper for Erigon (formelly Turbo-Geth)",
+    "extra-args": ["--runtime-managed-image"]
+  }
+]
+```
+
+* directory `ya-runtime-erigon` (compare `runtime-path` in above file) where `ya-runtime-erigon` binary along with Erigon binaries are placed.
+
+New runtime needs also to be enabled in `$HOME/.local/share/ya-provider/presets.json`. Preset object can be copied from other presets. 
+Please note that `exeunit-name` has to match to the `name` property of the plugin above
+
+```json
+{
+  "active": [
+    "erigon",
+    ...
+  ],
+  "presets": [
+    {
+      "name": "erigon",
+      "exeunit-name": "erigon",
+      "pricing-model": "linear",
+      "usage-coeffs": { ... }
+    },
+
+```
+
 ## Requestor agent
 
 This part of the tutorial directly corresponds to the two previous requestor tutorials ([services hello world example](service-example-0-hello-world.md) and [simple service](service-example-1-simple-service.md)). We have the same clear separation between service specification and service provisioning, but there are important differences:
