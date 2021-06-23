@@ -164,5 +164,62 @@ This will be fixed in [the near future](https://github.com/golemfactory/yapapi/i
 {% endhint %}
 
 
+##### Start
+
+```python
+if start_args:
+    erigon_init_args = start_args[0]
+    erigon_init_args_str = json.dumps(erigon_init_args)
+    self._ctx.start(erigon_init_args_str)
+else:
+    self._ctx.start()
+```
+
+
+`start_args` is expected to be a tuple, but there are no more assumptions - they are just passed here from the code that starts the service [TODO - link the appropriate further section].
+Here we know that the runtime expects at most one argument (there is some default value) that is a `json`, so we dump the first argument to string (or start without any arguments if `start_args` are empty).
+This could be also a good place to perform a requestor-side validation, we validate `start_arg` only in the runtime.
+
+##### Perform a STATUS command
+
+```python
+self._ctx.run('STATUS')
+```
+
+[TODO]
+
+#####  Fetch the results
+
+```python
+processing_future = yield self._ctx.commit()
+result = self._parse_status_result(processing_future.result())
+self.url, self.auth, self.network = result['url'], result['auth'], result['network']
+```
+
+```python
+def _parse_status_result(self, raw_data: 'List[CommandExecuted]'):
+   command_executed = raw_data[-1]
+
+    erigon_data = command_executed.stdout
+    erigon_data = json.loads(erigon_data)
+    return erigon_data
+```
+
+[TODO]
+
+#### run
+
+There is no `run` function, because we use the one declared on `yapapi.Service` that just hangs forever.
+[TODO]
+
+
+### running the service with a simple script
+
+...
+
+### running the http erigon server
+
+...
+
 ## User interface
 
