@@ -60,9 +60,9 @@ class Erigon(Service):
 
 We add three attributes that are specific to our service logic:
 
-* url - where our provider will be accepting requests
-* auth - user/password pair that must be provided with each request
-* network - Ethereum network name 
+* `url` - where our provider will be accepting requests
+* `auth` - user/password pair that must be provided with each request
+* `network` - Ethereum network name 
 
 They are initialized to `None` and later - when the service starts - will be updated with the data acquired from the runtime.
 
@@ -101,9 +101,68 @@ async def get_payload(cls):
 
 Few important things to note here:
 
-* we don't have any `image_hash` (contrary to previouse examples) because we don't use a VM-based runtime
-* we declare the runtime name, `erigon` - this must match the offered `exeunit-name` [TODO - link to provider offer description]
+* We don't have any `image_hash` (contrary to the previouse examples) because we don't use a VM-based runtime
+* We declare the runtime name, `erigon` - this must match the offered `exeunit-name` [TODO - link to provider offer description]
 * `min_mem_gib` and `min_storage_gib` are used to filter out offers with to weak parameters (e.g. we would need more storage if we want to use mainnet than testnet)
+  [TODO] - maybe remove those from the payload? They are necessary now to find any market offer, but blue says it might have disappared in yagna 0.7.1
+  https://discord.com/channels/687954211702439971/828932441586532392/857201342291509248
+
+
+#### Start
+
+```python
+async def start(self):
+    #   startup - set start args (network parameter)
+    self._ctx.deploy()
+    start_args = await self._get_start_args()
+    if start_args:
+        erigon_init_args = start_args[0]
+        erigon_init_args_str = json.dumps(erigon_init_args)
+        self._ctx.start(erigon_init_args_str)
+    else:
+        self._ctx.start()
+
+    #   Set url & auth
+    self._ctx.run('STATUS')
+    processing_future = yield self._ctx.commit()
+    result = self._parse_status_result(processing_future.result())
+    self.url, self.auth, self.network = result['url'], result['auth'], result['network']
+```
+
+Let's split that to separate parts.
+
+##### Deploy command
+
+```python
+self._ctx.deploy()
+```
+
+This is the first thing that should always be done with `self._ctx`.
+
+##### Determine start args
+
+```
+start_args = await self._get_start_args()
+```
+
+The runtime start accepts a single argument - a json with a single key `network` [TODO - link runtime section].
+This `start_args` are defined by the final user (the one ordering Erigon service, e.g. via the web interface).
+
+{% hint style="info" %}
+Current `yapapi` has no pretty way of passing arguments to the `Service`, so this is implemented as a ugly-but-harmless hack:
+
+```python
+async def _get_start_args(self):
+    while True:
+        try:
+            return self._cluster.instance_start_args
+        except AttributeError:
+            await asyncio.sleep(0.1)
+```
+
+This will be fixed in [the near future](https://github.com/golemfactory/yapapi/issues/372).
+{% endhint %}
+
 
 ## User interface
 
