@@ -82,7 +82,7 @@ Erigon runtime declares two structures
 * `ErigonConf` - containing runtime configuration with default values,
 * `ErigonRuntime` - derives from `RuntimeDef` implements the required methods from `ya-runtime-sdk::Runtime` trait
 
-At least this methods from the `Runtime` trail has to be implemented but SDK provides default implementation to several others (TODO: link runtime SDK docs)
+At least these methods from the `Runtime` trail have to be implemented but SDK provides default implementation to several others (TODO: link runtime SDK docs)
 
 * `deploy` - usually called before any command is send to the runtime, but it's possible to call it explicitly by agent SDKs.
    It's run only once per activity, does not accept parameters (but there are plans to add them in the future release), return value is not passed to the requestor agent. In the Erigon runtime this method creates directories for Erigon data.
@@ -99,9 +99,9 @@ Note that the difference between `deploy` and `start` regarding the Erigon runti
 
 Above methods corresponds to [`CLI::Command` enum](https://github.com/golemfactory/ya-runtime-sdk/blob/main/ya-runtime-sdk/src/cli.rs#L11). One can extend the default `CLI` by 
 
-* derive `StructOps` on the `CLI` struct
+* derive `StructOpt` on the `CLI` struct
 * decorate the runtime struct with `#[cli(<struct_name>)]`
-* custom CLI arguments will be passed to each command by `Runtime::Context`
+* custom CLI arguments will be passed to each command by `runtime::Context`
 
 Default [`RuntimeMode`](https://github.com/golemfactory/ya-runtime-sdk/blob/4be7534b61cd47ab8d1764d6fd840480744dbfba/ya-runtime-sdk/src/runtime.rs#L73) is `Server`.
 In this mode runtime is deployed and then communicates with the `ExeUnit` via the `Runtime` API.
@@ -537,3 +537,4 @@ We select all Erigons created by the user and return their representation.
 ### Running the service with a simple script
 
 There is also a [simple script that just starts the erigon services](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/run_erigon_service.py). Service is running forever, status is printed every second, ctrl+C leads to a graceful shutdown. This is just a development tool, similar to [yapapi-service-manager examples](https://github.com/golemfactory/yapapi-service-manager/tree/master/examples).
+
