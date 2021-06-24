@@ -32,9 +32,29 @@ The application consist of three major components:
    
 A typical interaction flow proceeds in the following manner:
 
-1.
-2.
-3. ...
+1. User opens the web interface in their browser.
+2. User authenticates with their metamask wallet.
+3. User clicks to start an Erigon node.
+4. Request to start an Erigon node is sent via REST API to the requestor server.
+5. Requestor starts a service activity (these steps are handled by `yagna` core and `yapapi` internally):
+    1. Requestor server makes a number of API calls to the yagna daemon running on the requestor's machine in order to find an available Erigon provider and sign an agreement.
+    2. Once the agreement is signed, requestor server sends a command to the provider to start an Erigon node.
+    3. Yagna daemon running on the provider's machine spawns Erigon runtime process (a service wrapper/supervisor process).
+8. Erigon runtime starts the actual Erigon service (backend & rpcdaemon processes).
+9. Erigon runtime generates a new username and password and puts them in the NGINX configuration.
+10. NGINX auto-reloads on configuration change, from now on granting access to the Erigon service only for user(s) authenticated with the newly created credentials. (NGINX is continuously running on provider's machine as a daemon, so it doesn't need to be started.)
+11. The credentials are passed backed to the requestor server along with provider's node's public IP address and the port on which NGINX is listening.
+12. Requestor server passes all the received information to the web interface where it can be viewed by the user.
+13. User interacts with the Erigon service (via NGINX proxy).
+14. Once the user finishes using their Erigon instance, they click to stop it.
+15. Web interface sends request to stop the instance via REST API to the requestor server.
+16. Requestor server sends a stop command to the provider.
+17. Erigon runtime stops the Erigon service and exits.
+18. Requestor server orchestrates payment for the service in the background without further user interaction.
+
+{% hint style="info" %}
+The design presented above excludes making any payments for the service by its end user. This omission was made intentionally to make te service implementation simpler. It's not a problem as long as the service is used for demonstrative purpose only.  
+{% endhint %}
 
 ## Runtime implementation
 
