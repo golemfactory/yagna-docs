@@ -250,10 +250,73 @@ We don't need to implement those functions because the default `yapapi.Service` 
 
 ### running the http erigon server
 
-...
+We implement a http server that responds to 3 requests:
+
+* `createInstance` - start a new erigon
+* `stopInstance/<id>` - stop this erigon
+* `getInstances` - list all current & past erigons
+
+There is also some basic authentication - the only user who can see/stop an erigon is the one who created it.
+We use the [Quart](https://pgjones.gitlab.io/quart/) framework.
+
+
+{% hint style="info" %}
+
+Code that uses `yapapi` must be called in an asynchronous context. Quart is an `async` equivalent of the much more popular [Flask](https://flask.palletsprojects.com/en/2.0.x/).
+
+{% endhint %}
+
+Full server code is [here](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/app.py), only Golem-related part will be discussed in this tutorial.
+
+For the documentation on `yapapi-service-manager` check [README](https://github.com/golemfactory/yapapi-service-manager).
+
+#### Configuration
+
+([run\_server.py](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/run_server.py))
+```python
+app.yapapi_executor_config = {
+    'budget': 10,
+    'subnet_tag': os.environ.get('SUBNET_TAG', 'erigon'),
+}
+```
+
+Here we define the `yapapi.Golem` [init\ args](https://handbook.golem.network/yapapi/api-reference#_engine-objects).
+`app.yapapi_executor_config` is passed directly to the `Golem` object.
+
+#### Start/stop the requestor
+
+
+```python
+from yapapi_service_manager import ServiceManager
+
+@app.before_serving
+async def start_service_manager():
+    app.service_manager = ServiceManager(app.yapapi_executor_config)
+
+
+@app.after_serving
+async def close_service_manager():
+    await app.service_manager.close()
+```
+
+We initialize the ServiceManager during the server startup and close it when the server exits.
+This is (roughly) equivalent to entering/exiting `async with Golem`.
+
+{% hint style="info" %}
+
+Restarting the main process will stop all services.
+[TODO]
+
+{% endhint %}
+
+
+
+#### Create an instance
+
+
 
 ### running the service with a simple script
 
-...
+There is also a [simple script that just starts the erigon services](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/run_erigon_service.py). Service is running forever, status is printed each second, ctrl+C leads to a graceful shutdown. This is just a development/testing tools, similar to [yapapi-service-manager examples](https://github.com/golemfactory/yapapi-service-manager/tree/master/examples).
 
 ## User interface
