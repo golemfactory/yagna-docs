@@ -198,7 +198,7 @@ This could be also a good place to perform a requestor-side validation, we valid
 self._ctx.run('STATUS')
 ```
 
-Run a command 'STATUS'. Actually, we could send anything other than `STATUS` - our runtime ignores the command and does always the same thing - returns running erigon url, authentication data and network.
+Run a command 'STATUS'. Actually, we could send anything other than `STATUS` - our runtime ignores the command and does always the same thing - returns running erigon url, credentials and Ethereum's network.
 
 {% hint style="info" %}
 
@@ -257,4 +257,3 @@ We don't need to implement those functions because the default `yapapi.Service` 
 ...
 
 ## User interface
-
