@@ -40,7 +40,11 @@ A typical interaction flow proceeds in the following manner:
 
 ## Requestor agent
 
-This part of the tutorial directly corresponds to the two previous requestor tutorials ([services hello world example](service-example-0-hello-world.md) and [simple service](service-example-1-simple-service.md)). It is split into [TODO]
+This part of the tutorial directly corresponds to the two previous requestor tutorials ([services hello world example](service-example-0-hello-world.md) and [simple service](service-example-1-simple-service.md)). We have the same clear separation between service specification and service provisioning, but there are important differences:
+
+* We use Erigon runtime instead of a VM-based runtime (so we don't have any Dockerfile or `image_hash`).
+* We don't implement `async def run` - the service is only started/stopped, requestor is idle when the service it is running.
+* We use [yapapi-service-manager](https://github.com/golemfactory/yapapi-service-manager) instead of pure `yapapi`.
 
 ### Service specification
 
@@ -91,7 +95,7 @@ class ErigonPayload(Payload):
     min_storage_gib: float = constraint(inf.INF_STORAGE, ">=", 0.5)
 ```
 
-and used this way in the service:
+and used in `get_payload` in the service:
 
 ```python
 @classmethod
@@ -131,22 +135,30 @@ async def start(self):
 
 Let's split that to separate parts.
 
-##### Deploy command
+##### Deploy
 
 ```python
 self._ctx.deploy()
 ```
 
 This is the first thing that should always be done with `self._ctx`.
+[TODO] - maybe any comment what is this for?
 
 ##### Determine start args
 
-```
+```python
 start_args = await self._get_start_args()
 ```
 
-The runtime start accepts a single argument - a json with a single key `network` [TODO - link runtime section].
-This `start_args` are defined by the final user (the one ordering Erigon service, e.g. via the web interface).
+`start_args` - in the erigon case - are a single-item tuple:
+
+```python
+(
+    {'network': <ETHEREUM NETWORK NAME>},
+)
+```
+
+This `start_args` are defined by the final user (the one ordering Erigon service, e.g. via the web interface) and passed directly to the runtime.
 
 {% hint style="info" %}
 Current `yapapi` has no pretty way of passing arguments to the `Service`, so this is implemented as a ugly-but-harmless hack:
@@ -177,7 +189,7 @@ else:
 
 
 `start_args` is expected to be a tuple, but there are no more assumptions - they are just passed here from the code that starts the service [TODO - link the appropriate further section].
-Here we know that the runtime expects at most one argument (there is some default value) that is a `json`, so we dump the first argument to string (or start without any arguments if `start_args` are empty).
+The Erigon runtime expects at most one argument and it is expected to be a `json`, so we send the serialized first argument (or start without any arguments if `start_args` are empty).
 This could be also a good place to perform a requestor-side validation, we validate `start_arg` only in the runtime.
 
 ##### Perform a STATUS command
@@ -186,7 +198,21 @@ This could be also a good place to perform a requestor-side validation, we valid
 self._ctx.run('STATUS')
 ```
 
-[TODO]
+Run a command 'STATUS'. Actually, we could send anything other than `STATUS` - our runtime ignores the command and does always the same thing - returns running erigon url, authentication data and network.
+
+{% hint style="info" %}
+
+Compare this to VM-based commands, like
+
+```python
+self._ctx.run('/bin/date')
+self._ctx.run('/bin/sh', '-c', 'cat some_file.txt')
+```
+etc.
+
+In the VM environment, available commands are defined in the image and they usually default to commands available in the base linux image + optional additional commands, like `/golem/run/simple_service.py` in the [simple service](service-example-1-simple-service.md).
+When using a custom runtime, we are free to implement any commands we want - but also we have no built-in commands, not even `ls`.
+{% endhint %}
 
 #####  Fetch the results
 
@@ -198,26 +224,35 @@ self.url, self.auth, self.network = result['url'], result['auth'], result['netwo
 
 ```python
 def _parse_status_result(self, raw_data: 'List[CommandExecuted]'):
-   command_executed = raw_data[-1]
+    command_executed = raw_data[-1]
 
     erigon_data = command_executed.stdout
     erigon_data = json.loads(erigon_data)
     return erigon_data
 ```
 
-[TODO]
+STATUS command executed in the runtime returns a json data. On the requestor side it is available in `stdout` of the appropriate `command_executed`.
 
-#### run
+{% hint style="info" %}
 
-There is no `run` function, because we use the one declared on `yapapi.Service` that just hangs forever.
-[TODO]
+`processing_future.results()` is a list of CommandExecuted objects - one per each command. In our case, there are three : `deploy`, `start`, and `run(STATUS)`, and we are interested only in the output of the last one.
+
+{% endhint %}
 
 
-### running the service with a simple script
+#### run & shutdown
+
+We don't need to implement those functions because the default `yapapi.Service` implementation is exactly what we want:
+
+* Default `run()` waits forever.
+* Default `shutdown()` terminates the agreement. We don't have to perform any additional cleanup - it is already implemented in the runtime (e.g. erigon process is stopped).
+
+
+### running the http erigon server
 
 ...
 
-### running the http erigon server
+### running the service with a simple script
 
 ...
 
