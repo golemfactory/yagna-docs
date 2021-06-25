@@ -45,6 +45,7 @@ This part of the tutorial directly corresponds to the two previous requestor tut
 * We use Erigon runtime instead of a VM-based runtime (so we don't have any Dockerfile or `image_hash`).
 * We don't implement `async def run` - the service is only started/stopped, requestor is idle when the service it is running.
 * We use [yapapi-service-manager](https://github.com/golemfactory/yapapi-service-manager) instead of pure `yapapi`.
+* We integrate the requestor code with [Quart](https://pgjones.gitlab.io/quart/) http server
 
 ### Service specification
 
@@ -188,7 +189,7 @@ else:
 ```
 
 
-`start_args` is expected to be a tuple, but there are no more assumptions - they are just passed here from the code that starts the service [TODO - link the appropriate further section].
+`start_args` is expected to be a tuple, but there are no more assumptions - they are just passed here from the [code that starts the service](#create a new erigon).
 The Erigon runtime expects at most one argument and it is expected to be a `json`, so we send the serialized first argument (or start without any arguments if `start_args` are empty).
 This could be also a good place to perform a requestor-side validation, we validate `start_arg` only in the runtime.
 
@@ -280,7 +281,7 @@ app.yapapi_executor_config = {
 }
 ```
 
-Here we define the `yapapi.Golem` [init\ args](https://handbook.golem.network/yapapi/api-reference#_engine-objects).
+Here we define the `yapapi.Golem` [init\_args](https://handbook.golem.network/yapapi/api-reference#_engine-objects).
 `app.yapapi_executor_config` is passed directly to the `Golem` object.
 
 #### Start/stop the requestor
@@ -338,8 +339,10 @@ erigon = app.service_manager.create_service(Erigon, [init_params], ErigonService
 ```
 
 `Erigon` is the `yapapi.Service`-based class we implemented in the [previous section](#service-specification).
-`init_params` is a dictionary `{'network': <ETHEREUM-NETWORK-NAME>}`, that is defined in the request.
-'ErigonServiceWrapper` is a class extending `yapapi-service-manager.ServiceWrapper` that can be found [here](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/erigon_service_wrapper.py). It is neither very important nor interesting: we just need a place to store and access some additional erigon-specific information, like 'created_at` timestamp or `name`.
+
+`init_params` is a dictionary `{'network': <ETHEREUM-NETWORK-NAME>}` that is defined in the request.
+
+`ErigonServiceWrapper` is a class extending `yapapi-service-manager.ServiceWrapper` that can be found [here](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/erigon_service_wrapper.py). It is neither very important nor interesting: we just need a place to store and access some additional erigon-specific information, like 'created_at` timestamp or `name`.
 This could be implemented in many different ways, but this is the most convenient - the returned `erigon` object (an instance of `ErigonServiceWrapper`) encapsulates all of the logic and has exactly the interface we need:
 
 ```python
