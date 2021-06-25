@@ -302,21 +302,100 @@ async def close_service_manager():
 We initialize the ServiceManager during the server startup and close it when the server exits.
 This is (roughly) equivalent to entering/exiting `async with Golem`.
 
-{% hint style="info" %}
+{% hint style="warning" %}
 
-Restarting the main process will stop all services.
-[TODO]
+There is no state preserved outside of the process memory, so when using a generic WSGI http server (like `gunicorn`) you shouldn't
+* start more than one worker
+* use worker-recycling tools (like `max_requests` in `gunicorn`)
 
 {% endhint %}
 
 
+#### Create a new erigon
 
-#### Create an instance
+```python
+from .erigon_service import Erigon
+from .erigon_service_wrapper import ErigonServiceWrapper
 
+@app.route('/createInstance', methods=['POST'])
+async def create_instance():
+    request_data, user_id, init_params = [some_non_golem_stuff]
 
+    erigon = app.service_manager.create_service(Erigon, (init_params,), ErigonServiceWrapper)
+
+    erigon.name = request_data.get('name', f'erigon_{erigon.id}')
+    app.user_erigons[user_id][erigon.id] = erigon
+
+    return erigon.api_repr(), 201
+```
+
+First, we extract `request_data`, `user_id` and `init_params` from the request, this is done in a pretty standard `Quart`ish way.
+
+Then comes the most important line:
+
+```python
+erigon = app.service_manager.create_service(Erigon, [init_params], ErigonServiceWrapper)
+```
+
+`Erigon` is the `yapapi.Service`-based class we implemented in the [previous section](#service-specification).
+`init_params` is a dictionary `{'network': <ETHEREUM-NETWORK-NAME>}`, that is defined in the request.
+'ErigonServiceWrapper` is a class extending `yapapi-service-manager.ServiceWrapper` that can be found [here](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/erigon_service_wrapper.py). It is neither very important nor interesting: we just need a place to store and access some additional erigon-specific information, like 'created_at` timestamp or `name`.
+This could be implemented in many different ways, but this is the most convenient - the returned `erigon` object (an instance of `ErigonServiceWrapper`) encapsulates all of the logic and has exactly the interface we need:
+
+```python
+erigon.name         # user-defined name
+erigon.api_repr()   # representation of the erigon, sent to the frontend
+erigon.stop()       # stops the service (service starts when the object is created)
+```
+
+In the next three lines:
+
+```python
+erigon.name = request_data.get('name', f'erigon_{erigon.id}')
+app.user_erigons[user_id][erigon.id] = erigon
+return erigon.api_repr(), 201
+```
+we set the erigon name, save the information about newly created erigon, and send its representation as a response.
+
+#### Stop the erigon
+
+```python
+@app.route('/stopInstance/<erigon_id>', methods=['POST'])
+async def stop_instance(erigon_id):
+    user_id = get_user_id()
+
+    try:
+        erigon = this_user_erigons[erigon_id]
+    except KeyError:
+        return 'Invalid erigon_id', 404
+
+    erigon.stop()
+
+    return erigon.api_repr(), 200
+```
+
+Nothing really interesting here, we just:
+
+* extract the `user_id` from the request
+* check if this is a user who created this erigon (compare the `app.user_erigons[user_id][erigon.id] = erigon` line in the previous section)
+* stop the erigon - this *initializes* the stopping process, it is not stopped immediately (because stopping needs some action on the provider side)
+* return erigon representation as a response
+
+#### Get all user erigons
+
+```python
+@app.route('/getInstances', methods=['GET'])
+async def get_instances():
+    user_id = get_user_id()
+    erigons = app.user_erigons[user_id].values()
+    data = [erigon.api_repr() for erigon in erigons]
+    return json.dumps(data), 200
+```
+
+We find all erigons created by the user, and return their representation.
 
 ### running the service with a simple script
 
-There is also a [simple script that just starts the erigon services](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/run_erigon_service.py). Service is running forever, status is printed each second, ctrl+C leads to a graceful shutdown. This is just a development/testing tools, similar to [yapapi-service-manager examples](https://github.com/golemfactory/yapapi-service-manager/tree/master/examples).
+There is also a [simple script that just starts the erigon services](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/run_erigon_service.py). Service is running forever, status is printed every second, ctrl+C leads to a graceful shutdown. This is just a development tool, similar to [yapapi-service-manager examples](https://github.com/golemfactory/yapapi-service-manager/tree/master/examples).
 
 ## User interface
