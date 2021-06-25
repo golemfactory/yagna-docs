@@ -65,8 +65,8 @@ class Erigon(Service):
 
 We add three attributes that are specific to our service logic:
 
-* `url` - where our provider will be accepting requests
-* `auth` - user/password pair that must be provided with each request
+* `url` - where Erigolem RPC (running on the provider) will be accepting requests
+* `auth` - credentials that must be provided with each request
 * `network` - Ethereum network name 
 
 They are initialized to `None` and later - when the service starts - will be updated with the data acquired from the runtime.
@@ -108,9 +108,7 @@ Few important things to note here:
 
 * We don't have any `image_hash` (contrary to the previouse examples) because we don't use a VM-based runtime
 * We declare the runtime name, `erigon` - this must match the offered `exeunit-name` [TODO - link to provider offer description]
-* `min_mem_gib` and `min_storage_gib` are used to filter out offers with to weak parameters (e.g. we would need more storage if we want to use mainnet than testnet)
-  [TODO] - maybe remove those from the payload? They are necessary now to find any market offer, but blue says it might have disappared in yagna 0.7.1
-  https://discord.com/channels/687954211702439971/828932441586532392/857201342291509248
+* `min_mem_gib` and `min_storage_gib` [TODO] - we discussed this and decided those are pretty useless. There's no reason to pretend they are not, but either they are required for some market-related reasons, or they are not required anymore and should be removed. https://discord.com/channels/687954211702439971/692023100832743455/857937009448714244.
 
 
 #### Start
@@ -143,7 +141,6 @@ self._ctx.deploy()
 ```
 
 This is the first thing that should always be done with `self._ctx`.
-[TODO] - maybe any comment what is this for?
 
 ##### Determine start args
 
