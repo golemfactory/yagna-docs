@@ -342,7 +342,7 @@ erigon = app.service_manager.create_service(Erigon, [init_params], ErigonService
 
 `init_params` is a dictionary `{'network': <ETHEREUM-NETWORK-NAME>}` that is defined in the request.
 
-`ErigonServiceWrapper` is a class extending `yapapi-service-manager.ServiceWrapper` that can be found [here](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/erigon_service_wrapper.py). It is neither very important nor interesting: we just need a place to store and access some additional erigon-specific information, like 'created_at` timestamp or `name`.
+`ErigonServiceWrapper` is a class extending `yapapi-service-manager.ServiceWrapper` that can be found [here](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/erigon_service_wrapper.py). It is neither very important nor interesting: we just need a place to store and access some additional erigon-specific information, like `created_at` timestamp or `name`.
 This could be implemented in many different ways, but this is the most convenient - the returned `erigon` object (an instance of `ErigonServiceWrapper`) encapsulates all of the logic and has exactly the interface we need:
 
 ```python
@@ -380,7 +380,7 @@ async def stop_instance(erigon_id):
 Nothing really interesting here, we just:
 
 * extract the `user_id` from the request
-* check if this is a user who created this erigon (compare the `app.user_erigons[user_id][erigon.id] = erigon` line in the previous section)
+* check if this is the user who created this erigon (compare the `app.user_erigons[user_id][erigon.id] = erigon` line in the previous section)
 * stop the erigon - this *initializes* the stopping process, it is not stopped immediately (because stopping needs some action on the provider side)
 * return erigon representation as a response
 
@@ -395,7 +395,7 @@ async def get_instances():
     return json.dumps(data), 200
 ```
 
-We find all erigons created by the user, and return their representation.
+We select all erigons created by the user and return their representation.
 
 ### running the service with a simple script
 
