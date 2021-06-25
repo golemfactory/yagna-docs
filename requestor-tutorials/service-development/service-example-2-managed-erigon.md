@@ -93,7 +93,6 @@ ERIGON_RUNTIME_NAME = "erigon"
 class ErigonPayload(Payload):
     runtime: str = constraint(inf.INF_RUNTIME_NAME, "=", ERIGON_RUNTIME_NAME)
     min_mem_gib: float = constraint(inf.INF_MEM, ">=", 0.5)
-    min_storage_gib: float = constraint(inf.INF_STORAGE, ">=", 0.5)
 ```
 
 and used in `get_payload` in the service:
@@ -107,8 +106,8 @@ async def get_payload(cls):
 Few important things to note here:
 
 * We don't have any `image_hash` (contrary to the previouse examples) because we don't use a VM-based runtime
-* We declare the runtime name, `erigon` - this must match the offered `exeunit-name` [TODO - link to provider offer description]
-* `min_mem_gib` and `min_storage_gib` [TODO] - we discussed this and decided those are pretty useless. There's no reason to pretend they are not, but either they are required for some market-related reasons, or they are not required anymore and should be removed. https://discord.com/channels/687954211702439971/692023100832743455/857937009448714244.
+* We declare the runtime name, `erigon` - this must match the offered [exeunit-name](#pluging-the-runtime-into-golemsp)
+* `min_mem_gib` - minimum amount of RAM the provider has to offer. This is pretty useless in the Erigon case (contrary to the e.g. VM-based runtimes), but is required because of a known `yapapi` [bug](https://github.com/golemfactory/yapapi/issues/500).
 
 
 #### Start
