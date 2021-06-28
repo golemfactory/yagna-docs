@@ -393,7 +393,7 @@ async def get_instances():
 
 We select all Erigons created by the user and return their representation.
 
-### running the service with a simple script
+### Running the service with a simple script
 
 There is also a [simple script that just starts the erigon services](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/run_erigon_service.py). Service is running forever, status is printed every second, ctrl+C leads to a graceful shutdown. This is just a development tool, similar to [yapapi-service-manager examples](https://github.com/golemfactory/yapapi-service-manager/tree/master/examples).
 
