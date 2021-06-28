@@ -17,6 +17,7 @@
 
 * [Becoming a provider](provider-tutorials/provider-tutorial.md)
 * [Provider CLI reference](provider-tutorials/provider-cli.md)
+* [Becoming an Erigon provider](provider-tutorials/becoming-erigon-provider.md)
 
 ## Troubleshooting
 
