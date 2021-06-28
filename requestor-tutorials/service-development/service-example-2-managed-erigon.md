@@ -375,10 +375,10 @@ async def stop_instance(erigon_id):
 
 Nothing really interesting here, we just:
 
-* extract the `user_id` from the request
-* check if this is the user who created this erigon (compare the `app.user_erigons[user_id][erigon.id] = erigon` line in the previous section)
-* stop the erigon - this *initializes* the stopping process, it is not stopped immediately (because stopping needs some action on the provider side)
-* return erigon representation as a response
+* Extract the `user_id` from the request
+* Check if this is the user who created this Erigon (compare the `app.user_erigons[user_id][erigon.id] = erigon` line in the previous section),
+* Stop the Erigon - this *initializes* the stopping process, it is not stopped immediately (because stopping needs some action on the provider side),
+* Return Erigon representation as a response.
 
 #### Get all user erigons
 
