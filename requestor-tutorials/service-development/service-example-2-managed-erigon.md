@@ -45,7 +45,7 @@ This part of the tutorial directly corresponds to the two previous requestor tut
 * We use Erigon runtime instead of a VM-based runtime (so we don't have any Dockerfile or `image_hash`).
 * We don't implement `async def run` - the service is only started/stopped, requestor is idle when the service it is running.
 * We use [yapapi-service-manager](https://github.com/golemfactory/yapapi-service-manager) instead of pure `yapapi`.
-* We integrate the requestor code with [Quart](https://pgjones.gitlab.io/quart/) http server
+* We integrate the requestor code with [Quart](https://pgjones.gitlab.io/quart/), a web framework.
 
 ### Service specification
 
