@@ -158,7 +158,7 @@ start_args = await self._get_start_args()
 These `start_args` are defined by the final user (the one ordering Erigon service, e.g. via the web interface) and passed directly to the runtime.
 
 {% hint style="info" %}
-Current `yapapi` has no pretty way of passing arguments to the `Service`, so this is implemented as a ugly-but-harmless hack:
+Current `yapapi` has no pretty way of passing arguments to the `Service`, so this is implemented as an ugly-but-harmless hack:
 
 ```python
 async def _get_start_args(self):
