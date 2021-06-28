@@ -391,7 +391,7 @@ async def get_instances():
     return json.dumps(data), 200
 ```
 
-We select all erigons created by the user and return their representation.
+We select all Erigons created by the user and return their representation.
 
 ### running the service with a simple script
 
