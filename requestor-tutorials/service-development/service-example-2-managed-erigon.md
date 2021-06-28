@@ -60,29 +60,33 @@ The design presented above excludes making any payments for the service by its e
 
 Here we demonstrate how self-contained Exe-Unit runtimes can be implemented, tested and finally plugged into the Provider's daemon.
 
-:warning: Please be aware that custom Exe-Unit runtime doesn't provide the level of isolation comparable with gvmi image. It's just executable running with the same privileges that daemon does.
+{% hint style="warning" %}
+Please be aware that a custom runtime doesn't provide the level of isolation comparable with a virtual machine. It's just an executable running with the same privileges as yagna daemon.
+{% endhint %}
 
 ### Erigon runtime
 
-First, lets discuss what is the purpose of the Erigon runtime to gain some high level overview.
+First, let's discuss what is the purpose of the Erigon runtime to gain some high level overview. The runtime:
 
-* accepts the Ethereum network's name from the requestor agent,
-* starts Erigon binaries to sync with the chosen network and serve Erigon RPC endpoint,
-* generates credentials for basic authentication which is implemented with nginx
-* credentials are returned to the requestor agent so user of the service can connect to the Erigon RPC.
+* Accepts an Ethereum network's name (e.g. 'mainnet' or 'rinkeby') from the requestor agent,
+* Starts Erigon binaries to sync with the chosen network and serve Erigon RPC endpoint,
+* Generates credentials for basic authentication which is implemented with nginx,
+* Returns the credentials to the requestor agent so the user of the service can connect to the Erigon RPC.
 
 Please refer to the "Provider's node" in the above Architecture overview diagram.
 
 ### Implementation
 
-You might want to review simpler [example runtime](https://github.com/golemfactory/ya-runtime-sdk/blob/main/examples/example-runtime/src/main.rs) available in the [ya-runtime-sdk](https://github.com/golemfactory/ya-runtime-sdk/) repository.
+{% hint style="info" %}
+Before diving into this section you might want to review simpler [example runtime](https://github.com/golemfactory/ya-runtime-sdk/blob/main/examples/example-runtime/src/main.rs) available in the [ya-runtime-sdk](https://github.com/golemfactory/ya-runtime-sdk/) repository.
+{% endhint %}
 
 Erigon runtime declares two structures
 
 * `ErigonConf` - containing runtime configuration with default values,
 * `ErigonRuntime` - derives from `RuntimeDef` implements the required methods from `ya-runtime-sdk::Runtime` trait
 
-At least these methods from the `Runtime` trail have to be implemented but SDK provides default implementation to several others (TODO: link runtime SDK docs)
+At least these methods from the `Runtime` trait have to be implemented but SDK provides default implementation to several others (TODO: link runtime SDK docs)
 
 * `deploy` - usually called before any command is send to the runtime, but it's possible to call it explicitly by agent SDKs.
    It's run only once per activity, does not accept parameters (but there are plans to add them in the future release), return value is not passed to the requestor agent. In the Erigon runtime this method creates directories for Erigon data.
@@ -93,15 +97,18 @@ At least these methods from the `Runtime` trail have to be implemented but SDK p
 
 * `stop` - can be called explicitly by the requestor agent or automatically due to agreement termination. In the Erigon runtime `stop` method is used to kill Erigon processes started in `start`.
 
+{% hint style="info" %}
 Note that the difference between `deploy` and `start` regarding the Erigon runtime might not be obvious. It's easier to think of them in terms of VM runtimes where `deploy` is needed for runtime preparation, e.g. download the image, after `start` runtime should be ready to run the commands.
+{% endhint %}
 
 ### Extentions
 
 Above methods corresponds to [`CLI::Command` enum](https://github.com/golemfactory/ya-runtime-sdk/blob/main/ya-runtime-sdk/src/cli.rs#L11). One can extend the default `CLI` by 
 
-* derive `StructOpt` on the `CLI` struct
-* decorate the runtime struct with `#[cli(<struct_name>)]`
-* custom CLI arguments will be passed to each command by `runtime::Context`
+* Deriving `StructOpt` on the `CLI` struct,
+* Decorating the runtime struct with `#[cli(<struct_name>)]`.
+
+Custom CLI arguments will be passed to each command by `runtime::Context`.
 
 Default [`RuntimeMode`](https://github.com/golemfactory/ya-runtime-sdk/blob/4be7534b61cd47ab8d1764d6fd840480744dbfba/ya-runtime-sdk/src/runtime.rs#L73) is `Server`.
 In this mode runtime is deployed and then communicates with the `ExeUnit` via the `Runtime` API.
@@ -137,7 +144,9 @@ ya-ya-runtime-dbg \
   --start-arg '{"network": "goerli"}'
 ```
 
+{% hint style="info" %}
 Please mind it requires Erigon binaries present in the same directory (all needed binaries for Ubuntu Linux can be downloaded from the [binary release](https://github.com/golemfactory/yagna-service-erigon/releases/tag/ya-runtime-erigon-v0.1.0)). Also `htpasswd` from the `apache-tools` is needed to be present in the `PATH` but for the local testing you can mock it with `echo` changing configuration file property `"passwd_tool_path": "echo",`
+{% endhint %}
 
 
 ### Pluging the runtime into `golemsp`
