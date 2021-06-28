@@ -4,22 +4,22 @@
 `Erigolem` is a codename for "Erigon on Golem" project. More information can be found at [Example service - managed Erigon](https://github.com/golemfactory/yagna-docs/tree/master/requestor-tutorials/service-development/service-example-2-managed-erigon.md)
 {% endhint %}
 
-Here we describe an [installation script](https://github.com/golemfactory/yagna-service-erigon/blob/master/install_provider.sh) which should make the whole process of becomming Erigolem provider fun and smooth. Script is prepared for Ubuntu 18.04 or later and should work on other Linux distributions after some modifications.
+Here we describe an [installation script](https://github.com/golemfactory/yagna-service-erigon/blob/master/install_provider.sh) which should make the whole process of becoming an Erigolem provider fun and smooth. The script is prepared for Ubuntu 18.04 or later and should work on other Linux distributions after some modifications.
 It's not intended to be run on personal computers because
 
-* It creates a separate user which will run provider daemon,
-* It installs nginx web server and certbot,
-* Optionally, it generates Let's Encrypt certificate and sets certbot to remind you about certificate renewals.
+* It creates a separate user which will run the provider daemon,
+* It installs the nginx web server and certbot,
+* Optionally, it generates a Let's Encrypt certificate and sets certbot to remind you about certificate renewals.
 
 ## Requirements
 
 * Ubuntu 18.04 or later
 * Root privileges
-* Public IP address or DNS name
+* Public IP address or a DNS name
 * Ability to open a port for the Erigon service
 
 {% hint style="info" %}
-By default nginx reverse-proxy is listening on standard Erigon port `8545`. You need to open this port for ingres traffic. If you wish your Erigolem service to be available on different port number (e.g. `8454` cannot be opened) you need to edit the installation script.
+By default nginx's reverse-proxy is listening on the standard Erigon port `8545`. You need to open this port for incoming traffic. If you wish your Erigolem service to be available on a different port number (e.g. because `8454` cannot be opened), you need to edit the installation script.
 {% endhint %}
 
 <details>
@@ -57,7 +57,7 @@ index 2bb4de9..41ad5e2 100644
 </details>
 ## Parameters for the script
 
-Script behavior can be modified by environment variables
+Script behavior can be modified by the following environment variables:
 
 | name | default value | description |
 | :-------- | ----------------: | :------------- |
@@ -84,9 +84,9 @@ During the installation you will be asked to:
 
 * Accept Golem's licence terms,
 * Provide the name for the provider node,
-* Provide subnet the node will be subscribed to,
-* Provide wallet address,
-* Provide price per hour (in GLM).
+* Provide the subnet the node will be subscribed to,
+* Provide your wallet address,
+* Provide the desired price per hour (in GLM).
 
 Example script invocation (__provider values for your environment__ )
 
@@ -100,7 +100,7 @@ sudo env ERIGON_USER=golem \
 
 4. **Make sure the port is opened**
 
-It depends on how your machine was provisioned but you might need also to allow ingres connections on the firewall.
+It depends on how your machine was provisioned but you might need also to allow ingress connections on the firewall.
 
 ```bash
 sudo ufw allow 8545/tcp
@@ -108,13 +108,13 @@ sudo ufw allow 8545/tcp
 
 ## Check installation
 
-After successful installation check the service is running
+After the successful installation verify that the service is running
 
 ```bash
 sudo systemctl status golem
 ```
 
-You can also check the logs of the sevice running
+You can also check the logs of the running service
 
 ```bash
 sudo journalctl -u golem -e
