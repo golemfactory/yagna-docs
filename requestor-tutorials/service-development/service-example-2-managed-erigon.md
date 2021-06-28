@@ -308,7 +308,7 @@ There is no state preserved outside of the process memory, so when using a gener
 {% endhint %}
 
 
-#### Create a new erigon
+#### Create a new Erigon
 
 ```python
 from .erigon_service import Erigon
