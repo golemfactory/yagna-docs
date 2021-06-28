@@ -169,7 +169,7 @@ async def _get_start_args(self):
             await asyncio.sleep(0.1)
 ```
 
-This will be fixed in [the near future](https://github.com/golemfactory/yapapi/issues/372).
+This will be addressed in [the near future](https://github.com/golemfactory/yapapi/issues/372).
 {% endhint %}
 
 
