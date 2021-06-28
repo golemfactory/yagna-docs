@@ -249,9 +249,9 @@ We don't need to implement those functions because the default `yapapi.Service` 
 
 We implement an HTTP server that responds to 3 requests:
 
-* `createInstance` - start a new erigon
-* `stopInstance/<id>` - stop this erigon
-* `getInstances` - list all current & past erigons
+* `createInstance` - start a new erigon,
+* `stopInstance/<id>` - stop this erigon,
+* `getInstances` - list all current & past erigons.
 
 There is also some basic authentication - the only user who can see/stop an erigon is the one who created it.
 We use the [Quart](https://pgjones.gitlab.io/quart/) framework.
