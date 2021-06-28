@@ -237,7 +237,7 @@ STATUS command executed in the runtime returns a json data. On the requestor sid
 {% endhint %}
 
 
-#### run & shutdown
+#### Run & shutdown
 
 We don't need to implement those functions because the default `yapapi.Service` implementation is exactly what we want:
 
