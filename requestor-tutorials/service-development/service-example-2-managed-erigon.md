@@ -88,8 +88,11 @@ Erigon runtime declares two structures
 
 At least these methods from the `Runtime` trait have to be implemented but SDK provides default implementation to several others (TODO: link runtime SDK docs)
 
-* `deploy` - It's run only once per activity, does not accept parameters (but there are plans to add them in the future release), return value is not passed to the requestor agent.
-Requestor agent is not required to call `deploy` directly, in this case `deploy` and `start` will be called automatically by the SDK before first command sent to the runtime.
+#### Deploy
+{% hint style="info" %}
+**deploy** - It's run only once per activity, does not accept parameters (but there are plans to add them in the future release), return value is not passed to the requestor agent.
+Requestor agent is not required to call `deploy` directly, in this case `deploy` and `start` will be called automatically by the SDK before the first command sent to the runtime.
+{% endhint %}
   
 In the Erigon runtime this method asserts that parent directory for Erigon data
 provided via the configuration exists and then creates directories for each Ethereum network supported by the service.
@@ -147,7 +150,10 @@ So the next part is to iterate through `Network`'s variant names and create a su
 
 Thanks to `ya-runtime-std` all is left is to communicate success, by returning `Ok(None)` to the SDK.
 
-* `start` - called after `deploy` usually once per activity, accepts parameters. Analogically with `deploy` if not run explicitly via the SDK `deploy` and `start` without parameters are run in order before any command is send to the runtime. 
+#### Start
+{% hint style="info" %}
+**start** - called after `deploy` usually once per activity, accepts parameters. Analogically with `deploy` if not run explicitly via the SDK `deploy` and `start` without parameters are run in order before any command is send to the runtime.
+{% endhint %}
   
 In the Erigon runtime we use `start` method to receive the `network` parameter from the requestor, start Erigon's binaries and generate new credentials for nginx basic auth.
 As above, we'll review the code more deeply.
@@ -206,8 +212,11 @@ The `start`'s return value is serving only troubleshooting purposes as the Erigo
 Note that the difference between `deploy` and `start` regarding the Erigon runtime might not be obvious. It's easier to think of them in terms of VM runtimes where `deploy` is needed for runtime preparation, e.g. download the image, after `start` runtime should be ready to run the commands.
 {% endhint %}
 
-* `run_command` - called every time the corresponding agent SDK [`run`](runhttps://github.com/golemfactory/yagna-docs/blob/master/yapapi/api-reference.md#run) is called on the `WorkContext` object. 
-  Result can be obtained from the `WorkContext`'s results array after sequence of commands is executed by `commit`. 
+#### Run command
+{% hint style="info" %}
+**run_command** - called every time the corresponding agent SDK [`run`](runhttps://github.com/golemfactory/yagna-docs/blob/master/yapapi/api-reference.md#run) is called on the `WorkContext` object. 
+  Result can be obtained from the `WorkContext`'s results array after sequence of commands is executed by `commit`.
+{% endhint %}
   
 In the Erigon runtime this method is used to provide Erigon service's credentials to the agent.
 Here we're just forming the json string response and pass it as a command output, see the call of `run_ctx.stdout(...)` below.
@@ -225,7 +234,10 @@ Here we're just forming the json string response and pass it as a command output
     })
 ```
 
-* `stop` - can be called explicitly by the requestor agent or automatically due to agreement termination. 
+#### Stop
+{% hint style="info" %}
+**stop** - can be called explicitly by the requestor agent or automatically due to agreement termination.
+{% endhint %}
   
 In the Erigon runtime `stop` method is used to kill Erigon processes started in `start`.
 ```rust
