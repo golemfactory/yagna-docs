@@ -228,7 +228,7 @@ def _parse_status_result(self, raw_data: 'List[CommandExecuted]'):
     return erigon_data
 ```
 
-STATUS command executed in the runtime returns a json data. On the requestor side it is available in `stdout` of the appropriate `command_executed`.
+STATUS command executed in the runtime returns JSON-serialized data. On the requestor side it is available in `stdout` of the appropriate `command_executed`.
 
 {% hint style="info" %}
 
