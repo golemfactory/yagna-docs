@@ -354,7 +354,7 @@ erigon.name = request_data.get('name', f'erigon_{erigon.id}')
 app.user_erigons[user_id][erigon.id] = erigon
 return erigon.api_repr(), 201
 ```
-we set the erigon name, save the information about newly created erigon, and send its representation as a response.
+We set the Erigon name, save the information about newly created Erigon, and send its representation as a response.
 
 #### Stop the erigon
 
