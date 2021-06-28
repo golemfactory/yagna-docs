@@ -301,9 +301,9 @@ This is (roughly) equivalent to entering/exiting `async with Golem`.
 
 {% hint style="warning" %}
 
-There is no state preserved outside of the process memory, so when using a generic WSGI http server (like `gunicorn`) you shouldn't
-* start more than one worker
-* use worker-recycling tools (like `max_requests` in `gunicorn`)
+There is no state preserved outside of the process memory, so when using a generic WSGI server (like `gunicorn`) you shouldn't
+* Start more than one worker,
+* Use worker-recycling tools (like `max_requests` in `gunicorn`).
 
 {% endhint %}
 
