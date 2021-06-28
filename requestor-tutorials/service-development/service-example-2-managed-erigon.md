@@ -380,7 +380,7 @@ Nothing really interesting here, we just:
 * Stop the Erigon - this *initializes* the stopping process, it is not stopped immediately (because stopping needs some action on the provider side),
 * Return Erigon representation as a response.
 
-#### Get all user erigons
+#### Get all user's Erigons
 
 ```python
 @app.route('/getInstances', methods=['GET'])
