@@ -185,7 +185,7 @@ else:
 ```
 
 
-`start_args` is expected to be a tuple, but there are no more assumptions - they are just passed here from the [code that starts the service](#create a new erigon).
+`start_args` is expected to be a tuple, but there are no more assumptions - they are just passed here from the [code that starts the service](#create-a-new-erigon).
 The Erigon runtime expects at most one argument and it is expected to be a `json`, so we send the serialized first argument (or start without any arguments if `start_args` are empty).
 This could be also a good place to perform a requestor-side validation, we validate `start_arg` only in the runtime.
 
