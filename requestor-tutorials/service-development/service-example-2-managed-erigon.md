@@ -105,8 +105,8 @@ async def get_payload(cls):
 
 Few important things to note here:
 
-* We don't have any `image_hash` (contrary to the previouse examples) because we don't use a VM-based runtime
-* We declare the runtime name, `erigon` - this must match the offered [exeunit-name](#pluging-the-runtime-into-golemsp)
+* We don't have any `image_hash` (contrary to the previouse examples) because we don't use a VM-based runtime.
+* We declare the runtime name, `erigon` - this must match the offered [exeunit-name](#pluging-the-runtime-into-golemsp).
 * `min_mem_gib` - minimum amount of RAM the provider has to offer. This is pretty useless in the Erigon case (contrary to the e.g. VM-based runtimes), but is required because of a known `yapapi` [bug](https://github.com/golemfactory/yapapi/issues/500).
 
 
