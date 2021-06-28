@@ -247,7 +247,7 @@ We don't need to implement those functions because the default `yapapi.Service` 
 
 ### Running the HTTP Erigon server
 
-We implement a http server that responds to 3 requests:
+We implement an HTTP server that responds to 3 requests:
 
 * `createInstance` - start a new erigon
 * `stopInstance/<id>` - stop this erigon
