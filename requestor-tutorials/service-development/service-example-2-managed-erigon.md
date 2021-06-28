@@ -245,7 +245,7 @@ We don't need to implement those functions because the default `yapapi.Service` 
 * Default `shutdown()` terminates the agreement. We don't have to perform any additional cleanup - it is already implemented in the runtime (e.g. erigon process is stopped).
 
 
-### running the http erigon server
+### Running the HTTP Erigon server
 
 We implement a http server that responds to 3 requests:
 
