@@ -662,7 +662,7 @@ async def stop_instance(erigon_id):
     user_id = get_user_id()
 
     try:
-        erigon = this_user_erigons[erigon_id]
+        erigon = app.user_erigons[user_id][erigon_id]
     except KeyError:
         return 'Invalid erigon_id', 404
 
