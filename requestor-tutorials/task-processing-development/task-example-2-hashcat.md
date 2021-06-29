@@ -229,7 +229,7 @@ from datetime import datetime, timedelta
 import math
 from pathlib import Path
 import sys
-from tempfile import NamedTemporaryFile
+from tempfile import gettempdir
 from typing import AsyncIterable, List, Optional
 
 from yapapi import Golem, NoPaymentAccountError, Task, WorkContext, windows_event_loop_fix
@@ -295,6 +295,7 @@ args = argparse.Namespace()
 
 async def compute_keyspace(context: WorkContext, tasks: AsyncIterable[Task]):
     """Worker script which computes the size of the keyspace for the mask attack.
+
     This function is used as the `worker` parameter to `Golem#execute_tasks`.
     It represents a sequence of commands to be executed on a remote provider node.
     """
@@ -318,23 +319,29 @@ async def compute_keyspace(context: WorkContext, tasks: AsyncIterable[Task]):
 
 async def perform_mask_attack(ctx: WorkContext, tasks: AsyncIterable[Task]):
     """Worker script which performs a hashcat mask attack against a target hash.
+
     This function is used as the `worker` parameter to `Golem#execute_tasks`.
     It represents a sequence of commands to be executed on a remote provider node.
     """
     async for task in tasks:
         skip = task.data
         limit = skip + args.chunk_size
-        worker_output_path = f"/golem/output/hashcat_{skip}.potfile"
+
+        output_name = f"yacat_{skip}.potfile"
+        worker_output_path = f"/golem/output/{output_name}"
 
         ctx.run(f"/bin/sh", "-c", _make_attack_command(skip, limit, worker_output_path))
-        output_file = NamedTemporaryFile()
-        ctx.download_file(worker_output_path, output_file.name)
+        try:
+            output_file = Path(gettempdir()) / output_name
+            ctx.download_file(worker_output_path, str(output_file))
 
-        yield ctx.commit(timeout=MASK_ATTACK_TIMEOUT)
+            yield ctx.commit(timeout=MASK_ATTACK_TIMEOUT)
 
-        result = output_file.file.readline()
-        task.accept_result(result)
-        output_file.close()
+            with output_file.open() as f:
+                result = f.readline()
+                task.accept_result(result)
+        finally:
+            output_file.unlink()
 
 
 def _make_attack_command(skip: int, limit: int, output_path: str) -> str:
@@ -347,12 +354,12 @@ def _make_attack_command(skip: int, limit: int, output_path: str) -> str:
     )
 
 
-def _parse_result(potfile_line: bytes) -> Optional[str]:
+def _parse_result(potfile_line: str) -> Optional[str]:
     """Helper function which parses a single .potfile line and returns the password part.
+
     Hashcat uses its .potfile format to report results. In this format, each line consists of the
     hash and its matching word, separated with a colon (e.g. `asdf1234:password`).
     """
-    potfile_line = potfile_line.decode("utf-8")
     if potfile_line:
         return potfile_line.split(":")[-1].strip()
     return None
@@ -388,6 +395,7 @@ async def main(args):
             timeout=KEYSPACE_TIMEOUT,
         )
 
+        keyspace = 0
         async for task in completed:
             keyspace = task.result
 
@@ -467,6 +475,7 @@ if __name__ == "__main__":
             )
         except KeyboardInterrupt:
             pass
+
 ```
 
 ## So what is happening here?
@@ -685,15 +694,16 @@ The trailing `|| true` is a standard trick to make sure that the exit code from 
 The option `-o {output_path}` tells `hashcat` to write output to a file. In the worker function we download the contents of this file to a temporary file created on the requestor:
 
 ```python
-        output_file = NamedTemporaryFile()
-        ctx.download_file(worker_output_path, output_file.name)
+output_file = Path(gettempdir()) / output_name
+ctx.download_file(worker_output_path, output_file.name)
 ```
 
 The first line of this file \(or the empty string\) becomes the result of the completed task:
 
 ```python
-        result = output_file.file.readline()
-        task.accept_result(result)
+with output_file.open() as f:
+    result = f.readline()
+    task.accept_result(result)
 ```
 
 ### Running `main` in the event loop
@@ -701,7 +711,7 @@ The first line of this file \(or the empty string\) becomes the result of the co
 Golem high-level API that we use to interact with the Golem network uses asynchronous programming a lot. The asynchronous execution starting point is the line
 
 ```python
-        loop.run_until_complete(task)
+loop.run_until_complete(task)
 ```
 
 which schedules execution of `main(args)` in the event loop.
