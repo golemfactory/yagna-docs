@@ -170,7 +170,7 @@ fn start<'a>(&mut self, ctx: &mut Context<Self>) -> OutputResponse<'a> {
 ```
 
 Next, we're generating new password for the nginx's basic auth. We're generating random string,
-set it with the `passwd_tool` and remember it in the `erigon_password` service's property.
+set it with the `passwd_tool` and store it in the `erigon_password` service's property.
 
 ```rust
 // Generate user & password entry with passwd tool
@@ -188,7 +188,7 @@ set it with the `passwd_tool` and remember it in the `erigon_password` service's
     self.erigon_password = Some(password);
 ```
 
-What's left is to spawn `erigon` and `rpcdaemon` processes and remember handles to them so we can kill them when the service will be stopped.
+What's left is to spawn `erigon` and `rpcdaemon` processes and store handles to them so we can kill them when the service will be stopped.
 
 ```rust
     let mut erigon_pid = spawn_process(
@@ -219,7 +219,7 @@ Note that the difference between `deploy` and `start` regarding the Erigon runti
 {% endhint %}
   
 In the Erigon runtime this method is used to provide Erigon service's credentials to the agent.
-Here we're just forming the json string response and pass it as a command output, see the call of `run_ctx.stdout(...)` below.
+Here we're just forming the JSON string response and passing it as a command output, see the call of `run_ctx.stdout(...)` below.
 
 ```rust
     let erigon_status_data = serialize::json::json!({
