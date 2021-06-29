@@ -86,7 +86,7 @@ Erigon runtime declares two structures
 * `ErigonConf` - containing runtime configuration with default values,
 * `ErigonRuntime` - derives from `RuntimeDef` implements the required methods from `ya-runtime-sdk::Runtime` trait
 
-At least these methods from the `Runtime` trait have to be implemented but SDK provides default implementation to several others (TODO: link runtime SDK docs)
+At least these methods from the `Runtime` trait have to be implemented but [Runtime SDK](https://github.com/golemfactory/ya-runtime-sdk/) provides default implementation to several others.
 
 #### Deploy
 {% hint style="info" %}
