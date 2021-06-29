@@ -61,12 +61,12 @@ The design presented above excludes making any payments for the service by its e
 Here we demonstrate how self-contained Exe-Unit runtimes can be implemented, tested and finally plugged into the Provider's daemon.
 
 {% hint style="warning" %}
-Please be aware that a custom runtime doesn't provide the level of isolation comparable with a virtual machine. It's just an executable running with the same privileges as yagna daemon.
+Please be aware that a custom runtime doesn't provide the level of isolation comparable with a virtual machine. It's just an executable running with the same privileges as the yagna daemon.
 {% endhint %}
 
 ### Erigon runtime
 
-First, let's discuss what is the purpose of the Erigon runtime to gain some high level overview. The runtime:
+First, let's discuss what the purpose of the Erigon runtime is to gain some high-level overview. The runtime:
 
 * Accepts an Ethereum network's name (e.g. 'mainnet' or 'rinkeby') from the requestor agent,
 * Starts Erigon binaries to sync with the chosen network and serve Erigon RPC endpoint,
