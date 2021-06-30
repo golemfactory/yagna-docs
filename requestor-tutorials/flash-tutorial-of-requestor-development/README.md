@@ -119,7 +119,8 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.7.0](https://github.com/golemfactory/yagna/releases/tag/v0.7.0).
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: 
+[https://github.com/golemfactory/yagna/releases/tag/v0.7.1](https://github.com/golemfactory/yagna/releases/tag/v0.7.1).
 
 Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on Unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
@@ -135,7 +136,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.7.0 (3d94857c 2021-06-15 build #155)`
+It should output: `yagna 0.7.1 (a6e1ceb8 2021-06-24 build #157)`
 
 Please also verify that you have the correct version of the `gftp` binary used for file transfers in the Golem network.
 
@@ -143,7 +144,7 @@ Please also verify that you have the correct version of the `gftp` binary used f
 gftp --version
 ```
 
-It should output: `gftp 0.7.0 (3d94857c 2021-06-15 build #155)`
+It should output: `gftp 0.7.1 (a6e1ceb8 2021-06-24 build #157)`
 
 ### Run the daemon
 
@@ -224,4 +225,3 @@ Now you are ready to run computations on Golem:
 {% page-ref page="run-first-task-on-golem.md" %}
 
 And by all means, **have fun with Golem!**
-
