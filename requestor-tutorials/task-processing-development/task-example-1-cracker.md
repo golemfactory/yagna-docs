@@ -25,8 +25,6 @@ If you'd rather like to have a more general introduction on the idea behind Gole
 {% page-ref page="../../introduction/golem-overview.md" %}
 {% endhint %}
 
-
-
 ## Step 0. What are we building?
 
 The application we'll build and run on Golem will be a very simple, quick-and-dirty, **distributed hash cracker** implemented purely in Python that will perform a dictionary attack on a specific hash that we'd like to decipher.
