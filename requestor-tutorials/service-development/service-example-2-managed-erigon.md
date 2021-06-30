@@ -716,7 +716,7 @@ This is an experimental setup. It's not intended to be run on personal computers
 * Ability to open a port for the Erigon service
 
 {% hint style="info" %}
-By default nginx's reverse-proxy is listening on the standard Erigon port `8545`. You need to open this port for incoming traffic. If you wish your Erigolem service to be available on a different port number (e.g. because `8454` cannot be opened), you need to edit the installation script.
+By default nginx's reverse-proxy is listening on the standard Erigon port `8545`. You need to open this port for incoming traffic. If you wish your Erigolem service to be available on a different port number (e.g. because `8545` cannot be opened), you need to edit the installation script.
 {% endhint %}
 
 Example patch changing `8545` to `9999`
@@ -764,8 +764,7 @@ Script behavior can be modified by the following environment variables:
 
 ### Running the script
 
-1. **Download the installation script locally**
-
+1. **Download the installation script on the installation machine**
 ```bash
 curl -sSfL -o install_provider.sh \
    https://raw.githubusercontent.com/golemfactory/yagna-service-erigon/master/install_provider.sh
@@ -774,17 +773,7 @@ curl -sSfL -o install_provider.sh \
 2. **Review and edit the script if needed**
 
 3. **Execute the script**
-
-During the installation you will be asked to:
-
-* Accept Golem's licence terms,
-* Provide the name for the provider node,
-* Provide the subnet the node will be subscribed to,
-* Provide your wallet address,
-* Provide the desired price per hour (in GLM).
-
 Example script invocation (__provider values for your environment__ )
-
 ```bash
 sudo env ERIGON_USER=golem \
          ERIGON_HOSTNAME=ec2-54-74-210-145.eu-west-1.compute.amazonaws.com \
@@ -792,6 +781,14 @@ sudo env ERIGON_USER=golem \
          ERIGON_DISABLE_SSL=y \
      bash install_provider.sh
 ```
+
+During the installation you will be asked to:
+* Accept Golem's licence terms,
+* Provide the name for the provider node,
+* Provide the subnet the node will be subscribed to,
+* Provide your wallet address,
+* Provide the desired price per hour (in GLM).
+
 
 4. **Make sure the port is opened**
 
