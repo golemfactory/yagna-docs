@@ -765,38 +765,38 @@ Script behavior can be modified by the following environment variables:
 ### Running the script
 
 1. **Download the installation script on the installation machine**
-```bash
-curl -sSfL -o install_provider.sh \
-   https://raw.githubusercontent.com/golemfactory/yagna-service-erigon/master/install_provider.sh
-```
+    ```bash
+    curl -sSfL -o install_provider.sh \
+        https://raw.githubusercontent.com/golemfactory/yagna-service-erigon/master/install_provider.sh
+    ```
 
 2. **Review and edit the script if needed**
 
 3. **Execute the script**
-Example script invocation (__provider values for your environment__ )
-```bash
-sudo env ERIGON_USER=golem \
+
+    Example script invocation (_provider values for your environment_)
+    ```bash
+    sudo env ERIGON_USER=golem \
          ERIGON_HOSTNAME=ec2-54-74-210-145.eu-west-1.compute.amazonaws.com \
          ERIGON_DATADIR=/data/erigon \
          ERIGON_DISABLE_SSL=y \
-     bash install_provider.sh
-```
+    bash install_provider.sh
+    ```
 
-During the installation you will be asked to:
-* Accept Golem's licence terms,
-* Provide the name for the provider node,
-* Provide the subnet the node will be subscribed to,
-* Provide your wallet address,
-* Provide the desired price per hour (in GLM).
-
-
+    During the installation you will be asked to:
+    * Accept Golem's licence terms,
+    * Provide the name for the provider node,
+    * Provide the subnet the node will be subscribed to,
+    * Provide your wallet address,
+    * Provide the desired price per hour (in GLM).
+    
 4. **Make sure the port is opened**
 
-It depends on how your machine was provisioned but you might need also to allow ingress connections on the firewall.
+    It depends on how your machine was provisioned, but you might need also to allow ingress connections on the firewall.
 
-```bash
-sudo ufw allow 8545/tcp
-```
+    ```bash
+    sudo ufw allow 8545/tcp
+    ```
 
 ### Check installation
 
