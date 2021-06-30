@@ -1,10 +1,10 @@
 ---
-description: Ethereum client as a service, implemented using a self-contained runtime
+description: 'Ethereum client as a service, implemented using a self-contained runtime'
 ---
 
 # Service Example 2: Erigolem – Managed Erigon
 
-The purpose of this example is to demonstrate building a Golem service using a dedicated, self-contained runtime. It features an Ethereum network client, Erigon (f.k.a. Turbo-geth) started on provider nodes on user's demand. Interaction with the service, once it's running and its location and credentials have been passed to the requestor, is *not* facilitated by Golem though.
+The purpose of this example is to demonstrate building a Golem service using a dedicated, self-contained runtime. It features an Ethereum network client, Erigon \(f.k.a. Turbo-geth\) started on provider nodes on user's demand. Interaction with the service, once it's running and its location and credentials have been passed to the requestor, is _not_ facilitated by Golem though.
 
 {% hint style="info" %}
 This example illustrates the following Golem features & aspects:
@@ -19,41 +19,46 @@ All code for this example can be found in this repository: [https://github.com/g
 
 ## Architecture overview
 
-![](erigon_architecture.jpg)
+![](../../.gitbook/assets/erigon_architecture.jpg)
 
 The application consists of three major components:
 
 1. **User interface**  
-   A browser-based interface written in TypeScript using [React](https://reactjs.org/). It allows the end user to interact with the application, i.e. start an Erigon node after authenticating with their [Metamask](https://metamask.io/) wallet, and later to manage their node(s).
+
+   A browser-based interface written in TypeScript using [React](https://reactjs.org/). It allows the end user to interact with the application, i.e. start an Erigon node after authenticating with their [Metamask](https://metamask.io/) wallet, and later to manage their node\(s\).
+
 2. **Requestor server**  
-   A Python application developed using [Quart](https://pgjones.gitlab.io/quart/) and [yapapi-service-manager](https://github.com/golemfactory/yapapi-service-manager). It acts both as an HTTP server (handling requests from the user interface), and as a requestor agent (submitting tasks to the Golem network).
+
+   A Python application developed using [Quart](https://pgjones.gitlab.io/quart/) and [yapapi-service-manager](https://github.com/golemfactory/yapapi-service-manager). It acts both as an HTTP server \(handling requests from the user interface\), and as a requestor agent \(submitting tasks to the Golem network\).
+
 3. **Erigon runtime**  
+
     A dedicated, self-contained runtime created with [ya-runtime-sdk](https://github.com/golemfactory/ya-runtime-sdk). It is a Rust binary wrapping [Erigon](https://github.com/ledgerwatch/erigon) service itself so that it can be orchestrated by the yagna daemon. The runtime also controls the access to the service by managing [Nginx](https://www.nginx.com/) configuration.
-   
+
 A typical interaction flow proceeds in the following manner:
 
 1. User opens the web interface in their browser.
 2. User authenticates with their metamask wallet.
 3. User clicks to start an Erigon node.
 4. Request to start an Erigon node is sent via the REST API to the requestor server.
-5. Requestor starts a service activity (these steps are handled by `yagna` core and `yapapi` internally):
-    1. Requestor server makes a number of API calls to the yagna daemon running on the requestor's machine in order to find an available Erigon provider and sign an agreement.
-    2. Once the agreement is signed, requestor server sends a command to the provider to start an Erigon node.
-    3. Yagna daemon running on the provider's machine spawns an Erigon runtime process (a service wrapper/supervisor process).
-8. Erigon runtime starts the actual Erigon service (backend & rpcdaemon processes).
-9. Erigon runtime generates a new username and password and puts them in the NGINX configuration.
-10. NGINX auto-reloads on configuration change, from now on granting access to the Erigon service only for user(s) authenticated with the newly-created credentials. (NGINX is continuously running on provider's machine as a daemon, so it doesn't need to be started.)
-11. The credentials are passed backed to the requestor server along with provider's node's public IP address and the port on which NGINX is listening.
-12. Requestor server passes all the received information to the web interface where it can be viewed by the user.
-13. User interacts with the Erigon service (via NGINX proxy).
-14. Once the user finishes using their Erigon instance, they click to stop it.
-15. Web interface sends a request to stop the instance via the REST API to the requestor server.
-16. Requestor server sends a stop command to the provider.
-17. Erigon runtime stops the Erigon service and exits.
-18. Requestor server orchestrates a payment for the service in the background without further user interaction.
+5. Requestor starts a service activity \(these steps are handled by `yagna` core and `yapapi` internally\):
+   1. Requestor server makes a number of API calls to the yagna daemon running on the requestor's machine in order to find an available Erigon provider and sign an agreement.
+   2. Once the agreement is signed, requestor server sends a command to the provider to start an Erigon node.
+   3. Yagna daemon running on the provider's machine spawns an Erigon runtime process \(a service wrapper/supervisor process\).
+6. Erigon runtime starts the actual Erigon service \(backend & rpcdaemon processes\).
+7. Erigon runtime generates a new username and password and puts them in the NGINX configuration.
+8. NGINX auto-reloads on configuration change, from now on granting access to the Erigon service only for user\(s\) authenticated with the newly-created credentials. \(NGINX is continuously running on provider's machine as a daemon, so it doesn't need to be started.\)
+9. The credentials are passed backed to the requestor server along with provider's node's public IP address and the port on which NGINX is listening.
+10. Requestor server passes all the received information to the web interface where it can be viewed by the user.
+11. User interacts with the Erigon service \(via NGINX proxy\).
+12. Once the user finishes using their Erigon instance, they click to stop it.
+13. Web interface sends a request to stop the instance via the REST API to the requestor server.
+14. Requestor server sends a stop command to the provider.
+15. Erigon runtime stops the Erigon service and exits.
+16. Requestor server orchestrates a payment for the service in the background without further user interaction.
 
 {% hint style="info" %}
-The design presented above excludes making any payments for the service by its end user. This omission was made intentionally to make te service implementation simpler. It's not a problem as long as the service is used for demonstrative purpose only.  
+The design presented above excludes making any payments for the service by its end user. This omission was made intentionally to make te service implementation simpler. It's not a problem as long as the service is used for demonstrative purpose only.
 {% endhint %}
 
 ## Runtime implementation
@@ -68,7 +73,7 @@ Please be aware that a custom runtime doesn't provide the level of isolation com
 
 First, let's discuss what the purpose of the Erigon runtime is to gain some high-level overview. The runtime:
 
-* Accepts an Ethereum network's name (e.g. 'mainnet' or 'rinkeby') from the requestor agent,
+* Accepts an Ethereum network's name \(e.g. 'mainnet' or 'rinkeby'\) from the requestor agent,
 * Starts Erigon binaries to sync with the chosen network and serve Erigon RPC endpoint,
 * Generates credentials for basic authentication which is implemented with nginx,
 * Returns the credentials to the requestor agent so the user of the service can connect to the Erigon RPC.
@@ -89,17 +94,17 @@ Erigon runtime declares two structures
 At least these methods from the `Runtime` trait have to be implemented but [Runtime SDK](https://github.com/golemfactory/ya-runtime-sdk/) provides default implementation to several others.
 
 #### Deploy
+
 {% hint style="info" %}
-**deploy** - It's run only once per activity, does not accept parameters (but there are plans to add them in the future release), return value is not passed to the requestor agent.
-Requestor agent is not required to call `deploy` directly, in this case `deploy` and `start` will be called automatically by the SDK before the first command sent to the runtime.
+**deploy** - It's run only once per activity, does not accept parameters \(but there are plans to add them in the future release\), return value is not passed to the requestor agent. Requestor agent is not required to call `deploy` directly, in this case `deploy` and `start` will be called automatically by the SDK before the first command sent to the runtime.
 {% endhint %}
-  
-In the Erigon runtime this method asserts that parent directory for Erigon data
-provided via the configuration exists and then creates directories for each Ethereum network supported by the service.
+
+In the Erigon runtime this method asserts that parent directory for Erigon data provided via the configuration exists and then creates directories for each Ethereum network supported by the service.
 
 Let's go through it step by step
 
 Service configuration struct is defined as follows, see the `data_dir` property below.
+
 ```rust
 #[derive(Deserialize, Serialize)]
 pub struct ErigonConf {
@@ -110,8 +115,7 @@ pub struct ErigonConf {
 }
 ```
 
-We were able to declare most properties with the type of `String` not `Option<String>` because we also
-implemented the `Default` trait for `ErigonConf` struct.
+We were able to declare most properties with the type of `String` not `Option<String>` because we also implemented the `Default` trait for `ErigonConf` struct.
 
 Now in the `deploy` we access `data_dir` property of `EriginConf` struct from `Context` parameter `conf` property.
 
@@ -126,6 +130,7 @@ fn deploy<'a>(&mut self, ctx: &mut Context<Self>) -> OutputResponse<'a> {
 ```
 
 We declared supported networks of the Ethereum in the `Network` enum
+
 ```rust
 custom_derive! {
 #[derive(Debug, PartialEq, EnumDisplay, EnumFromStr, IterVariantNames(NetworkVariantNames))]
@@ -137,6 +142,7 @@ pub enum Network {
 ```
 
 So the next part is to iterate through `Network`'s variant names and create a subdirectories for each of the network.
+
 ```rust
     // create all supported chains data subdirs
     for chain_subdir in Network::iter_variant_names()
@@ -151,17 +157,15 @@ So the next part is to iterate through `Network`'s variant names and create a su
 Thanks to `ya-runtime-std` all is left is to communicate success, by returning `Ok(None)` to the SDK.
 
 #### Start
+
 {% hint style="info" %}
 **start** - called after `deploy` usually once per activity, accepts parameters. Analogically with `deploy` if not run explicitly via the SDK `deploy` and `start` without parameters are run in order before any command is send to the runtime.
 {% endhint %}
-  
-In the Erigon runtime we use `start` method to receive the `network` parameter from the requestor, start Erigon's binaries and generate new credentials for nginx basic auth.
-As above, we'll review the code more deeply.
 
-First, we receive the input from the caller from context `ctx.cli.command.args()` provided by SDK's `CommandCLI` trait `Command` enum.
-Arguments to start are passed as a `&Vec<String>`, we're interested only of the first of them.
-`get_chain_from_config` is retrieving the network value from the json and converts it to the `Network` variant, to assert it's within supported networks.
-We're also setting its lowercased String value in the `erigon_chain` property for the later use. 
+In the Erigon runtime we use `start` method to receive the `network` parameter from the requestor, start Erigon's binaries and generate new credentials for nginx basic auth. As above, we'll review the code more deeply.
+
+First, we receive the input from the caller from context `ctx.cli.command.args()` provided by SDK's `CommandCLI` trait `Command` enum. Arguments to start are passed as a `&Vec<String>`, we're interested only of the first of them. `get_chain_from_config` is retrieving the network value from the json and converts it to the `Network` variant, to assert it's within supported networks. We're also setting its lowercased String value in the `erigon_chain` property for the later use.
+
 ```rust
 fn start<'a>(&mut self, ctx: &mut Context<Self>) -> OutputResponse<'a> {
     let chain = get_chain_from_config(ctx.cli.command.args().into_iter().next());
@@ -169,8 +173,7 @@ fn start<'a>(&mut self, ctx: &mut Context<Self>) -> OutputResponse<'a> {
     self.erigon_chain = Some(chain.clone());
 ```
 
-Next, we're generating new password for the nginx's basic auth. We're generating random string,
-set it with the `passwd_tool` and store it in the `erigon_password` service's property.
+Next, we're generating new password for the nginx's basic auth. We're generating random string, set it with the `passwd_tool` and store it in the `erigon_password` service's property.
 
 ```rust
 // Generate user & password entry with passwd tool
@@ -213,13 +216,12 @@ Note that the difference between `deploy` and `start` regarding the Erigon runti
 {% endhint %}
 
 #### Run command
+
 {% hint style="info" %}
-**run_command** - called every time the corresponding agent SDK [`run`](runhttps://github.com/golemfactory/yagna-docs/blob/master/yapapi/api-reference.md#run) is called on the `WorkContext` object. 
-  Result can be obtained from the `WorkContext`'s results array after sequence of commands is executed by `commit`.
+**run\_command** - called every time the corresponding agent SDK [`run`](runhttps://github.com/golemfactory/yagna-docs/blob/master/yapapi/api-reference.md#run) is called on the `WorkContext` object. Result can be obtained from the `WorkContext`'s results array after sequence of commands is executed by `commit`.
 {% endhint %}
-  
-In the Erigon runtime this method is used to provide Erigon service's credentials to the agent.
-Here we're just forming the JSON string response and passing it as a command output, see the call of `run_ctx.stdout(...)` below.
+
+In the Erigon runtime this method is used to provide Erigon service's credentials to the agent. Here we're just forming the JSON string response and passing it as a command output, see the call of `run_ctx.stdout(...)` below.
 
 ```rust
     let erigon_status_data = serialize::json::json!({
@@ -235,32 +237,32 @@ Here we're just forming the JSON string response and passing it as a command out
 ```
 
 #### Stop
+
 {% hint style="info" %}
 **stop** - can be called explicitly by the requestor agent or automatically due to agreement termination.
 {% endhint %}
-  
+
 In the Erigon runtime `stop` method is used to kill Erigon processes started in `start`.
+
 ```rust
     let erigon_kill_ok = match &mut self.erigon_pid {
         Some(erigon_pid) => erigon_pid.kill().is_ok(),
         None => false,
     };
-    
+
     // kill rpc_daemon process bellow
 ```
 
 ### Extentions
 
-Above methods corresponds to [`CLI::Command` enum](https://github.com/golemfactory/ya-runtime-sdk/blob/main/ya-runtime-sdk/src/cli.rs#L11). One can extend the default `CLI` by 
+Above methods corresponds to [`CLI::Command` enum](https://github.com/golemfactory/ya-runtime-sdk/blob/main/ya-runtime-sdk/src/cli.rs#L11). One can extend the default `CLI` by
 
 * Deriving `StructOpt` on the `CLI` struct,
 * Decorating the runtime struct with `#[cli(<struct_name>)]`.
 
 Custom CLI arguments will be passed to each command by `runtime::Context`.
 
-Default [`RuntimeMode`](https://github.com/golemfactory/ya-runtime-sdk/blob/4be7534b61cd47ab8d1764d6fd840480744dbfba/ya-runtime-sdk/src/runtime.rs#L73) is `Server`.
-In this mode runtime is deployed and then communicates with the `ExeUnit` via the `Runtime` API.
-Another option is `RuntimeMode::Command` where each command is a separate invocation of the runtime binary. 
+Default [`RuntimeMode`](https://github.com/golemfactory/ya-runtime-sdk/blob/4be7534b61cd47ab8d1764d6fd840480744dbfba/ya-runtime-sdk/src/runtime.rs#L73) is `Server`. In this mode runtime is deployed and then communicates with the `ExeUnit` via the `Runtime` API. Another option is `RuntimeMode::Command` where each command is a separate invocation of the runtime binary.
 
 ### Runtime configuration
 
@@ -268,7 +270,7 @@ During runtime startup the configuration file located in `$HOME/.local/share/ya-
 
 #### Example configuration file
 
-```json
+```javascript
 {
   "public_addr": "https://0.erigon.golem.network:8545",
   "data_dir": "/data/erigon",
@@ -282,8 +284,7 @@ During runtime startup the configuration file located in `$HOME/.local/share/ya-
 
 ### Testing the runtime
 
-Once needed SDK methods are implemented we can give our runtime a try in the [debugger](https://github.com/golemfactory/ya-runtime-dbg/).
-For example our Erigon runtime can be executed in the debugger shell running the following command.
+Once needed SDK methods are implemented we can give our runtime a try in the [debugger](https://github.com/golemfactory/ya-runtime-dbg/). For example our Erigon runtime can be executed in the debugger shell running the following command.
 
 ```bash
 ya-ya-runtime-dbg \
@@ -293,17 +294,17 @@ ya-ya-runtime-dbg \
 ```
 
 {% hint style="info" %}
-Please mind it requires Erigon binaries present in the same directory (all needed binaries for Ubuntu Linux can be downloaded from the [binary release](https://github.com/golemfactory/yagna-service-erigon/releases/tag/ya-runtime-erigon-v0.1.0)). Also `htpasswd` from the `apache-tools` is needed to be present in the `PATH` but for the local testing you can mock it with `echo` changing configuration file property `"passwd_tool_path": "echo",`
+Please mind it requires Erigon binaries present in the same directory \(all needed binaries for Ubuntu Linux can be downloaded from the [binary release](https://github.com/golemfactory/yagna-service-erigon/releases/tag/ya-runtime-erigon-v0.1.0)\). Also `htpasswd` from the `apache-tools` is needed to be present in the `PATH` but for the local testing you can mock it with `echo` changing configuration file property `"passwd_tool_path": "echo",`
 {% endhint %}
-
 
 ### Pluging the runtime into `golemsp`
 
 In the `$HOME/.local/lib/yagna/plugins/` directory create
 
 * file `ya-runtime-erigon.json` where you describe the plugin
-```json
-[
+
+  ```javascript
+  [
   {
     "name": "erigon",
     "version": "0.1.0",
@@ -312,15 +313,14 @@ In the `$HOME/.local/lib/yagna/plugins/` directory create
     "description": "Service wrapper for Erigon (formelly Turbo-Geth)",
     "extra-args": ["--runtime-managed-image"]
   }
-]
-```
+  ]
+  ```
 
-* directory `ya-runtime-erigon` (compare `runtime-path` in above file) where `ya-runtime-erigon` binary along with Erigon binaries are placed.
+* directory `ya-runtime-erigon` \(compare `runtime-path` in above file\) where `ya-runtime-erigon` binary along with Erigon binaries are placed.
 
-New runtime needs also to be enabled in `$HOME/.local/share/ya-provider/presets.json`. Preset object can be copied from other presets. 
-Please note that `exeunit-name` has to match to the `name` property of the plugin above
+New runtime needs also to be enabled in `$HOME/.local/share/ya-provider/presets.json`. Preset object can be copied from other presets. Please note that `exeunit-name` has to match to the `name` property of the plugin above
 
-```json
+```javascript
 {
   "active": [
     "erigon",
@@ -333,22 +333,20 @@ Please note that `exeunit-name` has to match to the `name` property of the plugi
       "pricing-model": "linear",
       "usage-coeffs": { ... }
     },
-
 ```
 
 ## Requestor agent
 
-This part of the tutorial directly corresponds to the two previous requestor tutorials ([services hello world example](service-example-0-hello-world.md) and [simple service](service-example-1-simple-service.md)). We have the same clear separation between service specification and service provisioning, but there are important differences:
+This part of the tutorial directly corresponds to the two previous requestor tutorials \([services hello world example](service-example-0-hello-world.md) and [simple service](service-example-1-simple-service.md)\). We have the same clear separation between service specification and service provisioning, but there are important differences:
 
-* We use Erigon runtime instead of a VM-based runtime (so we don't have any Dockerfile or `image_hash`).
+* We use Erigon runtime instead of a VM-based runtime \(so we don't have any Dockerfile or `image_hash`\).
 * We don't implement `async def run` - the service is only started/stopped, requestor is idle when the service it is running.
 * We use [yapapi-service-manager](https://github.com/golemfactory/yapapi-service-manager) instead of pure `yapapi`.
 * We integrate the requestor code with [Quart](https://pgjones.gitlab.io/quart/), a web framework.
 
 ### Service specification
 
-As in previous tutorials, service specification is a subclass of `yapapi.Service`.
-Full code is available in the [yagna-erigon-repo](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/erigon_service.py), here we'll discuss the important parts.
+As in previous tutorials, service specification is a subclass of `yapapi.Service`. Full code is available in the [yagna-erigon-repo](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/erigon_service.py), here we'll discuss the important parts.
 
 #### Initialization:
 
@@ -363,7 +361,7 @@ class Erigon(Service):
 
 We add three attributes that are specific to our service logic:
 
-* `url` - where Erigolem RPC (running on the provider) will be accepting requests
+* `url` - where Erigolem RPC \(running on the provider\) will be accepting requests
 * `auth` - credentials that must be provided with each request
 * `network` - Ethereum network name 
 
@@ -403,10 +401,9 @@ async def get_payload(cls):
 
 Few important things to note here:
 
-* We don't have any `image_hash` (contrary to the previouse examples) because we don't use a VM-based runtime.
-* We declare the runtime name, `erigon` - this must match the offered [exeunit-name](#pluging-the-runtime-into-golemsp).
-* `min_mem_gib` - minimum amount of RAM the provider has to offer. This is pretty useless in the Erigon case (contrary to the e.g. VM-based runtimes), but is required because of a known `yapapi` [bug](https://github.com/golemfactory/yapapi/issues/500).
-
+* We don't have any `image_hash` \(contrary to the previouse examples\) because we don't use a VM-based runtime.
+* We declare the runtime name, `erigon` - this must match the offered [exeunit-name](service-example-2-managed-erigon.md#pluging-the-runtime-into-golemsp).
+* `min_mem_gib` - minimum amount of RAM the provider has to offer. This is pretty useless in the Erigon case \(contrary to the e.g. VM-based runtimes\), but is required because of a known `yapapi` [bug](https://github.com/golemfactory/yapapi/issues/500).
 
 #### Start
 
@@ -431,7 +428,7 @@ async def start(self):
 
 Let's split that to separate parts.
 
-##### Deploy
+**Deploy**
 
 ```python
 self._ctx.deploy()
@@ -439,7 +436,7 @@ self._ctx.deploy()
 
 This is the first thing that should always be done with `self._ctx`.
 
-##### Determine start args
+**Determine start args**
 
 ```python
 start_args = await self._get_start_args()
@@ -453,7 +450,7 @@ start_args = await self._get_start_args()
 )
 ```
 
-These `start_args` are defined by the final user (the one ordering Erigon service, e.g. via the web interface) and passed directly to the runtime.
+These `start_args` are defined by the final user \(the one ordering Erigon service, e.g. via the web interface\) and passed directly to the runtime.
 
 {% hint style="info" %}
 Current `yapapi` has no pretty way of passing arguments to the `Service`, so this is implemented as an ugly-but-harmless hack:
@@ -470,8 +467,7 @@ async def _get_start_args(self):
 This will be addressed in [the near future](https://github.com/golemfactory/yapapi/issues/372).
 {% endhint %}
 
-
-##### Start
+**Start**
 
 ```python
 if start_args:
@@ -482,12 +478,9 @@ else:
     self._ctx.start()
 ```
 
+`start_args` is expected to be a tuple, but there are no more assumptions - they are just passed here from the [code that starts the service](service-example-2-managed-erigon.md#create-a-new-erigon). The Erigon runtime expects at most one argument and it is expected to be a `json`, so we send the serialized first argument \(or start without any arguments if `start_args` are empty\). This could be also a good place to perform a requestor-side validation, we validate `start_arg` only in the runtime.
 
-`start_args` is expected to be a tuple, but there are no more assumptions - they are just passed here from the [code that starts the service](#create-a-new-erigon).
-The Erigon runtime expects at most one argument and it is expected to be a `json`, so we send the serialized first argument (or start without any arguments if `start_args` are empty).
-This could be also a good place to perform a requestor-side validation, we validate `start_arg` only in the runtime.
-
-##### Perform a STATUS command
+**Perform a STATUS command**
 
 ```python
 self._ctx.run('STATUS')
@@ -496,20 +489,19 @@ self._ctx.run('STATUS')
 Run a command 'STATUS'. Actually, we could send anything other than `STATUS` - our runtime ignores the command and does always the same thing - returns running erigon url, credentials and Ethereum's network.
 
 {% hint style="info" %}
-
 Compare this to VM-based commands, like
 
 ```python
 self._ctx.run('/bin/date')
 self._ctx.run('/bin/sh', '-c', 'cat some_file.txt')
 ```
+
 etc.
 
-In the VM environment, available commands are defined in the image and they usually default to commands available in the base linux image + optional additional commands, like `/golem/run/simple_service.py` in the [simple service](service-example-1-simple-service.md).
-When using a custom runtime, we are free to implement any commands we want - but also we have no built-in commands, not even `ls`.
+In the VM environment, available commands are defined in the image and they usually default to commands available in the base linux image + optional additional commands, like `/golem/run/simple_service.py` in the [simple service](service-example-1-simple-service.md). When using a custom runtime, we are free to implement any commands we want - but also we have no built-in commands, not even `ls`.
 {% endhint %}
 
-#####  Fetch the results
+**Fetch the results**
 
 ```python
 processing_future = yield self._ctx.commit()
@@ -529,19 +521,15 @@ def _parse_status_result(self, raw_data: 'List[CommandExecuted]'):
 STATUS command executed in the runtime returns JSON-serialized data. On the requestor side it is available in `stdout` of the appropriate `command_executed`.
 
 {% hint style="info" %}
-
 `processing_future.results()` is a list of CommandExecuted objects - one per each command. In our case, there are three : `deploy`, `start`, and `run(STATUS)`, and we are interested only in the output of the last one.
-
 {% endhint %}
-
 
 #### Run & shutdown
 
 We don't need to implement those functions because the default `yapapi.Service` implementation is exactly what we want:
 
 * Default `run()` waits forever.
-* Default `shutdown()` terminates the agreement. We don't have to perform any additional cleanup - it is already implemented in the runtime (e.g. erigon process is stopped).
-
+* Default `shutdown()` terminates the agreement. We don't have to perform any additional cleanup - it is already implemented in the runtime \(e.g. erigon process is stopped\).
 
 ### Running the HTTP Erigon server
 
@@ -551,14 +539,10 @@ We implement an HTTP server that responds to 3 requests:
 * `stopInstance/<id>` - stop this erigon,
 * `getInstances` - list all current & past erigons.
 
-There is also some basic authentication - the only user who can see/stop an erigon is the one who created it.
-We use the [Quart](https://pgjones.gitlab.io/quart/) framework.
-
+There is also some basic authentication - the only user who can see/stop an erigon is the one who created it. We use the [Quart](https://pgjones.gitlab.io/quart/) framework.
 
 {% hint style="info" %}
-
 Code that uses `yapapi` must be called in an asynchronous context. Quart is an `async` equivalent of the much more popular [Flask](https://flask.palletsprojects.com/en/2.0.x/).
-
 {% endhint %}
 
 Full server code is [here](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/app.py), only Golem-related part will be discussed in this tutorial.
@@ -567,7 +551,8 @@ For the documentation on `yapapi-service-manager` check [README](https://github.
 
 #### Configuration
 
-([run\_server.py](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/run_server.py))
+\([run\_server.py](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/run_server.py)\)
+
 ```python
 app.yapapi_executor_config = {
     'budget': 10,
@@ -575,11 +560,9 @@ app.yapapi_executor_config = {
 }
 ```
 
-Here we define the `yapapi.Golem` [init\_args](https://handbook.golem.network/yapapi/api-reference#_engine-objects).
-`app.yapapi_executor_config` is passed directly to the `Golem` object.
+Here we define the `yapapi.Golem` [init\_args](https://handbook.golem.network/yapapi/api-reference#_engine-objects). `app.yapapi_executor_config` is passed directly to the `Golem` object.
 
 #### Start/stop the requestor
-
 
 ```python
 from yapapi_service_manager import ServiceManager
@@ -594,17 +577,14 @@ async def close_service_manager():
     await app.service_manager.close()
 ```
 
-We initialize the ServiceManager during the server startup and close it when the server exits.
-This is (roughly) equivalent to entering/exiting `async with Golem`.
+We initialize the ServiceManager during the server startup and close it when the server exits. This is \(roughly\) equivalent to entering/exiting `async with Golem`.
 
 {% hint style="warning" %}
+There is no state preserved outside of the process memory, so when using a generic WSGI server \(like `gunicorn`\) you shouldn't
 
-There is no state preserved outside of the process memory, so when using a generic WSGI server (like `gunicorn`) you shouldn't
 * Start more than one worker,
-* Use worker-recycling tools (like `max_requests` in `gunicorn`).
-
+* Use worker-recycling tools \(like `max_requests` in `gunicorn`\).
 {% endhint %}
-
 
 #### Create a new Erigon
 
@@ -632,12 +612,11 @@ Then comes the most important line:
 erigon = app.service_manager.create_service(Erigon, [init_params], ErigonServiceWrapper)
 ```
 
-`Erigon` is the `yapapi.Service`-based class we implemented in the [previous section](#service-specification).
+`Erigon` is the `yapapi.Service`-based class we implemented in the [previous section](service-example-2-managed-erigon.md#service-specification).
 
 `init_params` is a dictionary `{'network': <ETHEREUM-NETWORK-NAME>}` that is defined in the request.
 
-`ErigonServiceWrapper` is a class extending `yapapi-service-manager.ServiceWrapper` that can be found [here](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/erigon_service_wrapper.py). It is neither very important nor interesting: we just need a place to store and access some additional erigon-specific information, like `created_at` timestamp or `name`.
-This could be implemented in many different ways, but this is the most convenient - the returned `erigon` object (an instance of `ErigonServiceWrapper`) encapsulates all of the logic and has exactly the interface we need:
+`ErigonServiceWrapper` is a class extending `yapapi-service-manager.ServiceWrapper` that can be found [here](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/erigon_service_wrapper.py). It is neither very important nor interesting: we just need a place to store and access some additional erigon-specific information, like `created_at` timestamp or `name`. This could be implemented in many different ways, but this is the most convenient - the returned `erigon` object \(an instance of `ErigonServiceWrapper`\) encapsulates all of the logic and has exactly the interface we need:
 
 ```python
 erigon.name         # user-defined name
@@ -652,6 +631,7 @@ erigon.name = request_data.get('name', f'erigon_{erigon.id}')
 app.user_erigons[user_id][erigon.id] = erigon
 return erigon.api_repr(), 201
 ```
+
 We set the Erigon name, save the information about newly created Erigon, and send its representation as a response.
 
 #### Stop the erigon
@@ -674,8 +654,8 @@ async def stop_instance(erigon_id):
 Nothing really interesting here, we just:
 
 * Extract the `user_id` from the request
-* Check if this is the user who created this Erigon (compare the `app.user_erigons[user_id][erigon.id] = erigon` line in the previous section),
-* Stop the Erigon - this *initializes* the stopping process, it is not stopped immediately (because stopping needs some action on the provider side),
+* Check if this is the user who created this Erigon \(compare the `app.user_erigons[user_id][erigon.id] = erigon` line in the previous section\),
+* Stop the Erigon - this _initializes_ the stopping process, it is not stopped immediately \(because stopping needs some action on the provider side\),
 * Return Erigon representation as a response.
 
 #### Get all user's Erigons
@@ -705,7 +685,7 @@ This is an experimental setup. It's not intended to be run on personal computers
 * It creates a separate user which will run the provider daemon,
 * It installs the NGINX web server and certbot,
 * Optionally, it generates a Let's Encrypt certificate and sets certbot to remind you about certificate renewals,
-* It *disables all runtimes* for yagna other than `ya-runtime-erigon`.
+* It _disables all runtimes_ for yagna other than `ya-runtime-erigon`.
 {% endhint %}
 
 ### Requirements
@@ -716,7 +696,7 @@ This is an experimental setup. It's not intended to be run on personal computers
 * Ability to open a port for the Erigon service
 
 {% hint style="info" %}
-By default nginx's reverse-proxy is listening on the standard Erigon port `8545`. You need to open this port for incoming traffic. If you wish your Erigolem service to be available on a different port number (e.g. because `8545` cannot be opened), you need to edit the installation script.
+By default nginx's reverse-proxy is listening on the standard Erigon port `8545`. You need to open this port for incoming traffic. If you wish your Erigolem service to be available on a different port number \(e.g. because `8545` cannot be opened\), you need to edit the installation script.
 {% endhint %}
 
 Example patch changing `8545` to `9999`
@@ -727,7 +707,7 @@ index 2bb4de9..41ad5e2 100644
 --- a/install_provider.sh
 +++ b/install_provider.sh
 @@ -161,8 +161,8 @@ http {
- 
+
      # example.com
      server {
 -        listen                               8545${ERIGON_USE_SSL:+ ssl http2};
@@ -735,10 +715,10 @@ index 2bb4de9..41ad5e2 100644
 +        listen                               9999${ERIGON_USE_SSL:+ ssl http2};
 +        listen                               [::]:9999${ERIGON_USE_SSL:+ ssl http2};
          server_name                          $ERIGON_HOSTNAME;
- 
+
          ${ERIGON_USE_SSL:+# SSL}
 @@ -240,7 +240,7 @@ mkdir -p "${ERIGON_USER_HOME}/.local/share/ya-runtime-erigon"
- 
+
  cat >"${ERIGON_USER_HOME}/.local/share/ya-runtime-erigon/ya-runtime-erigon.json" <<EOF
  {
 -  "public_addr": "https://${ERIGON_HOSTNAME}:8545",
@@ -746,57 +726,57 @@ index 2bb4de9..41ad5e2 100644
    "data_dir": "${ERIGON_DATADIR}",
    "passwd_tool_path": "htpasswd",
    "passwd_file_path": "/etc/nginx/erigon_htpasswd",
-
 ```
-
 
 ### Parameters for the script
 
 Script behavior can be modified by the following environment variables:
 
 | name | default value | description |
-| :-------- | ----------------: | :------------- |
-| ERIGON_USER | `golem` | OS user the service is running on |
-| ERIGON_DATADIR | `/data/erigon` | Erigon data directory. Each chain data is collected in the subdirs |
-| ERIGON_HOSTNAME |   | __HAS TO__ be set before running the installation script, e.g. `ERIGON_HOSTNAME=X.erigon.golem.network`  |
-| ERIGON_DISABLE_SSL |  | Test this script without nagging letsencrypt services. If not set, (the inverse) `ERIGON_USE_SSL` is set |
-| ERIGON_EMAIL |  | Not needed when `ERIGON_DISABLE_SSL` is set. Email address for the certbot to remind of SSL certificate renewal. |
+| :--- | ---: | :--- |
+| ERIGON\_USER | `golem` | OS user the service is running on |
+| ERIGON\_DATADIR | `/data/erigon` | Erigon data directory. Each chain data is collected in the subdirs |
+| ERIGON\_HOSTNAME |  | **HAS TO** be set before running the installation script, e.g. `ERIGON_HOSTNAME=X.erigon.golem.network` |
+| ERIGON\_DISABLE\_SSL |  | Test this script without nagging letsencrypt services. If not set, \(the inverse\) `ERIGON_USE_SSL` is set |
+| ERIGON\_EMAIL |  | Not needed when `ERIGON_DISABLE_SSL` is set. Email address for the certbot to remind of SSL certificate renewal. |
 
 ### Running the script
 
 1. **Download the installation script on the installation machine**
-    ```bash
+
+   ```bash
     curl -sSfL -o install_provider.sh \
         https://raw.githubusercontent.com/golemfactory/yagna-service-erigon/master/install_provider.sh
-    ```
+   ```
 
 2. **Review and edit the script if needed**
-
 3. **Execute the script**
 
-    Example script invocation (_provider values for your environment_)
-    ```bash
+   Example script invocation \(_provider values for your environment_\)
+
+   ```bash
     sudo env ERIGON_USER=golem \
          ERIGON_HOSTNAME=ec2-54-74-210-145.eu-west-1.compute.amazonaws.com \
          ERIGON_DATADIR=/data/erigon \
          ERIGON_DISABLE_SSL=y \
     bash install_provider.sh
-    ```
+   ```
 
-    During the installation you will be asked to:
-    * Accept Golem's licence terms,
-    * Provide the name for the provider node,
-    * Provide the subnet the node will be subscribed to,
-    * Provide your wallet address,
-    * Provide the desired price per hour (in GLM).
-    
+   During the installation you will be asked to:
+
+   * Accept Golem's licence terms,
+   * Provide the name for the provider node,
+   * Provide the subnet the node will be subscribed to,
+   * Provide your wallet address,
+   * Provide the desired price per hour \(in GLM\).
+
 4. **Make sure the port is opened**
 
-    It depends on how your machine was provisioned, but you might need also to allow ingress connections on the firewall.
+   It depends on how your machine was provisioned, but you might need also to allow ingress connections on the firewall.
 
-    ```bash
+   ```bash
     sudo ufw allow 8545/tcp
-    ```
+   ```
 
 ### Check installation
 
@@ -811,3 +791,4 @@ You can also check the logs of the running service
 ```bash
 sudo journalctl -u golem -e
 ```
+

@@ -119,8 +119,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: 
-[https://github.com/golemfactory/yagna/releases/tag/v0.7.1](https://github.com/golemfactory/yagna/releases/tag/v0.7.1).
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.7.1](https://github.com/golemfactory/yagna/releases/tag/v0.7.1).
 
 Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on Unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
@@ -225,3 +224,4 @@ Now you are ready to run computations on Golem:
 {% page-ref page="run-first-task-on-golem.md" %}
 
 And by all means, **have fun with Golem!**
+
