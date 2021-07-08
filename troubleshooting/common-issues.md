@@ -88,12 +88,3 @@ _**Description:**_ If the user has an obsolete/incorrect version of `gftp` in `$
 
 _**Solution:**_ Type `which gftp` to find the obsolete version of `gftp` and then remove it. Then restart your daemon and the issue should be fixed!
 
-### Multiprocessing Python library not working on providers
-
-_**Os:**_ All, requestor only
-
-A temporary fix is to run the following lines prior to running your actual code to make sure that the filesystem is properly mounted before actual usage of it.
-
-`ctx.run("/bin/mkdir", "-p", "/dev/shm")`  
-`ctx.run("/bin/mount", "-t", "tmpfs", "tmpfs", "/dev/shm")`
-
