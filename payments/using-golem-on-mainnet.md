@@ -274,7 +274,7 @@ After you have done that run:
 yagna app-key list
 ```
 
- and verify that in the table like the one below, your new app-key is bound to your mainnet Ethereum address
+and verify that in the table like the one below, your new app-key is bound to your mainnet Ethereum address
 
 ```text
 ┌─────────────────────┬────────────────┬───────────────────────────┬───────────┬──────────────────────────────┐
@@ -330,7 +330,7 @@ yarn js:blender --network mainnet --subnet-tag public-beta
 
 ### Requestor agent code
 
-As for your own requestor agent code, you'll need to supply the appropriate `driver` , `network` and `subnet_tag` parameters to  `Golem`.
+As for your own requestor agent code, you'll need to supply the appropriate `driver` , `network` and `subnet_tag` parameters to `Golem`.
 
 {% tabs %}
 {% tab title="Python" %}

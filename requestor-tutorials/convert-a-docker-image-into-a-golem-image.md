@@ -42,8 +42,8 @@ gvmkit-build golemfactory/blender:demo
 This will pull the image if needed and then proceed with re-packing it into Golem's custom image format.
 
 {% hint style="warning" %}
-If this command fails for you, please ensure that your Docker installation is functioning correctly and that your user has permissions to run Docker by e.g. running:  
-  
+If this command fails for you, please ensure that your Docker installation is functioning correctly and that your user has permissions to run Docker by e.g. running:
+
 `docker run hello-world`
 {% endhint %}
 
