@@ -166,6 +166,10 @@ To restore your wallet, first start with a fresh yagna install:
 curl -sSf https://join.golem.network/as-requestor | bash -
 ```
 
+{% hint style="warning" %}
+The above line assumes you're a requestor on a unix-like platform \(Linux or Mac\). If that's not the case, you should use an installation procedure appropriate for your platform. Please refer to the [installation section of our requestor development primer](../requestor-tutorials/flash-tutorial-of-requestor-development/#running-the-yagna-daemon) or to the [analogous part of the introduction for providers](../provider-tutorials/provider-tutorial.md#installation).
+{% endhint %}
+
 Once yagna is installed, run it with:
 
 ```text
@@ -252,6 +256,36 @@ This will unlock your key and `yagna` will be able to use it for outgoing paymen
 `isLocked: false`
 {% endhint %}
 
+### Make sure your yagna application key is bound to the correct account
+
+If you have used `yagna` before, you have probably already created an application key \(the key that the requestor agent uses to connect to the `yagna` daemon\).
+
+In that case, after you import your Ethereum mainnet key, you need to re-create Yagna's application key, as the previous one is now bound to your old \(rinkeby\) key:
+
+```text
+ yagna app-key create requestor-mainnet
+```
+
+The name \(`requestor-mainnet`above\) is not important as long as it doesn't collide with the existing one \(assuming it was just `requestor`\).
+
+After you have done that run:
+
+```text
+yagna app-key list
+```
+
+ and verify that in the table like the one below, your new app-key is bound to your mainnet Ethereum address
+
+```text
+┌─────────────────────┬────────────────┬───────────────────────────┬───────────┬──────────────────────────────┐
+│  name               │  key           │  id                       │  role     │  created                     │
+├─────────────────────┼────────────────┼───────────────────────────┼───────────┼──────────────────────────────┤
+│  requestor-mainnet  │  your-app-key  │  0x-your-mainnet-address  │  manager  │  2021-07-06T11:41:52.252257  │
+└─────────────────────┴────────────────┴───────────────────────────┴───────────┴──────────────────────────────┘
+```
+
+Lastly, remember to set the new app-key in your environment \(or in an other way you supply the app key to your requestor agent app\).
+
 ## Running your requestor on mainnet
 
 {% hint style="info" %}
@@ -296,12 +330,12 @@ yarn js:blender --network mainnet --subnet-tag public-beta
 
 ### Requestor agent code
 
-As for your own requestor agent code, you'll need to supply the appropriate `driver` , `network` and `subnet_tag` parameters to the `Executor` .
+As for your own requestor agent code, you'll need to supply the appropriate `driver` , `network` and `subnet_tag` parameters to  `Golem`.
 
 {% tabs %}
 {% tab title="Python" %}
 ```python
-async with Executor(
+async with Golem(
     [...],
     network="mainnet",
     driver="zksync",

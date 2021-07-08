@@ -28,20 +28,6 @@ For this release we have enabled the providers to expect payments on the Ethereu
 
 ## Installation
 
-#### Purge directories
-
-{% hint style="danger" %}
-**BEFORE YOU PROCEED** - if you have ever run your Golem on mainnet and you have earned GLM tokens or funded your Golem account with ETH/GLM - **DO NOT purge** your data directories before you have backed-up your Golem wallet and confirmed that you can safely recover it.
-
-For instructions on how to do it, consult our [guide on using Golem on Mainnet](../payments/using-golem-on-mainnet.md#backing-up-your-golem-wallet) and specifically its backup/recovery section.
-{% endhint %}
-
-If you have previously launched **Golem Alpha** on your machine run the command below which will purge its working directories since our newest version is incompatible with the old database structure:
-
-```text
-read -e -p "Backed up keys? (type "yes"): " YN && [[ $YN == "yes" ]] && rm -rf $HOME/.local/share/{yagna,ya-provider}
-```
-
 #### Run the installation command
 
 Open your terminal and type:
