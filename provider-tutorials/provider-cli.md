@@ -14,7 +14,7 @@ Run `golemsp help` without arguments to see top-level usage information:
 
 ```css
 $ golemsp help
-golemsp 0.7.1 (a6e1ceb8 2021-06-24 build #157)
+golemsp 0.7.2 (499de901 2021-07-08 build #160)
 User friedly CLI for running Golem Provider
 
 USAGE:
@@ -137,10 +137,10 @@ $ golemsp status
 │  Status                     │
 │                             │
 │  Service    is not running  │
-│  Version    0.7.1           │
-│  Commit     a6e1ceb8        │
-│  Date       2021-06-24      │
-│  Build      157             │
+│  Version    0.7.2           │
+│  Commit     499de901        │
+│  Date       2021-07-08      │
+│  Build      160             │
 │                             │
 │  Node Name  awesome-summer  │
 │  Subnet     public-beta     │
@@ -156,10 +156,10 @@ $ golemsp status
 │  Status                                      │
 │                                              │
 │  Service    is running                       │
-│  Version    0.7.1                            │
-│  Commit     a6e1ceb8                         │
-│  Date       2021-06-24                       │
-│  Build      157                              │
+│  Version    0.7.2                            │
+│  Commit     499de901                         │
+│  Date       2021-07-08                       │
+│  Build      160                              │
 │                                              │
 │  Node Name  awesome-summer                   │
 │  Subnet     public-beta                      │
@@ -209,4 +209,3 @@ In the three columns, you can check the basic information regarding the status o
 * Number of tasks that you were computing in last hour
 * Number of tasks that were in progress during the last hour
 * Total task that you were trying to compute - including those that were not computed
-

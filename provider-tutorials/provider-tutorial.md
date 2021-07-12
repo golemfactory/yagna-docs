@@ -99,10 +99,10 @@ $ golemsp status
 │  Status                                      │
 │                                              │
 │  Service    is running                       │
-│  Version    0.7.1                            │
-│  Commit     a6e1ceb8                         │
-│  Date       2021-06-24                       │
-│  Build      157                              │
+│  Version    0.7.2                            │
+│  Commit     499de901                         │
+│  Date       2021-07-08                       │
+│  Build      160                              │
 │                                              │
 │  Node Name  awesome-summer                   │
 │  Subnet     public-beta                      │
@@ -144,4 +144,3 @@ To check out additional commands available in the CLI, have a look at the refere
 {% page-ref page="provider-cli.md" %}
 
 ## Next steps
-
