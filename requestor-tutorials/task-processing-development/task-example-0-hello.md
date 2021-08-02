@@ -167,7 +167,7 @@ Currently, Golem is using a public repository to store both official and communi
 This is what we're making use of here - by using the function `repo` from `vm`, we're getting a payload definition for our providers. The only input we must provide at this point is the image hash. In the case of this example we're using a pre-uploaded, minimal image based on Alpine Linux.
 
 {% hint style="info" %}
-If you'd like to learn about creating and uploading Golem images yourself, take a look at this article: [VM runtime: How to convert a Docker image into a Golem image?](../convert-a-docker-image-into-a-golem-image.md)
+If you'd like to learn about creating and uploading Golem images yourself, take a look at this article: [VM runtime: How to convert a Docker image into a Golem image?](../vm-runtime/convert-a-docker-image-into-a-golem-image.md)
 {% endhint %}
 
 ### Tasks array

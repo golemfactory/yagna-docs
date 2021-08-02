@@ -211,7 +211,7 @@ This hash will identify our image when our Golem application is run. Please copy
 
 The details of docker image conversion are described here:
 
-{% page-ref page="../convert-a-docker-image-into-a-golem-image.md" %}
+{% page-ref page="../vm-runtime/convert-a-docker-image-into-a-golem-image.md" %}
 
 ## The requestor agent code
 
