@@ -340,6 +340,10 @@ The sequence of `Task` objects yields task fragments assigned to this provider. 
 
 In the case of this example our entire script consists of a single command which is the call to `context.run`. This means that, once committed, the provider's exe unit will receive an instruction to make a call to `/bin/sh -c date`.
 
+{% hint style="warning" %}
+Commands run with `context.run` are not executed in any shell. This means you have to either specify the full binary path or run the command through a shell manually \(for example: `/bin/sh -c ...`\).
+{% endhint %}
+
 By awaiting on `future_results` we gain access to an array containing the script's results. We take the last item from that array to obtain the result object for our call to `context.run`.
 
 Finally, we make a call to `task.accept_result` to mark the task as successfully finished and pass it the result object. This will cause our task to be passed to the queue of completed tasks which gets processed in our `main` function.

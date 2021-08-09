@@ -21,7 +21,7 @@ This tutorial assumes that you're already familiar with Docker and the basics of
 You can download the latest `.deb` package from the project's [releases page](https://github.com/golemfactory/ya-runtime-dbg/releases) and install it using `dpkg`:
 
 ```text
-sudo dpkg -i path/to/.../ya-runtime-dbg_v0.2.0_amd64.deb
+sudo dpkg -i path/to/.../ya-runtime-dbg_v0.2.3_amd64.deb
 ```
 
 If you don't want to \(or cannot\) use a `.deb` package you can also download a pre-built binary \(`.tar.gz` file in the most recent GitHub release\).

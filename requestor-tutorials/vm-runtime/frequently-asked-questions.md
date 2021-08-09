@@ -16,15 +16,13 @@ But why do we need this? Most importantly, to reduce the setup time for provider
 
 ### Are there any requirements when preparing a Dockerfile for Golem's VM runtime?
 
-The only two requirements are:
+There is only one strict requirement: **at least one volume** directory must be specified using the `VOLUME` command.
 
-* a working directory must be specified using the `WORKDIR` command
-* there must be at least one volume directory specified using the `VOLUME` command
-
-Besides the above a number of commands are **currently not supported** by `gvmkit-build` converter. These are:
+Besides the above a number of commands are currently **not supported** by `gvmkit-build` converter. These are:
 
 * `CMD`
 * `ENTRYPOINT`
+* `ENV`
 * `PORTS`
 
 ### When building my image I copied some files to one of the volumes. Why can't I see them when I run the image?

@@ -46,10 +46,6 @@ An image intended to be used with Golem **must** specify **at least one** **volu
 
 Finally, we specify a working directory. This will be the default directory to be used in shell commands once the VM is running.
 
-{% hint style="danger" %}
-An image intended to be used with Golem **must** specify a **working directory** through the `WORKDIR` command.
-{% endhint %}
-
 ### Building the image
 
 Having the above `Dockerfile` we can now build an image based on that file. To do so, we're going to use Docker's `build` command:
