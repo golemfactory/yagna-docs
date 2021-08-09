@@ -1,18 +1,12 @@
 ---
-description: How to test and debug a .gvmi image on your machine
+description: How to run a .gvmi image locally for the sake of testing and debugging
 ---
 
-# VM runtime: Debugging a Golem image
+# Testing a Golem image
 
 ## Introduction
 
-When creating your own Golem app, one of the steps is defining a Docker image for your application. You can find a more detailed description of this process in our `Hello World` requestor tutorial.
-
-{% page-ref page="../task-processing-development/task-example-1-cracker.md" %}
-
-Such a Docker image, after being converted to Golem's `.gvmi` format, is going to be used by providers within the Golem network.
-
-There's one problem here - once you have a `.gvmi` image, how do you efficiently test it before sending it out to providers? In this tutorial we're going to explore `ya-runtime-dbg`, a tool built specifically for debugging user-built images.
+In this tutorial we're going to explore `ya-runtime-dbg`, a tool built specifically for debugging user-built images.
 
 {% hint style="info" %}
 This tutorial assumes that you're already familiar with Docker and the basics of building a Golem application.
@@ -21,7 +15,7 @@ This tutorial assumes that you're already familiar with Docker and the basics of
 ## Installation
 
 {% hint style="warning" %}
-`ya-runtime-dbg` is currently available for Linux **only**.
+`ya-runtime-dbg` is currently available for **Linux** **only**.
 {% endhint %}
 
 You can download the latest `.deb` package from the project's [releases page](https://github.com/golemfactory/ya-runtime-dbg/releases) and install it using `dpkg`:
@@ -30,13 +24,9 @@ You can download the latest `.deb` package from the project's [releases page](ht
 sudo dpkg -i path/to/.../ya-runtime-dbg_v0.2.0_amd64.deb
 ```
 
+If you don't want to \(or cannot\) use a `.deb` package you can also download a pre-built binary \(`.tar.gz` file in the most recent GitHub release\).
+
 `ya-runtime-dbg` requires one of the available Golem runtimes to be available on your system.
-
-{% hint style="info" %}
-A Golem runtime is the execution environment for an app image. For example, [`ya-runtime-vm`](https://github.com/golemfactory/ya-runtime-vm) uses a virtual machine to run an image.
-{% endhint %}
-
-To verify your installation, try running the below command:
 
 A set of default runtimes can be installed by the `yagna` provider installer:
 
@@ -50,47 +40,11 @@ Alternatively, you can download a runtime package manually from its releases pag
 
 Later on we're going to see how to specify the runtime to be used by the debugger.
 
-## Running an image
+## Running the debugger
 
-For the purpose of this tutorial we're going to focus on VM runtime debugging.
-
-### 1. Building an image
-
-Let's start with creating our image. We're going to use the following `Dockerfile`:
-
-```text
-FROM debian:latest
-VOLUME /golem/input /golem/output
-WORKDIR /golem/work
-```
-
-To keep things simple, we use `debian:latest` as our base image.
-
-The next line defines two volumes that will be mounted under `/golem/input` and `/golem/output` inside the VM. These directories will be shared with the host machine to allow for providing input and obtaining output from the VM.
-
-Finally, we specify a working directory, which will be the starting location inside the VM once it's running.
-
-We can now build a Docker image based on this file:
-
-```text
-docker build -t runtime-dbg-example .
-```
-
-The above command assigns the tag `runtime-dbg-example` to its output image. Once it's finished we should see the message `Successfully tagged runtime-dbg-example:latest` in the terminal's output.
-
-With our Docker image ready, the last step is to convert it to the `.gvmi` format, so that it can be used with Golem's VM runtime. To do so, we're going to use the `gvmkit-build` tool:
-
-```text
-gvmkit-build runtime-dbg-example:latest
-```
-
-To learn more about `gvmkit-build` \(and how to install it\), please refer to this page from the handbook:
-
-{% page-ref page="convert-a-docker-image-into-a-golem-image.md" %}
-
-Once the above command is finished we should have a `.gvmi` file in the directory from which we invoked the command. This file is ready to be used together with Golem's VM runtime.
-
-### 2.  Running the debugger
+{% hint style="info" %}
+This section assumes you already have a `.gvmi` file ready on your machine. If you don't then follow the [Creating a Docker image](creating-a-docker-image.md) and [Converting an image from Docker to Golem](convert-a-docker-image-into-a-golem-image.md) tutorials.
+{% endhint %}
 
 Let's now see how we can use `ya-runtime-dbg` together with our image. We can learn about the program's required arguments by calling `ya-runtime-dbg --help`:
 
@@ -102,7 +56,7 @@ USAGE:
 The program has three mandatory arguments:
 
 * `--runtime` path to the Golem runtime we want to use,
-* `--task-package` path to the package \(i.e. image\) we'd like to debug,
+* `--task-package` path to the package \(i.e. `.gvmi` image\) we'd like to debug,
 * `--workdir` path to the directory that will store directories mounted as volumes inside the image.
 
 {% hint style="danger" %}
@@ -120,7 +74,7 @@ ya-runtime-dbg \
 
 The command is split into multiple lines using `\` so that it's easier to read. Some remarks related to the above call:
 
-1. The path in `--task-package` needs to be changed so that it points to where you built your `.gvmi` file from the previous step.
+1. The path in `--task-package` needs to be changed so that it points to where you built your `.gvmi` file.
 2. `/tmp/workdir` is an example path, it may not exist on your system. You can create it by calling `mkdir /tmp/workdir` or use some other location.
 
 Running the command should produce output similar to this:
