@@ -1,8 +1,8 @@
 # Creating a Docker image
 
-TODO
+The first step to getting your code to run on a provider node is preparing a Docker image. This image will define the virtual machine in which your logic is going to be executed by provider nodes.
 
-The below diagram depicts a simplified flow of interaction between the requestor agent and images running in provider runtimes:
+The below diagram depicts a simplified flow of interaction between the requestor agent and images running in runtimes on providers:
 
 ![](../../.gitbook/assets/image%20%2812%29.png)
 
@@ -12,14 +12,12 @@ Note that in the diagram the name "Docker container" is used for simplicity.
 In reality, providers are not running Docker images directly. Instead, the `.gvmi` format is used \(which is based on Docker images\). More information on this can be found in [Converting image from Docker to Golem](convert-a-docker-image-into-a-golem-image.md).
 {% endhint %}
 
-This series of articles is going to cover how we can prepare a VM image so that it can be deployed and started on a provider's machine.
-
 ### Creating a Dockerfile
 
 {% hint style="warning" %}
 This tutorial assumes you are familiar with the basics of Docker \(including how to write a simple `Dockerfile`\).
 
-If you need an introduction to Docker take a look at the official [Getting Started guide](https://docs.docker.com/get-started/) or one of many third-party resources covering the topic.
+If you need an introduction to Docker take a look at the official [Getting Started guide](https://docs.docker.com/get-started/) or one of the many third-party resources covering this topic.
 {% endhint %}
 
 Let's start with the definition for our image. We're going to use the following `Dockerfile`:

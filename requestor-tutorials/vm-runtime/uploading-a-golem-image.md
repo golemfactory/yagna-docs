@@ -7,7 +7,7 @@ Once your image is built and tested we can push it to a remote repository so tha
 {% hint style="info" %}
 For the sake of simplicity, we're currently using a freely-accessible repository that everybody can push into without any special requirements.
 
-This is likely to change in the future, making it decentralized and adding an appropriate blocklisting mechanism.
+This is likely to change in the future, making it decentralized and adding an appropriate block-listing mechanism.
 {% endhint %}
 
 To push the image we use the same command that was used for conversion, adding the `--push` flag to it:

@@ -19,8 +19,6 @@ _This tutorial is the textual counterpart to a workshop originally prepared by J
 
 Now that we've seen how easy it is to [run a Golem requestor agent](../flash-tutorial-of-requestor-development/), then had a look at[ how this stuff works under the hood](../golem-application-fundamentals/) we can put this knowledge to the test and build a simple Golem app that is a bit more realistic than our [Hello World](task-example-0-hello.md).
 
-{% hint style="info" %}
-
 If you'd rather like to have a more general introduction on the idea behind Golem or would like to learn what components constitute a Golem node and the Golem network, please have a look at:
 
 {% page-ref page="../../introduction/golem-overview.md" %}
