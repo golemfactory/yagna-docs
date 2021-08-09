@@ -141,6 +141,10 @@ Success! Our input data is there and can be read by the VM.
 
 Once you're done debugging or want to restart the VM, press `Ctrl+D` while in the debugger prompt.
 
+Having issues? Make sure to take a look at our VM runtime FAQ:
+
+{% page-ref page="frequently-asked-questions.md" %}
+
 ## Summary
 
 `ya-runtime-dbg` provides us with the **exact same** environment a provider would use to execute our image. This allows for more accurate testing compared to running the original Docker image manually.
