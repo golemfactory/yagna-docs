@@ -4,7 +4,7 @@
 
 In this section we're going to take a closer look at Golem's primary execution environment - the **virtual machine runtime**.
 
-This runtime allows developers to define Docker-like images which are run by providers to perform computations in the Golem network.
+This runtime allows provider nodes to run Docker-like images defined by Golem app developers.
 
 Before we focus on specifics of the VM runtime let's first establish what we mean by "runtime" in Golem's context.
 
@@ -50,5 +50,9 @@ The below section covers image uploading and how to refer to this image in reque
 
 {% page-ref page="uploading-a-golem-image.md" %}
 
+### 5. Frequently asked questions
 
+In case of issues or uncertainties around the Golem VM runtime or image development - make sure to take a look at this dedicated FAQ section:
+
+{% page-ref page="frequently-asked-questions.md" %}
 
