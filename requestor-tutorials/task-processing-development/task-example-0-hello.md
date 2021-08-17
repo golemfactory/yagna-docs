@@ -167,7 +167,7 @@ Currently, Golem is using a public repository to store both official and communi
 This is what we're making use of here - by using the function `repo` from `vm`, we're getting a payload definition for our providers. The only input we must provide at this point is the image hash. In the case of this example we're using a pre-uploaded, minimal image based on Alpine Linux.
 
 {% hint style="info" %}
-If you'd like to learn about creating and uploading Golem images yourself, take a look at this article: [VM runtime: How to convert a Docker image into a Golem image?](../convert-a-docker-image-into-a-golem-image.md)
+If you'd like to learn about creating and uploading Golem images yourself, take a look at this article: [VM runtime: How to convert a Docker image into a Golem image?](../vm-runtime/convert-a-docker-image-into-a-golem-image.md)
 {% endhint %}
 
 ### Tasks array
@@ -339,6 +339,10 @@ This method follows the "work generator" pattern. If you're unfamiliar with it i
 The sequence of `Task` objects yields task fragments assigned to this provider. In a more complex scenario each `Task` object would be carrying its own piece of data to be used during computation.
 
 In the case of this example our entire script consists of a single command which is the call to `context.run`. This means that, once committed, the provider's exe unit will receive an instruction to make a call to `/bin/sh -c date`.
+
+{% hint style="warning" %}
+Commands run with `context.run` are not executed in any shell. This means you have to either specify the full binary path or run the command through a shell manually \(for example: `/bin/sh -c ...`\).
+{% endhint %}
 
 By awaiting on `future_results` we gain access to an array containing the script's results. We take the last item from that array to obtain the result object for our call to `context.run`.
 

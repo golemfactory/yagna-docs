@@ -67,7 +67,7 @@ Please read these User Interaction Guidelines carefully. By accessing or using t
 * “Golem” means a project built by Golem Factory GmbH
 * "Providers" means a User who is contributing computer resources;
 * "Requestors" means a User who is renting out additional computing Power from the Network;
-* "Users"means any User of the Golem Platform, i.e. a Provider or Requestor;
+* "Users" means any User of the Golem Platform, i.e. a Provider or Requestor;
 * "Software" means the underlying software protocol that governs the Golem Platform, which in this case is developed and published under the GNU GPL;
 * "GNU GPL" means the GNU General Public License version 3, a free, copyleft license for software. The terms and conditions for copying, distribution and modification the GNU GPL are available at [https://www.gnu.org/licenses/gpl-3.0.de.html](https://www.gnu.org/licenses/gpl-3.0.de.html) and form an integral part of these Guidelines;
 * "NGNT" means the Rinkeby testnet Golem Network Token; “NGNT” do neither carry any value nor give rights and/or claims against Company or anyone else;

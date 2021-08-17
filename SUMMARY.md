@@ -38,13 +38,20 @@
   * [Introduction to the service model](requestor-tutorials/service-development/service-model-introduction.md)
   * [Service Example 0: Hello world?](requestor-tutorials/service-development/service-example-0-hello-world.md)
   * [Service Example 1: Simple service](requestor-tutorials/service-development/service-example-1-simple-service.md)
-  * [Service Example 2: Erigolem – Managed Erigon](requestor-tutorials/service-development/service-example-2-managed-erigon.md)
+  * [Service Example 2: Erigolem – Managed Erigon](requestor-tutorials/service-development/service-example-2-managed-erigon/README.md)
+    * [Erigon Service runtime](requestor-tutorials/service-development/service-example-2-managed-erigon/erigon-service-runtime.md)
+    * [Erigon Requestor agent](requestor-tutorials/service-development/service-example-2-managed-erigon/erigon-requestor-agent.md)
+    * [Setting up an Erigon provider](requestor-tutorials/service-development/service-example-2-managed-erigon/setting-up-an-erigon-provider.md)
+* [VM runtime](requestor-tutorials/vm-runtime/README.md)
+  * [Creating a Docker image](requestor-tutorials/vm-runtime/creating-a-docker-image.md)
+  * [Converting an image from Docker to Golem](requestor-tutorials/vm-runtime/convert-a-docker-image-into-a-golem-image.md)
+  * [Testing a Golem image](requestor-tutorials/vm-runtime/gvmi-debugging.md)
+  * [Uploading a Golem image](requestor-tutorials/vm-runtime/uploading-a-golem-image.md)
+  * [Frequently asked questions](requestor-tutorials/vm-runtime/frequently-asked-questions.md)
 * [Debugging with the use of log files](requestor-tutorials/debugging.md)
 * [Interactive testing environment](requestor-tutorials/interactive-testing-environment/README.md)
   * [Running Goth](requestor-tutorials/interactive-testing-environment/running-goth.md)
   * [Using Test Harness to test Golem apps](requestor-tutorials/interactive-testing-environment/running-goths-interactive-mode.md)
-* [VM runtime: How to convert a Docker image into a Golem image?](requestor-tutorials/convert-a-docker-image-into-a-golem-image.md)
-* [VM runtime: Debugging a Golem image](requestor-tutorials/gvmi-debugging.md)
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
@@ -224,5 +231,6 @@
 * [Terms](see-also/terms.md)
 * [Compatibility Guidelines](see-also/compatibility-guidelines.md)
 * [Compatibility Policy](see-also/compatibility-policy.md)
+* [Release Notes](see-also/release-notes.md)
 * [Contact](see-also/contact.md)
 

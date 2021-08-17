@@ -1,5 +1,5 @@
 ---
-description: Introducing Golem Network
+description: Version 0.7.0
 ---
 
 # The Golem SDK documentation
