@@ -14,7 +14,7 @@ A **runtime** \(also known as an execution unit, or exe-unit\) is a binary used 
 A given runtime is responsible for running a certain type of an image \(for example, we have separate runtimes for VMs and for WASM code\).
 {% endhint %}
 
-In the case of Golem VMs, the runtime being used is [`ya-runtime-vm`](https://github.com/golemfactory/ya-runtime-vm). 
+In the case of Golem VMs, the runtime being used is [`ya-runtime-vm`](https://github.com/golemfactory/ya-runtime-vm).
 
 ## Preparing a VM image
 

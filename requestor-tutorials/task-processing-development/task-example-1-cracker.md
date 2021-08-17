@@ -22,8 +22,9 @@ Now that we've seen how easy it is to [run a Golem requestor agent](../flash-tut
 {% hint style="info" %}
 If you'd rather like to have a more general introduction on the idea behind Golem or would like to learn what components constitute a Golem node and the Golem network, please have a look at:
 
-{% page-ref page="../../introduction/golem-overview.md" %}
 
+
+{% page-ref page="../../introduction/golem-overview.md" %}
 {% endhint %}
 
 ## Step 0. What are we building?

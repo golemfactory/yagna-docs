@@ -28,7 +28,7 @@ Once the image is pushed, the tool will output its hash, e.g.:
 
 **Make sure to save that hash** as you'll need it in the payload definition of your requestor agent.
 
-That's it - your image is now 
+That's it - your image is now
 
 {% hint style="warning" %}
 Important: if you use a newly-pushed image in your task, you'll need to give providers some additional time to pull those images before they'll be able to publish offers that are compatible with your demand.
