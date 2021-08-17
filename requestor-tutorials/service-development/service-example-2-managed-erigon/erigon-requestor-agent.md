@@ -2,7 +2,7 @@
 
 ## Requestor agent
 
-This part of the tutorial directly corresponds to the two previous requestor tutorials \([services hello world example]() and [simple service]()\). We have the same clear separation between service specification and service provisioning, but there are important differences:
+This part of the tutorial directly corresponds to the two previous requestor tutorials \([services hello world example](erigon-requestor-agent.md) and [simple service](erigon-requestor-agent.md)\). We have the same clear separation between service specification and service provisioning, but there are important differences:
 
 * We use Erigon runtime instead of a VM-based runtime \(so we don't have any Dockerfile or `image_hash`\).
 * We don't implement `async def run` - the service is only started/stopped, requestor is idle when the service it is running.
@@ -67,7 +67,7 @@ async def get_payload(cls):
 Few important things to note here:
 
 * We don't have any `image_hash` \(contrary to the previouse examples\) because we don't use a VM-based runtime.
-* We declare the runtime name, `erigon` - this must match the offered [exeunit-name]().
+* We declare the runtime name, `erigon` - this must match the offered [exeunit-name](erigon-requestor-agent.md).
 * `min_mem_gib` - minimum amount of RAM the provider has to offer. This is pretty useless in the Erigon case \(contrary to the e.g. VM-based runtimes\), but is required because of a known `yapapi` [bug](https://github.com/golemfactory/yapapi/issues/500).
 
 #### Start
@@ -143,7 +143,7 @@ else:
     self._ctx.start()
 ```
 
-`start_args` is expected to be a tuple, but there are no more assumptions - they are just passed here from the [code that starts the service](). The Erigon runtime expects at most one argument and it is expected to be a `json`, so we send the serialized first argument \(or start without any arguments if `start_args` are empty\). This could be also a good place to perform a requestor-side validation, we validate `start_arg` only in the runtime.
+`start_args` is expected to be a tuple, but there are no more assumptions - they are just passed here from the [code that starts the service](erigon-requestor-agent.md). The Erigon runtime expects at most one argument and it is expected to be a `json`, so we send the serialized first argument \(or start without any arguments if `start_args` are empty\). This could be also a good place to perform a requestor-side validation, we validate `start_arg` only in the runtime.
 
 **Perform a STATUS command**
 
@@ -163,7 +163,7 @@ self._ctx.run('/bin/sh', '-c', 'cat some_file.txt')
 
 etc.
 
-In the VM environment, available commands are defined in the image and they usually default to commands available in the base linux image + optional additional commands, like `/golem/run/simple_service.py` in the [simple service](). When using a custom runtime, we are free to implement any commands we want - but also we have no built-in commands, not even `ls`.
+In the VM environment, available commands are defined in the image and they usually default to commands available in the base linux image + optional additional commands, like `/golem/run/simple_service.py` in the [simple service](erigon-requestor-agent.md). When using a custom runtime, we are free to implement any commands we want - but also we have no built-in commands, not even `ls`.
 {% endhint %}
 
 **Fetch the results**
@@ -277,7 +277,7 @@ Then comes the most important line:
 erigon = app.service_manager.create_service(Erigon, [init_params], ErigonServiceWrapper)
 ```
 
-`Erigon` is the `yapapi.Service`-based class we implemented in the [previous section]().
+`Erigon` is the `yapapi.Service`-based class we implemented in the [previous section](erigon-requestor-agent.md).
 
 `init_params` is a dictionary `{'network': <ETHEREUM-NETWORK-NAME>}` that is defined in the request.
 
