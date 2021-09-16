@@ -253,6 +253,25 @@ Context managers are somewhat similar to `try-catch-finally` blocks. They allow 
 
 Our context manager needs to be declared asynchronous as its setup and teardown functions are coroutines. This is required since they involve some long running actions such as creating/deleting payment allocations or starting/stopping background services.
 
+{% hint style="info" %}
+**Alternative usage pattern \(Python\)**
+
+Note that a`Golem` instance can also be used without an asynchronous context manager, but rather can be started and stopped synchronously:
+
+```python
+golem = Golem(budget=1.0, subnet_tag="devnet-beta.2")
+golem.start()
+
+# ...execution code here...
+
+golem.stop()
+```
+{% endhint %}
+
+
+
+
+
 As for the parameters passed to the `Golem/Executor` constructor:
 
 * `budget` specifies our desired budget \(in GLM\) for the total cost of all tasks computed using this `Golem/Executor` instance.
