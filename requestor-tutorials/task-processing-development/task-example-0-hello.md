@@ -67,7 +67,7 @@ async def main():
 
     tasks = [Task(data=None)]
 
-    async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
+    async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
         async for completed in golem.execute_tasks(worker, tasks, payload=package):
             print(completed.result.stdout)
 
@@ -267,10 +267,6 @@ golem.start()
 golem.stop()
 ```
 {% endhint %}
-
-
-
-
 
 As for the parameters passed to the `Golem/Executor` constructor:
 

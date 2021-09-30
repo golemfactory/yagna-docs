@@ -301,7 +301,7 @@ There is a an additional caveat here though.
 
 In order to clearly separate our production network, to which the majority of the provider nodes run by our users connect by default, from the testnet subnet the sole purpose of which should be testing your apps, we have introduced a concept of a "subnet tag".
 
-Whereas the limited number of our own test providers that we make available to our prospective requestors use the `devnet-beta.1` subnet \(which is included by default in our requestor-facing examples\), the mainnet providers use `public-beta` subnet by default.
+Whereas the limited number of our own test providers that we make available to our prospective requestors use the `devnet-beta` subnet \(which is included by default in our requestor-facing examples\), the mainnet providers use `public-beta` subnet by default.
 
 Thus, to leverage the computing power of the mainnet providers in the Golem network, you must provide the subnet tag used by those mainnet provider nodes - `public-beta`.
 {% endhint %}

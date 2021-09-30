@@ -76,7 +76,7 @@ golemsp run
 To run the Golem provider on the testnet, type the following in the terminal:
 
 ```text
-golemsp run --payment-network rinkeby --subnet devnet-beta.2
+golemsp run --payment-network rinkeby --subnet devnet-beta
 ```
 
 {% hint style="success" %}
