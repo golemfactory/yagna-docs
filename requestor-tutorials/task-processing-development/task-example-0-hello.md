@@ -256,15 +256,15 @@ Our context manager needs to be declared asynchronous as its setup and teardown 
 {% hint style="info" %}
 **Alternative usage pattern \(Python\)**
 
-Note that a`Golem` instance can also be used without an asynchronous context manager, but rather can be started and stopped synchronously:
+Note that a`Golem` instance can also be used without an asynchronous context manager, but rather can be started and stopped explicitly:
 
 ```python
-golem = Golem(budget=1.0, subnet_tag="devnet-beta.2")
-golem.start()
+golem = Golem(budget=1.0, subnet_tag="devnet-beta")
+await golem.start()
 
 # ...execution code here...
 
-golem.stop()
+await golem.stop()
 ```
 {% endhint %}
 
