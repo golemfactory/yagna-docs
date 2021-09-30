@@ -230,7 +230,7 @@ Let's first focus on the instantiation code:
 {% tabs %}
 {% tab title="Python" %}
 ```javascript
-async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
+async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
     ...
 ```
 {% endtab %}
@@ -238,7 +238,7 @@ async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
 {% tab title="NodeJS" %}
 ```javascript
 await asyncWith(
-    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta.2" }),
+    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta" }),
     ...
 );
 ```
