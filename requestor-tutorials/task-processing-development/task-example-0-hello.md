@@ -199,7 +199,7 @@ To see a more involved example of this take a look at: [Task Example 1: Simple h
 {% tabs %}
 {% tab title="Python" %}
 ```javascript
-async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
+async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
     async for completed in golem.execute_tasks(worker, tasks, payload=package):
         print(completed.result.stdout)
 ```
@@ -208,7 +208,7 @@ async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
 {% tab title="NodeJS" %}
 ```javascript
 await asyncWith(
-    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta.2" }),
+    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta" }),
     async (executor) => {
         for await (let completed of executor.submit(worker, tasks)) {
             console.log(completed.result().stdout);
