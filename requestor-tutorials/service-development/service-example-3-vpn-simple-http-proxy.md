@@ -30,7 +30,7 @@ For the VM image of this example, we're going to use a stock Docker image of the
 FROM nginx:stable-alpine
 ```
 
-In the example code, we're already using a pre-built and pre-uploaded Golem VM image but if you'd like to experiment with other HTTP servers or web-based applications, please follow our guides on preparation of your own VM images for Golem:
+In the example code, we're already using a pre-built and pre-uploaded Golem VM image but if you'd like to experiment with other HTTP servers or web-based applications, please follow our guides on the preparation of your own VM images for Golem:
 
 {% page-ref page="../vm-runtime/" %}
 
