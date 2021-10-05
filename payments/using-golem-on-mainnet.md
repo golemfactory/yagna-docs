@@ -134,7 +134,7 @@ Be careful though, as Golem does not perform any validation of the supplied addr
 
 ### ERC-20
 
-We don't currently support direct, ERC-20 withdraws from the Golem wallet. Soon, we will add functionality that will enable you to export your wallet and import it into MetaMask and you'll be able to withdraw your ERC-20 tokens that way.
+It is easiest to access your ERC-20 tokens by using the functionality described below to export your wallet \(in Ethereum wallet v3 format\) and then import it into MetaMask. Once you import your private key to MetaMask you'll be able to withdraw your ERC-20 tokens.
 
 ## Backing up your Golem wallet
 
