@@ -4,6 +4,12 @@ description: How to move and ensure safety of your funds when operating on mainn
 
 # Using Golem on Mainnet
 
+{% hint style="warning" %}
+This article is aimed mainly at **requestors** wishing to switch from running simple test tasks on our development subnet to launching production payloads utilizing the vast number of providers on the public subnet.
+
+If you're a provider, most likely your node is already configured to run on mainnet and using the public subnet.
+{% endhint %}
+
 Okay, so we've seen Golem requestors hand out tasks to providers and saw them pay those providers for the successfully executed tasks. We've also seen how we could utilize layer 2 \(zkSync\) to speed up those payments and significantly cut the transactions fees.
 
 Still, in the context of running Golem on the Ethereum mainnet, a few important questions remain largely unanswered:
