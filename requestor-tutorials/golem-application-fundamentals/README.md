@@ -8,7 +8,7 @@ A Golem application consists of a certain number of execution units - e.g. VMs c
 
 Golem's execution units are theoretically capable of running any kind of payload. Out of the box, we provide ability to execute code inside environments that provide effective isolation of execution from the host - currently, this support is limited to Docker-like VMs and WASM.
 
-Other kinds of payloads are possible as long as the app developer is ready to implement an appropriate runtime and distribute it to willing providers.
+Other kinds of payloads are possible as long as the app developer is ready to [implement an appropriate runtime](https://github.com/golemfactory/ya-runtime-sdk/) and distribute it to willing providers.
 
 So far, said orchestration takes the form of one of three types of actions:
 
