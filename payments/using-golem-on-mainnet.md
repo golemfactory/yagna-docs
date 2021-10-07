@@ -12,7 +12,7 @@ If you're a provider, most likely your node is already configured to run on main
 
 Okay, so we've seen Golem requestors hand out tasks to providers and saw them pay those providers for the successfully executed tasks. We've also seen how we could utilize layer 2 \(zkSync\) to speed up those payments and significantly cut the transactions fees.
 
-Still, in the context of running Golem on the Ethereum mainnet, a few important questions remain largely unanswered:
+Still, in the context of running **Golem on the Ethereum mainnet**, a few important questions remain largely unanswered:
 
 * how do you **get funds to your requestor** so you can use them to pay for the tasks?
 * how do you **get funds out of a Golem node** if you don't need them there anymore?
@@ -315,36 +315,30 @@ Thus, to leverage the computing power of the mainnet providers in the Golem netw
 Therefore, combining those parameters, in order to run our examples on mainnet, you'd launch them using e.g.:
 
 {% tabs %}
-{% tab title="Python / Blender" %}
+{% tab title="Python" %}
 ```text
-python3 blender.py --network=mainnet --subnet-tag=public-beta
+python3 blender.py --payment-network=mainnet --subnet-tag=public-beta
 ```
 {% endtab %}
 
-{% tab title="Python / Hashcat" %}
+{% tab title="JS" %}
 ```text
-python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --network=mainnet --number-of-providers 4 --log-file yacat-debug.log --subnet-tag=public-beta
-```
-{% endtab %}
-
-{% tab title="JS / Blender" %}
-```text
-yarn js:blender --network mainnet --subnet-tag public-beta
+yarn js:blender --payment-network mainnet --subnet-tag public-beta
 ```
 {% endtab %}
 {% endtabs %}
 
 ### Requestor agent code
 
-As for your own requestor agent code, you'll need to supply the appropriate `driver` , `network` and `subnet_tag` parameters to  `Golem`.
+As for your own requestor agent code, you'll need to supply the appropriate `payment_driver` , `payment_network` and `subnet_tag` parameters to  `Golem`.
 
 {% tabs %}
 {% tab title="Python" %}
 ```python
 async with Golem(
     [...],
-    network="mainnet",
-    driver="zksync",
+    payment_network="mainnet",
+    payment_driver="zksync",
     subnet_tag="public-beta",
 )
 ```
