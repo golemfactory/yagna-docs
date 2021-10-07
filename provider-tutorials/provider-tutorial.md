@@ -97,12 +97,12 @@ $ golemsp status
 │  Status                                      │
 │                                              │
 │  Service    is running                       │
-│  Version    0.7.1                            │
-│  Commit     a6e1ceb8                         │
-│  Date       2021-06-24                       │
-│  Build      157                              │
+│  Version    0.8.0                            │
+│  Commit     14a786d8                         │
+│  Date       2021-10-06                       │
+│  Build      174                              │
 │                                              │
-│  Node Name  awesome-summer                   │
+│  Node Name  colorful-autumn                  │
 │  Subnet     public-beta                      │
 │  VM         valid                            │
 ├──────────────────────────────────────────────┤
