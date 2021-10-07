@@ -4,12 +4,14 @@
 
 Golem ecosystem allows for building distributed applications, where multiple Provider nodes are instantiated and coordinated by a central Requestor. Such applications may include payloads which require connectivity **between Provider nodes**.
 
-Golem VPN feature has been designed to provide such connectivity in a manner which is as close as possible to standard network connectivity mechanisms.  Payloads must be ignorant of the fact that the Provider host is embedded in Golem network and all network traffic happens in Golem network itself. 
+Golem VPN feature has been designed to provide such connectivity in a manner which is as close as possible to standard network connectivity mechanisms. From the perspective of a VM, the connectivity is conducted using regular IP connections to assigned addresses and ports within the private network so payloads may be ignorant of the fact that the Provider host is embedded in Golem network and all network traffic happens in Golem network itself. 
 
 Golem VPN requires specific implementation in the ExeUnit/runtime, which must be capable of providing a standard Unix-socket interface to their payloads, and marshalling the logical network traffic through the Golem Net transport layer - thus achieving actual both Virtual and Private networking capabilities.  
 
 {% hint style="info" %}
-The Golem VPN mechanism enables node-to-node connectivity, implemented on the back of Golem Net transport layer. It does not provide node-to-Internet, nor Internet-to-node connectivity.
+The Golem VPN mechanism enables node-to-node connectivity, implemented on the back of Golem Net transport layer. It does not provide node-to-Internet, nor Internet-to-node connectivity directly.
+
+One of our bundled examples \(`http-proxy`\) presents an \(extremely simplified\) way to provide the latter.
 {% endhint %}
 
 ![](../../.gitbook/assets/golem-vpn.drawio.png)
@@ -47,6 +49,7 @@ A typical VPN setup sequence of activities performed by a Golem application is a
 * **Exec\(DEPLOY\)** - send DEPLOY command to the Provider's ExeUnit. At this point the network configuration is passed to the ExeUnit, which can initiate its network intrfaces to connect the ExeUnit \(and payload\) to the VPN.
 * Run payload...
 * **Remove node** from network - once the Provider node is no longer needed, it gets removed from the VPN network. 
+* **Remove network** - once the whole VPN is no longer needed, it may \(and should\) be removed so as to free the resources on the requestor yagna daemon.
 
 ### Caveats
 
