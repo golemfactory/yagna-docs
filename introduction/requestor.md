@@ -22,26 +22,26 @@ The typical use case for the requestor is as follows:
 
 * **Define the need**
 
-Define the IT resources it needs. Those needs \(for example CPU and memory requirements\) are then published in the form of a Demand in Golem's decentralized market.
+Define the resources it needs. Those needs \(for example CPU and memory requirements or the type of runtime to run\) are then published in the form of a Demand in Golem's decentralized market.
 
-* **Buy the resources**
+* **Acquire access to the resources**
 
-If the decentralized market contains offers previously announced by the providers that match the requirements of the particular requestor's demand, the resources thereby offered are purchased to be used by the requestor.
+If the decentralized market contains offers previously announced by the providers that match the requirements of the particular requestor's demand, the resources thereby offered are ordered for use by the requestor.
 
 * **Use the resources**
 
-The actual usage depends on the nature of the resources. For now, the most common scenario is performing computations, but Golem is not limited to this use case.
+The actual usage depends on the nature of the resources. For now, the most common scenario is performing computations, but Golem is not limited to this use case. It may also involve e.g. launching some long-running services which respond to requests coming from the requestor or from the outside world.
 
 * **Pay for the resources usage**
 
-The last step is to pay for the usage of the resources \(unless the provider is offering them for free :\). There are many possible payment scenarios, but [Ethereum](https://ethereum.org/)-based payment is the default one.
+The last step is to pay for the usage of the resources. There are many possible payment scenarios. Currently the default is to use a Layer-2 solution called zkSync to save on transaction costs but a regular payment driver using ERC-20 GLM transfers is also available. In near future we will enable even more ways to effect payments - we're currently using Polygon in [Thorg](https://www.thorg.io/) and the support thereof will soon make it to mainline yagna.
 
 ## How requestors are made and used?
 
 As requestors are based on each specific business need there is no single requestor agent that fits all the use cases.
 
 {% hint style="info" %}
-We do not provide any predefined requestor binary, as it is up to third parties to develop products on top of Golem.
+We do not provide any predefined requestor binary, as it is up to third parties to develop products on top of Golem. We do provide [SDKs](../requestor-tutorials/flash-tutorial-of-requestor-development/run-first-task-on-golem.md) through which such requestor agents can be implemented, though.
 {% endhint %}
 
 There are many possible scenarios defining the actual form and shape of a product that is based on Golem.
@@ -90,14 +90,16 @@ For instance, you could think of training a large ML model in seconds instead of
 
 For the basic computations scenario the details of the resource usage are as follows:
 
-* Specify what docker image to use:
-  * existing one, for example from the [docker hub](https://hub.docker.com/)
-  * create a custom docker image
+* Specify the payload to use: 
+  * a VM image:
+    * based on existing Docker image, for example from the [docker hub](https://hub.docker.com/),
+    * a custom VM image,
+  * some other runtime, e.g. WASM or a custom runtime based on [runtime SDK](https://github.com/golemfactory/ya-runtime-sdk/).
 * For each of the providers whose resources a requestor wishes to utilize, \(there is no set limit on the number\) define the files containing the input data for the computations.
-* For each of the docker containers created on the provider's hardware:
-  * transfer the input files to a volume available within the docker container.
+* For each of the runtime containers created on the provider's hardware:
+  * transfer the input files to a volume available within the  container.
   * execute the "run task" command \(actual command string is defined in the requestor agent code\)
-  * transfer the output files from the docker container's volume to the requestor.
+  * transfer the output files from the container's volume to the requestor.
 
 ![](../.gitbook/assets/tnm-docs-infographics-06.jpg)
 
