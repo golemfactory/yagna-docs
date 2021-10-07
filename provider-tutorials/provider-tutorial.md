@@ -22,8 +22,8 @@ To run a Golem provider node we recommend a physical machine as you may encounte
 It is possible to use macOS and Windows as provider hosts, but only with WASI execution environment.
 {% endhint %}
 
-{% hint style="info" %}
-For this release we have enabled the providers to expect payments on the Ethereum mainnet by default. It means that by running a provider node and executing tasks, you'll be **earning real GLM tokens** - either as pure ERC-20 tokens or on zkSync.
+{% hint style="success" %}
+We have enabled the providers to expect payments on the Ethereum mainnet by default. It means that by running a provider node and executing tasks, you are **earning real GLM tokens** - either as pure ERC-20 tokens or on zkSync.
 {% endhint %}
 
 ## Installation
@@ -46,8 +46,6 @@ Update your active shell\(s\) with:
 After installing all required components you will be asked to set up your node. **If you leave them empty the default values presented in brackets will be applied.**
 
 `Node name (default=generated_name):` - Type in the name of your new node and press Enter
-
-`subnet (default=public-beta):` - It is important that you use "public-beta"
 
 `Ethereum wallet address (default=internal wallet):` - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty, an address will be created for you on your local system.
 
