@@ -38,3 +38,7 @@ The typical resource usage scenario is as follows: after receiving the input dat
 
 ![](../.gitbook/assets/tnm-docs-infographics-02.jpg)
 
+The aforementioned "processing", apart from being a specific computation that needs to be performed on the dataset, may also mean launching some kind of long-running service on the provider node.
+
+In that case, the provider machine might not be required to do any heavy lifting right away but rather ensure that some service is up and running and ready to serve requests coming from the requestor or from the outside world whenever they come. 
+
