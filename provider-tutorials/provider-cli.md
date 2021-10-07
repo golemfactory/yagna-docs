@@ -14,7 +14,7 @@ Run `golemsp help` without arguments to see top-level usage information:
 
 ```css
 $ golemsp help
-golemsp 0.7.1 (a6e1ceb8 2021-06-24 build #157)
+golemsp 0.8.0 (14a786d8 2021-10-06 build #174)
 User friedly CLI for running Golem Provider
 
 USAGE:
@@ -111,7 +111,7 @@ example
 
 ```css
 $ golemsp settings show
-node name: "friendly-winter"
+node name: "colorful-autumn"
 Shared resources:
     cores:    7
     memory:    10.597366839647291 GiB
@@ -137,12 +137,12 @@ $ golemsp status
 │  Status                     │
 │                             │
 │  Service    is not running  │
-│  Version    0.7.1           │
-│  Commit     a6e1ceb8        │
-│  Date       2021-06-24      │
-│  Build      157             │
+│  Version    0.8.0           │
+│  Commit     14a786d8        │
+│  Date       2021-10-06      │
+│  Build      174             │
 │                             │
-│  Node Name  awesome-summer  │
+│  Node Name  colorful-autumn │
 │  Subnet     public-beta     │
 │  VM         valid           │
 └─────────────────────────────┘
@@ -156,12 +156,12 @@ $ golemsp status
 │  Status                                      │
 │                                              │
 │  Service    is running                       │
-│  Version    0.7.1                            │
-│  Commit     a6e1ceb8                         │
-│  Date       2021-06-24                       │
-│  Build      157                              │
+│  Version    0.8.0                            │
+│  Commit     14a786d8                         │
+│  Date       2021-10-06                       │
+│  Build      174                              │
 │                                              │
-│  Node Name  awesome-summer                   │
+│  Node Name  colorful-autumn                  │
 │  Subnet     public-beta                      │
 │  VM         valid                            │
 ├──────────────────────────────────────────────┤
