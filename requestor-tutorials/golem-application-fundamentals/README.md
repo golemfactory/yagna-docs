@@ -75,7 +75,7 @@ The purpose of a high-level API is to wrap the intricacies of Golem APIs with mo
 
 Following high-level API libraries are supported by Golem Factory:
 
-{% page-ref page="../../yapapi/yapapi.md" %}
+{% embed url="https://yapapi.readthedocs.io/en/latest/api.html" %}
 
 {% page-ref page="../../yajsapi/yajsapi.md" %}
 
