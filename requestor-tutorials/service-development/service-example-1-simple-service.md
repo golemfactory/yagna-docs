@@ -4,7 +4,7 @@ description: A proof-of-concept service running within a VM-based runtime
 
 # Service Example 1: Simple service
 
-The idea behind this proof-of-concept, toy-like service is to demonstrate the basic features of the high-level API's Service model running on a regular VM runtime. In other words, utilizing only the existing features of both yagna and the API itself without relying on any additional resources \(like custom runtime/ExeUnit implementation\).
+The idea behind this proof-of-concept, toy-like service is to demonstrate the basic features of the high-level API's Service model running on a regular VM runtime. In other words, utilizing only the existing features of both yagna and the API itself without relying on any additional resources (like custom runtime/ExeUnit implementation).
 
 {% hint style="info" %}
 This example illustrates following Golem features & aspects:
@@ -27,7 +27,7 @@ If you'd like to run the included example, please make sure that you have follow
 {% hint style="info" %}
 **This part gets deployed on the provider nodes** when the service is commissioned.
 
-In reality, the provider part could be using some off-the-shelf Docker image with minor modifications to accommodate Golem \(see the [services hello world example](service-example-0-hello-world.md) for the minimum needed modifications\). The reason we're building our own toy/POC service here just to have a simple, tangible tool that we can interact with to show you the example usage of our Services API.
+In reality, the provider part could be using some off-the-shelf Docker image with minor modifications to accommodate Golem (see the [services hello world example](service-example-0-hello-world.md) for the minimum needed modifications). The reason we're building our own toy/POC service here just to have a simple, tangible tool that we can interact with to show you the example usage of our Services API.
 {% endhint %}
 
 The service itself is rather simplistic and designed to reflect a mechanism that periodically polls some external data source and accumulates those observations in a database that can then be queried by the agent which has commissioned it.
@@ -59,10 +59,10 @@ optional arguments:
 
 Where:
 
-* `--init` is only ever executed once and creates an extremely simple sqlite database \(one table with just two columns, the value and the timestamp of an observation\) to hold observed values in,
+* `--init` is only ever executed once and creates an extremely simple sqlite database (one table with just two columns, the value and the timestamp of an observation) to hold observed values in,
 * `--add` adds a single value to the stored list of observations,
-* `--stats` provides a JSON structure containing a few metrics that reflect the characteristics of the distribution of the accumulated values \(like the mean, deviation and the number of observations so far\),
-* `--plot` produces a graphical plot of accumulated observations \(either as a time-series or as a distribution plot\),
+* `--stats` provides a JSON structure containing a few metrics that reflect the characteristics of the distribution of the accumulated values (like the mean, deviation and the number of observations so far),
+* `--plot` produces a graphical plot of accumulated observations (either as a time-series or as a distribution plot),
 * and finally, `--dump` dumps the JSON-serialized contents of the whole database.
 
 Example output of `--stats`:
@@ -104,9 +104,9 @@ The final piece of code is the daemon's control script `simple_service/simulate_
 
 ### Dockerfile
 
-Finally, we put all of the above components together using the following Dockerfile \(`simple_service/simple_service.Dockerfile`\), built on top of Python 3.8's slim image.
+Finally, we put all of the above components together using the following Dockerfile (`simple_service/simple_service.Dockerfile`), built on top of Python 3.8's slim image.
 
-```text
+```
 FROM python:3.8-slim
 VOLUME /golem/in /golem/out
 COPY simple_service.py /golem/run/simple_service.py
@@ -126,7 +126,7 @@ What it does is:
 * initalizes the service's sqlite database so that it doesn't have to be done in runtime,
 
 {% hint style="warning" %}
-It's important to note that the `ENTRYPOINT` statement, though included, is there just for convenience when testing the image in Docker itself. That entrypoint is ignored by Golem's VM runtime and all commands need to be refered to by their absolute paths \(`/golem/run...`\)
+It's important to note that the `ENTRYPOINT` statement, though included, is there just for convenience when testing the image in Docker itself. That entrypoint is ignored by Golem's VM runtime and all commands need to be refered to by their absolute paths (`/golem/run...`)
 {% endhint %}
 
 ### Building the image
@@ -148,12 +148,12 @@ If you'd like to play around with modifying the included image yourself, please 
 ## The requestor agent
 
 {% hint style="info" %}
-**This is the part that's run by the requestor \(you\).**
+**This is the part that's run by the requestor (you).**
 {% endhint %}
 
 We've seen what our little toy service looks like and we have its VM image ready. Now, we can move on to the more juicy stage where we **build the requestor agent** using the Golem's high-level Services API.
 
-The full source code of the requestor agent is available in yapapi's github repo: [https://github.com/golemfactory/yapapi/blob/b0.6/examples/simple-service-poc/simple\_service.py](https://github.com/golemfactory/yapapi/blob/b0.6/examples/simple-service-poc/simple_service.py).
+The full source code of the requestor agent is available in yapapi's github repo: [https://github.com/golemfactory/yapapi/blob/b0.6/examples/simple-service-poc/simple_service.py](https://github.com/golemfactory/yapapi/blob/b0.6/examples/simple-service-poc/simple_service.py).
 
 Here, we're going to go through the most important excerpts.
 
@@ -192,7 +192,7 @@ async def get_payload():
     )
 ```
 
-Here, it's a VM-image defined through a helper function \(`vm.repo`\) and using the hash of the file uploaded to [Golem's image repository](../vm-runtime/convert-a-docker-image-into-a-golem-image.md).
+Here, it's a VM-image defined through a helper function (`vm.repo`) and using the hash of the file uploaded to [Golem's image repository](../vm-runtime/convert-a-docker-image-into-a-golem-image.md).
 
 It's worth noting though, that the payload can be anything that inherits from `Payload` and contains a set of properties and constraints that define the execution environment in which we want our service to run. The `vm.repo` function does exactly that for a VM runtime but as long as the requestor and provider agree, it can be almost anything. We'll be showing you how to define your own provider-end runtime and interact with it from the requestor's end in one of our future tutorials.
 
@@ -200,18 +200,26 @@ It's worth noting though, that the payload can be anything that inherits from `P
 
 As described in the [introduction to the service model](service-model-introduction.md), the handlers for the "starting", "running" and "stopping" phases of a service all utilize the [work generator pattern](../golem-application-fundamentals/hl-api-work-generator-pattern.md). In other words, each of those handlers is a generator that yields sets of work items - execution script commands - that the Golem engine translates into command batches that are sent to the runtime on provider's end.
 
-Each handler has access to the service instance's work context - an interface that connects the requestor agent code with a running activity \(execution unit\) on the provider node.
+Each handler has access to the service instance's work context - an interface that connects the requestor agent code with a running activity (execution unit) on the provider node.
 
 #### Start handler
 
 ```python
 async def start(self):
-    # handler responsible for starting the service
-    self._ctx.run(self.SIMPLE_SERVICE_CTL, "--start")
-    yield self._ctx.commit()
+    """handler responsible for starting the service."""
+
+    # perform the initialization of the Service
+    async for script in super().start():
+        yield script
+
+    # start the service
+    script = self._ctx.new_script()
+    script.run(self.SIMPLE_SERVICE_CTL, "--start")
+    yield script
+
 ```
 
-To start our service, we're going to call our `simulate_observations_ctl.py`script which, as described above, starts the background job that generates our observations and adds them to the service's database. As this is the first command issued, the work context will implicitly prepend our batch with `deploy` and `start` commands, which \(unless we need to parametrize the `start` call - not needed for a VM runtime\) is exactly what we need.
+To start our service, we're going to call our `simulate_observations_ctl.py`script which, as described above, starts the background job that generates our observations and adds them to the service's database. As this is the first command issued, the work context will implicitly prepend our batch with `deploy` and `start` commands, which (unless we need to parametrize the `start` call - not needed for a VM runtime) is exactly what we need.
 
 After the command finishes, our service instances is marked as "running" and proceeds to the `run` handler.
 
@@ -222,13 +230,14 @@ async def run(self):
     # handler responsible for providing the required interactions while the service is running
     while True:
         await asyncio.sleep(10)
-        self._ctx.run(self.SIMPLE_SERVICE, "--stats")  # idx 0
-        self._ctx.run(self.SIMPLE_SERVICE, "--plot", "dist")  # idx 1
+        script = self._ctx.new_script()
+        stats_results = script.run(self.SIMPLE_SERVICE, "--stats")
+        plot_results = script.run(self.SIMPLE_SERVICE, "--plot", "dist")
 
-        future_results = yield self._ctx.commit()
-        results = await future_results
-        stats = results[0].stdout.strip()
-        plot = results[1].stdout.strip().strip('"')
+        yield script
+
+        stats = (await stats_results).stdout.strip()
+        plot = (await plot_results).stdout.strip().strip('"')
 
         print(f"{TEXT_COLOR_CYAN}stats: {stats}{TEXT_COLOR_DEFAULT}")
 
@@ -236,38 +245,34 @@ async def run(self):
         print(
             f"{TEXT_COLOR_CYAN}downloading plot: {plot} to {plot_filename}{TEXT_COLOR_DEFAULT}"
         )
-        self._ctx.download_file(
-            plot, str(pathlib.Path(__file__).resolve().parent / plot_filename)
-        )
+        script = self._ctx.new_script()
+        script.download_file(plot, str(pathlib.Path(__file__).resolve().parent / plot_filename))
+        yield script
 
-        steps = self._ctx.commit()
-        yield steps
 ```
 
-While our service is running, we'll want to periodically peek inside some characteristics of the observations accumulated so far. Thus, every ten seconds \(`asyncio.sleep(10)`\), we're going to run two consecutive batches of commands.
+While our service is running, we'll want to periodically peek inside some characteristics of the observations accumulated so far. Thus, every ten seconds (`asyncio.sleep(10)`), we're going to run two consecutive batches of commands.
 
 The first batch:
 
 ```python
-self._ctx.run(self.SIMPLE_SERVICE, "--stats")  # idx 0
-self._ctx.run(self.SIMPLE_SERVICE, "--plot", "dist")  # idx 1
+script = self._ctx.new_script()
+stats_results = script.run(self.SIMPLE_SERVICE, "--stats")
+plot_results = script.run(self.SIMPLE_SERVICE, "--plot", "dist")
 
-future_results = yield self._ctx.commit()
+yield script
 ```
 
 calls the `simple_service.py` with first `--stats` and then `--plot` arguments to first retrieve a JSON dictionary of the observations' statistical metrics and then to generate a PNG plot depicting that distribution.
 
-The return value of `yield` here is saved in `future_results` variable which enables us to later retrieve the results from the commands included in this batch. We then await those future results and when the scripts finishes the execution, we receive the captured `results` and extract the standard output of both of those commands.
+The return values of `script.run()` here are saved in which enables us to later retrieve the results from these commands. We then await those future results and when the scripts finishes the execution, we receive the captured `results` and extract the standard output of both of those commands.
 
 The output from `--stats` is printed as is and the output of `--plot` is used by _another_ batch:
 
 ```python
-self._ctx.download_file(
-    plot, str(pathlib.Path(__file__).resolve().parent / plot_filename)
-)
-
-steps = self._ctx.commit()
-yield steps
+script = self._ctx.new_script()
+script.download_file(plot, str(pathlib.Path(__file__).resolve().parent / plot_filename))
+yield script
 ```
 
 to download the PNG file that the `--plot` command generated. Here we don't need to capture any results as the effect is the PNG file that's downloaded to our local filesystem.
@@ -277,13 +282,15 @@ to download the PNG file that the `--plot` command generated. Here we don't need
 ```python
 async def shutdown(self):
     # handler reponsible for executing operations on shutdown
-    self._ctx.run(self.SIMPLE_SERVICE_CTL, "--stop")
-    yield self._ctx.commit()
+    script = self._ctx.new_script()
+    script.run(self.SIMPLE_SERVICE_CTL, "--stop")
+    yield script
+
 ```
 
 Lastly, when our service is requested to stop, we can issue any commands that perform a shutdown, cleanup or e.g. preserve the state of the service instance.
 
-Here, we're just issuing a command which stops the background process that we had started in the "starting" phase. \(Technically, we don't need to do that in case of the VM runtime since the whole VM is stopped when the activity is released by the requestor agent but we're including this step for illustration purposes.\)
+Here, we're just issuing a command which stops the background process that we had started in the "starting" phase. (Technically, we don't need to do that in case of the VM runtime since the whole VM is stopped when the activity is released by the requestor agent but we're including this step for illustration purposes.)
 
 ### Starting our service
 
@@ -295,22 +302,24 @@ We do that using two function calls:
 async with Golem(
     budget=1.0,
     subnet_tag=subnet_tag,
-    driver=driver,
-    network=network,
+    payment_driver=payment_driver,
+    payment_network=payment_network,
 ) as golem:
-
-    # start the service
 
     cluster = await golem.run_service(
         SimpleService,
-        num_instances=NUM_INSTANCES,
+        instance_params=[
+            {"instance_name": f"simple-service-{i+1}", "show_usage": show_usage}
+            for i in range(num_instances)
+        ],
         expiration=datetime.now(timezone.utc) + timedelta(minutes=120),
     )
+
 ```
 
 The first one creates the Golem as a context manager, configured with the appropriate subnet, payment driver and payment network and given a particular budget allocated for this job.
 
-The second one instructs the Golem engine to create a cluster of service instances based on our service definition class \(`SimpleService`\).
+The second one instructs the Golem engine to create a cluster of service instances based on our service definition class (`SimpleService`).
 
 After those commands are executed, we receive an instance of `Cluster` which is an object which can be queried to get the state of and to control the instances that we thus commissioned.
 
@@ -386,4 +395,3 @@ Secondly, the lifetime of a service on Golem is limited to the maximum lifetime 
 Golem's world does not end on VMs though. Very soon, we'll be showcasing an example that goes beyond VM-based runtimes and uses our new Provider SDK to define a custom runtime which allows Golem's providers to run just about any imaginable service and computation.
 
 Stay tuned!
-
