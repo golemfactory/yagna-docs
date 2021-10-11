@@ -16,12 +16,14 @@ This example illustrates following Golem features & aspects:
 
 This example shares a number of concepts, as well as parts of its code with the task model "Hello World!". Therefore the below article can be considered a good introduction:
 
-{% page-ref page="../task-processing-development/task-example-0-hello.md" %}
+{% content-ref url="../task-processing-development/task-example-0-hello.md" %}
+[task-example-0-hello.md](../task-processing-development/task-example-0-hello.md)
+{% endcontent-ref %}
 
 Also, in case you haven't done so already, it's a good idea to take a look at the [Introduction to the service model](service-model-introduction.md) before proceeding.
 
 {% hint style="warning" %}
-Please note that as of its current latest version \(`0.4.0`\) the JS high-level API \(`yajsapi`\) does not yet support the service model. Therefore, this article includes only Python code examples.
+Please note that as of its current latest version (`0.4.0`) the JS high-level API (`yajsapi`) does not yet support the service model. Therefore, this article includes only Python code examples.
 {% endhint %}
 
 ## Requestor agent code
@@ -50,26 +52,32 @@ class DateService(Service):
         )
 
     async def start(self):
+        async for script in super().start():
+            yield script
+
         # every `DATE_POLL_INTERVAL` write output of `date` to `DATE_OUTPUT_PATH`
-        self._ctx.run(
+        script = self._ctx.new_script()
+        script.run(
             "/bin/sh",
             "-c",
             f"while true; do date > {DATE_OUTPUT_PATH}; sleep {REFRESH_INTERVAL_SEC}; done &",
         )
-        yield self._ctx.commit()
+        yield script
 
     async def run(self):
         while True:
             await asyncio.sleep(REFRESH_INTERVAL_SEC)
-            self._ctx.run(
+            script = self._ctx.new_script()
+            future_result = script.run(
                 "/bin/sh",
                 "-c",
                 f"cat {DATE_OUTPUT_PATH}",
             )
 
-            future_results = yield self._ctx.commit()
-            results = await future_results
-            print(results[0].stdout.strip())
+            yield script
+
+            result = (await future_result).stdout
+            print(result.strip() if result else "")
 
 
 async def main():
@@ -89,6 +97,7 @@ if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     task = loop.create_task(main())
     loop.run_until_complete(task)
+
 ```
 {% endtab %}
 {% endtabs %}
@@ -109,7 +118,7 @@ In the Golem API, services are implemented by extending the base `Service` class
 * `run() -> None` called for each service instance when it enters the `running` state. This is where the main loop of our service should be implemented.
 * `shutdown() -> None` called for each service instance when it enters the `stopping` state. In case our service requires some cleanup logic to be run before an instance is terminated, this is where it should be placed.
 
-All three life cycle methods \(i.e. `start`, `run` and `shutdown`\) are optional, although in most cases a service will require at least `start` and `run` to be implemented.
+All three life cycle methods (i.e. `start`, `run` and `shutdown`) are optional, although in most cases a service will require at least `start` to be implemented.
 
 {% hint style="info" %}
 To control service instances running on remote exe units, all life cycle methods require access to a `WorkContext` object tied to some active instance.
@@ -133,19 +142,24 @@ async def get_payload():
 
 Our `DateService` uses the same image hash as the [Task Example 0: Hello World!](../task-processing-development/task-example-0-hello.md). This hash points to a pre-uploaded, minimal image based on Alpine Linux.
 
-### start\(\) function
+### start() function
 
 {% tabs %}
 {% tab title="Python" %}
 ```python
 async def start(self):
+    async for script in super().start():
+        yield script
+
     # every `DATE_POLL_INTERVAL` write output of `date` to `DATE_OUTPUT_PATH`
-    self._ctx.run(
+    script = self._ctx.new_script()
+    script.run(
         "/bin/sh",
         "-c",
         f"while true; do date > {DATE_OUTPUT_PATH}; sleep {REFRESH_INTERVAL_SEC}; done &",
     )
-    yield self._ctx.commit()
+    yield script
+
 ```
 {% endtab %}
 {% endtabs %}
@@ -164,24 +178,11 @@ The above command has its placeholders substituted with their actual default val
 
 The file `/golem/work/date.txt` will be our source of data which we'll later on read in our service's `run` function.
 
-### run\(\) function
+### run() function
 
 {% tabs %}
 {% tab title="Python" %}
-```python
-async def run(self):
-    while True:
-        await asyncio.sleep(REFRESH_INTERVAL_SEC)
-        self._ctx.run(
-            "/bin/sh",
-            "-c",
-            f"cat {DATE_OUTPUT_PATH}",
-        )
 
-        future_results = yield self._ctx.commit()
-        results = await future_results
-        print(results[0].stdout.strip())
-```
 {% endtab %}
 {% endtabs %}
 
@@ -206,7 +207,7 @@ async def main():
 In the function `main` we start by creating an instance of `Golem`, specifying our budget and target subnet. We then use it as a context manager to run our service.
 
 {% hint style="info" %}
-If you are not familiar with the `Golem` class and/or how it's used in these examples, take a look at [Task Example 0: Hello World!](../task-processing-development/task-example-0-hello.md#golem-executor) \(this links to a section about `Golem/Executor` classes\).
+If you are not familiar with the `Golem` class and/or how it's used in these examples, take a look at [Task Example 0: Hello World!](../task-processing-development/task-example-0-hello.md#golem-executor) (this links to a section about `Golem/Executor` classes).
 {% endhint %}
 
 Provisioning our service is done using the method `run_service` which, in our example, is given two parameters:
@@ -214,7 +215,7 @@ Provisioning our service is done using the method `run_service` which, in our ex
 * `service_class` is the class extending `Service` which will be used as the definition for each of our service instances.
 * `num_instances` is the number of service instances we'd like to create.
 
-Awaiting on `run_service` returns a `Cluster` object. This is a wrapper around a collection of `Service` objects, in our case these will be `DateService` objects. Each of these objects represents a single instance of our service provisioned on the Golem network. The `Cluster` can be used to control the state of those service instances \(e.g. to stop services if necessary\).
+Awaiting on `run_service` returns a `Cluster` object. This is a wrapper around a collection of `Service` objects, in our case these will be `DateService` objects. Each of these objects represents a single instance of our service provisioned on the Golem network. The `Cluster` can be used to control the state of those service instances (e.g. to stop services if necessary).
 
 ### Monitoring service state
 
@@ -242,15 +243,15 @@ Using the `Cluster` object's `instances` field we can iterate over our service i
 
 That's it!
 
-We can now try running our service. Assuming you have a `yagna` node active locally \(refer to [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/) in case of any doubts\) you can start the example by running the below command from the example's directory:
+We can now try running our service. Assuming you have a `yagna` node active locally (refer to [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/) in case of any doubts) you can start the example by running the below command from the example's directory:
 
-```text
+```
 YAGNA_APPKEY={your_appkey_here} ./hello_service.py
 ```
 
-Once the service gets provisioned on a provider you should see log lines similar to the ones below \(some parts are abridged for clarity\):
+Once the service gets provisioned on a provider you should see log lines similar to the ones below (some parts are abridged for clarity):
 
-```text
+```
 [2021-06-16 13:42:42,969 INFO yapapi.services] <DateService: eaddc033960d48d0a04801a91bdca489> commissioned
 [2021-06-16 13:42:42,970 INFO yapapi.summary] Task started on provider 'friendly-winter', task data: Service: DateService
 Instance 0 is starting on friendly-winter
@@ -267,7 +268,6 @@ Wed Jun 16 11:42:53 UTC 2021
 ...
 ```
 
-In the case of our example we run a single instance of the service. Once that instance changes its state to `running` we start seeing output from the `date` command running inside the VM. After our set period of time \(i.e. 1 minute\) the agreement gets terminated and, after paying for the invoice, our program exits.
+In the case of our example we run a single instance of the service. Once that instance changes its state to `running` we start seeing output from the `date` command running inside the VM. After our set period of time (i.e. 1 minute) the agreement gets terminated and, after paying for the invoice, our program exits.
 
 The next article takes a close look at a more complete example, including error handling and more complex service control.
-

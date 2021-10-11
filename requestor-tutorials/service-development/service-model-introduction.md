@@ -6,7 +6,7 @@ description: Development and deployment of a Golem service
 
 How can I host services in the Golem network?
 
-Golem allows you to launch and control interactive services. Contrary to batch processing tasks - which execute certain computations and finish once the results are ready - a service is, in general Golem terms, a process which runs under the direct control of Provider, based on the Agreement with a Requestor, and responds to requests \(passed either via Golem network, or totally outside of Golem network's visibility\), until it is explicitly stopped \(usually by a Requestor\).
+Golem allows you to launch and control interactive services. Contrary to batch processing tasks - which execute certain computations and finish once the results are ready - a service is, in general Golem terms, a process which runs on a node controlled by a Provider, based on the Agreement with a Requestor, and responds to requests (passed either via Golem network, or totally outside of Golem network's visibility), until it is explicitly stopped (usually by a Requestor).
 
 In the Golem service model, the Requestor Agent application specifies the service which is to be instantiated and then controls the service instance throughout its lifecycle in the Golem network.
 
@@ -16,15 +16,15 @@ Our Services API provides an abstraction over Golem low-level APIs, which is aim
 
 ![](../../.gitbook/assets/service-state-diagram-state-diagram-for-handbook-1-.png)
 
-Transitions from one state to another take place as a result of certain events. The events may be triggered by a Requestor \(RunService\), Provider \(AgreementTerminated\), or may be a result of an external phenomenon \(like errors of varying nature\). Golem SDK's service programming model allows the developer to specify logic that is to be executed in subsequent "active" states of the Service's lifecycle \(`Starting`, `Running`, `Stopping`\). The HL API controls the transitions between states and hides the "plumbing" of Golem mechanics so that the developer can focus on their service's details.
+Transitions from one state to another take place as a result of certain events. The events may be triggered by a Requestor (RunService), Provider (AgreementTerminated), or may be a result of an external phenomenon (like errors of varying nature). Golem SDK's service programming model allows the developer to specify logic that is to be executed in subsequent "active" states of the Service's lifecycle (`Starting`, `Running`, `Stopping`). The HL API controls the transitions between states and hides the "plumbing" of Golem mechanics so that the developer can focus on their service's details.
 
 ## Requestor Agent service application layout
 
 The developer of a Golem service application needs to follow a certain pattern to implement fundamental aspects of service definition and control. A Service application includes an ExeUnit running on the Provider node, and a Requestor exercising control over that ExeUnit via Golem APIs. The ExeUnit can be eg. a VM hosting a specific payload application, or a custom ExeUnit controller/wrapper which integrates a third-party service software with the Golem ecosystem. In any case, the Service provisioned on the Golem network will require certain aspects to be specified in the Requestor Agent application.
 
-In order to define a Golem Service, the developer must create a class/object to indicate the fundamental aspects of the Service to be provisioned. The class must include methods responsible for payload specification \(the details of the Demand indicating eg. the ExeUnit/runtime to be sought on the market\), and logic to be executed in "active" states of the service lifecycle.
+In order to define a Golem Service, the developer must create a class/object to indicate the fundamental aspects of the Service to be provisioned. The class must include methods responsible for payload specification (the details of the Demand indicating eg. the ExeUnit/runtime to be sought on the market), and logic to be executed in "active" states of the service lifecycle.
 
-The code snippets below are illustrating a very basic service \(a `SimpleService`\), hosted in a standard Golem VM runtime, where service "requests" are the shell commands executed repeatedly on the VM while the service is running.
+The code snippets below are illustrating a very basic service (a `SimpleService`), hosted in a standard Golem VM runtime, where service "requests" are the shell commands executed repeatedly on the VM while the service is running.
 
 ### Specify Demand
 
@@ -48,11 +48,13 @@ class SimpleService(Service):
 {% endtab %}
 {% endtabs %}
 
-A HL API library controls all aspects of Provider finding, negotiations, and instantiating an Activity. The app needs to indicate the actions to be executed in subsequent "active" states of the Service's lifecycle.
+A HL API library controls all aspects of acquisition of suitable Providers, negotiations, and instantiation of Activities. The app needs to indicate the actions to be executed in subsequent "active" states of the Service's lifecycle.
 
 ### Define Starting logic
 
 Once a Golem activity starts and the Service instance begins its life, the Requestor Agent must indicate all actions to be executed in order to set up the service.
+
+
 
 {% tabs %}
 {% tab title="Python" %}
@@ -60,23 +62,30 @@ Once a Golem activity starts and the Service instance begins its life, the Reque
     ...
 
     async def start(self):
-        self._ctx.run("/golem/run/simulate_observations_ctl.py", "--start")
-        yield self._ctx.commit()
+        # perform the initialization of the Service
+        async for script in super().start():
+            yield script
+
+        script = self._ctx.new_script()
+        script.run("/golem/run/simulate_observations_ctl.py", "--start")
+        yield script
 
     ...
 ```
 {% endtab %}
 {% endtabs %}
 
-The `start()` method follows a 'work generator' pattern. It uses `WorkContext` instance \(accessed via `_ctx`\) to build a sequence of actions which then gets returned to the service execution engine to be asynchronously relayed to the Provider's runtime. Please take a look at the methods provided by the `WorkContext` to get familiar with the possible work steps that can be performed via Golem APIs:
+The `start()` method follows a 'work generator' pattern. It uses a `Script` instance (acquired via `_ctx` - the activity's work context) to build a sequence of actions which then gets returned to the service execution engine to be asynchronously relayed to the Provider's runtime. Please take a look at the methods provided by `Script` objects to get familiar with the possible work steps that can be performed via Golem APIs:
 
-{% page-ref page="../golem-application-fundamentals/hl-api-work-generator-pattern.md" %}
+{% content-ref url="../golem-application-fundamentals/hl-api-work-generator-pattern.md" %}
+[hl-api-work-generator-pattern.md](../golem-application-fundamentals/hl-api-work-generator-pattern.md)
+{% endcontent-ref %}
 
-The `start()` sequence of actions is executed only once in Service's lifecycle and must result either with success, or indication of failure, in which case the Service immediately moves to `Terminated` state.
+The `start()` sequence of actions is executed only once in Service's lifecycle and must result either with success, or indication of failure, in which case, depending on the `respawn_unstarted_instances` flag of the `Golem.run_service()` call, the Service's startup is retried on another provider if the flag is `True` or immediately moves to `Terminated` state otherwise.
 
 ### Define Running logic
 
-Once started, the Service moves in Running mode - a normal state of operation. In this state, the Requestor Agent may for example; monitor & control the service \(either via Golem APIs or contacting the service directly via other means\).
+Once started, the Service transitions to the Running mode - a normal state of operation. In this state, the Requestor Agent may for example; monitor and control the service (either via Golem APIs or contacting the service directly via other means).
 
 {% tabs %}
 {% tab title="Python" %}
@@ -86,11 +95,12 @@ Once started, the Service moves in Running mode - a normal state of operation. I
     async def run(self):
         while True:
             await asyncio.sleep(10)
-            self._ctx.run("/golem/run/simple_service.py", "--stats")  # idx 0
+            script = self._ctx.new_script()
 
-            future_results = yield self._ctx.commit()
-            results = await future_results
-            stats = results[0].stdout.strip()
+            stats_result = script.run("/golem/run/simple_service.py", "--stats")  # idx 0
+
+            yield script
+            stats = (await stats_result).stdout.strip()
             print(stats)
 
    ...
@@ -106,7 +116,7 @@ This method also follows the [_work generator_ ](../golem-application-fundamenta
 
 ### Define Stopping logic
 
-In case the service gets halted, either by Requestor's decision or due to Provider-triggered termination, provided the activity \(and thus, the attached `WorkContext` \) is still available, the Service moves to a `Stopping` state, in which a Requestor Agent still may have an ability to e.g. recover some artifacts from the service instance, or perform some general clean sweep.
+In case the service gets halted, either by Requestor's decision or due to Provider-triggered termination, provided the activity (and thus, the attached `WorkContext` ) is still available, the Service moves to a `Stopping` state, in which a Requestor Agent still may have an ability to e.g. recover some artifacts from the service instance, or perform some general clean sweep.
 
 {% tabs %}
 {% tab title="Python" %}
@@ -114,8 +124,9 @@ In case the service gets halted, either by Requestor's decision or due to Provid
     ...
 
     async def shutdown(self):
-        self._ctx.run("/golem/run/simulate_observations_ctl.py", "--stop")
-        yield self._ctx.commit()
+        script = self._ctx.new_script()
+        script.run("/golem/run/simulate_observations_ctl.py", "--stop")
+        yield script
 
     ...
 ```
@@ -142,9 +153,8 @@ Once a service specification class/object is defined, the service can be provisi
     async with Golem(
         budget=1.0,
         subnet_tag=subnet_tag,
-        driver=driver,
-        network=network,
-        event_consumer=log_summary(log_event_repr),
+        payment_driver=payment_driver,
+        payment_network=payment_network,
     ) as golem:
 
         cluster = await golem.run_service(
@@ -157,17 +167,20 @@ Once a service specification class/object is defined, the service can be provisi
 {% endtab %}
 {% endtabs %}
 
-The `Golem` call returns a `Cluster` of \(in this case\) `SimpleService` objects, each representing an instance of the service, as provisioned on the Golem network. The `Cluster` can be used to control the state of the services \(e.g. to stop services when required\).
+The `Golem` call returns a `Cluster` of (in this case) `SimpleService` objects, each representing an instance of the service, as provisioned on the Golem network. The `Cluster` can be used to control the state of the services (e.g. to stop services when required).
 
-This is all it takees to build a Requestor Agent for rudimentary VM-based service. Soon, we'll show you a bit more sophisticated service examples, eg. including custom runtimes. Stay tuned!
+This is all it takes to build a Requestor Agent for rudimentary VM-based service. Soon, we'll show you a bit more sophisticated service examples, eg. including custom runtimes. Stay tuned!
 
 For now, you may wish to jump to:
 
-{% page-ref page="service-example-0-hello-world.md" %}
+{% content-ref url="service-example-0-hello-world.md" %}
+[service-example-0-hello-world.md](service-example-0-hello-world.md)
+{% endcontent-ref %}
 
 and
 
-{% page-ref page="service-example-1-simple-service.md" %}
+{% content-ref url="service-example-1-simple-service.md" %}
+[service-example-1-simple-service.md](service-example-1-simple-service.md)
+{% endcontent-ref %}
 
 Have fun exploring the new Service API!
-
