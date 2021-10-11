@@ -35,9 +35,9 @@ The only purpose of the service that will be launched inside the VM on the Provi
 
 Therefore, on top of a pretty bare `alpine` linux image, we're just going to add a small set of commands which installs and configures the components required to launch an SSH server within this VM container.
 
-This is how the resultant Dockerfile \(`ssh/Dockerfile`\) looks like:
+This is how the resultant Dockerfile (`ssh/Dockerfile`) looks like:
 
-```text
+```
 FROM alpine:latest
 
 RUN apk add --no-cache --update bash openssh iproute2 tcpdump net-tools screen
@@ -51,7 +51,7 @@ If you'd like to experiment with modifying it, please refer to our articles abou
 ## The requestor agent
 
 {% hint style="info" %}
-**This is the part that's run by the requestor \(you\).**
+**This is the part that's run by the requestor (you).**
 {% endhint %}
 
 Now we can move on to the requestor agent, which will create a VPN network, attach the Provider node to it, and allow SSH connections via the Net gate available on the `yagna` daemon.
@@ -99,29 +99,34 @@ async def get_payload():
     )
 ```
 
-As is the case with most of the examples that we're presenting in the handbook, the payload here is a VM-image defined through a helper function \(`vm.repo`\) and using the hash of the file uploaded to [Golem's image repository](../vm-runtime/convert-a-docker-image-into-a-golem-image.md).
+As is the case with most of the examples that we're presenting in the handbook, the payload here is a VM-image defined through a helper function (`vm.repo`) and using the hash of the file uploaded to [Golem's image repository](../vm-runtime/convert-a-docker-image-into-a-golem-image.md).
 
 Note though, that now the payload constraints also indicate that the Provider is **required to offer the VPN capability** within its VM runtime, which is automatically supported by any providers running `yagna 0.8`and above.
 
 #### Service phase handlers
 
-The service launched is really simple - it is only expected to launch the payload, set the password to something we know and keep it running indefinitely \(so that a user can connect to the VM using an SSH client\).
+The service launched is really simple - it is only expected to launch the payload, set the password to something we know and keep it running indefinitely (so that a user can connect to the VM using an SSH client).
 
-#### Run handler
+#### Start handler
 
 ```python
-async def run(self):
-    connection_uri = self.network_node.get_websocket_uri(22)
-    app_key = self.cluster._engine._api_config.app_key
+async def start(self):
+    # perform the initialization of the Service
+    # (which includes sending the network details within the `deploy` command)
+    async for script in super().start():
+        yield script
 
     password = "".join(random.choice(string.ascii_letters + string.digits) for _ in range(8))
 
-    script = self._ctx.new_script()
+    script = self._ctx.new_script(timeout=timedelta(seconds=10))
     script.run("/bin/bash", "-c", "syslogd")
     script.run("/bin/bash", "-c", "ssh-keygen -A")
     script.run("/bin/bash", "-c", f'echo -e "{password}\n{password}" | passwd')
     script.run("/bin/bash", "-c", "/usr/sbin/sshd")
     yield script
+
+    connection_uri = self.network_node.get_websocket_uri(22)
+    app_key = self.cluster._engine._api_config.app_key
 
     print(
         "Connect with:\n"
@@ -132,15 +137,13 @@ async def run(self):
 
     print(f"{TEXT_COLOR_RED}password: {password}{TEXT_COLOR_DEFAULT}")
 
-    # await indefinitely...
-    await asyncio.Future()
 ```
 
-In the `run` stage, the Requestor sends commands to launch the SSH daemon, then displays a helper note illustrating the command required to connect a local SSH client to the Provider's VM followed by the just-generated password that has been set on that host.
+In the `start` stage, the Requestor sends commands to launch the SSH daemon, then displays a helper note illustrating the command required to connect a local SSH client to the Provider's VM followed by the just-generated password that has been set on that host.
 
-Please note the line beginning the `run` method which retrieves the websocket URI that is the gateway that the yagna daemon exposes in its Net API which allows us to connect to any port on the deployed VM.
+Please note the line 16 above which retrieves the websocket URI that is the gateway that the yagna daemon exposes in its Net API which allows us to connect to any port on the deployed VM.
 
-This websocket is part of the REST API itself and hence the need to also authenticate the connection using the yagna app key \(that's the same key that we use to connect to all the other endpoints in the REST API and which we provide to yapapi using YAGNA\_APPKEY environment variable\).
+This websocket is part of the REST API itself and hence the need to also authenticate the connection using the yagna app key (that's the same key that we use to connect to all the other endpoints in the REST API and which we provide to yapapi using YAGNA_APPKEY environment variable).
 
 ### Starting our service
 
@@ -196,4 +199,3 @@ This is necessary, as the connection to Net gate on a websocket needs to be auth
 Once you launch the SSH client and approve the host's SSH key you'll need to use the password generated alongside the connection command above to log in to the provider's VM. 
 
 Voila! You should now be logged-in into the VM's shell.
-
