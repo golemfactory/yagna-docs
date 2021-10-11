@@ -98,9 +98,9 @@ $ golemsp status
 │                                              │
 │  Service    is running                       │
 │  Version    0.8.0                            │
-│  Commit     14a786d8                         │
-│  Date       2021-10-06                       │
-│  Build      174                              │
+│  Commit     69838646                         │
+│  Date       2021-10-11                       │
+│  Build      175                              │
 │                                              │
 │  Node Name  colorful-autumn                  │
 │  Subnet     public-beta                      │
