@@ -4,9 +4,15 @@ description: How to move and ensure safety of your funds when operating on mainn
 
 # Using Golem on Mainnet
 
+{% hint style="warning" %}
+This article is aimed mainly at **requestors** wishing to switch from running simple test tasks on our development subnet to launching production payloads utilizing the vast number of providers on the public subnet.
+
+If you're a provider, most likely your node is already configured to run on mainnet and using the public subnet.
+{% endhint %}
+
 Okay, so we've seen Golem requestors hand out tasks to providers and saw them pay those providers for the successfully executed tasks. We've also seen how we could utilize layer 2 \(zkSync\) to speed up those payments and significantly cut the transactions fees.
 
-Still, in the context of running Golem on the Ethereum mainnet, a few important questions remain largely unanswered:
+Still, in the context of running **Golem on the Ethereum mainnet**, a few important questions remain largely unanswered:
 
 * how do you **get funds to your requestor** so you can use them to pay for the tasks?
 * how do you **get funds out of a Golem node** if you don't need them there anymore?
@@ -134,7 +140,7 @@ Be careful though, as Golem does not perform any validation of the supplied addr
 
 ### ERC-20
 
-We don't currently support direct, ERC-20 withdraws from the Golem wallet. Soon, we will add functionality that will enable you to export your wallet and import it into MetaMask and you'll be able to withdraw your ERC-20 tokens that way.
+It is easiest to access your ERC-20 tokens by using the functionality described below to export your wallet \(in Ethereum wallet v3 format\) and then import it into MetaMask. Once you import your private key to MetaMask you'll be able to withdraw your ERC-20 tokens.
 
 ## Backing up your Golem wallet
 
@@ -301,7 +307,7 @@ There is a an additional caveat here though.
 
 In order to clearly separate our production network, to which the majority of the provider nodes run by our users connect by default, from the testnet subnet the sole purpose of which should be testing your apps, we have introduced a concept of a "subnet tag".
 
-Whereas the limited number of our own test providers that we make available to our prospective requestors use the `devnet-beta.1` subnet \(which is included by default in our requestor-facing examples\), the mainnet providers use `public-beta` subnet by default.
+Whereas the limited number of our own test providers that we make available to our prospective requestors use the `devnet-beta` subnet \(which is included by default in our requestor-facing examples\), the mainnet providers use `public-beta` subnet by default.
 
 Thus, to leverage the computing power of the mainnet providers in the Golem network, you must provide the subnet tag used by those mainnet provider nodes - `public-beta`.
 {% endhint %}
@@ -309,36 +315,30 @@ Thus, to leverage the computing power of the mainnet providers in the Golem netw
 Therefore, combining those parameters, in order to run our examples on mainnet, you'd launch them using e.g.:
 
 {% tabs %}
-{% tab title="Python / Blender" %}
+{% tab title="Python" %}
 ```text
-python3 blender.py --network=mainnet --subnet-tag=public-beta
+python3 blender.py --payment-network=mainnet --subnet-tag=public-beta
 ```
 {% endtab %}
 
-{% tab title="Python / Hashcat" %}
+{% tab title="JS" %}
 ```text
-python3 yacat.py '?a?a?a' '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/' --network=mainnet --number-of-providers 4 --log-file yacat-debug.log --subnet-tag=public-beta
-```
-{% endtab %}
-
-{% tab title="JS / Blender" %}
-```text
-yarn js:blender --network mainnet --subnet-tag public-beta
+yarn js:blender --payment-network mainnet --subnet-tag public-beta
 ```
 {% endtab %}
 {% endtabs %}
 
 ### Requestor agent code
 
-As for your own requestor agent code, you'll need to supply the appropriate `driver` , `network` and `subnet_tag` parameters to `Golem`.
+As for your own requestor agent code, you'll need to supply the appropriate `payment_driver` , `payment_network` and `subnet_tag` parameters to  `Golem`.
 
 {% tabs %}
 {% tab title="Python" %}
 ```python
 async with Golem(
     [...],
-    network="mainnet",
-    driver="zksync",
+    payment_network="mainnet",
+    payment_driver="zksync",
     subnet_tag="public-beta",
 )
 ```

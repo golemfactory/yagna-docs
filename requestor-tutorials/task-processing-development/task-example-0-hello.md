@@ -53,11 +53,12 @@ from yapapi.payload import vm
 
 async def worker(context: WorkContext, tasks: AsyncIterable[Task]):
     async for task in tasks:
-        context.run("/bin/sh", "-c", "date")
+        script = context.new_script()
+        future_result = script.run("/bin/sh", "-c", "date")
 
-        future_results = yield context.commit()
-        results = await future_results
-        task.accept_result(result=results[-1])
+        yield script
+
+        task.accept_result(result=await future_result)
 
 
 async def main():
@@ -67,7 +68,7 @@ async def main():
 
     tasks = [Task(data=None)]
 
-    async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
+    async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
         async for completed in golem.execute_tasks(worker, tasks, payload=package):
             print(completed.result.stdout)
 
@@ -199,7 +200,7 @@ To see a more involved example of this take a look at: [Task Example 1: Simple h
 {% tabs %}
 {% tab title="Python" %}
 ```javascript
-async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
+async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
     async for completed in golem.execute_tasks(worker, tasks, payload=package):
         print(completed.result.stdout)
 ```
@@ -208,7 +209,7 @@ async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
 {% tab title="NodeJS" %}
 ```javascript
 await asyncWith(
-    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta.2" }),
+    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta" }),
     async (executor) => {
         for await (let completed of executor.submit(worker, tasks)) {
             console.log(completed.result().stdout);
@@ -230,7 +231,7 @@ Let's first focus on the instantiation code:
 {% tabs %}
 {% tab title="Python" %}
 ```javascript
-async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
+async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
     ...
 ```
 {% endtab %}
@@ -238,7 +239,7 @@ async with Golem(budget=1.0, subnet_tag="devnet-beta.2") as golem:
 {% tab title="NodeJS" %}
 ```javascript
 await asyncWith(
-    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta.2" }),
+    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta" }),
     ...
 );
 ```
@@ -252,6 +253,21 @@ Context managers are somewhat similar to `try-catch-finally` blocks. They allow 
 {% endhint %}
 
 Our context manager needs to be declared asynchronous as its setup and teardown functions are coroutines. This is required since they involve some long running actions such as creating/deleting payment allocations or starting/stopping background services.
+
+{% hint style="info" %}
+**Alternative usage pattern \(Python\)**
+
+Note that a`Golem` instance can also be used without a context manager, but rather can be started and stopped explicitly:
+
+```python
+golem = Golem(budget=1.0, subnet_tag="devnet-beta")
+await golem.start()
+
+# ...execution code here...
+
+await golem.stop()
+```
+{% endhint %}
 
 As for the parameters passed to the `Golem/Executor` constructor:
 
@@ -306,11 +322,10 @@ Having a completed task we can inspect its result. The result's structure will d
 ```python
 async def worker(context: WorkContext, tasks: AsyncIterable[Task]):
     async for task in tasks:
-        context.run("/bin/sh", "-c", "date")
-
-        future_results = yield context.commit()
-        results = await future_results
-        task.accept_result(result=results[-1])
+        script = context.new_script()
+        future_result = script.run("/bin/sh", "-c", "date")
+        yield script
+        task.accept_result(result=await future_result)
 ```
 {% endtab %}
 
@@ -338,13 +353,17 @@ This method follows the "work generator" pattern. If you're unfamiliar with it i
 
 The sequence of `Task` objects yields task fragments assigned to this provider. In a more complex scenario each `Task` object would be carrying its own piece of data to be used during computation.
 
-In the case of this example our entire script consists of a single command which is the call to `context.run`. This means that, once committed, the provider's exe unit will receive an instruction to make a call to `/bin/sh -c date`.
-
 {% hint style="warning" %}
-Commands run with `context.run` are not executed in any shell. This means you have to either specify the full binary path or run the command through a shell manually \(for example: `/bin/sh -c ...`\).
+Python API uses an updated API which explicitly features a `Script` object which is a representation of a single batch of commands executed on providers. The JS API on the other hand, still uses the old interface where the scripts are an internal feature of the `WorkContext` interface and are constructed implicitly and packed into its final form by the `commit()` call.
 {% endhint %}
 
-By awaiting on `future_results` we gain access to an array containing the script's results. We take the last item from that array to obtain the result object for our call to `context.run`.
+In the case of this example our entire script consists of a single command which is the call to `script.run` / `context.run`. This means that, once committed, the provider's exe unit will receive an instruction to make a call to `/bin/sh -c date`.
+
+{% hint style="warning" %}
+Commands run with `script.run /` `context.run` are not executed in any shell. This means you have to either specify the full binary path or run the command through a shell manually \(for example: `/bin/sh -c ...`\).
+{% endhint %}
+
+By awaiting on `future_results` after the script has been yielded, we ensure the results are available and unwrap them from the awaitable object.
 
 Finally, we make a call to `task.accept_result` to mark the task as successfully finished and pass it the result object. This will cause our task to be passed to the queue of completed tasks which gets processed in our `main` function.
 

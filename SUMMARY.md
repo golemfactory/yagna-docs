@@ -29,6 +29,7 @@
   * [Run first task on Golem](requestor-tutorials/flash-tutorial-of-requestor-development/run-first-task-on-golem.md)
 * [Golem application fundamentals](requestor-tutorials/golem-application-fundamentals/README.md)
   * [Work generator pattern and WorkContext](requestor-tutorials/golem-application-fundamentals/hl-api-work-generator-pattern.md)
+  * [Golem VPN networking concept](requestor-tutorials/golem-application-fundamentals/golem-vpn-networking-concept.md)
 * [Task Model development](requestor-tutorials/task-processing-development/README.md)
   * [Introduction to the task model](requestor-tutorials/task-processing-development/task-model-introduction.md)
   * [Task Example 0: Hello World!](requestor-tutorials/task-processing-development/task-example-0-hello.md)
@@ -38,10 +39,9 @@
   * [Introduction to the service model](requestor-tutorials/service-development/service-model-introduction.md)
   * [Service Example 0: Hello world?](requestor-tutorials/service-development/service-example-0-hello-world.md)
   * [Service Example 1: Simple service](requestor-tutorials/service-development/service-example-1-simple-service.md)
-  * [Service Example 2: Erigolem – Managed Erigon](requestor-tutorials/service-development/service-example-2-managed-erigon/README.md)
-    * [Erigon Service runtime](requestor-tutorials/service-development/service-example-2-managed-erigon/erigon-service-runtime.md)
-    * [Erigon Requestor agent](requestor-tutorials/service-development/service-example-2-managed-erigon/erigon-requestor-agent.md)
-    * [Setting up an Erigon provider](requestor-tutorials/service-development/service-example-2-managed-erigon/setting-up-an-erigon-provider.md)
+  * [Service Example 2: VPN - SSH terminal](requestor-tutorials/service-development/service-example-2-vpn-ssh-terminal.md)
+  * [Service Example 3: VPN - Minimalistic HTTP proxy](requestor-tutorials/service-development/service-example-3-vpn-simple-http-proxy.md)
+  * [Service Example 4: Custom usage counters](requestor-tutorials/service-development/service-example-4-custom-usage-counters.md)
 * [VM runtime](requestor-tutorials/vm-runtime/README.md)
   * [Creating a Docker image](requestor-tutorials/vm-runtime/creating-a-docker-image.md)
   * [Converting an image from Docker to Golem](requestor-tutorials/vm-runtime/convert-a-docker-image-into-a-golem-image.md)
@@ -55,9 +55,7 @@
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
-* [Introduction to Golem's high-level Python API](yapapi/yapapi.md)
-* [Low-Level](yapapi/low-level-api.md)
-* [API Reference](yapapi/api-reference.md)
+* [Golem Python API Reference](https://yapapi.readthedocs.io/en/latest/api.html)
 
 ## yajsapi - JavaScript high-level API <a id="yajsapi"></a>
 

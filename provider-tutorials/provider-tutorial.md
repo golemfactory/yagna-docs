@@ -22,8 +22,8 @@ To run a Golem provider node we recommend a physical machine as you may encounte
 It is possible to use macOS and Windows as provider hosts, but only with WASI execution environment.
 {% endhint %}
 
-{% hint style="info" %}
-For this release we have enabled the providers to expect payments on the Ethereum mainnet by default. It means that by running a provider node and executing tasks, you'll be **earning real GLM tokens** - either as pure ERC-20 tokens or on zkSync.
+{% hint style="success" %}
+We have enabled the providers to expect payments on the Ethereum mainnet by default. It means that by running a provider node and executing tasks, you are **earning real GLM tokens** - either as pure ERC-20 tokens or on zkSync.
 {% endhint %}
 
 ## Installation
@@ -47,12 +47,10 @@ After installing all required components you will be asked to set up your node. 
 
 `Node name (default=generated_name):` - Type in the name of your new node and press Enter
 
-`subnet (default=public-beta):` - It is important that you use "public-beta"
-
-`Ethereum wallet address (default=internal wallet):` - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty an address will be created for you on your local system.
+`Ethereum wallet address (default=internal wallet):` - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty, an address will be created for you on your local system.
 
 {% hint style="info" %}
-This is especially important now that the providers are by default using **Ethereum mainnet** - this way, you can have your earned GLM tokens sent directly e.g. to your MetaMask or Ledger account and you can manage them from there without Golem ever needing to touch your wallet - do that especially if you don't plan on becoming a Requestor.
+Your own Ethereum address could be, for example, any MetaMask or Ledger address that only you control so you can access your tokens from that address. If you choose to have a local wallet it's recommended to store a [backup](https://handbook.golem.network/payments/using-golem-on-mainnet#backing-up-your-golem-wallet) somewhere safe so you can retrieve the tokens. You are responsible for your address. If you lose access to the wallet, there will be no way to retrieve them without a backup.
 {% endhint %}
 
 `price GLM per hour (default=0.1):` - Type in the value of renting your computer power as a provider. You can use default price \(0.1 GLM per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
@@ -76,7 +74,7 @@ golemsp run
 To run the Golem provider on the testnet, type the following in the terminal:
 
 ```text
-golemsp run --payment-network rinkeby --subnet devnet-beta.2
+golemsp run --payment-network rinkeby --subnet devnet-beta
 ```
 
 {% hint style="success" %}
@@ -99,12 +97,12 @@ $ golemsp status
 │  Status                                      │
 │                                              │
 │  Service    is running                       │
-│  Version    0.7.2                            │
-│  Commit     499de901                         │
-│  Date       2021-07-08                       │
-│  Build      160                              │
+│  Version    0.8.0                            │
+│  Commit     69838646                         │
+│  Date       2021-10-11                       │
+│  Build      175                              │
 │                                              │
-│  Node Name  awesome-summer                   │
+│  Node Name  colorful-autumn                  │
 │  Subnet     public-beta                      │
 │  VM         valid                            │
 ├──────────────────────────────────────────────┤
@@ -142,6 +140,4 @@ If in the **Offers/Tasks** column you see your active Offers count, and either t
 To check out additional commands available in the CLI, have a look at the reference page:
 
 {% page-ref page="provider-cli.md" %}
-
-## Next steps
 
