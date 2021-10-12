@@ -15,7 +15,9 @@ This example illustrates following Golem features & aspects:
 
 _This tutorial is the textual counterpart to a workshop originally prepared by Jakub Mazurek, a Software Developer at Golem Factory and presented during the Hello Decentralization conference in February, 2021._
 
-{% embed url="https://www.youtube.com/watch?v=gWRqu7IvYfk" caption="Jakub\'s workshop during Hello Decentralization" %}
+{% embed url="https://www.youtube.com/watch?v=gWRqu7IvYfk" %}
+Jakub's workshop during Hello Decentralization
+{% endembed %}
 
 Now that we've seen how easy it is to [run a Golem requestor agent](../flash-tutorial-of-requestor-development/), then had a look at[ how this stuff works under the hood](../golem-application-fundamentals/) we can put this knowledge to the test and build a simple Golem app that is a bit more realistic than our [Hello World](task-example-0-hello.md).
 
@@ -23,6 +25,7 @@ Now that we've seen how easy it is to [run a Golem requestor agent](../flash-tut
 If you'd rather like to have a more general introduction on the idea behind Golem or would like to learn what components constitute a Golem node and the Golem network, please have a look at:
 
 {% page-ref page="../../introduction/golem-overview.md" %}
+
 {% endhint %}
 
 ## Step 0. What are we building?
@@ -32,9 +35,9 @@ The application we'll build and run on Golem will be a very simple, quick-and-di
 {% hint style="info" %}
 For the sake of clarity for those less versed with the terminology, a short explanation is due.
 
-A [**dictionary attack**](https://en.wikipedia.org/wiki/Dictionary_attack) involves running some \(usually known\) hashing function on each word from some input dictionary in the hope that one of the resulting hashes will match the one that we're matching against. Getting a match means we have found the original plain text string that's hidden behind that hash.
+A [**dictionary attack**](https://en.wikipedia.org/wiki/Dictionary_attack) involves running some (usually known) hashing function on each word from some input dictionary in the hope that one of the resulting hashes will match the one that we're matching against. Getting a match means we have found the original plain text string that's hidden behind that hash.
 
-The string might have been a password or some other secret that's usually stored only in an encrypted \(well, technically, hashed\) form to prevent someone who got into possession of such a string from being able to read the secret directly.
+The string might have been a password or some other secret that's usually stored only in an encrypted (well, technically, hashed) form to prevent someone who got into possession of such a string from being able to read the secret directly.
 
 The only way to recover the original password then would be to perform a brute-force attack against such a hash, using _all_ possible character combinations up until some arbitrary character length. The caveat is that such attacks are usually - and by design - prohibitively expensive computation-time-wise.
 
@@ -43,17 +46,17 @@ Hence, an attacker may try a dictionary attack, constructing hashes out of a lim
 
 We'll use this idea mainly because it scales in a very straightforward manner - the input dictionary can be easily sliced and each slice sent to a different provider to be processed simultaneously. That makes it an excellent example of an application that leverages the most fundamental feature of Golem - the ability to distribute computational loads.
 
-We chose it also because we can do it using Python's bundled modules, without depending on any external libraries \(apart from `yapapi` - [Golem's high-level API](https://github.com/golemfactory/yapapi) - and its dependencies in the requestor agent, of course\).
+We chose it also because we can do it using Python's bundled modules, without depending on any external libraries (apart from `yapapi` - [Golem's high-level API](https://github.com/golemfactory/yapapi) - and its dependencies in the requestor agent, of course).
 
 For your convenience, we're providing some boilerplate code in a Github repository created specifically for the purpose of the original workshop and our piece here:
 
-{% embed url="https://github.com/golemfactory/hash-cracker" caption="" %}
+{% embed url="https://github.com/golemfactory/hash-cracker" %}
 
 We're going to be using the code from this repository later on in the course of this tutorial.
 
 ### Anatomy of a Golem app
 
-To give you a quick glimpse into what a typical Golem application looks like \([you can read about this topic at length in our more advanced tutorial](task-model-introduction.md#what-is-a-golem-application)\), what you need to know for now is that it consists of two distinct components:
+To give you a quick glimpse into what a typical Golem application looks like ([you can read about this topic at length in our more advanced tutorial](task-model-introduction.md#what-is-a-golem-application)), what you need to know for now is that it consists of two distinct components:
 
 * the **requestor agent** part that runs on your requestor node and is responsible for preparing the tasks for the providers and processing their output,
 * the **worker** part that runs within VMs on the provider nodes and performs the actual computations. 
@@ -74,11 +77,11 @@ Finally, the requestor agent will present the solution to the user.
 
 Since we're building the whole app from scratch, that includes preparing the worker code and the VM image that includes it. To prepare such image, we'll need Docker:
 
-{% embed url="https://www.docker.com/products/docker-desktop" caption="" %}
+{% embed url="https://www.docker.com/products/docker-desktop" %}
 
 #### Python 3.7+
 
-Our example requires Python 3.7 or higher. You may use [pyenv](https://github.com/pyenv/pyenv) \(preferably using [pyenv-installer](https://github.com/pyenv/pyenv-installer)\) to install an appropriate Python version without affecting your system.
+Our example requires Python 3.7 or higher. You may use [pyenv](https://github.com/pyenv/pyenv) (preferably using [pyenv-installer](https://github.com/pyenv/pyenv-installer)) to install an appropriate Python version without affecting your system.
 
 #### Dependencies
 
@@ -86,7 +89,7 @@ Let's now install the dependencies that will be used throughout the remainder of
 
 We'll start by cloning the example app's repo and checking out the `workshop` branch:
 
-```text
+```
 git clone https://github.com/golemfactory/hash-cracker.git
 cd hash-cracker
 git checkout workshop
@@ -98,7 +101,7 @@ The`workshop` branch contains a template for the application with some boilerpla
 
 Next, we'll create the virtual environment and install the project's dependencies. In order to do that, please ensure your Python interpreter is the active one in your shell and then go with:
 
-```text
+```
 python3 -m venv cracker-venv
 source cracker-venv/bin/activate
 pip install -r requirements.txt
@@ -106,7 +109,7 @@ pip install -r requirements.txt
 
 ## Step 1. The worker
 
-Now it's time to get our hands dirty. :\)
+Now it's time to get our hands dirty. :)
 
 We'll start with the piece that's going to perform the heavy lifting and, of course, we'll want that to be executed on the providers.
 
@@ -202,12 +205,12 @@ Let's replace it with code that performs the hashing and comparison:
 What the above does is:
 
 * it iterates through the lines in input slice of the dictionary,
-* converts each of those lines into a UTF-8-encoded string of bytes \(`line_bytes` variable\),
-* then, it computes a SHA-256 hash of those bytes and converts that to a hexadecimal string \(`line_hash` variable\),
+* converts each of those lines into a UTF-8-encoded string of bytes (`line_bytes` variable),
+* then, it computes a SHA-256 hash of those bytes and converts that to a hexadecimal string (`line_hash` variable),
 * compares the resultant hex-encoded hash to the hash we're trying to find a match for,
 * and finally, if a match is found it saves the corresponding word as the result and finishes processing.
 
-One last thing - since the code uses the `sha256` function from the `hashlib` library \(bundled with Python\), we need to import it by adding a line to our imports at the top of the file:
+One last thing - since the code uses the `sha256` function from the `hashlib` library (bundled with Python), we need to import it by adding a line to our imports at the top of the file:
 
 ```python
 from hashlib import sha256
@@ -221,10 +224,10 @@ We're done with our worker code!
 
 As an option, before we bundle that code into the VM image, we may want to run it locally first.
 
-Here, we're going to test it with a shorter list of words \(`data/words-short.json`\), which is also included in our example alongside with a sample hash derived from one of the words in that shorter list \(`data/hash-short.json`\). The hash should match the word `test` from that list.
+Here, we're going to test it with a shorter list of words (`data/words-short.json`), which is also included in our example alongside with a sample hash derived from one of the words in that shorter list (`data/hash-short.json`). The hash should match the word `test` from that list.
 
 {% hint style="info" %}
-The input list of words \(`data/words-short.json`\) is a JSON file as this is the format which our `worker.py` script expects. It corresponds to a single slice of the original word list.
+The input list of words (`data/words-short.json`) is a JSON file as this is the format which our `worker.py` script expects. It corresponds to a single slice of the original word list.
 {% endhint %}
 
 Before we run our test we need to **temporarily** modify the `worker.py`'s input paths. Let's replace the constants in the beginning of the file to point to our shorter lists:
@@ -238,7 +241,7 @@ WORDS_PATH = Path("data/words-short.json")
 RESULT_PATH = Path("data/out.json")
 ```
 
-Now, let's try running the `worker.py` script \(needs to be executed from the project's root directory\):
+Now, let's try running the `worker.py` script (needs to be executed from the project's root directory):
 
 ```bash
 python worker.py
@@ -252,7 +255,7 @@ Before we proceed, if you have run the above local test, remember to revert that
 {% endhint %}
 
 {% hint style="success" %}
-Nice! The first step is behind us - we have defined and tested the most basic building block of our first Golem app. :\)
+Nice! The first step is behind us - we have defined and tested the most basic building block of our first Golem app. :)
 {% endhint %}
 
 ## Step 2. The VM image
@@ -284,17 +287,17 @@ WORKDIR /golem/entrypoint
 
 Let's go through these instructions one by one.
 
-```text
+```
 FROM python:3.8.7-slim
 ```
 
 Here we specify our base Docker image. We use the official `python` image since we want it to run our `worker.py` script and choose the `slim` variant to reduce the image's size.
 
-```text
+```
 VOLUME /golem/input /golem/output
 ```
 
-This line defines two volumes in the image: `/golem/input` and `/golem/output`. Volumes are directories that can be shared with the host machine and, more importantly, through which the execution environment supervisor \(the process on the provider's host machine\) will be able to transfer data to and out of the VM. For a Golem VM, the image must define at least one volume.
+This line defines two volumes in the image: `/golem/input` and `/golem/output`. Volumes are directories that can be shared with the host machine and, more importantly, through which the execution environment supervisor (the process on the provider's host machine) will be able to transfer data to and out of the VM. For a Golem VM, the image must define at least one volume.
 
 {% hint style="warning" %}
 Contrarily to what you may expect and, notably, differently from Docker's own behavior, the paths within the Docker image associated with volumes **will always mask** any content under those paths in the image itself.
@@ -302,19 +305,19 @@ Contrarily to what you may expect and, notably, differently from Docker's own be
 Therefore, be sure to provide different paths for any files already contained in your VM image and for the paths that will be mounted as volumes that are shared with the host environment.
 {% endhint %}
 
-```text
+```
 COPY worker.py /golem/entrypoint/
 ```
 
 This line will copy our `worker.py` script to the path `/golem/entrypoint` within the image. Later on we'll see how the requestor code uses this path to run our script.
 
 {% hint style="warning" %}
-During development, it may be beneficial not to include the Python script \(`worker.py` above\) in the image itself. Instead, one can push it to individual providers at runtime using the work context's `.run()` command.
+During development, it may be beneficial not to include the Python script (`worker.py` above) in the image itself. Instead, one can push it to individual providers at runtime using the work context's `.run()` command.
 
 Each update of any content that goes inside the VM image necessitates rebuilding the image, regenerating the GVMI file, re-uploading the file into the repository and finally, updating the image hash that your requestor agent uses.
 {% endhint %}
 
-```text
+```
 WORKDIR /golem/entrypoint
 ```
 
@@ -346,7 +349,7 @@ The three steps above translate to the following shell commands.
 Make sure **Docker** is running on your machine before you execute them. Otherwise you'll get a nasty-looking error message.
 {% endhint %}
 
-```text
+```
 docker build . -t hash-cracker
 gvmkit-build hash-cracker:latest
 gvmkit-build hash-cracker:latest --push
@@ -486,7 +489,7 @@ To perform the above, we can use following piece of code:
 
 As you can see, it first opens the file containing the input dictionary - which is a plain text file in which each line is a potential candidate for a password that would match the hash.
 
-With the file open, it creates an empty list \(`chunk`\) which it fills with the lines from said file, stripping them of any preceding or trailing whitespace or newline characters \(`line.strip()`\).
+With the file open, it creates an empty list (`chunk`) which it fills with the lines from said file, stripping them of any preceding or trailing whitespace or newline characters (`line.strip()`).
 
 Once the number of appended lines reaches the `chunk_size`- or once all lines have been read from the input file - it then yields the respective `Task` with its `data` set to the just-constructed list.
 
@@ -498,7 +501,7 @@ Let's now proceed to the recipe that defines what exactly needs to happen in ord
 
 The function performing this job is called `steps` in our example. It accepts `context`, which is a `WorkContext` instance and `tasks` - an iterable of `Tasks` which will be filled with task fragments coming from our `data` function that we defined in the previous step.
 
-`WorkContext` gives us a simple interface to construct a script that translates directly to commands interacting with the execution unit on provider's end. Each such work context refers to one activity started on one provider node. While constructing such a script, we can define those steps that need to happen once per a worker run \(in other words, _once per provider node_\) - those are placed outside of the loop iterating over `tasks`.
+`WorkContext` gives us a simple interface to construct a script that translates directly to commands interacting with the execution unit on provider's end. Each such work context refers to one activity started on one provider node. While constructing such a script, we can define those steps that need to happen once per a worker run (in other words, _once per provider node_) - those are placed outside of the loop iterating over `tasks`.
 
 So now, let's take a look at how we're going to define those:
 
@@ -526,15 +529,15 @@ As you can see, there's one command that's uniform for all tasks - the first `.s
 
 Then we define a few steps that will take place for each task in our list:
 
-* `.send_json()` which tells the exe-unit to store the given subset of words as a JSON-serialized file in another path within the VM that we had defined in `worker.py` \(`worker.WORDS_PATH`, note that in this function the destination comes first, followed by an object to be serialized\),
-* `.run()` call which is the one that actually executes the `worker.py` script inside the provider's VM, which in turn produces output \(as you remember, this may be empty or may contain our solution\),
+* `.send_json()` which tells the exe-unit to store the given subset of words as a JSON-serialized file in another path within the VM that we had defined in `worker.py` (`worker.WORDS_PATH`, note that in this function the destination comes first, followed by an object to be serialized),
+* `.run()` call which is the one that actually executes the `worker.py` script inside the provider's VM, which in turn produces output (as you remember, this may be empty or may contain our solution),
 * then we have `.download_file()` call which transfers that solution file back to a temporary file on the requestor's end,
 
 {% hint style="warning" %}
-Please keep in mind that any commands specified in the `.run()` call to the VM execution unit must directly refer to a given executable, which usually means specifying their full, absolute path. There's no shell \(and hence, no PATH\) there to rely upon.
+Please keep in mind that any commands specified in the `.run()` call to the VM execution unit must directly refer to a given executable, which usually means specifying their full, absolute path. There's no shell (and hence, no PATH) there to rely upon.
 {% endhint %}
 
-With the steps ready, we call `.commit()` on our work context and yield that to the calling code \(the processing inside the `Golem` class\) which takes our script and orchestrates its execution on provider's end.
+With the steps ready, we call `.commit()` on our work context and yield that to the calling code (the processing inside the `Golem` class) which takes our script and orchestrates its execution on provider's end.
 
 When the execution returns to our `steps` function, the `task` has already been completed. Now, we only need to call `Task.accept_result()` with the result coming from the temporary file transferred from the provider. This ensures that the result is what's yielded from the `Golem` to the final loop in our `main` function that we'll define next.
 
@@ -565,7 +568,7 @@ If you have _not_ published your image, for the purpose of this workshop you can
 And then, the remaining code is the following and the explanation comes below:
 
 {% hint style="info" %}
-There has been some changes in the Golem's high-level API since Jakub recorded the workshop video. The code below has been updated to reflect those changes and is different from the corresponding code snippet shown in the video. \(The following explanation has also been updated accordingly.\)
+There has been some changes in the Golem's high-level API since Jakub recorded the workshop video. The code below has been updated to reflect those changes and is different from the corresponding code snippet shown in the video. (The following explanation has also been updated accordingly.)
 {% endhint %}
 
 ```python
@@ -599,7 +602,7 @@ With `golem` started, we are ready to call its `execute_tasks` method. Here we i
 
 With `async for` we iterate over tasks computed by `execute_tasks` and check their results. As soon as we encounter a task with `task.result` set to a non-empty string we can `break` from the loop instead of waiting until the remaining tasks are computed.
 
-Once the loop completes, the `result` should contain our solution and the solution is printed to your console. \(Unless of course it happens that the hash we're trying to break is not found within the dictionary that we have initially assumed it would come from - which we assure you is _not_ the case for our example hash ;\) \).
+Once the loop completes, the `result` should contain our solution and the solution is printed to your console. (Unless of course it happens that the hash we're trying to break is not found within the dictionary that we have initially assumed it would come from - which we assure you is _not_ the case for our example hash ;) ).
 
 {% hint style="success" %}
 Having completed the **requestor agent** part, you now have all the pieces of your first Golem application ready to be run.
@@ -612,20 +615,18 @@ Now, it's time for the final piece of infrastructure necessary for our requestor
 {% hint style="warning" %}
 Unless you have actually done it before, you'll need to first install and fund your `yagna`deamon. Please go to:
 
-{% page-ref page="../flash-tutorial-of-requestor-development/" %}
-
 and proceed with the initial part. You can stop before the "Running the requestor and your first task on the New Golem Network" as we're going to take it from there here.
 {% endhint %}
 
 For those who _had_ already initialized their daemon and/or completed the quick primer, just start your daemon:
 
-```text
+```
 yagna service run
 ```
 
 and - keeping it running - run the following init command in another terminal window:
 
-```text
+```
 yagna payment init --sender
 ```
 
@@ -639,7 +640,7 @@ With all pieces ready in their positions, it's now time to set our app to motion
 
 To do that, we need to be sure that:
 
-* our app's VM image has been published and that it matches what we're referring to in `requestor.py` \(in the `image_hash` parameter to `vm.repo()`\),
+* our app's VM image has been published and that it matches what we're referring to in `requestor.py` (in the `image_hash` parameter to `vm.repo()`),
 * our `yagna` daemon is running and is properly funded and initialized as a requestor.
 * our Python virtual environment has been properly set-up, activated and requirements of our `hash-cracker` app installed 
 
@@ -649,12 +650,12 @@ Now for the big moment! Make sure you're in the directory containing the `reques
 python requestor.py
 ```
 
-This will launch your app on the Golem Network. You should see a lot of messages announcing subsequent phases of the execution of your computation and finally, if all goes according to the plan, you'll get the result \(which, of course, depends on the current availability of the provider nodes and the amount of work performed by the network in the given moment\).
+This will launch your app on the Golem Network. You should see a lot of messages announcing subsequent phases of the execution of your computation and finally, if all goes according to the plan, you'll get the result (which, of course, depends on the current availability of the provider nodes and the amount of work performed by the network in the given moment).
 
 In case you wonder, the result should have something to do with the name of the conference this workshop has been first presented on.
 
 {% hint style="success" %}
-You have completed and successfully run your first app on Golem! Welcome to our constantly growing community of app developers! :\)
+You have completed and successfully run your first app on Golem! Welcome to our constantly growing community of app developers! :)
 {% endhint %}
 
 ## Final words, next steps
@@ -673,9 +674,8 @@ For next steps, here a couple of leads:
 
 1. A slightly more advanced tutorial on both designing and then implementing your own Golem app:
 2. Our high-level Python API reference to help you on your way:
-3. And in case you get stuck or need help, please reach out to us on our Discord chat and we'll be delighted to help you out :\)
+3. And in case you get stuck or need help, please reach out to us on our Discord chat and we'll be delighted to help you out :)
 
-{% embed url="https://chat.golem.network/" caption="" %}
+{% embed url="https://chat.golem.network/" %}
 
 **Have fun with Golem!**
-

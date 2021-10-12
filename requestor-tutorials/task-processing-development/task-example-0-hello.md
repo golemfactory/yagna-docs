@@ -16,15 +16,17 @@ This example illustrates following Golem features & aspects:
 
 The only assumption made in this article is that you have some familiarity with basic Golem application concepts. Here's a good starting point to learn about these:
 
-{% page-ref page="../golem-application-fundamentals/" %}
+{% content-ref url="../golem-application-fundamentals/" %}
+[golem-application-fundamentals](../golem-application-fundamentals/)
+{% endcontent-ref %}
 
 Here are the prerequisites in case you'd like to follow along and/or experiment with the code presented in this article:
 
-* you have a local `yagna` node set up \(instructions can be found here: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/)\)
-* you have the Python or JS Golem high-level API set up on your machine \(instructions here: [Run first task on Golem](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md)\)
+* you have a local `yagna` node set up (instructions can be found here: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/))
+* you have the Python or JS Golem high-level API set up on your machine (instructions here: [Run first task on Golem](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md))
 
 {% hint style="info" %}
-Golem's APIs rely heavily on coroutines and asynchronous execution \(`async/await`\). If you're unfamiliar with these concepts, chances are you'll find some parts of the code examples confusing.
+Golem's APIs rely heavily on coroutines and asynchronous execution (`async/await`). If you're unfamiliar with these concepts, chances are you'll find some parts of the code examples confusing.
 
 If you'd like to learn more about `async/await`, here's a good introduction to Python's generators and coroutines: [https://mleue.com/posts/yield-to-async-await/](https://mleue.com/posts/yield-to-async-await/)
 
@@ -120,9 +122,9 @@ That's all we need in order to run a task on Golem!
 
 ### How does it work?
 
-Here's the flow diagram of all the interactions that need to happen between the requestor and the provider\(s\) in order for a task to be completed:
+Here's the flow diagram of all the interactions that need to happen between the requestor and the provider(s) in order for a task to be completed:
 
-![Sequence diagram of requestor -&amp;gt; provider interactions](../../.gitbook/assets/tutorial-07.jpg)
+![Sequence diagram of requestor -> provider interactions](../../.gitbook/assets/tutorial-07.jpg)
 
 From a high-level perspective, a successful run of the above program performs the following steps:
 
@@ -135,7 +137,7 @@ In this minimal example our script consists of a single command: the Linux `date
 
 Let's move on to exploring our example code!
 
-## The main\(\) function
+## The main() function
 
 This function is our program's entry point and it performs three steps:
 
@@ -192,7 +194,7 @@ Next comes the array of task fragments to be computed. For simplicity, our `task
 In general, each `Task` object refers to a single piece of computation within your app and typically holds some data. For example, in a program which operates on a huge file, a single `Task` could be holding one chunk of that file to be processed by one of many providers involved.
 
 {% hint style="info" %}
-To see a more involved example of this take a look at: [Task Example 1: Simple hash cracker](task-example-1-cracker.md#the-task-fragments) \(this links to a section on task fragments\)
+To see a more involved example of this take a look at: [Task Example 1: Simple hash cracker](task-example-1-cracker.md#the-task-fragments) (this links to a section on task fragments)
 {% endhint %}
 
 ### Golem/Executor
@@ -220,7 +222,7 @@ await asyncWith(
 {% endtab %}
 {% endtabs %}
 
-Finally, as the last step of our `main()` function we create an instance of `Golem` \(or `Executor` in the case of JS API\) and use it to request our tasks.
+Finally, as the last step of our `main()` function we create an instance of `Golem` (or `Executor` in the case of JS API) and use it to request our tasks.
 
 `Golem/Executor` is the heart of Golem's API - it handles communication with the local Golem node, processes payments for completed tasks and, most importantly, provides an easy way of requesting resources in the Golem network.
 
@@ -255,7 +257,7 @@ Context managers are somewhat similar to `try-catch-finally` blocks. They allow 
 Our context manager needs to be declared asynchronous as its setup and teardown functions are coroutines. This is required since they involve some long running actions such as creating/deleting payment allocations or starting/stopping background services.
 
 {% hint style="info" %}
-**Alternative usage pattern \(Python\)**
+**Alternative usage pattern (Python)**
 
 Note that a`Golem` instance can also be used without a context manager, but rather can be started and stopped explicitly:
 
@@ -271,7 +273,7 @@ await golem.stop()
 
 As for the parameters passed to the `Golem/Executor` constructor:
 
-* `budget` specifies our desired budget \(in GLM\) for the total cost of all tasks computed using this `Golem/Executor` instance.
+* `budget` specifies our desired budget (in GLM) for the total cost of all tasks computed using this `Golem/Executor` instance.
 * `subnet_tag` specifies the name of a Golem network sub-network we'd like to use for all Golem communication performed by this `Golem/Executor` instance.
 
 {% hint style="warning" %}
@@ -301,7 +303,7 @@ async (executor) => {
 
 Having a `Golem/Executor` instance initialized we can now request some tasks!
 
-The function `execute_tasks/submit` is used here, it takes three parameters \(two in the case of JavaScript's `submit`\):
+The function `execute_tasks/submit` is used here, it takes three parameters (two in the case of JavaScript's `submit`):
 
 * `worker` is the function which defines the steps that should happen for each provider node in order to process a `Task`
 * `tasks` is the array of `Task` objects we have created
@@ -315,7 +317,7 @@ In the case of JavaScript API we already provided the `Executor` with a payload 
 
 Having a completed task we can inspect its result. The result's structure will depend on the execution environment we used. In our case it's the VM runtime and so the result contains the output of your executed command in `stdout`.
 
-## The worker\(\) function
+## The worker() function
 
 {% tabs %}
 {% tab title="Python" %}
@@ -360,7 +362,7 @@ Python API uses an updated API which explicitly features a `Script` object which
 In the case of this example our entire script consists of a single command which is the call to `script.run` / `context.run`. This means that, once committed, the provider's exe unit will receive an instruction to make a call to `/bin/sh -c date`.
 
 {% hint style="warning" %}
-Commands run with `script.run /` `context.run` are not executed in any shell. This means you have to either specify the full binary path or run the command through a shell manually \(for example: `/bin/sh -c ...`\).
+Commands run with `script.run /` `context.run` are not executed in any shell. This means you have to either specify the full binary path or run the command through a shell manually (for example: `/bin/sh -c ...`).
 {% endhint %}
 
 By awaiting on `future_results` after the script has been yielded, we ensure the results are available and unwrap them from the awaitable object.
@@ -371,15 +373,15 @@ Finally, we make a call to `task.accept_result` to mark the task as successfully
 
 That's all there is to the example!
 
-To run it on your local machine make sure you have a `yagna` node running and set up as a requestor \(take a look here in case of any doubts: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/)\). You can then issue the following command:
+To run it on your local machine make sure you have a `yagna` node running and set up as a requestor (take a look here in case of any doubts: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/)). You can then issue the following command:
 
-```text
+```
 YAGNA_APPKEY={your_appkey_here} ./hello.py
 ```
 
 This assumes you're in the directory which contains the `hello.py` file. You'll also need to provide your node's actual app key. If everything went fine you should see a log similar to the one below:
 
-```text
+```
 [2021-06-15 14:51:22,951 INFO yapapi.summary] Agreement proposed to provider 'someone'
 [2021-06-15 14:51:23,319 INFO yapapi.summary] Agreement confirmed by provider 'someone'
 [2021-06-15 14:51:24,159 INFO yapapi.summary] Task started on provider 'someone', task data: None
@@ -392,4 +394,3 @@ Tue Jun 15 12:51:24 UTC 2021
 `Tue Jun 15 12:51:24 UTC 2021` is the result we received from executing the `date` command inside our provider's exe unit.
 
 Ready for a more complex scenario? Take a look at the next article which implements a rudimentary hash cracker using Golem network.
-

@@ -8,7 +8,7 @@ Now you have the `yagna` daemon running, you may proceed with running a task as 
 {% tab title="Python" %}
 ### Get the environment set up
 
-Ensure you're running Python &gt;= 3.6 and you have the `venv` module installed \(it's normally included in the Python distribution\).
+Ensure you're running Python >= 3.6 and you have the `venv` module installed (it's normally included in the Python distribution).
 
 Prepare a virtual environment for the tutorial script:
 
@@ -21,14 +21,14 @@ source ~/.envs/yagna-python-tutorial/bin/activate
 On Windows, you need to replace the above with:
 {% endhint %}
 
-```text
+```
 python -m venv --clear %HOMEDRIVE%%HOMEPATH%\.envs\yagna-python-tutorial
 %HOMEDRIVE%%HOMEPATH%\.envs\yagna-python-tutorial\Scripts\activate.bat
 ```
 
 Install the dependencies:
 
-```text
+```
 pip install -U pip
 pip install yapapi
 ```
@@ -37,13 +37,13 @@ pip install yapapi
 
 Check out or download the `yapapi` repository:
 
-```text
+```
 git clone https://github.com/golemfactory/yapapi.git
 ```
 
 and make sure you're working on the version corresponding with the latest release:
 
-```text
+```
 cd yapapi
 git checkout b0.7
 ```
@@ -52,7 +52,7 @@ git checkout b0.7
 
 In order for the requestor agent to connect with the `yagna` daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](./#generate-the-app-key)" step in the quick primer article:
 
-```text
+```
 export YAGNA_APPKEY=insert-your-32-char-app-key-here
 ```
 
@@ -77,10 +77,10 @@ The example in question generates six discrete tasks for providers to execute so
 
 If everything goes right, after what could be anything from half-a-minute to a few minutes, you'll hopefully see the message announcing the successful completion of your assignment including a short summary of what had happened during the execution, which providers took part in the execution and the accumulated GNT cost of the whole task, e.g.:
 
-`Computation finished in 77.5s    
-Negotiated 1 agreements with 1 providers    
-Provider 'odra' computed 6 tasks    
-Total cost: 0.218290307253`
+`Computation finished in 77.5s  `\
+`Negotiated 1 agreements with 1 providers  `\
+`Provider 'odra' computed 6 tasks  `\
+`Total cost: 0.218290307253`
 {% endtab %}
 
 {% tab title="NodeJS" %}
@@ -88,7 +88,7 @@ Total cost: 0.218290307253`
 
 Check out or download the `yajsapi` repository:
 
-```text
+```
 git clone https://github.com/golemfactory/yajsapi.git
 cd yajsapi
 git checkout b0.4
@@ -98,7 +98,7 @@ git checkout b0.4
 
 In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](./#generate-the-app-key)" step above:
 
-```text
+```
 export YAGNA_APPKEY=insert-your-32-char-app-key-here
 ```
 
@@ -132,19 +132,18 @@ The example in question generates six discrete jobs for providers to execute so 
 
 #### Output
 
-You can verify that the task is indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation that should appear in the directory from which you ran the example script \(`examples/blender` within the cloned repository's path if you followed the tutorial precisely\) .
+You can verify that the task is indeed done by examining the generated output files which are `PNG` images with the selected frames of the rendered animation that should appear in the directory from which you ran the example script (`examples/blender` within the cloned repository's path if you followed the tutorial precisely) .
 
 Here is an example rendered frame, provided here for reference:
 
-![](../../.gitbook/assets/output_0.png)
+![](../../.gitbook/assets/output\_0.png)
 
 #### Payments
 
 Finally, you can verify that the providers have been paid for the work they contributed to get that output to you. First, acquire your Ethereum address - you can do that by running:
 
-```text
+```
 yagna app-key list
 ```
 
-again but this time it's the value in the `id` column that you're interested in. This is your the Ethereum address of your yagna node on the Rinkeby testnet and on zkSync. Once you have that address, head to [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/) , put the value in the address field there and verify that you see the outgoing payment transactions.
-
+again but this time it's the value in the `id` column that you're interested in. This is your the Ethereum address of your yagna node on the Rinkeby testnet and on zkSync. Once you have that address, head to [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io) , put the value in the address field there and verify that you see the outgoing payment transactions.

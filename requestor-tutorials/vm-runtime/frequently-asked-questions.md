@@ -18,7 +18,7 @@ But why do we need this? Most importantly, to reduce the setup time for provider
 
 There is only one strict requirement: **at least one volume** directory must be specified using the `VOLUME` command.
 
-Besides the above a number of commands are currently **not supported** by `gvmkit-build` converter. These are:
+Besides the above a number of commands are currently** not supported** by `gvmkit-build` converter. These are:
 
 * `CMD`
 * `ENTRYPOINT`
@@ -27,21 +27,21 @@ Besides the above a number of commands are currently **not supported** by `gvmki
 
 ## When building my image I copied some files to one of the volumes. Why can't I see them when I run the image?
 
-When a `.gvmi` image is started by the VM runtime, an **empty host directory is mounted** under each of its directories declared as **volumes** \(`VOLUME` command in the `Dockerfile`\).
+When a `.gvmi` image is started by the VM runtime, an **empty host directory is mounted** under each of its directories declared as **volumes** (`VOLUME` command in the `Dockerfile`).
 
 If there was anything stored in the image under the volume directory it gets "shadowed" by the mounted host directory.
 
 ## My VM has run out of storage space while running, why is that?
 
-In a running Golem VM, the storage space outside of volumes \(declared through Docker's `VOLUME` command\) is **limited to `128 MB`** of size stored in RAM using [`tmpfs`](https://www.kernel.org/doc/html/latest/filesystems/tmpfs.html).
+In a running Golem VM, the storage space outside of volumes (declared through Docker's `VOLUME` command) is **limited to `128 MB`** of size stored in RAM using [`tmpfs`](https://www.kernel.org/doc/html/latest/filesystems/tmpfs.html).
 
-This only applies to files created once the VM is running. Anything that was included in the image during the build process stays available \(the VM's filesystem is an overlay\).
+This only applies to files created once the VM is running. Anything that was included in the image during the build process stays available (the VM's filesystem is an overlay).
 
 Any larger files and chunks of data should be transferred to the VM's volumes. Since these directories are mounted from the host operating system they are only limited by the provider's storage space.
 
 ## I cannot reproduce a problem when I run the Docker image locally. What should I do?
 
-In general, it's better to test the `.gvmi` image itself rather than the base Docker image. This guarantees that all Golem-specific conditions \(filesystem characteristics, for example\) are included. Also, testing with the VM runtime is as close to the provider's environment as possible.
+In general, it's better to test the `.gvmi` image itself rather than the base Docker image. This guarantees that all Golem-specific conditions (filesystem characteristics, for example) are included. Also, testing with the VM runtime is as close to the provider's environment as possible.
 
 You can learn more about testing the VM runtime locally in the [Testing a Golem image](gvmi-debugging.md) article.
 
@@ -51,6 +51,5 @@ This is related to the answer given to ["My VM has run out of storage space"](fr
 
 There you are two options here:
 
-1. If the files are **static** \(that is: they are always the same\) then you can include them in the VM image itself while building it. You can learn more about that in [Creating a Docker image](creating-a-docker-image.md).
-2. If the files are **dynamic** \(that is: they may differ between task executions\) then your best option is to transfer the files from the requestor agent. Make sure you use a **volume directory as the destination**.
-
+1. If the files are **static** (that is: they are always the same) then you can include them in the VM image itself while building it. You can learn more about that in [Creating a Docker image](creating-a-docker-image.md).
+2. If the files are **dynamic **(that is: they may differ between task executions) then your best option is to transfer the files from the requestor agent. Make sure you use a **volume directory as the destination**.

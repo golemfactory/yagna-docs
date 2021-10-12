@@ -10,10 +10,6 @@ What you're going to try is still considered experimental.
 We're assuming here that you were able to run both `goth` and a requestor app correctly on your machine earlier and thus, you have all the components up and running without issues.
 
 If you hadn't tried those yet though, please have a look at the earlier parts of our handbook:
-
-{% page-ref page="../flash-tutorial-of-requestor-development/" %}
-
-{% page-ref page="running-goth.md" %}
 {% endhint %}
 
 You're here, excellent! If you successfully ran the tests in the previous step, you probably already guessed that this is what we use internally in our CI process to ensure that our subsequent builds of Golem and its components are working correctly.
@@ -28,7 +24,7 @@ Once that's done, `goth` will patiently wait for the developer to do whatever th
 
 To launch goth in its interactive mode, make sure you're in the root of goth's checked-out project directory and run:
 
-```text
+```
 poetry poe run interactive
 ```
 
@@ -46,7 +42,7 @@ The important pieces of information there are the **`YAGNA_APPKEY`**, **the URL*
 
 All right! At this point, the network is ready for you, the app developer! You can now communicate with the launched requestor daemon using either the yagna's REST API directly or using one of our high-level APIs and run your apps this way.
 
-If you're doing it the first time, you may as well launch that example command to confirm everything is working as it should be and to verify that the task is completed successfully. Just make sure you're launching this command from a separate terminal window and within the directory where you have checked out our Python high-level API \(`yapapi`\).
+If you're doing it the first time, you may as well launch that example command to confirm everything is working as it should be and to verify that the task is completed successfully. Just make sure you're launching this command from a separate terminal window and within the directory where you have checked out our Python high-level API (`yapapi`).
 
 Once you're done running either your own app or our introductory example, you can come back to the console that's running `goth` and press Ctrl-C to finish the interactive run and allow `goth` to proceed with some cleanup that ensures any test artifacts are remove and that subsequent runs can be lanuched without issues.
 
@@ -54,7 +50,7 @@ Once you're done running either your own app or our introductory example, you ca
 
 While you execute your app, the output in the console that's running goth won't tell you much on its own. You should see a message confirming that it detected the creation of an activity between the requestor and one of the provider and the subsequent destruction of it but that's going to be more or less that.
 
-The real benefit starts when you have a look at the logs each run produces. By default, the logs are stored under `/tmp/goth-tests` or, more exactly, under whatever location `$TEMP_DIR/goth-tests` resolves to in your shell. This path will depend either on the shell environment or the operating system on which the tests are being run \(see [`tempfile.gettempdir`](https://docs.python.org/3/library/tempfile.html) for more details\).
+The real benefit starts when you have a look at the logs each run produces. By default, the logs are stored under `/tmp/goth-tests` or, more exactly, under whatever location `$TEMP_DIR/goth-tests` resolves to in your shell. This path will depend either on the shell environment or the operating system on which the tests are being run (see [`tempfile.gettempdir`](https://docs.python.org/3/library/tempfile.html) for more details).
 
 For each run in the interactive mode, `goth` will create a timestamped directory there, e.g.: `goth_20201221_172759+0000` which will contain all the logs that this run was able to collect from all the components of your local Golem network:
 
@@ -64,4 +60,3 @@ For each run in the interactive mode, `goth` will create a timestamped directory
   * `provider_N.log` - the debug logs from the provider daemons
   * `provider_agent_N.log` - the debug logs from the provider agents - including also the logs from each provider's execution units which will be of most interest to you as the developer of the application that's executed there,
   * `requestor.log` - the debug logs from the requestor daemon you're connecting your requestor agent to
-

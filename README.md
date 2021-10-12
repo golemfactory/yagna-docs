@@ -50,11 +50,17 @@ Ensuring that the development of products based on Golem is smooth and effortles
 
 To get up to speed on Golem application development, start with our [quick primer to requestor development](requestor-tutorials/flash-tutorial-of-requestor-development/) and follow up with the rest of our tutorials targeted at requestors.
 
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
+{% endcontent-ref %}
+
 ### **2. Become a Golem provider**
 
 To get set-up as a provider on the community subnet, follow our Provider tutorial and installation instructions. Our provider installation is set up to use the Ethereum mainnet by default, so once you launch it, you may start earning real GLM tokens right away.
 
-{% page-ref page="provider-tutorials/provider-tutorial.md" %}
+{% content-ref url="provider-tutorials/provider-tutorial.md" %}
+[provider-tutorial.md](provider-tutorials/provider-tutorial.md)
+{% endcontent-ref %}
 
 ## Golem's mission - free, open-source, censorship-resistant, and democratized access to computing power for all:
 
@@ -63,4 +69,3 @@ Golem is open-source software. All the code is available under the GPL license.
 
 [https://github.com/golemfactory/yagna](https://github.com/golemfactory/yagna)
 {% endhint %}
-
