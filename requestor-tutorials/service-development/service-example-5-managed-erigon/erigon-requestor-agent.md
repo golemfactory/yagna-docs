@@ -2,9 +2,9 @@
 
 ## Requestor agent
 
-This part of the tutorial directly corresponds to the two previous requestor tutorials \([services hello world example]() and [simple service]()\). We have the same clear separation between service specification and service provisioning, but there are important differences:
+This part of the tutorial directly corresponds to the two previous requestor tutorials ([services hello world example](broken-reference) and [simple service](broken-reference)). We have the same clear separation between service specification and service provisioning, but there are important differences:
 
-* We use Erigon runtime instead of a VM-based runtime \(so we don't have any Dockerfile or `image_hash`\).
+* We use Erigon runtime instead of a VM-based runtime (so we don't have any Dockerfile or `image_hash`).
 * We don't implement `async def run` - the service is only started/stopped, requestor is idle when the service it is running.
 * We use [yapapi-service-manager](https://github.com/golemfactory/yapapi-service-manager) instead of pure `yapapi`.
 * We integrate the requestor code with [Quart](https://pgjones.gitlab.io/quart/), a web framework.
@@ -26,7 +26,7 @@ class Erigon(Service):
 
 We add three attributes that are specific to our service logic:
 
-* `url` - where Erigolem RPC \(running on the provider\) will be accepting requests
+* `url` - where Erigolem RPC (running on the provider) will be accepting requests
 * `auth` - credentials that must be provided with each request
 * `network` - Ethereum network name 
 
@@ -66,9 +66,9 @@ async def get_payload(cls):
 
 Few important things to note here:
 
-* We don't have any `image_hash` \(contrary to the previouse examples\) because we don't use a VM-based runtime.
-* We declare the runtime name, `erigon` - this must match the offered [exeunit-name]().
-* `min_mem_gib` - minimum amount of RAM the provider has to offer. This is pretty useless in the Erigon case \(contrary to the e.g. VM-based runtimes\), but is required because of a known `yapapi` [bug](https://github.com/golemfactory/yapapi/issues/500).
+* We don't have any `image_hash` (contrary to the previouse examples) because we don't use a VM-based runtime.
+* We declare the runtime name, `erigon` - this must match the offered [exeunit-name](broken-reference).
+* `min_mem_gib` - minimum amount of RAM the provider has to offer. This is pretty useless in the Erigon case (contrary to the e.g. VM-based runtimes), but is required because of a known `yapapi` [bug](https://github.com/golemfactory/yapapi/issues/500).
 
 #### Start
 
@@ -115,7 +115,7 @@ start_args = await self._get_start_args()
 )
 ```
 
-These `start_args` are defined by the final user \(the one ordering Erigon service, e.g. via the web interface\) and passed directly to the runtime.
+These `start_args` are defined by the final user (the one ordering Erigon service, e.g. via the web interface) and passed directly to the runtime.
 
 {% hint style="info" %}
 Current `yapapi` has no pretty way of passing arguments to the `Service`, so this is implemented as an ugly-but-harmless hack:
@@ -143,7 +143,7 @@ else:
     self._ctx.start()
 ```
 
-`start_args` is expected to be a tuple, but there are no more assumptions - they are just passed here from the [code that starts the service](). The Erigon runtime expects at most one argument and it is expected to be a `json`, so we send the serialized first argument \(or start without any arguments if `start_args` are empty\). This could be also a good place to perform a requestor-side validation, we validate `start_arg` only in the runtime.
+`start_args` is expected to be a tuple, but there are no more assumptions - they are just passed here from the [code that starts the service](broken-reference). The Erigon runtime expects at most one argument and it is expected to be a `json`, so we send the serialized first argument (or start without any arguments if `start_args` are empty). This could be also a good place to perform a requestor-side validation, we validate `start_arg` only in the runtime.
 
 **Perform a STATUS command**
 
@@ -163,7 +163,7 @@ self._ctx.run('/bin/sh', '-c', 'cat some_file.txt')
 
 etc.
 
-In the VM environment, available commands are defined in the image and they usually default to commands available in the base linux image + optional additional commands, like `/golem/run/simple_service.py` in the [simple service](). When using a custom runtime, we are free to implement any commands we want - but also we have no built-in commands, not even `ls`.
+In the VM environment, available commands are defined in the image and they usually default to commands available in the base linux image + optional additional commands, like `/golem/run/simple_service.py` in the [simple service](broken-reference). When using a custom runtime, we are free to implement any commands we want - but also we have no built-in commands, not even `ls`.
 {% endhint %}
 
 **Fetch the results**
@@ -194,7 +194,7 @@ STATUS command executed in the runtime returns JSON-serialized data. On the requ
 We don't need to implement those functions because the default `yapapi.Service` implementation is exactly what we want:
 
 * Default `run()` waits forever.
-* Default `shutdown()` terminates the agreement. We don't have to perform any additional cleanup - it is already implemented in the runtime \(e.g. erigon process is stopped\).
+* Default `shutdown()` terminates the agreement. We don't have to perform any additional cleanup - it is already implemented in the runtime (e.g. erigon process is stopped).
 
 ### Running the HTTP Erigon server
 
@@ -216,7 +216,7 @@ For the documentation on `yapapi-service-manager` check [README](https://github.
 
 #### Configuration
 
-\([run\_server.py](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/run_server.py)\)
+([run_server.py](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/run_server.py))
 
 ```python
 app.yapapi_executor_config = {
@@ -225,7 +225,7 @@ app.yapapi_executor_config = {
 }
 ```
 
-Here we define the `yapapi.Golem` [init\_args](https://handbook.golem.network/yapapi/api-reference#_engine-objects). `app.yapapi_executor_config` is passed directly to the `Golem` object.
+Here we define the `yapapi.Golem` [init_args](https://handbook.golem.network/yapapi/api-reference#\_engine-objects). `app.yapapi_executor_config` is passed directly to the `Golem` object.
 
 #### Start/stop the requestor
 
@@ -242,13 +242,13 @@ async def close_service_manager():
     await app.service_manager.close()
 ```
 
-We initialize the ServiceManager during the server startup and close it when the server exits. This is \(roughly\) equivalent to entering/exiting `async with Golem`.
+We initialize the ServiceManager during the server startup and close it when the server exits. This is (roughly) equivalent to entering/exiting `async with Golem`.
 
 {% hint style="warning" %}
-There is no state preserved outside of the process memory, so when using a generic WSGI server \(like `gunicorn`\) you shouldn't
+There is no state preserved outside of the process memory, so when using a generic WSGI server (like `gunicorn`) you shouldn't
 
 * Start more than one worker,
-* Use worker-recycling tools \(like `max_requests` in `gunicorn`\).
+* Use worker-recycling tools (like `max_requests` in `gunicorn`).
 {% endhint %}
 
 #### Create a new Erigon
@@ -277,11 +277,11 @@ Then comes the most important line:
 erigon = app.service_manager.create_service(Erigon, [init_params], ErigonServiceWrapper)
 ```
 
-`Erigon` is the `yapapi.Service`-based class we implemented in the [previous section]().
+`Erigon` is the `yapapi.Service`-based class we implemented in the [previous section](broken-reference).
 
 `init_params` is a dictionary `{'network': <ETHEREUM-NETWORK-NAME>}` that is defined in the request.
 
-`ErigonServiceWrapper` is a class extending `yapapi-service-manager.ServiceWrapper` that can be found [here](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/erigon_service_wrapper.py). It is neither very important nor interesting: we just need a place to store and access some additional erigon-specific information, like `created_at` timestamp or `name`. This could be implemented in many different ways, but this is the most convenient - the returned `erigon` object \(an instance of `ErigonServiceWrapper`\) encapsulates all of the logic and has exactly the interface we need:
+`ErigonServiceWrapper` is a class extending `yapapi-service-manager.ServiceWrapper` that can be found [here](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/server/erigon_service_wrapper.py). It is neither very important nor interesting: we just need a place to store and access some additional erigon-specific information, like `created_at` timestamp or `name`. This could be implemented in many different ways, but this is the most convenient - the returned `erigon` object (an instance of `ErigonServiceWrapper`) encapsulates all of the logic and has exactly the interface we need:
 
 ```python
 erigon.name         # user-defined name
@@ -319,8 +319,8 @@ async def stop_instance(erigon_id):
 Nothing really interesting here, we just:
 
 * Extract the `user_id` from the request
-* Check if this is the user who created this Erigon \(compare the `app.user_erigons[user_id][erigon.id] = erigon` line in the previous section\),
-* Stop the Erigon - this _initializes_ the stopping process, it is not stopped immediately \(because stopping needs some action on the provider side\),
+* Check if this is the user who created this Erigon (compare the `app.user_erigons[user_id][erigon.id] = erigon` line in the previous section),
+* Stop the Erigon - this _initializes_ the stopping process, it is not stopped immediately (because stopping needs some action on the provider side),
 * Return Erigon representation as a response.
 
 #### Get all user's Erigons
@@ -339,4 +339,3 @@ We select all Erigons created by the user and return their representation.
 ### Running the service with a simple script
 
 There is also a [simple script that just starts the erigon services](https://github.com/golemfactory/yagna-service-erigon/blob/master/requestor/run_erigon_service.py). Service is running forever, status is printed every second, ctrl+C leads to a graceful shutdown. This is just a development tool, similar to [yapapi-service-manager examples](https://github.com/golemfactory/yapapi-service-manager/tree/master/examples).
-

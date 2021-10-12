@@ -4,7 +4,9 @@ description: Using Golem Test Harness a.k.a. goth for fun and profit
 
 # Interactive testing environment
 
-{% embed url="https://www.youtube.com/watch?v=HP6VVBUdkm8" caption="Golem Test Harness introduction video" %}
+{% embed url="https://www.youtube.com/watch?v=HP6VVBUdkm8" %}
+Golem Test Harness introduction video
+{% endembed %}
 
 ## Introduction
 
@@ -16,7 +18,7 @@ All that means that testing your shiny new app by running it in on the actual Go
 
 ## Enter goth
 
-This is where Golem's Test Harness \(or `goth` for short\) comes in to help.
+This is where Golem's Test Harness (or `goth` for short) comes in to help.
 
 `Goth` is our carefully-tailored integration testing framework that is able to run a minimal, simulated network of Golem requestors and providers locally on a single machine, while at the same time providing a developer with some additional tools that allow them to inspect both the application itself and the communications between the nodes in an isolated, controlled environment.
 
@@ -25,7 +27,7 @@ This environment is self-contained and independent of any external components th
 {% hint style="info" %}
 ### Goth features
 
-* transactions between nodes on a local Ethereum blockchain \([Ganache](https://github.com/trufflesuite/ganache)\),
+* transactions between nodes on a local Ethereum blockchain ([Ganache](https://github.com/trufflesuite/ganache)),
 * automated, configurable deployment of yagna and its components,
 * all network components running in an isolated Docker Compose network,
 * easy access to logs from the requestor and all the providers along with the history of HTTP traffic between them,
@@ -42,9 +44,12 @@ Word of caution though - currently, Golem provider nodes require actual Linux ma
 Because of that, while it may be possible to utilize a subset of our integration testing framework on Mac or Windows, for the time being, local end-to-end testing of Golem applications is only fully supported on Linux.
 {% endhint %}
 
-{% page-ref page="running-goth.md" %}
+{% content-ref url="running-goth.md" %}
+[running-goth.md](running-goth.md)
+{% endcontent-ref %}
 
 Or, if you have already run the Golem Test Harness, you may proceed directly to our tutorial on testing your own apps with it:
 
-{% page-ref page="running-goths-interactive-mode.md" %}
-
+{% content-ref url="running-goths-interactive-mode.md" %}
+[running-goths-interactive-mode.md](running-goths-interactive-mode.md)
+{% endcontent-ref %}
