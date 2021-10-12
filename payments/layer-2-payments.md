@@ -2,21 +2,23 @@
 description: Better solution for computation cost reimbursements
 ---
 
-# Layer 2 payments on zkSync
+# Layer 2 payments
 
 ## The problem
 
 Ever since the launch of the previous incarnation of Golem on mainnet, we have been facing one very serious problem which is obvious for anyone who tried implementing an application that tries to execute payments of very small amounts on Ethereum blockchain - namely, the transaction costs.
 
-When payments are performed directly on Ethereum, each payment must be executed as a transaction and that means that a fee needs to be paid in order for the transaction to be mined and included in the blockchain. The problem becomes much more serious whenever the average gas price or the price of the ETH token - with which every Ethereum transaction fee is paid - rises.
+When payments are performed directly on Ethereum, each payment must be executed as a transaction on the main chain and that means that a fee needs to be paid in order for the transaction to be mined and included in the blockchain. The problem becomes much more serious whenever the average gas price or the price of the ETH token - with which every Ethereum transaction fee is paid - rises.
 
-In that previous version - dubbed Brass and later Clay - we implemented batch payments. It added a lot of complexity to achieve a very dubious cost decrease. Apart from that we briefly flirted with various ideas on decreasing the costs like probabilistic payments, payment channels, plasma, and so on and so on, and until recently, none of them seemed to be ideal and mature enough to use right away.
+In the past, we have explored various solutions to this problem and actively implemented a few of them but until recently, none of those solutions seemed useful and mature enough to use right away.
+
+## ERC-20-compliant GLM token
+
+The landscape has changed considerably in the recent time, especially after our [migration to the new, ERC-20 compliant GLM token](https://glm.golem.network/). The new token's ERC-20 compliance enables integration with a whole lot of contracts, DEX-es and other DeFi platforms on Ethereum. Most importantly though, it enables us to use a variety of Layer 2 solutions popping up within the Ethereum ecosystem.
 
 ## The solution - zkSync
 
-It all changes with the new Golem. That's because the new Golem uses our new, upgraded, ERC-20-compliant token, which, by the way, all current GNT holders already have an ability to migrate to, thanks to the [recently-enabled migration](https://glm.golem.network/) process.
-
-While the new token's ERC-20 compliance enables integration with a whole lot of other contracts and DeFi platforms present in the Ethereum ecosystem, it also, specifically, enables integration with zkSync. And zkSync happens to be our latest answer to the aforementioned problem of increasing transactions costs in the Ethereum mainnet.
+, it also, specifically, enables integration with zkSync. And zkSync happens to be our latest answer to the aforementioned problem of increasing transactions costs in the Ethereum mainnet.
 
 ### What is this zkSync thing then?
 
