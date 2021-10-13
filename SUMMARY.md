@@ -61,9 +61,7 @@
 
 ## yapapi - Python high-level API <a id="yapapi"></a>
 
-* [Introduction to Golem's high-level Python API](yapapi/yapapi.md)
-* [Low-Level](yapapi/low-level-api.md)
-* [API Reference](yapapi/api-reference.md)
+* [Golem Python API Reference](https://yapapi.readthedocs.io/en/latest/api.html)
 
 ## yajsapi - JavaScript high-level API <a id="yajsapi"></a>
 
