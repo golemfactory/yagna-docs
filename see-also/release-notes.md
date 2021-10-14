@@ -19,5 +19,9 @@ description: Golem Handbook Release Notes
 * _Golem VPN_ feature example and tutorials added.
 * _Custom usage counters_ feature example and tutorial added.
 
+### 0.8.1
+
+* Content fixes
+
 
 

@@ -742,8 +742,8 @@ The yacat example is written in Python using Golem's Python High-Level API ([YAP
 
 The complete reference of the Python High-Level API (yapapi) is available here:
 
-{% content-ref url="../../yapapi/yapapi.md" %}
-[yapapi.md](../../yapapi/yapapi.md)
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
 {% endcontent-ref %}
 
 You can also have a look at our JavaScript/TypeScript API if you're interested in developing your requestor agent in JS/TS:
