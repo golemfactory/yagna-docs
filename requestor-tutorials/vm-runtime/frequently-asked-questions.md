@@ -53,3 +53,13 @@ There you are two options here:
 
 1. If the files are **static** (that is: they are always the same) then you can include them in the VM image itself while building it. You can learn more about that in [Creating a Docker image](creating-a-docker-image.md).
 2. If the files are **dynamic **(that is: they may differ between task executions) then your best option is to transfer the files from the requestor agent. Make sure you use a **volume directory as the destination**.
+
+### Do I have to use Golem Factory's image repository to publish my Golem images?
+
+Golem Factory manages a freely-available repository of Golem images. This repository is the default source of Golem images for Golem tools, libraries and code samples.
+
+Of course it is possible to publish Golem images via any publicly available URL - although in such scenario:&#x20;
+
+* the`.gvmi` needs to be published manually
+* in requestor agent , the image URL must be explicitly specified (see High-level API references for details of overriding the VM image URL)
+

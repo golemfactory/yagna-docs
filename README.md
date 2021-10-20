@@ -1,5 +1,5 @@
 ---
-description: Version 0.8.1
+description: Version 0.8.2
 ---
 
 # The Golem SDK documentation

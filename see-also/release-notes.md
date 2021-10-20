@@ -23,5 +23,9 @@ description: Golem Handbook Release Notes
 
 * Content fixes
 
+### 0.8.2
+
+* [VM runtime](../requestor-tutorials/vm-runtime/) documentation updates
+
 
 
