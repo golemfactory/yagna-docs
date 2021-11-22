@@ -10,9 +10,9 @@ This article is aimed mainly at **requestors** wishing to switch from running si
 If you're a provider, most likely your node is already configured to run on mainnet and using the public subnet.
 {% endhint %}
 
-Okay, so we've seen Golem requestors hand out tasks to providers and saw them pay those providers for the successfully executed tasks. We've also seen how we could utilize layer 2 \(zkSync\) to speed up those payments and significantly cut the transactions fees.
+Okay, so we've seen Golem requestors hand out tasks to providers and saw them pay those providers for the successfully executed tasks.
 
-Still, in the context of running **Golem on the Ethereum mainnet**, a few important questions remain largely unanswered:
+Still, in the context of running **Golem on the mainnet**, a few important questions remain largely unanswered:
 
 * how do you **get funds to your requestor** so you can use them to pay for the tasks?
 * how do you **get funds out of a Golem node** if you don't need them there anymore?
@@ -20,11 +20,16 @@ Still, in the context of running **Golem on the Ethereum mainnet**, a few import
 
 ## ERC-20 vs Layer2
 
-The most important distinction in basically every piece of payment-related activity, both when you consider transactions between the network's nodes but also when talking about getting funds in and out of Golem is whether you're using the regular ERC-20 token directly on the Ethereum blockchain or whether you're using zkSync or Polygon.
+The most important distinction in basically every piece of payment-related activity, both when you consider transactions between the network's nodes but also when talking about getting funds in and out of Golem is whether you're using the regular ERC-20 token directly on the Ethereum blockchain or whether you're using Polygon.
 
 While direct, on-chain transactions using ERC-20-based tokens have long become the daily bread for the Ethereum mainnet and constitute a significant part of more than a million transactions passing through the chain each day, the recent spike in both the ETH's price and the average gas prices makes it almost completely useless as a means of exchange in Golem where the values paid will usually be orders of magnitude smaller than the transaction fees.
 
-Of course, if you're willing to accept that disproportion, you may continue to use the Ethereum mainnet payments but for the majority of Golem node users, Polygon will be the main platform both when paying for tasks and receiving payments for their execution.
+Of course, if you're willing to accept that disproportion, you may continue to use the Ethereum mainnet payments but for the majority of Golem node users, **Polygon** will be the main platform both when paying for tasks and receiving payments for their execution.
+
+For more information regarding Layer 2 and Polygon, please refer to our introduction to Layer 2 payments:
+
+{% page-ref page="layer-2-payments.md" %}
+
 
 ## Your Golem wallet
 
@@ -48,18 +53,6 @@ The value described as `nodeId` in the output is the Ethereum address of your Go
 
 ## Sending funds to your account
 
-### zkSync
-
-So far the only supported way to enable your requestor wallet to operate on zkSync is to reach out to us to get your address funded with some GLM tokens.
-
-Using the address you obtained in the previous section, reach out to us on our Discord at [https://chat.golem.network](https://chat.golem.network) where, after a short verification process, you'll be issued some GLM tokens directly to your zkSync wallet and your Golem node will be good to go!
-
-The same instruction, already containing your mainnet address can be obtained by running:
-
-```text
-yagna payment fund --network=mainnet --driver=zksync
-```
-
 ### ERC-20 / Ethereum mainnet
 
 On the other hand, if you'd like to use the regular ERC-20 transactions to pay the providers, you'll need to supply your address with some actual GLM tokens, plus some ETH to pay for all the gas fees. Just use you regular wallet to send some GLM and ETH tokens to the node's address.
@@ -72,7 +65,7 @@ yagna payment fund --network=mainnet --driver=erc20
 
 ## Enable the mainnet account
 
-In the current version though, the daemon is set-up to use zkSync/Rinkeby testnet by default. Also, all accounts are initialized in the receiver mode by default so you need to enable them as a sender \(that's the reason we're adding the `--sender` flag below\).
+In the current version of requestor's set-up, the daemon is configured to use the Rinkeby testnet by default. Also, all accounts are initialized in the receiver mode by default so you need to enable them as a sender \(that's the reason we're adding the `--sender` flag below\).
 
 In order to enable the daemon to use the mainnet, you'll need to instruct it so using a command appropriate to your desired mainnet payment platform.
 
@@ -83,12 +76,7 @@ In order to enable the daemon to use the mainnet, you'll need to instruct it so 
 yagna payment init --sender --network=polygon --driver=erc20
 ```
 {% endtab %}
-{% tab title="zkSync" %}
-```bash
-yagna payment init --sender --network=mainnet --driver=zksync
-```
-{% endtab %}
-{% tab title="Ethereum" %}
+{% tab title="Ethereum mainnet" %}
 ```bash
 yagna payment init --sender --network=mainnet --driver=erc20
 ```
@@ -124,7 +112,7 @@ yagna payment status --sender --network=polygon --driver=erc20
 yagna payment status --sender --network=mainnet --driver=zksync
 ```
 {% endtab %}
-{% tab title="Ethereum" %}
+{% tab title="Ethereum mainnet" %}
 ```bash
 yagna payment status --sender --network=mainnet --driver=erc20
 ```
@@ -353,8 +341,8 @@ As for your own requestor agent code, you'll need to supply the appropriate `pay
 ```python
 async with Golem(
     [...],
-    payment_network="mainnet",
-    payment_driver="zksync",
+    payment_network="polygon",
+    payment_driver="erc20",
     subnet_tag="public-beta",
 )
 ```
@@ -363,8 +351,8 @@ async with Golem(
 {% tab title="JS" %}
 ```javascript
 new Executor({
-    driver: "zksync",
-    network: "mainnet",
+    driver: "erc20",
+    network: "polygon",
     subnet_tag: "public-beta",
 })
 ```

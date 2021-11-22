@@ -1,2 +1,3 @@
 redirects:
   payments/layer-2-payments-on-zksync.md: ./payments/layer-2-payments.md
+  requestor-tutorials/task-processing-development/requestor-tutorial.md: ./requestor-tutorials/golem-application-fundamentals/README.md
