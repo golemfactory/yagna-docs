@@ -54,7 +54,7 @@ On the other hand, because we assume requestors will first start by testing the 
 
 Please note that while we're still leaving zkSync enabled by default on Providers to enable a smooth transition after the launch of Polygon support in yagna, we'll be disabling that default in a close future. We also intend to give our current providers a sensible solution to make the funds they have accumulated so far, available on Polygon. 
 
-When you run `yagna payment fund` \(you don't have to add `--driver=erc20` since it's currently the default\) on testnet, Golem initializes a new account from our custom faucet \(a service that transfers test tokens to an address that asks for it\) which provides it with test ETH and GLM tokens.
+When you run `yagna payment fund` on testnet, Golem initializes a new account from our custom faucet \(a service that transfers test tokens to an address that asks for it\) which provides it with test ETH and GLM tokens.
 
 Of course, you also need to enable your accounts' sender mode, which is done using `yagna payment init --sender`. All this is covered in [our requestor introduction](../requestor-tutorials/flash-tutorial-of-requestor-development/).
 
