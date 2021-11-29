@@ -14,11 +14,7 @@ Run `golemsp help` without arguments to see top-level usage information:
 
 ```css
 $ golemsp help
-<<<<<<< HEAD
-golemsp 0.7.2 (499de901 2021-07-08 build #160)
-=======
 golemsp 0.8.0 (14a786d8 2021-10-06 build #174)
->>>>>>> develop
 User friedly CLI for running Golem Provider
 
 USAGE:
