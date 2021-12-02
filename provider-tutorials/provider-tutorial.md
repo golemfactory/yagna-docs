@@ -23,7 +23,7 @@ It is possible to use macOS and Windows as provider hosts, but only with WASI ex
 {% endhint %}
 
 {% hint style="success" %}
-We have enabled the providers to expect payments on the Ethereum mainnet by default. It means that by running a provider node and executing tasks, you are **earning real GLM tokens** - either as pure ERC-20 tokens or on zkSync.
+We have enabled the providers to expect payments on the Ethereum mainnet by default. It means that by running a provider node and executing tasks, you are **earning real GLM tokens** - either as pure ERC-20 tokens or on Polygon/zkSync.
 {% endhint %}
 
 ## Installation
@@ -45,7 +45,7 @@ Update your active shell\(s\) with:
 
 After installing all required components you will be asked to set up your node. **If you leave them empty the default values presented in brackets will be applied.**
 
-`Node name (default=generated_name):` - Type in the name of your new node and press Enter
+`Node name (default=generated-name):` - Type in the name of your new node and press Enter
 
 `Ethereum wallet address (default=internal wallet):` - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty, an address will be created for you on your local system.
 
@@ -74,7 +74,7 @@ golemsp run
 To run the Golem provider on the testnet, type the following in the terminal:
 
 ```text
-golemsp run --payment-network rinkeby --subnet devnet-beta
+golemsp run --payment-network testnet --subnet devnet-beta
 ```
 
 {% hint style="success" %}
@@ -97,10 +97,10 @@ $ golemsp status
 │  Status                                      │
 │                                              │
 │  Service    is running                       │
-│  Version    0.8.0                            │
-│  Commit     69838646                         │
-│  Date       2021-10-11                       │
-│  Build      175                              │
+│  Version    0.9.0                            │
+│  Commit     06538b3c                         │
+│  Date       2021-12-01                       │
+│  Build      182                              │
 │                                              │
 │  Node Name  colorful-autumn                  │
 │  Subnet     public-beta                      │
@@ -112,7 +112,8 @@ $ golemsp status
 │  network               mainnet               │
 │  amount (total)        0 GLM                 │
 │      (on-chain)        0 GLM                 │
-│       (zk-sync)        0 GLM                 │
+│      (polygon)         0 GLM                 │
+│      (zk-sync)         0 GLM                 │
 │                                              │
 │  pending               0 GLM (0)             │
 │  issued                0 GLM (0)             │
