@@ -191,7 +191,7 @@ That's done using:
 yagna payment fund
 ```
 
-It tells yagna to check for funds on your node and if needed, contacts the faucet which, in turn, issues some tGLM tokens to the node using zkSync.
+It tells yagna to check for funds on your node and if needed, contacts the faucet which, in turn, issues some test GLM and test ETH tokens to the node on the Rinkeby testnet.
 
 Once you issue the command, allow some time until it completes its job. You can verify whether you already have the funds with:
 
@@ -201,7 +201,7 @@ yagna payment status
 
 If, after a few minutes, you still can't see the tokens, re-run the `yagna payment fund` command above and check again after a few more minutes.
 
-As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver or our faucet, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../../troubleshooting/common-issues.md#payment-driver-initialization-issue).
+As the last resort, if you suspect that there is a more serious issue with the payment driver or our faucet, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../../troubleshooting/common-issues.md#payment-driver-initialization-issue).
 
 ### Enable the daemon as a requestor
 

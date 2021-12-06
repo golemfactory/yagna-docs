@@ -10,7 +10,7 @@
 
 ## Payments
 
-* [Layer 2 payments on zkSync](payments/layer-2-payments-on-zksync.md)
+* [Layer 2 payments](payments/layer-2-payments.md)
 * [Using Golem on Mainnet](payments/using-golem-on-mainnet.md)
 
 ## Provider tutorials
