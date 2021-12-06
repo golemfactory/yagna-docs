@@ -85,8 +85,9 @@ OPTIONS:
         --env-per-hour <GLM (float)>        Price for working environment per hour
         --cpu-per-hour <GLM (float)>        Price for CPU per hour
         --account <account>                 Account for payments [env: YA_ACCOUNT=]
-        --payment-network <network>         Payment network [env: YA_PAYMENT_NETWORK=]  [default: mainnet]
-                                            [possible values: mainnet, rinkeby]
+        --payment-network <networks>...     Payment network [env: YA_PAYMENT_NETWORK=]  [default: mainnet]
+					    [possible values: mainnet, rinkeby, goerli,
+					    polygon, mumbai]
 ```
 
 In order to change a particular setting \(for eg. price settings\) type:
@@ -137,10 +138,10 @@ $ golemsp status
 │  Status                     │
 │                             │
 │  Service    is not running  │
-│  Version    0.8.0           │
-│  Commit     69838646        │
-│  Date       2021-10-11      │
-│  Build      175             │
+│  Version    0.9.0           │
+│  Commit     06538b3c        │
+│  Date       2021-12-01      │
+│  Build      182             │
 │                             │
 │  Node Name  colorful-autumn │
 │  Subnet     public-beta     │
@@ -156,10 +157,10 @@ $ golemsp status
 │  Status                                      │
 │                                              │
 │  Service    is running                       │
-│  Version    0.8.0                            │
-│  Commit     69838646                         │
-│  Date       2021-10-11                       │
-│  Build      175                              │
+│  Version    0.9.0                            │
+│  Commit     06538b3c                         │
+│  Date       2021-12-01                       │
+│  Build      182                              │
 │                                              │
 │  Node Name  colorful-autumn                  │
 │  Subnet     public-beta                      │
@@ -171,7 +172,8 @@ $ golemsp status
 │  network               mainnet               │
 │  amount (total)        0 GLM                 │
 │      (on-chain)        0 GLM                 │
-│       (zk-sync)        0 GLM                 │
+│      (polygon)         0 GLM                 │
+│      (zk-sync)         0 GLM                 │
 │                                              │
 │  pending               0 GLM (0)             │
 │  issued                0 GLM (0)             │
