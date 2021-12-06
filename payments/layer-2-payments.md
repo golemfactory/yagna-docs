@@ -44,7 +44,7 @@ A user wishing to enter and exit Polygon - that is transfer funds between Polygo
 
 The good news is that a user having funds on Polygon - e.g. someone who received tokens as a Golem provider - may not have an immediate need to exit from Polygon to mainnet as there are a lot of centralized and decentralized exchanges and other kinds of DeFi solutions already operating directly _on_ the Polygon chain.
 
-Moreover, from the perspective of Golem requestors, Polygon is currently an indisputably superior solution because the ratio between the amounts paid for computing resourses and the transaction fees is much more favorable than on the main chain or on zkSync. 
+Moreover, from the perspective of Golem requestors, Polygon is currently an indisputably superior solution because the ratio between the amounts paid for computing resources and the transaction fees is much more favorable than on the main chain or on zkSync. 
 
 ## Current support in Golem
 
