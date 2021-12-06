@@ -23,7 +23,7 @@ It is possible to use macOS and Windows as provider hosts, but only with WASI ex
 {% endhint %}
 
 {% hint style="success" %}
-We have enabled the providers to expect payments on the Ethereum mainnet by default. It means that by running a provider node and executing tasks, you are **earning real GLM tokens** - either as pure ERC-20 tokens or on Polygon/zkSync.
+We have enabled the providers to expect payments on the Ethereum mainnet by default. It means that by running a provider node and executing tasks, you are **earning real GLM tokens** - either on Ethereum mainnet or on Polygon.
 {% endhint %}
 
 ## Installation
@@ -38,7 +38,7 @@ curl -sSf https://join.golem.network/as-provider | bash -
 
 You might be asked to modify your PATH afterwards for future terminal sessions:`echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc`
 
-Update your active shell\(s\) with:  
+Update your active shell\(s\) with:
 `export PATH="$HOME/.local/bin:$PATH"`
 
 #### Initial setup
