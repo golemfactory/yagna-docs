@@ -23,7 +23,7 @@
 * [Provider Troubleshooting](troubleshooting/provider-troubleshooting.md)
 * [Requestor Troubleshooting](troubleshooting/common-issues.md)
 
-## Developer tutorials <a href="requestor-tutorials" id="requestor-tutorials"></a>
+## Developer tutorials <a href="#requestor-tutorials" id="requestor-tutorials"></a>
 
 * [Requestor development: a quick primer](requestor-tutorials/flash-tutorial-of-requestor-development/README.md)
   * [Run first task on Golem](requestor-tutorials/flash-tutorial-of-requestor-development/run-first-task-on-golem.md)
@@ -51,6 +51,7 @@
   * [Converting an image from Docker to Golem](requestor-tutorials/vm-runtime/convert-a-docker-image-into-a-golem-image.md)
   * [Testing a Golem image](requestor-tutorials/vm-runtime/gvmi-debugging.md)
   * [Uploading a Golem image](requestor-tutorials/vm-runtime/uploading-a-golem-image.md)
+  * [Self-hosted VM images](requestor-tutorials/vm-runtime/self-hosted-vm-images.md)
   * [Frequently asked questions](requestor-tutorials/vm-runtime/frequently-asked-questions.md)
 * [Debugging with the use of log files](requestor-tutorials/debugging.md)
 * [Interactive testing environment](requestor-tutorials/interactive-testing-environment/README.md)
@@ -58,11 +59,11 @@
   * [Using Test Harness to test Golem apps](requestor-tutorials/interactive-testing-environment/running-goths-interactive-mode.md)
 * [SGX secure enclave application development](requestor-tutorials/sgx-secure-enclave-application-development.md)
 
-## yapapi - Python high-level API <a href="yapapi" id="yapapi"></a>
+## yapapi - Python high-level API <a href="#yapapi" id="yapapi"></a>
 
 * [Golem Python API Reference](https://yapapi.readthedocs.io/en/latest/api.html)
 
-## yajsapi - JavaScript high-level API <a href="yajsapi" id="yajsapi"></a>
+## yajsapi - JavaScript high-level API <a href="#yajsapi" id="yajsapi"></a>
 
 * [Introduction to Golem's high-level Java Script API](yajsapi/yajsapi.md)
 * [Modules](yajsapi/modules/README.md)
