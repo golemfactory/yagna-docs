@@ -16,7 +16,7 @@ In the past, we have explored various solutions to this problem and actively imp
 
 Last year's [migration of our token to a new, ERC-20-compliant contract](https://glm.golem.network/) enabled us to not only leverage decentralized exchanges and other DeFi platforms on Ethereum but most importantly, made it possible to utilize a variety of Layer 2 solutions popping up within the Ethereum ecosystem.
 
-The common feature of all the platforms gathered under the "Layer 2" umbrella is that they move most of the transactions to their own side chains while maintaining a varying degree of syncrhonization with the base Ethereum chain. 
+The common feature of all the platforms gathered under the "Layer 2" umbrella is that they move most of the transactions to their own side chains while maintaining a varying degree of synchronization with the base Ethereum chain. 
 
 Because what makes Ethereum mainnet so expensive is mostly its globally-distributed, proof-of-work-based consensus mechanism, layer 2 solutions implement their own ways to ensure integrity of their side chains. The net effect is that cost of a singular transaction is reduced, sometimes by several orders of magnitude. The usual tradeoff is some level of centralization which, arguably, reduces the trustless-ness and thus, to smaller or larger extent, also the security of users' funds.
 
@@ -30,11 +30,11 @@ Thanks to the underlying technology, namely zkRollup, the validators in zkSync a
 
 The net effect is that, with smaller costs and higher transaction throughput, zkSync remains almost as secure as the Ethereum mainnet itself.
 
-Unfortunately, zkSync also has two major drawbacks. The first one is that, while the transaction fees are indeed smaller, they're still uneconomically high for zkSync to serve as a viable platform for Golem, where the transactions happen often and the paid amounts tend to be relatively low. The second one is that - zkSync being a closed, single-purpose network - it currently has no potential to sustain DeFi and thus, tokens accumulated by users cannot be used otherwise than only after the specific user exists zkSync, which, because it requires committing a transaction to the Ethereum mainchain, is prohibitively expensive unless the user was able to collect a sizable amount. 
+Unfortunately, zkSync also has two major drawbacks. The first one is that, while the transaction fees are indeed smaller, they're still uneconomically high for zkSync to serve as a viable platform for Golem, where the transactions happen often and the paid amounts tend to be relatively low. The second one is that - zkSync being a closed, single-purpose network - it currently has no potential to sustain DeFi and thus, tokens accumulated by users cannot be used otherwise than only after the specific user exits zkSync, which, because it requires committing a transaction to the Ethereum mainchain, is prohibitively expensive unless the user was able to collect a sizable amount. 
 
 ### Polygon
 
-Formely dubbed "Matic", Polygon is becoming a de-facto standard for a lot of decentralized apps in the Ethereum space. Technically, it could be argued that it's not really a "Layer 2" solution as it doesn't keep in sync with the Ethereum but rather maintains its own side chain, connected to the Ethereum main chain with a set of inter-chain bridges.
+Formerly dubbed "Matic", Polygon is becoming a de-facto standard for a lot of decentralized apps in the Ethereum space. Technically, it could be argued that it's not really a "Layer 2" solution as it doesn't keep in sync with the Ethereum but rather maintains its own side chain, connected to the Ethereum main chain with a set of inter-chain bridges.
 
 What makes Polygon attractive is that its chain is fully compatible with the Ethereum, making all the smart contracts, wallets and other applications currently working with Ethereum immediately usable on Polygon. One noticeable difference is that in place of the ETH token, the Polygon chain uses its own MATIC token to pay the transaction fees.
 
@@ -44,7 +44,7 @@ A user wishing to enter and exit Polygon - that is transfer funds between Polygo
 
 The good news is that a user having funds on Polygon - e.g. someone who received tokens as a Golem provider - may not have an immediate need to exit from Polygon to mainnet as there are a lot of centralized and decentralized exchanges and other kinds of DeFi solutions already operating directly _on_ the Polygon chain.
 
-Moreover, from the perspective of Golem requestors, Polygon is currently an indisputably superior solution because the ratio between the amounts paid for computing resourses and the transaction fees is much more favorable than on the main chain or on zkSync. 
+Moreover, from the perspective of Golem requestors, Polygon is currently an indisputably superior solution because the ratio between the amounts paid for computing resources and the transaction fees is much more favorable than on the main chain or on zkSync. 
 
 ## Current support in Golem
 
