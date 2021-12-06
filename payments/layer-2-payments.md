@@ -34,7 +34,7 @@ Unfortunately, zkSync also has two major drawbacks. The first one is that, while
 
 ### Polygon
 
-Formely dubbed "Matic", Polygon is becoming a de-facto standard for a lot of decentralized apps in the Ethereum space. Technically, it could be argued that it's not really a "Layer 2" solution as it doesn't keep in sync with the Ethereum but rather maintains its own side chain, connected to the Ethereum main chain with a set of inter-chain bridges.
+Formerly dubbed "Matic", Polygon is becoming a de-facto standard for a lot of decentralized apps in the Ethereum space. Technically, it could be argued that it's not really a "Layer 2" solution as it doesn't keep in sync with the Ethereum but rather maintains its own side chain, connected to the Ethereum main chain with a set of inter-chain bridges.
 
 What makes Polygon attractive is that its chain is fully compatible with the Ethereum, making all the smart contracts, wallets and other applications currently working with Ethereum immediately usable on Polygon. One noticeable difference is that in place of the ETH token, the Polygon chain uses its own MATIC token to pay the transaction fees.
 
