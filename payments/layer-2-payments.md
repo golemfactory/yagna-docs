@@ -16,7 +16,7 @@ In the past, we have explored various solutions to this problem and actively imp
 
 Last year's [migration of our token to a new, ERC-20-compliant contract](https://glm.golem.network/) enabled us to not only leverage decentralized exchanges and other DeFi platforms on Ethereum but most importantly, made it possible to utilize a variety of Layer 2 solutions popping up within the Ethereum ecosystem.
 
-The common feature of all the platforms gathered under the "Layer 2" umbrella is that they move most of the transactions to their own side chains while maintaining a varying degree of syncrhonization with the base Ethereum chain. 
+The common feature of all the platforms gathered under the "Layer 2" umbrella is that they move most of the transactions to their own side chains while maintaining a varying degree of synchronization with the base Ethereum chain. 
 
 Because what makes Ethereum mainnet so expensive is mostly its globally-distributed, proof-of-work-based consensus mechanism, layer 2 solutions implement their own ways to ensure integrity of their side chains. The net effect is that cost of a singular transaction is reduced, sometimes by several orders of magnitude. The usual tradeoff is some level of centralization which, arguably, reduces the trustless-ness and thus, to smaller or larger extent, also the security of users' funds.
 
