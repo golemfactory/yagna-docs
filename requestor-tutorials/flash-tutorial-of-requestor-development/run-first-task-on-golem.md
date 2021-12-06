@@ -45,7 +45,7 @@ and make sure you're working on the version corresponding with the latest releas
 
 ```
 cd yapapi
-git checkout b0.7
+git checkout b0.8
 ```
 
 ### Set the yagna app key
@@ -91,7 +91,7 @@ Check out or download the `yajsapi` repository:
 ```
 git clone https://github.com/golemfactory/yajsapi.git
 cd yajsapi
-git checkout b0.4
+git checkout b0.6
 ```
 
 ### Set the yagna app key
