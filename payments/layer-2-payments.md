@@ -30,7 +30,7 @@ Thanks to the underlying technology, namely zkRollup, the validators in zkSync a
 
 The net effect is that, with smaller costs and higher transaction throughput, zkSync remains almost as secure as the Ethereum mainnet itself.
 
-Unfortunately, zkSync also has two major drawbacks. The first one is that, while the transaction fees are indeed smaller, they're still uneconomically high for zkSync to serve as a viable platform for Golem, where the transactions happen often and the paid amounts tend to be relatively low. The second one is that - zkSync being a closed, single-purpose network - it currently has no potential to sustain DeFi and thus, tokens accumulated by users cannot be used otherwise than only after the specific user exists zkSync, which, because it requires committing a transaction to the Ethereum mainchain, is prohibitively expensive unless the user was able to collect a sizable amount. 
+Unfortunately, zkSync also has two major drawbacks. The first one is that, while the transaction fees are indeed smaller, they're still uneconomically high for zkSync to serve as a viable platform for Golem, where the transactions happen often and the paid amounts tend to be relatively low. The second one is that - zkSync being a closed, single-purpose network - it currently has no potential to sustain DeFi and thus, tokens accumulated by users cannot be used otherwise than only after the specific user exits zkSync, which, because it requires committing a transaction to the Ethereum mainchain, is prohibitively expensive unless the user was able to collect a sizable amount. 
 
 ### Polygon
 
