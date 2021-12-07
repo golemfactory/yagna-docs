@@ -4,28 +4,26 @@ description: Golem Handbook Release Notes
 
 # Release Notes
 
-### 0.7.0
+### 0.8.2
 
-* Added versioning scheme
-* Refactored [Erigolem - Managed Erigon](../requestor-tutorials/service-development/service-example-5-managed-erigon/) example tutorial
-* Aggregated VM runtime-related content under one handbook [section](../requestor-tutorials/vm-runtime/)
+* [VM runtime](../requestor-tutorials/vm-runtime/) documentation updates
 
-### 0.7.1
+### 0.8.1
 
-* Added note about non-context-manager usage pattern of a `Golem` instance
+* Content fixes
+
 
 ### 0.8.0
 
 * _Golem VPN_ feature example and tutorials added.
 * _Custom usage counters_ feature example and tutorial added.
 
-### 0.8.1
+### 0.7.1
 
-* Content fixes
+* Added note about non-context-manager usage pattern of a `Golem` instance
 
-### 0.8.2
+## 0.7.0
 
-* [VM runtime](../requestor-tutorials/vm-runtime/) documentation updates
-
-
-
+* Added versioning scheme
+* Refactored [Erigolem - Managed Erigon](../requestor-tutorials/service-development/service-example-5-managed-erigon/) example tutorial
+* Aggregated VM runtime-related content under one handbook [section](../requestor-tutorials/vm-runtime/)
