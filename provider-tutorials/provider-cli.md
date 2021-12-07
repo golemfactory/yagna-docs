@@ -139,9 +139,9 @@ $ golemsp status
 │                             │
 │  Service    is not running  │
 │  Version    0.9.0           │
-│  Commit     06538b3c        │
-│  Date       2021-12-01      │
-│  Build      182             │
+│  Commit     807f2b31        │
+│  Date       2021-12-06      │
+│  Build      186             │
 │                             │
 │  Node Name  colorful-autumn │
 │  Subnet     public-beta     │
@@ -158,9 +158,9 @@ $ golemsp status
 │                                              │
 │  Service    is running                       │
 │  Version    0.9.0                            │
-│  Commit     06538b3c                         │
-│  Date       2021-12-01                       │
-│  Build      182                              │
+│  Commit     807f2b31                         │
+│  Date       2021-12-06                       │
+│  Build      186                              │
 │                                              │
 │  Node Name  colorful-autumn                  │
 │  Subnet     public-beta                      │
