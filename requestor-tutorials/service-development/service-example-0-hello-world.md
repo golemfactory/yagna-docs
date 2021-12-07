@@ -23,7 +23,7 @@ This example shares a number of concepts, as well as parts of its code with the 
 Also, in case you haven't done so already, it's a good idea to take a look at the [Introduction to the service model](service-model-introduction.md) before proceeding.
 
 {% hint style="warning" %}
-Please note that as of its current latest version (`0.4.0`) the JS high-level API (`yajsapi`) does not yet support the service model. Therefore, this article includes only Python code examples.
+Please note that as of its current latest version (`0.6.0`) the JS high-level API (`yajsapi`) does not yet support the service model. Therefore, this article includes only Python code examples.
 {% endhint %}
 
 ## Requestor agent code

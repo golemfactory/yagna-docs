@@ -18,7 +18,7 @@ But why do we need this? Most importantly, to reduce the setup time for provider
 
 There is only one strict requirement: **at least one volume** directory must be specified using the `VOLUME` command.
 
-Besides the above a number of commands are currently** not supported** by `gvmkit-build` converter. These are:
+Besides the above a number of commands are currently **not supported** by `gvmkit-build` converter. These are:
 
 * `CMD`
 * `ENTRYPOINT`
@@ -52,4 +52,23 @@ This is related to the answer given to ["My VM has run out of storage space"](fr
 There you are two options here:
 
 1. If the files are **static** (that is: they are always the same) then you can include them in the VM image itself while building it. You can learn more about that in [Creating a Docker image](creating-a-docker-image.md).
-2. If the files are **dynamic **(that is: they may differ between task executions) then your best option is to transfer the files from the requestor agent. Make sure you use a **volume directory as the destination**.
+2. If the files are **dynamic** (that is: they may differ between task executions) then your best option is to transfer the files from the requestor agent. Make sure you use a **volume directory as the destination**.
+
+### Do I have to use Golem Factory's image repository to publish my Golem images?
+
+Golem Factory manages a freely-available repository of Golem images. This repository is the default source of Golem images for Golem tools, libraries and code samples.
+
+Of course, it is possible to publish Golem images via any publicly available URL - although in such scenario:&#x20;
+
+* the`.gvmi` needs to be published and its sha3 hash calculated manually
+* in requestor agent, the image URL must be explicitly specified
+
+Please have a look at a short article that describes the process:
+
+{% content-ref url="self-hosted-vm-images.md" %}
+[self-hosted-vm-images.md](self-hosted-vm-images.md)
+{% endcontent-ref %}
+
+Or jump directly to the API reference:
+
+{% embed url="https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.vm" %}

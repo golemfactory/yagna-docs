@@ -119,7 +119,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.8.0](https://github.com/golemfactory/yagna/releases/tag/v0.8.0).
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.9.0](https://github.com/golemfactory/yagna/releases/tag/v0.9.0).
 
 Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on Unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
 
@@ -135,7 +135,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.8.0 (69838646 2021-10-11 build #175)`
+It should output: `yagna 0.9.0 (544b6edd 2021-12-06 build #184)`
 
 Please also verify that you have the correct version of the `gftp` binary used for file transfers in the Golem network.
 
@@ -143,7 +143,7 @@ Please also verify that you have the correct version of the `gftp` binary used f
 gftp --version
 ```
 
-It should output: `gftp 0.8.0 (69838646 2021-10-11 build #175)`
+It should output: `gftp 0.9.0 (544b6edd 2021-12-06 build #184)`
 
 ### Run the daemon
 
@@ -191,7 +191,7 @@ That's done using:
 yagna payment fund
 ```
 
-It tells yagna to check for funds on your node and if needed, contacts the faucet which, in turn, issues some tGLM tokens to the node using zkSync.
+It tells yagna to check for funds on your node and if needed, contacts the faucet which, in turn, issues some test GLM and test ETH tokens to the node on the Rinkeby testnet.
 
 Once you issue the command, allow some time until it completes its job. You can verify whether you already have the funds with:
 
@@ -201,7 +201,7 @@ yagna payment status
 
 If, after a few minutes, you still can't see the tokens, re-run the `yagna payment fund` command above and check again after a few more minutes.
 
-As the last resort, if you suspect that there is a more serious issue with the zkSync payment driver or our faucet, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../../troubleshooting/common-issues.md#payment-driver-initialization-issue).
+As the last resort, if you suspect that there is a more serious issue with the payment driver or our faucet, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../../troubleshooting/common-issues.md#payment-driver-initialization-issue).
 
 ### Enable the daemon as a requestor
 

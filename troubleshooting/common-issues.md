@@ -14,11 +14,11 @@ Don't miss the [debugging section by using the log file](../requestor-tutorials/
 
 _**Os:**_ Any
 
-_**Description:**_ Local service error: Transfer error: IO error: No such file or directory \(os error 2\)
+_**Description:**_ Local service error: Transfer error: IO error: No such file or directory (os error 2)
 
 _**Solution:**_ Something went wrong with the computation. We have a "[Debugging with the use of log files](https://handbook.golem.network/requestor-tutorials/debugging)" guide in our requestor tutorials to assist with debugging.
 
-You can also check that you're following the [Define your task's steps](https://handbook.golem.network/requestor-tutorials/requestor-tutorial#define-your-tasks-steps) correctly and that you remembered to define a place \(or places\) in the container file system that will be used for the file transfer, [as shown here](https://handbook.golem.network/requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do#volume-the-input-output).
+You can also check that you're [defining your task's](https://handbook.golem.network/requestor-tutorials/golem-application-fundamentals/hl-api-work-generator-pattern) correctly and that you remembered to define a place (or places) in the container file system that will be used for the file transfer, [as discussed here](https://handbook.golem.network/requestor-tutorials/golem-application-fundamentals#input-and-output).
 
 With `ctx.run()` make sure that you don't have multiple arguments in one string. Either `ctx.run("/bin/sh", "-c", "a", "b", "c" ...)` or use the syntax the [example gives](https://handbook.golem.network/requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do#the-requestor-agent-code) where it parses in lines.
 
@@ -28,7 +28,7 @@ If you manage to receive a message that says:
 
 `Activity failed on provider [..] failed on provider with message 'Local service error: Transfer error: Send error: send failed because receiver is gone'`
 
-That most likely means you're trying to send a transfer command \(`upload_file` / `download_file`\) to/from a location that's not a VOLUME. The reason is that only the volumes are accessible to the exe unit runner and other locations in the image simply cannot be read or written to.
+That most likely means you're trying to send a transfer command (`upload_file` / `download_file`) to/from a location that's not a VOLUME. The reason is that only the volumes are accessible to the exe unit runner and other locations in the image simply cannot be read or written to.
 
 ## Symlink issues
 
@@ -58,7 +58,7 @@ _**Solution:**_ In such a case, we're providing you with a fallback to normal pa
 
 To enable it run:
 
-```text
+```
 yagna payment fund --driver erc20
 yagna payment status --driver erc20
 yagna payment init --sender --driver erc20
@@ -66,7 +66,7 @@ yagna payment init --sender --driver erc20
 
 After you confirm you have the funds, proceed with running the examples or your own requestor agent code normally. The providers are configured to accept both zkSync and the regular tokens and will adjust accordingly.
 
-Just remember to use [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) instead of the zkSync explorer, should you wish to verify that the payment went through.
+Just remember to use [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io) instead of the zkSync explorer, should you wish to verify that the payment went through.
 
 ## Bind error: already registered
 
@@ -74,7 +74,7 @@ _**Os:** Ubuntu_
 
 _**Description:**_ If the user has an obsolete/incorrect version of `gftp` in `$PATH` they will get a repeating error when they try to request a task:
 
-```text
+```
 [2020-11-27 15:43:11,509 INFO yapapi.summary] Received proposals from 9 providers so far
 [2020-11-27T14:43:12Z ERROR ya_service_bus::remote_router] bind error: already registered: Service ID '/public/gftp/ee82d5dc7188611da558c76e777a2df7867d9526eac6fa9378728d44ca4a2a10/GetMetadata' already registered
 [2020-11-27T14:43:12Z ERROR ya_service_bus::remote_router] bind error: already registered: Service ID '/public/gftp/ee82d5dc7188611da558c76e777a2df7867d9526eac6fa9378728d44ca4a2a10/GetChunk' already registered
@@ -87,4 +87,3 @@ _**Description:**_ If the user has an obsolete/incorrect version of `gftp` in `$
 ```
 
 _**Solution:**_ Type `which gftp` to find the obsolete version of `gftp` and then remove it. Then restart your daemon and the issue should be fixed!
-
