@@ -175,4 +175,3 @@ The section titles in the Agreement are for convenience only and have no legal o
 
 Users with questions, complaints or claims with respect to the Services may contact us using the relevant contact information set forth above and at subsidy@golem.network.
 
-\
