@@ -64,6 +64,5 @@ If you're interested in running a requestor on the Ethereum mainnet, to be able 
 
 ## Further reading
 
-* [https://polygon.technology/technology/](Polygon)
-* [https://zksync.io/faq/intro.html](ZkSync intro)
-* 
+* [Polygon intro](https://polygon.technology/technology/)
+* [ZkSync intro](https://zksync.io/faq/intro.html)
