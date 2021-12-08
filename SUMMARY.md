@@ -228,6 +228,7 @@
 
 * [Running the yagna daemon from sources](see-also/running-yagna-from-sources.md)
 * [Terms](see-also/terms.md)
+* [Provider Subsidy Terms](see-also/provider-subsidy-terms.md)
 * [Compatibility Guidelines](see-also/compatibility-guidelines.md)
 * [Compatibility Policy](see-also/compatibility-policy.md)
 * [Release Notes](see-also/release-notes.md)
