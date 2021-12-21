@@ -112,7 +112,7 @@ example
 
 ```css
 $ golemsp settings show
-node name: "colorful-autumn"
+node name: "frosty-winter"
 Shared resources:
     cores:    7
     memory:    10.597366839647291 GiB
@@ -138,12 +138,12 @@ $ golemsp status
 │  Status                     │
 │                             │
 │  Service    is not running  │
-│  Version    0.9.0           │
-│  Commit     807f2b31        │
-│  Date       2021-12-06      │
-│  Build      186             │
+│  Version    0.9.1           │
+│  Commit     18876615        │
+│  Date       2021-12-20      │
+│  Build      189             │
 │                             │
-│  Node Name  colorful-autumn │
+│  Node Name  frosty-winter   │
 │  Subnet     public-beta     │
 │  VM         valid           │
 └─────────────────────────────┘
@@ -157,12 +157,12 @@ $ golemsp status
 │  Status                                      │
 │                                              │
 │  Service    is running                       │
-│  Version    0.9.0                            │
-│  Commit     807f2b31                         │
-│  Date       2021-12-06                       │
-│  Build      186                              │
+│  Version    0.9.1                            │
+│  Commit     18876615                         │
+│  Date       2021-12-20                       │
+│  Build      189                              │
 │                                              │
-│  Node Name  colorful-autumn                  │
+│  Node Name  frosty-winter                    │
 │  Subnet     public-beta                      │
 │  VM         valid                            │
 ├──────────────────────────────────────────────┤
