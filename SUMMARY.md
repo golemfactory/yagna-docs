@@ -11,7 +11,11 @@
 ## Payments
 
 * [Layer 2 payments](payments/layer-2-payments.md)
-* [Using Golem on Mainnet](payments/using-golem-on-mainnet.md)
+* [Using Golem on Mainnet](payments/using-golem-on-mainnet/README.md)
+  * [Your Golem wallet](payments/using-golem-on-mainnet/your-golem-wallet.md)
+  * [Backing up your Golem wallet](payments/using-golem-on-mainnet/backing-up-your-golem-wallet.md)
+  * [Restoring a backed-up wallet](payments/using-golem-on-mainnet/restoring-your-backed-up-golem-wallet.md)
+  * [Running a requestor on Mainnet](payments/using-golem-on-mainnet/running-a-requestor-on-mainnet.md)
 
 ## Provider tutorials
 

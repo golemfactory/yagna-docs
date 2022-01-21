@@ -60,7 +60,7 @@ Of course, you also need to enable your accounts' sender mode, which is done usi
 
 If you're interested in running a requestor on the Ethereum mainnet, to be able to leverage the main pool of Golem providers, please refer to:
 
-{% page-ref page="using-golem-on-mainnet.md" %}
+{% page-ref page="using-golem-on-mainnet/README.md" %}
 
 ## Further reading
 
