@@ -35,7 +35,9 @@ Be sure that your `key.json` file is in your current working directory and run:
 yagna id create --from-keystore ./key.json
 ```
 
-This should create a new identity in yagna based on your backed-up wallet.
+This should create a new identity in yagna based on your backed-up wallet. If the private key that you just imported is password-protected, the message that you receive on a successful import will include `isLocked: true` and means that you'll need to unlock the key later on before it can be used by yagna.
+
+On the other hand, if the message reads: `isLocked: false`, it means that you're using an uprotected keystore file.
 
 ### Set the new identity as yagna's default
 
@@ -101,6 +103,9 @@ and supply the key's password.
 This will unlock your key and `yagna` will be able to use it for outgoing payments. You can confirm that the operation succeeded by verifying that the output now reports:
 
 `isLocked: false`
+
+You'll need to unlock your key each time you start your yagna daemon because, for security reasons, yagna does not save your passphrase anywhere.
+
 {% endhint %}
 
 ### Make sure your yagna application key is bound to the correct account
