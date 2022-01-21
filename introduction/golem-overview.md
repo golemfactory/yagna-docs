@@ -8,7 +8,7 @@ description: Solution architecture and details.
 
 ![](../.gitbook/assets/tutorial-06%20%281%29.jpg)
 
-Golem is a network of nodes that implement the Golem network protocol. We provide the default implementation of a such a node in the form of the Golem daemon, called [yagna](https://github.com/golemfactory/yagna).
+Golem is a network of nodes that implement the Golem network protocol. We provide the default implementation of such a node in the form of the Golem daemon, called [yagna](https://github.com/golemfactory/yagna).
 
 The nodes in the network can act as providers or requestors. Both the requestor and the provider share the same implementation of the Golem daemon.
 
@@ -16,13 +16,13 @@ The diagram above shows the architecture of the network. For the sake of simplic
 
 ### Requestor
 
-The requestor logic is implemented as a **requestor agent**, which is a piece of code that runs on requestor's machine and communicates via REST with golem daemon's http server.
+The requestor logic is implemented as a **requestor agent**, which is a piece of code that runs on the requestor's machine and communicates via REST with the Golem daemon's http server, usually running on the same machine.
 
-A requestor agent can be written in any language as long as it's able to talk to daemon's REST API. To make things easy for the developers though, we provide two high-level API libraries[: yapapi](https://github.com/golemfactory/yapapi) for Python 3.6+ and [yajsapi](https://github.com/golemfactory/yajsapi), which is an early alpha of our JS/TS API runnable under nodejs.
+A requestor agent can be written in any language as long as it's able to talk to the daemon's REST API. To make things easy for the developers though, we provide two high-level API libraries[: yapapi](https://github.com/golemfactory/yapapi) for Python 3.6+ and [yajsapi](https://github.com/golemfactory/yajsapi), our JS/TS API runnable under nodejs.
 
-_Please note the "ALT" frame in the left part of the diagram above: typically the requestor contains application code in only one language. There are two "ALT" frames to show two possible scenarios._
+_Please note the "ALT" frames in the left part of the diagram above: there are two APIs that we support but a typical requestor agent contains application code in only one language and hence, will use only one of those alternatives._
 
-More information on a requestor can be found here:
+For more information regarding a Golem requestor, have a look at:
 
 {% page-ref page="requestor.md" %}
 
@@ -32,16 +32,24 @@ The provider logic is implemented as a **provider agent** which is a piece of co
 
 The provider can make its resources available to the requestors with the help of many types of **execution units** \(exe-unit for short\). Currently, Golem supports:
 
-* VM exe unit that runs Docker images and allows for an interaction with the running container,
-* and WASM exe unit that runs WASM code
+* VM exe unit \(or VM runtime\) that runs Docker images and allows for an interaction with the running container,
+* and WASM exe unit \(or WASM runtime\) that runs WASM code
 
-_Please note the "ALT" frame in the diagram above: the provider uses only one exe unit at the same time. There are two "ALT" frames to show two possible scenarios._
+_Please note the "ALT" frames in the diagram above: the provider uses only one exe unit at the same time out of the two available._
 
-More information on a provider is available here:
+You can learn more about Golem providers here:
 
 {% page-ref page="provider.md" %}
 
 ### Payments
 
-The payments between requestors and providers are made through the [Ethereum](https://ethereum.org/) network - using standard ERC20 token transfers or - in the future - using zkSync - a Layer 2 solution that will greatly improve cost-effectiveness.
+The payments between requestors and providers are made through [Polygon](https://polygon.technology/), a Layer2 solution that greatly improves cost-effectiveness. However, a user can also opt to use the Ethereum mainnet if they should wish so.
+
+More on that here:
+
+{% page-ref page="../payments/layer-2-payments.md" %}
+
+and here:
+
+{% page-ref page="../payments/using-golem-on-mainnet.md" %}
 

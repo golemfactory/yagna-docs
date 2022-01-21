@@ -1,7 +1,7 @@
 ---
 description: >-
-  This tutorial shows how to run the new Golem Provider Sneak Peek release and
-  play around with its limited functionalities.
+  This tutorial shows how to run a Golem Provider node and play around with its
+  functionalities.
 ---
 
 # Becoming a provider
@@ -10,34 +10,23 @@ description: >-
 
 #### Platforms
 
-This is still an early Alpha Provider Sneak Peek reveal. Therefore, temporarily, Golem official support is for:
+For the provider end, we currently, officially support:
 
-* Ubuntu 18.04 and 20.04 
+* Ubuntu 18.04 LTS and 20.04 LTS
 
-but you are welcome to try out run it on other Linux distributions.
+but you are welcome to try out and run it on other Linux distributions.
 
 {% hint style="warning" %}
-* To run Golem Sneak Peek you'll need a physical machine as you may encounter issues when running it on a virtual machine.
+To run a Golem provider node we recommend a physical machine as you may encounter issues and limitations when running it on a virtual machine. Because we expect most apps to use vm-based payloads, we don't recommend running a provider on non-Linux platforms.
+
+It is possible to use macOS and Windows as provider hosts, but only with WASI execution environment.
 {% endhint %}
 
-{% hint style="info" %}
-For this release we have prepared a dedicated and controlled sub-network using Ethereum Rinkeby Testnet for payments. **This means that the tokens received for the rental of your computing power will not hold any value outside of the network**. This release also features [the basic CLI](https://golem-network.gitbook.io/golem-sdk-develop/reference/provider-cli) with which you may interact with your node.
-{% endhint %}
-
-{% hint style="info" %}
-If you would like to earn real GNTs now, head over to our [Clay Golem Beta implementation](https://golem.network/download/clay-beta/).
+{% hint style="success" %}
+We have enabled the providers to expect payments on the Ethereum mainnet by default. It means that by running a provider node and executing tasks, you are **earning real GLM tokens** - either on Ethereum mainnet or on Polygon.
 {% endhint %}
 
 ## Installation
-
-#### Purge directories
-
-If you have previously launched **Golem Alpha** on your machine run the command below which will purge its working directories since our newest version is incompatible with the old database structure:
-
-```text
-rm -rf $HOME/.local/share/yagna
-rm -rf $HOME/.local/share/ya-provider
-```
 
 #### Run the installation command
 
@@ -47,22 +36,24 @@ Open your terminal and type:
 curl -sSf https://join.golem.network/as-provider | bash -
 ```
 
-You might be asked to modify your PATH afterwards For future terminal sessions:`echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc`
+You might be asked to modify your PATH afterwards for future terminal sessions:`echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc`
 
-Update your active terminal\(s\) with:  
+Update your active shell\(s\) with:
 `export PATH="$HOME/.local/bin:$PATH"`
 
 #### Initial setup
 
 After installing all required components you will be asked to set up your node. **If you leave them empty the default values presented in brackets will be applied.**
 
-`Node name (default=generated_name):` - Type in the name of your new node and press Enter
+`Node name (default=generated-name):` - Type in the name of your new node and press Enter
 
-`subnet (default=community.3):` - It is important that you use "community.3"
+`Ethereum wallet address (default=internal wallet):` - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty, an address will be created for you on your local system.
 
-`Ethereum wallet address (default=internal wallet):` - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty an address will be created for you on your local system.
+{% hint style="info" %}
+Your own Ethereum address could be, for example, any MetaMask or Ledger address that only you control so you can access your tokens from that address. If you choose to have a local wallet it's recommended to store a [backup](https://handbook.golem.network/payments/using-golem-on-mainnet#backing-up-your-golem-wallet) somewhere safe so you can retrieve the tokens. You are responsible for your address. If you lose access to the wallet, there will be no way to retrieve them without a backup.
+{% endhint %}
 
-`price NGNT per hour (default=5):` - Type in the value of renting your computer power as a provider. You can use default price \(5 NGNT per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
+`price GLM per hour (default=0.1):` - Type in the value of renting your computer power as a provider. You can use default price \(0.1 GLM per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
 
 {% hint style="success" %}
 Congrats, your initial setup has been completed! You will see that default preset was created based on your initial node setup. If you wish, you can change this settings later on with CLI.
@@ -70,10 +61,20 @@ Congrats, your initial setup has been completed! You will see that default prese
 
 ## Running the provider
 
-To run Golem Sneak Peek type in the terminal:
+### Mainnet
+
+To run the Golem provider on the mainnet, type the following in the terminal:
 
 ```text
 golemsp run
+```
+
+### Testnet
+
+To run the Golem provider on the testnet, type the following in the terminal:
+
+```text
+golemsp run --payment-network testnet --subnet devnet-beta
 ```
 
 {% hint style="success" %}
@@ -91,75 +92,53 @@ golemsp status
 As an output you will get the information about your node's current state as shown below:
 
 ```text
-┌──────────────────────────────────────────────────────────────┐
-│  Status                                                      │
-│                                                              │
-│  Service    is running                                       │
-│  Version    0.5.0                                            │
-│                                                              │
-│  Node Name  outstanding-chalk                                │
-│  Subnet     community.3                                      │
-│  VM         valid                                            │
-├──────────────────────────────────────────────────────────────┤
-│  Wallet                                                      │
-│                                                              │
-│  address         0xe4781cd3af959417f560372544f77aec33124b5f  │
-│  amount (total)  0 GLM                                       │
-│      (on-chain)  0 GLM                                       │
-│       (zk-sync)  0 GLM                                       │
-│                                                              │
-│  pending         0 GLM (0)                                   │
-│  issued          0 GLM (0)                                   │
-├──────────────────────────────────────────────────────────────┤
-│  Tasks                                                       │
-│                                                              │
-│  last 1h processed    0                                      │
-│  last 1h in progress  0                                      │
-│  total processed      0                                      │
-└──────────────────────────────────────────────────────────────┘
+$ golemsp status
+┌──────────────────────────────────────────────┐
+│  Status                                      │
+│                                              │
+│  Service    is running                       │
+│  Version    0.9.0                            │
+│  Commit     807f2b31                         │
+│  Date       2021-12-06                       │
+│  Build      186                              │
+│                                              │
+│  Node Name  colorful-autumn                  │
+│  Subnet     public-beta                      │
+│  VM         valid                            │
+├──────────────────────────────────────────────┤
+│  Wallet                                      │
+│  0xc8e9d25c61706b4bdbd6029de9b40bfa45f77fba  │
+│                                              │
+│  network               mainnet               │
+│  amount (total)        0 GLM                 │
+│      (on-chain)        0 GLM                 │
+│      (polygon)         0 GLM                 │
+│      (zk-sync)         0 GLM                 │
+│                                              │
+│  pending               0 GLM (0)             │
+│  issued                0 GLM (0)             │
+├──────────────────────────────────────────────┤
+│  Tasks                                       │
+│                                              │
+│  last 1h processed    0                      │
+│  last 1h in progress  0                      │
+│  total processed      1                      │
+└──────────────────────────────────────────────┘
 ```
 
 {% hint style="info" %}
 Under your address you can see both **on-chain** and **zk-sync** values listed.
 
-Although zk-sync is from now on the default payment driver in Golem you may receive on-chain transactions as well. To confirm correctness of the listed values head over to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) \(on-chain\) and [https://rinkeby.zkscan.io/](https://rinkeby.zkscan.io/) \(for zk-sync\).
+Although zk-sync is from now on the main payment operator in Golem you may receive on-chain transactions as well. To confirm the correctness of the listed values head over to [https://etherscan.io/](https://etherscan.io/) \(on-chain\) and [https://zkscan.io/](https://zkscan.io/) \(for zk-sync\).
 {% endhint %}
 
 {% hint style="info" %}
-If in the **Tasks** column you see either tasks in progress or processed then you have successfully computed a task! If not, give it some time as there is still limited number of tasks in the test network - and then run the command again.
+If in the **Offers/Tasks** column you see your active Offers count, and either tasks in progress or processed then you have successfully computed! If not, give it some time as there is still a limited number of tasks in the network - and then run the command again.
 {% endhint %}
-
-#### Known issues
-
-* Type `golemsp status` in your terminal window and check the status of your VM
-
-**When there is other status than `valid`**
-
-a\) If: `the user has no access to /dev/kvm` run
-
-```text
-curl -o setup-kvm.sh https://join.golem.network/setup-kvm.sh && chmod +x ./setup-kvm.sh && ./setup-kvm.sh
-```
-
-Afterwards, log out and log in again into your OS and then, rerun `golemsp run`
-
-b\) If: `running inside Docker without access to /dev/kvm` run
-
-```text
-docker run --privileged
-```
-
-c\) If: `unsupported virtualization type: XEN` We do not support **xen hypervisor**
-
-* In any other case with the virtualisation we recommend:
-
-`sudo apt install cpu-checker && sudo kvm-ok` command and follow the steps as given in the terminal interface.
 
 ## Provider CLI
 
 To check out additional commands available in the CLI, have a look at the reference page:
 
-{% page-ref page="../reference/provider-cli.md" %}
-
-## Next steps
+{% page-ref page="provider-cli.md" %}
 

@@ -2,18 +2,18 @@
 
 ## Introduction
 
-We use the Game of roulette application as golem based SGX development example. The game is executed in an Intel \(R\) SGX secure enclave where no player is required to trust the game host. Each game interaction is cryptographically verified with enclave's credentials to ensure that the result has been computed in a trusted execution environment.
+We use the Game of roulette application as golem based SGX development example. The game is executed in an Intel (R) SGX secure enclave where no player is required to trust the game host. Each game interaction is cryptographically verified with enclave's credentials to ensure that the result has been computed in a trusted execution environment.
 
 ## Prerequisites
 
-* [`node`](https://nodejs.org/en/download/) v12 \(LTS\) or newer
+* [`node`](https://nodejs.org/en/download/) v12 (LTS) or newer
 * Firefox / Chrome web browser with a [MetaMask](https://metamask.io/download.html) plugin installed
 
 ## Building
 
 * Clone [https://github.com/golemfactory/ya-as-sgx-examples](https://github.com/golemfactory/ya-as-sgx-examples)
 
-```text
+```
 git clone https://github.com/golemfactory/ya-as-sgx-examples
 ```
 
@@ -21,13 +21,13 @@ git clone https://github.com/golemfactory/ya-as-sgx-examples
 
 {% tabs %}
 {% tab title="npm" %}
-```text
+```
 npm install
 ```
 {% endtab %}
 
 {% tab title="yarn" %}
-```text
+```
 yarn install
 ```
 {% endtab %}
@@ -37,13 +37,13 @@ yarn install
 
 {% tabs %}
 {% tab title="npm" %}
-```text
+```
 npm run build
 ```
 {% endtab %}
 
 {% tab title="yarn" %}
-```text
+```
 yarn build
 ```
 {% endtab %}
@@ -53,7 +53,9 @@ yarn build
 
 * Run `yagna` as described in the
 
-{% page-ref page="flash-tutorial-of-requestor-development.md" %}
+{% content-ref url="flash-tutorial-of-requestor-development/" %}
+[flash-tutorial-of-requestor-development](flash-tutorial-of-requestor-development/)
+{% endcontent-ref %}
 
 {% hint style="success" %}
 So now, we're going to assume that:
@@ -66,13 +68,13 @@ Now you need to setup `SUBNET` system variable to point to the `devnet.alpha.3`
 
 {% tabs %}
 {% tab title="Ubuntu / mac OS X" %}
-```text
+```
 export SUBNET=devnet.alpha.3
 ```
 {% endtab %}
 
 {% tab title="Windows" %}
-```text
+```
 set SUBNET=devnet.alpha.3
 ```
 {% endtab %}
@@ -82,7 +84,7 @@ Run the node server:
 
 {% tabs %}
 {% tab title="npm" %}
-```text
+```
 npm run roulette
 ```
 {% endtab %}
@@ -94,7 +96,7 @@ yarn roulette
 {% endtab %}
 {% endtabs %}
 
-Now open your browser and visit [http://localhost:8000](http://localhost:8000/).
+Now open your browser and visit [http://localhost:8000](http://localhost:8000).
 
 ## Overview
 
@@ -104,7 +106,7 @@ This codebase consists of 3 main modules:
   * exposes JSON API endpoints where users can request the game's status, place bets, and spin the wheel
   * serves static web UI assets
   * forwards end-user actions to the yagna requestor
-* \*\*\*\*[**`yagna`**](https://handbook.golem.network/introduction/golem-overview#golem-architecture) **requestor**
+* ****[**`yagna`**](https://handbook.golem.network/introduction/golem-overview#golem-architecture)** requestor**
   * spawns game servers in SGX enclaves on providers' machines in Golem network
   * mediates communication between the game server and the JSON API endpoint
 * **Web UI**
@@ -125,8 +127,8 @@ In order of execution, the requestor:
 1. Joins the Golem marketplace and publishes a demand for executing the game server in an SGX enclave
 2. At the marketplace, negotiates hardware resources and prices and in turn locates capable providers
 3. Spawns an enclave on a provider's machine with appropriate game server metadata
-4. Ensures that the code is running in an SGX enclave by verifying Intel's \(R\) Attestation Service report
-5. Ensures that the enclave has set up temporary keys \(secp256k1\) for signing game server responses and establishing an E2E encrypted channel to the requestor
+4. Ensures that the code is running in an SGX enclave by verifying Intel's (R) Attestation Service report
+5. Ensures that the enclave has set up temporary keys (secp256k1) for signing game server responses and establishing an E2E encrypted channel to the requestor
 
 The requestor can now execute commands inside an enclave. Initially, the game server's binary will be downloaded, verified and executed. Afterwards, commands are forwarded to the game server itself. A new instance of the game is created and its ID presented to end-users.
 
@@ -158,11 +160,10 @@ The UI allows users to spin the roulette wheel only after placing a bet but it's
 Clicking the submit button will prompt the user to sign her request via the MetaMask plugin.
 {% endhint %}
 
-If any of the users within a game instance request to spin, the game server will draw a number from the roulette wheel and resolve all placed bets. A result message \(winning or losing\) will be presented to the user.
+If any of the users within a game instance request to spin, the game server will draw a number from the roulette wheel and resolve all placed bets. A result message (winning or losing) will be presented to the user.
 
 Each of the game server's responses is signed within the enclave and verified by the code running in the browser.
 
 ## Limitations
 
 Game sessions are limited to 25 minutes.
-
