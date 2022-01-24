@@ -1,7 +1,6 @@
 ---
-description: ensuring safety of your Golem funds.
+description: Ensuring safety of your Golem funds.
 ---
-
 
 # Backing up your Golem wallet
 
@@ -11,7 +10,7 @@ As you're probably aware, in the Ethereum universe, your funds are only as secur
 
 To create a backup of your Golem wallet, export the keystore with:
 
-```text
+```
 yagna id export --file-path=./key.json
 ```
 
@@ -46,7 +45,7 @@ Ok:
   nodeId: "0x-the-hexadecimal-ethereum-address"
 ```
 
-It's important to verify that the command shows you `isDefault: true` and `isLocked: false` and that the address shown by `nodeId` is the address you're expecting to see. `isDefault: true` means that the key for the address is currently in use by yagna and `isLocked: false` confirms that the private key is currently unlocked and accessible to the yagna node. [@todo verify what happens when it's true]
+It's important to verify that the command shows you `isDefault: true` and `isLocked: false` and that the address shown by `nodeId` is the address you're expecting to see. `isDefault: true` means that the key for the address is currently in use by yagna and `isLocked: false` confirms that the private key is currently unlocked and accessible to the yagna node. \[@todo verify what happens when it's true]
 
 ### Lock the key
 
