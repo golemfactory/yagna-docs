@@ -84,7 +84,7 @@ git --version
 {% hint style="info" %}
 During development, you'll most likely want to run your tasks on the Rinkeby Testnet. In that case, you won't need any real ETH or GLM tokens to start this tutorial. These test assets are acquired by the daemon in one of the steps below.
 
-Should you later want to run your tasks on the mainnet, to leverage the potential of all Golem's provider nodes, please have a look at: ["Using Golem on Mainnet"](../../payments/using-golem-on-mainnet.md)
+Should you later want to run your tasks on the mainnet, to leverage the potential of all Golem's provider nodes, please have a look at: ["Using Golem on Mainnet"](../../payments/using-golem-on-mainnet/README.md)
 {% endhint %}
 
 ### Can we help you? Do you have feedback for Golem?

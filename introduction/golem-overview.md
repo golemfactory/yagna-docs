@@ -51,5 +51,5 @@ More on that here:
 
 and here:
 
-{% page-ref page="../payments/using-golem-on-mainnet.md" %}
+{% page-ref page="../payments/using-golem-on-mainnet/README.md" %}
 
