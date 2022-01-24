@@ -118,7 +118,7 @@ cd examples/yacat
 {% hint style="success" %}
 So now, we're going to assume that:
 
-* The `yagna` deamon is running in the background. 
+* The `yagna` deamon is running in the background.&#x20;
 * The `YAGNA_APPKEY` environment variable is set to the value of the generated app key.
 * The payment is initialized with `yagna payment init -sender`  (please keep in mind that it needs initialization after each launch of `yagna service run`).
 * The virtual python environment for our tutorial is activated.
@@ -594,7 +594,7 @@ Each completed task will contain `hashcat`'s output for the keyspace chunk repre
 
 With the `main` function covered, let's now have a look at the worker functions `compute_keyspace` and `perform_mask_attack`. Recall that worker functions are passed as arguments to `execute_tasks`, and are called once for each provider on which tasks are executed (more precisely, once for each **activity**, but in a typical scenario, including the current example, each provider executes just one activity).
 
-#### compute_keyspace
+#### compute\_keyspace
 
 The first worker is similar to the one that we've seen in [Hello World!](task-example-0-hello.md) example, but the command we need to run on the provider is not `date` but `hashcat` with appropriate options:
 
@@ -623,7 +623,7 @@ This instructs `hashcat` to compute and print the keyspace size. The following c
         raise RuntimeError(f"Failed to compute attack keyspace: {e}")
 ```
 
-#### perform_mask_attack
+#### perform\_mask\_attack
 
 The second worker function, `perform_mask_attack` is more interesting. Unlike `compute_keyspace`, we make use of the `data` attribute that each `task` carries and use it to set `--skip` and `--limit`parameters to `hashcat`:
 
@@ -742,9 +742,7 @@ The yacat example is written in Python using Golem's Python High-Level API ([YAP
 
 The complete reference of the Python High-Level API (yapapi) is available here:
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
+[https://yapapi.readthedocs.io/en/stable/](https://yapapi.readthedocs.io/en/stable/)
 
 You can also have a look at our JavaScript/TypeScript API if you're interested in developing your requestor agent in JS/TS:
 

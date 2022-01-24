@@ -50,7 +50,7 @@ After installing all required components you will be asked to set up your node. 
 `Ethereum wallet address (default=internal wallet):` - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty, an address will be created for you on your local system.
 
 {% hint style="info" %}
-Your own Ethereum address could be, for example, any MetaMask or Ledger address that only you control so you can access your tokens from that address. If you choose to have a local wallet it's recommended to store a [backup](https://handbook.golem.network/payments/using-golem-on-mainnet#backing-up-your-golem-wallet) somewhere safe so you can retrieve the tokens. You are responsible for your address. If you lose access to the wallet, there will be no way to retrieve them without a backup.
+Your own Ethereum address could be, for example, any MetaMask or Ledger address that only you control so you can access your tokens from that address. If you choose to have a local wallet it's recommended to store a [backup](https://handbook.golem.network/payments/using-golem-on-mainnet/backing-up-your-golem-wallet.md) somewhere safe so you can retrieve the tokens. You are responsible for your address. If you lose access to the wallet, there will be no way to retrieve them without a backup.
 {% endhint %}
 
 `price GLM per hour (default=0.1):` - Type in the value of renting your computer power as a provider. You can use default price \(0.1 GLM per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
