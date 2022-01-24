@@ -27,7 +27,7 @@ The value described as `nodeId` in the output is the Ethereum address of your Go
 
 ### ERC-20 / Ethereum mainnet
 
-To use be able to pay the providers and run tasks on the mainnet (be it Ethereum or Polygon), you'll first need to supply your address with some actual GLM tokens, plus some ETH/MATIC to pay for all the gas fees. Just use you regular wallet to send some GLM and ETH/MATIC tokens to the node's address.
+To be able to pay the providers and run tasks on the mainnet (be it Ethereum or Polygon), you'll first need to supply your address with some actual GLM tokens, plus some ETH/MATIC to pay for all the gas fees. Just use your regular wallet to send some GLM and ETH/MATIC tokens to the node's address.
 
 You'll get the instructions plus your mainnet address if you run:
 

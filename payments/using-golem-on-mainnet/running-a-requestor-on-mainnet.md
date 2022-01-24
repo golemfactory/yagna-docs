@@ -41,7 +41,7 @@ yarn js:blender --payment-network mainnet --subnet-tag public-beta
 
 ### Requestor agent code
 
-As for your own requestor agent code, you'll need to supply the appropriate `payment_driver` , `payment_network` and `subnet_tag` parameters to  `Golem`.
+As for your own requestor agent code, you'll need to supply the appropriate `payment_driver` , `payment_network` and `subnet_tag` parameters to `Golem`.
 
 {% tabs %}
 {% tab title="Python" %}
