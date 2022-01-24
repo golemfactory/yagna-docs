@@ -45,7 +45,7 @@ Ok:
   nodeId: "0x-the-hexadecimal-ethereum-address"
 ```
 
-It's important to verify that the command shows you `isDefault: true` and `isLocked: false` and that the address shown by `nodeId` is the address you're expecting to see. `isDefault: true` means that the key for the address is currently in use by yagna and `isLocked: false` confirms that the private key is currently unlocked and accessible to the yagna node. \[@todo verify what happens when it's true]
+It's important to verify that the command shows you `isDefault: true` and `isLocked: false` and that the address shown by `nodeId` is the address you're expecting to see. `isDefault: true` means that the key for the address is currently in use by yagna and `isLocked: false` confirms that the private key is currently unlocked and accessible to the yagna node (trying to lock an already-locked key will result in an error).&#x20;
 
 ### Lock the key
 
