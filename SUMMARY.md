@@ -7,6 +7,7 @@
 * [Golem overview](introduction/golem-overview.md)
 * [Provider](introduction/provider.md)
 * [Requestor](introduction/requestor.md)
+* [FAQ](introduction/faq.md)
 
 ## Payments
 
