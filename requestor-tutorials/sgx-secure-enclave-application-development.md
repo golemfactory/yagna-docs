@@ -60,7 +60,7 @@ yarn build
 {% hint style="success" %}
 So now, we're going to assume that:
 
-* The `yagna` deamon is running in the background. 
+* The `yagna` deamon is running in the background.&#x20;
 * The `YAGNA_APPKEY` environment variable is set to the value of the generated app key.
 {% endhint %}
 
@@ -106,7 +106,7 @@ This codebase consists of 3 main modules:
   * exposes JSON API endpoints where users can request the game's status, place bets, and spin the wheel
   * serves static web UI assets
   * forwards end-user actions to the yagna requestor
-* ****[**`yagna`**](https://handbook.golem.network/introduction/golem-overview#golem-architecture)** requestor**
+* ****[**`yagna`**](https://handbook.golem.network/introduction/golem-overview#golem-architecture) **requestor**
   * spawns game servers in SGX enclaves on providers' machines in Golem network
   * mediates communication between the game server and the JSON API endpoint
 * **Web UI**
