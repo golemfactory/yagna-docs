@@ -6,7 +6,7 @@ Now you have the `yagna` daemon running, you may proceed with running a task as 
 
 {% tabs %}
 {% tab title="Python" %}
-### Get the environment set up
+#### Get the environment set up
 
 Ensure you're running Python >= 3.6 and you have the `venv` module installed (it's normally included in the Python distribution).
 
@@ -33,7 +33,7 @@ pip install -U pip
 pip install yapapi
 ```
 
-### Get the requestor agent's code
+#### Get the requestor agent's code
 
 Check out or download the `yapapi` repository:
 
@@ -48,7 +48,7 @@ cd yapapi
 git checkout b0.8
 ```
 
-### Set the yagna app key
+#### Set the yagna app key
 
 In order for the requestor agent to connect with the `yagna` daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](./#generate-the-app-key)" step in the quick primer article:
 
@@ -62,7 +62,7 @@ On Windows, please replace the above with:
 `set YAGNA_APPKEY=your-32-char-app-key`
 {% endhint %}
 
-#### Run the example
+**Run the example**
 
 The example we're showcasing here resides in the `examples/blender` directory within `yapapi`'s codebase so, ensure that you're in the checked-out repository's directory and run:
 
@@ -77,14 +77,14 @@ The example in question generates six discrete tasks for providers to execute so
 
 If everything goes right, after what could be anything from half-a-minute to a few minutes, you'll hopefully see the message announcing the successful completion of your assignment including a short summary of what had happened during the execution, which providers took part in the execution and the accumulated GNT cost of the whole task, e.g.:
 
-`Computation finished in 77.5s  `\
-`Negotiated 1 agreements with 1 providers  `\
-`Provider 'odra' computed 6 tasks  `\
+`Computation finished in 77.5s`\
+`Negotiated 1 agreements with 1 providers`\
+`Provider 'odra' computed 6 tasks`\
 `Total cost: 0.218290307253`
 {% endtab %}
 
 {% tab title="NodeJS" %}
-### Get the requestor agent's code
+#### Get the requestor agent's code
 
 Check out or download the `yajsapi` repository:
 
@@ -94,7 +94,7 @@ cd yajsapi
 git checkout b0.6
 ```
 
-### Set the yagna app key
+#### Set the yagna app key
 
 In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](./#generate-the-app-key)" step above:
 
@@ -108,7 +108,7 @@ On Windows, please replace the above with:
 `set YAGNA_APPKEY=your-32-char-app-key`
 {% endhint %}
 
-### Run the example task
+#### Run the example task
 
 The example we're showcasing here resides in the `examples/blender` directory within `yajsapi`'s codebase so, ensure that you're in the checked-out repository's directory and run:
 

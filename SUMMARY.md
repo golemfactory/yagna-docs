@@ -8,6 +8,11 @@
 * [Provider](introduction/provider.md)
 * [Requestor](introduction/requestor.md)
 
+***
+
+* [Requestor FAQ](requestor-faq.md)
+* [Provider FAQ](provider-faq.md)
+
 ## Payments
 
 * [Layer 2 payments](payments/layer-2-payments.md)
