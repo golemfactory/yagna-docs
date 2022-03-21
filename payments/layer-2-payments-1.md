@@ -15,7 +15,7 @@
 
 3\. Choose GLM token and follow instructions (See image below)
 
-**NOTE** : The transaction fee is most time over estimated in our example at the end total cost = \~6$
+**NOTE** : The transaction fee is most time overestimated in our example at the end total cost = \~6$
 
 **(Use Deposit Tab)**
 
