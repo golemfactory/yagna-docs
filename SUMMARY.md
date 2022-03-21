@@ -21,6 +21,7 @@
   * [Backing up your Golem wallet](payments/using-golem-on-mainnet/backing-up-your-golem-wallet.md)
   * [Restoring a backed-up wallet](payments/using-golem-on-mainnet/restoring-your-backed-up-golem-wallet.md)
   * [Running a requestor on Mainnet](payments/using-golem-on-mainnet/running-a-requestor-on-mainnet.md)
+* [GLM / Polygon Conversion](payments/layer-2-payments-1.md)
 
 ## Provider tutorials
 
