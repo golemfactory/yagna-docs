@@ -33,7 +33,7 @@ Once the image is pushed, the tool will output its hash, e.g.:
 That's it - your image is now published in Golem Factory's image repository.
 
 {% hint style="warning" %}
-Important: The larger the images you use, the more you'll need to give providers some additional time to pull those images before they'll be able start your activities.
+Important: The larger the images you use, the more additional time you'll need to give providers to pull those images before they'll be able to start your activities.
 {% endhint %}
 
-In other words, especially if you're running a task using a newly-pushed image, always specify a much longer task timeout / service expiry time on the first run.
+In other words, you always need to accomodate the time needed to pull an image in the task timeout (or service expiry time). That's especially important if you're using a newly-pushed image for the first time.
