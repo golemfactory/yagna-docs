@@ -75,7 +75,7 @@ Once you launch the example, you should see some messages reflecting the progres
 
 The example in question generates six discrete tasks for providers to execute so after those six activities are completed and results returned, the whole job is finished.
 
-If everything goes right, after what could be anything from half-a-minute to a few minutes, you'll hopefully see the message announcing the successful completion of your assignment including a short summary of what had happened during the execution, which providers took part in the execution and the accumulated GNT cost of the whole task, e.g.:
+If everything goes right, after what could be anything from half-a-minute to a few minutes, you'll hopefully see the message announcing the successful completion of your assignment including a short summary of what had happened during the execution, which providers took part in the execution and the accumulated GLM cost of the whole task, e.g.:
 
 `Computation finished in 77.5s`\
 `Negotiated 1 agreements with 1 providers`\
