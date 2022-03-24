@@ -62,6 +62,11 @@ If you're interested in running a requestor on the Ethereum mainnet, to be able 
 
 {% page-ref page="using-golem-on-mainnet/README.md" %}
 
+
+Please also see how you can send GLM tokens from the Ethereum Mainnet to Polygon and vice versa:
+
+{% page-ref page="glm-mainnet-polygon-conversion.md" %}
+
 ## Further reading
 
 * [Polygon intro](https://polygon.technology/technology/)

@@ -21,6 +21,7 @@
   * [Backing up your Golem wallet](payments/using-golem-on-mainnet/backing-up-your-golem-wallet.md)
   * [Restoring a backed-up wallet](payments/using-golem-on-mainnet/restoring-your-backed-up-golem-wallet.md)
   * [Running a requestor on Mainnet](payments/using-golem-on-mainnet/running-a-requestor-on-mainnet.md)
+* [Mainnet / Polygon GLM Conversion](payments/glm-mainnet-polygon-conversion.md)
 
 ## Provider tutorials
 
@@ -237,7 +238,6 @@
 
 * [Running the yagna daemon from sources](see-also/running-yagna-from-sources.md)
 * [Terms](see-also/terms.md)
-* [Provider Subsidy Terms](see-also/provider-subsidy-terms.md)
 * [Compatibility Guidelines](see-also/compatibility-guidelines.md)
 * [Compatibility Policy](see-also/compatibility-policy.md)
 * [Release Notes](see-also/release-notes.md)
