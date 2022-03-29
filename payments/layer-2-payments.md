@@ -69,6 +69,8 @@ Please also see how you can send GLM tokens from the Ethereum Mainnet to Polygon
 
 ## Further reading
 
-* [https://polygon.technology/technology/](Polygon)
-* [https://zksync.io/faq/intro.html](ZkSync intro)
-* 
+* [Polygon](https://polygon.technology/technology/)
+* [ZkSync intro](https://zksync.io/faq/intro.html)
+* [GLM token on Polygon](https://polygonscan.com/token/0x0b220b82f3ea3b7f6d9a1d8ab58930c064a2b5bf)
+
+
