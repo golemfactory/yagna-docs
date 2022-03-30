@@ -24,7 +24,7 @@ More importantly though, in this payment scheme, the requestor is only required 
 
 ### Pay on agreement termination
 
-The simplest way to achieve payments for resources actually used within the scope of a single agreement is for the provider agent to wait until the agreement is terminated (for whatever reason) and issue a single invoice based on the registered usages and the agreed-upon coefficients that translate the usage into the final cost.
+The simplest way to achieve payments for the resources actually used within the scope of a single agreement is for the provider agent to wait until the agreement is terminated (for whatever reason) and issue a single invoice based on the registered usages and the agreed-upon coefficients that translate the usage into the final cost.
 
 The requestor agent then accepts such an invoice and pays the accumulated cost with a single transaction.
 
@@ -48,7 +48,9 @@ That way, on one end, the requestors have a potential to compare the reported co
 
 In this setup, if a requestor fails to accept a debit note before a set timeout, the provider may assume the requestor is no longer interested in keeping the agreement alive and thus, may terminate the agreement at will to stop accumulating the cost that now has little chance to be paid for.
 
-As you may see, this solution is still suboptimal. It still requires the requestor to be, one one hand, present and responsive to provider's debit notes and, on another, to be honest and pay the invoice that the provider issues at the very end. While this might be okay for agreements spanning from minutes to several hours, it definitely stops being okay when those agreements may be signed for periods of days or even months. After all, it would be hard to expect the provider to continue working for a requestor based on a trust alone.
+As you may see, this solution is still suboptimal. It still requires the requestor to be, on one hand present and ready to respond without delay to provider's debit notes and, on another, to be honest and pay the invoice that the provider issues at the very end.
+
+While this might be okay for agreements spanning from minutes to several hours, it definitely stops being okay when those agreements may be signed for periods of days or even months. After all, it would be hard to expect the provider to continue working for a requestor based on trust alone.
 
 ### Mid-agreement payments
 
@@ -56,13 +58,15 @@ To enable such long-running agreements, in the newest yagna and in the Python AP
 
 With this mechanism in place, we're supporting two modes of operation. The first one is the already-described above, single payment after the agreement termination and the second involves payments in set, pre-agreed intervals during the course of an agreement.
 
-Because of the reasons we have already discussed, the providers won't want to sign long-running agreements that are only paid after the agreement has finished. At the same time, requestors, wishing to minimize the transaction fees want to pay as seldom as possible.
+Because of the reasons we have already discussed, the providers won't want to sign long-running agreements that are only paid after the agreement has finished. At the same time, requestors wish to minimize the transaction fees by paying as seldom as possible.
 
-Thus, both sides have certain cutoff points for the expected agreement duration, above which mid-agreement payments are, on one hand, required from the providers' point of view and on the other acceptable for the requestors. Those acceptable durations are currently set so that there is a significant overlap in the acceptable range for both providers and requestors alike in the default implementations of yapapi and the provider agent.
+Thus, both sides have a certain cutoff point for the expected agreement duration. For the providers, it will be a point after which mid-agreement payments are absolutely required. Similarly, there's some minimal value of the expected agreement duration above which the requestors will find mid-agreement payments acceptable.
+
+Those acceptable durations are currently set so that there is a significant overlap in the acceptable range for both providers and requestors alike in the default implementations of yapapi and the provider agent.
 
 #### Negotiation
 
-The nodes decide on the usage of mid-agreement payments through a simple negotiation process. In this process, they also select mutually acceptable values of two intervals - the minimal time between consecutive keep-alive debit notes and the minimal separation between subsequent payable debit notes.
+The providers and requestors decide on the usage of mid-agreement payments through a simple negotiation process. In this process, they also select mutually acceptable values of two intervals - the minimal time between consecutive keep-alive debit notes and the minimal separation between subsequent payable debit notes.
 
 #### Payments
 
