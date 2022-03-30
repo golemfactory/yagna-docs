@@ -48,7 +48,7 @@ That way, on one end, the requestors have a potential to compare the reported co
 
 In this setup, if a requestor fails to accept a debit note before a set timeout, the provider may assume the requestor is no longer interested in keeping the agreement alive and thus, may terminate the agreement at will to stop accumulating the cost that now has little chance to be paid for.
 
-As you may see, this solution is still suboptimal. It still requires the requestor to be, one one hand, present and responsive to provider's debit notes and, on another, to be honest and pay the invoice that the provider issues at the very end. While this might be okay for agreements spanning from minutes to several hours, it definitely stops being okay when those agreeements may be signed for periods of days or even months. After all, it would be hard to expect the provider to continue working for a requestor based on a trust alone.
+As you may see, this solution is still suboptimal. It still requires the requestor to be, one one hand, present and responsive to provider's debit notes and, on another, to be honest and pay the invoice that the provider issues at the very end. While this might be okay for agreements spanning from minutes to several hours, it definitely stops being okay when those agreements may be signed for periods of days or even months. After all, it would be hard to expect the provider to continue working for a requestor based on a trust alone.
 
 ### Mid-agreement payments
 
