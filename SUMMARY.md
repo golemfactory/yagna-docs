@@ -15,6 +15,7 @@
 
 ## Payments
 
+* [Payments in Golem explained](payments/payments-explained.md)
 * [Layer 2 payments](payments/layer-2-payments.md)
 * [Using Golem on Mainnet](payments/using-golem-on-mainnet/README.md)
   * [Your Golem wallet](payments/using-golem-on-mainnet/your-golem-wallet.md)
