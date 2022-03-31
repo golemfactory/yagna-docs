@@ -28,17 +28,17 @@ The simplest way to achieve payments for the resources actually used within the 
 
 The requestor agent then accepts such an invoice and pays the accumulated cost with a single transaction.
 
-And that is more or less what Golem's agents have been doing since we first released the new Golem, a.k.a yagna and its APIs.
+That is more or less what Golem's agents have been doing since we first released the new Golem, a.k.a. yagna and its APIs.
 
 ### Transaction costs
 
-One important factor influencing any decisions regarding the payment solutions in Golem is the fact that because all the payments are made using the GLM token, apart from just paying the providers, the requestor also has to bear the cost of the blockchain's transactions fees.
+One important factor influencing any decisions regarding the payment solutions in Golem is the fact that because all the payments are made using the GLM token, apart from just paying the providers, the requestor also has to bear the cost of the blockchain's transaction fees.
 
-Even though, by transitioning first to zkSync and more recently to Polygon, we were able to cut the transaction cost by orders of magnitude, they still constitute a substantial portion of the value of the payment itself.
+While we were able to cut the transaction fees by orders of magnitude using Layer 2 solutions (initially zkSync and more recently - Polygon), they still constitute a substantial portion of the value of the payment itself.
 
 Naturally, the requestor's aim in such a scenario is to optimize this cost by performing as few transactions as possible. 
 
-Contrariwise, the providers are equally obviously interested in transactions happening as often as possible to ensure they are not left with uncovered, already incurred costs should the agreement be broken by the other side.
+Contrariwise, the providers are equally interested in transactions happening as often as possible to ensure they are not left with uncovered, already incurred costs should the agreement be broken by the other side.
 
 ### Keep-alive
 
@@ -54,7 +54,7 @@ While this might be okay for agreements spanning from minutes to several hours, 
 
 ### Mid-agreement payments
 
-To enable such long-running agreements, in the newest yagna and in the Python API, we're introducing the mid-agreement payments mechanism.
+To enable such long-running agreements, in the newest yagna and in its Python API, we're introducing the mid-agreement payments mechanism.
 
 With this mechanism in place, we're supporting two modes of operation. The first one is the already-described above, single payment after the agreement termination and the second involves payments in set, pre-agreed intervals during the course of an agreement.
 
