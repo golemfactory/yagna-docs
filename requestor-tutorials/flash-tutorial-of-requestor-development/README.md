@@ -173,7 +173,9 @@ yagna app-key create requestor
 
 This should produce a 32-character-long hexadecimal app key that **you need to note down** as it will be needed to run the requestor agent.
 
-You should also keep this key secret, as, if anyone is able to reach your `yagna` daemon's REST API port, they'll be able to control your daemon using this app key.
+{% hint style="danger" %}
+If you intend to expose your yagna daemon's REST API port to the outside world (**which we strongly discourage**), you should absolutely ensure that you keep this key secret, as anyone with access to the key and the port will have complete control over your daemon.
+{% endhint %}
 
 In case you lose your app key, you can retrieve it with:
 
