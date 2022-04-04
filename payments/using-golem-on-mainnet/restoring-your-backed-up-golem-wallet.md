@@ -13,7 +13,7 @@ curl -sSf https://join.golem.network/as-requestor | bash -
 ```
 
 {% hint style="warning" %}
-The above line assumes you're a requestor on a unix-like platform (Linux or Mac). If that's not the case, you should use an installation procedure appropriate for your platform. Please refer to the [installation section of our requestor development primer](../requestor-tutorials/flash-tutorial-of-requestor-development/#running-the-yagna-daemon) or to the [analogous part of the introduction for providers](../../provider-tutorials/provider-tutorial.md#installation).
+The above line assumes you're a requestor on a unix-like platform (Linux or Mac). If that's not the case, you should use an installation procedure appropriate for your platform. Please refer to the [installation section of our requestor development primer](../../requestor-tutorials/flash-tutorial-of-requestor-development/#running-the-yagna-daemon) or to the [analogous part of the introduction for providers](../../provider-tutorials/provider-tutorial.md#installation).
 {% endhint %}
 
 Once yagna is installed, run it with:

@@ -2,9 +2,9 @@
 description: Sending GLM from the Ethereum Mainnet to Polygon and back.
 ---
 
-# Ethereum Mainnet / Polygon GLM Conversion
+# Mainnet / Polygon GLM Conversion
 
-Since the Beta.4 release of Golem, Polygon network became the default platform for payments between Golem requestors and providers. 
+Since the Beta.4 release of Golem, Polygon network became the default platform for payments between Golem requestors and providers.
 
 While Polygon itself offers countless opportunities in the form of distributed exchanges and other DeFi platforms, one might still want to move their hard-earned GLM tokens to the safety of the Ethereum Mainnet, or conversely, get their mainnet GLMs to Polygon to pay for tasks on Golem.
 
@@ -14,11 +14,10 @@ Whatever your need, there may come a time when you'd like to send your GLMs one 
 
 * Configure the Metamask wallet extension for Chrome / Firefox / Opera and add your wallet.
 
-
 ## Ethereum Mainnet to Polygon
 
 \
-**Go to** [**Polygon Website**](https://wallet.polygon.technology/login?next=%2Fbridge) **(Polygon Bridge)**&#x20;
+**Go to** [**Polygon Website**](https://wallet.polygon.technology/login?next=%2Fbridge) **(Polygon Bridge)**
 
 1\. Choose the prefered wallet (This manual will use Metamask as example)
 
@@ -30,7 +29,7 @@ Whatever your need, there may come a time when you'd like to send your GLMs one 
 
 **(Use the Deposit Tab)**
 
-![](<../.gitbook/assets/full1 (1).png>)
+![](<../.gitbook/assets/2 (1).png>)
 
 4\. Go through the confirmation process
 
@@ -42,12 +41,11 @@ Whatever your need, there may come a time when you'd like to send your GLMs one 
 
 ## Polygon to Ethereum Mainnet
 
-**Go to** [**Polygon Website**](https://wallet.polygon.technology/login?next=%2Fbridge) **(Polygon Bridge)**&#x20;
+**Go to** [**Polygon Website**](https://wallet.polygon.technology/login?next=%2Fbridge) **(Polygon Bridge)**
 
 **(Use the Withdraw Tab)**
 
 ![](../.gitbook/assets/fullb1.png)
-
 
 **NOTE** : The above screenshot is missing the very last step because of the high gas fee ($60). Just press confirm, sign the transaction in your metamask wallet and it's done.
 
@@ -64,8 +62,7 @@ Just like any transactions on the Ethereum Mainnet require ETH, operations on th
 
 ![](../.gitbook/assets/fulla2.png)
 
-3\. You can check how much MATIC you have using the "Assets on Polygon" tab![](<../.gitbook/assets/polygon-wal (1).png>)
-
+3\. You can check how much MATIC you have using the "Assets on Polygon" tab![](../.gitbook/assets/polygon-wal.png)
 
 {% hint style="info" %}
 Just for reference, currently (as of March 23rd, 2022), the transaction fees for an ERC-20 transfer on Polygon oscillate around slightly above 0.001 MATIC so converting even the minimal value of 1 MATIC will get you enough to pay gas fees of hundreds of GLM transfers.
