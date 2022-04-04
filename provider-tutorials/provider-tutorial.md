@@ -92,37 +92,19 @@ As an output you will get the information about your node's current state as sho
 
 ```
 $ golemsp status
-┌──────────────────────────────────────────────┐
-│  Status                                      │
-│                                              │
-│  Service    is running                       │
-│  Version    0.9.0                            │
-│  Commit     807f2b31                         │
-│  Date       2021-12-06                       │
-│  Build      186                              │
-│                                              │
-│  Node Name  colorful-autumn                  │
-│  Subnet     public-beta                      │
-│  VM         valid                            │
-├──────────────────────────────────────────────┤
-│  Wallet                                      │
-│  0xc8e9d25c61706b4bdbd6029de9b40bfa45f77fba  │
-│                                              │
-│  network               mainnet               │
-│  amount (total)        0 GLM                 │
-│      (on-chain)        0 GLM                 │
-│      (polygon)         0 GLM                 │
-│      (zk-sync)         0 GLM                 │
-│                                              │
-│  pending               0 GLM (0)             │
-│  issued                0 GLM (0)             │
-├──────────────────────────────────────────────┤
-│  Tasks                                       │
-│                                              │
-│  last 1h processed    0                      │
-│  last 1h in progress  0                      │
-│  total processed      1                      │
-└──────────────────────────────────────────────┘
+┌─────────────────────────────────────────┬────────────────────────────────────────────────────┬─────────────────────────────┐
+│  Status                                 │  Wallet                                            │  Tasks                      │
+│                                         │  0xc8e9d25c61706b4bdbd6029de9b40bfa45f77fba        │                             │
+│  Service    is running                  │                                                    │  last 1h processed     0    │
+│  Version    0.10.0                      │  network               mainnet                     │  last 1h in progress   0    │
+│  Commit     220c6399                    │  amount (total)        0 GLM                       │  total processed       0    │
+│  Date       2022-04-04                  │      (on-chain)        0 GLM                       │  (including failures)       │
+│  Build      215                         │      (polygon)         0 GLM                       │                             │
+│                                         │      (zksync)          0 GLM                       │                             │
+│  Node Name  strange-spring              │                                                    │                             │
+│  Subnet     public-beta                 │  pending               0 GLM (0)                   │                             │
+│  VM         valid                       │  issued                0 GLM (0)                   │                             │
+└─────────────────────────────────────────┴────────────────────────────────────────────────────┴─────────────────────────────┘
 ```
 
 {% hint style="info" %}
