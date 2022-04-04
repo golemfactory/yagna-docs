@@ -20,7 +20,7 @@ _**Solution:**_ Something went wrong with the computation. We have a "[Debugging
 
 You can also check that you're [defining your task's](https://handbook.golem.network/requestor-tutorials/golem-application-fundamentals/hl-api-work-generator-pattern) correctly and that you remembered to define a place (or places) in the container file system that will be used for the file transfer, [as discussed here](https://handbook.golem.network/requestor-tutorials/golem-application-fundamentals#input-and-output).
 
-With `ctx.run()` make sure that you don't have multiple arguments in one string. Either `ctx.run("/bin/sh", "-c", "a", "b", "c" ...)` or use the syntax the [example gives](https://handbook.golem.network/requestor-tutorials/create-your-own-application-on-golem/the-steps-to-do#the-requestor-agent-code) where it parses in lines.
+With `ctx.run()` make sure that you don't have multiple arguments in one string. Either `ctx.run("/bin/sh", "-c", "a", "b", "c" ...)` or use the syntax the [example gives](../requestor-tutorials/task-processing-development/task-example-2-hashcat.md#the-requestor-agent-code) where it parses in lines.
 
 ## Send error: send failed because receiver is gone
 

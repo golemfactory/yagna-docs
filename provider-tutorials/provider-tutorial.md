@@ -32,14 +32,13 @@ We have enabled the providers to expect payments on the Ethereum mainnet by defa
 
 Open your terminal and type:
 
-```text
+```
 curl -sSf https://join.golem.network/as-provider | bash -
 ```
 
 You might be asked to modify your PATH afterwards for future terminal sessions:`echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc`
 
-Update your active shell\(s\) with:
-`export PATH="$HOME/.local/bin:$PATH"`
+Update your active shell(s) with: `export PATH="$HOME/.local/bin:$PATH"`
 
 #### Initial setup
 
@@ -50,10 +49,10 @@ After installing all required components you will be asked to set up your node. 
 `Ethereum wallet address (default=internal wallet):` - Paste your own Ethereum address to which you have private keys stored. If you leave this space empty, an address will be created for you on your local system.
 
 {% hint style="info" %}
-Your own Ethereum address could be, for example, any MetaMask or Ledger address that only you control so you can access your tokens from that address. If you choose to have a local wallet it's recommended to store a [backup](https://handbook.golem.network/payments/using-golem-on-mainnet/backing-up-your-golem-wallet.md) somewhere safe so you can retrieve the tokens. You are responsible for your address. If you lose access to the wallet, there will be no way to retrieve them without a backup.
+Your own Ethereum address could be, for example, any MetaMask or Ledger address that only you control so you can access your tokens from that address. If you choose to have a local wallet it's recommended to store a [backup](../payments/using-golem-on-mainnet/backing-up-your-golem-wallet.md) somewhere safe so you can retrieve the tokens. You are responsible for your address. If you lose access to the wallet, there will be no way to retrieve them without a backup.
 {% endhint %}
 
-`price GLM per hour (default=0.1):` - Type in the value of renting your computer power as a provider. You can use default price \(0.1 GLM per hour\) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
+`price GLM per hour (default=0.1):` - Type in the value of renting your computer power as a provider. You can use default price (0.1 GLM per hour) by leaving this field empty. **This command shows up only when running GolemSP for the first time**
 
 {% hint style="success" %}
 Congrats, your initial setup has been completed! You will see that default preset was created based on your initial node setup. If you wish, you can change this settings later on with CLI.
@@ -65,7 +64,7 @@ Congrats, your initial setup has been completed! You will see that default prese
 
 To run the Golem provider on the mainnet, type the following in the terminal:
 
-```text
+```
 golemsp run
 ```
 
@@ -73,7 +72,7 @@ golemsp run
 
 To run the Golem provider on the testnet, type the following in the terminal:
 
-```text
+```
 golemsp run --payment-network testnet --subnet devnet-beta
 ```
 
@@ -85,13 +84,13 @@ Your provider node is up and running!
 
 To check your node's status and see if it is actually computing tasks from the network, open a new terminal window and type:
 
-```text
+```
 golemsp status
 ```
 
 As an output you will get the information about your node's current state as shown below:
 
-```text
+```
 $ golemsp status
 ┌─────────────────────────────────────────┬────────────────────────────────────────────────────┬─────────────────────────────┐
 │  Status                                 │  Wallet                                            │  Tasks                      │
@@ -111,7 +110,7 @@ $ golemsp status
 {% hint style="info" %}
 Under your address you can see both **on-chain** and **zk-sync** values listed.
 
-Although zk-sync is from now on the main payment operator in Golem you may receive on-chain transactions as well. To confirm the correctness of the listed values head over to [https://etherscan.io/](https://etherscan.io/) \(on-chain\) and [https://zkscan.io/](https://zkscan.io/) \(for zk-sync\).
+Although zk-sync is from now on the main payment operator in Golem you may receive on-chain transactions as well. To confirm the correctness of the listed values head over to [https://etherscan.io/](https://etherscan.io) (on-chain) and [https://zkscan.io/](https://zkscan.io) (for zk-sync).
 {% endhint %}
 
 {% hint style="info" %}
@@ -122,5 +121,6 @@ If in the **Offers/Tasks** column you see your active Offers count, and either t
 
 To check out additional commands available in the CLI, have a look at the reference page:
 
-{% page-ref page="provider-cli.md" %}
-
+{% content-ref url="provider-cli.md" %}
+[provider-cli.md](provider-cli.md)
+{% endcontent-ref %}

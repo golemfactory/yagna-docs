@@ -28,7 +28,6 @@ Of course, if you're willing to accept that disproportion, you may continue to u
 
 For more information regarding Layer 2 and Polygon, please refer to our introduction to Layer 2 payments:
 
-{% page-ref page="layer-2-payments.md" %}
-
-
-
+{% content-ref url="../layer-2-payments.md" %}
+[layer-2-payments.md](../layer-2-payments.md)
+{% endcontent-ref %}
