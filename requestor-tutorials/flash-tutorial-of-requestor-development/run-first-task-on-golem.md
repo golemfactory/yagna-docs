@@ -45,7 +45,7 @@ and make sure you're working on the version corresponding with the latest releas
 
 ```
 cd yapapi
-git checkout b0.8
+git checkout b0.9
 ```
 
 #### Set the yagna app key
