@@ -96,12 +96,12 @@ $ golemsp status
 │  Status                                 │  Wallet                                            │  Tasks                      │
 │                                         │  0xc8e9d25c61706b4bdbd6029de9b40bfa45f77fba        │                             │
 │  Service    is running                  │                                                    │  last 1h processed     0    │
-│  Version    0.9.2                       │  network               mainnet                     │  last 1h in progress   0    │
-│  Commit     d4a24786                    │  amount (total)        0 GLM                       │  total processed       0    │
-│  Date       2022-01-10                  │      (on-chain)        0 GLM                       │  (including failures)       │
-│  Build      191                         │      (polygon)         0 GLM                       │                             │
+│  Version    0.10.0                      │  network               mainnet                     │  last 1h in progress   0    │
+│  Commit     220c6399                    │  amount (total)        0 GLM                       │  total processed       0    │
+│  Date       2022-04-04                  │      (on-chain)        0 GLM                       │  (including failures)       │
+│  Build      215                         │      (polygon)         0 GLM                       │                             │
 │                                         │      (zksync)          0 GLM                       │                             │
-│  Node Name  frosty-winter               │                                                    │                             │
+│  Node Name  strange-spring              │                                                    │                             │
 │  Subnet     public-beta                 │  pending               0 GLM (0)                   │                             │
 │  VM         valid                       │  issued                0 GLM (0)                   │                             │
 └─────────────────────────────────────────┴────────────────────────────────────────────────────┴─────────────────────────────┘
