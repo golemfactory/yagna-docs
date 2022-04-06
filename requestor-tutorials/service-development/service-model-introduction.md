@@ -54,8 +54,6 @@ A HL API library controls all aspects of acquisition of suitable Providers, nego
 
 Once a Golem activity starts and the Service instance begins its life, the Requestor Agent must indicate all actions to be executed in order to set up the service.
 
-
-
 {% tabs %}
 {% tab title="Python" %}
 ```python
