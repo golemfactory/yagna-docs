@@ -118,9 +118,9 @@ cd examples/yacat
 {% hint style="success" %}
 So now, we're going to assume that:
 
-* The `yagna` deamon is running in the background.&#x20;
+* The `yagna` deamon is running in the background.
 * The `YAGNA_APPKEY` environment variable is set to the value of the generated app key.
-* The payment is initialized with `yagna payment init -sender`  (please keep in mind that it needs initialization after each launch of `yagna service run`).
+* The payment is initialized with `yagna payment init -sender` (please keep in mind that it needs initialization after each launch of `yagna service run`).
 * The virtual python environment for our tutorial is activated.
 * Dependencies are installed and the `yapapi` repository (containing the tutorial examples) is cloned.
 * In your current directory (`examples/yacat`) there are two files that will be used and discussed in this example:
@@ -161,7 +161,7 @@ VOLUME /golem/input /golem/output
 
 This makes `/golem/input` and `/golem/output` locations we will use for our input/output file transfer. For the requestor agent code, which we are going to discuss in the next chapter, we need to know the volume (or volumes) name(s) and use it as a directory for the file transfers.
 
-![](<../../.gitbook/assets/tnm-docs-infographics-08 (1).jpg>)
+![](../../.gitbook/assets/requestor-vm-comms.jpg)
 
 {% hint style="info" %}
 On the provider side, all the content of the VOLUME directories is stored in the provider's os file system.
@@ -440,7 +440,6 @@ async def main(args):
 if __name__ == "__main__":
     args = arg_parser.parse_args()
     run_golem_example(main(args), log_file=args.log_file)
-
 ```
 
 ## So what is happening here?

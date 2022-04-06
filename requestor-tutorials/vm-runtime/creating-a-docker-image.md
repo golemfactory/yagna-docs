@@ -38,7 +38,7 @@ The `FROM` command specifies what existing image we want to use as our base. In 
 
 ### VOLUME
 
-![Structure of a VM container on a provider's node](../../.gitbook/assets/requestor-vm-comms.jpg)
+![Structure of a VM container on a provider's node](<../../.gitbook/assets/tnm-docs-infographics-08 (1).jpg>)
 
 #### Input/Output
 
@@ -74,7 +74,7 @@ Finally, we specify a working directory. This will be the default directory to b
 
 ### Important note about Docker's ENTRYPOINT
 
-Because of how Golem's VM execution unit works, the Docker's `ENTRYPOINT` statement  is effectively ignored and replaced with the exeunit's own entrypoint.
+Because of how Golem's VM execution unit works, the Docker's `ENTRYPOINT` statement is effectively ignored and replaced with the exeunit's own entrypoint.
 
 The net effect for you, the developer, is that you need to pass the relevant initialization commands as part of the execution script running after the image is deployed and started on provider's VM.
 

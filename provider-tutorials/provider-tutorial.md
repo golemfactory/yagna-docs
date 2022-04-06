@@ -80,6 +80,14 @@ golemsp run --payment-network testnet --subnet devnet-beta
 Your provider node is up and running!
 {% endhint %}
 
+{% hint style="info" %}
+Please keep in mind that golemsp run will remember last time used parameters,
+
+After you do your tests you need to change back into public network :
+
+golemsp run --subnet public-beta --payment-network mainnet
+{% endhint %}
+
 ### Checking node status
 
 To check your node's status and see if it is actually computing tasks from the network, open a new terminal window and type:
