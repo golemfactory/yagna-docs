@@ -84,9 +84,11 @@ Your provider node is up and running!
 Please keep in mind that golemsp run will remember last time used parameters,
 
 After you do your tests you need to change back into public network :
-
-golemsp run --subnet public-beta --payment-network mainnet
 {% endhint %}
+
+```
+golemsp run --subnet public-beta --payment-network mainnet
+```
 
 ### Checking node status
 

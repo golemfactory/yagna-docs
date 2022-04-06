@@ -8,11 +8,9 @@ description: 'Version: 0.2 (Draft)'
 
 For summary of default compatibility guidelines refer to the
 
-{% content-ref url="compatibility-guidelines.md" %}
-[compatibility-guidelines.md](compatibility-guidelines.md)
-{% endcontent-ref %}
+{% page-ref page="compatibility-guidelines.md" %}
 
-The purpose of the compatibility policy is to make promises to the users of Yagna software regarding the compatibility of Yagna packages against their software (a proprietary app referencing a ya\*api library may or may not be compatible with subsequent versions of the library) and against each other (Requestor nodes running one version of Yagna may or may not be compatible with Provider nodes running a different version).
+The purpose of the compatibility policy is to make promises to the users of Yagna software regarding the compatibility of Yagna packages against their software \(a proprietary app referencing a ya\*api library may or may not be compatible with subsequent versions of the library\) and against each other \(Requestor nodes running one version of Yagna may or may not be compatible with Provider nodes running a different version\).
 
 **Note:** the policy must address following concerns:
 
@@ -35,17 +33,17 @@ This policy assumes a number of simplifications, without sacrificing generality:
 
 This implies we are not considering the compatibility between specific versions of ya\*api libraries and different versions of yagna daemon modules.
 
-*   By **Provider version** we consider a bundle of specific versions of following **components** meant to be running on Provider node:
+* By **Provider version** we consider a bundle of specific versions of following **components** meant to be running on Provider node:
 
-    * yagna daemon
-    * ya-provider agent application
-    * ExeUnit and runtime modules
+  * yagna daemon
+  * ya-provider agent application
+  * ExeUnit and runtime modules
 
-    This implies we are not considering the compatibility between specific versions of ya-provider application and different versions of yagna daemon and exeunit runtimes.
+  This implies we are not considering the compatibility between specific versions of ya-provider application and different versions of yagna daemon and exeunit runtimes.
 
 ### Versioning scheme
 
-Yagna packages are versioned according to the Semantic Versioning 2.0 ([https://semver.org/](https://semver.org)) - the most significant aspects of it are repeated below for convenience.
+Yagna packages are versioned according to the Semantic Versioning 2.0 \([https://semver.org/](https://semver.org/)\) - the most significant aspects of it are repeated below for convenience.
 
 The version numbers are assigned using following scheme:
 
@@ -57,7 +55,7 @@ Where:
 
 Following rules apply:
 
-* For initial development (major version = 0) the compatibility may be broken at anytime. The APIs should not be considered stable.
+* For initial development \(major version = 0\) the compatibility may be broken at anytime. The APIs should not be considered stable.
 * For versions 1.0+ the rules are:
   * Major updates imply potentially incompatible changes to existing APIs, components and packages, eg. removal of features, APIs or modules.
   * Minor updates are related to adding features to existing APIs, preserving backwards compatibility.
@@ -67,11 +65,11 @@ Following rules apply:
 
 We consider following compatibility relationships:
 
-* **Requestor Agent App <-> Requestor package version**
+* **Requestor Agent App &lt;-&gt; Requestor package version**
 
 By “Agent App is compatible with a specific Requestor package version” we state that Agent App is compatible with a relevant ya\*api library version associated with that Requestor version. In other words, having a yagna package 0.6.0, including yapapi version 0.4.1 we say Agent App is compatible with yagna 0.6.0 when this Agent App is dependent on yapapi 0.4.1 and is run against yagna 0.6.0 on Requestor node.
 
-* **Requestor version <-> Provider version**
+* **Requestor version &lt;-&gt; Provider version**
 
 By “Requestor version A is compatible with Provider version B” we state that:
 
@@ -86,23 +84,123 @@ The behaviour of an API may change in case of bug or vulnerability fixes.
 
 ### Compatibility matrix
 
-A matrix indicating the compatibility between Requestor and Provider versions shall be maintained (indicative example below):
+A matrix indicating the compatibility between Requestor and Provider versions shall be maintained \(indicative example below\):
 
-|                                                                | Provider versions |           |             |                                                   |                                                           |                                                                |
-| -------------------------------------------------------------- | ----------------- | --------- | ----------- | ------------------------------------------------- | --------------------------------------------------------- | -------------------------------------------------------------- |
-| Requestor versions                                             | **0.5.0**         | **0.6.0** | _**0.7.0**_ | <p><strong>MVP release</strong></p><p>(1.0.0)</p> | <p><strong>Minor release</strong></p><p>(tent. 1.1.0)</p> | <p><strong>Next major release</strong></p><p>(tent. 2.0.0)</p> |
-| **0.5.0**                                                      | Y                 | N         | N           | N                                                 | N                                                         | N                                                              |
-| **0.6.0**                                                      | N                 | Y         | **Y**       | Y                                                 | N                                                         | N                                                              |
-| _**0.7.0**_                                                    | N                 | N         | Y           | N                                                 | N                                                         | N                                                              |
-| <p><strong>MVP release</strong></p><p>(1.0.0)</p>              | N                 | N         | N           | Y                                                 | Y                                                         | N                                                              |
-| <p><strong>Minor release</strong></p><p>(tent. 1.1.0)</p>      | N                 | N         | N           | Y                                                 | Y                                                         | Y                                                              |
-| <p><strong>Next major release</strong></p><p>(tent. 2.0.0)</p> | N                 | N         | N           | N                                                 | N                                                         | Y                                                              |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left"></th>
+      <th style="text-align:left">Provider versions</th>
+      <th style="text-align:left"></th>
+      <th style="text-align:left"></th>
+      <th style="text-align:left"></th>
+      <th style="text-align:left"></th>
+      <th style="text-align:left"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">Requestor versions</td>
+      <td style="text-align:left"><b>0.5.0</b>
+      </td>
+      <td style="text-align:left"><b>0.6.0</b>
+      </td>
+      <td style="text-align:left"><em><b>0.7.0</b></em>
+      </td>
+      <td style="text-align:left">
+        <p><b>MVP release</b>
+        </p>
+        <p>(1.0.0)</p>
+      </td>
+      <td style="text-align:left">
+        <p><b>Minor release</b>
+        </p>
+        <p>(tent. 1.1.0)</p>
+      </td>
+      <td style="text-align:left">
+        <p><b>Next major release</b>
+        </p>
+        <p>(tent. 2.0.0)</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>0.5.0</b>
+      </td>
+      <td style="text-align:left">Y</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>0.6.0</b>
+      </td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">Y</td>
+      <td style="text-align:left"><b>Y</b>
+      </td>
+      <td style="text-align:left">Y</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><em><b>0.7.0</b></em>
+      </td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">Y</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>MVP release</b>
+        </p>
+        <p>(1.0.0)</p>
+      </td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">Y</td>
+      <td style="text-align:left">Y</td>
+      <td style="text-align:left">N</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>Minor release</b>
+        </p>
+        <p>(tent. 1.1.0)</p>
+      </td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">Y</td>
+      <td style="text-align:left">Y</td>
+      <td style="text-align:left">Y</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>Next major release</b>
+        </p>
+        <p>(tent. 2.0.0)</p>
+      </td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">N</td>
+      <td style="text-align:left">Y</td>
+    </tr>
+  </tbody>
+</table>
 
 **Notes:**
 
 * While in Alpha mode, Yagna packages are likely to break backwards compatibility from release to release
 * Once in Prod mode, major updates of Yagna Provider packages should maintain backwards compatibility up to 2 minor releases of Requestor packages
-* The Provider packages are not consciously forward compatible (ie. Provider will fall out of interest when running outdated versions)
+* The Provider packages are not consciously forward compatible \(ie. Provider will fall out of interest when running outdated versions\)
 
 **IMPORTANT:**
 
@@ -116,7 +214,7 @@ The behavior of an API or a component must not change between any two consecutiv
 * When a breaking change is required, the following process will be observed:
   * **Major release N**:
     * New methods, parameters or components to support the new functionality can be added as long as the old functionality continues to work
-    * Old API is **marked as deprecated** (in a way relevant to the language-specific deprecation labelling patterns) and still functions properly without breaking
+    * Old API is **marked as deprecated** \(in a way relevant to the language-specific deprecation labelling patterns\) and still functions properly without breaking
     * **Release notes** must include information about incoming breaking changes
   * **Major release N+1**:
     * Remove deprecated items
@@ -139,31 +237,30 @@ SUMMARY:
 
 With this release, we are excited to share zkSync L2 Payment Driver support.
 
-(...)
+\(...\)
 
 CHANGELOG:
 
 * GolemSP:
-  * Support golemsp stop ([#787](https://github.com/golemfactory/yagna/pull/787))
+  * Support golemsp stop \([\#787](https://github.com/golemfactory/yagna/pull/787)\)
 * Provider:
-  * Reduce timeout for closing agreements when no activity is made from 30 minutes to 90 seconds ([#835](https://github.com/golemfactory/yagna/pull/835))
-  * Update provider agent readme ([#750](https://github.com/golemfactory/yagna/pull/750))
-* (...)
+  * Reduce timeout for closing agreements when no activity is made from 30 minutes to 90 seconds \([\#835](https://github.com/golemfactory/yagna/pull/835)\)
+  * Update provider agent readme \([\#750](https://github.com/golemfactory/yagna/pull/750)\)
+* \(...\)
 
 DEPRECATED APIs:
 
-* \[Payment API] GetAccounts method has been marked as deprecated
-* \[yapapi] Runner class has been marked as deprecated and superseded by Executor class.
-* \[...]
+* \[Payment API\] GetAccounts method has been marked as deprecated
+* \[yapapi\] Runner class has been marked as deprecated and superseded by Executor class.
+* \[...\]
 
 API LIBRARY COMPATIBILITY:
 
-|             |               |              |
-| ----------- | ------------- | ------------ |
 | **Library** | **Requestor** | **Provider** |
-| yapapi      | 0.5.0+        | 0.6.0+       |
-| yajsapi     | 0.5.0+        | 0.6.0+       |
-| ...         | ...           | ...          |
+| :--- | :--- | :--- |
+| yapapi | 0.5.0+ | 0.6.0+ |
+| yajsapi | 0.5.0+ | 0.6.0+ |
+| ... | ... | ... |
 
 By installing & running this software you declare that you have read understood and hereby accept the disclaimer and privacy warning found at [https://handbook.golem.network/see-also/terms](https://handbook.golem.network/see-also/terms)
 
@@ -178,14 +275,16 @@ major.minor.patch
 Where:
 
 * major, minor, micro are incrementing integers
-* Semantic versioning 2.0 ([https://semver.org/](https://semver.org)) rules apply.
-*   ya\*api libraries are labeled with required versions of interfacing packages, eg:
+* Semantic versioning 2.0 \([https://semver.org/](https://semver.org/)\) rules apply.
+* ya\*api libraries are labeled with required versions of interfacing packages, eg:
 
-    Required dependencies:
+  Required dependencies:
 
-    ```
-    Yagna \(Requestor\): 0.18.0+
+  ```text
+  Yagna \(Requestor\): 0.18.0+
 
-    Yagna \(Provider\): 0.17.0+
-    ```
+  Yagna \(Provider\): 0.17.0+
+  ```
+
 * Within a major version we guarantee the APIs to be backward compatible, but not forward compatible. Ie. newer releases may add elements to the API, but they should not alter or remove.
+
