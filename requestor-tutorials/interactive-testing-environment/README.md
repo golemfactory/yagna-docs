@@ -25,7 +25,7 @@ This is where Golem's Test Harness (or `goth` for short) comes in to help.
 This environment is self-contained and independent of any external components that the regular Golem nodes use - such as the Ethereum blockchain, the central communications hub or any other Golem nodes in the public network.
 
 {% hint style="info" %}
-#### Goth features
+### Goth features
 
 * transactions between nodes on a local Ethereum blockchain ([Ganache](https://github.com/trufflesuite/ganache)),
 * automated, configurable deployment of yagna and its components,
