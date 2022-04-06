@@ -5,13 +5,13 @@ description: Version 0.9.0
 # The Golem SDK documentation
 
 {% hint style="info" %}
-### REQUESTORS
+## REQUESTORS
 
 Looking for a quick start? [Dive into our requestor development primer!](requestor-tutorials/flash-tutorial-of-requestor-development/)
 {% endhint %}
 
 {% hint style="info" %}
-### PROVIDERS
+## PROVIDERS
 
 Have a look at "[Becoming a provider](provider-tutorials/provider-tutorial.md)" if you're interested in running a provider node.
 {% endhint %}
@@ -50,8 +50,8 @@ Ensuring that the development of products based on Golem is smooth and effortles
 
 To get up to speed on Golem application development, start with our [quick primer to requestor development](requestor-tutorials/flash-tutorial-of-requestor-development/) and follow up with the rest of our tutorials targeted at requestors.
 
-{% content-ref url="broken-reference/" %}
-[broken-reference](broken-reference/)
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
 {% endcontent-ref %}
 
 ### **2. Become a Golem provider**
