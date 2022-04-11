@@ -81,9 +81,7 @@ Your provider node is up and running!
 {% endhint %}
 
 {% hint style="info" %}
-Please keep in mind that golemsp run will remember last time used parameters,
-
-After you do your tests you need to change back into public network :
+Please keep in mind that `golemsp run` will remember the parameters used the last time so after you finish your tests, you may want to change them back to the public network:
 {% endhint %}
 
 ```
