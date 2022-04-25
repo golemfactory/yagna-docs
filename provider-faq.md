@@ -8,9 +8,9 @@ A great start is to follow or undercut the median pricing of the network, which 
 
 **Do I need to portforward to run golem?**\
 \
-****No it’s not required.
+\*\*\*\*No it’s not required.
 
-**Can I run multiple providers on the same IP?**&#x20;
+**Can I run multiple providers on the same IP?**
 
 Yes, that works perfectly fine.
 
@@ -60,7 +60,7 @@ It all comes down to if KVM access are available on the hosting platform (e.g AW
 
 `$HOME/.local/share/yagna/yagna_rCURRENT.log`
 
-`$HOME/.local/share/ya-provider/yagna_rCURRENT.log`
+`$HOME/.local/share/ya-provider/ya-provider_rCURRENT.log`
 
 **Would a provider Windows version be coming anytime soon?**
 
