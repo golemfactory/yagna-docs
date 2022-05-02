@@ -40,7 +40,7 @@ On Windows, you may need to just use `python` instead of `python3`
 {% endtab %}
 
 {% tab title="NodeJS" %}
-#### NodeJS 12.13.0+
+#### NodeJS 14.17.0+
 
 To verify your currently installed version of node, please run:
 
@@ -56,7 +56,7 @@ If you have an older version of node and you'd like to keep that version in your
 Once you have `nvm` installed on your machine, run:
 
 ```text
-nvm install v12
+nvm install v14.17
 ```
 
 **Yarn 1.22.3+**

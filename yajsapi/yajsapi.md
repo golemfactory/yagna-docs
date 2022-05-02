@@ -8,7 +8,7 @@ The JS/TS port of [yapapi, Golem's Python API](https://github.com/golemfactory/y
 
 ### Prerequisites
 
-* [node](https://nodejs.org/en/) &gt;= v12.13.0
+* [node](https://nodejs.org/en/) &gt;= v14.17.0
 * [yarn](https://classic.yarnpkg.com/en/docs/install/) &gt;= v1.22.3
 
 ## Building the Library
