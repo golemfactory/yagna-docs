@@ -87,3 +87,23 @@ _**Description:**_ If the user has an obsolete/incorrect version of `gftp` in `$
 ```
 
 _**Solution:**_ Type `which gftp` to find the obsolete version of `gftp` and then remove it. Then restart your daemon and the issue should be fixed!
+
+## Installation process terminated: SSL verification failure
+
+_**Os:**_ All
+
+_**Description:**_ If the user runs `golem-installer` having an incorrect system date/time set, the installation process breaks out with an error. The failure message states that an SSL certificate validation problem has occurred:
+
+```
+golem-installer: installing to /home/user/.local/bin
+ Component                             Version
+-----------               --------------------
+golem core                              0.10.0 curl: (60) SSL certificate problem: certificate is not yet valid
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+```
+
+_**Solution:**_ Check the clock of your machine. If the date and/or time is incorrect update it. The system clock must be set properly to prevent SSL verification failure. 
