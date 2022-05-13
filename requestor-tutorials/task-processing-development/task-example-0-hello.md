@@ -86,7 +86,7 @@ if __name__ == "__main__":
 
 {% tab title="NodeJS" %}
 ```javascript
-const { Executor, Task, utils: { asyncWith }, vm } = require("yajsapi");
+const { Executor, Task, vm } = require("yajsapi");
 
 async function main() {
   const package = await vm.repo({
@@ -103,14 +103,12 @@ async function main() {
     }
   }
 
-  await asyncWith(
-    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta.2" }),
-    async (executor) => {
+  const executor = new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta.2" });
+  await executor.run(async (executor) => {
       for await (let completed of executor.submit(worker, tasks)) {
-        console.log(completed.result().stdout);
+          console.log(completed.result().stdout);
       }
-    }
-  );
+  });
 }
 
 main();
@@ -210,14 +208,12 @@ async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
 
 {% tab title="NodeJS" %}
 ```javascript
-await asyncWith(
-    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta" }),
-    async (executor) => {
-        for await (let completed of executor.submit(worker, tasks)) {
-            console.log(completed.result().stdout);
-        }
+const executor = new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta.2" });
+await executor.run(async (executor) => {
+    for await (let completed of executor.submit(worker, tasks)) {
+        console.log(completed.result().stdout);
     }
-);
+});
 ```
 {% endtab %}
 {% endtabs %}
@@ -232,7 +228,7 @@ Let's first focus on the instantiation code:
 
 {% tabs %}
 {% tab title="Python" %}
-```javascript
+```python
 async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
     ...
 ```
@@ -240,18 +236,17 @@ async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
 
 {% tab title="NodeJS" %}
 ```javascript
-await asyncWith(
-    new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta" }),
+const executor = new Executor({ task_package: package, budget: "1.0", subnet_tag: "devnet-beta.2" });
+await executor.run(async (executor) => {
     ...
-);
 ```
 {% endtab %}
 {% endtabs %}
 
 {% hint style="info" %}
-`Golem/Executor` instances work as asynchronous [context managers](https://docs.python.org/3/reference/datamodel.html#context-managers). Since context managers are a concept native to Python, Golem's `yajsapi` provides a custom implementation in the form of the function `asyncWith`.
+`Golem/Executor` instances work as asynchronous [context managers](https://docs.python.org/3/reference/datamodel.html#context-managers). In javascript, the context manager pattern does not exist natively, so this behavior has been implemented in the `run` method of the `Executor` object.
 
-Context managers are somewhat similar to `try-catch-finally` blocks. They allow for setup and teardown logic before using some resource. In our case this resource is the `Golem/Executor` instance, while the block of code inside `async with/asyncWith` is the context.
+Context managers are somewhat similar to `try-catch-finally` blocks. They allow for setup and teardown logic before using some resource. In our case this resource is the `Golem/Executor` instance, while the block of code inside `async with/run` is the context.
 {% endhint %}
 
 Our context manager needs to be declared asynchronous as its setup and teardown functions are coroutines. This is required since they involve some long running actions such as creating/deleting payment allocations or starting/stopping background services.
