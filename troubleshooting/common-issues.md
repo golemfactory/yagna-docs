@@ -106,4 +106,4 @@ establish a secure connection to it. To learn more about this situation and
 how to fix it, please visit the web page mentioned above.
 ```
 
-_**Solution:**_ Check the clock of your machine. If the date and/or time is incorrect update it. The system clock must be set properly to prevent SSL verification failure. 
+_**Solution:**_ Check the clock of your machine. If the date and/or time is incorrect update it. The system clock must be set properly to prevent SSL verification failure. In order to skip verification use either `-k` or `--insecure` flag.
