@@ -14,7 +14,7 @@ Run `golemsp help` without arguments to see top-level usage information:
 
 ```css
 $ golemsp help
-golemsp 0.10.0 (220c6399 2022-04-04 build #215)
+golemsp 0.10.1 (6ae8c21a 2022-06-06 build #223)
 User friedly CLI for running Golem Provider
 
 USAGE:
@@ -138,12 +138,12 @@ $ golemsp status
 │  Status                     │
 │                             │
 │  Service    is not running  │
-│  Version    0.10.0          │
-│  Commit     220c6399        │
-│  Date       2022-04-04      │
-│  Build      215             │
+│  Version    0.10.1          │
+│  Commit     6ae8c21a        │
+│  Date       2022-06-06      │
+│  Build      223             │
 │                             │
-│  Node Name  strange-spring  │
+│  Node Name  leopard         │
 │  Subnet     public-beta     │
 │  VM         valid           │
 └─────────────────────────────┘
@@ -153,19 +153,19 @@ When your node is already running `golemsp status` will show:
 
 ```text
 $ golemsp status
-┌─────────────────────────────────────────┬────────────────────────────────────────────────────┬─────────────────────────────┐
-│  Status                                 │  Wallet                                            │  Tasks                      │
-│                                         │  0xc8e9d25c61706b4bdbd6029de9b40bfa45f77fba        │                             │
-│  Service    is running                  │                                                    │  last 1h processed     0    │
-│  Version    0.10.0                      │  network               mainnet                     │  last 1h in progress   0    │
-│  Commit     220c6399                    │  amount (total)        0 GLM                       │  total processed       0    │
-│  Date       2022-04-04                  │      (on-chain)        0 GLM                       │  (including failures)       │
-│  Build      215                         │      (polygon)         0 GLM                       │                             │
-│                                         │      (zksync)          0 GLM                       │                             │
-│  Node Name  strange-spring              │                                                    │                             │
-│  Subnet     public-beta                 │  pending               0 GLM (0)                   │                             │
-│  VM         valid                       │  issued                0 GLM (0)                   │                             │
-└─────────────────────────────────────────┴────────────────────────────────────────────────────┴─────────────────────────────┘
+┌──────────────────────────┬────────────────────────────────────────────────────┬─────────────────────────────┐
+│  Status                  │  Wallet                                            │  Tasks                      │
+│                          │  0xf98bb0842a7e744beedd291c98e7cd2c9b27f300        │                             │
+│  Service    is running   │                                                    │  last 1h processed     0    │
+│  Version    0.10.1       │  network               mainnet                     │  last 1h in progress   0    │
+│  Commit     6ae8c21a     │  amount (total)        0 GLM                       │  total processed       0    │
+│  Date       2022-06-06   │      (on-chain)        0 GLM                       │  (including failures)       │
+│  Build      223          │      (polygon)         0 GLM                       │                             │
+│                          │      (zksync)          0 GLM                       │                             │
+│  Node Name  leopard      │                                                    │                             │
+│  Subnet     public-beta  │  pending               0 GLM (0)                   │                             │
+│  VM         valid        │  issued                0 GLM (0)                   │                             │
+└──────────────────────────┴────────────────────────────────────────────────────┴─────────────────────────────┘
 ```
 
 In the three columns, you can check the basic information regarding the status of your node
