@@ -92,19 +92,19 @@ As an output you will get the information about your node's current state as sho
 
 ```
 $ golemsp status
-┌─────────────────────────────────────────┬────────────────────────────────────────────────────┬─────────────────────────────┐
-│  Status                                 │  Wallet                                            │  Tasks                      │
-│                                         │  0xc8e9d25c61706b4bdbd6029de9b40bfa45f77fba        │                             │
-│  Service    is running                  │                                                    │  last 1h processed     0    │
-│  Version    0.10.0                      │  network               mainnet                     │  last 1h in progress   0    │
-│  Commit     220c6399                    │  amount (total)        0 GLM                       │  total processed       0    │
-│  Date       2022-04-04                  │      (on-chain)        0 GLM                       │  (including failures)       │
-│  Build      215                         │      (polygon)         0 GLM                       │                             │
-│                                         │      (zksync)          0 GLM                       │                             │
-│  Node Name  strange-spring              │                                                    │                             │
-│  Subnet     public-beta                 │  pending               0 GLM (0)                   │                             │
-│  VM         valid                       │  issued                0 GLM (0)                   │                             │
-└─────────────────────────────────────────┴────────────────────────────────────────────────────┴─────────────────────────────┘
+┌──────────────────────────┬────────────────────────────────────────────────────┬─────────────────────────────┐
+│  Status                  │  Wallet                                            │  Tasks                      │
+│                          │  0xf98bb0842a7e744beedd291c98e7cd2c9b27f300        │                             │
+│  Service    is running   │                                                    │  last 1h processed     0    │
+│  Version    0.10.1       │  network               mainnet                     │  last 1h in progress   0    │
+│  Commit     6ae8c21a     │  amount (total)        0 GLM                       │  total processed       0    │
+│  Date       2022-06-06   │      (on-chain)        0 GLM                       │  (including failures)       │
+│  Build      223          │      (polygon)         0 GLM                       │                             │
+│                          │      (zksync)          0 GLM                       │                             │
+│  Node Name  leopard      │                                                    │                             │
+│  Subnet     public-beta  │  pending               0 GLM (0)                   │                             │
+│  VM         valid        │  issued                0 GLM (0)                   │                             │
+└──────────────────────────┴────────────────────────────────────────────────────┴─────────────────────────────┘
 ```
 
 {% hint style="info" %}
