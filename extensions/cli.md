@@ -38,7 +38,7 @@ I.e. `golemsp xyz` will print a message identical to `golemsp --help`, whereas e
 
 # Creating your own extension
 
-Developers are required to build their extension as a standalone binary; the programming language can be of their choosing.
+Developers are required to build their extensions as standalone binaries; the programming language can be of their choosing.
 
 ## Environment variables
 
