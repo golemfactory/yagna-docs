@@ -184,3 +184,106 @@ As you can see, the `app.py` script has two modes of operation:
 
 Both modes accept an additional pair of parameters - the IP address and port of the database server, which we'll be able to pass from the requestor agent script to connect the two services together.
 
+Apart from that, the script contains the minimum to define our extremely simple application. First, we have the model (`Line`) storing a single line of our chat. And secondly, we have two controller functions:
+* `root_get` - a `GET` handler, which takes a list of `Line`s from the database and displays it using the HTML view along with the form that lets the user add a next entry,
+* `root_post` - takes a `POST` request containing the message from the HTML form and appends it to the `Line`s stored in the DB.
+
+### Web-app requestor
+
+Above, we have briefly shown you the construction of the app itself just to give you a glimpse of what one might want to take into consideration while building service apps for the Golem Network. As mentioned though, it can be any other setup, language, platform, etc. as long as it's running in a VM on Golem and capable of handling HTTP requests.
+
+Now let's have a look at the most Golem-specific part, the requestor agent code. You'll see that it directly reflects the composition of the app itself.
+
+#### DB Service class
+
+Let's start again with the DB back-end. Here's the code of the class that takes care of it:
+
+```python
+class DbService(Service):
+    @staticmethod
+    async def get_payload():
+        return await vm.repo(
+            image_hash=DB_IMAGE_HASH,
+            capabilities=[vm.VM_CAPS_VPN],
+        )
+
+    async def start(self):
+        # perform the initialization of the Service
+        # (which includes sending the network details within the `deploy` command)
+        async for script in super().start():
+            yield script
+
+        script = self._ctx.new_script(timeout=timedelta(seconds=30))
+        script.run("/bin/run_rqlite.sh")
+        yield script
+
+    async def reset(self):
+        # We don't have to do anything when the service is restarted
+        pass
+```
+
+The most important parts here are:
+* the specification of the VPN capability (`vm.VM_CAPS_VPN`) in `get_payload` method which ensures that the container used to run our DB image will have the capability to connect to the VPN network which we'll create:
+* and the run command (`script.run("/bin/run_rqlite.sh")`) which triggers the `rqlite`'s entrypoint in the service's startup handler.
+
+We need to call `super().start()` in our service's `start()` to save us from having to issue the appropriate `deploy` and `start` exescript commands ourselves. They ensure our container is properly initialized and ready to run other commands.
+
+Finally, the `reset` is there just to give the service a chance to restart on another provider if it fails during initialization.
+
+#### HTTP service class
+
+The class that manages the HTTP is slightly more complex but equally straightforward in the way it reflects the underlying service:
+
+```python
+class HttpService(HttpProxyService):
+    def __init__(self, db_address: str, db_port: int = 4001):
+        super().__init__(remote_port=5000)
+        self._db_address = db_address
+        self._db_port = db_port
+
+    @staticmethod
+    async def get_payload():
+        return await vm.repo(
+            image_hash=HTTP_IMAGE_HASH,
+            capabilities=[vm.VM_CAPS_VPN],
+        )
+
+    async def start(self):
+        # perform the initialization of the Service
+        # (which includes sending the network details within the `deploy` command)
+        async for script in super().start():
+            yield script
+
+        script = self._ctx.new_script(timeout=timedelta(seconds=10))
+
+        script.run(
+            "/bin/bash",
+            "-c",
+            f"cd /webapp && python app.py --db-address {self._db_address} --db-port {self._db_port} initdb",
+        )
+        script.run(
+            "/bin/bash",
+            "-c",
+            f"cd /webapp && python app.py --db-address {self._db_address} --db-port {self._db_port} run > /webapp/out 2> /webapp/err &",
+        )
+        yield script
+
+    async def reset(self):
+        # We don't have to do anything when the service is restarted
+        pass
+```
+
+One immediate difference is that this class does not inherit from yapapi's base `Service` but from `HttpProxyService` defined as part of our Local HTTP Proxy module.
+
+By doing this, we're giving it an ability to accept incoming HTTP requests and route them to the HTTP server on the provider's end. To specifically send our requests to the Flask's development server that we have set up in our VM image, we specify the appropriate port (in our case: `5000`) as `remote_port` in a call to the `HttpProxyService`'s init.
+
+We're also giving our HTTP service two additional parameters, `db_address` and `db_port` which we'll then use to connect the HTTP server to its DB backend when it starts.
+
+Then, again, as was the case of the DB service, we need to specify the VPN capability in the `get_payload` method.
+
+As mentioned earlier, our app's script has two modes of operation - the DB initialization and running as an HTTP server. Thus, in the startup handler (the `start` method), we need to specify those two commands. We need to pass the `db_address` and `db_port` to both of them. Additionally, we're saving the app's standard output and standard error to the container's `/webapp/out` and `/webapp/err` respectively.
+
+Finally, we also add an "empty" `reset` handler to enable service's re-launch on failure.
+
+That's it. Now for the part that binds them all.
+
