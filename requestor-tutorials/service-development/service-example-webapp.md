@@ -430,3 +430,16 @@ To do that, we start the local HTTP proxy and connect it to our remote HTTP serv
 
 Yay! We're live! We can now tune our web browser to `http://localhost:8080` and enjoy our tiny Golem-enabled web app.
 
+You can now open this address in your browser and you should see a form like this:
+
+![](../../.gitbook/assets/webapp_oneliner_form.png)
+
+And then, after sending a few inputs, you'll see the resultant "chat" below:
+
+![](../../.gitbook/assets/webapp_oneliner_entries.png)
+
+That's all folks!
+
+We'll be interested in seeing how for you can go by applying the same template and using our recently-released [Local HTTP Proxy module](https://github.com/golemfactory/yapapi/blob/master/yapapi/contrib/service/http_proxy.py) that's part of yapapi's contrib section.
+
+Feel free to share your own solutions and ask questions on our Discord and Github if your run into issues. Have fun with Golem! :)
