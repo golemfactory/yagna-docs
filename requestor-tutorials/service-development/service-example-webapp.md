@@ -287,3 +287,146 @@ Finally, we also add an "empty" `reset` handler to enable service's re-launch on
 
 That's it. Now for the part that binds them all.
 
+### The `main` function
+
+Let's have a look at the entirety of the function before we talk about the few important lines there:
+
+```python
+async def main(subnet_tag, payment_driver, payment_network, port):
+    async with Golem(
+        budget=1.0,
+        subnet_tag=subnet_tag,
+        payment_driver=payment_driver,
+        payment_network=payment_network,
+    ) as golem:
+        print_env_info(golem)
+
+        network = await golem.create_network("192.168.0.1/24")
+        async with network:
+            db_cluster = await golem.run_service(DbService, network=network)
+            db_instance = db_cluster.instances[0]
+
+            def still_starting(cluster):
+                return any(
+                    i.state in (ServiceState.pending, ServiceState.starting)
+                    for i in cluster.instances
+                )
+
+            def raise_exception_if_still_starting(cluster):
+                if still_starting(cluster):
+                    raise Exception(
+                        f"Failed to start {cluster} instances "
+                        f"after {STARTING_TIMEOUT.total_seconds()} seconds"
+                    )
+
+            commissioning_time = datetime.now()
+
+            while (
+                still_starting(db_cluster)
+                and datetime.now() < commissioning_time + STARTING_TIMEOUT
+            ):
+                print(db_cluster.instances)
+                await asyncio.sleep(5)
+
+            raise_exception_if_still_starting(db_cluster)
+
+            print(
+                f"{TEXT_COLOR_CYAN}DB instance started, spawning the web server{TEXT_COLOR_DEFAULT}"
+            )
+
+            web_cluster = await golem.run_service(
+                HttpService,
+                network=network,
+                instance_params=[{"db_address": db_instance.network_node.ip}],
+            )
+
+            # wait until all remote http instances are started
+
+            while (
+                still_starting(web_cluster)
+                and datetime.now() < commissioning_time + STARTING_TIMEOUT
+            ):
+                print(web_cluster.instances + db_cluster.instances)
+                await asyncio.sleep(5)
+
+            raise_exception_if_still_starting(web_cluster)
+
+            # service instances started, start the local HTTP server
+
+            proxy = LocalHttpProxy(web_cluster, port)
+            await proxy.run()
+
+            print(
+                f"{TEXT_COLOR_CYAN}Local HTTP server listening on:\nhttp://localhost:{port}{TEXT_COLOR_DEFAULT}"
+            )
+
+            # wait until Ctrl-C
+
+            while True:
+                print(web_cluster.instances + db_cluster.instances)
+                try:
+                    await asyncio.sleep(10)
+                except (KeyboardInterrupt, asyncio.CancelledError):
+                    break
+
+            # perform the shutdown of the local http server and the service cluster
+
+            await proxy.stop()
+            print(f"{TEXT_COLOR_CYAN}HTTP server stopped{TEXT_COLOR_DEFAULT}")
+
+            web_cluster.stop()
+            db_cluster.stop()
+
+            cnt = 0
+            while cnt < 3 and any(
+                s.is_available for s in web_cluster.instances + db_cluster.instances
+            ):
+                print(web_cluster.instances + db_cluster.instances)
+                await asyncio.sleep(5)
+                cnt += 1
+```
+
+We start with the usual initialization of the Golem engine (`async with Golem(...)`) and then the rest of the code is executed inside the engine's context manager to ensure proper shutdown and cleanup after we finish working with our services.
+
+Within this context, the first thing we want to do is to initialize our VPN:
+
+```python
+    network = await golem.create_network("192.168.0.1/24")
+    async with network:
+        ...
+```
+
+This creates the VPN and, behind the scenes, adds the requestor as the first addres in this network. It also enters another context manager, which, this time, will be responsible for tearing down our VPN once we're done with it.
+
+With the VPN in place, we're now ready to commission the first of our services - the DB backend, ensuring that it's added to our just-created VPN by passing the `network` parameter to the `run_service` call.
+
+```python
+    db_cluster = await golem.run_service(DbService, network=network)
+    db_instance = db_cluster.instances[0]
+```
+
+What follows is some helper code that just ensures the DB service is started before we requisition our Flask app. We set a timeout of `STARTING_TIMEOUT` (4 minutes) and we're expecting the DB service to be running before it elapses. Should it still not be ready, we'll exit with an exception.
+
+With the database service running, we're ready to start our web application service:
+
+```python
+    web_cluster = await golem.run_service(
+        HttpService,
+        network=network,
+        instance_params=[{"db_address": db_instance.network_node.ip}],
+    )
+```
+
+Here, besides also passing the `network` argument, we're also providing the IP address of the DB instance as the `db_address` parameter to the `HttpService`.
+
+And then we wait again, this time for the web application to start on a provider node. Once our web application is up and running, we're finally ready to expose our app to the outside world.
+
+To do that, we start the local HTTP proxy and connect it to our remote HTTP server:
+
+```python
+    proxy = LocalHttpProxy(web_cluster, port)
+    await proxy.run()
+```
+
+Yay! We're live! We can now tune our web browser to `http://localhost:8080` and enjoy our tiny Golem-enabled web app.
+
