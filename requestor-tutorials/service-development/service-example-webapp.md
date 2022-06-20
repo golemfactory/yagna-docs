@@ -405,7 +405,7 @@ With the VPN in place, we're now ready to commission the first of our services -
     db_instance = db_cluster.instances[0]
 ```
 
-What follows is some helper code that just ensures the DB service is started before we requisition our Flask app. We set a timeout of `STARTING_TIMEOUT` (4 minutes) and we're expecting the DB service to be running before it elapses. Should it still not be ready, we'll exit with an exception.
+What follows is some helper code that just ensures the DB service is started before we provision our Flask app. We set a timeout of `STARTING_TIMEOUT` (4 minutes) and we're expecting the DB service to be running before it elapses. Should it still not be ready, we'll exit with an exception.
 
 With the database service running, we're ready to start our web application service:
 
