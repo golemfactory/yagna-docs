@@ -3,7 +3,7 @@ description: >-
   Simple web application consisting of an SQL database and a Python/Flask application server, utilizing the local HTTP proxy on the requestor's end.
 ---
 
-# Service Example 3: Simple Web application
+# Service Example 5: Simple Web application
 
 {% hint style="info" %}
 Here, we're presenting you the usage of:
