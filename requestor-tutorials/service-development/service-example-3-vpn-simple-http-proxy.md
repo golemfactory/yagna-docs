@@ -15,7 +15,7 @@ The example depicts the following features:
 {% endhint %}
 
 {% hint style="info" %}
-Full code of the example is available in the yapapi repository: [https://github.com/golemfactory/yapapi/tree/b0.7/examples/http-proxy](https://github.com/golemfactory/yapapi/tree/b0.7/examples/http-proxy)
+Full code of the example is available in the yapapi repository: [https://github.com/golemfactory/yapapi/tree/master/examples/http-proxy](https://github.com/golemfactory/yapapi/tree/master/examples/http-proxy)
 {% endhint %}
 
 ## Prerequisites

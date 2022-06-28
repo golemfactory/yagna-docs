@@ -53,6 +53,7 @@
   * [Service Example 2: VPN - SSH terminal](requestor-tutorials/service-development/service-example-2-vpn-ssh-terminal.md)
   * [Service Example 3: VPN - Minimalistic HTTP proxy](requestor-tutorials/service-development/service-example-3-vpn-simple-http-proxy.md)
   * [Service Example 4: Custom usage counters](requestor-tutorials/service-development/service-example-4-custom-usage-counters.md)
+  * [Service Example 5: Web application](requestor-tutorials/service-development/service-example-webapp.md)
 * [VM runtime](requestor-tutorials/vm-runtime/README.md)
   * [Creating a Docker image](requestor-tutorials/vm-runtime/creating-a-docker-image.md)
   * [Converting an image from Docker to Golem](requestor-tutorials/vm-runtime/convert-a-docker-image-into-a-golem-image.md)
