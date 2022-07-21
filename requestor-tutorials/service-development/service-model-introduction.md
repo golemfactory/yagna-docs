@@ -14,7 +14,7 @@ In the Golem service model, the Requestor Agent application specifies the servic
 
 Our Services API provides an abstraction over Golem low-level APIs, which is aimed at making the building of service-oriented applications straightforward for a developer. The abstraction is based on a logical concept of a Service, in other words, an entity that implements the logic of a service application, and which, from Requestor's perspective, follows a certain sequence of states:
 
-![](<../../.gitbook/assets/Service State Diagram-State diagram - for handbook.drawio (1).png>)
+![](<../../.gitbook/assets/Service State Diagram-State diagram - for handbook.drawio.png>)
 
 Transitions from one state to another take place as a result of certain events. The events may be triggered by a Requestor (RunService), Provider (AgreementTerminated), or may be a result of an external phenomenon (like errors of varying nature). Golem SDK's service programming model allows the developer to specify logic that is to be executed in subsequent "active" states of the Service's lifecycle (`Starting`, `Running`, `Stopping`). The HL API controls the transitions between states and hides the "plumbing" of Golem mechanics so that the developer can focus on their service's details.
 

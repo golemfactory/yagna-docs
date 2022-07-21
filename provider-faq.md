@@ -24,7 +24,7 @@ You can always change the pricing of your node, but it won't affect the current 
 
 **Are there any stats for the network?**
 
-Yes, you can check out : [https://stats.golem.network/](https://stats.golem.network)
+Yes, you can check out : [https://stats.golem.network/](https://stats.golem.network/)
 
 **Can I combine multiple machines into one provider?**\
 No you can not do that. You can setup multiple providers though.
