@@ -694,7 +694,7 @@ Now, as we know how `yacat.py` works, let's run it!
 While in the `/examples/yacat` directory, type the following:
 
 ```python
-python3 yacat.py  --mask 'a?a?a' --hash '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/'
+python3 yacat.py  --mask '?a?a?a' --hash '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/'
 ```
 
 {% hint style="danger" %}
