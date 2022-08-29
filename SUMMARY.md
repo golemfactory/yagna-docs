@@ -243,6 +243,7 @@
 
 ## See also
 
+* [Quick launch on hybrid net](see-also/quick-launch-on-hybrid-net.md)
 * [Running the yagna daemon from sources](see-also/running-yagna-from-sources.md)
 * [Terms](see-also/terms.md)
 * [Compatibility Guidelines](see-also/compatibility-guidelines.md)
