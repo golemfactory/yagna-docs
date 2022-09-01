@@ -6,13 +6,15 @@ description: Guides to help you run the yagna daemon with hybrid net feature ena
 
 ### Installation
 
-We have enabled providers and requestors to run their nodes with hybrid net feature. You are very welcome to try it out! 
+We have enabled providers and requestors to run their nodes with hybrid net feature. 
+You are very welcome to try it out! 
+Experimental Golem Network implementation provides better network scalability as well as increases performance with lower time responses and faster data transfers.
 
 #### Provider
 Open your terminal and type:
 
 ``` 
-curl -ksSf https://join.golem.network/as-provider | YA_INSTALLER_CORE=pre-rel-v0.11.0 YA_INSTALLER_VM=pre-rel-v0.2.12-rc3 bash -
+curl -ksSf https://join.golem.network/as-provider | YA_INSTALLER_CORE=pre-rel-v0.11.0 YA_INSTALLER_VM=v0.2.12 bash -
 ```
 
 for further details regarding simple Provider node setup please follow [Becoming a provider](https://handbook.golem.network/provider-tutorials/provider-tutorial#initial-setup) tutorial.
@@ -21,7 +23,7 @@ for further details regarding simple Provider node setup please follow [Becoming
 Open your terminal and type:
 
 ``` 
-curl -ksSf https://join.golem.network/as-provider | YA_INSTALLER_CORE=pre-rel-v0.11.0 bash -
+curl -ksSf https://join.golem.network/as-requestor | YA_INSTALLER_CORE=pre-rel-v0.11.0 bash -
 ```
 
 for further details regarding simple Requestor setup please follow [Requestor development](https://handbook.golem.network/requestor-tutorials/flash-tutorial-of-requestor-development#confirm-the-installed-daemons-version) tutorial.
@@ -30,20 +32,38 @@ for further details regarding simple Requestor setup please follow [Requestor de
 
 #### Provider
 
-To run the Golem provider on hybrid net, type the following in the terminal:
+You can simply run Golem provider on hybrid net by typing the following in the terminal:
 ```
-golemsp run --subnet hybrid-mainnet
-```
-
-#### Requestor
-
-You can run the daemon as you usually do:
-```
-yagna service run
+golemsp run
 ```
 
 {% hint style="warning" %}
-Important: After you launch the daemon, leave it running in the background. Remember to use `hybrid-mainnet` when running your tasks on Golem. 
+Important: Be aware that the default subnet for Provider running on hybrid net is `hybrid-mainnet`.
+{% endhint %}
+
+#### Requestor
+
+You can start the daemon as you usually do: 
+```
+yagna service run
+```
+After you launch the daemon, leave it running in the background. Remember to use `hybrid-mainnet` when running your tasks on Golem with hybrid net feature enabled.
+
+{% hint style="info" %}
+This experimental Golem Network implementation is ready for your beta tests! 
+In order to run your tasks on Golem devnet you can try to reach out `hybrid` subnet but please remember that we're still under optimization and our testnet might be sometimes unstable.
+{% endhint %}
+
+### Port forwarding
+
+In order to experience all the available functionalities we are encouraged to have public IP. No matter if you are Provider or Requestor.
+Golem can't automatically configure your router to open port `11500`, therefore you will need to manually set it up.
+For router specific instructions on how to forward your ports go to [https://portforward.com/](https://portforward.com/).
+To check if your ports are forwarded correctly you can use [www.canyouseeme.org](http://www.canyouseeme.org/).
+
+{% hint style="warning" %}
+If port forwarding does not work, you may need to call your ISP to change settings on your router. 
+Don't worry if you are not able to acquire public IP nor open port. This is optional and does not limit you in using the hybrid net implementation.
 {% endhint %}
 
 ### Can we help you? Do you have feedback for Golem?
