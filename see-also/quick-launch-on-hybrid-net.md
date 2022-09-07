@@ -14,7 +14,7 @@ Experimental Golem Network implementation provides better network scalability as
 Open your terminal and type:
 
 ```
-curl -ksSf https://join.golem.network/as-provider | YA_INSTALLER_CORE=pre-rel-v0.11.0 YA_INSTALLER_VM=v0.2.13 bash -
+curl -ksSf https://join.golem.network/as-provider | YA_INSTALLER_CORE=v0.11.0 YA_INSTALLER_VM=v0.2.13 bash -
 ```
 
 for further details regarding simple Provider node setup please follow [Becoming a provider](https://handbook.golem.network/provider-tutorials/provider-tutorial#initial-setup) tutorial.
@@ -23,7 +23,7 @@ for further details regarding simple Provider node setup please follow [Becoming
 Open your terminal and type:
 
 ```
-curl -ksSf https://join.golem.network/as-requestor | YA_INSTALLER_CORE=pre-rel-v0.11.0 bash -
+curl -ksSf https://join.golem.network/as-requestor | YA_INSTALLER_CORE=v0.11.0 bash -
 ```
 
 for further details regarding simple Requestor setup please follow [Requestor development](https://handbook.golem.network/requestor-tutorials/flash-tutorial-of-requestor-development#confirm-the-installed-daemons-version) tutorial.
