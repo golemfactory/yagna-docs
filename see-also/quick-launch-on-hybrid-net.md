@@ -56,7 +56,7 @@ In order to run your tasks on Golem devnet you can try to reach out to the `hybr
 
 ### Port forwarding
 
-In order to experience all the available functionalities, it is beneficial to have a public IP. This is required whether you are a Provider or Requestor.
+To help Golem Network grow and become more resillient and stable it needs more nodes with public IP addresses. This is helpful whether you are running a Provider or Requestor node.
 Golem can't automatically configure your router to open port `11500`, therefore you will need to manually set it up.
 For router specific instructions on how to forward your ports go to [https://portforward.com/](https://portforward.com/).
 To check if your ports are forwarded correctly you can use [www.canyouseeme.org](http://www.canyouseeme.org/).
