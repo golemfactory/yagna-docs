@@ -210,3 +210,9 @@ For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-ad
 
 **Note that if you decided to use an external wallet during your setup process, you can connect to ZkSync's wallet at** [**https://wallet.zksync.io/**](https://wallet.zksync.io/) **and exit that way. In the scenario that a different payment driver is being used, you will need to use the relevant available options to connect and access your tokens.**
 
+### Keystore
+
+
+
+### Domain whitelist
+
