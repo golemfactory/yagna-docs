@@ -50,6 +50,7 @@
   },
   "definitions": {
     "AppMetadata": {
+      "title": "Application Metadata",
       "type": "object",
       "required": [
         "name",
@@ -83,6 +84,7 @@
       }
     },
     "AppPayload": {
+      "title": "Payload",
       "type": "object",
       "required": [
         "hash",
@@ -112,6 +114,7 @@
       }
     },
     "PayloadPlatform": {
+      "title": "Payload Platform",
       "type": "object",
       "required": [
         "arch",
@@ -133,16 +136,21 @@
       }
     },
     "CompManifest": {
+      "title": "Computation Manifest",
+      "description": "Computation Manifests lets Requestors to define a certain set of allowed actions, to be negotiated with and approved by a Provider. Requestors' actions will be verified against the Manifest during computation.",
       "type": "object",
       "required": [
         "version"
       ],
       "properties": {
         "version": {
+          "title": "Version",
           "description": "Semver",
           "type": "string"
         },
         "script": {
+          "title": "Script",
+          "description": "Defines a set of allowed ExeScript commands and applies constraints to their arguments.",
           "anyOf": [
             {
               "$ref": "#/definitions/Script"
@@ -153,6 +161,8 @@
           ]
         },
         "net": {
+          "title": "Net",
+          "description": "Applies constraints to networking. Currently, outgoing requests to the public Internet network are covered.",
           "anyOf": [
             {
               "$ref": "#/definitions/Net"
@@ -165,18 +175,22 @@
       }
     },
     "Script": {
+      "title": "Script",
+      "description": "Defines a set of allowed ExeScript commands and applies constraints to their arguments.",
       "type": "object",
       "required": [
         "commands"
       ],
       "properties": {
         "commands": {
+          "description": "Specifies a curated list of commands.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Command"
           }
         },
         "match": {
+          "description": "Selects a default way of comparing command arguments stated in the manifest and the ones received in the ExeScript, unless stated otherwise in a command JSON object.",
           "default": "strict",
           "allOf": [
             {
@@ -187,14 +201,19 @@
       }
     },
     "Command": {
+      "title": "Command",
       "anyOf": [
         {
+          "description": "UTF-8 encoded string. No command context or matching mode need to be specified. E.g. [\"run /bin/cat /etc/motd\", \"run /bin/date -R\"]",
           "type": "string"
         },
-        true
+        {
+          "description": "UTF-8 encoded JSON string. Command context (e.g. env) or argument matching mode need to be specified for a command. E.g. [\"{\\\"run\\\": { \\\"args\\\": \\\"/bin/date -R\\\", \\\"env\\\": { \\\"MYVAR\\\": \\\"42\\\", \\\"match\\\": \\\"strict\\\" }}}\"]"
+        }
       ]
     },
     "ArgMatch": {
+      "title": "Argument Match",
       "type": "string",
       "enum": [
         "strict",
@@ -202,9 +221,12 @@
       ]
     },
     "Net": {
+      "title": "Net",
+      "description": "Applies constraints to networking. Currently, outgoing requests to the public Internet network are covered.",
       "type": "object",
       "properties": {
         "inet": {
+          "title": "Internet Network",
           "anyOf": [
             {
               "$ref": "#/definitions/Inet"
@@ -217,9 +239,11 @@
       }
     },
     "Inet": {
+      "title": "Internet Network",
       "type": "object",
       "properties": {
         "out": {
+          "description": "Internet Outbound Network",
           "anyOf": [
             {
               "$ref": "#/definitions/InetOut"
@@ -232,9 +256,12 @@
       }
     },
     "InetOut": {
+      "title": "Internet Outbound Network",
+      "description": "Applies constraints to networking. Currently, outgoing requests to the public Internet network are covered.",
       "type": "object",
       "properties": {
         "protocols": {
+          "description": "List of allowed outbound protocols. Supports \"http\", \"https\", \"ws\", and \"wss\".",
           "default": [
             "http",
             "https",
@@ -247,6 +274,7 @@
           }
         },
         "urls": {
+          "description": "List of allowed external URLs that outbound requests can be sent to. E.g. [\"http://golemfactory.s3.amazonaws.com/file1\", \"http://golemfactory.s3.amazonaws.com/file2\"]",
           "type": [
             "array",
             "null"

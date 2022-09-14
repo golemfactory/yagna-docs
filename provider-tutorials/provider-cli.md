@@ -214,7 +214,7 @@ For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-ad
 
 `ya-provider` allows to fine tune config created with `golemsp settings` using commands `config`, `preset`, `profile`, and `exe-utnit`.
 
-Additionally it allows to configre certificate _keystore_ and domain _whitelist_.
+Additionally it allows to configure certificate _keystore_ and domain _whitelist_.
 
 ### Keystore
 
@@ -226,7 +226,6 @@ Run `ya-provider keystore --help` to see possible subcommands
 
 ### Domain whitelist
 
-_Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md) can specify list of URLs which may get called by service running on a Provider. Manifest must come with signature and app author's public certificate if its URLs domains are not whitelisted. By default domains `whitelist` is empty.
+_Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md) can specify list of URLs which may get called by service running on a Provider. If Manifest declares requests to URLs which domains are not whitelisted it must come with a [signature and app author's public certificate](../requestor-tutorials/vm-runtime/computation-payload-manifest.md). By default domains `whitelist` is empty.
 
 Run `ya-provider whitelist --help` to see possible subcommands
-
