@@ -210,9 +210,23 @@ For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-ad
 
 **Note that if you decided to use an external wallet during your setup process, you can connect to ZkSync's wallet at** [**https://wallet.zksync.io/**](https://wallet.zksync.io/) **and exit that way. In the scenario that a different payment driver is being used, you will need to use the relevant available options to connect and access your tokens.**
 
+## Advanced Settings
+
+`ya-provider` allows to fine tune config created with `golemsp settings` using commands `config`, `preset`, `profile`, and `exe-utnit`.
+
+Additionally it allows to configre certificate _keystore_ and domain _whitelist_.
+
 ### Keystore
 
+Provider has an embedded certificate keystore.
 
+By default it contains only Golem public certificate which allows to execute [example app](../requestor-tutorials/service-development/service-example-6-external-api-request.md) and apps from trusted by Golem creators (certificates allow to verify incoming _Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md)).
+
+Run `ya-provider keystore --help` to see possible subcommands
 
 ### Domain whitelist
+
+_Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md) can specify list of URLs which may get called by service running on a Provider. Manifest must come with signature and app author's public certificate if its URLs domains are not whitelisted. By default domains `whitelist` is empty.
+
+Run `ya-provider whitelist --help` to see possible subcommands
 
