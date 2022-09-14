@@ -1,0 +1,262 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Computation Payload Manifest",
+  "type": "object",
+  "required": [
+    "createdAt",
+    "expiresAt",
+    "payload",
+    "version"
+  ],
+  "properties": {
+    "version": {
+      "description": "Semver",
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "metadata": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/AppMetadata"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "payload": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AppPayload"
+      }
+    },
+    "compManifest": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/CompManifest"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "AppMetadata": {
+      "type": "object",
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "version": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "homepage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "AppPayload": {
+      "type": "object",
+      "required": [
+        "hash",
+        "urls"
+      ],
+      "properties": {
+        "platform": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/PayloadPlatform"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "hash": {
+          "type": "string"
+        }
+      }
+    },
+    "PayloadPlatform": {
+      "type": "object",
+      "required": [
+        "arch",
+        "os"
+      ],
+      "properties": {
+        "arch": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "osVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "CompManifest": {
+      "type": "object",
+      "required": [
+        "version"
+      ],
+      "properties": {
+        "version": {
+          "description": "Semver",
+          "type": "string"
+        },
+        "script": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Script"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "net": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Net"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "Script": {
+      "type": "object",
+      "required": [
+        "commands"
+      ],
+      "properties": {
+        "commands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Command"
+          }
+        },
+        "match": {
+          "default": "strict",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ArgMatch"
+            }
+          ]
+        }
+      }
+    },
+    "Command": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        true
+      ]
+    },
+    "ArgMatch": {
+      "type": "string",
+      "enum": [
+        "strict",
+        "regex"
+      ]
+    },
+    "Net": {
+      "type": "object",
+      "properties": {
+        "inet": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Inet"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "Inet": {
+      "type": "object",
+      "properties": {
+        "out": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/InetOut"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "InetOut": {
+      "type": "object",
+      "properties": {
+        "protocols": {
+          "default": [
+            "http",
+            "https",
+            "ws",
+            "wss"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "urls": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
+  }
+}
