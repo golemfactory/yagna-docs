@@ -1,15 +1,92 @@
 ---
-description: Computation Payload Manifest description and schema
+description: Computation Payload Manifest description, its schema, and configuration guide
 ---
 
 # Computation Payload Manifest
 
-_Computation Payload Manifest_ allows [Requestor](../../introduction/requestor.md) to define application package _Payload_ and allows to set constraints on _Computations_ performed on [Provider](../../introduction/requestor.md) node.
+_Computation Payload Manifest_ allows [Requestor](../../introduction/requestor.md) to define application package _Payload_ and allows to set constraints on _Computations_ performed on [Provider](../../introduction/provider.md) node.
 
-It can be [configured](#configuration) as a parameter of [yapapi.payload.vm.manifest](https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.manifest) function. 
+Request with a manifest can be [configured in yapapi](#configuration). 
+
+Provider node operator controls what work can be performed by:
+
+  - Importing public certificates of trusted application authors to Provider's [keystore](../../provider-tutorials/provider-cli.md#keystore)
+
+  - Adding domain patterns to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist)
+
+## Configuration
+
+Manifest can be configured as a [yapapi.payload.vm.manifest](https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.manifest) function parameter together [manifest signature and app author's certificate](#certificate-and-signature) (which is sometimes required).
+
+Example configuration:
+
+Prepare `manifest.json` which follows [Computation Payload Manifest shema](#manifest-schema). Then encode it in base 64:
+
+```sh
+ base64 --wrap=0 manifest.json.base64 > manifest.json.base64
+```
+
+Sign it with your private key using e.g `sha256` digest algorithm.
+Then encode both signature and your certificate (DER or PEM or PEM certificates chain) in base64:
+
+```sh
+openssl dgst -sha256 -sign my.private.key -out manifest.json.base64.sign.sha256 manifest.json.base64
+base64 manifest.json.base64.sign.sha256 --wrap=0 > manifest.json.base64.sign.sha256.base64
+base64 certificate.der --wrap=0 > certificate.der.base64
+```
+
+Then configure it all using `yapapi.payload.vm.manifest` function:
+
+```py
+import asyncio
+
+from yapapi import Golem
+from yapapi.services import Service
+from yapapi.payload import vm
+
+class OutboundNetworkService(Service):
+    @staticmethod
+    async def get_payload():
+        manifest = open("manifest.json.base64", "rb").read()
+
+        manifest_sig = open("manifest.json.base64.sign.sha256.base64", "rb").read()
+
+        manifest_sig_algorithm = "sha256"
+
+        # both DER and PEM formats are supported
+        manifest_cert = open("requestor.cert.der.base64", "rb").read()
+
+        return await vm.manifest(
+            manifest=manifest,
+            manifest_sig=manifest_sig,
+            manifest_sig_algorithm=manifest_sig_algorithm,
+            manifest_cert=manifest_cert,
+            min_mem_gib=0.5,
+            min_cpu_threads=0.5,
+            capabilities=["inet", "manifest-support"],
+        )
+
+    async def run(self):
+        script = self._ctx.new_script()
+        future_result = script.run(
+            "/bin/sh",
+            "-c",
+            f"API_OUT=`curl -X 'GET' 'https://api.some-public-service.com'`; \
+                echo \"API request output: $API_OUT\";",
+        )
+        yield script
+
+        result = (await future_result).stdout
+        print(result.strip() if result else "")
 
 
-## Schema
+async def main():
+    async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
+        await golem.run_service(OutboundNetworkService, num_instances=1)
+        await asyncio.sleep(30)
+```
+
+## Manifest schema
 
 <!-- 
 Schema generated using: https://github.com/golemfactory/yagna/blob/2088-computation-payload-manifest-schema/utils/manifest-utils/README.md#computation-payload-manifest-schema
@@ -58,7 +135,7 @@ Simple _Computation Payload Manifest_ with _Payload_ definition:
 
 _Computation Payload Manifest_ **can** contain _Computation Manifests_ object. 
 
-With Computation Manifests, [Requestors](../../introduction/requestor.md) constrain themselves to a certain set of allowed actions, to be negotiated with and approved by a [Provider](../../introduction/requestor.md). 
+With Computation Manifest object, [Requestor](../../introduction/requestor.md) constrain themselv to a certain set of allowed actions, to be negotiated with and approved by a [Provider](../../introduction/provider.md). 
 
 Requestors' actions will be verified against the _Manifest_ during computation.
 
@@ -70,7 +147,26 @@ Supported _Computation Manifest_ constrains:
 
     - `compManifest.script.commands` : List[Script]
   
-      Specifies a curated list of commands in form of:
+      Specifies a curated list of commands in a form of:
+
+      - UTF-8 encoded JSON strings
+
+        Command context (e.g. env) or argument matching mode need to be specified for a command.
+
+        Example: 
+        
+        ```json
+        [
+          "{
+            \"run\": { 
+              \"args\": \"/bin/date -R\", 
+              \"env\": { 
+                \"MYVAR\": \"42\", 
+                \"match\": \"strict\" 
+              }
+            }
+          }"
+        ]
 
       - UTF-8 encoded strings
 
@@ -85,26 +181,7 @@ Supported _Computation Manifest_ constrains:
         ]
         ```
 
-      - UTF-8 encoded JSON strings
-
-        Command context (e.g. env) or argument matching mode need to be specified for a command.
-
-        Example: 
-        
-        ```json
-        [
-          "{\"run\": { 
-              \"args\": \"/bin/date -R\", 
-              \"env\": { 
-                \"MYVAR\": \"42\", 
-                \"match\": \"strict\" 
-              }
-            }
-          }"
-        ]
-        ```
-
-      - mix of both
+      - Mix of both
 
       Commands `deploy`, `start` and `terminate` are always allowed. These values become the default if no `compManifest.script.commands` property has been set, but the `compManifest` object is present.
 
@@ -134,8 +211,7 @@ Supported _Computation Manifest_ constrains:
 
       - `compManifest.net.inet.out.urls : List[String]
 
-        List of allowed external URLs that outbound requests can be sent to. E.g. ["http://golemfactory.s3.amazonaws.com/file1", "http://golemfactory.s3.amazonaws.com/file2"]
-
+        List of allowed external URLs that outbound requests can be sent to. E.g. ["https://api.some-public-service.com", "https://some-other-service.com/api/resource"]
 
 Example of _Computation Payload Manifest_ with _Computation Manifest_ definition:
 
@@ -173,16 +249,6 @@ Example of _Computation Payload Manifest_ with _Computation Manifest_ definition
 }
 ```
 
-## Configuration
-
-Manifest can be configured in a service payload using [yapapi.payload.vm.manifest](https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.manifest) function together with sometimes required [signature and app author's certificate](#signature).
-
-Provider node operator controls what work can be performed by:
-
-* Importing public certificates of trusted application authors to Provider's [keystore](../../provider-tutorials/provider-cli.md#keystore)
-
-* Adding domain patterns to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist)
-
-### Signature
+### Certificate and Signature
 
 TODO
