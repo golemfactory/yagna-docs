@@ -4,11 +4,13 @@ description: A guide to help you run the yagna daemon with the New Network Drive
 
 # Quick launch on New Network Driver
 
-### Installation
+### Introduction
 
 We have enabled providers and requestors to run their nodes with the New Network Driver.
 You are very welcome to try it out!
 Experimental Golem Network implementation provides better network scalability as well as increased performance with quicker responses and faster data transfers.
+
+### Installation
 
 #### Provider
 Open your terminal and type:
