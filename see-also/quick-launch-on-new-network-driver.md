@@ -64,8 +64,8 @@ For router specific instructions on how to forward your ports go to [https://por
 To check if your ports are forwarded correctly you can use [www.canyouseeme.org](http://www.canyouseeme.org/).
 
 {% hint style="warning" %}
-If port forwarding does not work, you may need to call your ISP to change settings on your router.
-Don't worry if you are not able to acquire public IP nor open port. This is optional and won’t prevent you from using the New Network Driver implementation.
+If port forwarding doesn't work, you may need to call your ISP to change settings on your router.
+Don't worry if you are unable to acquire a public IP or open a port. This is optional and won’t prevent you from using the New Network Driver implementation.
 {% endhint %}
 
 ### Can we help you? Do you have feedback for Golem?
