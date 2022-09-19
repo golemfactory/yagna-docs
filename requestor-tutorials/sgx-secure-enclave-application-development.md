@@ -96,7 +96,7 @@ yarn roulette
 {% endtab %}
 {% endtabs %}
 
-Now open your browser and visit [http://localhost:8000](http://localhost:8000).
+Now open your browser and visit [http://localhost:8000](http://localhost:8000/).
 
 ## Overview
 

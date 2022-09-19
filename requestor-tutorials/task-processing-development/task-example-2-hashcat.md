@@ -136,7 +136,7 @@ Let's start with the Dockerfile (`yacat.Dockerfile`). Do we always need a dedica
 Golem is designed to use existing Docker images, so you can use any existing docker image. There are no Golem-specific conditions that need to be met by the image.
 {% endhint %}
 
-If there is (for example on the [docker hub](https://hub.docker.com)) no docker image that you need, you will have to create a custom one.
+If there is (for example on the [docker hub](https://hub.docker.com/)) no docker image that you need, you will have to create a custom one.
 
 For the yacat example we're going to use an off-the-shelf hashcat image (`dizcza/docker-hashcat:intel-cpu)` and just slightly modify it for Golem. Resultant Dockerfile is included in the example as `yacat.Dockerfile`:
 
@@ -161,7 +161,7 @@ VOLUME /golem/input /golem/output
 
 This makes `/golem/input` and `/golem/output` locations we will use for our input/output file transfer. For the requestor agent code, which we are going to discuss in the next chapter, we need to know the volume (or volumes) name(s) and use it as a directory for the file transfers.
 
-![](<../../.gitbook/assets/tnm-docs-infographics-08 (1).jpg>)
+![](../../.gitbook/assets/requestor-vm-comms.jpg)
 
 {% hint style="info" %}
 On the provider side, all the content of the VOLUME directories is stored in the provider's os file system.

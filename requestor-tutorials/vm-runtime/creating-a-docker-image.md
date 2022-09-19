@@ -38,7 +38,7 @@ The `FROM` command specifies what existing image we want to use as our base. In 
 
 ### VOLUME
 
-![Structure of a VM container on a provider's node](../../.gitbook/assets/requestor-vm-comms.jpg)
+![Structure of a VM container on a provider's node](<../../.gitbook/assets/tnm-docs-infographics-08 (1).jpg>)
 
 #### Input/Output
 

@@ -12,7 +12,7 @@ We're aiming to add support for simple web applications later in 2022.
 
 **Are there any stats for the network?**
 
-Yes, you can check out : [https://stats.golem.network/](https://stats.golem.network)
+Yes, you can check out : [https://stats.golem.network/](https://stats.golem.network/)
 
 **How does CPU/h pricing work?**\
 CPU/h is pricing per utilization of a core. So if a requestor is using 4 cores and you have a CPU/h pricing of 0.1 GLM, then it would cost the requestor 0.4 GLM to use those 4 cores for an hour.
