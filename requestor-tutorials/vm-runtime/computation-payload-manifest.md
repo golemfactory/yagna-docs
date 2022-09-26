@@ -10,9 +10,9 @@ Request with a manifest can be [configured in yapapi](#configuration).
 
 Provider node operator controls what work can be performed by:
 
-  - Importing public certificates of trusted application authors to Provider's [keystore](../../provider-tutorials/provider-cli.md#keystore)
+  - Importing public certificates of trusted authors of applications to Provider's [keystore](../../provider-tutorials/provider-cli.md#keystore) (which allows to verify _manifest_ [signature](#certificate-and-signature))
 
-  - Adding domain patterns to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist)
+  - Adding domain patterns to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist) (which makes [signature](#certificate-and-signature) optional for some _manifests_)
 
 ## Configuration
 
@@ -251,4 +251,72 @@ Example of _Computation Payload Manifest_ with _Computation Manifest_ definition
 
 ### Certificate and Signature
 
-TODO
+A basic example of generating certificates, importing CA certificate into Provider's keystore, signing request, and sending it.
+
+#### CA certificate
+
+Create a basic `openssl-ca.conf` for CA certificate
+
+```conf
+[ req ]
+distinguished_name  = req_dn
+x509_extensions     = v3_ext
+
+[ req_dn ]
+organizationName  = Organization Name (company name)
+commonName        = Common Name (your name, or app name)
+emailAddress      = Email Address (support email address)
+
+[ v3_ext ]
+basicConstraints = CA:true
+
+[ ca ]
+default_ca      = CA_default
+
+[ CA_default ]
+database  = index.txt
+serial    = serial.txt
+policy    = policy_default
+
+[ policy_default ]
+organizationName  = match
+commonName        = supplied
+emailAddress      = supplied
+```
+
+Then prepare files referenced in conf
+
+```sh
+touch index.txt index.txt.attr
+echo '1000' > serial.txt
+```
+
+Then generate CA certificate and key pair:
+
+`openssl req -new -newkey rsa:2048 -days 360 -nodes -x509 -sha256 -keyout ca.key.pem -out ca.crt.pem -config openssl-ca.conf`
+
+#### Requestor certificate signed by CA
+
+Create a basic `openssl.conf` for Requestor's certificate.
+
+```conf
+[ req ]
+distinguished_name  = req_dn
+x509_extensions     = v3_ext
+
+[ req_dn ]
+organizationName  = Organization Name (company name)
+commonName        = Common Name (your name, or app name)
+emailAddress      = Email Address (support email address)
+
+[ v3_ext ]
+basicConstraints = CA:true
+```
+
+Then generate Requestor's Certificate Signing Request (use same `organizationName`):
+
+`openssl req -new -newkey rsa:2048 -days 360 -sha256 -keyout requestor.key.pem -out requestor.csr.pem -config openssl.conf`
+
+Finally sign Requestor's certificate using generated CSR and CA certificate:
+
+`openssl x509 -req -in requestor.csr.pem -CA ca.crt.pem -CAkey ca.key.pem -CAcreateserial -out requestor.crt.pem`
