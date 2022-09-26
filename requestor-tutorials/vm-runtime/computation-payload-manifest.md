@@ -10,32 +10,41 @@ Request with a manifest can be [configured in yapapi](#configuration).
 
 Provider node operator controls what work can be performed by:
 
-  - [Importing](#3-importing-application-authors-certificates) application author's public certificates to Provider's [keystore](../../provider-tutorials/provider-cli.md#keystore) (which allows to verify _manifest_ signature)
+  - [Importing](#3-importing-application-authors-certificates) certificates used to sign App authors' certificates into Provider's [keystore](../../provider-tutorials/provider-cli.md#keystore) (which allows to verify _manifest_ signature)
 
-  - Adding domain patterns to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist) (which makes [signature](#certificate-and-signature) optional for some _manifests_)
+  - Adding domain patterns to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist) (which makes [signature](#2-manifest-signature) optional _manifests_)
 
-## Configuration
+## Usage example
 
-Manifest can be configured as a [yapapi.payload.vm.manifest](https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.manifest) function parameter together [manifest signature and app author's certificate](#certificate-and-signature) (which is sometimes required).
+Manifest can be configured as a [yapapi.payload.vm.manifest](https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.manifest) function parameter together manifest signature and [App author's certificate](#certificates) (which is sometimes required).
 
 Example configuration:
 
-Prepare `manifest.json` which follows [Computation Payload Manifest shema](#manifest-schema). Then encode it in base 64:
+
+### 1. Manifest file
+
+Manifest file needs to follow [Computation Payload Manifest shema](#manifest-schema). 
+
+Created file needs to be encoded in base64:
 
 ```sh
  base64 --wrap=0 manifest.json.base64 > manifest.json.base64
 ```
 
-Sign it with Requestor's private key using e.g `sha256` digest algorithm.
-Then encode both signature and Requestor's certificate (DER or PEM or PEM certificates chain) in base64:
+### 2. Manifest signature
+
+Sign `manifest.json.base64` file using App author's private key and e.g `sha256` digest algorithm.
+Then encode both signature and App author's certificate (DER or PEM or PEM certificates chain) in base64:
 
 ```sh
-openssl dgst -sha256 -sign my.private.key -out manifest.json.base64.sign.sha256 manifest.json.base64
+openssl dgst -sha256 -sign author.key -out manifest.json.base64.sign.sha256 manifest.json.base64
 base64 manifest.json.base64.sign.sha256 --wrap=0 > manifest.json.base64.sign.sha256.base64
-base64 certificate.der --wrap=0 > certificate.der.base64
+base64 author.crt.pem --wrap=0 > author.crt.pem.base64
 ```
 
-Then configure it all using `yapapi.payload.vm.manifest` function:
+### 3. Yapapi example
+
+Base64 encoded _manifest_ can be configured together with its signature and App author's certificate using `yapapi.payload.vm.manifest` function:
 
 ```py
 import asyncio
@@ -54,7 +63,7 @@ class OutboundNetworkService(Service):
         manifest_sig_algorithm = "sha256"
 
         # both DER and PEM formats are supported
-        manifest_cert = open("requestor.cert.der.base64", "rb").read()
+        manifest_cert = open("author.crt.pem.base64", "rb").read()
 
         return await vm.manifest(
             manifest=manifest,
@@ -71,17 +80,15 @@ class OutboundNetworkService(Service):
         future_result = script.run(
             "/bin/sh",
             "-c",
-            f"API_OUT=`curl -X 'GET' 'https://api.some-public-service.com'`; \
-                echo \"API request output: $API_OUT\";",
+            f"echo \"API response: $(curl -X 'GET' 'https://api.some-public-service.com')\";",
         )
         yield script
 
         result = (await future_result).stdout
         print(result.strip() if result else "")
 
-
 async def main():
-    async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
+    async with Golem(budget=1.0, subnet_tag="testnet") as golem:
         await golem.run_service(OutboundNetworkService, num_instances=1)
         await asyncio.sleep(30)
 ```
@@ -213,7 +220,7 @@ Supported _Computation Manifest_ constrains:
 
         List of allowed external URLs that outbound requests can be sent to. E.g. ["https://api.some-public-service.com", "https://some-other-service.com/api/resource"]
 
-Example of _Computation Payload Manifest_ with _Computation Manifest_ definition:
+#### Example of _Computation Payload Manifest_ with _Computation Manifest_ definition:
 
 ```json
 {
@@ -251,8 +258,9 @@ Example of _Computation Payload Manifest_ with _Computation Manifest_ definition
 
 ### Certificates
 
-A basic example of generating self signed application author's root CA certificate with Requestor certificate, and then importing application author's root CA certificate into Provider's keystore.
-#### 1. Generating application author's root CA certificate
+A basic example of generating self signed root CA certificate siging App author's certificate, and then importing root CA certificate into Provider's keystore.
+
+#### 1. Generating self signed root CA certificate
 
 Create `openssl-ca.conf` for CA certificate
 
@@ -294,9 +302,9 @@ Then generate CA certificate and key pair:
 
 `openssl req -new -newkey rsa:2048 -days 360 -nodes -x509 -sha256 -keyout ca.key.pem -out ca.crt.pem -config openssl-ca.conf`
 
-#### 2. Generating Requestor certificate signed by CA
+#### 2. Generating Requestor certificate
 
-Create `openssl.conf` for Requestor's certificate.
+Create `openssl.conf` for App author's certificate.
 
 ```conf
 [ req ]
@@ -312,17 +320,17 @@ emailAddress      = Email Address (support email address)
 basicConstraints = CA:true
 ```
 
-Then generate Requestor's Certificate Signing Request (use same `organizationName`):
+Then generate App author's Certificate Signing Request (use same `organizationName`):
 
-`openssl req -new -newkey rsa:2048 -days 360 -sha256 -keyout requestor.key.pem -out requestor.csr.pem -config openssl.conf`
+`openssl req -new -newkey rsa:2048 -days 360 -sha256 -keyout author.key.pem -out author.csr.pem -config openssl.conf`
 
-Finally sign Requestor's certificate using generated CSR and CA certificate:
+Finally generate App author's certificate using CSR and CA certificate:
 
-`openssl x509 -req -in requestor.csr.pem -CA ca.crt.pem -CAkey ca.key.pem -CAcreateserial -out requestor.crt.pem`
+`openssl x509 -req -in author.csr.pem -CA ca.crt.pem -CAkey ca.key.pem -CAcreateserial -out author.crt.pem`
 
 #### 3. Importing application author's certificates
 
-Requestor's certificate is send in a request together with a _Computation Payload Manifest_'s signature and it is used to verify it. In order to verify signature Provider first needs to verify incoming Requestor's certificate. To do so it has to have application author's root CA certificate imported into its keystore (together with every intermediate certificate in the chain).
+App author's certificate is send in a request together with a _Computation Payload Manifest_ and its signature. Certificate is used to verify signature. In order to verify signature Provider first needs to verify incoming App author's certificate. To do so it has to have certificate used to sign App author's certificate imported into its keystore (together with every intermediate certificate in the chain).
 
 To import certificate into the keystore use [`ya-provider keystore add`](../../provider-tutorials/provider-cli.md#keystore) command:
 
