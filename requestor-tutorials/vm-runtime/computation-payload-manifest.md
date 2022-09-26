@@ -10,7 +10,7 @@ Request with a manifest can be [configured in yapapi](#configuration).
 
 Provider node operator controls what work can be performed by:
 
-  - Importing public certificates of trusted authors of applications to Provider's [keystore](../../provider-tutorials/provider-cli.md#keystore) (which allows to verify _manifest_ [signature](#certificate-and-signature))
+  - [Importing](#3-importing-application-authors-certificates) application author's public certificates to Provider's [keystore](../../provider-tutorials/provider-cli.md#keystore) (which allows to verify _manifest_ signature)
 
   - Adding domain patterns to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist) (which makes [signature](#certificate-and-signature) optional for some _manifests_)
 
@@ -26,8 +26,8 @@ Prepare `manifest.json` which follows [Computation Payload Manifest shema](#mani
  base64 --wrap=0 manifest.json.base64 > manifest.json.base64
 ```
 
-Sign it with your private key using e.g `sha256` digest algorithm.
-Then encode both signature and your certificate (DER or PEM or PEM certificates chain) in base64:
+Sign it with Requestor's private key using e.g `sha256` digest algorithm.
+Then encode both signature and Requestor's certificate (DER or PEM or PEM certificates chain) in base64:
 
 ```sh
 openssl dgst -sha256 -sign my.private.key -out manifest.json.base64.sign.sha256 manifest.json.base64
@@ -249,13 +249,12 @@ Example of _Computation Payload Manifest_ with _Computation Manifest_ definition
 }
 ```
 
-### Certificate and Signature
+### Certificates
 
-A basic example of generating certificates, importing CA certificate into Provider's keystore, signing request, and sending it.
+A basic example of generating self signed application author's root CA certificate with Requestor certificate, and then importing application author's root CA certificate into Provider's keystore.
+#### 1. Generating application author's root CA certificate
 
-#### CA certificate
-
-Create a basic `openssl-ca.conf` for CA certificate
+Create `openssl-ca.conf` for CA certificate
 
 ```conf
 [ req ]
@@ -295,9 +294,9 @@ Then generate CA certificate and key pair:
 
 `openssl req -new -newkey rsa:2048 -days 360 -nodes -x509 -sha256 -keyout ca.key.pem -out ca.crt.pem -config openssl-ca.conf`
 
-#### Requestor certificate signed by CA
+#### 2. Generating Requestor certificate signed by CA
 
-Create a basic `openssl.conf` for Requestor's certificate.
+Create `openssl.conf` for Requestor's certificate.
 
 ```conf
 [ req ]
@@ -320,3 +319,11 @@ Then generate Requestor's Certificate Signing Request (use same `organizationNam
 Finally sign Requestor's certificate using generated CSR and CA certificate:
 
 `openssl x509 -req -in requestor.csr.pem -CA ca.crt.pem -CAkey ca.key.pem -CAcreateserial -out requestor.crt.pem`
+
+#### 3. Importing application author's certificates
+
+Requestor's certificate is send in a request together with a _Computation Payload Manifest_'s signature and it is used to verify it. In order to verify signature Provider first needs to verify incoming Requestor's certificate. To do so it has to have application author's root CA certificate imported into its keystore (together with every intermediate certificate in the chain).
+
+To import certificate into the keystore use [`ya-provider keystore add`](../../provider-tutorials/provider-cli.md#keystore) command:
+
+`ya-provider keystore add ca.crt.pem`
