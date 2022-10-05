@@ -4,34 +4,29 @@ description: Computation Payload Manifest description, its schema, and configura
 
 # Computation Payload Manifest
 
-_Computation Payload Manifest_ allows [Requestor](../../introduction/requestor.md) to define application package _Payload_ and allows to set constraints on _Computations_ performed on [Provider](../../introduction/provider.md) node.
+_Computation Payload Manifest_ allows a [requestor](../../introduction/requestor.md) to define an application package _Payload_ and allows to set constraints on the computations performed on a [Provider](../../introduction/provider.md) node.
 
-Request with a manifest can be [configured in yapapi](#configuration). 
+A manifest can be [configured in yapapi](#configuration). 
 
-Provider node operator controls what computation can be performed by:
+The provider node operator controls what computations can be performed by:
 
-  - [Importing certificates](#3-importing-application-authors-certificates) used to sign App authors' certificates into Provider's [keystore](../../provider-tutorials/provider-cli.md#keystore) (which allows to verify _manifest_ signature)
+  - [Importing certificates](#3-importing-application-authors-certificates) used to sign app authors' certificates into the provider's [keystore](../../provider-tutorials/provider-cli.md#keystore) (which allows the provider agent to verify _manifest_ signatures)
 
-  - Adding domain patterns to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist) (which makes [signature](#2-manifest-signature) optional _manifests_)
+  - Adding domain patterns to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist) (which makes the manifest [signature](#2-manifest-signature) optional).
 
 ## Configuration
 
-Manifest can be configured as a [yapapi.payload.vm.manifest](https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.manifest) function parameter together with optional manifest signature and [App author's certificate](#certificates).
+The manifest can be configured as a [yapapi.payload.vm.manifest](https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.manifest) function parameter together with an optional manifest signature and the [App author's certificate](#certificates).
 
-Check [external API request example](../service-development/service-example-6-external-api-request.md) for details.
+Check the [external API request example](../service-development/service-example-6-external-api-request.md) for details.
 
 ## Manifest schema
 
-<!-- 
-Schema generated using: https://github.com/golemfactory/yagna/blob/2088-computation-payload-manifest-schema/utils/manifest-utils/README.md#computation-payload-manifest-schema
-Schema doc generated using: https://github.com/CesiumGS/wetzel 
-cmd: wetzel computation-payload-manifest.schema.json -w -p computation-payload-manifest.schema.json -s computation-payload-manifest.schema.md > computation-payload-manifest.schema.md
- -->
 _Computation Payload Manifest_ must follow a specific [JSON Schema](computation-payload-manifest.schema.json) ([Documentation](computation-payload-manifest.schema.md))
 
 ### Schema verification
 
-Manifest can be verified using `jsonschema` library:
+Manifests can be verified using `jsonschema` library:
 
 ```sh
 wget https://handbook.golem.network/requestor-tutorials/vm-runtime/computation-payload-manifest.schema.json
@@ -71,11 +66,11 @@ Simple _Computation Payload Manifest_ with _Payload_ definition:
 
 _Computation Payload Manifest_ **can** contain _Computation Manifests_ object. 
 
-With Computation Manifest object, [Requestor](../../introduction/requestor.md) constrain themselv to a certain set of allowed actions, to be negotiated with and approved by a [Provider](../../introduction/provider.md). 
+With a Computation Manifest object, [Requestor](../../introduction/requestor.md) constrains themself to a certain set of allowed actions, to be negotiated with and approved by a [Provider](../../introduction/provider.md). 
 
 Requestors' actions will be verified against the _Manifest_ during computation.
 
-Supported _Computation Manifest_ constrains:
+Supported _Computation Manifest_ constraints:
 
   - #### `compManifest.script`
 
@@ -87,7 +82,7 @@ Supported _Computation Manifest_ constrains:
 
       - UTF-8 encoded JSON strings
 
-        Command context (e.g. env) or argument matching mode need to be specified for a command.
+        Command context (e.g. env) or argument matching mode needs to be specified for a command.
 
         Example: 
         
@@ -106,7 +101,7 @@ Supported _Computation Manifest_ constrains:
 
       - UTF-8 encoded strings
 
-        No command context or matching mode need to be specified.
+        No command context or matching mode needs to be specified.
 
         Example: 
         
@@ -125,13 +120,13 @@ Supported _Computation Manifest_ constrains:
     
       Selects a default way of comparing command arguments stated in the manifest and the ones received in the ExeScript, unless stated otherwise in a command JSON object.
 
-      The match property could be one of:
+      The `match` property could be one of:
 
         - `strict`: byte-to-byte argument equality (default)
 
         - `regex`: treat arguments as regular expressions
 
-          Syntax: Perl-compatible regular expressions (UTF-8 Unicode mode), w/o the support for look around and backreferences (among others).
+          Syntax: Perl-compatible regular expressions (UTF-8 Unicode mode), w/o the support for a look around and backreferences (among others).
   
   - #### `compManifest.net` : Object
 
@@ -187,15 +182,15 @@ Supported _Computation Manifest_ constrains:
 
 ### Certificates
 
-_App author's certificate_ gets send in a request together with a _Computation Payload Manifest_ and its signature. Certificate is used to verify signature. In order to verify signature _Provider_ first needs to verify incoming _App author's certificate_. To do so it has to have certificate used to sign _App author's certificate_ [imported](#3-importing-application-authors-certificates) into its keystore (together with every intermediate certificate in the chain).
+_App author's certificate_ gets sent in a demand together with a _Computation Payload Manifest_ and its signature. The certificate is used to verify the signature. In order to verify the signature, a _Provider_ first needs to verify the incoming _App author's certificate_. To do so, it has to have a certificate that's used to sign the _App author's certificate_ [imported](#3-importing-application-authors-certificates) into its keystore (together with every intermediate certificate in the chain).
 
 #### Manifest signature
 
-Signature allows _Provider_ to verify content of incoming _Computation Payload Manifest_.
+Signature allows a _Provider_ to verify the content of an incoming _Computation Payload Manifest_.
 
-It can be generated using `openssl` tool and a private key related to _App author's certificate_ signed by some trusted by _Providers_ certificate.
+It can be generated using the `openssl` tool and a private key related to _App author's certificate_ signed by a certificate that's trusted by _Providers_.
 
-Signature needs to be generated from content of the _Computation Payload Manifest_ encoded in `base64`:
+A signature needs to be generated from the content of the _Computation Payload Manifest_ encoded in `base64`:
 
 ```sh
 openssl dgst -sha256 -sign author.key -out manifest.json.base64.sign.sha256 manifest.json.base64
@@ -206,11 +201,11 @@ base64 author.crt.pem --wrap=0 > author.crt.pem.base64
 
 #### Self signed certificate example
 
-A basic example of generating self signed root CA certificate to sign App author's certificate, and then importing generated root CA certificate into Provider's keystore.
+A basic example showing the generation a self-signed root CA certificate to then sign the App author's certificate, and afterwards importing a generated root CA certificate into the Provider's keystore.
 
 ##### 1. Generating self signed root CA certificate
 
-Create `openssl-ca.conf` for CA certificateL
+Create `openssl-ca.conf` for CA certificate
 
 ```conf
 [ req ]
@@ -246,13 +241,13 @@ touch index.txt index.txt.attr
 echo '1000' > serial.txt
 ```
 
-Then generate CA certificate and key pair:
+Then generate the CA certificate and key pair:
 
 `openssl req -new -newkey rsa:2048 -days 360 -nodes -x509 -sha256 -keyout ca.key.pem -out ca.crt.pem -config openssl-ca.conf`
 
 ##### 2. Generating Requestor certificate
 
-Create `openssl.conf` for App author's certificate:
+Create `openssl.conf` for the App author's certificate:
 
 ```conf
 [ req ]
@@ -272,12 +267,12 @@ Then generate _App author's certificate_ Signing Request (use same `organization
 
 `openssl req -new -newkey rsa:2048 -days 360 -sha256 -keyout author.key.pem -out author.csr.pem -config openssl.conf`
 
-Finally generate _App author's certificate_ using CSR and CA certificate:
+Finally, generate _App author's certificate_ using CSR and CA certificate:
 
 `openssl x509 -req -in author.csr.pem -CA ca.crt.pem -CAkey ca.key.pem -CAcreateserial -out author.crt.pem`
 
 ##### 3. Importing application author's certificates
 
-To import certificate into the keystore use [`ya-provider keystore add`](../../provider-tutorials/provider-cli.md#keystore) command:
+To import the certificate into the keystore, use a [`ya-provider keystore add`](../../provider-tutorials/provider-cli.md#keystore) command:
 
 `ya-provider keystore add ca.crt.pem`

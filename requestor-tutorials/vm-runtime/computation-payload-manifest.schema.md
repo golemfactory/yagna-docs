@@ -68,7 +68,7 @@ Additional properties are allowed.
 <a name="reference-compmanifest"></a>
 ## Computation Manifest
 
-Computation Manifests lets Requestors to define a certain set of allowed actions, to be negotiated with and approved by a Provider. Requestors' actions will be verified against the Manifest during computation.
+Computation Manifests let Requestors define a certain set of allowed actions, to be negotiated with and approved by a Provider. Requestors' actions will be verified against the Manifest during computation.
 
 **`Computation Manifest` Properties**
 
