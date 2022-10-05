@@ -1,6 +1,6 @@
 ---
 description: >-
-  Example showing how to make REST call to an external public API from VM running on a Provider node.
+  Example showing how to make a REST call to an external, public API from a VM running on a Provider node.
 ---
 
 # Service Example 6: External API Request
@@ -13,32 +13,32 @@ The example depicts the following features:
 {% endhint %}
 
 {% hint style="info" %}
-Full code of the example is available in the yapapi repository: [https://github.com/golemfactory/yapapi/tree/master/examples/external-api-request](https://github.com/golemfactory/yapapi/tree/master/examples/external-api-request)
+The full code of the example is available in the yapapi repository: [https://github.com/golemfactory/yapapi/tree/master/examples/external-api-request](https://github.com/golemfactory/yapapi/tree/master/examples/external-api-request)
 {% endhint %}
 
 ## Prerequisites
 
-As with the other examples, we're assuming here you already have your [yagna daemon set-up to request the test tasks](../flash-tutorial-of-requestor-development/) and that you were able to [configure your Python environment](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md) to run the examples using the latest version of `yapapi`. If this is your first time using Golem and yapapi, please first refer to the resources linked above.
+As with the other examples, we're assuming here you already have your [yagna daemon set up to request the test tasks](../flash-tutorial-of-requestor-development/) and that you were able to [configure your Python environment](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md) to run the examples using the latest version of `yapapi`. If this is your first time using Golem and yapapi, please first refer to the resources linked above.
 
 This example involves [Computation Payload Manifest](../../requestor-tutorials/vm-runtime/computation-payload-manifest.md).
 
 _Computation Payload Manifest_ making use of _Outbound Network_ requires either:
 
-1. [Certificate](../../requestor-tutorials/vm-runtime/computation-payload-manifest.md#certificates) trusted by Providers
-2. an instance of a Provider with domain this example will use added to its [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist)
-3. an instance of a Provider with a self signed Certificate imported into its [keystore](../../provider-tutorials/provider-cli.md#keystore)
+1. Requestor [certificate](../../requestor-tutorials/vm-runtime/computation-payload-manifest.md#certificates) that's trusted by the Providers
+2. an instance of a Provider with the particular domain this example uses added to its [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist)
+3. an instance of a Provider with the requestor's self-signed Certificate imported into its [keystore](../../provider-tutorials/provider-cli.md#keystore)
 
-Following example will show cases 2. and 3. so it will be necesary to start a [local instance of a Provider](../../provider-tutorials/provider-tutorial.md).
+The following example will show cases 2. and 3. so it will be necessary to start a [local instance of a Provider](../../provider-tutorials/provider-tutorial.md).
 
 ## Example app
 
-Example app will make a request to an external API using Provider's network and then it will print API response to the console.
+An example app will request an external API using Provider's network and then it will print the API response to the console.
 
 ### 1. Manifest file
 
-In order for an app to make an _Outbound Network_ request it needs to declare which tools it will use and which URLs it will access in a [Computation Payload Manifest](../vm-runtime/computation-payload-manifest.md).
+For an app to make an _Outbound Network_ request it needs to declare which tools it will use and which URLs it will access in a [Computation Payload Manifest](../vm-runtime/computation-payload-manifest.md).
 
-Our example will make a HTTPS request using `curl` to a public REST API with URL `https://api.coingecko.com`.
+Our example will make an HTTPS request using `curl` to a public REST API with the URL `https://api.coingecko.com`.
 
 _Computation Payload Manifest_ will need to have following objects:
 
@@ -95,11 +95,11 @@ Created file should be [verified using JSON schema](../vm-runtime/computation-pa
 Then it needs to be encoded in `base64`:
 
 ```sh
- base64 --wrap=0 manifest.json.base64 > manifest.json.base64
+ base64 --wrap=0 manifest.json > manifest.json.base64
 ```
 ### 2. Yapapi example app
 
-Base64 encoded _manifest_ can be configured using [`yapapi.payload.vm.manifest`](https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.manifest) function resulting in following `externa_api_request.py` file:
+Base64-encoded manifest can be configured using [`yapapi.payload.vm.manifest`](https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.manifest) function, resulting in following `external_api_request.py` file:
 
 ```py
 import asyncio
@@ -143,11 +143,11 @@ async def main():
 
 ### 3. Verification of a request with  Computation Payload Manifest
 
-_Providers_ verify incoming request with a _Computation Payload Manifest_ by checking if it arrives with a [signature and _App author's certificate_ signed by a certificate they trust](../vm-runtime/computation-payload-manifest.md#certificates). If there is no signature they verify if URLs used by _Computation Payload Manifest_ are [whitelisted](../../provider-tutorials/provider-cli.md#domain-whitelist).
+_Providers_ verify the incoming request with a _Computation Payload Manifest_ by checking if it arrives with a [signature and _App author's certificate_ signed by a certificate they trust](../vm-runtime/computation-payload-manifest.md#certificates). If there is no signature, they verify if URLs used by _Computation Payload Manifest_ are [whitelisted](../../provider-tutorials/provider-cli.md#domain-whitelist).
 
-Thare are two ways to make our *local* _Provider_ to verify request:
+There are two ways to make our *local* _Provider_ verify the request:
 
-- #### Whitelisting of domain used by the app
+- #### Whitelisting of the domain used by the app
 
   Add `api.coingecko.com` to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist):
 
@@ -157,7 +157,7 @@ Thare are two ways to make our *local* _Provider_ to verify request:
 
   [Generate self signed certificate](../vm-runtime/computation-payload-manifest.md#self-signed-certificate-example) and then [generate manifest signature](../vm-runtime/computation-payload-manifest.md#manifest-signature).
 
-  With generated and `base64` encoded certificate and a signature function `get_payload()` takes following form:
+  With a generated and `base64`-encoded certificate and a signature, the `get_payload()` function takes the following form:
 
   ```py
   # ...
@@ -176,8 +176,8 @@ Thare are two ways to make our *local* _Provider_ to verify request:
 
 ### 4. Launching the app
 
-With both _Requestor_  and _Provider_ yagna nodes and `ya-provider` running in the backround run:
+With both _Requestor_  and _Provider_ yagna nodes and `ya-provider` running in the background run:
 
 `python external_api_request.py`
 
-(keep in mind to set `YAGNA_APPKEY` and `YAGNA_API_URL` env variables pointing to local _Requestor_ node)
+(keep in mind to set `YAGNA_APPKEY` and `YAGNA_API_URL` env variables pointing to the local _Requestor_ node)
