@@ -143,8 +143,8 @@ $ golemsp status
 │  Date       2022-06-06      │
 │  Build      223             │
 │                             │
-│  Node Name  leopard         │
-│  Subnet     public-beta     │
+│  Node Name  cheetah         │
+│  Subnet     public          │
 │  VM         valid           │
 └─────────────────────────────┘
 ```
@@ -162,8 +162,8 @@ $ golemsp status
 │  Date       2022-06-06   │      (on-chain)        0 GLM                       │  (including failures)       │
 │  Build      223          │      (polygon)         0 GLM                       │                             │
 │                          │      (zksync)          0 GLM                       │                             │
-│  Node Name  leopard      │                                                    │                             │
-│  Subnet     public-beta  │  pending               0 GLM (0)                   │                             │
+│  Node Name  cheetah      │                                                    │                             │
+│  Subnet     public       │  pending               0 GLM (0)                   │                             │
 │  VM         valid        │  issued                0 GLM (0)                   │                             │
 └──────────────────────────┴────────────────────────────────────────────────────┴─────────────────────────────┘
 ```

@@ -81,7 +81,7 @@ class DateService(Service):
 
 
 async def main():
-    async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
+    async with Golem(budget=1.0, subnet_tag="public") as golem:
         cluster = await golem.run_service(DateService, num_instances=1)
         start_time = datetime.now()
 
@@ -198,7 +198,7 @@ With the service implementation complete let's now take a look at how we can pro
 {% tab title="Python" %}
 ```python
 async def main():
-    async with Golem(budget=1.0, subnet_tag="devnet-beta") as golem:
+    async with Golem(budget=1.0, subnet_tag="public") as golem:
         cluster = await golem.run_service(DateService, num_instances=1)
 ```
 {% endtab %}
