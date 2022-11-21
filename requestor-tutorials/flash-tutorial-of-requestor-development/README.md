@@ -24,11 +24,11 @@ If you are a JS developer, please switch to **NodeJS** tab
 
 {% tabs %}
 {% tab title="Python" %}
-#### Python 3.6+
+**Python 3.6+**
 
 To verify your currently installed version of python, please run:
 
-```text
+```
 python3 --version
 ```
 
@@ -40,22 +40,22 @@ On Windows, you may need to just use `python` instead of `python3`
 {% endtab %}
 
 {% tab title="NodeJS" %}
-#### NodeJS 12.13.0+
+**NodeJS 12.13.0+**
 
 To verify your currently installed version of node, please run:
 
-```text
+```
 node --version
 ```
 
 If you have an older version of node and you'd like to keep that version in your system, consider using [nvm](https://github.com/nvm-sh/nvm). You can install it using the instructions from:
 
-* [https://github.com/nvm-sh/nvm\#install--update-script](https://github.com/nvm-sh/nvm#install--update-script) \(Linux/macOS X\)
-* [https://github.com/coreybutler/nvm-windows/\#node-version-manager-nvm-for-windows](https://github.com/coreybutler/nvm-windows/#node-version-manager-nvm-for-windows) \(Windows\)
+* [https://github.com/nvm-sh/nvm#install--update-script](https://github.com/nvm-sh/nvm#install--update-script) (Linux/macOS X)
+* [https://github.com/coreybutler/nvm-windows/#node-version-manager-nvm-for-windows](https://github.com/coreybutler/nvm-windows/#node-version-manager-nvm-for-windows) (Windows)
 
 Once you have `nvm` installed on your machine, run:
 
-```text
+```
 nvm install v12
 ```
 
@@ -63,7 +63,7 @@ nvm install v12
 
 Verify that with:
 
-```text
+```
 yarn --version
 ```
 
@@ -75,16 +75,16 @@ If you don't have `yarn` or need to update, it, please go to: [https://classic.y
 
 You'll also need the `git` versioning system client so you can clone our repositories. Ensure you have it available with:
 
-```text
+```
 git --version
 ```
 
-#### No crypto assets needed \(for now\)
+#### No crypto assets are needed (for now)
 
 {% hint style="info" %}
 During development, you'll most likely want to run your tasks on the Rinkeby Testnet. In that case, you won't need any real ETH or GLM tokens to start this tutorial. These test assets are acquired by the daemon in one of the steps below.
 
-Should you later want to run your tasks on the mainnet, to leverage the potential of all Golem's provider nodes, please have a look at: ["Using Golem on Mainnet"](../../payments/using-golem-on-mainnet/README.md)
+Should you later want to run your tasks on the mainnet, to leverage the potential of all Golem's provider nodes, please have a look at: ["Using Golem on Mainnet"](../../payments/using-golem-on-mainnet/)
 {% endhint %}
 
 ### Can we help you? Do you have feedback for Golem?
@@ -105,7 +105,7 @@ In order to follow our requestor agent tutorial, you'll first need to run the `y
 
 You can install it using our helper script like this:
 
-```text
+```
 curl -sSf https://join.golem.network/as-requestor | bash -
 ```
 
@@ -121,7 +121,7 @@ Alternatively, if you'd like to have more control over the installation process,
 
 First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.10.1](https://github.com/golemfactory/yagna/releases/tag/v0.10.1).
 
-Unpack it and put the binaries contained within somewhere in your `PATH` \(e.g. copy them to `/usr/local/bin` on Unix-like systems\) or add the directory you placed the binaries in to your `PATH`.
+Unpack it and put the binaries contained within somewhere in your `PATH` (e.g. copy them to `/usr/local/bin` on Unix-like systems) or add the directory you placed the binaries in to your `PATH`.
 
 {% hint style="warning" %}
 It's important for the `yagna` and `gftp` binaries to be available in your shell's PATH, otherwise, you'll encounter issues while continuing the tutorial.
@@ -131,7 +131,7 @@ It's important for the `yagna` and `gftp` binaries to be available in your shell
 
 Once binaries are installed, confirm that you're running the latest Golem release:
 
-```text
+```
 yagna --version
 ```
 
@@ -139,7 +139,7 @@ It should output: `yagna 0.10.1 (6ae8c21a 2022-06-06 build #223)`
 
 Please also verify that you have the correct version of the `gftp` binary used for file transfers in the Golem network.
 
-```text
+```
 gftp --version
 ```
 
@@ -149,7 +149,7 @@ It should output: `gftp 0.10.1 (6ae8c21a 2022-06-06 build #223)`
 
 Now, you can run the daemon:
 
-```text
+```
 yagna service run
 ```
 
@@ -167,7 +167,7 @@ Sometimes, you may notice errors while running the yagna daemon or the example s
 
 With the daemon running, enter the daemon's directory using another shell and generate the `yagna` app key that will be used by your requestor agent to access yagna's REST API.
 
-```text
+```
 yagna app-key create requestor
 ```
 
@@ -179,7 +179,7 @@ If you intend to expose your yagna daemon's REST API port to the outside world (
 
 In case you lose your app key, you can retrieve it with:
 
-```text
+```
 yagna app-key list
 ```
 
@@ -187,11 +187,11 @@ the value in the `key` column is the key you need.
 
 ### Get some test GLM tokens
 
-In order to be able to request tasks on Golem, you'll need some GLM tokens \(called tGLM on the rinkeby testnet\) to pay the providers with. Even on the testnet, those tokens are still required but of course you can easily get them issued to you using our tGLM faucet.
+In order to be able to request tasks on Golem, you'll need some GLM tokens (called tGLM on the rinkeby testnet) to pay the providers with. Even on the testnet, those tokens are still required but of course, you can easily get them issued to you using our tGLM faucet.
 
 That's done using:
 
-```text
+```
 yagna payment fund
 ```
 
@@ -199,25 +199,13 @@ It tells yagna to check for funds on your node and if needed, contacts the fauce
 
 Once you issue the command, allow some time until it completes its job. You can verify whether you already have the funds with:
 
-```text
+```
 yagna payment status
 ```
 
 If, after a few minutes, you still can't see the tokens, re-run the `yagna payment fund` command above and check again after a few more minutes.
 
-As the last resort, if you suspect that there is a more serious issue with the payment driver or our faucet, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such case, please refer to instructions in [our troubleshooting section](../../troubleshooting/common-issues.md#payment-driver-initialization-issue).
-
-### Enable the daemon as a requestor
-
-As the last step before your requestor node is ready, you'll need to enable the daemon as a requestor.
-
-{% hint style="warning" %}
-The command needs to be run each time the daemon is started or restarted.
-{% endhint %}
-
-```text
-yagna payment init --sender
-```
+As the last resort, if you suspect that there is a more serious issue with the payment driver or our faucet, you may wish to completely do away with using it and fall back to the older, on-chain payment driver. In such a case, please refer to the instructions in [our troubleshooting section](../../troubleshooting/common-issues.md#payment-driver-initialization-issue).
 
 With this completed, you're good to go!
 
@@ -225,7 +213,8 @@ With this completed, you're good to go!
 
 Now you are ready to run computations on Golem:
 
-{% page-ref page="run-first-task-on-golem.md" %}
+{% content-ref url="run-first-task-on-golem.md" %}
+[run-first-task-on-golem.md](run-first-task-on-golem.md)
+{% endcontent-ref %}
 
 And by all means, **have fun with Golem!**
-
