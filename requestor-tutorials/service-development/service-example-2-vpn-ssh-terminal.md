@@ -46,7 +46,7 @@ RUN echo "UseDNS no" >> /etc/ssh/sshd_config && \
     echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 ```
 
-If you'd like to experiment with modifying it, please refer to our articles about [preparing your own VM images](../vm-runtime/). 
+If you'd like to experiment with modifying it, please refer to our articles about [preparing your own VM images](../vm-runtime/).
 
 ## The requestor agent
 
@@ -74,7 +74,7 @@ async with Golem(
         ...
 ```
 
-The `create_network` method is used to define a new virtual network  with `192.168.0.1/24` as the network's IP address, including the netmask. This network will then be passed when instantiating the services and the spawned instances of the service will automatically be connected to this network.
+The `create_network` method is used to define a new virtual network with `192.168.0.1/24` as the network's IP address, including the netmask. This network will then be passed when instantiating the services and the spawned instances of the service will automatically be connected to this network.
 
 Note that we're using the network as a context manager to ensure that once we've finished using it, the appropriate code that performs the removal and cleanup of the network is executed.
 
@@ -136,20 +136,18 @@ async def start(self):
     )
 
     print(f"{TEXT_COLOR_RED}password: {password}{TEXT_COLOR_DEFAULT}")
-
 ```
 
 In the `start` stage, the Requestor sends commands to launch the SSH daemon, then displays a helper note illustrating the command required to connect a local SSH client to the Provider's VM followed by the just-generated password that has been set on that host.
 
 Please note the line 16 above which retrieves the websocket URI that is the gateway that the yagna daemon exposes in its Net API which allows us to connect to any port on the deployed VM.
 
-This websocket is part of the REST API itself and hence the need to also authenticate the connection using the yagna app key (that's the same key that we use to connect to all the other endpoints in the REST API and which we provide to yapapi using YAGNA_APPKEY environment variable).
+This websocket is part of the REST API itself and hence the need to also authenticate the connection using the yagna app key (that's the same key that we use to connect to all the other endpoints in the REST API and which we provide to yapapi using YAGNA\_APPKEY environment variable).
 
 ### Starting our service
 
 ```python
 cluster = await golem.run_service(SshService, network=network, num_instances=2)
-
 ```
 
 Note how the `network` is passed as a parameter to `run_service()`. The service instances created in the cluster will be added as subsequent nodes in the virtual network, and their addresses will be available in the `network_node` attribute of each `Service` instance.
@@ -191,11 +189,11 @@ ssh -o ProxyCommand='websocat asyncstdio: localhost:22 --binary -H=Authorization
 ```
 
 {% hint style="info" %}
-Note in your command line you must use a YAGNA App Key as generated during your initial `yagna` service setup. 
+Note in your command line you must use a YAGNA App Key as generated during your initial `yagna` service setup.
 
 This is necessary, as the connection to Net gate on a websocket needs to be authenticated!
 {% endhint %}
 
-Once you launch the SSH client and approve the host's SSH key you'll need to use the password generated alongside the connection command above to log in to the provider's VM. 
+Once you launch the SSH client and approve the host's SSH key you'll need to use the password generated alongside the connection command above to log in to the provider's VM.
 
 Voila! You should now be logged-in into the VM's shell.
