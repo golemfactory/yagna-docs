@@ -140,4 +140,4 @@ Finally, you can verify that the providers have been paid for the work they cont
 yagna app-key list
 ```
 
-again but this time it's the value in the `id` column that you're interested in. This is your the Ethereum address of your yagna node on the Rinkeby testnet. Once you have that address, head to [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/), put the value in the address field there and verify that you see the outgoing payment transactions.
+again but this time it's the value in the `id` column that you're interested in. This is your the Ethereum address of your yagna node on the Rinkeby testnet. Once you have that address, you can check that the transactions have been sent. For this, you can use our test utility: [https://github.com/golemfactory/testutil](https://github.com/golemfactory/testutil) .
