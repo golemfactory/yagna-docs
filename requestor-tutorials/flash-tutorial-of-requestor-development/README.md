@@ -40,7 +40,7 @@ On Windows, you may need to just use `python` instead of `python3`
 {% endtab %}
 
 {% tab title="NodeJS" %}
-#### NodeJS 14.17.0+
+**NodeJS 14.17.0+**
 
 To verify your currently installed version of node, please run:
 
@@ -55,7 +55,7 @@ If you have an older version of node and you'd like to keep that version in your
 
 Once you have `nvm` installed on your machine, run:
 
-```text
+```
 nvm install v14.17
 ```
 
@@ -119,7 +119,7 @@ On Windows, only the manual installation is supported.
 
 Alternatively, if you'd like to have more control over the installation process, or would like to choose where the binaries end up, you can do that manually.
 
-First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.10.1](https://github.com/golemfactory/yagna/releases/tag/v0.10.1).
+First, download the requestor package - prefixed `golem-requestor` - appropriate for your platform from: [https://github.com/golemfactory/yagna/releases/tag/v0.12.0](https://github.com/golemfactory/yagna/releases/tag/v0.12.0)
 
 Unpack it and put the binaries contained within somewhere in your `PATH` (e.g. copy them to `/usr/local/bin` on Unix-like systems) or add the directory you placed the binaries in to your `PATH`.
 
@@ -135,7 +135,7 @@ Once binaries are installed, confirm that you're running the latest Golem releas
 yagna --version
 ```
 
-It should output: `yagna 0.10.1 (6ae8c21a 2022-06-06 build #223)`
+It should output: `yagna 0.12.0 (37060503 2022-12-02 build #251)`
 
 Please also verify that you have the correct version of the `gftp` binary used for file transfers in the Golem network.
 
@@ -143,7 +143,7 @@ Please also verify that you have the correct version of the `gftp` binary used f
 gftp --version
 ```
 
-It should output: `gftp 0.10.1 (6ae8c21a 2022-06-06 build #223)`
+It should output: `gftp 0.12.0 (37060503 2022-12-02 build #251)`
 
 ### Run the daemon
 
