@@ -6,9 +6,9 @@ Now you have the `yagna` daemon running, you may proceed with running a task as 
 
 {% tabs %}
 {% tab title="Python" %}
-#### Get the environment set up
+**Get the environment set up**
 
-Ensure you're running Python >= 3.6 and you have the `venv` module installed (it's normally included in the Python distribution).
+Ensure you're running Python >= 3.7 and you have the `venv` module installed (it's normally included in the Python distribution).
 
 Prepare a virtual environment for the tutorial script:
 
@@ -33,22 +33,16 @@ pip install -U pip
 pip install yapapi
 ```
 
-#### Get the requestor agent's code
+**Get the requestor agent's code**
 
 Check out or download the `yapapi` repository:
 
 ```
-git clone https://github.com/golemfactory/yapapi.git
-```
-
-and make sure you're working on the version corresponding with the latest release:
-
-```
+git clone -b b0.10 https://github.com/golemfactory/yapapi.git
 cd yapapi
-git checkout b0.9
 ```
 
-#### Set the yagna app key
+**Set the yagna app key**
 
 In order for the requestor agent to connect with the `yagna` daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](./#generate-the-app-key)" step in the quick primer article:
 
@@ -84,7 +78,7 @@ If everything goes right, after what could be anything from half-a-minute to a f
 {% endtab %}
 
 {% tab title="NodeJS" %}
-#### Get the requestor agent's code
+**Get the requestor agent's code**
 
 Check out or download the `yajsapi` repository:
 
@@ -94,7 +88,7 @@ cd yajsapi
 git checkout b0.6
 ```
 
-#### Set the yagna app key
+**Set the yagna app key**
 
 In order for the requestor agent to connect with the yagna daemon, you need to provide it with the previously-generated app key. You do that by setting the appropriate environment variable to a value acquired in the "[Generate the app key](./#generate-the-app-key)" step above:
 
@@ -108,7 +102,7 @@ On Windows, please replace the above with:
 `set YAGNA_APPKEY=your-32-char-app-key`
 {% endhint %}
 
-#### Run the example task
+**Run the example task**
 
 The example we're showcasing here resides in the `examples/blender` directory within `yajsapi`'s codebase so, ensure that you're in the checked-out repository's directory and run:
 
