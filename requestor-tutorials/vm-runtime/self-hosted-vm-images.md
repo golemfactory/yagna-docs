@@ -12,7 +12,7 @@ The process of [preparation](creating-a-docker-image.md) and [conversion](conver
 
 ## Obtaining the VM image hash
 
-When you upload and image to Golem's repo, the image hash is calculated and conveniently provided to you after a successful upload.&#x20;
+When you upload and image to Golem's repo, the image hash is calculated and conveniently provided to you after a successful upload.
 
 When you decide not to push the image that way, you need to calculate the SHA3 hash on your own. Golem's VM images use 224-bit SHA3 hashes and the easiest way to obtain such a hash is to run the `sha3sum` tool on the `.gvmi` file.
 
@@ -32,7 +32,7 @@ brew install sha3sum
 {% endtab %}
 {% endtabs %}
 
-### &#x20;Calculate the image hash
+### Calculate the image hash
 
 ```bash
 sha3sum -a 224 <image_filename.gvmi>
@@ -40,7 +40,7 @@ sha3sum -a 224 <image_filename.gvmi>
 
 The calculated hash is then printed alongside the filename and you need to note down this hash since it needs to be provided to the API so that later, the providers can verify the integrity of the VM images they download before they're able to deploy them.
 
-## Using the URL and the hash&#x20;
+## Using the URL and the hash
 
 Once the VM image file is uploaded to a location of your choosing and you have the file's hash, you only need to provide this data to the API when the `Package` for your app is constructed.
 
@@ -58,7 +58,6 @@ package = await vm.repo(
     # the URL can point to any publicly-available location on the web
     image_url="http://girepo.dev.golem.network:8000/docker-golem-hello-world-latest-779758b432.gvmi",
 )
-
 ```
 
 For full usage, please refer to the relevant part of the API reference:

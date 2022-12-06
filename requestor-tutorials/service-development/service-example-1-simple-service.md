@@ -153,7 +153,7 @@ If you'd like to play around with modifying the included image yourself, please 
 
 We've seen what our little toy service looks like and we have its VM image ready. Now, we can move on to the more juicy stage where we **build the requestor agent** using the Golem's high-level Services API.
 
-The full source code of the requestor agent is available in yapapi's github repo: [https://github.com/golemfactory/yapapi/blob/b0.6/examples/simple-service-poc/simple_service.py](https://github.com/golemfactory/yapapi/blob/b0.6/examples/simple-service-poc/simple_service.py).
+The full source code of the requestor agent is available in yapapi's github repo: [https://github.com/golemfactory/yapapi/blob/b0.6/examples/simple-service-poc/simple\_service.py](https://github.com/golemfactory/yapapi/blob/b0.6/examples/simple-service-poc/simple\_service.py).
 
 Here, we're going to go through the most important excerpts.
 
@@ -216,7 +216,6 @@ async def start(self):
     script = self._ctx.new_script()
     script.run(self.SIMPLE_SERVICE_CTL, "--start")
     yield script
-
 ```
 
 To start our service, we're going to call our `simulate_observations_ctl.py`script which, as described above, starts the background job that generates our observations and adds them to the service's database. As this is the first command issued, the work context will implicitly prepend our batch with `deploy` and `start` commands, which (unless we need to parametrize the `start` call - not needed for a VM runtime) is exactly what we need.
@@ -248,7 +247,6 @@ async def run(self):
         script = self._ctx.new_script()
         script.download_file(plot, str(pathlib.Path(__file__).resolve().parent / plot_filename))
         yield script
-
 ```
 
 While our service is running, we'll want to periodically peek inside some characteristics of the observations accumulated so far. Thus, every ten seconds (`asyncio.sleep(10)`), we're going to run two consecutive batches of commands.
@@ -285,7 +283,6 @@ async def shutdown(self):
     script = self._ctx.new_script()
     script.run(self.SIMPLE_SERVICE_CTL, "--stop")
     yield script
-
 ```
 
 Lastly, when our service is requested to stop, we can issue any commands that perform a shutdown, cleanup or e.g. preserve the state of the service instance.
@@ -314,7 +311,6 @@ async with Golem(
         ],
         expiration=datetime.now(timezone.utc) + timedelta(minutes=120),
     )
-
 ```
 
 The first one creates the Golem as a context manager, configured with the appropriate subnet, payment driver and payment network and given a particular budget allocated for this job.
