@@ -97,7 +97,6 @@ if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     task = loop.create_task(main())
     loop.run_until_complete(task)
-
 ```
 {% endtab %}
 {% endtabs %}
@@ -159,7 +158,6 @@ async def start(self):
         f"while true; do date > {DATE_OUTPUT_PATH}; sleep {REFRESH_INTERVAL_SEC}; done &",
     )
     yield script
-
 ```
 {% endtab %}
 {% endtabs %}
@@ -179,12 +177,6 @@ The above command has its placeholders substituted with their actual default val
 The file `/golem/work/date.txt` will be our source of data which we'll later on read in our service's `run` function.
 
 ### run() function
-
-{% tabs %}
-{% tab title="Python" %}
-
-{% endtab %}
-{% endtabs %}
 
 This function is where the requestor agent has a chance to monitor and control each running service instance. In the case of our example we periodically monitor values generated on a service instance by printing them out to the console.
 

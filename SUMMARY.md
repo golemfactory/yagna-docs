@@ -36,6 +36,7 @@
 
 ## Developer tutorials <a href="#requestor-tutorials" id="requestor-tutorials"></a>
 
+* [Getting Started as a Requestor](requestor-tutorials/getting-started-as-a-requestor.md)
 * [Requestor development: a quick primer](requestor-tutorials/flash-tutorial-of-requestor-development/README.md)
   * [Run first task on Golem](requestor-tutorials/flash-tutorial-of-requestor-development/run-first-task-on-golem.md)
 * [Golem application fundamentals](requestor-tutorials/golem-application-fundamentals/README.md)
@@ -58,7 +59,7 @@
     * [Erigon Service runtime](requestor-tutorials/service-development/service-example-5-managed-erigon/erigon-service-runtime.md)
     * [Erigon Requestor agent](requestor-tutorials/service-development/service-example-5-managed-erigon/erigon-requestor-agent.md)
     * [Setting up an Erigon provider](requestor-tutorials/service-development/service-example-5-managed-erigon/setting-up-an-erigon-provider.md)
-  * [Service Example 7: External API request](reqestor-tutorials/service-development/service-example-6-external-api-request.md)
+  * [Service Example 7: External API request](requestor-tutorials/service-development/service-example-7-external-api-request.md)
 * [VM runtime](requestor-tutorials/vm-runtime/README.md)
   * [Creating a Docker image](requestor-tutorials/vm-runtime/creating-a-docker-image.md)
   * [Converting an image from Docker to Golem](requestor-tutorials/vm-runtime/convert-a-docker-image-into-a-golem-image.md)
