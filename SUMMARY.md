@@ -78,7 +78,10 @@
 
 * [Golem Python API Reference](https://yapapi.readthedocs.io/en/latest/api.html)
 
-## yajsapi - JavaScript high-level API <a href="#yajsapi" id="yajsapi"></a>
+## yajsapi - JavaScript SDK API <a href="#new_yajsapi" id="new_yajsapi"></a>
+* [Introduction to Golem's Java Script API](new_yajsapi/yajsapi.md)
+
+## OLD yajsapi - JavaScript high-level API <a href="#yajsapi" id="yajsapi"></a>
 
 * [Introduction to Golem's high-level Java Script API](yajsapi/yajsapi.md)
 * [Modules](yajsapi/modules/README.md)
