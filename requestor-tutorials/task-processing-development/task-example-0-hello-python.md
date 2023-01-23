@@ -23,7 +23,7 @@ The only assumption made in this article is that you have some familiarity with 
 Here are the prerequisites in case you'd like to follow along and/or experiment with the code presented in this article:
 
 * you have a local `yagna` node set up (instructions can be found here: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/))
-* you have the Python or JS Golem high-level API set up on your machine (instructions here: [Run first task on Golem](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md))
+* you have the Python high-level API set up on your machine (instructions here: [Run first task on Golem](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md))
 
 {% hint style="info" %}
 Golem's APIs rely heavily on coroutines and asynchronous execution (`async/await`). If you're unfamiliar with these concepts, chances are you'll find some parts of the code examples confusing.
@@ -41,8 +41,6 @@ Let's jump straight to the example:
 This example uses the standard VM runtime.
 {% endhint %}
 
-{% tabs %}
-{% tab title="Python" %}
 ```python
 #!/usr/bin/env python3
 import asyncio
@@ -147,23 +145,11 @@ This function is our program's entry point and it performs three steps:
 
 ### VM image
 
-{% tabs %}
-{% tab title="Python" %}
 ```python
 package = vm.repo(
     image_hash="d646d7b93083d817846c2ae5c62c72ca0507782385a2e29291a3d376",
 )
 ```
-{% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-const package = await vm.repo({
-    image_hash: "d646d7b93083d817846c2ae5c62c72ca0507782385a2e29291a3d376"
-});
-```
-{% endtab %}
-{% endtabs %}
 
 Currently, Golem is using a public repository to store both official and community-authored VM images. Once an image is uploaded to this repository it can be referred to by its hash.
 
@@ -175,19 +161,9 @@ If you'd like to learn about creating and uploading Golem images yourself, take 
 
 ### Tasks array
 
-{% tabs %}
-{% tab title="Python" %}
 ```python
 tasks = [Task(data=None)]
 ```
-{% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-const tasks = [new Task({})];
-```
-{% endtab %}
-{% endtabs %}
 
 Next comes the array of task fragments to be computed. For simplicity, our `tasks` array contains a single item of type `Task` which has no data associated with it. This means we only need a single item to be computed and that the worker function does not need any additional parameters.
 
@@ -199,9 +175,7 @@ To see a more involved example of this take a look at: [Task Example 1: Simple h
 
 ### Golem/Executor
 
-{% tabs %}
-{% tab title="Python" %}
-```javascript
+```python
 async with Golem(budget=1.0, subnet_tag="public") as golem:
     async for completed in golem.execute_tasks(worker, tasks, payload=package):
         print(completed.result.stdout)
@@ -230,9 +204,7 @@ Finally, as the last step of our `main()` function we create an instance of `Gol
 
 Let's first focus on the instantiation code:
 
-{% tabs %}
-{% tab title="Python" %}
-```javascript
+```python
 async with Golem(budget=1.0, subnet_tag="public") as golem:
     ...
 ```
@@ -276,30 +248,12 @@ As for the parameters passed to the `Golem/Executor` constructor:
 * `budget` specifies our desired budget (in GLM) for the total cost of all tasks computed using this `Golem/Executor` instance.
 * `subnet_tag` specifies the name of a Golem network sub-network we'd like to use for all Golem communication performed by this `Golem/Executor` instance.
 
-{% hint style="warning" %}
-In the JavaScript API, the current implementation of `Executor` requires `task_package` to be passed in to the constructor. This is likely to change in the future. More on this parameter in the next section.
-{% endhint %}
-
 #### Execution
 
-{% tabs %}
-{% tab title="Python" %}
-```javascript
+```python
 async for completed in golem.execute_tasks(worker, tasks, payload=package):
     print(completed.result.stdout)
 ```
-{% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-async (executor) => {
-    for await (let completed of executor.submit(worker, tasks)) {
-        console.log(completed.result().stdout);
-    }
-}
-```
-{% endtab %}
-{% endtabs %}
 
 Having a `Golem/Executor` instance initialized we can now request some tasks!
 
@@ -309,18 +263,12 @@ The function `execute_tasks/submit` is used here, it takes three parameters (two
 * `tasks` is the array of `Task` objects we have created
 * `payload` is the payload definition for providers which we created using the function `vm.repo`
 
-{% hint style="warning" %}
-In the case of JavaScript API we already provided the `Executor` with a payload definition through the parameter `task_package`.
-{% endhint %}
-
 `execute_tasks/submit` returns an asynchronous iterator of `Task` objects, hence the `async for/for await` statement. Items returned by this iterator are successfully completed tasks in the order they were computed.
 
 Having a completed task we can inspect its result. The result's structure will depend on the execution environment we used. In our case it's the VM runtime and so the result contains the output of your executed command in `stdout`.
 
 ## The worker() function
 
-{% tabs %}
-{% tab title="Python" %}
 ```python
 async def worker(context: WorkContext, tasks: AsyncIterable[Task]):
     async for task in tasks:
@@ -329,21 +277,6 @@ async def worker(context: WorkContext, tasks: AsyncIterable[Task]):
         yield script
         task.accept_result(result=await future_result)
 ```
-{% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-async function* worker(context, tasks) {
-    for await (let task of tasks) {
-        context.run("/bin/sh", ["-c", "date"]);
-        const future_result = yield context.commit();
-        const { results } = await future_result;
-        task.accept_result(results[results.length - 1])
-    }
-}
-```
-{% endtab %}
-{% endtabs %}
 
 The `worker` function is what defines the interaction between our requestor node and each provider computing one or more of our tasks. It's called once per provider node with which our requestor has struck an agreement.
 
