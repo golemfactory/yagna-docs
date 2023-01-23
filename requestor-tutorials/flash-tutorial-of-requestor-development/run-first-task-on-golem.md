@@ -85,7 +85,7 @@ Check out or download the `yajsapi` repository:
 ```
 git clone https://github.com/golemfactory/yajsapi.git
 cd yajsapi
-git checkout b0.6
+git checkout b0.7
 ```
 
 **Set the yagna app key**
@@ -112,7 +112,7 @@ yarn
 yarn js:blender
 ```
 
-If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet and then ones that announce work dispatched to providers with lines starting with `Task sent to provider [...]` and subsequently confirmations of task completions.
+If everything works as expected, you should see some messages that confirm agreements being struck between your requestor node and the providers in our testnet and then ones that announce work dispatched to providers with lines starting with `Task 1 sent to provider [...]` and subsequently confirmations of task completions.
 
 To see some more detailed messages, you can run the example with `yarn js:blender -d`.
 

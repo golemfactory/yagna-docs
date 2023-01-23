@@ -22,22 +22,6 @@ async def worker(context: WorkContext, tasks: AsyncIterable[Task]):
         yield script
         task.accept_result(result=await future_result)
 ```
-{% endtab %}
-
-{% tab title="JavaScript" %}
-```javascript
-  async function* worker(context, tasks) {
-    for await (let task of tasks) {
-      context.run("/bin/sh", ["-c", "date"]);
-
-      const future_result = yield context.commit();
-      const { results } = await future_result;
-      task.accept_result(results[results.length - 1])
-    }
-  }
-```
-{% endtab %}
-{% endtabs %}
 
 A `worker()` function is specified, which will be called by the high-level library engine for each provider, to iterate over the work commands and send the commands to the Provider. This function \(representing the task-based execution model\) receives:
 
@@ -46,7 +30,7 @@ A `worker()` function is specified, which will be called by the high-level libra
 
 For each set of commands that we'd like to execute on the provider's end, the `new_script()` is called on the `WorkContext` instance to create a `Script` object to hold our execution script.
 
-Then, a `run()` method is called on the `Script` instance to build a command to issue a `bash` statement on a remote VM. This call builds a RUN command. Note that we're saving a handle to its future result \(which is an async awaitable that will be filled with the actual result later\).
+Then, a `run()` method is called on the `Script`/`WorkContext` instance to build a command to issue a `bash` statement on a remote VM. This call builds a RUN command. Note that we're saving a handle to its future result \(which is an async awaitable that will be filled with the actual result later\).
 
 A subsequent `yield` statement then sends the prepared script to the caller of the `worker()` method, which effectively passes it for execution by the provider.
 
@@ -56,12 +40,39 @@ Both the aforementioned `run` command and the `yield` statement return awaitable
 Note that some programming languages do not support receiving responses from a `yield` statement. In those languages the command results shall still be available via an awaitable object, available either from the command object itself, or from the `WorkContext`.
 {% endhint %}
 
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```typescript
+  async function worker(context: WorkContext, data?: string): Promise<string> {
+    const result = await context.run(`echo "${data}"`);
+    return result.stdout;
+  }
+```
+
+A `worker()` function is specified, which will be called by the high-level library engine for each provider, to run command or batch of commands (script) on the Provider. This function \(representing the task-based execution model\) receives:
+
+* a `WorkContext` object, which is used to construct the commands / script,
+* an optional `data` which specify individual parts of the batch process to be executed.
+
+Inside the worker function, we have `context` object which is instance of the `WorkContext` represents executable interface on the provider side.
+
+Then, a `run()` method is called on the `WorkContext` instance to build a command to issue a `bash` statement on a remote VM. This call builds a RUN command. Note that this is a asynchronous call and it will be resolved as `Result` object of batch execution.
+
+This `Promise<Result>` objects can be awaited upon to obtain the response for a specific command or for the whole script respectively, which can be processed further. The `worker()` execution for this specific provider halts until the generated work command gets processed.
+
+{% endtab %}
+
+{% endtab %}
+{% endtabs %}
+
 ## Script API
 
 {% hint style="info" %}
 **Note** that implementation of the Script API is specific to a ExeUnit/runtime which we communicate with. In other words, `run()` on a VM runtime may have a different semantic than on other runtimes, and in some ExeUnits it may not even be implemented at all.
 {% endhint %}
 
+{% tabs %} {% tab title="Python" %}
 The `Script` is a facade which exposes APIs to build various commands. Some useful methods are listed below:
 
 ### `run(statement(, arguments))`
@@ -79,4 +90,31 @@ A group of commands responsible for sending content to the ExeUnit. These are ut
 ### `download_*(<content>, location)`
 
 A group of commands responsible for downloading content from the ExeUnit. As with `send_*()`, these are utility methods which allow for convenient transfer and conversion of remote content into local files, bytes or JSON objects.
+{% endtab %}
 
+{% tab title="JavaScript" %}
+
+The `WorkContext` expose APIs to build various command or scripts. Some useful methods are listed below:
+
+### ```async run(statement: string, ...arguments?: string[]): Promise<Result>```
+
+Execute an arbitrary statement \(with arguments\) in the ExeUnit/runtime.
+
+{% hint style="info" %}
+The semantics of the command is specific to a runtime, eg. for VM runtime this command executes a shell statement and returns results from `stdout` and `stderr`.
+{% endhint %}
+
+### ```async upload(src: string, dst: string): Promise<Result>``
+
+A group of commands responsible for sending content to the ExeUnit. These are utility methods, which conveniently allow for sending eg. local files, binary content or JSON content. 
+
+### ```async download(src: string, dst: string): Promise<Result>```
+
+A group of commands responsible for downloading content from the ExeUnit. As with `download()`, these are utility methods which allow for convenient transfer and conversion of remote content into local files, bytes or JSON objects.
+
+{% hint style="info" %}
+The `upload` and `download` command is available only in Nodejs environment. This is not supported in browser context in the current version.
+{% endhint %}
+
+{% endtab %}
+{% endtabs %}
