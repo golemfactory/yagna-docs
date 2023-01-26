@@ -216,5 +216,3 @@ Now you are ready to run computations on Golem:
 {% content-ref url="run-first-task-on-golem.md" %}
 [run-first-task-on-golem.md](run-first-task-on-golem.md)
 {% endcontent-ref %}
-
-And by all means, **have fun with Golem!**
