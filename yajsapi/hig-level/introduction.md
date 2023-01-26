@@ -1,32 +1,34 @@
 ---
-description: Create your own task application on Golem
+description: Your own thing on golem.
 ---
 
 # Create your own task application on Golem
 
 ## Introduction
 
-This tutorial is designed for developers who want to create their own application on the Golem network. 
-It will guide you through the process of creating a task-based requestor application using the high-level API, and provide you with examples to help you understand the concepts better.
+This tutorial shows a typical experience of a developer who would like to create their own application for Golem.
 
 {% hint style="info" %}
-If you have any questions or run into any issues while following this tutorial, please don't hesitate to reach out to us on our [Discord channel](https://chat.golem.network/) for help.
+In case of any doubts or problems, you can always contact us on discord.
+
+[https://chat.golem.network](https://chat.golem.network/)
 {% endhint %}
 
-To make the tutorial easier to follow, it has been divided into several sections. In the first section, we will provide a general introduction to developing applications on the Golem network, and explain the task model that is used in Golem applications.
+In order to make the journey through this tutorial easier to follow we divided it into sections.
+The first one is a general introduction, pointing the developer's mind to the rails of Golem application development.
 
 {% page-ref page="task-model.md" %}
 
-In the next section, we will walk you through the process of creating a simple example application that runs on the VM runtime. We will provide code examples and explain the mechanics of task-based requestor development.
+Next we explain the mechanics of task-based requestor development, with a simple example running on the VM runtime:
 
 {% page-ref page="hello.md" %}
 
 {% page-ref page="simple.md" %}
 
-We will then show you how to use Golem to run a `hashcat` application in parallel. This section will provide an example of a more complex use case and explain how to use Golem's capabilities to run it efficiently.
+Then we proceed to complicate things a bit by showing you how to use Golem with a `hashcat` and show how we are going to make it work in parallel using Golem.
 
 {% page-ref page="hashcat.md" %}
 
-Lastly, we will describe how to use the API directly from the browser context. This section will provide information on how to use the API in web applications and explain the benefits and limitations of this approach.
+Last but not least, we describe how to use this api directly from the browser context.
 
 {% page-ref page="web.md" %}
