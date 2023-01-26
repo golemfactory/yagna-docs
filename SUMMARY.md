@@ -24,6 +24,12 @@
   * [Running a requestor on Mainnet](payments/using-golem-on-mainnet/running-a-requestor-on-mainnet.md)
 * [Mainnet / Polygon GLM Conversion](payments/glm-mainnet-polygon-conversion.md)
 
+## Extensions
+
+* [Golem extensions overview](extensions/README.md)
+  * [Command line extensions](extensions/cli.md)
+  * [Daemon extensions](extensions/daemon.md)
+
 ## Provider tutorials
 
 * [Becoming a provider](provider-tutorials/provider-tutorial.md)
@@ -297,7 +303,9 @@
 
 ## Yagna Contributor Guide
 
-* [How to a write payment driver](yagna-contributor-guide/payment-driver-getting-started.md)
+* [How to write a payment driver](yagna-contributor-guide/payment-driver-getting-started.md)
+* [How to write a CLI extension](extensions/cli.md#creating-your-own-extension)
+* [How to write a daemon extension](extensions/daemon.md#creating-your-own-extension)
 
 ## See also
 
