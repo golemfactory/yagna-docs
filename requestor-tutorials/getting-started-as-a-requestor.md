@@ -34,9 +34,26 @@ Discover what Services are on Golem and how to bring them to life [https://glm.z
 
 ### Experimental
 
-Golem dApp runner (currently under development) [https://github.com/golemfactory/dapp-runner](https://github.com/golemfactory/dapp-runner)&#x20;
+#### dApps on Golem
 
-Golem dApp examples (currently under development) [https://github.com/golemfactory/dapp-experiments/tree/main/01\_todo\_app](https://github.com/golemfactory/dapp-experiments/tree/main/01\_todo\_app)
+Golem dApps is a language-agnostic way of deploying multi-layer apps on the Golem Network.
+
+You can give it a try by following the guide below:
+
+{% content-ref url="getting-started-with-dapps-on-golem.md" %}
+[getting-started-with-dapps-on-golem.md](getting-started-with-dapps-on-golem.md)
+{% endcontent-ref %}
+
+You can also check the GitHub repositories:
+
+* Golem dApp runner: [https://github.com/golemfactory/dapp-runner](https://github.com/golemfactory/dapp-runner)&#x20;
+* Golem dApp examples: [https://github.com/golemfactory/dapp-experiments/tree/main/01\_todo\_app](https://github.com/golemfactory/dapp-experiments/tree/main/01\_todo\_app)
+
+#### Golem Core Python
+
+Golem Core Python is a new Python API that aims to provide more control over what is happening during interaction with the Golem Network. This is a great way for experienced Golem developers to adjust their market strategies or modify the interaction mechanisms with the network.
+
+You can check it on our GitHub: [https://github.com/golemfactory/golem-core-python](https://github.com/golemfactory/golem-core-python)
 
 ## **SDK repositories**
 
