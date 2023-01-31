@@ -5,40 +5,42 @@ description: A minimal example of a functional Golem requestor agent in browser
 # Task Example 3: Requestor in browser
 
 {% hint style="info" %}
-This example illustrates following Golem features & aspects:
+This example demonstrates the following Golem features and concepts:
 
-* VM runtime
-* Task execution from browser context
-* Retrieving command output from provider's exe unit
+* Running tasks in a VM runtime
+* Executing tasks from a browser context
+* Retrieving the output of a provider's executable unit
+
 {% endhint %}
 
 ## Prerequisites
 
-The only difference compared to the previous examples is the launch the yagna daemon with a parameter that allows you to handle requests in REST API with CORS policy. You can do it by:
+Before getting started, you need to launch the Yagna daemon with a parameter that allows you to handle REST API requests with a CORS policy. You can do this by running the following command:
 
 ```shell
 yagna service run --api-allow-origin='http://localhost:3000'
 ```
 
-The origin you set depends on the place where your web application with the requestor code will be served.
+The `--api-allow-origin` value should be set to the URL where your web application will be served.
 
-## Simple web app
+## Simple web application
 
-To create a simple web application with a single html file, we use the standard nodejs library. We create `app.js` with the content:
+To create a simple web application, we'll use the standard Node.js library. First, we'll create a `app.js` file with the following content:
 
 ```javascript
-const http = require("http");
-const fs = require("fs");
+const http = require('http');
+const fs = require('fs');
 
 const server = http.createServer((req, res) => {
-  res.writeHead(200, { "content-type": "text/html" });
-  fs.createReadStream("index.html").pipe(res);
+  res.writeHead(200, { 'content-type': 'text/html' });
+  fs.createReadStream('index.html').pipe(res);
 });
 
-server.listen(3000, () => console.log(`Server listen at http://localhost:3000`));
+server.listen(3000, () => console.log('Server listening at http://localhost:3000'));
 ```
 
-Then wen need to create main `index.html` file with minimal layout:
+Next, we'll create the main `index.html` file with a minimal layout:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -63,14 +65,13 @@ Then wen need to create main `index.html` file with minimal layout:
 </html>
 ```
 
-In this layout we have three elements: 
- - run button which execute script on golem
- - results container which shows the results
- - logs container which shows api logs
+In this layout, there are three elements:
 
-## Use Yajsapi bundle library
+- A "Run" button, which executes the script on Golem
+- A "Results" container, which displays the results
+- A "Logs" container, which displays the API logs
 
-Yajsapi is available via CDN. You should add the following script to the head section of `index.html`
+## Using the Yajsapi bundle library
 
 ```html
     <script crossorigin src="https://unpkg.com/yajsapi/yajspai.min.js"></script>
