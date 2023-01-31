@@ -158,8 +158,9 @@ DEPRECATED APIs:
 
 API LIBRARY COMPATIBILITY:
 
-| **Library** | **Requestor** | **Provider** |
+|             |               |              |
 | ----------- | ------------- | ------------ |
+| **Library** | **Requestor** | **Provider** |
 | yapapi      | 0.5.0+        | 0.6.0+       |
 | yajsapi     | 0.5.0+        | 0.6.0+       |
 | ...         | ...           | ...          |

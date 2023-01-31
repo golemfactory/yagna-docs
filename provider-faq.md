@@ -61,7 +61,7 @@ It all comes down to if KVM access is available on the hosting platform (e.g. AW
 
 `$HOME/.local/share/yagna/yagna_rCURRENT.log`
 
-`$HOME/.local/share/ya-provider/yagna_rCURRENT.log`
+`$HOME/.local/share/ya-provider/ya-provider_rCURRENT.log`
 
 **Would a provider Windows version be coming anytime soon?**
 

@@ -36,7 +36,6 @@
 
 ## Developer tutorials <a href="#requestor-tutorials" id="requestor-tutorials"></a>
 
-* [Getting Started as a Requestor](requestor-tutorials/getting-started-as-a-requestor.md)
 * [Requestor development: a quick primer](requestor-tutorials/flash-tutorial-of-requestor-development/README.md)
   * [Run first task on Golem](requestor-tutorials/flash-tutorial-of-requestor-development/run-first-task-on-golem.md)
 * [Golem application fundamentals](requestor-tutorials/golem-application-fundamentals/README.md)
@@ -55,11 +54,7 @@
   * [Service Example 3: VPN - Minimalistic HTTP proxy](requestor-tutorials/service-development/service-example-3-vpn-simple-http-proxy.md)
   * [Service Example 4: Custom usage counters](requestor-tutorials/service-development/service-example-4-custom-usage-counters.md)
   * [Service Example 5: Web application](requestor-tutorials/service-development/service-example-webapp.md)
-  * [Service Example 6: Erigolem – Managed Erigon](requestor-tutorials/service-development/service-example-5-managed-erigon/README.md)
-    * [Erigon Service runtime](requestor-tutorials/service-development/service-example-5-managed-erigon/erigon-service-runtime.md)
-    * [Erigon Requestor agent](requestor-tutorials/service-development/service-example-5-managed-erigon/erigon-requestor-agent.md)
-    * [Setting up an Erigon provider](requestor-tutorials/service-development/service-example-5-managed-erigon/setting-up-an-erigon-provider.md)
-  * [Service Example 7: External API request](requestor-tutorials/service-development/service-example-7-external-api-request.md)
+  * [Service Example 6: External API request](requestor-tutorials/service-development/service-example-6-external-api-request.md)
 * [VM runtime](requestor-tutorials/vm-runtime/README.md)
   * [Creating a Docker image](requestor-tutorials/vm-runtime/creating-a-docker-image.md)
   * [Converting an image from Docker to Golem](requestor-tutorials/vm-runtime/convert-a-docker-image-into-a-golem-image.md)
@@ -72,67 +67,12 @@
 * [Interactive testing environment](requestor-tutorials/interactive-testing-environment/README.md)
   * [Running Goth](requestor-tutorials/interactive-testing-environment/running-goth.md)
   * [Using Test Harness to test Golem apps](requestor-tutorials/interactive-testing-environment/running-goths-interactive-mode.md)
-* [SGX secure enclave application development](requestor-tutorials/sgx-secure-enclave-application-development.md)
 
 ## yapapi - Python high-level API <a href="#yapapi" id="yapapi"></a>
 
 * [Golem Python API Reference](https://yapapi.readthedocs.io/en/latest/api.html)
 
-## yajsapi - JavaScript SDK API <a href="#new_yajsapi" id="new_yajsapi"></a>
-* [Introduction to New version JS SDK](new_yajsapi/introduction.md)
-
-* [Modules](new_yajsapi/modules.md)
-  * Activity
-    * [activity/activity](new_yajsapi/modules/activity_activity.md)
-    * [activity/results](new_yajsapi/modules/activity_results.md)
-  * Agreement
-    * [agreement/agreement](new_yajsapi/modules/agreement_agreement.md)
-    * [agreement/service](new_yajsapi/modules/agreement_service.md)
-  * Events
-    * [events/events](new_yajsapi/modules/events_events.md)
-  * Executor
-    * [executor/config](new_yajsapi/modules/executor_config.md)
-    * [executor/executor](new_yajsapi/modules/executor_executor.md)
-  * Market
-    * [market/builder](new_yajsapi/modules/market_builder.md)
-    * [market/demand](new_yajsapi/modules/market_demand.md)
-    * [market/proposal](new_yajsapi/modules/market_proposal.md)
-    * [market/strategy](new_yajsapi/modules/market_strategy.md)
-  * Network
-    * [network/config](new_yajsapi/modules/network_config.md)
-    * [network/identity](new_yajsapi/modules/network_identity.md)
-    * [network/network](new_yajsapi/modules/network_network.md)
-    * [network/node](new_yajsapi/modules/network_node.md)
-    * [network/service](new_yajsapi/modules/network_service.md)
-  * Package
-    * [package/package](new_yajsapi/modules/package_package.md)
-    * [package/repo\_resolver](new_yajsapi/modules/package_repo_resolver.md)
-  * Payment
-    * [payment/accounts](new_yajsapi/modules/payment_accounts.md)
-    * [payment/allocation](new_yajsapi/modules/payment_allocation.md)
-    * [payment/config](new_yajsapi/modules/payment_config.md)
-    * [payment/debit\_note](new_yajsapi/modules/payment_debit_note.md)
-    * [payment/invoice](new_yajsapi/modules/payment_invoice.md)
-    * [payment/rejection](new_yajsapi/modules/payment_rejection.md)
-    * [payment/service](new_yajsapi/modules/payment_service.md)
-  * Scripts
-    * [script/command](new_yajsapi/modules/script_command.md)
-    * [script/script](new_yajsapi/modules/script_script.md)
-  * Storage
-    * [storage/gftp](new_yajsapi/modules/storage_gftp.md)
-    * [storage/provider](new_yajsapi/modules/storage_provider.md)
-  * Task
-    * [task/batch](new_yajsapi/modules/task_batch.md)
-    * [task/config](new_yajsapi/modules/task_config.md)
-    * [task/queue](new_yajsapi/modules/task_queue.md)
-    * [task/service](new_yajsapi/modules/task_service.md)
-    * [task/task](new_yajsapi/modules/task_task.md)
-    * [task/work](new_yajsapi/modules/task_work.md)
-  * Utils
-    * [utils/consoleLogger](new_yajsapi/modules/utils_consoleLogger.md)
-    * [utils/logger](new_yajsapi/modules/utils_logger.md)
-
-## OLD yajsapi - JavaScript high-level API <a href="#yajsapi" id="yajsapi"></a>
+## yajsapi - JavaScript high-level API <a href="#yajsapi" id="yajsapi"></a>
 
 * [Introduction to Golem's high-level Java Script API](yajsapi/yajsapi.md)
 * [Modules](yajsapi/modules/README.md)

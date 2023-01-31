@@ -5,7 +5,7 @@ description: Symptoms and solutions of known issues.
 # Requestor Troubleshooting
 
 {% hint style="info" %}
-## Requestor Issues
+#### Requestor Issues
 
 Don't miss the [debugging section by using the log file](../requestor-tutorials/debugging.md#reading-the-log-file).
 {% endhint %}

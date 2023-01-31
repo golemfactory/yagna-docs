@@ -14,7 +14,7 @@ Run `golemsp help` without arguments to see top-level usage information:
 
 ```css
 $ golemsp help
-golemsp 0.10.1 (6ae8c21a 2022-06-06 build #223)
+golemsp 0.12.0 (37060503 2022-12-02 build #251)
 User friedly CLI for running Golem Provider
 
 USAGE:
@@ -42,7 +42,7 @@ Invoke `golemsp run --help` to see more options.
 
 ```css
 $ golemsp settings
-golemsp-settings 0.2.0
+golemsp-settings 0.3.0
 Manage settings
 
 USAGE:
@@ -56,6 +56,7 @@ SUBCOMMANDS:
     set     Change settings
     show    Show current settings
     help    Prints this message or the help of the given subcommand(s)
+
 ```
 
 #### Settings set
@@ -66,7 +67,7 @@ example
 
 ```css
 $ golemsp settings set --help
-golemsp-settings-set 0.2.0
+golemsp-settings-set 0.3.0
 Change settings
 
 USAGE:
@@ -85,12 +86,12 @@ OPTIONS:
         --env-per-hour <GLM (float)>        Price for working environment per hour
         --cpu-per-hour <GLM (float)>        Price for CPU per hour
         --account <account>                 Account for payments [env: YA_ACCOUNT=]
-        --payment-network <networks>...     Payment network [env: YA_PAYMENT_NETWORK=]  [default: mainnet]
-					    [possible values: mainnet, rinkeby, goerli,
-					    polygon, mumbai]
+        --payment-network <network>         Payment network [env: YA_PAYMENT_NETWORK_GROUP=]  [default: mainnet]
+                                            [possible values: mainnet, testnet]
+
 ```
 
-In order to change a particular setting \(for eg. price settings\) type:
+In order to change a particular setting (for eg. price settings) type:
 
 `golemsp settings set --cpu-per-hour 3`
 
@@ -112,18 +113,26 @@ example
 
 ```css
 $ golemsp settings show
-node name: "colorful-autumn"
+node name: "zima"
 Shared resources:
-    cores:    7
-    memory:    10.597366839647291 GiB
-    disk:    138.55942993164064 GiB
+	cores:	7
+	memory:	10.604358091950417 GiB
+	disk:	59.39304809570313 GiB
 
 
-Pricing:
+Pricing for preset "vm":
 
-        0 GLM for start
-     0.02 GLM per hour
-      0.1 GLM per cpu hour
+	0.025000000000000001 GLM per cpu hour
+	0.005000000000000000 GLM per hour
+	0.000000000000000000 GLM for start
+
+
+Pricing for preset "wasmtime":
+
+	0.025000000000000001 GLM per cpu hour
+	0.005000000000000000 GLM per hour
+	0.000000000000000000 GLM for start
+
 ```
 
 ### Status
@@ -132,40 +141,42 @@ Pricing:
 
 When the node is not running you'll see:
 
-```text
+```
 $ golemsp status
 ┌─────────────────────────────┐
 │  Status                     │
 │                             │
 │  Service    is not running  │
-│  Version    0.10.1          │
-│  Commit     6ae8c21a        │
-│  Date       2022-06-06      │
-│  Build      223             │
+│  Version    0.12.0          │
+│  Commit     37060503        │
+│  Date       2022-12-02      │
+│  Build      251             │
 │                             │
-│  Node Name  cheetah         │
+│  Node Name  zima            │
 │  Subnet     public          │
 │  VM         valid           │
 └─────────────────────────────┘
+
 ```
 
 When your node is already running `golemsp status` will show:
 
-```text
+```
 $ golemsp status
-┌──────────────────────────┬────────────────────────────────────────────────────┬─────────────────────────────┐
-│  Status                  │  Wallet                                            │  Tasks                      │
-│                          │  0xf98bb0842a7e744beedd291c98e7cd2c9b27f300        │                             │
-│  Service    is running   │                                                    │  last 1h processed     0    │
-│  Version    0.10.1       │  network               mainnet                     │  last 1h in progress   0    │
-│  Commit     6ae8c21a     │  amount (total)        0 GLM                       │  total processed       0    │
-│  Date       2022-06-06   │      (on-chain)        0 GLM                       │  (including failures)       │
-│  Build      223          │      (polygon)         0 GLM                       │                             │
-│                          │      (zksync)          0 GLM                       │                             │
-│  Node Name  cheetah      │                                                    │                             │
-│  Subnet     public       │  pending               0 GLM (0)                   │                             │
-│  VM         valid        │  issued                0 GLM (0)                   │                             │
-└──────────────────────────┴────────────────────────────────────────────────────┴─────────────────────────────┘
+┌─────────────────────────┬──────────────────────────────────────────────┬─────────────────────────────┐
+│  Status                 │  Wallet                                      │  Tasks                      │
+│                         │  0x2a14f8ae0272bd4c38ed1b40c66e88ed719dab69  │                             │
+│  Service    is running  │                                              │  last 1h processed     0    │
+│  Version    0.12.0      │  network               mainnet               │  last 1h in progress   0    │
+│  Commit     37060503    │  amount (total)        0 GLM                 │  total processed       509  │
+│  Date       2022-12-02  │      (on-chain)        0 GLM                 │  (including failures)       │
+│  Build      251         │      (polygon)         0 GLM                 │                             │
+│                         │      (zksync)          0 GLM                 │                             │
+│  Node Name  zima        │                                              │                             │
+│  Subnet     public      │  pending               0 GLM (0)             │                             │
+│  VM         valid       │  issued                0 GLM (0)             │                             │
+└─────────────────────────┴──────────────────────────────────────────────┴─────────────────────────────┘
+
 ```
 
 In the three columns, you can check the basic information regarding the status of your node
@@ -173,7 +184,7 @@ In the three columns, you can check the basic information regarding the status o
 #### Status
 
 * Whether your node is running
-* Version of your node \(with commit, build date and build number\)
+* Version of your node (with commit, build date and build number)
 * Name of your node
 * Subnet in which your node is currently running
 * VM status
@@ -183,10 +194,10 @@ In the three columns, you can check the basic information regarding the status o
 * Account address
 * Payment network: `mainnet` or `rinkeby`
 * Amount of tokens that you have earned for successful computation
-* On-chain amount of tokens that you have earned \(explorer [etherscan.io](https://etherscan.io/) or [rinkeby.etherscan.io](https://rinkeby.etherscan.io/)\)
-* Zk-sync amount of tokens that you have earned \(explorer [zkscan.io](https://zkscan.io) or [rinkeby.zkscan.io](https://rinkeby.zkscan.io/)\)
+* On-chain amount of tokens that you have earned (explorer [etherscan.io](https://etherscan.io/) or [rinkeby.etherscan.io](https://rinkeby.etherscan.io/))
+* Zk-sync amount of tokens that you have earned (explorer [zkscan.io](https://zkscan.io) or [rinkeby.zkscan.io](https://rinkeby.zkscan.io/))
 * Pending payments that you should receive for computation
-* Amount of tokens that is still unconfirmed and may not show on your account 
+* Amount of tokens that is still unconfirmed and may not show on your account
 
 #### Tasks
 
@@ -196,7 +207,7 @@ In the three columns, you can check the basic information regarding the status o
 
 ### Exit GLM tokens to Ethereum
 
-While not specific to the provider CLI, at some point you may want to move your tokens. By default, mainnet tasks are paid on Layer 2. Assuming you have a local wallet, you can interact with the payment driver to exit your tokens from Layer 2 to Layer 1. This is done using the`yagna payment exit` command. With this command there are two main flags to keep in mind; `--network`and `--to-address`. 
+While not specific to the provider CLI, at some point you may want to move your tokens. By default, mainnet tasks are paid on Layer 2. Assuming you have a local wallet, you can interact with the payment driver to exit your tokens from Layer 2 to Layer 1. This is done using the`yagna payment exit` command. With this command there are two main flags to keep in mind; `--network`and `--to-address`.
 
 For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-address`you can specify a destination address other than the local wallet address.
 
