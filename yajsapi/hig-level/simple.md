@@ -1,30 +1,29 @@
 ---
-description: A simple usage examples of Task Executor API 
+description: A simple usage example of the Task Executor API
 ---
 
-# Task Example 1: Simple usage Task API
+# Task Example 1: Simple Usage of Task API
 
 {% hint style="info" %}
-This example illustrates following Golem features & aspects:
+This example showcases the following Golem features & aspects:
 
-* TaskExecutor create
-* TaskExecutor run function
-* TaskExecutor map function
-* TaskExecutor forEach function
-* TaskExecutor beforeEach function
-* WorkContext API
+- Creating a TaskExecutor instance
+- Executing the run, map, and forEach methods of the TaskExecutor API
+- Using the WorkContext API
+- Running a single command or a batch of commands on a provider
 
 {% endhint %}
 
-## Creating an Executor instance
+## Creating a TaskExecutor Instance
 
-The executor can be created by passing appropriate initial parameters such as package, budget, subnet tag, payment driver, payment network etc.
-One required parameter is a package. This can be done in two ways. First by passing only package image hash, e.g.
+To create an instance of the TaskExecutor, you need to pass some initial parameters such as the package, budget, subnet tag, payment driver, payment network, etc. 
+There are two ways to do this: by passing only the package image hash or by passing additional optional parameters.
+
 ```js
-const executor = await TaskExecutor.create("9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae"); 
-```
-Or by passing some optional parameters, e.g.
-```js
+// Option 1: Pass only the package image hash
+const executor = await TaskExecutor.create("9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae");
+
+// Option 2: Pass additional optional parameters
 const executor = await TaskExecutor.create({
   subnetTag: "public",
   payment: { driver: "erc-20", network: "rinkeby" },
@@ -32,11 +31,14 @@ const executor = await TaskExecutor.create({
 });
 ```
 
-## Executing one of the available executor methods: `run`, `map` or `forEach`.
+## Executing the TaskExecutor Methods
+
+The TaskExecutor API provides three methods to execute functions on the Golem network: `run`, `map`, and `forEach`.
 
 ### `run` method
 
-To execute single `worker` function on the golem (single provider) we need to use `run` method of executor API:
+The `run` method allows you to execute a single `worker` function on the Golem network with a single provider. 
+The following example demonstrates how to use the `run` method:
 
 ```js
   await executor.run(async (ctx) => console.log((await ctx.run("echo 'Hello World'")).stdout));
@@ -44,7 +46,8 @@ To execute single `worker` function on the golem (single provider) we need to us
 
 ### `map` method
 
-To get results for each element in iterable object, e.g.
+The `map` method allows you to get results for each element in an iterable object. 
+The following example demonstrates how to use the `map` method:
 
 ```js
   const data = [1, 2, 3, 4, 5];
@@ -52,11 +55,12 @@ To get results for each element in iterable object, e.g.
   for await (const result of results) console.log(result.stdout);
 ```
 
-In the `results` variable, we have an async iterable object, with each element accessible with the `for await` statement.
+The `results` variable is an asynchronous iterable object, with each element accessible with the `for await` statement.
 
-### forEach` method
+### `forEach` method
 
-It is very similar to a map, but it does not return any value, e.g.
+The `forEach` method is similar to the `map` method, but it does not return any value. 
+The following example demonstrates how to use the `forEach` method:
 
 ```js
   const data = [1, 2, 3, 4, 5];
@@ -65,22 +69,23 @@ It is very similar to a map, but it does not return any value, e.g.
   });
 ```
 
+## Worker Function and WorkContext API
 
-## Worker Function and Work Context API
+The TaskExecutor API provides three methods - `run`, `map`, and `forEach` - each of which takes a worker function as a parameter. 
+This worker function is asynchronous and provides access to a `WorkContext API` through an object named `ctx`.
 
-Each of the available methods: `run`, `map` and `forEach` takes the `worker` function as a parameter. The worker function is asynchronous and provides a `Work Context API` - `ctx` object.
-
-Work Context allows running single commands or batches of commands on a provider.
-
-Single commands available to run on a provider:
+The `WorkContext API` allows you to run single commands or batch commands on a provider. 
+The following single commands are available:
 
 - `run()`
 - `uploadFile()`
 - `uploadJson()`
 - `downloadFile()`
 
-You can also compose particular commands into batches. For this, you should use `beginBatch`, e.g.
+You can also compose particular commands into batches. 
+To run a batch of commands, use the `beginBatch()` method and chain the commands together, followed by either `end()` or `endStream()`.
 
+For example, using `end()`:
 ```js
 const res = await ctx
    .beginBatch()
@@ -92,9 +97,9 @@ const res = await ctx
 
 res?.map(({ stdout }) => console.log(stdout));
 ```
-You can end the batch of commands by using the `end()` method shown above, meaning this code returns a `Promise` of multiple `Result` objects (or throw an error if occurred).
+The code above returns a `Promise` of multiple `Result` objects (or throw an error if occurred).
 
-You can also end this batch by `endStream()` to get a `Readable` stream, e.g.
+Alternatively, you can end this batch using `endStream()` method to get a `Readable` stream:
 
 ```js
 const results = await ctx
@@ -109,10 +114,11 @@ const results = await ctx
  results.on("close", () => console.log("END"));
 ```
 
-### Additional executor method `beforeEach()`
+In addition, the `TaskExecutor` object provides a special method named `beforeEach()`. 
+This method allows you to run a worker function once before each worker executes other tasks on the provider, within the same activity. 
+The method takes a single worker function as a parameter and only runs it once per new provider activity.
 
-There is a special method available in the executor object, that allows you to run the worker function once before each worker executes other tasks on the provider, but within the same activity. This is `beforeEach()` method.
-This method takes as a parameter one worker function and runs it only once for each new provider activity. The following example demonstrates the use of this method.
+Here's an example demonstrating its usage:
 
 ```js
   executor.beforeEach(async (ctx) => {
@@ -127,3 +133,5 @@ This method takes as a parameter one worker function and runs it only once for e
        .end();
   });
 ```
+
+Note that the `beforeEach` method only runs once per provider activity, and it's used to perform any setup tasks that need to be performed before executing other tasks on the provider.
