@@ -20,7 +20,7 @@ Once you have a clear understanding of how your problem can be divided, you'll n
 
 ![](../../.gitbook/assets/tutorial-02.jpg)
 
-It's worth noting that the number of fragments doesn't need to match the number of provider nodes commissioned to perform the tasks. The high-level API will spawn activities on multiple providers as long as there are providers available and up to the number of fragments or the limit specified by the `max_workers` parameter in the `execute_tasks` function (Python) or `submit` function (JavaScript).
+It's worth noting that the number of fragments doesn't need to match the number of provider nodes commissioned to perform the tasks. The high-level API will spawn activities on multiple providers as long as there are providers available and up to the number of fragments or the limit specified by the `maxParallelTasks` parameter.
 
 ## Designing the Application
 
