@@ -5,29 +5,29 @@ description: A minimal example of a functional Golem requestor agent
 # Task Example 0: Hello World!
 
 {% hint style="info" %}
-This example illustrates following Golem features & aspects:
+This example demonstrates the following Golem features and aspects:
 
-* VM runtime
-* Task execution
-* Retrieving command output from provider's exe unit
+- VM runtime
+- Task execution
+- Retrieving command output from the provider's exe unit
 {% endhint %}
 
 ## Prerequisites
 
-The only assumption made in this article is that you have some familiarity with basic Golem application concepts. Here's a good starting point to learn about these:
+This article assumes that you have some basic understanding of Golem application concepts. If you need a refresher, here's a good starting point:
 
 {% content-ref url="../golem-application-fundamentals/" %}
 [golem-application-fundamentals](../golem-application-fundamentals/)
 {% endcontent-ref %}
 
-Here are the prerequisites in case you'd like to follow along and/or experiment with the code presented in this article:
+To follow along and/or experiment with the code in this article, you'll need to have the following set up:
 
-* you have a local `yagna` node set up (instructions can be found here: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/))
-* you have the JS Golem high-level API set up on your machine (instructions here: [Run first task on Golem](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md))
+- A local `yagna` node (instructions can be found here: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/))
+- The JS Golem high-level API on your machine (instructions here: [Run first task on Golem](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md))
 
-## Requestor agent code
+## Requestor Agent Code
 
-Let's jump straight to the example:
+Here's the code for the example:
 
 {% hint style="info" %}
 This example uses the standard VM runtime.
@@ -41,41 +41,41 @@ This example uses the standard VM runtime.
 })();
 ```
 
-That's all we need in order to run a task on Golem!
 
-### How does it work?
+This is all you need to run a task on Golem!
 
-Here's the flow diagram of all the interactions that need to happen between the requestor and the provider(s) in order for a task to be completed:
+### How It Works
+
+The following interactions need to occur between the requestor and the provider(s) in order for a task to be completed:
 
 ![Sequence diagram of requestor -> provider interactions](../../.gitbook/assets/tutorial-07.jpg)
 
-From a high-level perspective, a successful run of the above program performs the following steps:
+From a high-level perspective, running the above program performs the following steps:
 
-1. A single task is scheduled to be executed in the Golem network
-2. Once a suitable provider is found in the market, a lightweight VM is launched on that node
-3. When the execution environment is ready, the requestor's script is run inside it
-4. Once the script is finished, the result is retrieved from the provider and displayed to the terminal
+1. Schedule a single task to be executed in the Golem network.
+2. Once a suitable provider is found in the market, launch a lightweight VM on that node.
+3. Run the requestor's script inside the execution environment once it's ready.
+4. Retrieve the result from the provider and display it to the terminal once the script has finished.
 
-In this minimal example our script consists of a single command: the Linux `echo` utility. This program returns `Hello World` string.
+In this minimal example, the script consists of a single command: the Linux echo utility. The program returns the string Hello World.
 
-Let's move on to exploring our example code!
+## The `main()` Function
 
-## The main() function
+This function is the entry point for the program and performs the following three steps:
 
-This function is our program's entry point and it performs three steps:
-
-1. Create `TaskExecutor` instance
-2. Defining and execute `Worker` function
-3. End `TaskExecutor` object
+1. Create a TaskExecutor instance.
+2. Define and execute the Worker function.
+3. End the TaskExecutor object.
 
 ### Task Executor
 
-The executor can be created by passing appropriate initial parameters such as package, budget, subnet tag, payment driver, payment network etc.
-One required parameter is a package. This can be done in two ways. First by passing only package image hash, e.g.
+A TaskExecutor can be created by passing in the necessary initial parameters, including but not limited to: `package`, `budget`, `subnetTag`, `payment` (which includes `driver` and `network`). One required parameter is the `package`, which can be specified in two ways:
+
 ```javascript
 const executor = await TaskExecutor.create("9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae"); 
 ```
-Or by passing some optional parameters, e.g.
+Alternatively, you can pass in some optional parameters, as shown below:
+
 ```javascript
 const executor = await TaskExecutor.create({
   subnetTag: "public",
@@ -84,54 +84,52 @@ const executor = await TaskExecutor.create({
 });
 ```
 
-Currently, Golem is using a public repository to store both official and community-authored VM images. Once an image is uploaded to this repository it can be referred to by its hash.
+Currently, Golem utilizes a public repository to store both official and community-contributed virtual machine (VM) images. An image that has been uploaded to this repository can be referenced by its hash.
 
-This is what we're making use of here - by setting `package` parameter, we're getting a payload definition for our providers. The only input we must provide at this point is the image hash. In the case of this example we're using a pre-uploaded, minimal image based on Alpine Linux.
-Instead of passing image hash, we can also pass the `Package` instance created by `Package.create` utility class. In the current version we can only support VM ExeUnit Runtime.  
+In the code snippets above, the `package` parameter is set to a specific hash, which serves as a payload definition for the providers. This hash refers to a pre-uploaded, minimal image based on Alpine Linux. Instead of passing a hash, you can also pass in a `Package` instance created with the `Package.create` utility class. Currently, only VM ExeUnit Runtime is supported.
 
 {% hint style="info" %}
-If you'd like to learn about creating and uploading Golem images yourself, take a look at this article: [VM runtime: How to convert a Docker image into a Golem image?](../vm-runtime/convert-a-docker-image-into-a-golem-image.md)
+If you want to learn more about creating and uploading your own Golem images, check out this article: [Converting a Docker Image into a Golem Image](https://handbook.golem.network/requestor-tutorials/vm-runtime)
 {% endhint %}
 
-### `Worker` function
+### Worker Function
 
-The executor provide API to execute some task on the Golem network. You can run simple worker function by:
+The `executor` API allows you to execute tasks on the Golem network. You can run a simple worker function as follows:
 
 ```javascript
 await executor.run(async (ctx) => console.log((await ctx.run("echo 'Hello World'")).stdout));
 ```
 
-The `Worker` function pass to `executor.run()` is what defines the interaction between our requestor node and each provider computing one or more of our tasks. It's called once per provider node with which our requestor has struck an agreement.
+The worker function passed to `executor.run()` defines the interaction between the requestor node and each provider node computing one or more tasks. This function is called once per provider node with which the requestor node has established an agreement.
 
-`WorkContext` gives us a simple interface to construct a script that translates directly to commands interacting with the execution unit on provider's end. Using this object we can schedule commands such as transferring files, running programs etc.
+The `WorkContext` object provides a simple interface to construct a script that translates directly into commands that interact with the execution unit on the provider's end. Using this object, you can schedule commands such as transferring files and running programs.
 
-In the case of this example our entire script consists of a single command which is the call to `ctx.run`. This means that, once committed, the provider's exe unit will receive an instruction to make a call to `/bin/sh -c echo "Hello World"`.
+In this example, the entire script consists of a single command, `ctx.run`, which instructs the provider's exe unit to run `/bin/sh -c echo "Hello World"`.
 
 {% hint style="warning" %}
-Commands run with `ctx.run` are executed in `/bin/sh` shell by default. This means you have to be sure that vm image contain this shell, otherwise you have to specify the full binary path or run the command through a shell manually (for example: `/bin/sh ...`).
+Commands run with `ctx.run` are executed in the `/bin/sh` shell by default. Ensure that the vm image contains this shell, or specify the full binary path or run the command through a shell manually (e.g., `/bin/sh ...`).
 {% endhint %}
 
-When the worker `Promise` is resolved, we get a `Result` object that contains the `stdout` and `stderr` of the specified command.
+Once the worker's promise is resolved, a `Result` object is returned, containing the `stdout` and `stderr` of the specified command.
 
-### Termination of an executor instance
+### Terminating an executor Instance
 
-Finally, we should complete the process by terminating contracts with the provider and paying all invoices.
+Finally, you should complete the process by terminating the contracts with the provider and paying all invoices by using the following code:
 
 ```js
 await executor.end();
 ```
 
-## All done!
+## Conclusion
 
-That's all there is to the example!
-
-To run it on your local machine make sure you have a `yagna` node running and set up as a requestor (take a look here in case of any doubts: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/)). You can then issue the following command:
+That's it for the example! To run it on your local machine, make sure you have a `yagna` node running and set up as a requestor (refer to [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/) for more information). 
+Then, run the following command in the directory containing the `hello.js` file:
 
 ```
 YAGNA_APPKEY={your_appkey_here} node ./hello.js
 ```
 
-This assumes you're in the directory which contains the `hello.js` file. You'll also need to provide your node's actual app key. If everything went fine you should see a log similar to the one below:
+Replace `{your_appkey_here}` with your actual app key. If everything goes well, you should see a log similar to the following:
 
 ```
 2023-01-23 13:45:49.645+01:00 [yajsapi] info: Agreement proposed to provider 'someone'
@@ -144,6 +142,6 @@ Hello World
 2023-01-23 13:45:59.408+01:00 [yajsapi] info: Computation finished in 7.2s
 ```
 
-`Helo World` is the result we received from executing the `echo "Hello World"` command inside our provider's exe unit.
+The output "Hello World" is the result received from executing the `echo "Hello World"` command inside the provider's exe unit.
 
-Ready for a more complex scenario? Take a look at the next article which implements a slightly more complicated cases.
+Ready for a more complex scenario? Take a look at the next article which implements a slightly more complicated case.
