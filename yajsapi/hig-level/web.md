@@ -111,7 +111,7 @@ We will present the end result by taking advantage of the `appendResult` functio
 
 ## Getting logs
 
-The TaskExecutor offers a logger parameter as optional. To accomplish this, you need to implement the Logger interface. To capture logging messages in our script for display purposes, we will develop a unique `logger` and create the `appendLog` function to add applicable records to the log storage area.
+The TaskExecutor offers a logger parameter as optional. To accomplish this, you need to implement the 'Logger' (todo: link to reference) interface. To capture logging messages in our script for display purposes, we will develop a unique `logger` and create the `appendLog` function to add applicable records to the log storage area.
 ```html
 <script>
     function appendLog(msg, level = 'info') {
@@ -133,7 +133,7 @@ The TaskExecutor offers a logger parameter as optional. To accomplish this, you 
 
 ## Run the script
 
-Now that we have all the necessary components defined, the code should look like this
+Now that we have all the necessary components defined, the code should look like this:
 
 ```html
 <script>
@@ -173,10 +173,10 @@ Now that we have all the necessary components defined, the code should look like
 
 Now if we have a running yagna deamon and passed Yagna APP key correctly, after launching our application with `node app.js` we should see in the browser:
 
-TODO screen
+![](../../.gitbook/assets/web-01.jpg)
 
-And if we click the run button after a while in the result container, we should get the result of the script: `Hello World`, and in the log container we should see the logs of executed commands.
+And if we click the run button, after a while in the result container, we should get the result of the script: `Hello World`, and in the log container we should see the logs of executed commands.
 
-TODO screen
+![](../../.gitbook/assets/web-02.jpg)
 
 

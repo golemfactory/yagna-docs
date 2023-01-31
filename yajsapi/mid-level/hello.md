@@ -49,7 +49,7 @@ async function main() {
   const logger = new ConsoleLogger();
   const vmPackage = await Package.create({ imageHash: "9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae" });
   const accounts = await (await Accounts.create({ yagnaOptions: { apiKey } })).list();
-  const account = accounts.find((account) => account?.platform.indexOf("erc20") !== -1);
+  const account = accounts.find((account) => account?.platform === 'erc20-rinkeby-tglm');
   if (!account) throw new Error("There is no available account");
   const allocation = await Allocation.create({ account, logger });
   const demand = await Demand.create(vmPackage, [allocation], { logger });
@@ -88,7 +88,7 @@ main().catch((e) => {
 The interface of each module has mostly asynchronous methods, so we have to embed all the code inside the async function main.
 
 ### Logger
-Each module has specific options. The constructor parameter that occurs in each of the modules is the logger object. It is responsible for showing messages during the lifetime of a given module. The logger object must implement the Logger interface. In this example, we will use a ready-made `ConsoleLogger` implementation that prints all messages in the console.
+Each module has specific options. The constructor parameter that occurs in each of the modules is the `logger` object. It is responsible for showing messages during the lifetime of a given module. The logger object must implement the `Logger` (TODO: link to API reference) interface. In this example, we will use a ready-made `ConsoleLogger` implementation that prints all messages in the console.
 
 ```typescript
 const logger = new ConsoleLogger();
@@ -96,9 +96,9 @@ const logger = new ConsoleLogger();
 
 ### Package
 
-The first component is `Package` (link typedocs). When creating a `Package`, we must determine which image we want to use. Currently, only ExeUnit images can be used, though with future implementations packages for wasm and other images will become feasible.
+The first component is `Package` (TODO: link to API reference). When creating a `Package`, we must determine which image we want to use. Currently, only VM images can be used, though with future implementations packages for wasm and other images will become feasible.
 
-To create package we need defined PackageOption(link ):
+To create package we need defined `PackageOptions` (TODO: link to API reference):
 
 ```typescript
 const vmPackage = await Package.create({ imageHash: "9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae" });
@@ -138,12 +138,12 @@ To create and publish `Demand` on the market, you need to create it for previous
 const demand = await Demand.create(vmPackage, [allocation], { logger });
 ```
 
-To customize the Demand object, you can pass the corresponding DemandOptions (link).
+To customize the Demand object, you can pass the corresponding `DemandOptions` (TODO: link to API reference).
 
 Demand object can be considered an "open" or public Demand, as it is not directed at a specific Provider, but rather is sent to the market so that the matching mechanism implementation can associate relevant Offers.
 Note: it is an "atomic" operation, ie. as soon as Demand is created, the subscription is published on the market.
 
-Demand is a special entity type because it inherits from the `EventTarget` class. Therefore, after creating it, you can add listeners to it, which will listen to offers from the market on an event of a specific type: `DemandEventType`, to do this, add a listener with:
+Demand is a special entity type because it inherits from the `EventTarget` class. Therefore, after creating it, you can add listeners to it, which will listen to offers from the market on an event of a specific type: `DemandEventType` (TODO: link to API reference), to do this, add a listener with:
 
 ```typescript
   const offer: Proposal = await new Promise((res) =>
@@ -161,13 +161,13 @@ In the case when it is a Draft, we can proceed to further process the offer.
 
 ### Agreement
 
-Now we can create initial Agreement with provider by:
+Now we can create initial `Agreement` (TODO: link to API reference) with provider by:
 
 ```typescript
 const agreement = await Agreement.create(offer.id, { logger });
 ```
 
-This initiates the Agreement handshake phase. Created Agreement is in Proposal state. We can pass additional options `AgreementOptions` (link).
+This initiates the Agreement handshake phase. Created Agreement is in Proposal state. We can pass additional options `AgreementOptions` (TODO: link to API reference).
 
 If the agreement is successfully created, we can accept it by:
 
@@ -179,14 +179,14 @@ After that we have ability to create activity on provider side and run scripts.
 
 ### Activity
 
-`Activity` is an object representing the runtime environment on the provider in accordance with the `Package` specification.
+`Activity` (TODO: link to API reference) is an object representing the runtime environment on the provider in accordance with the `Package` specification.
 As part of a given activity, it is possible to execute exe script commands and capture their results.
 
 The first thing we need to do is create a script that consists of commands.
 
-Depending on the type of exeUnit, the sent script should be in accordance with its specification.
+Depending on the type of runtime, the sent script should be in accordance with its specification.
 
-In order to execute any `Run` command in vmRuntime, first we need to get our activity state to `Ready`. To do this, we need to send a script containing the `Deploy` and `Start` commands first,
+In order to execute any `Run` command in VM Runtime, first we need to get our activity state to `Ready`. To do this, we need to send a script containing the `Deploy` and `Start` commands first,
 then we can add any Run command.
 
 ```typescript
@@ -212,18 +212,18 @@ const streamResult = await activity.execute(exeScript);
 
 As a result of executing the script, we receive a `Readable` object, which will asynchronously return the results of execution of individual commands. We can capture these results in two ways:
 
- - synchronously using the for await construct: 
+ - synchronously - using the `for await` construct: 
 ```typescript
   const results: Result[] = [];
   for await (const result of streamResult) results.push(result);
 ```
- - or asynchronously by event handlers:
+ - or asynchronously - by event handlers:
 ```typescript
 streamResult.on("data", (result) => results.push(result));
 streamResult.on("end", () => console.log("Execution done"));
 ```
 
-Now in `results` we have an array of `Result` objects (todo: link) indexed by command number in the script starting from 0.
+Now in `results` we have an array of `Result` objects (TODO: link to API reference) indexed by command number in the script starting from 0.
 
 To display the result of the Run command, do the following:
 
@@ -244,5 +244,6 @@ await demand.unsubscribe();
 
 And that's all.
 
-Warning:
+{% hint style="warning" %}
 In the current version, the payment acceptance mechanism has not yet been implemented.
+{% endhint %}
