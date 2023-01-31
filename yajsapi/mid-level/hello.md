@@ -48,7 +48,7 @@ import { ConsoleLogger } from "../../yajsapi/utils";
 async function main() {
   const logger = new ConsoleLogger();
   const vmPackage = await Package.create({ imageHash: "9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae" });
-  const accounts = await (await Accounts.create({ yagnaOptions: { apiKey } })).list();
+  const accounts = await (await Accounts.create({ yagnaOptions: { apiKey: 'YOUR_YAGNA_APP_KEY' } })).list();
   const account = accounts.find((account) => account?.platform === 'erc20-rinkeby-tglm');
   if (!account) throw new Error("There is no available account");
   const allocation = await Allocation.create({ account, logger });
@@ -109,7 +109,7 @@ const vmPackage = await Package.create({ imageHash: "9a3b5d67b0b27746283cb5f287c
 We need to know the account entity provided by yagna deamon. For list available account we can use:
 
 ```typescript
-const accounts = await (await Accounts.create({ yagnaOptions: { apiKey } })).list();
+const accounts = await (await Accounts.create()).list();
 ```
 
 and then find an account that has the appropriate payment platform:
@@ -169,7 +169,7 @@ const agreement = await Agreement.create(offer.id, { logger });
 
 This initiates the Agreement handshake phase. Created Agreement is in Proposal state. We can pass additional options `AgreementOptions` (TODO: link to API reference).
 
-If the agreement is successfully created, we can accept it by:
+If the agreement is successfully created, we can confirm it by:
 
 ```typescript
 await agreement.confirm();
@@ -242,8 +242,35 @@ await allocation.release();
 await demand.unsubscribe();
 ```
 
-And that's all.
+
+## All done!
+
+That's all there is to the example!
+
+To run it on your local machine make sure you have a `yagna` node running and set up as a requestor (take a look here in case of any doubts: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/)). You can then issue the following command:
+
+```
+YAGNA_APPKEY={your_appkey_here} ts-node ./hello.ts
+```
+
+This assumes you're in the directory which contains the `hello.ts` file. You'll also need to provide your node's actual app key. If everything went fine you should see a log similar to the one below:
+
+```
+2023-01-31T15:03:30.103Z [debug] Allocation 88ced4c2-ee07-4ca0-a4b7-e5a6d8e0345d has been created using payment platform erc20-rinkeby-tglm
+2023-01-31T15:03:30.588Z [info] Demand published on the market
+2023-01-31T15:03:40.673Z [info] Agreement cddbb6ca895c2e4a05a71f37ebdad5fdaf0ec8a667343ebac264000da7b15c26 created
+2023-01-31T15:03:40.932Z [debug] Agreement cddbb6ca895c2e4a05a71f37ebdad5fdaf0ec8a667343ebac264000da7b15c26 approved
+2023-01-31T15:03:41.815Z [debug] Activity bc28956ae3c64ea39a8b6408a6a05c00 created
+2023-01-31T15:03:41.905Z [debug] Script sent. Batch ID: 11e019868f854c8d9ee154ace90fe74c
+Hello World
+
+2023-01-31T15:03:46.111Z [debug] Activity bc28956ae3c64ea39a8b6408a6a05c00 destroyed
+2023-01-31T15:03:46.209Z [debug] Agreement cddbb6ca895c2e4a05a71f37ebdad5fdaf0ec8a667343ebac264000da7b15c26 terminated
+2023-01-31T15:03:46.218Z [debug] Allocation 88ced4c2-ee07-4ca0-a4b7-e5a6d8e0345d has been released.
+2023-01-31T15:03:46.222Z [debug] Demand 583383e485da4ffc8d9d2690d1659905-2b72ccb054d6810a843811c97ac92fb4bdb124523b7f3d979469a878d293faa6 unsubscribed
+```
 
 {% hint style="warning" %}
 In the current version, the payment acceptance mechanism has not yet been implemented.
 {% endhint %}
+
