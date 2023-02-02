@@ -27,7 +27,10 @@ The only, currently supported solution is switching the working locations to a l
 
 The VM runtime overrides the permissions for the root directory of the container. It’s owned by `root` and only includes permission for the root user. If you launch processes as non-root users, as some stock VM images do by default (notably `nginx` and `postgresql`), they won’t be able to access their data directories.
 
+Specifically, the stock image of the nginx server fails to serve the data files correctly and returns a "404 Not Found" error when accessing otherwise correct paths.
+
 The solution is to incorporate a `chmod +x /` command at the beginning of your `init` script.
+
 
 ## No support for ENTRYPOINT and/or CMD
 

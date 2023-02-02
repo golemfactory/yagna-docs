@@ -8,9 +8,15 @@ description: Deploying long-running, decentralized services on Golem using no-co
 
 Golem is a network which enables its participants to make computing resources available for use by those who would wish to use them. From the perspective of requestors, among other uses, it allows services to be requested, deployed and run on the network’s providers.
 
+The dApps on Golem project is a solution to deploy multi-layer apps on the Golem Network, without a need to dive into the APIs. Instead, the structure of the application is stored in YAML files, so the process may feel familiar for those of you who have some experience with e.g. docker-compose.
+
 By a **dApp** - or a decentralized application, in the context of Golem, we understand such a combination of services and additional resources within the network, that together constitutes a full application, e.g. a website or a public API, running entirely on the Golem network.
 
 Such services or decentralized applications can be run by virtually anyone as long as they have some GLM tokens to pay the providers for their work.
+
+{% hint style="danger" %}
+Please be aware that the dApps on Golem project is still in early access and should be considered experimental. Please [reach out to us on our community Discord](https://chat.golem.network/) if you'd like to help us improve these tools.
+{% endhint %}
 
 ## Components
 

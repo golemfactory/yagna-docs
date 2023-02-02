@@ -42,6 +42,11 @@
 * [Golem application fundamentals](requestor-tutorials/golem-application-fundamentals/README.md)
   * [Work generator pattern and WorkContext](requestor-tutorials/golem-application-fundamentals/hl-api-work-generator-pattern.md)
   * [Golem VPN networking concept](requestor-tutorials/golem-application-fundamentals/golem-vpn-networking-concept.md)
+* [Decentralized applications on Golem](requestor-tutorials/dapps/README.md)
+  * [Creating Golem dApps](requestor-tutorials/dapps/creating-golem-dapps.md)
+  * [Your first Golem dApp](requestor-tutorials/dapps/your-first-golem-dapp.md)
+  * [Differences between Docker containers and Golem VM runtime](requestor-tutorials/dapps/docker-containers-vs-golem-vms.md)
+  * [Troubleshooting](requestor-tutorials/dapps/troubleshooting.md)
 * [Task Model development](requestor-tutorials/task-processing-development/README.md)
   * [Introduction to the task model](requestor-tutorials/task-processing-development/task-model-introduction.md)
   * [Task Example 0: Hello World!](requestor-tutorials/task-processing-development/task-example-0-hello.md)
@@ -73,7 +78,6 @@
   * [Running Goth](requestor-tutorials/interactive-testing-environment/running-goth.md)
   * [Using Test Harness to test Golem apps](requestor-tutorials/interactive-testing-environment/running-goths-interactive-mode.md)
 * [SGX secure enclave application development](requestor-tutorials/sgx-secure-enclave-application-development.md)
-* [Getting started with dApps on Golem](requestor-tutorials/getting-started-with-dapps-on-golem.md)
 
 ## yapapi - Python high-level API <a href="#yapapi" id="yapapi"></a>
 
