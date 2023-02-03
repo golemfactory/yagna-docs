@@ -128,7 +128,7 @@ Here's an example demonstrating its usage:
   await executor.forEach([1, 2, 3, 4, 5], async (ctx, item) => {
      await ctx
        .beginBatch()
-       .run(`/run_some_command.sh --input ${item}--params /input_params.txt --output /output.txt`)
+       .run(`/run_some_command.sh --input ${item} --params /input_params.txt --output /output.txt`)
        .downloadFile("/output.txt", "./output.txt")
        .end();
   });
