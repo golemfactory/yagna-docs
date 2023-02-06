@@ -92,7 +92,7 @@ main().catch((e) => {
 The interface of each module has mostly asynchronous methods, so we have to embed all the code inside the async function main.
 
 ### Logger
-Each module has specific options. The constructor parameter that occurs in each of the modules is the `logger` object. It is responsible for showing messages during the lifetime of a given module. The logger object must implement the `Logger` (TODO: link to API reference) interface. In this example, we will use a ready-made `ConsoleLogger` implementation that prints all messages in the console.
+Each module has specific options. The constructor parameter that occurs in each of the modules is the `logger` object. It is responsible for showing messages during the lifetime of a given module. The logger object must implement the `Logger` [Logger](../../docs/interfaces/utils_logger.Logger.md) interface. In this example, we will use a ready-made `ConsoleLogger` implementation that prints all messages in the console.
 
 ```typescript
 const logger = new ConsoleLogger();
@@ -100,9 +100,9 @@ const logger = new ConsoleLogger();
 
 ### Package
 
-The first component is `Package` (TODO: link to API reference). When creating a `Package`, we must determine which image we want to use. Currently, only VM images can be used, though with future implementations packages for wasm and other images will become feasible.
+The first component is [Package](../../docs/classes/package_package.Package.md). When creating a `Package`, we must determine which image we want to use. Currently, only VM images can be used, though with future implementations packages for wasm and other images will become feasible.
 
-To create package we need defined `PackageOptions` (TODO: link to API reference):
+To create package we need defined [PackageOptions](../../docs/interfaces/package_package.PackageOptions.md):
 
 ```typescript
 const vmPackage = await Package.create({ imageHash: "9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae" });
@@ -142,12 +142,12 @@ To create and publish `Demand` on the market, you need to create it for previous
 const demand = await Demand.create(vmPackage, [allocation], { logger });
 ```
 
-To customize the Demand object, you can pass the corresponding `DemandOptions` (TODO: link to API reference).
+To customize the Demand object, you can pass the corresponding [DemandOptions](../../docs/interfaces/market_demand.DemandOptions.md).
 
 Demand object can be considered an "open" or public Demand, as it is not directed at a specific Provider, but rather is sent to the market so that the matching mechanism implementation can associate relevant Offers.
 Note: it is an "atomic" operation, ie. as soon as Demand is created, the subscription is published on the market.
 
-Demand is a special entity type because it inherits from the `EventTarget` class. Therefore, after creating it, you can add listeners to it, which will listen to offers from the market on an event of a specific type: `DemandEventType` (TODO: link to API reference), to do this, add a listener with:
+Demand is a special entity type because it inherits from the `EventTarget` class. Therefore, after creating it, you can add listeners to it, which will listen to offers from the market on an event of a specific type: [DemandEvent](../../docs/classes/market_demand.DemandEvent.md), to do this, add a listener with:
 
 ```typescript
   const offer: Proposal = await new Promise((res) =>
@@ -165,13 +165,13 @@ In the case when it is a Draft, we can proceed to further process the offer.
 
 ### Agreement
 
-Now we can create initial `Agreement` (TODO: link to API reference) with provider by:
+Now we can create initial [Agreement](../../docs/classes/agreement_agreement.Agreement.md) with provider by:
 
 ```typescript
 const agreement = await Agreement.create(offer.id, { logger });
 ```
 
-This initiates the Agreement handshake phase. Created Agreement is in Proposal state. We can pass additional options `AgreementOptions` (TODO: link to API reference).
+This initiates the Agreement handshake phase. Created Agreement is in Proposal state. We can pass additional options [ActivityOptions](../../docs/interfaces/activity_activity.ActivityOptions.md).
 
 If the agreement is successfully created, we can confirm it by:
 
@@ -183,7 +183,7 @@ After that we have ability to create activity on provider side and run scripts.
 
 ### Activity
 
-`Activity` (TODO: link to API reference) is an object representing the runtime environment on the provider in accordance with the `Package` specification.
+[Activity](../../docs/classes/activity_activity.Activity.md) is an object representing the runtime environment on the provider in accordance with the `Package` specification.
 As part of a given activity, it is possible to execute exe script commands and capture their results.
 
 The first thing we need to do is create a script that consists of commands.
@@ -227,7 +227,7 @@ streamResult.on("data", (result) => results.push(result));
 streamResult.on("end", () => console.log("Execution done"));
 ```
 
-Now in `results` we have an array of `Result` objects (TODO: link to API reference) indexed by command number in the script starting from 0.
+Now in `results` we have an array of [Result](../../docs/interfaces/activity_results.Result.md) objects indexed by command number in the script starting from 0.
 
 To display the result of the Run command, do the following:
 

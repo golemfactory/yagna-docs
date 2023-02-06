@@ -92,7 +92,7 @@ Yajsapi is available via CDN. You should add the following script to the head se
 
 ### Logger
 
-Each module has specific options. The constructor parameter that occurs in each of the modules is the `logger` object. It is responsible for showing messages during the lifetime of a given module. The logger object must implement the `Logger` (TODO: link to API reference) interface. To capture logging messages in our script for display purposes, we will develop a unique `logger` and create the `appendLog` function to add applicable records to the log storage area.
+Each module has specific options. The constructor parameter that occurs in each of the modules is the `logger` object. It is responsible for showing messages during the lifetime of a given module. The logger object must implement the [Logger](../../docs/interfaces/utils_logger.Logger.md) interface. To capture logging messages in our script for display purposes, we will develop a unique `logger` and create the `appendLog` function to add applicable records to the log storage area.
 ```html
 <script>
     function appendLog(msg, level = 'info') {
@@ -136,7 +136,7 @@ You should pass your yagna application key and define the yagna daemon listening
 
 ### Package
 
-The first component is `Package` (TODO: link to API reference). When creating a `Package`, we must determine which image we want to use.
+The first component is `Package` [Package](../../docs/classes/package_package.Package.md). When creating a `Package`, we must determine which image we want to use.
 
 ```javascript
 async function createPackage() {
