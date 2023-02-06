@@ -5,8 +5,8 @@
 ### Modules
 
 * Activity
-  * [activity/activity](./modules/activity_activity.md)
-  * [activity/results](./modules/activity_results.md)
+  * [activity/activity](modules/activity_activity.md)
+  * [activity/results](modules/activity_results.md)
 * Agreement
   * [agreement/agreement](modules/agreement_agreement.md)
   * [agreement/service](modules/agreement_service.md)
@@ -14,7 +14,7 @@
   * [events/events](modules/events_events.md)
 * Executor
   * [executor/executor](modules/executor_executor.md)
-* Builder
+* Market
   * [market/builder](modules/market_builder.md)
   * [market/demand](modules/market_demand.md)
   * [market/proposal](modules/market_proposal.md)
