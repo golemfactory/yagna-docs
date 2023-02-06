@@ -14,14 +14,14 @@ This example illustrates following Golem features & aspects:
 
 The only assumption made in this article is that you have some familiarity with basic Golem application concepts. Here's a good starting point to learn about these:
 
-{% content-ref url="../golem-application-fundamentals/" %}
-[golem-application-fundamentals](../golem-application-fundamentals/)
+{% content-ref url="../../golem-application-fundamentals/" %}
+[Golem application fundamentals](../../requestor-tutorials/golem-application-fundamentals/README.md)
 {% endcontent-ref %}
 
 Here are the prerequisites in case you'd like to follow along and/or experiment with the code presented in this article:
 
-* you have a local `yagna` node set up (instructions can be found here: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/))
-* you have the JS Golem high-level API set up on your machine (instructions here: [Run first task on Golem](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md))
+* you have a local `yagna` node set up (instructions can be found here: [Requestor development: a quick primer](../../requestor-tutorials/flash-tutorial-of-requestor-development/))
+* you have the JS Golem high-level API set up on your machine (instructions here: [Run first task on Golem](../requestor-tutorials/flash-tutorial-of-requestor-development/run-first-task-on-golem.md))
 
 ## Requestor agent code
 
@@ -247,7 +247,7 @@ await demand.unsubscribe();
 
 That's all there is to the example!
 
-To run it on your local machine make sure you have a `yagna` node running and set up as a requestor (take a look here in case of any doubts: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/)). You can then issue the following command:
+To run it on your local machine make sure you have a `yagna` node running and set up as a requestor (take a look here in case of any doubts: [Requestor development: a quick primer](../../requestor-tutorials/flash-tutorial-of-requestor-development/)). You can then issue the following command:
 
 ```
 YAGNA_APPKEY={your_appkey_here} ts-node ./hello.ts
