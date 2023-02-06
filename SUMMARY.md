@@ -86,7 +86,9 @@
 
 * Mid-level API development
   * [Introduction to the mid-level modules](yajsapi/mid-level/introduction.md)
-  * TODO
+  * Examples
+    * [Task Example 0: Hello World!](yajsapi/mid-level/examples/hello.md)
+    * [Task Example 1: Mid-level component in browser](yajsapi/mid-level/examples/web.md)
   
 * [Golem Java Script API Reference](yajsapi/docs/README.md)
 
