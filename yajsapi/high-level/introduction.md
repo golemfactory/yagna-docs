@@ -29,9 +29,15 @@ BBB
 
 In the next section, we will walk you through the process of creating a simple example application that runs on the VM runtime. We will provide code examples and explain the mechanics of task-based requestor development.
 
-{% page-ref page="hello.md" %}
+{% page-ref page="./hello.md" %}
 
-{% page-ref page="simple.md" %}
+{% content-ref url="./hello.md" %}
+[hello.md](./hello.md)
+{% endcontent-ref %}
+
+{% content-ref url="./simple.md" %}
+[simple.md](./simple.md)
+{% endcontent-ref %}
 
 We will then show you how to use Golem to run a `hashcat` application in parallel. This section will provide an example of a more complex use case and explain how to use Golem's capabilities to run it efficiently.
 
