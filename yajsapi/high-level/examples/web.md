@@ -174,10 +174,10 @@ Now that we have all the necessary components defined, the code should look like
 
 Now if we have a running yagna deamon and passed Yagna APP key correctly, after launching our application with `node app.js` we should see in the browser:
 
-![](../../.gitbook/assets/web-01.jpg)
+![](../../../.gitbook/assets/web-01.jpg)
 
 And if we click the run button, after a while in the result container, we should get the result of the script: `Hello World`, and in the log container we should see the logs of executed commands.
 
-![](../../.gitbook/assets/web-02.jpg)
+![](../../../.gitbook/assets/web-02.jpg)
 
 
