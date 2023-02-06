@@ -14,7 +14,7 @@ This example illustrates following Golem features & aspects:
 
 The only assumption made in this article is that you have some familiarity with basic Golem application concepts. Here's a good starting point to learn about these:
 
-{% content-ref url="../../../golem-application-fundamentals/" %}
+{% content-ref url="../../../requestor-tutorials/golem-application-fundamentals/" %}
 [Golem application fundamentals](../../../requestor-tutorials/golem-application-fundamentals/README.md)
 {% endcontent-ref %}
 
