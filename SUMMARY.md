@@ -76,8 +76,8 @@
 
 * [Introduction to Golem's JavaScript API](yajsapi/introduction.md)
 * High-level API development
-  * [Introduction to the task model](yajsapi/high-level/introduction.md)
-    * [Task model](yajsapi/high-level/task-model.md)
+  * [Introduction to the High-level modules](yajsapi/high-level/introduction.md)
+    * [Task model overview](yajsapi/high-level/task-model.md)
   * Examples
     * [Task Example 0: Hello World!](yajsapi/high-level/examples/hello.md)
     * [Task Example 1: Simple hash cracker](yajsapi/high-level/examples/simple.md)
@@ -85,7 +85,7 @@
     * [Task Example 3: Requestor in browser](yajsapi/high-level/examples/web.md)
 
 * Mid-level API development
-  * [Introduction to the mid-level modules](yajsapi/mid-level/introduction.md)
+  * [Introduction to the Mid-level modules](yajsapi/mid-level/introduction.md)
   * Examples
     * [Task Example 0: Hello World!](yajsapi/mid-level/examples/hello.md)
     * [Task Example 1: Mid-level component in browser](yajsapi/mid-level/examples/web.md)

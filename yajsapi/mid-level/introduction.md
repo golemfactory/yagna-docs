@@ -2,7 +2,7 @@
 description: Create your own task application on Golem using Mid-level API
 ---
 
-# Create your own task application on Golem using Mid-level API
+# Create your own task application using Mid-level API
 
 ## Introduction
 
