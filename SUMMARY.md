@@ -86,9 +86,9 @@
   * TODO
   
 * [Golem Java Script API Reference](yajsapi/docs/README.md)
-* 
+
 * [Components](yajsapi/modules/README.md)
-  * TODO (from typedoc)
+  * TODO - from typedoc
 
 ## Yagna Contributor Guide
 
