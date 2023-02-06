@@ -15,13 +15,17 @@ If you have any questions or run into any issues while following this tutorial, 
 
 To make the tutorial easier to follow, it has been divided into several sections. In the first section, we will provide a general introduction to developing applications on the Golem network, and explain the task model that is used in Golem applications.
 
-{% page-ref page="task-model.md" %}
+{% page-ref page="./task-model.md" %}
 
 AAAA
 
-{% content-ref url="task-model.md" %}
-[task-model.md](task-model.md)
+{% content-ref url="./task-model.md" %}
+[task-model.md](./task-model.md)
 {% endcontent-ref %}
+
+BBB
+
+[task-model.md](./task-model.md)
 
 In the next section, we will walk you through the process of creating a simple example application that runs on the VM runtime. We will provide code examples and explain the mechanics of task-based requestor development.
 
