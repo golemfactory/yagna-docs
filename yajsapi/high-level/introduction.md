@@ -26,17 +26,17 @@ In the next section, we will walk you through the process of creating a simple e
 {% endcontent-ref %}
 
 {% content-ref url="./examples/simple.md" %}
-[Task Example 1: Simple Usage of Task API](examples/simple.md)
+[Task Example 1: Simple Usage of Task API](./examples/simple.md)
 {% endcontent-ref %}
 
 We will then show you how to use Golem to run a `hashcat` application in parallel. This section will provide an example of a more complex use case and explain how to use Golem's capabilities to run it efficiently.
 
 {% content-ref url="./examples/hashcat.md" %}
-[Task Example 2: Hashcat on Golem](examples/hashcat.md)
+[Task Example 2: Hashcat on Golem](./examples/hashcat.md)
 {% endcontent-ref %}
 
 Lastly, we will describe how to use the API directly from the browser context. This section will provide information on how to use the API in web applications and explain the benefits and limitations of this approach.
 
 {% content-ref url="./examples/web.md" %}
-[Task Example 3: Requestor in browser](examples/web.md)
+[Task Example 3: Requestor in browser](./examples/web.md)
 {% endcontent-ref %}
