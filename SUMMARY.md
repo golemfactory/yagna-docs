@@ -85,7 +85,8 @@
   * [Introduction to the mid-level modules](yajsapi/mid-level-introduction.md)
   * TODO
   
-* [Golem Java Script API Reference](yajsapi/README.md)
+* [Golem Java Script API Reference](yajsapi/docs/README.md)
+* 
 * [Components](yajsapi/modules/README.md)
   * TODO (from typedoc)
 

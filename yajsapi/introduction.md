@@ -9,10 +9,12 @@ description: JS API introduction
 The golem JavaScript library provides developers with two levels of abstraction for interacting with the golem:
 
 - **High Level** - This level allows developers to interact with the golem with minimal knowledge of the golem's internal components. It is designed to be simple and easy to use.
-  {% page-ref page="high-level/introduction.md" %}
+
+{% page-ref page="high-level/introduction.md" %}
 
 - **Mid Level** - This level allows developers to use the library for more complex cases, and it requires knowledge of the golem's component architecture. It provides more fine-grained control over the golem's functionality.
-  {% page-ref page="mid-level/introduction.md" %}
+
+{% page-ref page="mid-level/introduction.md" %}
 
 The following diagram illustrates the division of the individual parts of the golem:
 
