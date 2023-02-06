@@ -75,7 +75,7 @@
 ## yajsapi - JavaScript API <a href="#yajsapi" id="yajsapi"></a>
 
 * [Introduction to Golem's Java Script API](yajsapi/introduction.md)
-* [High-level API development](yajsapi/high-level.md)
+* High-level API development
   * [Introduction to the task model](yajsapi/high-level/introduction.md)
     * [Task model](yajsapi/high-level/task-model.md)
   * Examples
@@ -84,8 +84,8 @@
     * [Task Example 2: Hashcat on Golem](yajsapi/high-level/examples/hashcat.md)
     * [Task Example 3: Requestor in browser](yajsapi/high-level/examples/web.md)
 
-* [Mid-level API development](yajsapi/mid-level.md)
-  * [Introduction to the mid-level modules](yajsapi/mid-level-introduction.md)
+* Mid-level API development
+  * [Introduction to the mid-level modules](yajsapi/mid-level/introduction.md)
   * TODO
   
 * [Golem Java Script API Reference](yajsapi/docs/README.md)

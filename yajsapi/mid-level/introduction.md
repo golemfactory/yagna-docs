@@ -25,7 +25,10 @@ The basic components included in the Mid-level API are:
  - DebitNote (TODO: link to API reference)
 
 In order for us better understand the functions of these various modules and how they connect with each other, let's look at two examples that demonstrate their practical application. This will help us comprehend the mechanics of operation and dependencies between individual parts.
+{% content-ref url="./examples/hello.md" %}
+[Task Example 0: Hello World!](./examples/hello.md)
+{% endcontent-ref %}
 
-{% page-ref page="hello.md" %}
-
-{% page-ref page="web.md" %}
+{% content-ref url="./examples/web.md" %}
+[Task Example 1: Mid-level component in browser](./examples/web.md)
+{% endcontent-ref %}
