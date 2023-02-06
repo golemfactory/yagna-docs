@@ -91,7 +91,7 @@
     * [Task Example 1: Mid-level component in browser](yajsapi/mid-level/examples/web.md)
   
 * Golem Java Script API Reference
-  * Classes:
+  * Classes
     * [Activity](yajsapi/docs/classes/activity_activity.Activity.md)
     * [Agreement](yajsapi/docs/classes/agreement_agreement.Agreement.md)
     * [ActivityCreated](yajsapi/docs/classes/events_events.ActivityCreated.md)
@@ -154,14 +154,14 @@
     * [Task<InputType, OutputType\>](yajsapi/docs/classes/task_task.Task.md)
     * [WorkContext](yajsapi/docs/classes/task_work.WorkContext.md)
     * [ConsoleLogger](yajsapi/docs/classes/utils_consoleLogger.ConsoleLogger.md)
-  * Enums:
+  * Enums
     * [ActivityStateEnum](yajsapi/docs/enums/activity_activity.ActivityStateEnum.md)
     * [AgreementStateEnum](yajsapi/docs/enums/agreement_agreement.AgreementStateEnum.md)
     * [ComparisonOperator](yajsapi/docs/enums/market_builder.ComparisonOperator.md)
     * [RejectionReason](yajsapi/docs/enums/payment_rejection.RejectionReason.md)
     * [TaskState](yajsapi/docs/enums/task_task.TaskState.md)
     * [LogLevel](yajsapi/docs/enums/utils_logger.LogLevel.md)
-  * Interfaces:
+  * Interfaces
     * [ActivityOptions](yajsapi/docs/interfaces/activity_activity.ActivityOptions.md)
     * [ExeScriptRequest](yajsapi/docs/interfaces/activity_activity.ExeScriptRequest.md)
     * [Result](yajsapi/docs/interfaces/activity_results.Result.md)
@@ -185,7 +185,7 @@
     * [TaskOptions](yajsapi/docs/interfaces/task_service.TaskOptions.md)
     * [WorkOptions](yajsapi/docs/interfaces/task_work.WorkOptions.md)
     * [Logger](yajsapi/docs/interfaces/utils_logger.Logger.md)
-  * Modules:
+  * Modules
     * [activity/activity](yajsapi/docs/modules/activity_activity.md)
     * [activity/results](yajsapi/docs/modules/activity_results.md)
     * [agreement/agreement](yajsapi/docs/modules/agreement_agreement.md)
