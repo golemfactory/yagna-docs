@@ -77,6 +77,7 @@
 * [Introduction to Golem's Java Script API](yajsapi/introduction.md)
 * [High-level API development](yajsapi/high-level.md)
   * [Introduction to the task model](yajsapi/high-level/introduction.md)
+    * [Task model](yajsapi/high-level/task-model.md)
   * [Task Example 0: Hello World!](requestor-tutorials/task-processing-development/task-example-0-hello.md)
   * [Task Example 1: Simple hash cracker](requestor-tutorials/task-processing-development/task-example-1-cracker.md)
   * [Task Example 2: Hashcat on Golem](requestor-tutorials/task-processing-development/task-example-2-hashcat.md)
