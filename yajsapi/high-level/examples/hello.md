@@ -48,7 +48,7 @@ This is all you need to run a task on Golem!
 
 The following interactions need to occur between the requestor and the provider(s) in order for a task to be completed:
 
-![Sequence diagram of requestor -> provider interactions](../../.gitbook/assets/tutorial-07.jpg)
+![Sequence diagram of requestor -> provider interactions](../../../.gitbook/assets/tutorial-07.jpg)
 
 From a high-level perspective, running the above program performs the following steps:
 

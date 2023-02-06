@@ -147,7 +147,7 @@ VOLUME /golem/input /golem/output
 
 This makes `/golem/input` and `/golem/output` locations we will use for our input/output file transfer. For the requestor agent code, which we are going to discuss in the next chapter, we need to know the volume (or volumes) name(s) and use it as a directory for the file transfers.
 
-![](../../.gitbook/assets/requestor-vm-comms.jpg)
+![](../../../.gitbook/assets/requestor-vm-comms.jpg)
 
 It's worth noting that all changes in other (non-VOLUME mounted) container directories are kept in RAM. Only the contents of the VOLUME directories are stored in the provider's OS file system. This means that if your provider-side code creates large temporary files, you should store them in the directory defined as a VOLUME to avoid running out of RAM.
 
