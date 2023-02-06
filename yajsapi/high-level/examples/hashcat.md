@@ -250,7 +250,7 @@ main(options).catch((e) => console.error(e));
 
 ## So what is happening here?
 
-We start with a high-level overview of the steps performed by the requestor agent. In the [next section](hashcat.md#how-does-the-code-work) we'll dig into the implementation details.
+We start with a high-level overview of the steps performed by the requestor agent. In the [next section](#how-does-the-code-work) we'll dig into the implementation details.
 
 ### Compute keyspace size
 
