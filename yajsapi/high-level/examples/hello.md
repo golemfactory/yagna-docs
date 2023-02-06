@@ -89,7 +89,7 @@ Currently, Golem utilizes a public repository to store both official and communi
 In the code snippets above, the `package` parameter is set to a specific hash, which serves as a payload definition for the providers. This hash refers to a pre-uploaded, minimal image based on Alpine Linux. Instead of passing a hash, you can also pass in a `Package` instance created with the `Package.create` utility class. Currently, only VM ExeUnit Runtime is supported.
 
 {% hint style="info" %}
-If you want to learn more about creating and uploading your own Golem images, check out this article: [Converting a Docker Image into a Golem Image](https://handbook.golem.network/requestor-tutorials/vm-runtime)
+If you want to learn more about creating and uploading your own Golem images, check out this article: [Converting a Docker Image into a Golem Image](../../../requestor-tutorials/vm-runtime)
 {% endhint %}
 
 ### Worker Function
