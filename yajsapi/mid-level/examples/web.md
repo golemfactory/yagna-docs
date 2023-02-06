@@ -274,8 +274,8 @@ async function end() {
 
 Now if we have a running yagna deamon with the cors parameter, after launching our application with `node app.js` we should see in the browser:
 
-![](../../.gitbook/assets/web-mid-01.jpg)
+![](../../../.gitbook/assets/web-mid-01.jpg)
 
 and if we click the buttons one by one depending on the messages displayed in the logs after the correct creation of the `Activity`, we will be able to execute any commands on the provider.
 
-![](../../.gitbook/assets/web-mid-02.jpg)
+![](../../../.gitbook/assets/web-mid-02.jpg)

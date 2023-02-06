@@ -74,7 +74,7 @@
 
 ## yajsapi - JavaScript API <a href="#yajsapi" id="yajsapi"></a>
 
-* [Introduction to Golem's Java Script API](yajsapi/introduction.md)
+* [Introduction to Golem's JavaScript API](yajsapi/introduction.md)
 * High-level API development
   * [Introduction to the task model](yajsapi/high-level/introduction.md)
     * [Task model](yajsapi/high-level/task-model.md)
@@ -97,7 +97,7 @@
 
 ## Yagna Contributor Guide
 
-* [How to a write payment driver](yagna-contributor-guide/payment-driver-getting-started.md)
+* [How to write payment driver](yagna-contributor-guide/payment-driver-getting-started.md)
 
 ## See also
 
