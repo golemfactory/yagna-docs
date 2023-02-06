@@ -5,30 +5,30 @@
 ### Modules
 
 * Activity
-  * [activity/activity](modules/activity_activity.md)
-  * [activity/results](modules/activity_results.md)
+  * {% content-ref url="modules/activity_activity.md" %}[activity/activity](modules/activity_activity.md){% endcontent-ref %}
+  * {% content-ref url="modules/activity_results.md" %}[activity/results](modules/activity_results.md){% endcontent-ref %}
 * Agreement
-  * [agreement/agreement](modules/agreement_agreement.md)
-  * [agreement/service](modules/agreement_service.md)
+  * {% content-ref url="modules/agreement_agreement.md" %}[agreement/agreement](modules/agreement_agreement.md){% endcontent-ref %}
+  * {% content-ref url="modules/agreement_service.md" %}[agreement/service](modules/agreement_service.md){% endcontent-ref %}
 * Events
-  * [events/events](modules/events_events.md)
+  * {% content-ref url="modules/events_events.md" %}[events/events](modules/events_events.md){% endcontent-ref %}
 * Executor
-  * [executor/executor](modules/executor_executor.md)
+  * {% content-ref url="modules/executor_executor.md" %}[executor/executor](modules/executor_executor.md){% endcontent-ref %}
 * Builder
-  * [market/builder](modules/market_builder.md)
-  * [market/demand](modules/market_demand.md)
-  * [market/proposal](modules/market_proposal.md)
-  * [market/strategy](modules/market_strategy.md)
+  * {% content-ref url="modules/market_builder.md" %}[market/builder](modules/market_builder.md){% endcontent-ref %}
+  * {% content-ref url="modules/market_demand.md" %}[market/demand](modules/market_demand.md){% endcontent-ref %}
+  * {% content-ref url="modules/market_proposal.md" %}[market/proposal](modules/market_proposal.md){% endcontent-ref %}
+  * {% content-ref url="modules/market_strategy.md" %}[market/strategy](modules/market_strategy.md){% endcontent-ref %}
 * Network
-  * [network/identity](modules/network_identity.md)
-  * [network/network](modules/network_network.md)
-  * [network/node](modules/network_node.md)
+  * {% content-ref url="modules/network_identity.md" %}[network/identity](modules/network_identity.md){% endcontent-ref %}
+  * {% content-ref url="modules/network_network.md" %}[network/network](modules/network_network.md){% endcontent-ref %}
+  * {% content-ref url="modules/network_node.md" %}[network/node](modules/network_node.md){% endcontent-ref %}
 * Package
-  * [package/package](modules/package_package.md)
+  * [package/package](modules/package_package.md){% endcontent-ref %}
 * Payment
-  * [payment/accounts](modules/payment_accounts.md)
-  * [payment/allocation](modules/payment_allocation.md)
-  * [payment/config](modules/payment_config.md)
+  * [payment/accounts](modules/payment_accounts.md){% endcontent-ref %}
+  * [payment/allocation](modules/payment_allocation.md){% endcontent-ref %}
+  * [payment/config](modules/payment_config.md)****
   * [payment/debit\_note](modules/payment_debit_note.md)
   * [payment/invoice](modules/payment_invoice.md)
   * [payment/rejection](modules/payment_rejection.md)
