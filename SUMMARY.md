@@ -217,7 +217,6 @@
     * [task/work](yajsapi/docs/modules/task_work.md)
     * [utils/consoleLogger](yajsapi/docs/modules/utils_consoleLogger.md)
     * [utils/logger](yajsapi/docs/modules/utils_logger.md)
-* [Changelog](yajsapi/changelog.md)
 
 ## Yagna Contributor Guide
 
