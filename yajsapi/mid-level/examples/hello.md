@@ -43,8 +43,8 @@ import {
   Run,
   Script,
   Start,
-} from "../.";
-import {ConsoleLogger} from "../../yajsapi/utils";
+  ConsoleLogger
+} from "yajsapi";
 
 async function main() {
   const logger = new ConsoleLogger();
