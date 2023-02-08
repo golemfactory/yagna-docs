@@ -335,7 +335,7 @@ node index.js
 
 Result in the command line will look like:
 
-![](../.gitbook/assets/quickstart-node-version.gif)
+![](../.gitbook/assets/quickstart-node-version.gif "QuickStart Node Version Results")
 
 
 
