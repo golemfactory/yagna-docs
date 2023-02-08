@@ -327,4 +327,16 @@ If you don't remember your key(wallet) you can always check it by typing in the 
 
 #### Run your first app on Golem Network
 
+To run your scrypt on the Golem Network simply run the command:
+
+```bash
+node index.js
+```
+
+Result in the command line will look like:
+
+![](../.gitbook/assets/quickstart-node-version.gif)
+
+
+
 ### Create a node script that we would like to run on the provider
