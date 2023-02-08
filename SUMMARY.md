@@ -91,7 +91,7 @@
     * [Task Example 0: Hello World!](yajsapi/mid-level/examples/hello.md)
     * [Task Example 1: Mid-level component in browser](yajsapi/mid-level/examples/web.md)
   
-* [Golem Java Script API Reference](yajsapi/docs/)
+* [Golem Java Script API Reference](yajsapi/docs/README.md)
   * Classes
     * [Activity](yajsapi/docs/classes/activity_activity.Activity.md)
     * [Agreement](yajsapi/docs/classes/agreement_agreement.Agreement.md)
