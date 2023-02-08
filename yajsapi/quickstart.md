@@ -293,8 +293,11 @@ import { TaskExecutor } from "yajsapi";
 
 ```
 
+### Run the first script on Golem Network
 
-### Create a node script that we would like to run on the provider
+If you have the executor ready, it's time to run the script on the Golem Network.
+
+#### Setup YAGNA_APPKEY
 
 In order for the requestor agent to connect with the `yagna` daemon, 
 you need to provide it with the previously-generated app key (wallet) from step [Generate the app key](#secondly-generate-the-app-key-wallet)
@@ -313,3 +316,15 @@ set YAGNA_APPKEY=your-32-char-app-key
 ```
 {% endtab %}
 {% endtabs %}
+
+
+{% hint style="info" %}
+If you don't remember your key(wallet) you can always check it by typing in the command line:
+`yagna app-key list`
+{% endhint %}
+
+#### Run your first app on Golem Network
+
+
+
+### Create a node script that we would like to run on the provider
