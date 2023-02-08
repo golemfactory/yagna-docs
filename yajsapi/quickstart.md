@@ -131,7 +131,7 @@ and in a separate command line window type in:
 ```bash
 yagna app-key create requestor
 ```
-*** Please, note the key down ***
+**Please, note the key down**
 
 #### Thirdly, get some funds
 
@@ -139,4 +139,14 @@ In order to be able to request tasks on Golem Network, you'll need some GLM toke
 ```bash
 yagna payment fund
 ```
+
+Once you run the command, give some time to transfer funds to your wallet. You can verify whether you already got the funds with:
+```bash
+yagna payment status
+```
+
+{% hint style="info" %}
+If you have encountered problems, or would you like to learn more details about the funding process, please take a look in here:
+[How to get some GLM tokens](../requestor-tutorials/flash-tutorial-of-requestor-development#get-some-test-glm-tokens)
+{% endhint %}
 
