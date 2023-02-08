@@ -4,14 +4,6 @@ description: Create your own JavaScript application on Golem
 
 # QuickStart
 
-<details>
-
-<summary>some epandable</summary>
-
-
-
-</details>
-
 In this article, we'll show you how to launch your first JavaScript app on Golem Network from scratch in 15 minutes. We have divided the entire article into 3 sections:
 
 * [Preparing the environment](quickstart.md#preparing-the-environment)
@@ -201,9 +193,11 @@ yarn add yajsapi
 
 Create `index.js` file in the main folder and import `TaskExecutor` from `yajsapi`
 
+{% code overflow="wrap" lineNumbers="true" %}
 ```js
 import { TaskExecutor } from "yajsapi";
 ```
+{% endcode %}
 
 After importing `TaskExecutor` we have to create IIAFE (Immediately Invoked Async Function Expression) in index.js body, because `TaskExecutor` provides async methods:
 
@@ -305,7 +299,10 @@ import { TaskExecutor } from "yajsapi";
 
 If you have the executor ready, it's time to run the script on the Golem Network.
 
-#### Setup YAGNA\_APPKEY
+
+<details>
+
+<summary>Setup YAGNA\_APPKEY</summary>
 
 In order for the requestor agent to connect with the `yagna` daemon, you need to provide it with the previously-generated app key (wallet) from step [Generate the app key](quickstart.md#secondly-generate-the-app-key-wallet)
 
@@ -330,6 +327,9 @@ set YAGNA_APPKEY=your-32-char-app-key
 {% hint style="info" %}
 If you don't remember your key(wallet) you can always check it by typing in the command line: `yagna app-key list`
 {% endhint %}
+
+</details>
+
 
 #### Run your first app on Golem Network
 
