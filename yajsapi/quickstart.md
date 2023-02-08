@@ -397,5 +397,41 @@ node task.js
 When we have a file with the task ready, we should modify our executor code to send it 
 to the provider, and then execute it on the provider's machine.
 
-### Uploading file to provider machine
+#### Uploading file to provider machine
 
+When you look at the interface of the [WorkContext](docs/classes/task\_work.WorkContext.md) object, you will notice 
+that there is an [uploadFile()](docs/classes/task\_work.WorkContext.md#uploadfile) method, among others. This method 
+is used to upload file to provider instance in a scope of single task. So in order to upload our task.js file to the 
+provider we need to add the command:
+
+{% code title="task.js" overflow="false" lineNumbers="true" %}
+```js
+    await ctx.uploadFile("./task.js", "/golem/resource/task.js");
+```
+{% endcode %}
+
+#### Modify code to execute uploaded JS file
+
+The last step will be to modify the command executed on the provider `node -v` to a command that will execute our 
+`task.js` file - `node /golem/work/task.js`.
+
+Our `index.js` file after modifications will look as follows:
+
+{% code title="index.js" overflow="false" lineNumbers="true" %}
+```js
+import { TaskExecutor } from "yajsapi";
+
+(async () => {
+  const executor = await TaskExecutor.create("529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4");
+  const result = await executor.run(async (ctx) => {
+      await ctx.uploadFile("./task.js", "/golem/work/task.js");
+      const result = await ctx.run("node", ["/golem/work/task.js"]);
+  });
+  await executor.end();
+
+  console.log("Task result:", result);
+})();
+```
+{% endcode %}
+
+![](../.gitbook/assets/quickstart-node-version-upload.gif "QuickStart Node Version Results")
