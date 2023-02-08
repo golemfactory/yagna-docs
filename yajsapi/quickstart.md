@@ -195,6 +195,8 @@ Add `yajsapi` to your project:
 yarn add yajsapi
 ```
 
+#### Import TaskExecutor
+
 Create `index.js` file in the main folder and import `TaskExecutor` from `yajsapi`
 
 ```js
@@ -210,6 +212,8 @@ because `TaskExecutor` provides async methods:
 })();
 ```
 
+#### Create TaskExecutor instance
+
 In our body function first we have to create executor using factory method [Executor.create()](./docs/classes/executor_executor.TaskExecutor.md#create). 
 As a parameter we will provide image hash with Node.js.
 
@@ -222,6 +226,8 @@ For the testing purposes we are providing pre-built image with Node:
 `529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4`
 {% endhint %}
 
+#### Define task to run on provider instance
+
 As the first task we would like to see the node version that is running on the given image.
 For this purpose we would like to call the ```node -v``` command on the provider.
 
@@ -232,6 +238,9 @@ const taskToRunOnProvider = async (workerContext) => {
     // ... body of task that will be run on same provider
 }
 ```
+
+#### Define commands to run in the task scope
+
 This function gets first parameter `workContext` that is a [WorkContext](./docs/classes/task_work.WorkContext.md) object.
 This object allow you set the commands that you want to run in the scope of one task on one provider.
 So the command we would like torun on the provider is `node -v`
@@ -243,8 +252,27 @@ const result = await workerContext.run(commandToRunInProviderShell);
 
 To access `stdout` on the result object, simply access the `stdout` property.
 
+#### Run the task on Golem Network
+
+To run above defined task `taskToRunOnProvider` on the Golem Network, we must pass it as a parameter of the `run()` 
+method on the instance of the `executor`.
+
+```js
+await executor.run(taskToRunOnProvider);
+```
+
+#### Finish gracefully task executor
+
+On the end you should finish working with Golem Network by calling the `end()` method on the running instance of executor.
+
+```js
+await executor.end();
+```
+
+
 #### So lets put everything together:
 
+Now put all the code together. You should get an `index.js` file that looks like the following:
 ```js
 import { TaskExecutor } from "yajsapi";
 
@@ -257,8 +285,10 @@ import { TaskExecutor } from "yajsapi";
       return result.stdout;
    }
 
-   await executor.run(taskToRunOnProvider);
+   const taskResult = await executor.run(taskToRunOnProvider);
    await executor.end();
+   
+   console.log('Task result:', taskResult);
 })();
 
 ```
