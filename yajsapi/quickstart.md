@@ -180,7 +180,16 @@ Add `yajsapi` to your project:
 yarn add yajsapi
 ```
 
-Create `index.js` file in the main folder and import `yajsapi`
+Create `index.js` file in the main folder and import `TaskExecutor` from `yajsapi`
 
+```js
+const { TaskExecutor } = require("yajsapi");
+```
 
+After importing `TaskExecutor` we have to create IIAFE (Immediately Invoked Async Function Expression)
+```js
+(async () => {
+    //... Function body in here
+})();
+```
 
