@@ -195,5 +195,15 @@ because `TaskExecutor` provides async methods:
 })();
 ```
 
-In our body function first we have to create executor using factory method [Executor.create()](./docs/classes/executor_executor.TaskExecutor.md#create)
+In our body function first we have to create executor using factory method [Executor.create()](./docs/classes/executor_executor.TaskExecutor.md#create). 
+As a parameter we will provide pre-built image hash with Node.js.
 
+```js
+const executor = await TaskExecutor.create("529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4");
+```
+
+{% hint style="info" %}
+For the testing purposes we are providing a couple of pre-built images:
+ * Node `529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4`
+ * Python 3.6 `6539a63fecfb4ce98bc838ab2de71c6f4d36e1ee5945fbd8f1165c48`
+{% endhint %}
