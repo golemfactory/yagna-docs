@@ -226,12 +226,15 @@ As the first task we would like to see the node version that is running on the g
 For this purpose we would like to call the ```node -v``` command on the provider.
 
 Let's first create task function that we would like to run on provider. The function named as Worker and implements 
-[Worker](./docs/modules/task_work#worker) interface.
+[Worker](./docs/modules/task_work.md#worker) interface.
 ```js
 const taskToRunOnProvider = async (workerContext) => {
-    
+    // ... body of task that will be run on same provider
 }
 ```
+This function gets first parameter `workContext` that is a [WorkContext](./docs/classes/task_work.WorkContext.md)
+
+
 
 ### Create a node script that we would like to run on the provider
 
