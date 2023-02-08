@@ -33,3 +33,27 @@ Make sure you have a Git installed:
 ```
 git --version
 ```
+
+### Installing yagna daemon and configure it as requestor  
+
+To start working with Golem network we need to install `yagna` daemon locally.
+In the simplest terms, the daemon allows you to communicate with Golem Network and perform operations on it. 
+
+
+{% tabs %}
+{% tab title="MacOS" %}
+**Python 3.6+**
+
+To verify your currently installed version of python, please run:
+
+```
+python3 --version
+```
+
+If you have an older version of python and you'd like to keep that version in your system, consider using [pyenv](https://github.com/pyenv/pyenv). You can use [pyenv-installer](https://github.com/pyenv/pyenv-installer) to facilitate the process.
+
+{% hint style="warning" %}
+On Windows, you may need to just use `python` instead of `python3`
+{% endhint %}
+{% endtab %}
+{% endtabs %}
