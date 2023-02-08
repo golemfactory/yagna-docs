@@ -20,17 +20,17 @@ The created project will be using a build setup based on pre-built [Golem Image]
 and allow us to run Node.js script on [Provider](../introduction/provider).
 
 Make sure you have a 16.x version of Node.js installed: 
-```
+```bash
 node --version
 ```
 
 Make sure you have a 1.22.3+ version of Yarn installed:
-```
+```bash
 yarn --version
 ```
 
 Make sure you have a Git installed:
-```
+```bash
 git --version
 ```
 
@@ -46,7 +46,7 @@ In the simplest terms, the daemon allows you to communicate with Golem Network a
 
 You can install it using our helper script like this:
 
-```
+```bash
 curl -sSf https://join.golem.network/as-requestor | bash -
 ```
 You might be asked to modify your PATH afterwards.
@@ -86,13 +86,13 @@ or add the directory you placed the binaries in to your PATH
 {% endtabs %}
 
 Verify if `yagna` available in command line:
-```
+```bash
 yagna --version
 ```
 It should output: `yagna 0.12.0 (37060503 2022-12-02 build #251)`
 
 Verify if `gftp` available in command line:
-```
+```bash
 gftp --version
 ```
 It should output: `gftp 0.12.0 (37060503 2022-12-02 build #251)`
@@ -104,4 +104,22 @@ If you have encountered problems, or would you like to learn more details about 
 [How to install requestor tutorial](../requestor-tutorials/flash-tutorial-of-requestor-development)
 {% endhint %}
 
-### Configure requestor
+### Configure requestor and fund your wallet
+To start using Golem Network you need a key, which will be also be the address of your wallet. 
+For the purposes of this tutorial we are using testnet. To generate a key and fund your wallet follow these steps:
+
+#### Firstly, start the daemon
+
+To perform any operations on the Golem Network the `yagna` daemon must be running. To do this, open a command line window and type:
+```bash
+yagna service run
+```
+
+{% hint style="warning" %}
+Important: After you launch the daemon, leave it running in the background while you proceed with the tutorial.
+{% endhint %}
+
+{% hint style="warning" %}
+If you have encountered problems please take look on: [Run the daemon](../requestor-tutorials/flash-tutorial-of-requestor-development#run-the-daemon)
+{% endhint %}
+
