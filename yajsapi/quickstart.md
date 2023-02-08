@@ -7,9 +7,9 @@ description: Create your own JavaScript application on Golem
 In this article, we'll show you how to launch your first JavaScript app on Golem Network from scratch in 15 minutes.
 We have divided the entire article into 3 sections:
 
-* Preparing the environment
-* Installing yagna requestor
-* Building your first JavaScript application on Golem Network
+* [Preparing the environment](#preparing-the-environment)
+* [Installing yagna requestor](#preparing-the-environment)
+* [Building your first JavaScript application on Golem Network](#Building your first JavaScript application on Golem Network)
 
 The first two sections are duplicated with the more elaborate ones described elsewhere in the handbook. However, 
 the purpose of this article is not to get into the details, but to show you **how to start working with Golem step by step in minutes**.
@@ -164,3 +164,4 @@ If you have encountered problems, or would you like to learn more details about 
 [How to get some GLM tokens](../requestor-tutorials/flash-tutorial-of-requestor-development#get-some-test-glm-tokens)
 {% endhint %}
 
+## Building your first JavaScript app on Golem Network
