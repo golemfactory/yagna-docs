@@ -232,7 +232,10 @@ const taskToRunOnProvider = async (workerContext) => {
     // ... body of task that will be run on same provider
 }
 ```
-This function gets first parameter `workContext` that is a [WorkContext](./docs/classes/task_work.WorkContext.md)
+This function gets first parameter `workContext` that is a [WorkContext](./docs/classes/task_work.WorkContext.md) object.
+This object allow you set the commands that you want to run in the scope of one task on one provider.
+
+
 
 
 
