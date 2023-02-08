@@ -81,7 +81,7 @@
   * [Task model overview](yajsapi/high-level/task-model.md)
   * Examples
     * [Task Example 0: Hello World!](yajsapi/high-level/examples/hello.md)
-    * [Task Example 1: Simple hash cracker](yajsapi/high-level/examples/simple.md)
+    * [Task Example 1: Simple Usage of Task API](yajsapi/high-level/examples/simple.md)
     * [Task Example 2: Hashcat on Golem](yajsapi/high-level/examples/hashcat.md)
     * [Task Example 3: Requestor in browser](yajsapi/high-level/examples/web.md)
 
