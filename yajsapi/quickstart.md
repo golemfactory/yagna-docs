@@ -12,6 +12,7 @@ description: Create your own task application on Golem
 * Familiarity with the command line
 * Install [Node.js](https://nodejs.org/) version 16.x
 * Install [Yarn](https://classic.yarnpkg.com/en/docs/install)  version 1.22.3+
+* Install [Git](https://git-scm.com/downloads)
 {% endhint %}
   
 In this section we will introduce how to run a Simple Node Application on Golem Network. 
@@ -26,4 +27,9 @@ node --version
 Make sure you have a 1.22.3+ version of Yarn installed:
 ```
 yarn --version
+```
+
+Make sure you have a Git installed:
+```
+git --version
 ```
