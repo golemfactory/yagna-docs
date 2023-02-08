@@ -378,7 +378,7 @@ To do this, let's create a task.js file:
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+    return Math.floor(Math.random() * (max - min + 1) + min); 
 }
 
 const num1 = getRandomInt(1000, 10000);
@@ -387,3 +387,10 @@ const num2 = getRandomInt(1000, 10000);
 console.log(`Sum of ${num1} and ${num2} equal to ${num1 + num2}`);
 ```
 {% endcode %}
+
+You can test your code yours machine by running:
+```bash
+node task.js
+```
+
+
