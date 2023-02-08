@@ -8,7 +8,7 @@ In this article, we'll show you how to launch your first JavaScript app on Golem
 We have divided the entire article into 3 sections:
 
 * [Preparing the environment](#preparing-the-environment)
-* [Installing yagna requestor](#preparing-the-environment)
+* [Installing yagna requestor](#installing-yagna-requestor)
 * [Building your first JavaScript application on Golem Network](#building-your-first-javascript-app-on-golem-network)
 
 The first two sections are duplicated with the more elaborate ones described elsewhere in the handbook. However, 
