@@ -4,11 +4,12 @@ description: Create your own JavaScript application on Golem
 
 # QuickStart
 
-In this article, we'll show you how to launch your first JavaScript app on Golem Network from scratch in 15 minutes. We have divided the entire article into 3 sections:
+In this article, we'll show you how to launch your first JavaScript app on Golem Network from scratch in 15 minutes. We have divided the entire article into 4 sections:
 
 * [Preparing the environment](quickstart.md#preparing-the-environment)
 * [Installing yagna requestor](quickstart.md#installing-yagna-requestor)
 * [Building your first JavaScript application on Golem Network](quickstart.md#building-your-first-javascript-app-on-golem-network)
+* [Run node script on provider](quickstart.md#building-your-first-javascript-app-on-golem-network)
 
 The first two sections are duplicated with the more elaborate ones described elsewhere in the handbook. However, the purpose of this article is not to get into the details, but to show you **how to start working with Golem step by step in minutes**.
 
@@ -340,7 +341,8 @@ Result in the command line will look like:
 
 ### Refactor of the existing code
 
-For the purpose of understanding the work with the executor, we have divided the code into small parts, but we can write it much simpler and refactor it to this form:
+For the purpose of understanding the work with the executor, we have divided the code into small parts, 
+but we can write it much simpler and refactor it to this form:
 
 
 {% code title="index.js" overflow="false" lineNumbers="true" %}
@@ -356,3 +358,10 @@ import { TaskExecutor } from "yajsapi";
 })();
 ```
 {% endcode %}
+
+It looks cleaner and more simple. Isn't it? 
+
+## Run node script on provider
+
+Now that you know how to run a simple command in the provider's shell, it's time to go one step further.  
+In this section, we will create a simple script which we will then send to the provider and execute it using Node.
