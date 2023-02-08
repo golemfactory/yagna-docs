@@ -124,8 +124,19 @@ If you have encountered problems please take look on [Run the daemon](../request
 {% endhint %}
 
 #### Secondly, generate the app key (wallet)
-
+To use the network you must have your own unique key(wallet) for which is used for billing. To generate the key,
+make sure you have running `yagna` daemon from the [previous step](#firstly-start-the-daemon), leave it running in the background 
+and in a separate command line window type in:
 
 ```bash
 yagna app-key create requestor
 ```
+*** Please, note the key down ***
+
+#### Thirdly, get some funds
+
+In order to be able to request tasks on Golem Network, you'll need some GLM tokens. To get some funds on testnet, type in:
+```bash
+yagna payment fund
+```
+
