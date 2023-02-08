@@ -41,19 +41,58 @@ In the simplest terms, the daemon allows you to communicate with Golem Network a
 
 
 {% tabs %}
-{% tab title="MacOS" %}
-**Python 3.6+**
+{% tab title="Easy installation" %}
+**Easy installation**
 
-To verify your currently installed version of python, please run:
+You can install it using our helper script like this:
 
 ```
-python3 --version
+curl -sSf https://join.golem.network/as-requestor | bash -
 ```
-
-If you have an older version of python and you'd like to keep that version in your system, consider using [pyenv](https://github.com/pyenv/pyenv). You can use [pyenv-installer](https://github.com/pyenv/pyenv-installer) to facilitate the process.
+You might be asked to modify your PATH afterwards.
 
 {% hint style="warning" %}
-On Windows, you may need to just use `python` instead of `python3`
+On Windows, only the manual installation is supported.
 {% endhint %}
+
+{% endtab %}
+{% tab title="Windows Manual installation" %}
+**Manual installation on Windows**
+
+Alternatively, if you can't install in easy way, you will do it manually in the following way:
+
+1. Download the requestor package - prefixed `golem-requestor` - appropriate for your platform from:
+[https://github.com/golemfactory/yagna/releases/tag/v0.12.0](https://github.com/golemfactory/yagna/releases/tag/v0.12.0)
+
+2. Unzip the archive to extract the two files:
+`yagna.exe` and `gftp.exe`.
+
+3. Copy those files to `C:\Windows\System32`
+
+{% endtab %}
+
+{% tab title="Windows Manual installation" %}
+**Manual installation on Unix**
+
+Alternatively, if you can't install in easy way, you will do it manually in the following way:
+
+1. Download the requestor package - prefixed `golem-requestor` - appropriate for your platform from:
+   [https://github.com/golemfactory/yagna/releases/tag/v0.12.0](https://github.com/golemfactory/yagna/releases/tag/v0.12.0)
+
+2. Unpack `yagna` and `gftp` binaries and put within somewhere in your PATH (e.g. copy them to /usr/local/bin on Unix-like systems) 
+or add the directory you placed the binaries in to your PATH
+
 {% endtab %}
 {% endtabs %}
+
+Verify if `yagna` available in command line:
+```
+yagna --version
+```
+It should output: `yagna 0.12.0 (37060503 2022-12-02 build #251)`
+
+Verify if `gftp` available in command line:
+```
+gftp --version
+```
+It should output: `gftp 0.12.0 (37060503 2022-12-02 build #251)`
