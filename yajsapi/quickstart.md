@@ -1,8 +1,22 @@
 ---
-description: Create your own task application on Golem
+description: Create your own JavaScript application on Golem
 ---
 
 # Quickstart with Golem
+
+In this article, we'll show you how to launch your first JavaScript app on Golem Network from scratch in 15 minutes.
+We have divided the entire article into 3 sections:
+
+* Preparing the environment
+* Installing yagna requestor
+* Building your first JavaScript application on Golem Network
+
+The first two sections are duplicated with the more elaborate ones described elsewhere in the handbook. However, 
+the purpose of this article is not to get into the details, but to show you **how to start working with Golem step by step in minutes**.
+
+If you have a development environment already configured, you can go ahead and skip the first section and move on to the next one.
+
+If you have already installed the yaggna daemon and configured the requestor correctly, go straight to the third section.
 
 ## Preparing the environment
 
