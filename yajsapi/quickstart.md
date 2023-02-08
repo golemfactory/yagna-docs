@@ -119,7 +119,13 @@ yagna service run
 Important: After you launch the daemon, leave it running in the background while you proceed with the tutorial.
 {% endhint %}
 
-{% hint style="warning" %}
-If you have encountered problems please take look on: [Run the daemon](../requestor-tutorials/flash-tutorial-of-requestor-development#run-the-daemon)
+{% hint style="info" %}
+If you have encountered problems please take look on [Run the daemon](../requestor-tutorials/flash-tutorial-of-requestor-development#run-the-daemon) section
 {% endhint %}
 
+#### Secondly, generate the app key (wallet)
+
+
+```bash
+yagna app-key create requestor
+```
