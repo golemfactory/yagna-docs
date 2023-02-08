@@ -9,7 +9,7 @@ We have divided the entire article into 3 sections:
 
 * [Preparing the environment](#preparing-the-environment)
 * [Installing yagna requestor](#preparing-the-environment)
-* [Building your first JavaScript application on Golem Network](#Building your first JavaScript application on Golem Network)
+* [Building your first JavaScript application on Golem Network](#building-your-first-javascript-app-on-golem-network)
 
 The first two sections are duplicated with the more elaborate ones described elsewhere in the handbook. However, 
 the purpose of this article is not to get into the details, but to show you **how to start working with Golem step by step in minutes**.
@@ -164,4 +164,5 @@ If you have encountered problems, or would you like to learn more details about 
 [How to get some GLM tokens](../requestor-tutorials/flash-tutorial-of-requestor-development#get-some-test-glm-tokens)
 {% endhint %}
 
-## Building your first JavaScript app on Golem Network
+## Building your first JavaScript application on Golem Network
+
