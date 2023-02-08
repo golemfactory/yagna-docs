@@ -234,7 +234,11 @@ const taskToRunOnProvider = async (workerContext) => {
 ```
 This function gets first parameter `workContext` that is a [WorkContext](./docs/classes/task_work.WorkContext.md) object.
 This object allow you set the commands that you want to run in the scope of one task on one provider.
+So the command we would like torun on the provider is `node -v`
 
+```js
+const result = await workerContext.run("node -v");
+```
 
 
 
