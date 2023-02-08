@@ -34,7 +34,7 @@ Make sure you have a Git installed:
 git --version
 ```
 
-### Installing yagna daemon and configure it as requestor  
+### Installing yagna requestor
 
 To start working with Golem network we need to install `yagna` daemon locally.
 In the simplest terms, the daemon allows you to communicate with Golem Network and perform operations on it. 
@@ -71,7 +71,7 @@ Alternatively, if you can't install in easy way, you will do it manually in the 
 
 {% endtab %}
 
-{% tab title="Windows Manual installation" %}
+{% tab title="Unix Manual installation" %}
 **Manual installation on Unix**
 
 Alternatively, if you can't install in easy way, you will do it manually in the following way:
@@ -96,3 +96,12 @@ Verify if `gftp` available in command line:
 gftp --version
 ```
 It should output: `gftp 0.12.0 (37060503 2022-12-02 build #251)`
+
+If the above commands executed correctly, congratulations you have just installed the `yagna` daemon in your environment.
+
+{% hint style="info" %}
+If you have encountered problems, or would you like to learn more details about the requestor and `yagna `installation, please take a look in here:
+[How to install requestor tutorial](../requestor-tutorials/flash-tutorial-of-requestor-development)
+{% endhint %}
+
+### Configure requestor
