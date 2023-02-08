@@ -183,13 +183,17 @@ yarn add yajsapi
 Create `index.js` file in the main folder and import `TaskExecutor` from `yajsapi`
 
 ```js
-const { TaskExecutor } = require("yajsapi");
+import { TaskExecutor } from "yajsapi";
 ```
 
-After importing `TaskExecutor` we have to create IIAFE (Immediately Invoked Async Function Expression)
+After importing `TaskExecutor` we have to create IIAFE (Immediately Invoked Async Function Expression) in index.js body, 
+because `TaskExecutor` provides async methods:
+
 ```js
 (async () => {
     //... Function body in here
 })();
 ```
+
+In our body function first we have to create executor using factory method [Executor.create()](./docs/classes/executor_executor.taskexecutor#create)
 
