@@ -363,5 +363,27 @@ It looks cleaner and more simple. Isn't it?
 
 ## Run node script on provider
 
-Now that you know how to run a simple command in the provider's shell, it's time to go one step further.  
-In this section, we will create a simple script which we will then send to the provider and execute it using Node.
+Now that you know how to run a simple command in the provider's shell, it's time to go one step further. In this section, 
+we will create a simple script which we will then send to the provider and execute it using Node.
+
+### Create task script
+
+For starters, let's create a simple js file that will execute on the provider. Let's generate two random numbers and 
+then add them and return the result of this operation. 
+
+To do this, let's create a task.js file:
+
+{% code title="task.js" overflow="false" lineNumbers="true" %}
+```js
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+}
+
+const num1 = getRandomInt(1000, 10000);
+const num2 = getRandomInt(1000, 10000);
+
+console.log(`Sum of ${num1} and ${num2} equal to ${num1 + num2}`);
+```
+{% endcode %}
