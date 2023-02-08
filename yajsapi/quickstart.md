@@ -434,4 +434,12 @@ import { TaskExecutor } from "yajsapi";
 ```
 {% endcode %}
 
+Result in the command line will look like:
+
 ![](../.gitbook/assets/quickstart-node-version-upload.gif "QuickStart Node Version Results")
+
+#### Summary
+
+We tried to familiarize you with how to work with Golem Network. We hope that now you understand the basics of 
+application development. We encourage you to continue experimenting with code. If you have any suggestions about 
+this article, we invite you to [contact us](../see-also/contact.md).
