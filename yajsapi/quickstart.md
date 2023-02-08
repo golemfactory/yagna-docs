@@ -204,6 +204,10 @@ const executor = await TaskExecutor.create("529f7fdaf1cf46ce3126eb6bbcd3b213c314
 
 {% hint style="info" %}
 For the testing purposes we are providing a couple of pre-built images:
- * Node `529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4`
- * Python 3.6 `6539a63fecfb4ce98bc838ab2de71c6f4d36e1ee5945fbd8f1165c48`
+
+| Environment | Image Hash                                                 |
+|-------------|------------------------------------------------------------|
+| Node        | `529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4` |
+| Python 3.x  | `6539a63fecfb4ce98bc838ab2de71c6f4d36e1ee5945fbd8f1165c48` |
+
 {% endhint %}
