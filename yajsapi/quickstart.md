@@ -225,8 +225,13 @@ For the testing purposes we are providing pre-built image with Node:
 As the first task we would like to see the node version that is running on the given image.
 For this purpose we would like to call the ```node -v``` command on the provider.
 
-
-
+Let's first create task function that we would like to run on provider. The function named as Worker and implements 
+[Worker](./docs/modules/task_work#worker) interface.
+```js
+const taskToRunOnProvider = async (workerContext) => {
+    
+}
+```
 
 ### Create a node script that we would like to run on the provider
 
