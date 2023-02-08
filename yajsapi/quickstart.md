@@ -166,3 +166,21 @@ If you have encountered problems, or would you like to learn more details about 
 
 ## Building your first JavaScript app on Golem Network
 
+Congratulations you are now ready to start building your first JavaScript app on the Golem Network.
+To do this, create a new node project by typing in the command line:
+
+```bash
+mkdir golem-tutorial-js
+cd golem-tutorial-js
+yarn init golem-tutorial-js
+```
+
+Add `yajsapi` to your project:
+```bask
+yarn add yajsapi
+```
+
+Create `index.js` file in the main folder and import `yajsapi`
+
+
+
