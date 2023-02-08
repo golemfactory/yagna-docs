@@ -206,20 +206,24 @@ import { TaskExecutor } from "yajsapi";
 After importing `TaskExecutor` we have to create IIAFE (Immediately Invoked Async Function Expression) in index.js body, 
 because `TaskExecutor` provides async methods:
 
+{% code overflow="wrap" lineNumbers="true" %}
 ```js
 (async () => {
     //... Function body in here
 })();
 ```
+{% endcode %}
 
 #### Create TaskExecutor instance
 
 In our body function first we have to create executor using factory method [Executor.create()](./docs/classes/executor_executor.TaskExecutor.md#create). 
 As a parameter we will provide image hash with Node.js.
 
+{% code overflow="wrap" lineNumbers="true" %}
 ```js
 const executor = await TaskExecutor.create("529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4");
 ```
+{% endcode %}
 
 {% hint style="info" %}
 For the testing purposes we are providing pre-built image with Node: 
@@ -233,11 +237,14 @@ For this purpose we would like to call the ```node -v``` command on the provider
 
 Let's first create task function that we would like to run on provider. The function named as Worker and implements 
 [Worker](./docs/modules/task_work.md#worker) interface.
+
+{% code overflow="wrap" lineNumbers="true" %}
 ```js
 const taskToRunOnProvider = async (workerContext) => {
     // ... body of task that will be run on same provider
 }
 ```
+{% endcode %}
 
 #### Define commands to run in the task scope
 
@@ -245,10 +252,12 @@ This function gets first parameter `workContext` that is a [WorkContext](./docs/
 This object allow you set the commands that you want to run in the scope of one task on one provider.
 So the command we would like torun on the provider is `node -v`
 
+{% code overflow="wrap" lineNumbers="true" %}
 ```js
 const commandToRunInProviderShell = "node -v";
 const result = await workerContext.run(commandToRunInProviderShell);
 ```
+{% endcode %}
 
 To access `stdout` on the result object, simply access the `stdout` property.
 
@@ -257,22 +266,28 @@ To access `stdout` on the result object, simply access the `stdout` property.
 To run above defined task `taskToRunOnProvider` on the Golem Network, we must pass it as a parameter of the `run()` 
 method on the instance of the `executor`.
 
+{% code overflow="wrap" lineNumbers="true" %}
 ```js
 await executor.run(taskToRunOnProvider);
 ```
+{% endcode %}
 
 #### Finish gracefully task executor
 
 On the end you should finish working with Golem Network by calling the `end()` method on the running instance of executor.
 
+{% code overflow="wrap" lineNumbers="true" %}
 ```js
 await executor.end();
 ```
+{% endcode %}
 
 
 #### So lets put everything together:
 
 Now put all the code together. You should get an `index.js` file that looks like the following:
+
+{% code title="index.js" overflow="wrap" lineNumbers="true" %}
 ```js
 import { TaskExecutor } from "yajsapi";
 
@@ -290,8 +305,8 @@ import { TaskExecutor } from "yajsapi";
    
    console.log('Task result:', taskResult);
 })();
-
 ```
+{% endcode %}
 
 ### Run the first script on Golem Network
 
