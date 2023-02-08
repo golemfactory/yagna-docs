@@ -274,7 +274,7 @@ await executor.end();
 
 Now put all the code together. You should get an `index.js` file that looks like the following:
 
-{% code title="index.js" overflow="wrap" lineNumbers="true" %}
+{% code title="index.js" overflow="false" lineNumbers="true" %}
 ```js
 import { TaskExecutor } from "yajsapi";
 
@@ -343,15 +343,13 @@ Result in the command line will look like:
 For the purpose of understanding the work with the executor, we have divided the code into small parts, but we can write it much simpler and refactor it to this form:
 
 
-{% code title="index.js" overflow="wrap" lineNumbers="true" %}
+{% code title="index.js" overflow="false" lineNumbers="true" %}
 ```js
 import { TaskExecutor } from "yajsapi";
 
 (async () => {
   const executor = await TaskExecutor.create("529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4");
-  const result = await executor.run(
-      async (ctx) => (await ctx.run("node -v")).stdout
-  );
+  const result = await executor.run(async (ctx) => (await ctx.run("node -v")).stdout);
   await executor.end();
 
   console.log("Task result:", result);
