@@ -4,7 +4,7 @@ description: Create your own task application on Golem
 
 # Quickstart with Golem
 
-## Creating a Golem Application
+## Preparing the environment
 
 {% hint style="info" %}
 ### Prerequisites
