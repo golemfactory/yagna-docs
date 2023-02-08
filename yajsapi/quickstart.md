@@ -195,5 +195,5 @@ because `TaskExecutor` provides async methods:
 })();
 ```
 
-In our body function first we have to create executor using factory method [Executor.create()](./docs/classes/executor_executor.taskexecutor#create)
+In our body function first we have to create executor using factory method [Executor.create()](./docs/classes/executor_executor.TaskExecutor.md#create)
 
