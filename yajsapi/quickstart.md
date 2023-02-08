@@ -237,10 +237,31 @@ This object allow you set the commands that you want to run in the scope of one 
 So the command we would like torun on the provider is `node -v`
 
 ```js
-const result = await workerContext.run("node -v");
+const commandToRunInProviderShell = "node -v";
+const result = await workerContext.run(commandToRunInProviderShell);
 ```
 
+To access `stdout` on the result object, simply access the `stdout` property.
 
+#### So lets put everything together:
+
+```js
+import { TaskExecutor } from "yajsapi";
+
+(async () => {
+   const executor = await TaskExecutor.create("529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4");
+
+   const taskToRunOnProvider = async (workerContext) => {
+      const commandToRunInProviderShell = "node -v";
+      const result = await workerContext.run(commandToRunInProviderShell);
+      return result.stdout;
+   }
+
+   await executor.run(taskToRunOnProvider);
+   await executor.end();
+})();
+
+```
 
 
 ### Create a node script that we would like to run on the provider
