@@ -22,7 +22,7 @@ The golem JavaScript library provides developers with two levels of abstraction 
 
 The following diagram illustrates the division of the individual parts of the golem:
 
-![Golem Component Architecture](../.gitbook/assets/golem-api-layers.drawio.svg)
+![Golem Component Architecture](../.gitbook/assets/golem-api-layers.svg)
 
 The High Level API provides an easy-to-use interface to the core functionality of the golem, such as creating and managing tasks with only a few lines of code.
 The Mid Level API gives developers access to the Golem-specific components, such as the Demand that is published on the market or Offer that is received from the provider, for more advanced use cases.
