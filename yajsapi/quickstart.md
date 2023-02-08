@@ -145,7 +145,9 @@ and in a separate command line window type in:
 ```bash
 yagna app-key create requestor
 ```
+
 **Please, note the key down**
+
 
 #### Thirdly, get some funds
 
@@ -164,16 +166,29 @@ If you have encountered problems, or would you like to learn more details about 
 [How to get some GLM tokens](../requestor-tutorials/flash-tutorial-of-requestor-development#get-some-test-glm-tokens)
 {% endhint %}
 
+#### Fourthly, init yagna daemon as a sender
+
+When you have already configured the yagna demon and it is time to initialize as a sender.
+
+```bash
+yagna payment init --sender
+```
+
 ## Building your first JavaScript app on Golem Network
 
 Congratulations you are now ready to start building your first JavaScript app on the Golem Network.
-To do this, create a new node project by typing in the command line:
+
+### Create a new Node project
+
+Create a new node project by typing in the command line:
 
 ```bash
 mkdir golem-tutorial-js
 cd golem-tutorial-js
 yarn init golem-tutorial-js
 ```
+
+### Create a node script that will execute task on provider
 
 Add `yajsapi` to your project:
 ```bask
@@ -203,5 +218,32 @@ const executor = await TaskExecutor.create("529f7fdaf1cf46ce3126eb6bbcd3b213c314
 ```
 
 {% hint style="info" %}
-For the testing purposes we are providing pre-built image with Node `529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4`
+For the testing purposes we are providing pre-built image with Node: 
+`529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4`
 {% endhint %}
+
+As the first task we would like to see the node version that is running on the given image.
+For this purpose we would like to call the ```node -v``` command on the provider.
+
+
+
+
+### Create a node script that we would like to run on the provider
+
+In order for the requestor agent to connect with the `yagna` daemon, 
+you need to provide it with the previously-generated app key (wallet) from step [Generate the app key](#secondly-generate-the-app-key-wallet)
+
+{% tabs %}
+{% tab title="MacOS / Linux" %}
+**On MacOS / Linux type in command line**
+```bash
+export YAGNA_APPKEY=insert-your-32-char-app-key-here
+```
+{% endtab %}
+{% tab title="Windows" %}
+**On Windows type in command line**
+```bash
+set YAGNA_APPKEY=your-32-char-app-key
+```
+{% endtab %}
+{% endtabs %}
