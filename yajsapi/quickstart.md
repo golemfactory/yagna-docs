@@ -392,5 +392,10 @@ You can test your code yours machine by running:
 ```bash
 node task.js
 ```
+### Modify executor script
 
+When we have a file with the task ready, we should modify our executor code to send it 
+to the provider, and then execute it on the provider's machine.
+
+### Uploading file to provider machine
 
