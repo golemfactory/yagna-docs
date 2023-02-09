@@ -9,7 +9,8 @@ In this article, we'll show you how to launch your first JavaScript app on Golem
 * [Preparing the environment](quickstart.md#preparing-the-environment)
 * [Installing yagna requestor](quickstart.md#installing-yagna-requestor)
 * [Building your first JavaScript application on Golem Network](quickstart.md#building-your-first-javascript-app-on-golem-network)
-* [Run node script on provider](quickstart.md#building-your-first-javascript-app-on-golem-network)
+* [Run node script on provider](quickstart.md#run-the-app)
+* [Extend app functionality](quickstart.md#run-the-app)
 
 The first two sections are duplicated with the more elaborate ones described elsewhere in the handbook. However, the purpose of this article is not to get into the details, but to show you **how to start working with Golem step by step in minutes**.
 
@@ -322,17 +323,10 @@ await executor.end();
 ```
 {% endcode %}
 
-
-
-
-
-
-
 ### Refactor of the existing code
 
 For the purpose of understanding the work with the executor, we have divided the code into small parts, 
 but we can write it much simpler and refactor it to this form:
-
 
 {% code title="index.js" overflow="false" lineNumbers="true" %}
 ```js
@@ -381,7 +375,7 @@ You can test your code yours machine by running:
 ```bash
 node task.js
 ```
-### Modify executor script
+## Extend app functionality
 
 When we have a file with the task ready, we should modify our executor code to send it 
 to the provider, and then execute it on the provider's machine.
