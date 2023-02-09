@@ -4,7 +4,8 @@ description: Create your own JavaScript application on Golem
 
 # QuickStart
 
-In this article, we'll show you how to launch your first JavaScript app on Golem Network from scratch in 15 minutes. We 
+In this article, we'll show you how to launch your first JavaScript app on Golem Network from scratch in 15 minutes. The 
+result of the application will be to run the JS file using Node JS on the provider's machine and return the result. We 
 have divided the entire article into 5 sections:
 
 * [Preparing the environment](quickstart.md#preparing-the-environment)
