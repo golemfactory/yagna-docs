@@ -42,7 +42,7 @@
   * [Work generator pattern and WorkContext](requestor-tutorials/golem-application-fundamentals/hl-api-work-generator-pattern.md)
   * [Golem VPN networking concept](requestor-tutorials/golem-application-fundamentals/golem-vpn-networking-concept.md)
 * [Decentralized applications on Golem](requestor-tutorials/dapps/README.md)
-  * [Run your first dApp](requestor-tutorials/dapps/run-a-dapp.md)
+  * [Run a dApp](requestor-tutorials/dapps/run-a-dapp.md)
   * [Your first Golem dApp](requestor-tutorials/dapps/your-first-golem-dapp.md)
   * [Creating Golem dApps](requestor-tutorials/dapps/creating-golem-dapps.md)
   * [Differences between Docker containers and Golem VM runtime](requestor-tutorials/dapps/docker-containers-vs-golem-vms.md)
