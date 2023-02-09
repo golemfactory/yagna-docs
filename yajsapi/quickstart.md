@@ -33,7 +33,8 @@ section.
 * Install [Node.js](https://nodejs.org/) version 16.19.x
 {% endhint %}
 
-In this section we will introduce how to run a Simple Node Application on Golem Network. The created project will be using a build setup based on pre-built [Golem Image](../requestor-tutorials/vm-runtime/) and allow us to run Node.js script on [Provider](../introduction/provider/).
+In this section we will introduce how to run a Simple Node Application on Golem Network. The created project will be 
+using a build setup based on pre-built [Golem Image](../requestor-tutorials/vm-runtime/) and allow us to run Node.js script on [Provider](../introduction/provider/).
 
 Make sure you have a 16.19.x version of Node.js installed:
 
@@ -43,7 +44,8 @@ node --version
 
 ### Installing yagna requestor
 
-To start working with Golem network we need to install `yagna` daemon locally. In the simplest terms, the daemon allows you to communicate with Golem Network and perform operations on it.
+To start working with Golem network we need to install `yagna` daemon locally. In the simplest terms, the daemon 
+allows you to communicate with Golem Network and perform operations on it.
 
 {% tabs %}
 {% tab title="Easy installation" %}
@@ -101,16 +103,19 @@ It should output: `gftp 0.12.0 (37060503 2022-12-02 build #251)`
 If the above commands executed correctly, congratulations you have just installed the `yagna` daemon in your environment.
 
 {% hint style="info" %}
-If you have encountered problems, or would you like to learn more details about the requestor and `yagna` installation, please take a look in here: [How to install requestor tutorial](../requestor-tutorials/flash-tutorial-of-requestor-development/)
+If you have encountered problems, or would you like to learn more details about the requestor and `yagna` installation, 
+please take a look in here: [How to install requestor tutorial](../requestor-tutorials/flash-tutorial-of-requestor-development/)
 {% endhint %}
 
 ### Configure requestor and fund your wallet
 
-To start using Golem Network you need a key, which will be also be the address of your wallet. For the purposes of this tutorial we are using testnet. To generate a key and fund your wallet follow these steps:
+To start using Golem Network you need a key, which will be also be the address of your wallet. For the purposes of 
+this tutorial we are using testnet. To generate a key and fund your wallet follow these steps:
 
 #### Firstly, start the daemon
 
-To perform any operations on the Golem Network the `yagna` daemon must be running. To do this, open a command line window and type:
+To perform any operations on the Golem Network the `yagna` daemon must be running. To do this, open a command line 
+window and type:
 
 ```bash
 yagna service run
@@ -121,12 +126,15 @@ Important: After you launch the daemon, leave it running in the background while
 {% endhint %}
 
 {% hint style="info" %}
-If you have encountered problems please take look on [Run the daemon](../requestor-tutorials/flash-tutorial-of-requestor-development/#run-the-daemon) section
+If you have encountered problems please take look on 
+[Run the daemon](../requestor-tutorials/flash-tutorial-of-requestor-development/#run-the-daemon) section
 {% endhint %}
 
 #### Secondly, generate the app key (wallet)
 
-To use the network you must have your own unique key(wallet) for which is used for billing. To generate the key, make sure you have running `yagna` daemon from the [previous step](quickstart.md#firstly-start-the-daemon), leave it running in the background and in a separate command line window type in:
+To use the network you must have your own unique key(wallet) for which is used for billing. To generate the key, make 
+sure you have running `yagna` daemon from the [previous step](quickstart.md#firstly-start-the-daemon), leave it running 
+in the background and in a separate command line window type in:
 
 ```bash
 yagna app-key create requestor
@@ -136,20 +144,24 @@ yagna app-key create requestor
 
 #### Thirdly, get some funds
 
-In order to be able to request tasks on Golem Network, you'll need some GLM tokens. To get some funds on testnet, type in:
+In order to be able to request tasks on Golem Network, you'll need some GLM tokens. To get some funds on testnet, type 
+in:
 
 ```bash
 yagna payment fund
 ```
 
-Once you run the command, give some time to transfer funds to your wallet. You can verify whether you already got the funds with:
+Once you run the command, give some time to transfer funds to your wallet. You can verify whether you already got the 
+funds with:
 
 ```bash
 yagna payment status
 ```
 
 {% hint style="info" %}
-If you have encountered problems, or would you like to learn more details about the funding process, please take a look in here: [How to get some GLM tokens](../requestor-tutorials/flash-tutorial-of-requestor-development/#get-some-test-glm-tokens)
+If you have encountered problems, or would you like to learn more details about the funding process, please take a look 
+in here: 
+[How to get some GLM tokens](../requestor-tutorials/flash-tutorial-of-requestor-development/#get-some-test-glm-tokens)
 {% endhint %}
 
 ## Building your first JavaScript app on Golem Network
@@ -207,7 +219,8 @@ If you have the executor ready, it's time to run the script on the Golem Network
 
 #### Setup YAGNA\_APPKEY
 
-In order for the requestor agent to connect with the `yagna` daemon, you need to provide it with the previously-generated app key (wallet) from step [Generate the app key](quickstart.md#secondly-generate-the-app-key-wallet)
+In order for the requestor agent to connect with the `yagna` daemon, you need to provide it with the previously-generated 
+app key (wallet) from step [Generate the app key](quickstart.md#secondly-generate-the-app-key-wallet)
 
 {% tabs %}
 {% tab title="MacOS / Linux" %}
@@ -241,7 +254,7 @@ node index.js
 
 Result in the command line will look like:
 
-![](../.gitbook/assets/quickstart-node-version.gif "QuickStart Node Version Results")
+![](../.gitbook/assets/quickstart-node-version-2.gif "QuickStart Node Version Results")
 
 ### Let's break the code down
 
@@ -257,7 +270,8 @@ import { TaskExecutor } from "yajsapi";
 ```
 {% endcode %}
 
-After importing `TaskExecutor` we have to create IIAFE (Immediately Invoked Async Function Expression) in index.js body, because `TaskExecutor` provides async methods:
+After importing `TaskExecutor` we have to create IIAFE (Immediately Invoked Async Function Expression) in index.js body, 
+because `TaskExecutor` provides async methods:
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```js
@@ -269,7 +283,9 @@ After importing `TaskExecutor` we have to create IIAFE (Immediately Invoked Asyn
 
 #### Create TaskExecutor instance
 
-In our body function first we have to create executor using factory method [Executor.create()](docs/classes/executor\_executor.TaskExecutor.md#create). As a parameter we will provide image hash with Node.js.
+In our body function first we have to create executor using factory method 
+[Executor.create()](docs/classes/executor\_executor.TaskExecutor.md#create). As a parameter we will provide image hash 
+with Node.js.
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```js
@@ -283,9 +299,11 @@ For the testing purposes we are providing pre-built image with Node: `529f7fdaf1
 
 #### Define task to run on provider instance
 
-As the first task we would like to see the node version that is running on the given image. For this purpose we would like to call the `node -v` command on the provider.
+As the first task we would like to see the node version that is running on the given image. For this purpose we would 
+like to call the `node -v` command on the provider.
 
-Let's first create task function that we would like to run on provider. The function named as Worker and implements [Worker](docs/modules/task\_work.md#worker) interface.
+Let's first create task function that we would like to run on provider. The function named as Worker and implements 
+[Worker](docs/modules/task\_work.md#worker) interface.
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```js
@@ -297,7 +315,9 @@ const taskToRunOnProvider = async (workerContext) => {
 
 #### Define commands to run in the task scope
 
-This function gets first parameter `workContext` that is a [WorkContext](docs/classes/task\_work.WorkContext.md) object. This object allow you set the commands that you want to run in the scope of one task on one provider. So the command we would like torun on the provider is `node -v`
+This function gets first parameter `workContext` that is a [WorkContext](docs/classes/task\_work.WorkContext.md) 
+object. This object allow you set the commands that you want to run in the scope of one task on one provider. So the 
+command we would like torun on the provider is `node -v`
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```js
@@ -310,7 +330,8 @@ To access `stdout` on the result object, simply access the `stdout` property.
 
 #### Run the task on Golem Network
 
-To run above defined task `taskToRunOnProvider` on the Golem Network, we must pass it as a parameter of the `run()` method on the instance of the `executor`.
+To run above defined task `taskToRunOnProvider` on the Golem Network, we must pass it as a parameter of the `run()` 
+method on the instance of the `executor`.
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```js
@@ -425,7 +446,7 @@ import { TaskExecutor } from "yajsapi";
 
 Result in the command line will look like:
 
-![](../.gitbook/assets/quickstart-node-version-upload.gif "QuickStart Node Version Results")
+![](../.gitbook/assets/quickstart-node-version-upload-2.gif "QuickStart Node Version Results")
 
 #### Summary
 
