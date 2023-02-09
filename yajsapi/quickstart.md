@@ -20,7 +20,7 @@ If you have already installed the yaggna daemon and configured the requestor cor
 ## Preparing the environment
 
 {% hint style="info" %}
-#### Prerequisites
+**Prerequisites**
 
 * OS X 10.14+, Ubuntu 18.04 or 20.04 or Windows
 * Familiarity with the command line
@@ -275,7 +275,7 @@ await executor.end();
 
 Now put all the code together. You should get an `index.js` file that looks like the following:
 
-{% code title="index.js" overflow="false" lineNumbers="true" %}
+{% code title="index.js" lineNumbers="true" %}
 ```js
 import { TaskExecutor } from "yajsapi";
 
@@ -336,16 +336,13 @@ node index.js
 
 Result in the command line will look like:
 
-![](../.gitbook/assets/quickstart-node-version.gif "QuickStart Node Version Results")
-
+![](../.gitbook/assets/quickstart-node-version.gif)
 
 ### Refactor of the existing code
 
-For the purpose of understanding the work with the executor, we have divided the code into small parts, 
-but we can write it much simpler and refactor it to this form:
+For the purpose of understanding the work with the executor, we have divided the code into small parts, but we can write it much simpler and refactor it to this form:
 
-
-{% code title="index.js" overflow="false" lineNumbers="true" %}
+{% code title="index.js" lineNumbers="true" %}
 ```js
 import { TaskExecutor } from "yajsapi";
 
@@ -359,21 +356,19 @@ import { TaskExecutor } from "yajsapi";
 ```
 {% endcode %}
 
-It looks cleaner and more simple. Isn't it? 
+It looks cleaner and more simple. Isn't it?
 
-## Run node script on provider
+## Run node JS script on provider
 
-Now that you know how to run a simple command in the provider's shell, it's time to go one step further. In this section, 
-we will create a simple script which we will then send to the provider and execute it using Node.
+Now that you know how to run a simple command in the provider's shell, it's time to go one step further. In this section, we will create a simple script which we will then send to the provider and execute it using Node.
 
 ### Create task script
 
-For starters, let's create a simple js file that will execute on the provider. Let's generate two random numbers and 
-then add them and return the result of this operation. 
+For starters, let's create a simple js file that will execute on the provider. Let's generate two random numbers and then add them and return the result of this operation.
 
 To do this, let's create a task.js file:
 
-{% code title="task.js" overflow="false" lineNumbers="true" %}
+{% code title="task.js" lineNumbers="true" %}
 ```js
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -389,22 +384,20 @@ console.log(`Sum of ${num1} and ${num2} equal to ${num1 + num2}`);
 {% endcode %}
 
 You can test your code yours machine by running:
+
 ```bash
 node task.js
 ```
+
 ### Modify executor script
 
-When we have a file with the task ready, we should modify our executor code to send it 
-to the provider, and then execute it on the provider's machine.
+When we have a file with the task ready, we should modify our executor code to send it to the provider, and then execute it on the provider's machine.
 
 #### Uploading file to provider machine
 
-When you look at the interface of the [WorkContext](docs/classes/task\_work.WorkContext.md) object, you will notice 
-that there is an [uploadFile()](docs/classes/task\_work.WorkContext.md#uploadfile) method, among others. This method 
-is used to upload file to provider instance in a scope of single task. So in order to upload our task.js file to the 
-provider we need to add the command:
+When you look at the interface of the [WorkContext](docs/classes/task\_work.WorkContext.md) object, you will notice that there is an [uploadFile()](docs/classes/task\_work.WorkContext.md#uploadfile) method, among others. This method is used to upload file to provider instance in a scope of single task. So in order to upload our task.js file to the provider we need to add the command:
 
-{% code title="task.js" overflow="false" lineNumbers="true" %}
+{% code title="task.js" lineNumbers="true" %}
 ```js
     await ctx.uploadFile("./task.js", "/golem/resource/task.js");
 ```
@@ -412,12 +405,11 @@ provider we need to add the command:
 
 #### Modify code to execute uploaded JS file
 
-The last step will be to modify the command executed on the provider `node -v` to a command that will execute our 
-`task.js` file - `node /golem/work/task.js`.
+The last step will be to modify the command executed on the provider `node -v` to a command that will execute our `task.js` file - `node /golem/work/task.js`.
 
 Our `index.js` file after modifications will look as follows:
 
-{% code title="index.js" overflow="false" lineNumbers="true" %}
+{% code title="index.js" lineNumbers="true" %}
 ```js
 import { TaskExecutor } from "yajsapi";
 
@@ -436,10 +428,8 @@ import { TaskExecutor } from "yajsapi";
 
 Result in the command line will look like:
 
-![](../.gitbook/assets/quickstart-node-version-upload.gif "QuickStart Node Version Results")
+![](../.gitbook/assets/quickstart-node-version-upload.gif)
 
 #### Summary
 
-We tried to familiarize you with how to work with Golem Network. We hope that now you understand the basics of 
-application development. We encourage you to continue experimenting with code. If you have any suggestions about 
-this article, we invite you to [contact us](../see-also/contact.md).
+We tried to familiarize you with how to work with Golem Network. We hope that now you understand the basics of application development. We encourage you to continue experimenting with code. If you have any suggestions about this article, we invite you to [contact us](../see-also/contact.md).

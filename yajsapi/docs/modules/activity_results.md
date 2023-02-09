@@ -1,8 +1,8 @@
-# Module: activity/results
+# activity/results
 
 ## Table of contents
 
 ### Interfaces
 
-- [Result](../interfaces/activity_results.Result.md)
-- [StreamingBatchEvent](../interfaces/activity_results.StreamingBatchEvent.md)
+* [Result](../../../new\_yajsapi/interfaces/activity\_results.Result.md)
+* [StreamingBatchEvent](../../../new\_yajsapi/interfaces/activity\_results.StreamingBatchEvent.md)

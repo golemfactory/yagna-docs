@@ -10,13 +10,13 @@ This section outlines the steps required to run the hashcat password-recovery ex
 
 This example demonstrates the following Golem features:
 
-- VM runtime
-- Task execution
-- Parallel task execution across multiple providers
-- Submitting multiple task sequences to a single Golem engine
-- Setting timeouts for commands executed on a provider
-- Reading output from commands executed on a provider
-- File transfer to/from a provider's exe unit
+* VM runtime
+* Task execution
+* Parallel task execution across multiple providers
+* Submitting multiple task sequences to a single Golem engine
+* Setting timeouts for commands executed on a provider
+* Reading output from commands executed on a provider
+* File transfer to/from a provider's exe unit
 
 ## What is hashcat?
 
@@ -38,26 +38,22 @@ We also know the password mask:
 ?a?a?a
 ```
 
-
-This means the password consists of three alphanumeric characters. 
-To find the password that matches the given hash and mask, we run the following command:
+This means the password consists of three alphanumeric characters. To find the password that matches the given hash and mask, we run the following command:
 
 ```
 hashcat -a 3 -m 400 in.hash ?a?a?a
 ```
 
-
 The parameters used in the command are:
 
-- `-a 3` specifies a brute-force attack. There are 5 other types of attacks.
-- `-m 400` specifies the phpass algorithm. There are 320 other algorithms supported by hashcat.
-- `in.hash` is the name of the file that contains the hashed password.
-- `?a?a?a` is the mask to use.
+* `-a 3` specifies a brute-force attack. There are 5 other types of attacks.
+* `-m 400` specifies the phpass algorithm. There are 320 other algorithms supported by hashcat.
+* `in.hash` is the name of the file that contains the hashed password.
+* `?a?a?a` is the mask to use.
 
 For more information on hashcat arguments, see the complete reference: [https://hashcat.net/wiki/doku.php?id=hashcat](https://hashcat.net/wiki/doku.php?id=hashcat)
 
 As a result of the above command, the file `hashcat.potfile` will be created and contain the following content:
-
 
 ```
 $P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/:pas
@@ -73,7 +69,7 @@ To speed up hashcat, you can use the concept of the keyspace to process in paral
 hashcat --keyspace -a 3 ?a?a?a -m 400
 ```
 
-The output of the above command will be the size of the keyspace, for example: `9025`. 
+The output of the above command will be the size of the keyspace, for example: `9025`.
 
 Next, you can divide the keyspace into smaller fragments and process each fragment in parallel with separate workers. Here's an example for dividing the keyspace into 3 parts:
 
@@ -93,12 +89,12 @@ The above command will process the `3009..6016` fragment, and any results in tha
 
 Before diving into the example, make sure you have the necessary environment set up. Here's what you need:
 
-- Install `yagna` daemon on your machine
-- Familiarize yourself with the setup of the environment required to run Python high-level API examples by going through the [Flash Tutorial of Requestor Development](../../../requestor-tutorials/flash-tutorial-of-requestor-development/README.md)
-- Set the `YAGNA_APPKEY` environment variable to the value of the generated app key
-- Initialize payment with `yagna payment init -sender` (Note: payment needs to be initialized after each launch of `yagna service run`)
-- Activate the virtual python environment for the tutorial
-- Install dependencies and clone the `yajsapi` repository (which contains the tutorial examples)
+* Install `yagna` daemon on your machine
+* Familiarize yourself with the setup of the environment required to run Python high-level API examples by going through the [Flash Tutorial of Requestor Development](../../../requestor-tutorials/flash-tutorial-of-requestor-development/)
+* Set the `YAGNA_APPKEY` environment variable to the value of the generated app key
+* Initialize payment with `yagna payment init -sender` (Note: payment needs to be initialized after each launch of `yagna service run`)
+* Activate the virtual python environment for the tutorial
+* Install dependencies and clone the `yajsapi` repository (which contains the tutorial examples)
 
 Then, navigate to `examples/yacat`:
 
@@ -108,27 +104,24 @@ cd examples/yacat
 
 In the `examples/yacat` directory, you'll find two files that will be used in this example:
 
-- `yacat.Dockerfile` - the Docker file used for the definition of the provider's container images
-- `yacat.ts` - requestor agent's entry point which deals with orchestration of the container runs.
+* `yacat.Dockerfile` - the Docker file used for the definition of the provider's container images
+* `yacat.ts` - requestor agent's entry point which deals with orchestration of the container runs.
 
 {% hint style="success" %}
 Please note that the following should be in place before starting the example:
 
-- The `yagna` daemon is running in the background
-- The virtual python environment for the tutorial is activated
-- Dependencies are installed
+* The `yagna` daemon is running in the background
+* The virtual python environment for the tutorial is activated
+* Dependencies are installed
 {% endhint %}
 
 ## Let's get to work - the Dockerfile
 
-Golem is designed to use existing Docker images, so you can use any existing docker image that meets your needs. 
-However, if a suitable image is not available on the [docker hub](https://hub.docker.com/), you will have to create a custom one.
+Golem is designed to use existing Docker images, so you can use any existing docker image that meets your needs. However, if a suitable image is not available on the [docker hub](https://hub.docker.com/), you will have to create a custom one.
 
 ### Adjusting the Dockerfile
 
-For the `yacat` example, we're going to use an off-the-shelf hashcat image (`dizcza/docker-hashcat:intel-cpu)` and modify it slightly for Golem. 
-The resultant Dockerfile is included in the example as `yacat.Dockerfile`:
-
+For the `yacat` example, we're going to use an off-the-shelf hashcat image (`dizcza/docker-hashcat:intel-cpu)` and modify it slightly for Golem. The resultant Dockerfile is included in the example as `yacat.Dockerfile`:
 
 ```Dockerfile
 FROM dizcza/docker-hashcat:intel-cpu
@@ -137,9 +130,7 @@ VOLUME /golem/input /golem/output
 WORKDIR /golem/entrypoint
 ```
 
-The only important aspect to consider while preparing the Dockerfile is to define a place in the container's file system that will be used for file transfer. 
-For this example, the volume is defined as `/golem/input` and `/golem/output` for input and output file transfer respectively. 
-The requestor agent code will need to use these locations as directories for file transfers.
+The only important aspect to consider while preparing the Dockerfile is to define a place in the container's file system that will be used for file transfer. For this example, the volume is defined as `/golem/input` and `/golem/output` for input and output file transfer respectively. The requestor agent code will need to use these locations as directories for file transfers.
 
 ```
 VOLUME /golem/input /golem/output
@@ -147,7 +138,7 @@ VOLUME /golem/input /golem/output
 
 This makes `/golem/input` and `/golem/output` locations we will use for our input/output file transfer. For the requestor agent code, which we are going to discuss in the next chapter, we need to know the volume (or volumes) name(s) and use it as a directory for the file transfers.
 
-![](../../../.gitbook/assets/requestor-vm-comms.jpg)
+![](<../../../.gitbook/assets/tnm-docs-infographics-08 (1).jpg>)
 
 It's worth noting that all changes in other (non-VOLUME mounted) container directories are kept in RAM. Only the contents of the VOLUME directories are stored in the provider's OS file system. This means that if your provider-side code creates large temporary files, you should store them in the directory defined as a VOLUME to avoid running out of RAM.
 
@@ -156,6 +147,7 @@ Keep in mind that tasks within a single worker instance run within the same virt
 Docker's `ENTRYPOINT` statement is ignored and replaced by the exeunit's own entrypoint, so you cannot rely on this feature in your Dockerfiles. You will need to pass the relevant commands from the requestor agent as part of the execution script after the image is deployed and started on the provider's VM.
 
 ### Creating image hash
+
 To build the Docker image, you can use the following commands:
 
 ```
@@ -178,7 +170,7 @@ Make sure to save this hash as you will need it in the requestor agent code.
 The details of docker image conversion are described here:
 
 {% content-ref url="../../../requestor-tutorials/vm-runtime/convert-a-docker-image-into-a-golem-image.md" %}
-[Converting an image from Docker to Golem](../../../requestor-tutorials/vm-runtime/convert-a-docker-image-into-a-golem-image.md)
+[convert-a-docker-image-into-a-golem-image.md](../../../requestor-tutorials/vm-runtime/convert-a-docker-image-into-a-golem-image.md)
 {% endcontent-ref %}
 
 ## The requestor agent code
@@ -250,7 +242,7 @@ main(options).catch((e) => console.error(e));
 
 ## So what is happening here?
 
-We start with a high-level overview of the steps performed by the requestor agent. In the [next section](#how-does-the-code-work) we'll dig into the implementation details.
+We start with a high-level overview of the steps performed by the requestor agent. In the [next section](hashcat.md#how-does-the-code-work) we'll dig into the implementation details.
 
 ### Compute keyspace size
 
@@ -306,18 +298,18 @@ const executor = await TaskExecutor.create({
     logLevel: args.debug ? "debug" : "info",
   });
 ```
-The `package` parameter is required and points to the image that we want the containers to run. 
-In this example, the hash received from `gvmkit-build` is used.
+
+The `package` parameter is required and points to the image that we want the containers to run. In this example, the hash received from `gvmkit-build` is used.
 
 The other parameters are:
 
-- `minMemGib`: minimum memory requirement for the provider
-- `minStorageGib`: minimum storage requirement for the provider
-- `maxParallelTasks`: the maximum number of parallel tasks
-- `budget`: the maximum spendings for executing all the tasks with Golem
-- `subnetTag`: the providers subnet to be used; leave the default value unless you want to run your own network of test providers
-- `payment.driver` and `payment.network`: the Ethereum blockchain and payment driver, respectively; use the mainnet network for real-live tasks to be able to use all the providers in the Golem network
-- `logLevel`: the level of logging for the default logger
+* `minMemGib`: minimum memory requirement for the provider
+* `minStorageGib`: minimum storage requirement for the provider
+* `maxParallelTasks`: the maximum number of parallel tasks
+* `budget`: the maximum spendings for executing all the tasks with Golem
+* `subnetTag`: the providers subnet to be used; leave the default value unless you want to run your own network of test providers
+* `payment.driver` and `payment.network`: the Ethereum blockchain and payment driver, respectively; use the mainnet network for real-live tasks to be able to use all the providers in the Golem network
+* `logLevel`: the level of logging for the default logger
 
 #### First call to `executor.run`: Computing keyspace size
 
@@ -369,7 +361,6 @@ for await (const result of results) {
   }
 ```
 
-
 ## Example run
 
 To demonstrate the usage of `yacat.ts` script, let's consider a scenario where you have a hash `$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/` and a mask `?a?a?a`. The goal is to crack the password for the given hash.
@@ -386,10 +377,7 @@ ts-node yacat.ts  --mask '?a?a?a' --hash '$P$5ZDzPE45CLLhEx/72qt3NehVzwN2Ry/'
 This will start the cracking process and should return the password as "pas".
 
 {% hint style="danger" %}
-
-It's important to note that in order to run `.ts` files directly, you must have `ts-node` installed. 
-Alternatively, you can compile the `.ts` file to `.js` using `tsc` and run the `.js` file with the standard Node.js interpreter.
-
+It's important to note that in order to run `.ts` files directly, you must have `ts-node` installed. Alternatively, you can compile the `.ts` file to `.js` using `tsc` and run the `.js` file with the standard Node.js interpreter.
 {% endhint %}
 
 In case you want to know about the optional parameters supported by `yacat.ts`, run the following command in the terminal:

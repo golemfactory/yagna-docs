@@ -1,11 +1,11 @@
-# Module: payment/rejection
+# payment/rejection
 
 ## Table of contents
 
 ### Enumerations
 
-- [RejectionReason](../enums/payment_rejection.RejectionReason.md)
+* [RejectionReason](../../../new\_yajsapi/enums/payment\_rejection.RejectionReason.md)
 
 ### Interfaces
 
-- [Rejection](../interfaces/payment_rejection.Rejection.md)
+* [Rejection](../../../new\_yajsapi/interfaces/payment\_rejection.Rejection.md)

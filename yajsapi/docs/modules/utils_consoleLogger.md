@@ -1,7 +1,7 @@
-# Module: utils/consoleLogger
+# utils/consoleLogger
 
 ## Table of contents
 
 ### Classes
 
-- [ConsoleLogger](../classes/utils_consoleLogger.ConsoleLogger.md)
+* [ConsoleLogger](../../../new\_yajsapi/classes/utils\_consoleLogger.ConsoleLogger.md)
