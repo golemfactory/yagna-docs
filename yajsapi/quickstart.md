@@ -4,49 +4,41 @@ description: Create your own JavaScript application on Golem
 
 # QuickStart
 
-In this article, we'll show you how to launch your first JavaScript app on Golem Network from scratch in 15 minutes. We have divided the entire article into 4 sections:
+In this article, we'll show you how to launch your first JavaScript app on Golem Network from scratch in 15 minutes. We 
+have divided the entire article into 5 sections:
 
 * [Preparing the environment](quickstart.md#preparing-the-environment)
 * [Installing yagna requestor](quickstart.md#installing-yagna-requestor)
 * [Building your first JavaScript application on Golem Network](quickstart.md#building-your-first-javascript-app-on-golem-network)
-* [Run node script on provider](quickstart.md#building-your-first-javascript-app-on-golem-network)
+* [Run node script on provider](quickstart.md#run-the-app)
+* [Extend app functionality](quickstart.md#extend-app-functionality)
 
-The first two sections are duplicated with the more elaborate ones described elsewhere in the handbook. However, the purpose of this article is not to get into the details, but to show you **how to start working with Golem step by step in minutes**.
+The first two sections are duplicated with the more elaborate ones described elsewhere in the handbook. However, the 
+purpose of this article is not to get into the details, but to show you **how to start working with Golem step by step 
+in minutes**.
 
-If you have a development environment already configured, you can go ahead and skip the first section and move on to the next one.
+If you have a development environment already configured, you can go ahead and skip the first section and move on to 
+the next one.
 
-If you have already installed the yaggna daemon and configured the requestor correctly, go straight to the third section.
+If you have already installed the yaggna daemon and configured the requestor correctly, go straight to the third 
+section.
 
 ## Preparing the environment
 
 {% hint style="info" %}
-**Prerequisites**
+#### Prerequisites
 
 * OS X 10.14+, Ubuntu 18.04 or 20.04 or Windows
 * Familiarity with the command line
-* Install [Node.js](https://nodejs.org/) version 16.x
-* Install [Yarn](https://classic.yarnpkg.com/en/docs/install) version 1.22.3+
-* Install [Git](https://git-scm.com/downloads)
+* Install [Node.js](https://nodejs.org/) version 16.19.x
 {% endhint %}
 
 In this section we will introduce how to run a Simple Node Application on Golem Network. The created project will be using a build setup based on pre-built [Golem Image](../requestor-tutorials/vm-runtime/) and allow us to run Node.js script on [Provider](../introduction/provider/).
 
-Make sure you have a 16.x version of Node.js installed:
+Make sure you have a 16.19.x version of Node.js installed:
 
 ```bash
 node --version
-```
-
-Make sure you have a 1.22.3+ version of Yarn installed:
-
-```bash
-yarn --version
-```
-
-Make sure you have a Git installed:
-
-```bash
-git --version
 ```
 
 ### Installing yagna requestor
@@ -160,14 +152,6 @@ yagna payment status
 If you have encountered problems, or would you like to learn more details about the funding process, please take a look in here: [How to get some GLM tokens](../requestor-tutorials/flash-tutorial-of-requestor-development/#get-some-test-glm-tokens)
 {% endhint %}
 
-#### Fourthly, init yagna daemon as a sender
-
-When you have already configured the yagna demon and it is time to initialize as a sender.
-
-```bash
-yagna payment init --sender
-```
-
 ## Building your first JavaScript app on Golem Network
 
 Congratulations you are now ready to start building your first JavaScript app on the Golem Network.
@@ -179,7 +163,7 @@ Create a new node project by typing in the command line:
 ```bash
 mkdir golem-tutorial-js
 cd golem-tutorial-js
-yarn init golem-tutorial-js
+npm init golem-tutorial-js
 ```
 
 ### Create a node script that will execute task on provider
@@ -187,8 +171,81 @@ yarn init golem-tutorial-js
 Add `yajsapi` to your project:
 
 ```bask
-yarn add yajsapi
+npm install yajsapi
 ```
+
+### Your first app on Golem Network
+
+Let's create a simple code that will run a command displaying the node JS version on the provider.
+For this purpose we would like to call the command `node -v`. 
+Let's create `index.js` file that looks like the following:
+
+{% code title="index.js" overflow="false" lineNumbers="true" %}
+```js
+import { TaskExecutor } from "yajsapi";
+
+(async () => {
+   const executor = await TaskExecutor.create("529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4");
+
+   const taskToRunOnProvider = async (workerContext) => {
+      const commandToRunInProviderShell = "node -v";
+      const result = await workerContext.run(commandToRunInProviderShell);
+      return result.stdout;
+   }
+
+   const taskResult = await executor.run(taskToRunOnProvider);
+   await executor.end();
+   
+   console.log('Task result:', taskResult);
+})();
+```
+{% endcode %}
+
+### Run the app
+
+If you have the executor ready, it's time to run the script on the Golem Network.
+
+#### Setup YAGNA\_APPKEY
+
+In order for the requestor agent to connect with the `yagna` daemon, you need to provide it with the previously-generated app key (wallet) from step [Generate the app key](quickstart.md#secondly-generate-the-app-key-wallet)
+
+{% tabs %}
+{% tab title="MacOS / Linux" %}
+**On MacOS / Linux type in command line**
+
+```bash
+export YAGNA_APPKEY=insert-your-32-char-app-key-here
+```
+{% endtab %}
+
+{% tab title="Windows" %}
+**On Windows type in command line**
+
+```bash
+set YAGNA_APPKEY=your-32-char-app-key
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+If you don't remember your key(wallet) you can always check it by typing in the command line: `yagna app-key list`
+{% endhint %}
+
+#### Run your first app on Golem Network
+
+To run your scrypt on the Golem Network simply run the command:
+
+```bash
+node index.js
+```
+
+Result in the command line will look like:
+
+![](../.gitbook/assets/quickstart-node-version.gif "QuickStart Node Version Results")
+
+### Let's break the code down
+
+Since you already have a working example on the golem, I'll try to show you how the code is built.
 
 #### Import TaskExecutor
 
@@ -271,78 +328,12 @@ await executor.end();
 ```
 {% endcode %}
 
-#### So lets put everything together:
-
-Now put all the code together. You should get an `index.js` file that looks like the following:
-
-{% code title="index.js" lineNumbers="true" %}
-```js
-import { TaskExecutor } from "yajsapi";
-
-(async () => {
-   const executor = await TaskExecutor.create("529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4");
-
-   const taskToRunOnProvider = async (workerContext) => {
-      const commandToRunInProviderShell = "node -v";
-      const result = await workerContext.run(commandToRunInProviderShell);
-      return result.stdout;
-   }
-
-   const taskResult = await executor.run(taskToRunOnProvider);
-   await executor.end();
-   
-   console.log('Task result:', taskResult);
-})();
-```
-{% endcode %}
-
-### Run the first script on Golem Network
-
-If you have the executor ready, it's time to run the script on the Golem Network.
-
-#### Setup YAGNA\_APPKEY
-
-In order for the requestor agent to connect with the `yagna` daemon, you need to provide it with the previously-generated app key (wallet) from step [Generate the app key](quickstart.md#secondly-generate-the-app-key-wallet)
-
-{% tabs %}
-{% tab title="MacOS / Linux" %}
-**On MacOS / Linux type in command line**
-
-```bash
-export YAGNA_APPKEY=insert-your-32-char-app-key-here
-```
-{% endtab %}
-
-{% tab title="Windows" %}
-**On Windows type in command line**
-
-```bash
-set YAGNA_APPKEY=your-32-char-app-key
-```
-{% endtab %}
-{% endtabs %}
-
-{% hint style="info" %}
-If you don't remember your key(wallet) you can always check it by typing in the command line: `yagna app-key list`
-{% endhint %}
-
-#### Run your first app on Golem Network
-
-To run your scrypt on the Golem Network simply run the command:
-
-```bash
-node index.js
-```
-
-Result in the command line will look like:
-
-![](../.gitbook/assets/quickstart-node-version.gif)
-
 ### Refactor of the existing code
 
-For the purpose of understanding the work with the executor, we have divided the code into small parts, but we can write it much simpler and refactor it to this form:
+For the purpose of understanding the work with the executor, we have divided the code into small parts, 
+but we can write it much simpler and refactor it to this form:
 
-{% code title="index.js" lineNumbers="true" %}
+{% code title="index.js" overflow="false" lineNumbers="true" %}
 ```js
 import { TaskExecutor } from "yajsapi";
 
@@ -356,19 +347,21 @@ import { TaskExecutor } from "yajsapi";
 ```
 {% endcode %}
 
-It looks cleaner and more simple. Isn't it?
+It looks cleaner and more simple. Isn't it? 
 
-## Run node JS script on provider
+## Run node script on provider
 
-Now that you know how to run a simple command in the provider's shell, it's time to go one step further. In this section, we will create a simple script which we will then send to the provider and execute it using Node.
+Now that you know how to run a simple command in the provider's shell, it's time to go one step further. In this section, 
+we will create a simple script which we will then send to the provider and execute it using Node.
 
 ### Create task script
 
-For starters, let's create a simple js file that will execute on the provider. Let's generate two random numbers and then add them and return the result of this operation.
+For starters, let's create a simple js file that will execute on the provider. Let's generate two random numbers and 
+then add them and return the result of this operation. 
 
 To do this, let's create a task.js file:
 
-{% code title="task.js" lineNumbers="true" %}
+{% code title="task.js" overflow="false" lineNumbers="true" %}
 ```js
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -384,20 +377,23 @@ console.log(`Sum of ${num1} and ${num2} equal to ${num1 + num2}`);
 {% endcode %}
 
 You can test your code yours machine by running:
-
 ```bash
 node task.js
 ```
 
-### Modify executor script
+## Extend app functionality
 
-When we have a file with the task ready, we should modify our executor code to send it to the provider, and then execute it on the provider's machine.
+When we have a file with the task ready, we should modify our executor code to send it 
+to the provider, and then execute it on the provider's machine.
 
 #### Uploading file to provider machine
 
-When you look at the interface of the [WorkContext](docs/classes/task\_work.WorkContext.md) object, you will notice that there is an [uploadFile()](docs/classes/task\_work.WorkContext.md#uploadfile) method, among others. This method is used to upload file to provider instance in a scope of single task. So in order to upload our task.js file to the provider we need to add the command:
+When you look at the interface of the [WorkContext](docs/classes/task\_work.WorkContext.md) object, you will notice 
+that there is an [uploadFile()](docs/classes/task\_work.WorkContext.md#uploadfile) method, among others. This method 
+is used to upload file to provider instance in a scope of single task. So in order to upload our task.js file to the 
+provider we need to add the command:
 
-{% code title="task.js" lineNumbers="true" %}
+{% code title="task.js" overflow="false" lineNumbers="true" %}
 ```js
     await ctx.uploadFile("./task.js", "/golem/resource/task.js");
 ```
@@ -405,11 +401,12 @@ When you look at the interface of the [WorkContext](docs/classes/task\_work.Work
 
 #### Modify code to execute uploaded JS file
 
-The last step will be to modify the command executed on the provider `node -v` to a command that will execute our `task.js` file - `node /golem/work/task.js`.
+The last step will be to modify the command executed on the provider `node -v` to a command that will execute our 
+`task.js` file - `node /golem/work/task.js`.
 
 Our `index.js` file after modifications will look as follows:
 
-{% code title="index.js" lineNumbers="true" %}
+{% code title="index.js" overflow="false" lineNumbers="true" %}
 ```js
 import { TaskExecutor } from "yajsapi";
 
@@ -428,8 +425,10 @@ import { TaskExecutor } from "yajsapi";
 
 Result in the command line will look like:
 
-![](../.gitbook/assets/quickstart-node-version-upload.gif)
+![](../.gitbook/assets/quickstart-node-version-upload.gif "QuickStart Node Version Results")
 
 #### Summary
 
-We tried to familiarize you with how to work with Golem Network. We hope that now you understand the basics of application development. We encourage you to continue experimenting with code. If you have any suggestions about this article, we invite you to [contact us](../see-also/contact.md).
+We tried to familiarize you with how to work with Golem Network. We hope that now you understand the basics of 
+application development. We encourage you to continue experimenting with code. If you have any suggestions about 
+this article, we invite you to [contact us](../see-also/contact.md).
