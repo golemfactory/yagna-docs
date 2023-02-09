@@ -1,11 +1,11 @@
-# Module: package/package
+# package/package
 
 ## Table of contents
 
 ### Interfaces
 
-- [PackageOptions](../interfaces/package_package.PackageOptions.md)
+* [PackageOptions](../../../new\_yajsapi/interfaces/package\_package.PackageOptions.md)
 
 ### Classes
 
-- [Package](../classes/package_package.Package.md)
+* [Package](../../../new\_yajsapi/classes/package\_package.Package.md)

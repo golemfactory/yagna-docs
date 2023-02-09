@@ -1,16 +1,16 @@
-# Module: agreement/agreement
+# agreement/agreement
 
 ## Table of contents
 
 ### Interfaces
 
-- [ProviderInfo](../interfaces/agreement_agreement.ProviderInfo.md)
-- [AgreementOptions](../interfaces/agreement_agreement.AgreementOptions.md)
+* [ProviderInfo](../../../new\_yajsapi/interfaces/agreement\_agreement.ProviderInfo.md)
+* [AgreementOptions](../../../new\_yajsapi/interfaces/agreement\_agreement.AgreementOptions.md)
 
 ### Enumerations
 
-- [AgreementStateEnum](../enums/agreement_agreement.AgreementStateEnum.md)
+* [AgreementStateEnum](../../../new\_yajsapi/enums/agreement\_agreement.AgreementStateEnum.md)
 
 ### Classes
 
-- [Agreement](../classes/agreement_agreement.Agreement.md)
+* [Agreement](../../../new\_yajsapi/classes/agreement\_agreement.Agreement.md)

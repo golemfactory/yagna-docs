@@ -1,7 +1,7 @@
-# Module: storage/provider
+# storage/provider
 
 ## Table of contents
 
 ### Interfaces
 
-- [StorageProvider](../interfaces/storage_provider.StorageProvider.md)
+* [StorageProvider](../../../new\_yajsapi/interfaces/storage\_provider.StorageProvider.md)

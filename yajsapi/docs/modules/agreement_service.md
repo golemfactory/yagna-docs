@@ -1,8 +1,8 @@
-# Module: agreement/service
+# agreement/service
 
 ## Table of contents
 
 ### Interfaces
 
-- [AgreementServiceOptions](../interfaces/agreement_service.AgreementServiceOptions.md)
-- [AgreementProposal](../interfaces/agreement_service.AgreementProposal.md)
+* [AgreementServiceOptions](../../../new\_yajsapi/interfaces/agreement\_service.AgreementServiceOptions.md)
+* [AgreementProposal](../../../new\_yajsapi/interfaces/agreement\_service.AgreementProposal.md)

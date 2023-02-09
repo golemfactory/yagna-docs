@@ -6,17 +6,16 @@ description: Computation Payload Manifest description, its schema, and configura
 
 _Computation Payload Manifest_ allows a [requestor](../../introduction/requestor.md) to define an application package _Payload_ and allows to set constraints on the computations performed on a [Provider](../../introduction/provider.md) node.
 
-A manifest can be [configured in yapapi](#configuration). 
+A manifest can be [configured in yapapi](computation-payload-manifest.md#configuration).
 
 The provider node operator controls what computations can be performed by:
 
-  - [Importing certificates](#3-importing-application-authors-certificates) used to sign app authors' certificates into the provider's [keystore](../../provider-tutorials/provider-cli.md#keystore) (which allows the provider agent to verify _manifest_ signatures)
-
-  - Adding domain patterns to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist) (which makes the manifest [signature](#2-manifest-signature) optional).
+* [Importing certificates](computation-payload-manifest.md#3-importing-application-authors-certificates) used to sign app authors' certificates into the provider's [keystore](../../provider-tutorials/provider-cli.md#keystore) (which allows the provider agent to verify _manifest_ signatures)
+* Adding domain patterns to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist) (which makes the manifest [signature](computation-payload-manifest.md#2-manifest-signature) optional).
 
 ## Configuration
 
-The manifest can be configured as a [yapapi.payload.vm.manifest](https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.manifest) function parameter together with an optional manifest signature and the [App author's certificate](#certificates).
+The manifest can be configured as a [yapapi.payload.vm.manifest](https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.manifest) function parameter together with an optional manifest signature and the [App author's certificate](computation-payload-manifest.md#certificates).
 
 Check the [external API request example](../service-development/service-example-6-external-api-request.md) for details.
 
@@ -28,7 +27,7 @@ _Computation Payload Manifest_ must follow a specific [JSON Schema](computation-
 
 Manifests can be verified using `jsonschema` library:
 
-```sh
+```
 wget https://handbook.golem.network/requestor-tutorials/vm-runtime/computation-payload-manifest.schema.json
 pip install jsonschema
 jsonschema --instance manifest.json computation-payload-manifest.schema.json
@@ -36,7 +35,7 @@ jsonschema --instance manifest.json computation-payload-manifest.schema.json
 
 ### Payload object
 
-_Computation Payload Manifest_ **must** contain at least one _Payload_ object. 
+_Computation Payload Manifest_ **must** contain at least one _Payload_ object.
 
 _Payload_ definition allows to define [GVMI images](convert-a-docker-image-into-a-golem-image.md) used by Application and supported architecture.
 
@@ -64,85 +63,81 @@ Simple _Computation Payload Manifest_ with _Payload_ definition:
 
 ### Computation Manifest object
 
-_Computation Payload Manifest_ **can** contain _Computation Manifests_ object. 
+_Computation Payload Manifest_ **can** contain _Computation Manifests_ object.
 
-With a Computation Manifest object, [Requestor](../../introduction/requestor.md) constrains themself to a certain set of allowed actions, to be negotiated with and approved by a [Provider](../../introduction/provider.md). 
+With a Computation Manifest object, [Requestor](../../introduction/requestor.md) constrains themself to a certain set of allowed actions, to be negotiated with and approved by a [Provider](../../introduction/provider.md).
 
 Requestors' actions will be verified against the _Manifest_ during computation.
 
 Supported _Computation Manifest_ constraints:
 
-  - #### `compManifest.script`
+*   **`compManifest.script`**
 
     Defines a set of allowed ExeScript commands and applies constraints to their arguments.
 
-    - #### `compManifest.script.commands` : List[Script]
-  
-      Specifies a curated list of commands in a form of:
+    *   **`compManifest.script.commands` : List\[Script]**
 
-      - UTF-8 encoded JSON strings
+        Specifies a curated list of commands in a form of:
 
-        Command context (e.g. env) or argument matching mode needs to be specified for a command.
+        *   UTF-8 encoded JSON strings
 
-        Example: 
-        
-        ```json
-        [
-          "{
-            \"run\": { 
-              \"args\": \"/bin/date -R\", 
-              \"env\": { 
-                \"MYVAR\": \"42\", 
-                \"match\": \"strict\" 
-              }
-            }
-          }"
-        ]
+            Command context (e.g. env) or argument matching mode needs to be specified for a command.
 
-      - UTF-8 encoded strings
+            Example:
 
-        No command context or matching mode needs to be specified.
+            ```json
+            [
+              "{
+                \"run\": { 
+                  \"args\": \"/bin/date -R\", 
+                  \"env\": { 
+                    \"MYVAR\": \"42\", 
+                    \"match\": \"strict\" 
+                  }
+                }
+              }"
+            ]
 
-        Example: 
-        
-        ```json
-        [
-          "run /bin/cat /etc/motd", 
-          "run /bin/date -R"
-        ]
-        ```
+            ```
+        *   UTF-8 encoded strings
 
-      - Mix of both
+            No command context or matching mode needs to be specified.
 
-      Commands `deploy`, `start` and `terminate` are always allowed. These values become the default if no `compManifest.script.commands` property has been set, but the `compManifest` object is present.
+            Example:
 
-    - #### `compManifest.script.match` : String
-    
-      Selects a default way of comparing command arguments stated in the manifest and the ones received in the ExeScript, unless stated otherwise in a command JSON object.
+            ```json
+            [
+              "run /bin/cat /etc/motd", 
+              "run /bin/date -R"
+            ]
+            ```
+        * Mix of both
 
-      The `match` property could be one of:
+        Commands `deploy`, `start` and `terminate` are always allowed. These values become the default if no `compManifest.script.commands` property has been set, but the `compManifest` object is present.
+    *   **`compManifest.script.match` : String**
 
-        - `strict`: byte-to-byte argument equality (default)
+        Selects a default way of comparing command arguments stated in the manifest and the ones received in the ExeScript, unless stated otherwise in a command JSON object.
 
-        - `regex`: treat arguments as regular expressions
+        The `match` property could be one of:
 
-          Syntax: Perl-compatible regular expressions (UTF-8 Unicode mode), w/o the support for a look around and backreferences (among others).
-  
-  - #### `compManifest.net` : Object
+        * `strict`: byte-to-byte argument equality (default)
+        *   `regex`: treat arguments as regular expressions
+
+            Syntax: Perl-compatible regular expressions (UTF-8 Unicode mode), w/o the support for a look around and backreferences (among others).
+*   **`compManifest.net` : Object**
 
     Applies constraints to networking.
 
-    - #### `compManifest.net.inet.out` : Object
+    *   **`compManifest.net.inet.out` : Object**
 
-      Outgoing requests to the public Internet network constraints.
+        Outgoing requests to the public Internet network constraints.
 
-      - #### `compManifest.net.inet.out.protocols` : List[String]
+        *   **`compManifest.net.inet.out.protocols` : List\[String]**
 
-        List of allowed outbound protocols. Currently fixed at ["http", "https"].
+            List of allowed outbound protocols. Currently fixed at \["http", "https"].
+        *   **`compManifest.net.inet.out.urls` : List\[String]**
 
-      - #### `compManifest.net.inet.out.urls` : List[String]
-
-        List of allowed external URLs that outbound requests can be sent to. E.g. ["https://api.some-public-service.com", "https://some-other-service.com/api/resource"]
+            List of allowed external URLs that outbound requests can be sent to. E.g. \["https://api.some-public-service.com", "https://some-other-service.com/api/resource"]
 
 #### Example of _Computation Payload Manifest_ with _Computation Manifest_ definition:
 
@@ -182,7 +177,7 @@ Supported _Computation Manifest_ constraints:
 
 ### Certificates
 
-_App author's certificate_ gets sent in a demand together with a _Computation Payload Manifest_ and its signature. The certificate is used to verify the signature. In order to verify the signature, a _Provider_ first needs to verify the incoming _App author's certificate_. To do so, it has to have a certificate that's used to sign the _App author's certificate_ [imported](#3-importing-application-authors-certificates) into its keystore (together with every intermediate certificate in the chain).
+_App author's certificate_ gets sent in a demand together with a _Computation Payload Manifest_ and its signature. The certificate is used to verify the signature. In order to verify the signature, a _Provider_ first needs to verify the incoming _App author's certificate_. To do so, it has to have a certificate that's used to sign the _App author's certificate_ [imported](computation-payload-manifest.md#3-importing-application-authors-certificates) into its keystore (together with every intermediate certificate in the chain).
 
 #### Manifest signature
 
@@ -192,7 +187,7 @@ It can be generated using the `openssl` tool and a private key related to _App a
 
 A signature needs to be generated from the content of the _Computation Payload Manifest_ encoded in `base64`:
 
-```sh
+```
 openssl dgst -sha256 -sign author.key -out manifest.json.base64.sign.sha256 manifest.json.base64
 # both Signature and App Author Certificate need to be sent in base64 encoded form
 base64 manifest.json.base64.sign.sha256 --wrap=0 > manifest.json.base64.sign.sha256.base64
@@ -203,11 +198,11 @@ base64 author.crt.pem --wrap=0 > author.crt.pem.base64
 
 A basic example showing the generation a self-signed root CA certificate to then sign the App author's certificate, and afterwards importing a generated root CA certificate into the Provider's keystore.
 
-##### 1. Generating self signed root CA certificate
+**1. Generating self signed root CA certificate**
 
 Create `openssl-ca.conf` for CA certificate
 
-```conf
+```
 [ req ]
 distinguished_name  = req_dn
 x509_extensions     = v3_ext
@@ -236,7 +231,7 @@ emailAddress      = supplied
 
 Then prepare referenced in config files:
 
-```sh
+```
 touch index.txt index.txt.attr
 echo '1000' > serial.txt
 ```
@@ -245,11 +240,11 @@ Then generate the CA certificate and key pair:
 
 `openssl req -new -newkey rsa:2048 -days 360 -nodes -x509 -sha256 -keyout ca.key.pem -out ca.crt.pem -config openssl-ca.conf`
 
-##### 2. Generating Requestor certificate
+**2. Generating Requestor certificate**
 
 Create `openssl.conf` for the App author's certificate:
 
-```conf
+```
 [ req ]
 distinguished_name  = req_dn
 x509_extensions     = v3_ext
@@ -271,7 +266,7 @@ Finally, generate _App author's certificate_ using CSR and CA certificate:
 
 `openssl x509 -req -in author.csr.pem -CA ca.crt.pem -CAkey ca.key.pem -CAcreateserial -out author.crt.pem`
 
-##### 3. Importing application author's certificates
+**3. Importing application author's certificates**
 
 To import the certificate into the keystore, use a [`ya-provider keystore add`](../../provider-tutorials/provider-cli.md#keystore) command:
 
