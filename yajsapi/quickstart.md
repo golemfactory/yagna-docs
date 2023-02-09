@@ -168,9 +168,11 @@ Add `yajsapi` to your project:
 npm install yajsapi
 ```
 
-### So lets put everything together:
-TODO TODO
-Now put all the code together. You should get an `index.js` file that looks like the following:
+### Your first app on Golem Network
+
+Let's create a simple code that will run a command displaying the node JS version on the provider.
+For this purpose we would like to call the command `node -v`. 
+Let's create `index.js` file that looks like the following:
 
 {% code title="index.js" overflow="false" lineNumbers="true" %}
 ```js
@@ -192,6 +194,52 @@ import { TaskExecutor } from "yajsapi";
 })();
 ```
 {% endcode %}
+
+### Run the first script on Golem Network
+
+If you have the executor ready, it's time to run the script on the Golem Network.
+
+#### Setup YAGNA\_APPKEY
+
+In order for the requestor agent to connect with the `yagna` daemon, you need to provide it with the previously-generated app key (wallet) from step [Generate the app key](quickstart.md#secondly-generate-the-app-key-wallet)
+
+{% tabs %}
+{% tab title="MacOS / Linux" %}
+**On MacOS / Linux type in command line**
+
+```bash
+export YAGNA_APPKEY=insert-your-32-char-app-key-here
+```
+{% endtab %}
+
+{% tab title="Windows" %}
+**On Windows type in command line**
+
+```bash
+set YAGNA_APPKEY=your-32-char-app-key
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+If you don't remember your key(wallet) you can always check it by typing in the command line: `yagna app-key list`
+{% endhint %}
+
+#### Run your first app on Golem Network
+
+To run your scrypt on the Golem Network simply run the command:
+
+```bash
+node index.js
+```
+
+Result in the command line will look like:
+
+![](../.gitbook/assets/quickstart-node-version.gif "QuickStart Node Version Results")
+
+### Let's break the code down
+
+Since you already have a working example on the golem, I'll try to show you how the code is built.
 
 #### Import TaskExecutor
 
@@ -275,47 +323,9 @@ await executor.end();
 {% endcode %}
 
 
-### Run the first script on Golem Network
 
-If you have the executor ready, it's time to run the script on the Golem Network.
 
-#### Setup YAGNA\_APPKEY
 
-In order for the requestor agent to connect with the `yagna` daemon, you need to provide it with the previously-generated app key (wallet) from step [Generate the app key](quickstart.md#secondly-generate-the-app-key-wallet)
-
-{% tabs %}
-{% tab title="MacOS / Linux" %}
-**On MacOS / Linux type in command line**
-
-```bash
-export YAGNA_APPKEY=insert-your-32-char-app-key-here
-```
-{% endtab %}
-
-{% tab title="Windows" %}
-**On Windows type in command line**
-
-```bash
-set YAGNA_APPKEY=your-32-char-app-key
-```
-{% endtab %}
-{% endtabs %}
-
-{% hint style="info" %}
-If you don't remember your key(wallet) you can always check it by typing in the command line: `yagna app-key list`
-{% endhint %}
-
-#### Run your first app on Golem Network
-
-To run your scrypt on the Golem Network simply run the command:
-
-```bash
-node index.js
-```
-
-Result in the command line will look like:
-
-![](../.gitbook/assets/quickstart-node-version.gif "QuickStart Node Version Results")
 
 
 ### Refactor of the existing code
