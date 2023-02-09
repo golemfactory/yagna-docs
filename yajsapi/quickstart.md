@@ -163,7 +163,7 @@ Create a new node project by typing in the command line:
 ```bash
 mkdir golem-tutorial-js
 cd golem-tutorial-js
-npm init golem-tutorial-js
+npm init
 ```
 
 ### Create a node script that will execute task on provider
