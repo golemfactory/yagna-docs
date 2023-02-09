@@ -190,9 +190,9 @@ npm install yajsapi
 
 Let's create a simple code that will run a command displaying the node JS version on the provider.
 For this purpose we would like to call the command `node -v`. 
-Let's create `index.js` file that looks like the following:
+Let's create `index.mjs` file that looks like the following:
 
-{% code title="index.js" overflow="false" lineNumbers="true" %}
+{% code title="index.mjs" overflow="false" lineNumbers="true" %}
 ```js
 import { TaskExecutor } from "yajsapi";
 
@@ -262,7 +262,7 @@ Since you already have a working example on the golem, I'll try to show you how 
 
 #### Import TaskExecutor
 
-Create `index.js` file in the main folder and import `TaskExecutor` from `yajsapi`
+After create `index.mjs` file in the main folder, you should import `TaskExecutor` from `yajsapi`.
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```js
@@ -354,7 +354,7 @@ await executor.end();
 For the purpose of understanding the work with the executor, we have divided the code into small parts, 
 but we can write it much simpler and refactor it to this form:
 
-{% code title="index.js" overflow="false" lineNumbers="true" %}
+{% code title="index.mjs" overflow="false" lineNumbers="true" %}
 ```js
 import { TaskExecutor } from "yajsapi";
 
@@ -380,7 +380,7 @@ we will create a simple script which we will then send to the provider and execu
 For starters, let's create a simple js file that will execute on the provider. Let's generate two random numbers and 
 then add them and return the result of this operation. 
 
-To do this, let's create a task.js file:
+To do this, let's create a `task.js` file:
 
 {% code title="task.js" overflow="false" lineNumbers="true" %}
 ```js
