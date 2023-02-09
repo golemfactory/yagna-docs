@@ -24,9 +24,7 @@ If you have already installed the yaggna daemon and configured the requestor cor
 
 * OS X 10.14+, Ubuntu 18.04 or 20.04 or Windows
 * Familiarity with the command line
-* Install [Node.js](https://nodejs.org/) version 16.x
-* Install [Yarn](https://classic.yarnpkg.com/en/docs/install) version 1.22.3+
-* Install [Git](https://git-scm.com/downloads)
+* Install [Node.js](https://nodejs.org/) version 16.19.x
 {% endhint %}
 
 In this section we will introduce how to run a Simple Node Application on Golem Network. The created project will be using a build setup based on pre-built [Golem Image](../requestor-tutorials/vm-runtime/) and allow us to run Node.js script on [Provider](../introduction/provider/).
@@ -35,18 +33,6 @@ Make sure you have a 16.x version of Node.js installed:
 
 ```bash
 node --version
-```
-
-Make sure you have a 1.22.3+ version of Yarn installed:
-
-```bash
-yarn --version
-```
-
-Make sure you have a Git installed:
-
-```bash
-git --version
 ```
 
 ### Installing yagna requestor
@@ -179,7 +165,7 @@ Create a new node project by typing in the command line:
 ```bash
 mkdir golem-tutorial-js
 cd golem-tutorial-js
-yarn init golem-tutorial-js
+npm init golem-tutorial-js
 ```
 
 ### Create a node script that will execute task on provider
@@ -187,8 +173,33 @@ yarn init golem-tutorial-js
 Add `yajsapi` to your project:
 
 ```bask
-yarn add yajsapi
+npm install yajsapi
 ```
+
+### So lets put everything together:
+TODO TODO
+Now put all the code together. You should get an `index.js` file that looks like the following:
+
+{% code title="index.js" overflow="false" lineNumbers="true" %}
+```js
+import { TaskExecutor } from "yajsapi";
+
+(async () => {
+   const executor = await TaskExecutor.create("529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4");
+
+   const taskToRunOnProvider = async (workerContext) => {
+      const commandToRunInProviderShell = "node -v";
+      const result = await workerContext.run(commandToRunInProviderShell);
+      return result.stdout;
+   }
+
+   const taskResult = await executor.run(taskToRunOnProvider);
+   await executor.end();
+   
+   console.log('Task result:', taskResult);
+})();
+```
+{% endcode %}
 
 #### Import TaskExecutor
 
@@ -271,30 +282,6 @@ await executor.end();
 ```
 {% endcode %}
 
-#### So lets put everything together:
-
-Now put all the code together. You should get an `index.js` file that looks like the following:
-
-{% code title="index.js" overflow="false" lineNumbers="true" %}
-```js
-import { TaskExecutor } from "yajsapi";
-
-(async () => {
-   const executor = await TaskExecutor.create("529f7fdaf1cf46ce3126eb6bbcd3b213c314fe8fe884914f5d1106d4");
-
-   const taskToRunOnProvider = async (workerContext) => {
-      const commandToRunInProviderShell = "node -v";
-      const result = await workerContext.run(commandToRunInProviderShell);
-      return result.stdout;
-   }
-
-   const taskResult = await executor.run(taskToRunOnProvider);
-   await executor.end();
-   
-   console.log('Task result:', taskResult);
-})();
-```
-{% endcode %}
 
 ### Run the first script on Golem Network
 
