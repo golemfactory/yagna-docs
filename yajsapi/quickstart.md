@@ -195,7 +195,7 @@ import { TaskExecutor } from "yajsapi";
 ```
 {% endcode %}
 
-### Run the first script on Golem Network
+### Run the app
 
 If you have the executor ready, it's time to run the script on the Golem Network.
 
