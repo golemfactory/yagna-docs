@@ -1,9 +1,10 @@
 ---
 description: >-
-  Example showing how to make a REST call to an external, public API from a VM running on a Provider node.
+  Example showing how to make a REST call to an external, public API from a VM
+  running on a Provider node.
 ---
 
-# Service Example 6: External API Request
+# Service Example 6: External API request
 
 {% hint style="info" %}
 The example depicts the following features:
@@ -20,11 +21,11 @@ The full code of the example is available in the yapapi repository: [https://git
 
 As with the other examples, we're assuming here you already have your [yagna daemon set up to request the test tasks](../flash-tutorial-of-requestor-development/) and that you were able to [configure your Python environment](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md) to run the examples using the latest version of `yapapi`. If this is your first time using Golem and yapapi, please first refer to the resources linked above.
 
-This example involves [Computation Payload Manifest](../../requestor-tutorials/vm-runtime/computation-payload-manifest.md).
+This example involves [Computation Payload Manifest](../vm-runtime/computation-payload-manifest.md).
 
 _Computation Payload Manifest_ making use of _Outbound Network_ requires either:
 
-1. Requestor [certificate](../../requestor-tutorials/vm-runtime/computation-payload-manifest.md#certificates) that's trusted by the Providers
+1. Requestor [certificate](../vm-runtime/computation-payload-manifest.md#certificates) that's trusted by the Providers
 2. an instance of a Provider with the particular domain this example uses added to its [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist)
 3. an instance of a Provider with the requestor's self-signed Certificate imported into its [keystore](../../provider-tutorials/provider-cli.md#keystore)
 
@@ -42,9 +43,9 @@ Our example will make an HTTPS request using `curl` to a public REST API with th
 
 _Computation Payload Manifest_ will need to have following objects:
 
-- [`net`](../vm-runtime/computation-payload-manifest.md#compmanifestnet--object) computation constraints with `URL`s the app will access (`https://api.coingecko.com`)
-- [`script`](../vm-runtime/computation-payload-manifest.md#compmanifestscript) computation constraint with `command`s app will execute (`curl`)
-- [`payload`](../vm-runtime/computation-payload-manifest.md#payload-object) defining [Golem image](../vm-runtime#preparing-a-vm-image) containing tools used by the app (`curl`)
+* [`net`](../vm-runtime/computation-payload-manifest.md#compmanifestnet--object) computation constraints with `URL`s the app will access (`https://api.coingecko.com`)
+* [`script`](../vm-runtime/computation-payload-manifest.md#compmanifestscript) computation constraint with `command`s app will execute (`curl`)
+* [`payload`](../vm-runtime/computation-payload-manifest.md#payload-object) defining [Golem image](../vm-runtime/#preparing-a-vm-image) containing tools used by the app (`curl`)
 
 Example _Computation Payload Manifest_ must follow a specific [schema](../vm-runtime/computation-payload-manifest.md#manifest-schema), and for our example it will take form of following `manifest.json` file:
 
@@ -94,9 +95,10 @@ Created file should be [verified using JSON schema](../vm-runtime/computation-pa
 
 Then it needs to be encoded in `base64`:
 
-```sh
+```
  base64 --wrap=0 manifest.json > manifest.json.base64
 ```
+
 ### 2. Yapapi example app
 
 Base64-encoded manifest can be configured using [`yapapi.payload.vm.manifest`](https://yapapi.readthedocs.io/en/latest/api.html#module-yapapi.payload.manifest) function, resulting in following `external_api_request.py` file:
@@ -141,42 +143,41 @@ async def main():
         await asyncio.sleep(60)
 ```
 
-### 3. Verification of a request with  Computation Payload Manifest
+### 3. Verification of a request with Computation Payload Manifest
 
 _Providers_ verify the incoming request with a _Computation Payload Manifest_ by checking if it arrives with a [signature and _App author's certificate_ signed by a certificate they trust](../vm-runtime/computation-payload-manifest.md#certificates). If there is no signature, they verify if URLs used by _Computation Payload Manifest_ are [whitelisted](../../provider-tutorials/provider-cli.md#domain-whitelist).
 
-There are two ways to make our *local* _Provider_ verify the request:
+There are two ways to make our _local_ _Provider_ verify the request:
 
-- #### Whitelisting of the domain used by the app
+*   **Whitelisting of the domain used by the app**
 
-  Add `api.coingecko.com` to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist):
+    Add `api.coingecko.com` to Provider's [domain whitelist](../../provider-tutorials/provider-cli.md#domain-whitelist):
 
-  `ya-provider whitelist add --patterns api.coingecko.com --type strict`
+    `ya-provider whitelist add --patterns api.coingecko.com --type strict`
+*   **Signing manifest and adding signature with a certificate to the request**
 
-- #### Signing manifest and adding signature with a certificate to the request
+    [Generate self signed certificate](../vm-runtime/computation-payload-manifest.md#self-signed-certificate-example) and then [generate manifest signature](../vm-runtime/computation-payload-manifest.md#manifest-signature).
 
-  [Generate self signed certificate](../vm-runtime/computation-payload-manifest.md#self-signed-certificate-example) and then [generate manifest signature](../vm-runtime/computation-payload-manifest.md#manifest-signature).
+    With a generated and `base64`-encoded certificate and a signature, the `get_payload()` function takes the following form:
 
-  With a generated and `base64`-encoded certificate and a signature, the `get_payload()` function takes the following form:
-
-  ```py
-  # ...
-    async def get_payload():
-        return await vm.manifest(
-            manifest = open("manifest.json.base64", "rb").read(),
-            manifest_sig = open("manifest.json.base64.sign.sha256.base64", "rb").read(),
-            manifest_sig_algorithm = "sha256",
-            manifest_cert = open("golem_requestor.cert.pem.base64", "rb").read(),
-            min_mem_gib = 0.5,
-            min_cpu_threads = 0.5,
-            capabilities=["inet", "manifest-support"],
-        )
-  # ...
-  ```
+    ```py
+    # ...
+      async def get_payload():
+          return await vm.manifest(
+              manifest = open("manifest.json.base64", "rb").read(),
+              manifest_sig = open("manifest.json.base64.sign.sha256.base64", "rb").read(),
+              manifest_sig_algorithm = "sha256",
+              manifest_cert = open("golem_requestor.cert.pem.base64", "rb").read(),
+              min_mem_gib = 0.5,
+              min_cpu_threads = 0.5,
+              capabilities=["inet", "manifest-support"],
+          )
+    # ...
+    ```
 
 ### 4. Launching the app
 
-With both _Requestor_  and _Provider_ yagna nodes and `ya-provider` running in the background run:
+With both _Requestor_ and _Provider_ yagna nodes and `ya-provider` running in the background run:
 
 `python external_api_request.py`
 
