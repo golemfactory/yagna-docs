@@ -146,14 +146,6 @@ yagna payment status
 If you have encountered problems, or would you like to learn more details about the funding process, please take a look in here: [How to get some GLM tokens](../requestor-tutorials/flash-tutorial-of-requestor-development/#get-some-test-glm-tokens)
 {% endhint %}
 
-#### Fourthly, init yagna daemon as a sender
-
-When you have already configured the yagna demon and it is time to initialize as a sender.
-
-```bash
-yagna payment init --sender
-```
-
 ## Building your first JavaScript app on Golem Network
 
 Congratulations you are now ready to start building your first JavaScript app on the Golem Network.
