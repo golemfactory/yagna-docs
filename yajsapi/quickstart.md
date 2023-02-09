@@ -35,7 +35,8 @@ section.
 {% endhint %}
 
 In this section we will introduce how to run a Simple Node Application on Golem Network. The created project will be 
-using a build setup based on pre-built [Golem Image](../requestor-tutorials/vm-runtime/) and allow us to run Node.js script on [Provider](../introduction/provider/).
+using a build setup based on pre-built [Golem Image](../requestor-tutorials/vm-runtime/) and allow us to run Node.js 
+script on [Provider](../introduction/provider/).
 
 Make sure you have a 16.19.x version of Node.js installed:
 
