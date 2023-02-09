@@ -4,6 +4,12 @@ description: Deploying long-running, decentralized services on Golem using no-co
 
 # Decentralized applications on Golem
 
+{% hint style="info" %}
+Looking for a quick start?
+
+[See how easy it is to run an application on Golem](run-a-dapp.md)
+{% endhint %}
+
 ## Introduction
 
 Golem is a network which enables its participants to make computing resources available for use by those who would wish to use them. From the perspective of requestors, among other uses, it allows services to be requested, deployed and run on the network’s providers.
@@ -17,6 +23,22 @@ Such services or decentralized applications can be run by virtually anyone as lo
 {% hint style="danger" %}
 Please be aware that the dApps on Golem project is still in early access and should be considered experimental. Please [reach out to us on our community Discord](https://chat.golem.network/) if you'd like to help us improve these tools.
 {% endhint %}
+
+## Available experiments
+
+While working with dApps, we created a few applications on top of it, which served us both as a testing ground and as a way to validate our approach. On the other hand, they were also designed to give you first a good starting point and later a reference when developing your own, similar apps.
+
+### ToDo List Application [\[GitHub\]](https://github.com/golemfactory/dapp-experiments/tree/main/01\_todo\_app)
+
+![ToDo List App](https://user-images.githubusercontent.com/5244214/201047967-f42dea7d-3e19-488b-9900-375f19badd96.png)
+
+This application showcases utilizing the Golem Network to host a 3-layer application (**React** + **Flask** + **RQLite**)
+
+### Weather Stats Application [\[GitHub\]](https://github.com/golemfactory/dapp-experiments/tree/main/weather\_stats)
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Weather Stats App</p></figcaption></figure>
+
+This application presents usage of the Golem Network with access to external services (not hosted on Golem) taking advantage of the outbound network connections.
 
 ## Components
 

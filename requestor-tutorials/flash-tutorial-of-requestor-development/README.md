@@ -24,7 +24,7 @@ If you are a JS developer, please switch to **NodeJS** tab
 
 {% tabs %}
 {% tab title="Python" %}
-**Python 3.6+**
+**Python 3.8+**
 
 To verify your currently installed version of python, please run:
 

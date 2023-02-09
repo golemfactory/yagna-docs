@@ -6,193 +6,386 @@ description: >-
 
 # Your first Golem dApp
 
-## Available experiments
+## Choice of tools
 
-While working with dApps, we created a few applications on top of it, which served us both as a testing ground and as a way to validate our approach. On the other hand, they were also designed to give you a good starting point or serve as reference when developing your own, similar apps.
+The example that we're going to show you here uses a very simple Python HTTP server.
 
-### ToDo List Application [\[GitHub\]](https://github.com/golemfactory/dapp-experiments/tree/main/01\_todo\_app)
+On the other hand, if you're more acquainted with any other language or platform that enables you
+to easily create a simple HTTP server and pack it into a Docker image, go for it.
 
-![ToDo List App](https://user-images.githubusercontent.com/5244214/201047967-f42dea7d-3e19-488b-9900-375f19badd96.png)
+Just as well - if the setup and construction of such a simple app is obvious to you, feel free to jump to 
 
-This application showcases utilizing the Golem Network to host a 3-layer application (**React** + **Flask** + **RQLite**)
-
-### Weather Stats Application [\[GitHub\]](https://github.com/golemfactory/dapp-experiments/tree/main/weather\_stats)
-
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Weather Stats App</p></figcaption></figure>
-
-This application presents usage of the Golem Network with access to external services (not hosted on Golem) taking advantage of the outbound network connections.
-
-## Pre-installation
-
-To launch dApps on Golem, you request computation resources from the network - therefore, you need the following prerequisites prior to execution:
-
-* a running Yagna Daemon (v0.12 or higher)
-* available AppKey
-
-Setting these up is a part of the tutorial below. You can move on to the next section once you have these prerequisites ready.
-
-{% content-ref url="flash-tutorial-of-requestor-development/" %}
-[flash-tutorial-of-requestor-development](flash-tutorial-of-requestor-development/)
+{% content-ref url="#converting-the-image-to-golem" %}
+[Converting the image to Golem](#converting-the-image-to-golem)
 {% endcontent-ref %}
 
-## Installation
+## Environment preparation
 
-The tool which deploys apps to Golem, `dapp-runner` is installable from the PyPi repository with the following command:
+For the sake of completeness, we're including the steps that prepare our Python environment.
+Again, you're free to do it your way and skip to:
 
-```shell
-pip install -U pip
-pip install dapp-runner
-```
+{% content-ref url="#hello-world-app" %}
+[Hello world app](#hello-world-app)
+{% endcontent-ref %}
 
-### Installation from sources
 
-Alternatively, if you'd like to have the latest package, you can install it from the source. \
-To do so, clone the repository from GitHub first:
-
-```
-git clone --recurse-submodules https://github.com/golemfactory/dapp-runner.git
-```
-
-Next, enter the newly created directory and install the tool using the following commands:
+### Create an activate the virtual environment
 
 ```shell
-cd dapp-runner
+python3 -m venv ~/.envs/hello-dapps
+source ~/.envs/hello-dapps/bin/activate
 pip install -U pip poetry
-poetry install
 ```
 
-For more information on the installation process, [visit the repository page](https://github.com/golemfactory/dapp-runner#quick-start)
-
-## Running dApp on Golem
-
-Having the above setup complete, you can verify it by running a sample application that comes together with `dapp-runner` repository using the following commands:
+### Initialize the project
 
 ```shell
-YAGNA_APPKEY=<your_key> dapp-runner start --config configs/default.yaml dapp-store/apps/webapp.yaml
+mkdir -p hello_world/server_app
+cd hello_world/server_app/
+poetry init --no-interaction
 ```
 
-The app will begin deployment, and you should finally see a log entry similar to the one below:
+### Add the requirements
 
-```json
-{"http": {"local_proxy_address": "http://localhost:8080"}}
+In our little example here, we'll use `Flask`, a very robust and minimal Python back-end framework.
+
+```shell
+poetry add Flask
 ```
 
-This means that the app is ready and can be viewed at: [http://localhost:8080](http://localhost:8080)
+There, we're ready to start coding our app.
 
-### Config files
+## Hello world app
 
-Taking the ToDo List app as an example, it was originally written without any Golem context in mind,
-with full dockerization and docker-compose support. The only Golem-specific files added were:
+{% hint style="info" %}
+If you're lost in any moment, feel free to consult our source of the "Hello World" application available at:
+[https://github.com/golemfactory/dapp-experiments/tree/main/05_hello_world](https://github.com/golemfactory/dapp-experiments/tree/main/05_hello_world)
 
-* **`golem-compose.yml`** to define the application-specific Golem config (image hashes, capabilities, init commands)
-* **`golem-config.yml`** to define the runtime-specific Golem config (yagna appkey, subnet, budget)
-
-Having these two files ready, you can run an application on Golem with the following command 
-(substituting `<your_key>` with an actual key you've obtained in the setup section):
-
+Similarly, instead of coding along, you may just check out the whole thing from the repository:
+```shell
+git clone https://github.com/golemfactory/dapp-experiments.git
+cd dapp-experiments/05_hello_world
 ```
-YAGNA_APPKEY=<your_key> dapp-runner start --config golem-config.yml golem-compose.yml
+{% endhint %}
+
+Fire up your favourite editor or IDE navigate to the `hello_world/server_app` directory that we have set up above.
+
+If you have configured the app using poetry like we did above, you should already see the `pyproject.toml` and `poetry.lock` files.
+
+In the directory, add `hello_world.py` and just paste the following few lines which are a slightly
+modified version of [Flask's original, minimal example](https://flask.palletsprojects.com/en/1.1.x/quickstart/):
+
+```python
+from flask import Flask
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello_world():
+    return 'Hello from Golem!'
+
+
+app.run(host="0.0.0.0")
 ```
 
-After running this command, besides debug logs, you should look for the following entries:
+The above code achieves the following:
+1. import the `Flask` engine
+2. define our Flask app
+3. set up the root route for the app
+4. launch the Flask server
 
+{% hint style="info" %}
+You may wish to customize the "Hello..." message up there, so as to make your application 
+(and, more importantly, its VM image) unique. 
+Our repository is set up to reject repeated uploads of images with matching signatures so, if you 
+encounter an issue while uploading your application later in this tutorial, 
+just please use the hash that we'll provide you there.  
+{% endhint %}
+
+{% hint style="warning" %}
+For local testing, we could have gotten away with just `app.run()`. That makes the server listen
+on the local host address (`127.0.0.1`) by default. We need it to bind to all addresses so that it
+can later work correctly in Golem.
+{% endhint %}
+
+## Local test
+
+Let's test this app locally, before we start preparing it for Golem. Launch the app:
+
+```shell
+python hello_world.py
 ```
-Starting app: ToDo List App
 
-{"db": {"0": "pending"}}
-{"db": {"0": "starting"}}
-{"db": {"0": "running"}}
-{"db": {"0": "running"}, "api": {"0": "pending"}}
-{"db": {"0": "running"}, "api": {"0": "starting"}}
-{"db": {"0": "running"}, "api": {"0": "running"}}
-{"db": {"0": "running"}, "api": {"0": "running"}, "web": {"0": "pending"}}
-{"db": {"0": "running"}, "api": {"0": "running"}, "web": {"0": "starting"}}
-{"db": {"0": "running"}, "api": {"0": "running"}, "web": {"0": "running"}}
+and then point your browser to [http://127.0.0.1:5000](http://127.0.0.1:5000).
 
-[2022-11-10T10:52:39.306+0100 INFO dapp_runner.runner] Application started.
-{"web": {"local_proxy_address": "http://localhost:8081"}}
-```
+You should see "Hello from Golem!" which proves that our minimal app is working correctly when launched
+completely stand-alone. Good!
 
-To see the app in action, follow the link provided in `local_proxy_address` variable (with the port being dynamically assigned).
+## Preparing the Docker image
 
-### Development
-
-If you'd like to modify this app or create your own, the development flow doesn't change that much from regular web app development, with the exception of a few additional steps that we mention in the later part of this document.
-
-At the moment, **starting Golem deployment requires you to have Docker images ready for your project**. The only way of creating GVMI (an image that Golem uses) is by providing a Docker image for conversion.
+We need to start with a Docker image since the only currently-supported way of creating a GVMI 
+(Golem Virtual Machine Image) file is by providing a Docker image for conversion.
 
 If you'd like to know more about the GVMI images and about the conversion process, please refer to:
 
-{% content-ref url="vm-runtime/" %}
-[vm-runtime](vm-runtime/)
+{% content-ref url="../vm-runtime/" %}
+[vm-runtime](../vm-runtime/)
 {% endcontent-ref %}
 
-In the following sections, we'll take the "ToDo List" app as an example of what the development process looks like. Even though the names of the images/services may change, other things will stay mostly the same
+Let's back-up a little and ensure that we're one directory above `server_app`.
 
-#### Deploying on Golem
-
-Once you're satisfied with the code or changes you've made, the next thing is to deploy your app on Golem. There are a few steps to be followed to do so:
-
-* Build containers with Docker Compose
-* Create GVMI images from docker images
-* Update the `golem-compose.yml` definition with the updated hashes (or create a new one)
-
-**If you have only changed one component (only one image has changed), please remember to build and convert only parts related to it - GVMI images based on the same docker container will fail to upload.**
-
-Starting with the Docker containers, create new images with the following command:
-
-```
-$ docker compose build api web
+```shell
+cd ..
 ```
 
-This will result in new docker images called `todo-app-api:latest` and `todo-app-web:latest`. 
-These two images will be used to receive GVMI hashes to be used with `golem-compose.yml`. 
-The process will be the same, only the image name will be different:
+To build a docker image, we'll need a `Dockerfile` with the following operations:
 
-```
-# build api
-$ gvmkit-build todo-app-api:latest
+1. Take a stock Python Docker image (the slim version, we won't need anything more here):
 
-# upload api
-$ gvmkit-build todo-app-api:latest --push
-
-# After upload is complete, please take the api hash value after log with "hash link:"
-
-
-# build webapp
-$ gvmkit-build todo-app-web:latest
-
-# upload webapp
-$ gvmkit-build todo-app-web:latest --push
-
-# After upload is complete, please take the web hash value after log with "hash link:"
+```dockerfile
+FROM python:3.9-slim
 ```
 
-Having both of these hashes, please open the `golem-compose.yml` file and update the `payloads` definition with the updated hashes:
+2. Install the needed tools:
 
-```diff
+```dockerfile
+RUN pip install -U pip poetry
+```
+
+3. Copy the app contents to the image:
+
+```dockerfile
+RUN mkdir /app
+COPY server_app/* /app/
+```
+
+4. Install the app's requirements:
+
+```dockerfile
+WORKDIR /app
+RUN poetry install --no-root
+```
+
+5. Finally, set up the Docker's entrypoint: 
+
+```dockerfile
+ENTRYPOINT poetry run python hello_world.py
+```
+
+The full Dockerfile, then, is:
+
+```dockerfile
+FROM python:3.9-slim
+RUN pip install -U pip poetry
+
+RUN mkdir /app
+COPY server_app/* /app/
+
+WORKDIR /app
+RUN poetry install --no-root
+
+ENTRYPOINT poetry run python hello_world.py
+```
+
+### Testing the Docker image
+
+With the Dockerfile ready, we can test whether the app works inside the container:
+
+```shell
+docker build -t hello-dapps .
+docker run -p 5000:5000 hello-dapps
+```
+
+Once again, after the image launches, you may connect to http://127.0.0.1:5000/ with your browser,
+and you should be able to see the "Hello..." message, which confirms that the app has been correctly packaged
+and is working as it should.
+
+## Converting the image to Golem
+
+To be able to use our newly-created image on Golem, we need to convert it to the Golem's custom format
+and then make the image available to providers. The easiest way to achieve the latter is to upload the image
+to our image repository.
+
+### Obtain the `gvmkit-build` tool
+
+```shell
+pip install gvmkit-build
+```
+
+### Convert the image to GVMI
+
+```shell
+gvmkit-build hello-dapps
+```
+
+### Upload the image to the repository
+
+```shell
+gvmkit-build hello-dapps --push
+```
+
+Once the command completes, you should get a line containing the image hash, e.g.:
+
+```
+image already generated
+on 102777844: success. hash link 3032b6e97914eb5ee87d71188180d271f04eb9472b6da0d308943b2f
+```
+
+The hash there: `3032b6e97914eb5ee87d71188180d271f04eb9472b6da0d308943b2f` is what we're interested in.
+
+If the command fails because the image has already been uploaded, 
+feel free to use the hash above and follow through with the tutorial.
+
+## Prepare the Golem dApp descriptor
+
+Now that we have the image ready, uploaded into the Golem repo and its hash in hand, we can prepare
+the descriptor of the application that we're going to launch on Golem.
+
+For a more complete information about the dApp descriptors, please consult the 
+[appropriate section of the "Creating Golem dApps" article](creating-golem-dapps.md#application-descriptor). 
+Here, we're just cover the bare minimum. 
+
+The two obligatory pieces of a descriptor are the `payloads` and `nodes`. Let's create them.
+
+### The payload
+
+The payload is the definition of what kind of activity you'd like the providers to run on your behalf.
+
+In this case, it's just the reference to the VM image we just uploaded.
+
+```yaml
 payloads:
-  db:
+  hello:
     runtime: "vm"
     params:
-      image_hash: "85021afecf51687ecae8bdc21e10f3b11b82d2e3b169ba44e177340c"
-  api:
+      image_hash: "3032b6e97914eb5ee87d71188180d271f04eb9472b6da0d308943b2f"
+```
+
+### The node definition
+
+A `node` entry defines the parameters of the specific instances of services that we want launched
+on Golem.
+
+```yaml
+nodes:
+  hello:
+    payload: "hello"
+    init:
+      - run:
+          args: ["/bin/sh", "-c", "poetry run python hello_world.py > /dev/null &"]
+    http_proxy:
+      ports:
+        - "5000"
+ ```
+
+A couple of important details there. 
+
+Firstly, given the fact that Docker's `ENTRYPOINT` is not yet
+supported by the `dapp-runner`, our service definition must contain any and all commands that 
+will start our service in the container. 
+
+Moreover, as the commands included in the `init` must finish before the service can be treated as
+started, we need to put the service in the background. For this reason, we're launching our service
+using the shell and adding the ampersand (`&`) to the end of the command.
+
+One more caveat is that we need to redirect the output stream of the launched app so that it 
+stays running after we exit the shell.
+
+Lastly, we're adding the `http_proxy` element because our service is an HTTP app which we wish to 
+be able to talk to. There's currently no way for the service to be exposed directly on the 
+provider's own address but we can use the local HTTP proxy functionality to expose a port on our 
+own machine that will forward traffic to the app through the Golem Network.
+
+The full descriptor, then should look like:
+
+```yaml
+payloads:
+  hello:
     runtime: "vm"
     params:
--      image_hash: "7df11ba76dc45f3a36d7c0a2efe318abb05384869b45b260471f4be7"
-+      image_hash: "<api_hash>"
-  web:
-    runtime: "vm"
-    params:
--      image_hash: "eb67411fe5e48ee56c6172ebe4cf2a0aa7c80a62dae781fe0d524649"
-+      image_hash: "<web_hash>"
+      image_hash: "3032b6e97914eb5ee87d71188180d271f04eb9472b6da0d308943b2f"
+nodes:
+  hello:
+    payload: "hello"
+    init:
+      - run:
+          args: ["/bin/sh", "-c", "poetry run python hello_world.py > /dev/null &"]
+    http_proxy:
+      ports:
+        - "5000"
 ```
 
-Now, the updated app can be started with:
+Let's add it as `hello_world.yaml` in the `hello_world` directory.
+
+## The config file
+
+There's one more piece of data that we'll need to run our application.
+It's the configuration of our Golem requestor that we need to supply for the `dapp-runner`.
+
+Unless you want to customize your set-up, it'll be easiest to just use the default that comes with
+the `dapp-runner`, which you can get with:
+
+```shell
+curl https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml > golem_config.yaml
+```
+
+## Running your app
+
+### Ensure your yagna daemon is started
+
+First, let's make sure that you have your yagna daemon up and running and if not, execute 
+this in another console session:
+
+```shell
+yagna service run
+```
+
+{% hint style="info" %}
+If you haven't set-up your yagna daemon before, please refer to our [quick start guide](../flash-tutorial-of-requestor-development/README.md).
+{% endhint %}
+
+### Obtain the application key
+
+Please, run:
+
+```shell
+yagna app-key list
+```
+
+and copy the value listed in the `key` column.
+
+If the above command doesn't give you any keys, just create your app key:
+
+``shell
+yagna app-key create requestor
+``
+
+and copy the value output by this command.
+
+### Install the `dapp-runner`
+
+```shell
+pip install dapp-runner
+```
+
+### Run the app
+
+Now you're ready to start the app on Golem.
+
+```shell
+YAGNA_APPKEY=<your key> dapp-runner start --config golem_config.yaml hello_world.yaml
+```
+
+Once the app launches, you should see some status messages describing various stages of the deployment.
+And finally, you should see:
 
 ```
-YAGNA_APPKEY=<your_key> dapp-runner start --config golem-config.yml golem-compose.yml
+{"hello": {"local_proxy_address": "http://localhost:8081"}}
 ```
 
-If you'd like to see the full files, see [golem-compose.yml](https://github.com/golemfactory/dapp-experiments/blob/main/01\_todo\_app/golem-compose.yml) and [golem-config.yml](https://github.com/golemfactory/dapp-experiments/blob/main/01\_todo\_app/golem-config.yml) on GitHub.
+The port may be different on your machine, since it's assigned automatically. Copy the address that
+you got there and paste that into your browser.
+
+Assuming everything went well, you've just managed to create and deploy your own decentralized 
+application on Golem.
 
