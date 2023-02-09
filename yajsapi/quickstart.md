@@ -4,19 +4,24 @@ description: Create your own JavaScript application on Golem
 
 # QuickStart
 
-In this article, we'll show you how to launch your first JavaScript app on Golem Network from scratch in 15 minutes. We have divided the entire article into 4 sections:
+In this article, we'll show you how to launch your first JavaScript app on Golem Network from scratch in 15 minutes. We 
+have divided the entire article into 5 sections:
 
 * [Preparing the environment](quickstart.md#preparing-the-environment)
 * [Installing yagna requestor](quickstart.md#installing-yagna-requestor)
 * [Building your first JavaScript application on Golem Network](quickstart.md#building-your-first-javascript-app-on-golem-network)
 * [Run node script on provider](quickstart.md#run-the-app)
-* [Extend app functionality](quickstart.md#run-the-app)
+* [Extend app functionality](quickstart.md#extend-app-functionality)
 
-The first two sections are duplicated with the more elaborate ones described elsewhere in the handbook. However, the purpose of this article is not to get into the details, but to show you **how to start working with Golem step by step in minutes**.
+The first two sections are duplicated with the more elaborate ones described elsewhere in the handbook. However, the 
+purpose of this article is not to get into the details, but to show you **how to start working with Golem step by step 
+in minutes**.
 
-If you have a development environment already configured, you can go ahead and skip the first section and move on to the next one.
+If you have a development environment already configured, you can go ahead and skip the first section and move on to 
+the next one.
 
-If you have already installed the yaggna daemon and configured the requestor correctly, go straight to the third section.
+If you have already installed the yaggna daemon and configured the requestor correctly, go straight to the third 
+section.
 
 ## Preparing the environment
 
@@ -375,6 +380,7 @@ You can test your code yours machine by running:
 ```bash
 node task.js
 ```
+
 ## Extend app functionality
 
 When we have a file with the task ready, we should modify our executor code to send it 
