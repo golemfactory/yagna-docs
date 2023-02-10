@@ -24,7 +24,7 @@ If you are a JS developer, please switch to **NodeJS** tab
 
 {% tabs %}
 {% tab title="Python" %}
-**Python 3.6+**
+**Python 3.8+**
 
 To verify your currently installed version of python, please run:
 
@@ -216,5 +216,3 @@ Now you are ready to run computations on Golem:
 {% content-ref url="run-first-task-on-golem.md" %}
 [run-first-task-on-golem.md](run-first-task-on-golem.md)
 {% endcontent-ref %}
-
-And by all means, **have fun with Golem!**
