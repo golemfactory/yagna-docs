@@ -1,10 +1,22 @@
 ---
 description: >-
-  On this page, you can discover how to deploy a decentralized app (dApp) on
-  Golem with a single compose file.
+  Create your first "Hello World" dApp on Golem
 ---
 
-# Your first Golem dApp
+# Hello World dApp
+
+## What's in it for me?
+
+By following this tutorial, you'll be able to get more confident about:
+
+* Preparing a Docker image for your app with the ultimate purpose of deploying it on Golem.
+* Converting the VM image to Golem and uploading it to Golem's repository.
+* Creating a descriptor reflecting your app using YAML syntax similar to that used by `docker-compose`.
+* Deploying your app to Golem using `dapp-runner`.
+
+This step-by-step tutorial will be easier for you to follow if you previously had a chance to [launch the `yagna` deamon as
+a requestor](../flash-tutorial-of-requestor-development/README.md) and have any experience building
+portable web applications on Docker, but you should be able to complete it without any prior experience nevertheless.
 
 ## Choice of tools
 
@@ -138,7 +150,22 @@ Let's back-up a little and ensure that we're one directory above `server_app`.
 cd ..
 ```
 
-To build a docker image, we'll need a `Dockerfile` with the following operations:
+To build a docker image, we'll need file called `Dockerfile` with the following contents:
+
+```dockerfile
+FROM python:3.9-slim
+RUN pip install -U pip poetry
+
+RUN mkdir /app
+COPY server_app/* /app/
+
+WORKDIR /app
+RUN poetry install --no-root
+
+ENTRYPOINT poetry run python hello_world.py
+```
+
+Let's now go through what happens there.
 
 1. Take a stock Python Docker image (the slim version, we won't need anything more here):
 
@@ -172,20 +199,6 @@ RUN poetry install --no-root
 ENTRYPOINT poetry run python hello_world.py
 ```
 
-The full Dockerfile, then, is:
-
-```dockerfile
-FROM python:3.9-slim
-RUN pip install -U pip poetry
-
-RUN mkdir /app
-COPY server_app/* /app/
-
-WORKDIR /app
-RUN poetry install --no-root
-
-ENTRYPOINT poetry run python hello_world.py
-```
 
 ### Testing the Docker image
 
@@ -245,7 +258,28 @@ For a more complete information about the dApp descriptors, please consult the
 [appropriate section of the "Creating Golem dApps" article](creating-golem-dapps.md#application-descriptor). 
 Here, we're just cover the bare minimum. 
 
-The two obligatory pieces of a descriptor are the `payloads` and `nodes`. Let's create them.
+Here's what it looks like:
+
+```yaml
+payloads:
+  hello:
+    runtime: "vm"
+    params:
+      image_hash: "3032b6e97914eb5ee87d71188180d271f04eb9472b6da0d308943b2f"
+nodes:
+  hello:
+    payload: "hello"
+    init:
+      - run:
+          args: ["/bin/sh", "-c", "poetry run python hello_world.py > /dev/null &"]
+    http_proxy:
+      ports:
+        - "5000"
+```
+
+Let's add it as `hello_world.yaml` in the `hello_world` directory.
+
+There are two obligatory elements in it, the `payload` and `nodes`.
 
 ### The payload
 
@@ -295,27 +329,6 @@ Lastly, we're adding the `http_proxy` element because our service is an HTTP app
 be able to talk to. There's currently no way for the service to be exposed directly on the 
 provider's own address but we can use the local HTTP proxy functionality to expose a port on our 
 own machine that will forward traffic to the app through the Golem Network.
-
-The full descriptor, then should look like:
-
-```yaml
-payloads:
-  hello:
-    runtime: "vm"
-    params:
-      image_hash: "3032b6e97914eb5ee87d71188180d271f04eb9472b6da0d308943b2f"
-nodes:
-  hello:
-    payload: "hello"
-    init:
-      - run:
-          args: ["/bin/sh", "-c", "poetry run python hello_world.py > /dev/null &"]
-    http_proxy:
-      ports:
-        - "5000"
-```
-
-Let's add it as `hello_world.yaml` in the `hello_world` directory.
 
 ## The config file
 
