@@ -8,25 +8,19 @@ description: Quick start to running your first decentralized application on Gole
 
 By following this tutorial, you'll see how easy it is to deploy web applications to Golem.
 
-You should be able to complete it regardless of your level of experience. However, it will help if
-you have some fluency using basic unix tools like `curl` or `git` and are not afraid of
-running console commands.
-
+You should be able to complete it regardless of your level of experience. However, it will help if you have some fluency using basic unix tools like `curl` or `git` and are not afraid of running console commands.
 
 ## Prerequisites
 
-To launch applications on Golem, you request computational resources from the network. 
-Therefore, you need the following prerequisites prior to execution:
+To launch applications on Golem, you request computational resources from the network. Therefore, you need the following prerequisites prior to execution:
 
 * a running `yagna` daemon (v0.12 or higher)
 * your requestor app key
 
-Setting these up is a part of the tutorial linked below.
-You only need to complete the first part, and omit "Run first task on Golem".
-Once you have your yagna daemon running and your application key copied, feel free to proceed here.
+Setting these up is a part of the tutorial linked below. You only need to complete the first part, and omit "Run first task on Golem". Once you have your yagna daemon running and your application key copied, feel free to proceed here.
 
-{% content-ref url="flash-tutorial-of-requestor-development/" %}
-[flash-tutorial-of-requestor-development](flash-tutorial-of-requestor-development/)
+{% content-ref url="../flash-tutorial-of-requestor-development/" %}
+[flash-tutorial-of-requestor-development](../flash-tutorial-of-requestor-development/)
 {% endcontent-ref %}
 
 Please also ensure you have `curl` installed on your system.
@@ -69,8 +63,7 @@ pip install -U pip dapp-runner
 
 #### Installation from sources
 
-Alternatively, if you'd like to have the latest package, you can install it from the source.
-To do so, clone the repository from GitHub:
+Alternatively, if you'd like to have the latest package, you can install it from the source. To do so, clone the repository from GitHub:
 
 ```
 git clone --recurse-submodules https://github.com/golemfactory/dapp-runner.git
@@ -86,7 +79,7 @@ poetry install
 
 ## Running a dApp on Golem
 
-### Get the sample app 
+### Get the sample app
 
 ```
 curl https://raw.githubusercontent.com/golemfactory/dapp-store/cb780de6d2c3e42beaa1195c418242d0cc7701b7/apps/webapp.yaml > webapp.yaml
@@ -98,7 +91,7 @@ curl https://raw.githubusercontent.com/golemfactory/dapp-store/cb780de6d2c3e42be
 curl https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml > config.yaml
 ```
 
-### Run the app 
+### Run the app
 
 Having the above setup complete, you can verify it by running a sample application that comes together with `dapp-runner` repository using the following commands:
 
@@ -116,10 +109,10 @@ This means that the app is ready and can be viewed at: [http://localhost:8080](h
 
 (The port on your machine may be different)
 
-***That's it :)***
+_**That's it :)**_
 
 Now that you've been able to experience launching decentralized apps on Golem, you might wish to learn what it takes to build one yourself.
 
-{% content-ref url="your-first-golem-dapp.md" %}
-[your-first-golem-dapp](your-first-golem-dapp.md)
+{% content-ref url="hello-world-dapp.md" %}
+[hello-world-dapp.md](hello-world-dapp.md)
 {% endcontent-ref %}

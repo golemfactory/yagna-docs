@@ -29,7 +29,7 @@ Whatever your need, there may come a time when you'd like to send your GLMs one 
 
 **(Use the Deposit Tab)**
 
-![](<../.gitbook/assets/2 (1) (1) (1) (1) (1).png>)
+![](<../.gitbook/assets/2 (1) (1) (1) (1) (1) (1).png>)
 
 4\. Go through the confirmation process
 

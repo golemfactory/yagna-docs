@@ -4,16 +4,15 @@ description: Creating your own decentralized Golem Applications
 
 # Creating Golem dApps
 
-
 ## Components specification
 
-Just as it would be the case with any other platform, you start with a specification of components comprising your application. 
+Just as it would be the case with any other platform, you start with a specification of components comprising your application.
 
 For now, we’re going to assume that everything is run on Golem’s virtual machine (VM) runtime. Although individual Golem providers can run any number of runtime environments, and we even provide Golem Runtime SDK to create your own, custom runtimes, the default provider configuration right now includes just two - the VM runtime and the WASM runtime. Additionally, of these two, only the former is presently, directly supported by the Golem Deploy platform.
 
-As the virtual machine image format that the VM runtime operates on is derived from Docker, the decision then comes down to packaging your app into a number of Docker containers. Of course it’s up to an application developer to decide how exactly to proceed here. Still, there are a few criteria that should be considered here. 
+As the virtual machine image format that the VM runtime operates on is derived from Docker, the decision then comes down to packaging your app into a number of Docker containers. Of course it’s up to an application developer to decide how exactly to proceed here. Still, there are a few criteria that should be considered here.
 
-While it would be, in most cases, easier to set-up your app as a single image, it is bound to make the application as a whole a lot harder to maintain. Imagine you’d like to replace or update one of the components. In case of a single image you’d need to re-build and re-upload the whole thing instead of just one piece. Secondly, it’s much easier to test and debug each component of your app if they’re logically partitioned than it would be if you had just one large box. 
+While it would be, in most cases, easier to set-up your app as a single image, it is bound to make the application as a whole a lot harder to maintain. Imagine you’d like to replace or update one of the components. In case of a single image you’d need to re-build and re-upload the whole thing instead of just one piece. Secondly, it’s much easier to test and debug each component of your app if they’re logically partitioned than it would be if you had just one large box.
 
 One more, important point to consider is that each VM image is run on a different Golem provider. Having smaller and more specialized images will make it easier for providers to run each one and it will also make your app easier to scale in the long run.
 
@@ -23,23 +22,29 @@ The obvious downsides, given the above, is that you’re paying for each running
 
 Golem’s virtual machine runtime uses its own image format, which is derived from Docker’s and we offer a tool to convert the images from Docker to GVMI.
 
-For instructions on how to create a Golem VM image, please refer to: 
+For instructions on how to create a Golem VM image, please refer to:
 
-[Creating a Docker image](../vm-runtime/creating-a-docker-image)
+{% content-ref url="../vm-runtime/creating-a-docker-image.md" %}
+[creating-a-docker-image.md](../vm-runtime/creating-a-docker-image.md)
+{% endcontent-ref %}
 
 and:
 
-[Converting an image from Docker to Golem](../vm-runtime/convert-a-docker-image-into-a-golem-image)
+{% content-ref url="../vm-runtime/convert-a-docker-image-into-a-golem-image.md" %}
+[convert-a-docker-image-into-a-golem-image.md](../vm-runtime/convert-a-docker-image-into-a-golem-image.md)
+{% endcontent-ref %}
 
 What should be kept in mind is that there are still important discrepancies between the VM runtime and Docker’s own execution environment. We’re listing a non-exhaustive list of those in: [Differences between Docker containers and Golem VM runtime](docker-containers-vs-golem-vms.md)
 
 For a GVM image to be used by providers, it needs to be published somewhere where providers can download it. The easiest way is uploading it to the Golem image repository. For instructions on how to do it, refer to:
 
-[Uploading a Golem image](../vm-runtime/uploading-a-golem-image)
+{% content-ref url="../vm-runtime/uploading-a-golem-image.md" %}
+[uploading-a-golem-image.md](../vm-runtime/uploading-a-golem-image.md)
+{% endcontent-ref %}
 
 If the image is uploaded to the repository, it’s hash is the only piece of information needed for the image to be retrieved and used by the providers. If it’s available under a different, publicly-available URL, both the image hash and the URL need to be supplied.
 
-The above is true if the image uses a default set of privileges - or - in other words - if it doesn’t need to access external internet locations. To enable outbound internet access from VM runtimes, the images need to be accompanied by [Manifest files](#manifest-files).
+The above is true if the image uses a default set of privileges - or - in other words - if it doesn’t need to access external internet locations. To enable outbound internet access from VM runtimes, the images need to be accompanied by [Manifest files](creating-golem-dapps.md#manifest-files).
 
 ## Manifest files
 
@@ -49,7 +54,7 @@ Apart from containing the location of the VM image and its hash, the manifest fi
 
 ### Format
 
-The manifests are JSON files conforming to a specific schema, e.g.: 
+The manifests are JSON files conforming to a specific schema, e.g.:
 
 ```json
 {
@@ -94,19 +99,23 @@ The manifests are JSON files conforming to a specific schema, e.g.:
 
 For more detailed information regarding the manifest files, the schema they use and their usage in Golem, please refer to:
 
-[Computation Payload Manifest](../vm-runtime/computation-payload-manifest)
+{% content-ref url="../vm-runtime/computation-payload-manifest.md" %}
+[computation-payload-manifest.md](../vm-runtime/computation-payload-manifest.md)
+{% endcontent-ref %}
 
 ### **Manifest signatures**
 
-While a manifest is needed to enable an image to access *any* external locations, some locations have been whitelisted so that connecting to them doesn’t require anything besides that.
+While a manifest is needed to enable an image to access _any_ external locations, some locations have been whitelisted so that connecting to them doesn’t require anything besides that.
 
 For a complete list of those locations, please refer to:
 
 [ya-installer-resources/whitelist at main · golemfactory/ya-installer-resources](https://github.com/golemfactory/ya-installer-resources/tree/main/whitelist)
 
-Each provider can freely add new addresses and patterns to the whitelist. For documentation on how to do that, please refer to: 
+Each provider can freely add new addresses and patterns to the whitelist. For documentation on how to do that, please refer to:
 
-[Provider CLI reference](../../provider-tutorials/provider-cli#domain-whitelist)
+{% content-ref url="../../provider-tutorials/provider-cli.md" %}
+[provider-cli.md](../../provider-tutorials/provider-cli.md)
+{% endcontent-ref %}
 
 If the application wishes to access a URL which matches one of the entries on a whitelist, it only needs to supply that address within the manifest file.
 
@@ -142,9 +151,11 @@ One way to do it is bundling it with `docker-compose` and verifying all of its c
 
 ### ya-runtime-dbg
 
-Other than that, each singular image comprising your application may be tested separately using a tool known as `ya-runtime-dbg`.  It’s especially useful if you encounter an elusive, hard-to-pinpoint issue when trying to launch your app on Golem. For more information, please refer to:
+Other than that, each singular image comprising your application may be tested separately using a tool known as `ya-runtime-dbg`. It’s especially useful if you encounter an elusive, hard-to-pinpoint issue when trying to launch your app on Golem. For more information, please refer to:
 
-[Testing a Golem image](../vm-runtime/gvmi-debugging)
+{% content-ref url="../vm-runtime/gvmi-debugging.md" %}
+[gvmi-debugging.md](../vm-runtime/gvmi-debugging.md)
+{% endcontent-ref %}
 
 #### Lack of network connectivity in ya-runtime-dbg
 
@@ -217,11 +228,11 @@ As mentioned earlier, in case of the VM runtime, the payload may be an image has
 
 ### Nodes
 
-If the payloads could be said to describe the “what” of your app, the nodes part describes the “how”. Each entry translates to a service that’s deployed to a provider. Each service must, obviously specify the payload that it uses. 
+If the payloads could be said to describe the “what” of your app, the nodes part describes the “how”. Each entry translates to a service that’s deployed to a provider. Each service must, obviously specify the payload that it uses.
 
 #### `init`
 
-Services need to specify any and all ExeScript commands that must be run in order for a given service to start. Those commands comprise the content of the `init` clause. Currently, only the  `run` command is supported by the `dapp-runner`.
+Services need to specify any and all ExeScript commands that must be run in order for a given service to start. Those commands comprise the content of the `init` clause. Currently, only the `run` command is supported by the `dapp-runner`.
 
 Example initialization exescript:
 
@@ -320,7 +331,7 @@ In the future, we’re planning to enable community creators to publish their ap
 
 ### Connecting to services running on the providers
 
-As mentioned in the application descriptor section above ([`http_proxy` and `tcp_proxy`](#http_proxy-and-tcp_proxy)) by specifying a `http_proxy` or `tcp_proxy` in the application descriptor, you enable a given port within the node to be accessed using a local port on the requestor’s machine.
+As mentioned in the application descriptor section above ([`http_proxy` and `tcp_proxy`](creating-golem-dapps.md#http\_proxy-and-tcp\_proxy)) by specifying a `http_proxy` or `tcp_proxy` in the application descriptor, you enable a given port within the node to be accessed using a local port on the requestor’s machine.
 
 #### Local HTTP proxy
 
@@ -384,8 +395,8 @@ $ dapp-manager exec <insert_app_id> backend -- /bin/bash -c "ls -alh"
 
 Because those commands are sent as ExeScripts to the underlying Golem Activity, the main issue currently is that any error while executing such a command is treated as a failure of the activity in question and both the activity and the agreement are immediately terminated by the provider.
 
-As a work-around, one could e.g. bundle and start an SSH daemon in your image and connect to it using a [TCP proxy](#tcp-proxy).
+As a work-around, one could e.g. bundle and start an SSH daemon in your image and connect to it using a [TCP proxy](creating-golem-dapps.md#tcp-proxy).
 
-For an illustration of such usage, please refer to the following `yapapi` SSH connection example: 
+For an illustration of such usage, please refer to the following `yapapi` SSH connection example:
 
 {% embed url="https://github.com/golemfactory/yapapi/tree/master/examples/ssh" %}

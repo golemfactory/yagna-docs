@@ -44,7 +44,7 @@ This application presents usage of the Golem Network with access to external ser
 
 ### Golem Services
 
-Golem [Service model](../service-development/README.md) describes a way to run specific Golem payloads and defines operations that need to be applied on state transitions throughout their lifetime. 
+Golem [Service model](../service-development/) describes a way to run specific Golem payloads and defines operations that need to be applied on state transitions throughout their lifetime.
 
 The payloads are the definitions of activities that a requestor wishes to be executed on Golem along with a complete set of parameters needed to initialize those activities. Those parameters can specify, e.g. what runtime and which container image to use or what the CPU or memory specifications are required by the payload.
 
@@ -58,8 +58,7 @@ Instead, those definitions are constructed using a simple, hierarchical structur
 
 The model and the schema used are documented in:
 
-{% embed url="https://github.com/golemfactory/golem-architecture/blob/stranger80/GAP/golem_compose/gaps/gap-16_golem_compose/gap-16_golem_compose.md" %}
-
+{% embed url="https://github.com/golemfactory/golem-architecture/blob/master/gaps/gap-16_golem_deploy/gap-16_golem_deploy.md" %}
 
 ### Dapp-runner
 
