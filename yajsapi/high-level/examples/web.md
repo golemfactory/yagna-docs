@@ -73,8 +73,12 @@ In this layout, there are three elements:
 
 ## Using the Yajsapi bundle library
 
+The library provides its code as an ECMAScript module, so to import individual components, use the `import` syntax:
+
 ```html
-    <script crossorigin src="https://unpkg.com/yajsapi/yajspai.min.js"></script>
+<script crossorigin type="module">
+    import { TaskExecutor } from "https://unpkg.com/yajsapi/yajspai.min.js"    
+</script>
 ```
 
 ### Task Executor
@@ -83,7 +87,7 @@ Using the Golem network, an example script can be triggered by creating a TaskEx
 ```html
 <script>
     async function run() {
-        const executor = await yajsapi.TaskExecutor.create({
+        const executor = await TaskExecutor.create({
             package: "9a3b5d67b0b27746283cb5f287c13eab1beaa12d92a9f536b747c7ae",
             yagnaOptions: { appKey: 'YOUR_YAGNA_APP_KEY' }
             logger
@@ -172,12 +176,7 @@ Now that we have all the necessary components defined, the code should look like
 </script>
 ```
 
-Now if we have a running yagna deamon and passed Yagna APP key correctly, after launching our application with `node app.js` we should see in the browser:
-
-![](../../../.gitbook/assets/web-01.jpg)
-
+Now if we have a running yagna deamon and passed Yagna APP key correctly, after launching our application with `node app.js` we should see run button and an area to display results and logs.
 And if we click the run button, after a while in the result container, we should get the result of the script: `Hello World`, and in the log container we should see the logs of executed commands.
-
-![](../../../.gitbook/assets/web-02.jpg)
 
 

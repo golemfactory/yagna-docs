@@ -84,10 +84,12 @@ In this layout we have three elements:
 
 ## Using Yajsapi bundle library
 
-Yajsapi is available via CDN. You should add the following script to the head section of `index.html`
+Yajsapi is available via CDN. The library provides its code as an ECMAScript module, so to import it, use the `import` syntax:
 
 ```html
-<script crossorigin src="https://unpkg.com/yajsapi/yajspai.min.js"></script>
+<script crossorigin type="module">
+  import { * as yajsapi } from "https://unpkg.com/yajsapi/yajspai.min.js"
+</script>
 ```
 
 ### Logger
@@ -150,7 +152,7 @@ An Allocation is a designated sum of money reserved for the purpose of making so
 
 ```javascript
 async function createAllocation() {
-  const accounts = await (await Accounts.create({ yagnaOptions, logger })).list();
+  const accounts = await (await yajsapi.Accounts.create({ yagnaOptions, logger })).list();
   account = accounts.find((account) => account?.platform === 'erc20-rinkeby-tglm');
   if (!account) logger.error("There is no available account");
   allocation = await yajsapi.Allocation.create({ account, yagnaOptions, logger }).catch(logger.error);
@@ -272,10 +274,5 @@ async function end() {
 
 ## All done!
 
-Now if we have a running yagna deamon with the cors parameter, after launching our application with `node app.js` we should see in the browser:
-
-![](../../../.gitbook/assets/web-mid-01.jpg)
-
-and if we click the buttons one by one depending on the messages displayed in the logs after the correct creation of the `Activity`, we will be able to execute any commands on the provider.
-
-![](../../../.gitbook/assets/web-mid-02.jpg)
+Now if we have a running yagna deamon and passed Yagna APP key correctly, after launching our application with `node app.js` we should see action buttons and an area to display results and logs.
+And if we click the buttons one by one depending on the messages displayed in the logs after the correct creation of the `Activity`, we will be able to execute any commands on the provider.
