@@ -34,7 +34,7 @@ While working with dApps, we created a few applications on top of it, which serv
 
 This application showcases utilizing the Golem Network to host a 3-layer application (**React** + **Flask** + **RQLite**)
 
-### Weather Stats Application [\[GitHub\]](https://github.com/golemfactory/dapp-experiments/tree/main/weather\_stats)
+### Weather Stats Application [\[GitHub\]](https://github.com/golemfactory/dapp-experiments/tree/main/02\_weather\_stats)
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Weather Stats App</p></figcaption></figure>
 
