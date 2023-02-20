@@ -84,7 +84,7 @@ poetry install
 ### Get the sample app
 
 ```
-curl https://raw.githubusercontent.com/golemfactory/dapp-store/cb780de6d2c3e42beaa1195c418242d0cc7701b7/apps/webapp.yaml > webapp.yaml
+curl https://raw.githubusercontent.com/golemfactory/dapp-store/81e3f50aba90a84d335a26cb9cc2ea778193be11/apps/todo-app.yaml > webapp.yaml
 ```
 
 ### And the default config file
@@ -104,7 +104,7 @@ YAGNA_APPKEY=<your_key> dapp-runner start --config config.yaml webapp.yaml
 Once the app is deployed on Golem, you should see a line reading:
 
 ```json
-{"http": {"local_proxy_address": "http://localhost:8080"}}
+{"web": {"local_proxy_address": "http://localhost:8080"}}
 ```
 
 This means that the app is ready and can be viewed at: [http://localhost:8080](http://localhost:8080)
