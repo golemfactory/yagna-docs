@@ -317,8 +317,17 @@ There's one more piece of data that we'll need to run our application. It's the 
 Unless you want to customize your set-up, it'll be easiest to just use the default that comes with the `dapp-runner`, which you can get with:
 
 ```shell
+
 curl https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml > golem_config.yaml
 ```
+
+{% hint style="info" %}
+On Windows PowerShell, you may use:
+```shell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml" -OutFile "golem_config.yaml"
+```
+{% endhint %}
+
 
 ## Running your app
 
