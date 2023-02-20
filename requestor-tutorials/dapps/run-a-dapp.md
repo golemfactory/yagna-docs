@@ -23,11 +23,13 @@ Setting these up is a part of the tutorial linked below. You only need to comple
 [flash-tutorial-of-requestor-development](../flash-tutorial-of-requestor-development/)
 {% endcontent-ref %}
 
-Please also ensure you have `curl` installed on your system.
+Please also ensure you have `curl` available on your system.
 
 ```shell
 curl --version
 ```
+
+If not, please install it using the instructions appropriate for your system from: https://curl.se/download.html.
 
 ## Installation
 
@@ -35,7 +37,7 @@ curl --version
 
 It's best to run any Python applications in a virtual environment so as not to clutter your system's Python installation with unnecessary packages.
 
-Ensure you're running Python >= 3.8 and you have the `venv` module installed (it's normally included in the Python distribution).
+Ensure you're running Python >= 3.8, and you have the `venv` module installed (it's normally included in the Python distribution).
 
 Prepare a virtual environment for the tutorial script:
 
