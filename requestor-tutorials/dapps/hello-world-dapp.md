@@ -13,7 +13,18 @@ By following this tutorial, you'll be able to get more confident about:
 * Creating a descriptor reflecting your app using YAML syntax similar to that used by `docker-compose`.
 * Deploying your app to Golem using `dapp-runner`.
 
-This step-by-step tutorial will be easier for you to follow if you previously had a chance to [launch the `yagna` deamon as a requestor](../flash-tutorial-of-requestor-development/) and have any experience building portable web applications on Docker, but you should be able to complete it without any prior experience nevertheless.
+This step-by-step tutorial will be easier for you to follow if you previously had a chance to 
+[launch the `yagna` deamon as a requestor](../flash-tutorial-of-requestor-development/README.md) 
+and have any experience building portable web applications on Docker, 
+but you should be able to complete it without any prior experience nevertheless.
+
+## Prerequisites
+
+{% hint style="info" %}
+To follow this tutorial in full, you need to have Docker installed on your machine.
+If you don't have it installed, please refer to
+[instructions on Docker's website](https://docs.docker.com/get-docker/).
+{% endhint %}
 
 ## Choice of tools
 
@@ -46,8 +57,8 @@ pip install -U pip poetry
 ### Initialize the project
 
 ```shell
-mkdir -p hello_world/server_app
-cd hello_world/server_app/
+mkdir -p hello_golem/server_app
+cd hello_golem/server_app/
 poetry init --no-interaction
 ```
 
@@ -74,11 +85,12 @@ cd dapp-experiments/05_hello_world
 ```
 {% endhint %}
 
-Fire up your favourite editor or IDE navigate to the `hello_world/server_app` directory that we have set up above.
+Fire up your favourite editor or IDE navigate to the `hello_golem/server_app` directory that we have set up above.
 
 If you have configured the app using poetry like we did above, you should already see the `pyproject.toml` and `poetry.lock` files.
 
-In the directory, add `hello_world.py` and just paste the following few lines which are a slightly modified version of [Flask's original, minimal example](https://flask.palletsprojects.com/en/1.1.x/quickstart/):
+In the directory, add `hello_golem.py` and just paste the following few lines which are a slightly
+modified version of [Flask's original, minimal example](https://flask.palletsprojects.com/en/1.1.x/quickstart/):
 
 ```python
 from flask import Flask
@@ -86,7 +98,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
+def hello_golem():
     return 'Hello from Golem!'
 
 
@@ -113,7 +125,7 @@ For local testing, we could have gotten away with just `app.run()`. That makes t
 Let's test this app locally, before we start preparing it for Golem. Launch the app:
 
 ```shell
-python hello_world.py
+python hello_golem.py
 ```
 
 and then point your browser to [http://127.0.0.1:5000](http://127.0.0.1:5000).
@@ -148,7 +160,7 @@ COPY server_app/* /app/
 WORKDIR /app
 RUN poetry install --no-root
 
-ENTRYPOINT poetry run python hello_world.py
+ENTRYPOINT poetry run python hello_golem.py
 ```
 
 Let's now go through what happens there.
@@ -182,7 +194,7 @@ RUN poetry install --no-root
 5. Finally, set up the Docker's entrypoint:
 
 ```dockerfile
-ENTRYPOINT poetry run python hello_world.py
+ENTRYPOINT poetry run python hello_golem.py
 ```
 
 ### Testing the Docker image
@@ -191,7 +203,7 @@ With the Dockerfile ready, we can test whether the app works inside the containe
 
 ```shell
 docker build -t hello-dapps .
-docker run -p 5000:5000 hello-dapps
+docker run -it -p 5000:5000 hello-dapps
 ```
 
 Once again, after the image launches, you may connect to http://127.0.0.1:5000/ with your browser, and you should be able to see the "Hello..." message, which confirms that the app has been correctly packaged and is working as it should.
@@ -248,13 +260,13 @@ nodes:
     payload: "hello"
     init:
       - run:
-          args: ["/bin/sh", "-c", "poetry run python hello_world.py > /dev/null &"]
+          args: ["/bin/sh", "-c", "poetry run python hello_golem.py > /dev/null &"]
     http_proxy:
       ports:
         - "5000"
 ```
 
-Let's add it as `hello_world.yaml` in the `hello_world` directory.
+Let's add it as `hello_golem.yaml` in the `hello_golem` directory.
 
 There are two obligatory elements in it, the `payload` and `nodes`.
 
@@ -282,7 +294,7 @@ nodes:
     payload: "hello"
     init:
       - run:
-          args: ["/bin/sh", "-c", "poetry run python hello_world.py > /dev/null &"]
+          args: ["/bin/sh", "-c", "poetry run python hello_golem.py > /dev/null &"]
     http_proxy:
       ports:
         - "5000"
@@ -307,6 +319,14 @@ Unless you want to customize your set-up, it'll be easiest to just use the defau
 ```shell
 curl https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml > golem_config.yaml
 ```
+
+{% hint style="info" %}
+On Windows PowerShell, you may use:
+```shell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml" -OutFile "golem_config.yaml"
+```
+{% endhint %}
+
 
 ## Running your app
 
@@ -349,7 +369,7 @@ pip install dapp-runner
 Now you're ready to start the app on Golem.
 
 ```shell
-YAGNA_APPKEY=<your key> dapp-runner start --config golem_config.yaml hello_world.yaml
+YAGNA_APPKEY=<your key> dapp-runner start --config golem_config.yaml hello_golem.yaml
 ```
 
 Once the app launches, you should see some status messages describing various stages of the deployment. And finally, you should see:
