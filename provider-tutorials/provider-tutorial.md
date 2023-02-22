@@ -12,7 +12,7 @@ description: >-
 
 For the provider end, we currently, officially support:
 
-* Ubuntu 18.04 LTS and 20.04 LTS
+* Ubuntu 20.04 LTS and 22.04 LTS
 
 but you are welcome to try out and run it on other Linux distributions.
 
