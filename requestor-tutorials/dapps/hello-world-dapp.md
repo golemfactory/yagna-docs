@@ -13,17 +13,12 @@ By following this tutorial, you'll be able to get more confident about:
 * Creating a descriptor reflecting your app using YAML syntax similar to that used by `docker-compose`.
 * Deploying your app to Golem using `dapp-runner`.
 
-This step-by-step tutorial will be easier for you to follow if you previously had a chance to 
-[launch the `yagna` deamon as a requestor](../flash-tutorial-of-requestor-development/README.md) 
-and have any experience building portable web applications on Docker, 
-but you should be able to complete it without any prior experience nevertheless.
+This step-by-step tutorial will be easier for you to follow if you previously had a chance to [launch the `yagna` deamon as a requestor](../flash-tutorial-of-requestor-development/) and have any experience building portable web applications on Docker, but you should be able to complete it without any prior experience nevertheless.
 
 ## Prerequisites
 
 {% hint style="info" %}
-To follow this tutorial in full, you need to have Docker installed on your machine.
-If you don't have it installed, please refer to
-[instructions on Docker's website](https://docs.docker.com/get-docker/).
+To follow this tutorial in full, you need to have Docker installed on your machine. If you don't have it installed, please refer to [instructions on Docker's website](https://docs.docker.com/get-docker/).
 {% endhint %}
 
 ## Choice of tools
@@ -59,7 +54,7 @@ pip install -U pip poetry
 ```shell
 mkdir -p hello_golem/server_app
 cd hello_golem/server_app/
-poetry init --no-interaction
+poetry init --no-interaction --python="^3.9"
 ```
 
 ### Add the requirements
@@ -89,8 +84,7 @@ Fire up your favourite editor or IDE navigate to the `hello_golem/server_app` di
 
 If you have configured the app using poetry like we did above, you should already see the `pyproject.toml` and `poetry.lock` files.
 
-In the directory, add `hello_golem.py` and just paste the following few lines which are a slightly
-modified version of [Flask's original, minimal example](https://flask.palletsprojects.com/en/1.1.x/quickstart/):
+In the directory, add `hello_golem.py` and just paste the following few lines which are a slightly modified version of [Flask's original, minimal example](https://flask.palletsprojects.com/en/1.1.x/quickstart/):
 
 ```python
 from flask import Flask
@@ -322,11 +316,11 @@ curl https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/def
 
 {% hint style="info" %}
 On Windows PowerShell, you may use:
+
 ```shell
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml" -OutFile "golem_config.yaml"
 ```
 {% endhint %}
-
 
 ## Running your app
 
