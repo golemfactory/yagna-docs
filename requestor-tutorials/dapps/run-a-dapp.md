@@ -63,22 +63,6 @@ The tool which deploys apps to Golem, `dapp-runner` is installable from the PyPi
 pip install -U pip dapp-runner
 ```
 
-#### Installation from sources
-
-Alternatively, if you'd like to have the latest package, you can install it from the source. To do so, clone the repository from GitHub:
-
-```
-git clone --recurse-submodules https://github.com/golemfactory/dapp-runner.git
-```
-
-and next, install it from there:
-
-```shell
-cd dapp-runner
-pip install -U pip poetry
-poetry install
-```
-
 ## Running a dApp on Golem
 
 ### Get the sample app
@@ -89,6 +73,7 @@ curl https://raw.githubusercontent.com/golemfactory/dapp-store/81e3f50aba90a84d3
 
 {% hint style="info" %}
 On Windows PowerShell, you may use:
+
 ```shell
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/golemfactory/dapp-store/81e3f50aba90a84d335a26cb9cc2ea778193be11/apps/todo-app.yaml" -OutFile "webapp.yaml"
 ```
@@ -102,11 +87,11 @@ curl https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/def
 
 {% hint style="info" %}
 On Windows PowerShell, you may use:
+
 ```shell
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml" -OutFile "config.yaml"
 ```
 {% endhint %}
-
 
 ### Run the app
 
