@@ -143,13 +143,10 @@ To build a docker image, we'll need file called `Dockerfile` with the following 
 ```dockerfile
 FROM python:3.9-slim
 RUN pip install -U pip poetry
-
 RUN mkdir /app
 COPY server_app/* /app/
-
 WORKDIR /app
 RUN poetry install --no-root
-
 ENTRYPOINT poetry run python hello_golem.py
 ```
 
