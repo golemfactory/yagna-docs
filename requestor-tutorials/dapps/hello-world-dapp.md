@@ -89,13 +89,9 @@ In the directory, add `hello_golem.py` and just paste the following few lines wh
 ```python
 from flask import Flask
 app = Flask(__name__)
-
-
 @app.route('/')
 def hello_golem():
     return 'Hello from Golem!'
-
-
 app.run(host="0.0.0.0")
 ```
 
