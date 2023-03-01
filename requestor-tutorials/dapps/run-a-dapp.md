@@ -93,12 +93,27 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/golemfactory/dapp-runn
 ```
 {% endhint %}
 
+### Export your application key to the environment
+
+```bash
+export YAGNA_APPKEY=<your key>
+```
+
+{% hint style="warning" %}
+On Windows, you'll need to use:
+
+```
+set YAGNA_APPKEY=<your key>
+```
+{% endhint %}
+
+
 ### Run the app
 
 Having the above setup complete, you can verify it by running a sample application that comes together with `dapp-runner` repository using the following commands:
 
 ```shell
-YAGNA_APPKEY=<your_key> dapp-runner start --config config.yaml webapp.yaml 
+dapp-runner start --config config.yaml webapp.yaml 
 ```
 
 Once the app is deployed on Golem, you should see a line reading:
