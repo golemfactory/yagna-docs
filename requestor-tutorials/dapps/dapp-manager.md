@@ -86,26 +86,11 @@ pip install dapp-manager
 curl https://raw.githubusercontent.com/golemfactory/dapp-store/81e3f50aba90a84d335a26cb9cc2ea778193be11/apps/todo-app.yaml > app.yaml
 ```
 
-{% hint style="info" %}
-On Windows PowerShell, you may use:
-```shell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/golemfactory/dapp-store/81e3f50aba90a84d335a26cb9cc2ea778193be11/apps/todo-app.yaml" -OutFile "app.yaml"
-```
-{% endhint %}
-
 ### And the default config file
 
 ```
 curl https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml > config.yaml
 ```
-
-{% hint style="info" %}
-On Windows PowerShell, you may use:
-```shell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml" -OutFile "config.yaml"
-```
-{% endhint %}
-
 
 ```bash
 dapp-manager start --config config.yaml app.yaml
