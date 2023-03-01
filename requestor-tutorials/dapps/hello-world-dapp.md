@@ -49,6 +49,15 @@ source ~/.envs/hello-dapps/bin/activate
 pip install -U pip poetry
 ```
 
+{% hint style="warning" %}
+On Windows, the above needs to be replaced with: 
+
+```shell
+python -m venv --clear %HOMEDRIVE%%HOMEPATH%\.envs\hello-dapps
+%HOMEDRIVE%%HOMEPATH%\.envs\hello-dapps\Scripts\activate.bat
+```
+{% endhint %}
+
 ### Initialize the project
 
 ```shell
@@ -56,6 +65,17 @@ mkdir -p hello_golem/server_app
 cd hello_golem/server_app/
 poetry init --no-interaction --python="^3.9"
 ```
+
+{% hint style="warning" %}
+Again, on Windows: 
+
+```shell
+mkdir  "hello_golem\server_app"
+cd hello_golem/server_app/
+poetry init --no-interaction --python="^3.9"
+```
+{% endhint %}
+
 
 ### Add the requirements
 
@@ -307,7 +327,7 @@ Unless you want to customize your set-up, it'll be easiest to just use the defau
 curl https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml > golem_config.yaml
 ```
 
-{% hint style="info" %}
+{% hint style="warning" %}
 On Windows PowerShell, you may use:
 
 ```shell
