@@ -47,13 +47,14 @@ source ~/.envs/dapps/bin/activate
 ```
 
 {% hint style="warning" %}
-On Windows, you need to replace the above with:
-{% endhint %}
+On Windows in the regular `cmd` shell, you need to replace the above with:
 
 ```
 python -m venv --clear %HOMEDRIVE%%HOMEPATH%\.envs\dapps
 %HOMEDRIVE%%HOMEPATH%\.envs\dapps\Scripts\activate.bat
 ```
+
+{% endhint %}
 
 ### Install `dapp-runner`
 
@@ -71,27 +72,11 @@ pip install -U pip dapp-runner
 curl https://raw.githubusercontent.com/golemfactory/dapp-store/81e3f50aba90a84d335a26cb9cc2ea778193be11/apps/todo-app.yaml > webapp.yaml
 ```
 
-{% hint style="warning" %}
-On Windows PowerShell, you may use:
-
-```shell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/golemfactory/dapp-store/81e3f50aba90a84d335a26cb9cc2ea778193be11/apps/todo-app.yaml" -OutFile "webapp.yaml"
-```
-{% endhint %}
-
 ### And the default config file
 
 ```
 curl https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml > config.yaml
 ```
-
-{% hint style="warning" %}
-On Windows PowerShell, you may use:
-
-```shell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml" -OutFile "config.yaml"
-```
-{% endhint %}
 
 ### Export your application key to the environment
 
