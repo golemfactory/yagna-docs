@@ -71,7 +71,7 @@ pip install -U pip dapp-runner
 curl https://raw.githubusercontent.com/golemfactory/dapp-store/81e3f50aba90a84d335a26cb9cc2ea778193be11/apps/todo-app.yaml > webapp.yaml
 ```
 
-{% hint style="info" %}
+{% hint style="warning" %}
 On Windows PowerShell, you may use:
 
 ```shell
@@ -85,7 +85,7 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/golemfactory/dapp-stor
 curl https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml > config.yaml
 ```
 
-{% hint style="info" %}
+{% hint style="warning" %}
 On Windows PowerShell, you may use:
 
 ```shell
