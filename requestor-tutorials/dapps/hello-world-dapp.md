@@ -375,6 +375,8 @@ set YAGNA_APPKEY=<your key>
 ### Install the `dapp-runner`
 
 ```shell
+python3 -m venv ~/.envs/dapp-runner
+source ~/.envs/dapp-runner/bin/activate
 pip install dapp-runner
 ```
 
