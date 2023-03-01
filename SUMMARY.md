@@ -44,6 +44,7 @@
 * [Decentralized applications on Golem](requestor-tutorials/dapps/README.md)
   * [Quick start](requestor-tutorials/dapps/run-a-dapp.md)
   * [Hello World dApp](requestor-tutorials/dapps/hello-world-dapp.md)
+  * [Managing multiple dapps](requestor-tutorials/dapps/dapp-manager.md)
   * [Creating Golem dApps](requestor-tutorials/dapps/creating-golem-dapps.md)
   * [Differences between Docker containers and Golem VM runtime](requestor-tutorials/dapps/docker-containers-vs-golem-vms.md)
   * [Troubleshooting](requestor-tutorials/dapps/troubleshooting.md)
