@@ -327,14 +327,6 @@ Unless you want to customize your set-up, it'll be easiest to just use the defau
 curl https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml > golem_config.yaml
 ```
 
-{% hint style="warning" %}
-On Windows PowerShell, you may use:
-
-```shell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/golemfactory/dapp-runner/main/configs/default.yaml" -OutFile "golem_config.yaml"
-```
-{% endhint %}
-
 ## Running your app
 
 ### Ensure your yagna daemon is started
@@ -365,6 +357,21 @@ If the above command doesn't give you any keys, just create your app key:
 
 and copy the value output by this command.
 
+### Export your application key to the environment
+
+```bash
+export YAGNA_APPKEY=<your key>
+```
+
+{% hint style="warning" %}
+On Windows, you'll need to use:
+
+```
+set YAGNA_APPKEY=<your key>
+```
+{% endhint %}
+
+
 ### Install the `dapp-runner`
 
 ```shell
@@ -376,7 +383,7 @@ pip install dapp-runner
 Now you're ready to start the app on Golem.
 
 ```shell
-YAGNA_APPKEY=<your key> dapp-runner start --config golem_config.yaml hello_golem.yaml
+dapp-runner start --config golem_config.yaml hello_golem.yaml
 ```
 
 Once the app launches, you should see some status messages describing various stages of the deployment. And finally, you should see:
