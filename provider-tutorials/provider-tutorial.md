@@ -85,7 +85,7 @@ Please keep in mind that `golemsp run` will remember the parameters used the las
 {% endhint %}
 
 ```
-golemsp run --subnet public-beta --payment-network mainnet
+golemsp run --subnet public --payment-network mainnet
 ```
 
 ### Checking node status
