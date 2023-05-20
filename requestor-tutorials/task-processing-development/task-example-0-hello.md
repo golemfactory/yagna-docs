@@ -4,6 +4,10 @@ description: A minimal example of a functional Golem requestor agent
 
 # Task Example 0: Hello World!
 
+{% hint style="warning" %}
+The documentation is undergoing work and this article is only here because the Python/yapapi parts have not yet been migrated. For the NodeJS or dApp articles, refer to the [new creator documentation](https://docs.golem.network/creators/).
+{% endhint %}
+
 {% hint style="info" %}
 This example illustrates following Golem features & aspects:
 
@@ -83,39 +87,6 @@ if __name__ == "__main__":
     loop.run_until_complete(task)
 ```
 {% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-const { Executor, Task, utils: { asyncWith }, vm } = require("yajsapi");
-
-async function main() {
-  const package = await vm.repo({
-    image_hash: "d646d7b93083d817846c2ae5c62c72ca0507782385a2e29291a3d376"
-  });
-  const tasks = [new Task({})];
-
-  async function* worker(context, tasks) {
-    for await (let task of tasks) {
-      context.run("/bin/sh", ["-c", "date"]);
-      const future_result = yield context.commit();
-      const { results } = await future_result;
-      task.accept_result(results[results.length - 1])
-    }
-  }
-
-  await asyncWith(
-    new Executor({ task_package: package, budget: "1.0", subnet_tag: "public" }),
-    async (executor) => {
-      for await (let completed of executor.submit(worker, tasks)) {
-        console.log(completed.result().stdout);
-      }
-    }
-  );
-}
-
-main();
-```
-{% endtab %}
 {% endtabs %}
 
 That's all we need in order to run a task on Golem!
@@ -155,14 +126,6 @@ package = vm.repo(
 )
 ```
 {% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-const package = await vm.repo({
-    image_hash: "d646d7b93083d817846c2ae5c62c72ca0507782385a2e29291a3d376"
-});
-```
-{% endtab %}
 {% endtabs %}
 
 Currently, Golem is using a public repository to store both official and community-authored VM images. Once an image is uploaded to this repository it can be referred to by its hash.
@@ -179,12 +142,6 @@ If you'd like to learn about creating and uploading Golem images yourself, take 
 {% tab title="Python" %}
 ```python
 tasks = [Task(data=None)]
-```
-{% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-const tasks = [new Task({})];
 ```
 {% endtab %}
 {% endtabs %}
@@ -207,19 +164,6 @@ async with Golem(budget=1.0, subnet_tag="public") as golem:
         print(completed.result.stdout)
 ```
 {% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-await asyncWith(
-    new Executor({ task_package: package, budget: "1.0", subnet_tag: "public" }),
-    async (executor) => {
-        for await (let completed of executor.submit(worker, tasks)) {
-            console.log(completed.result().stdout);
-        }
-    }
-);
-```
-{% endtab %}
 {% endtabs %}
 
 Finally, as the last step of our `main()` function we create an instance of `Golem` (or `Executor` in the case of JS API) and use it to request our tasks.
@@ -235,15 +179,6 @@ Let's first focus on the instantiation code:
 ```javascript
 async with Golem(budget=1.0, subnet_tag="public") as golem:
     ...
-```
-{% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-await asyncWith(
-    new Executor({ task_package: package, budget: "1.0", subnet_tag: "public" }),
-    ...
-);
 ```
 {% endtab %}
 {% endtabs %}
@@ -289,16 +224,6 @@ async for completed in golem.execute_tasks(worker, tasks, payload=package):
     print(completed.result.stdout)
 ```
 {% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-async (executor) => {
-    for await (let completed of executor.submit(worker, tasks)) {
-        console.log(completed.result().stdout);
-    }
-}
-```
-{% endtab %}
 {% endtabs %}
 
 Having a `Golem/Executor` instance initialized we can now request some tasks!
@@ -328,19 +253,6 @@ async def worker(context: WorkContext, tasks: AsyncIterable[Task]):
         future_result = script.run("/bin/sh", "-c", "date")
         yield script
         task.accept_result(result=await future_result)
-```
-{% endtab %}
-
-{% tab title="NodeJS" %}
-```javascript
-async function* worker(context, tasks) {
-    for await (let task of tasks) {
-        context.run("/bin/sh", ["-c", "date"]);
-        const future_result = yield context.commit();
-        const { results } = await future_result;
-        task.accept_result(results[results.length - 1])
-    }
-}
 ```
 {% endtab %}
 {% endtabs %}
