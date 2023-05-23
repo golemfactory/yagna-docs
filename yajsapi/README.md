@@ -3,7 +3,7 @@ yajsapi / [Exports](modules.md)
 # ya*JS*api
 
 {% hint style="warning" %}
-The documentation is undergoing work, refer to the [new API reference](https://docs.golem.network/creators/) for more updated documentation on API.
+The documentation is undergoing work, refer to the [new API reference](https://docs.golem.network/creators/javascript/docs/) for more updated documentation on API.
 {% endhint %}
 
 The JS/TS port of [yapapi, Golem's Python API](https://github.com/golemfactory/yapapi)
