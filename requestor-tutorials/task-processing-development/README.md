@@ -5,7 +5,7 @@ description: Your own task on golem.
 # Task Model development
 
 {% hint style="warning" %}
-The documentation is undergoing work and this article is only here because the Python/yapapi parts have not yet been migrated. For the NodeJS or dApp articles, refer to the [new creator documentation](https://docs.golem.network/creators/).
+The documentation is undergoing work. For the NodeJS or dApp articles, refer to the [new creator documentation](https://docs.golem.network/creators/).
 {% endhint %}
 
 ## Introduction
