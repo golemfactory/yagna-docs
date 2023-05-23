@@ -4,6 +4,10 @@ description: Your own task on golem.
 
 # Task Model development
 
+{% hint style="warning" %}
+The documentation is undergoing work and this article is only here because the Python/yapapi parts have not yet been migrated. For the NodeJS or dApp articles, refer to the [new creator documentation](https://docs.golem.network/creators/).
+{% endhint %}
+
 ## Introduction
 
 This section shows a typical experience of a developer who would like to create their own task-based application using Golem.
