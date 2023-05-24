@@ -1,5 +1,9 @@
 # Introduction to Golem's high-level Java Script API
 
+{% hint style="warning" %}
+The documentation is undergoing work, refer to the [new API reference](https://docs.golem.network/creators/javascript/docs/) for more updated documentation on API.
+{% endhint %}
+
 yajsapi / [Exports](modules/)
 
 ## ya\_JS\_api
