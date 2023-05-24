@@ -14,7 +14,7 @@ Run `golemsp help` without arguments to see top-level usage information:
 
 ```css
 $ golemsp help
-golemsp 0.12.0 (37060503 2022-12-02 build #251)
+golemsp 0.12.1 (5671cd3f 2023-05-23 build #293)
 User friedly CLI for running Golem Provider
 
 USAGE:
@@ -147,10 +147,10 @@ $ golemsp status
 │  Status                     │
 │                             │
 │  Service    is not running  │
-│  Version    0.12.0          │
-│  Commit     37060503        │
-│  Date       2022-12-02      │
-│  Build      251             │
+│  Version    0.12.1          │
+│  Commit     5671cd3f        │
+│  Date       2023-05-23      │
+│  Build      293             │
 │                             │
 │  Node Name  zima            │
 │  Subnet     public          │
@@ -167,10 +167,10 @@ $ golemsp status
 │  Status                 │  Wallet                                      │  Tasks                      │
 │                         │  0x2a14f8ae0272bd4c38ed1b40c66e88ed719dab69  │                             │
 │  Service    is running  │                                              │  last 1h processed     0    │
-│  Version    0.12.0      │  network               mainnet               │  last 1h in progress   0    │
-│  Commit     37060503    │  amount (total)        0 GLM                 │  total processed       509  │
-│  Date       2022-12-02  │      (on-chain)        0 GLM                 │  (including failures)       │
-│  Build      251         │      (polygon)         0 GLM                 │                             │
+│  Version    0.12.1      │  network               mainnet               │  last 1h in progress   0    │
+│  Commit     5671cd3f    │  amount (total)        0 GLM                 │  total processed       509  │
+│  Date       2023-05-23  │      (on-chain)        0 GLM                 │  (including failures)       │
+│  Build      293         │      (polygon)         0 GLM                 │                             │
 │                         │      (zksync)          0 GLM                 │                             │
 │  Node Name  zima        │                                              │                             │
 │  Subnet     public      │  pending               0 GLM (0)             │                             │
