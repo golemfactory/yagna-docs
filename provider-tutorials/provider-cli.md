@@ -78,7 +78,7 @@ FLAGS:
     -V, --version    Prints version information
 
 OPTIONS:
-        --node-name <node-name>             
+        --node-name <node-name>
         --cores <num>                       Number of shared CPU cores
         --memory <bytes (like "1.5GiB")>    Size of shared RAM
         --disk <bytes (like "1.5GiB")>      Size of shared disk space
@@ -183,27 +183,27 @@ In the three columns, you can check the basic information regarding the status o
 
 #### Status
 
-* Whether your node is running
-* Version of your node (with commit, build date and build number)
-* Name of your node
-* Subnet in which your node is currently running
-* VM status
+- Whether your node is running
+- Version of your node (with commit, build date and build number)
+- Name of your node
+- Subnet in which your node is currently running
+- VM status
 
 #### Wallet
 
-* Account address
-* Payment network: `mainnet` or `rinkeby`
-* Amount of tokens that you have earned for successful computation
-* On-chain amount of tokens that you have earned (explorer [etherscan.io](https://etherscan.io/) or [rinkeby.etherscan.io](https://rinkeby.etherscan.io/))
-* Zk-sync amount of tokens that you have earned (explorer [zkscan.io](https://zkscan.io) or [rinkeby.zkscan.io](https://rinkeby.zkscan.io/))
-* Pending payments that you should receive for computation
-* Amount of tokens that is still unconfirmed and may not show on your account
+- Account address
+- Payment network: `mainnet` or `rinkeby`
+- Amount of tokens that you have earned for successful computation
+- On-chain amount of tokens that you have earned (explorer [etherscan.io](https://etherscan.io/) or [rinkeby.etherscan.io](https://rinkeby.etherscan.io/))
+- Zk-sync amount of tokens that you have earned (explorer [zkscan.io](https://zkscan.io) or [rinkeby.zkscan.io](https://rinkeby.zkscan.io/))
+- Pending payments that you should receive for computation
+- Amount of tokens that is still unconfirmed and may not show on your account
 
 #### Tasks
 
-* Number of tasks that you were computing in last hour
-* Number of tasks that were in progress during the last hour
-* Total task that you were trying to compute - including those that were not computed
+- Number of tasks that you were computing in last hour
+- Number of tasks that were in progress during the last hour
+- Total task that you were trying to compute - including those that were not computed
 
 ### Exit GLM tokens to Ethereum
 
@@ -220,6 +220,181 @@ For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-ad
 `yagna payment exit --to-address=<address> --network=mainnet`
 
 **Note that if you decided to use an external wallet during your setup process, you can connect to ZkSync's wallet at** [**https://wallet.zksync.io/**](https://wallet.zksync.io/) **and exit that way. In the scenario that a different payment driver is being used, you will need to use the relevant available options to connect and access your tokens.**
+
+## Outbound
+
+`ya-provider` offers an outbound feature that allows to control the outbound traffic from the VM containers running on provider machine. This feature defines rules and modes for outbound access, ensuring the security and integrity for provider.
+
+### Rules and Modes Overview
+
+The outbound feature provides three rules that can operate in three different modes:
+
+Modes:
+
+- `all`: All domains listed in the manifest can be accessed for outbound traffic.
+- `none`: The rule is disabled, and no outbound traffic is allowed.
+- `whitelist`: Only whitelisted domains can be accessed for outbound traffic.
+
+Rules:
+
+1. Everyone: This rule defines the default outbound access for all requestors.
+
+   - `all`: Every requestor can access any URL.
+   - `none`: The rule is disabled.
+   - `whitelist`: Every requestor can access any whitelisted domain.
+
+2. AuditedPayload: This rule is set per root certificate and controls outbound access for manifests audited and signed by a trusted party.
+
+   - `all`: The certificate is trusted, and the payload can access all domains.
+   - `none`: The rule is disabled for the specific certificate.
+   - `whitelist`: The certificate is trusted, and the payload can access whitelisted domains.
+
+3. Partner: This rule is set per root certificate and allows outbound access for partner entities.
+   - `all`: The certificate is trusted, and the partner can access all domains.
+   - `none`: The rule is disabled for the specific certificate.
+   - `whitelist`: The certificate is trusted, and the partner can access whitelisted domains.
+
+These rules and modes are designed to protect the provider against malicious use of outbound traffic. It gives you control over which entities are trusted and what level of outbound access they have. By default, the following rules and modes are set during installation:
+
+- Everyone: Whitelist mode (every requestor can access any whitelisted domain).
+- AuditedPayload: All mode (Golem root certificate is trusted).
+- Partner: All mode (another Golem root certificate is trusted).
+
+The purpose of these rules and modes is to maintain the security and integrity of the outbound traffic in the Golem network. You can customize and modify these rules based on your trust in specific certificates and entities.
+
+> **_NOTE_** Remember, it is your responsibility as a provider to decide which entities you trust and the level of outbound access you want to enable for them.
+
+### Outbound CLI
+
+#### Listing Outbound Rules
+
+To list the outbound rules, you can use the `ya-provider rule list` command. By default, it displays the rules in a table format:
+
+```
+$ ya-provider rule list
+Outbound status: enabled
+┌──────────────────┬─────────────┬───────────────┬───────────────┐
+│  rule            │  mode       │  certificate  │  description  │
+├──────────────────┼─────────────┼───────────────┼───────────────┤
+│  Everyone        │  whitelist  │               │               │
+│  AuditedPayload  │  all        │  55e451bd     │               │
+│  Partner         │  all        │  80c84b27     │               │
+└──────────────────┴─────────────┴───────────────┴───────────────┘
+```
+
+You can also retrieve the rules in JSON format by adding the `--json` flag:
+
+```
+$ ya-provider rule list --json
+{
+  "outbound": {
+    "enabled": true,
+    "everyone": "whitelist",
+    "audited-payload": {
+      "55e451bd1a2f43570a25052b863af1d527fe6fd4bfd1482fdb241596432477f20eb2b2f3801fb5c6cd785f1a03c43ccf71fd8cdf0a974d1296be2326b0824673": {
+        "mode": "all",
+        "description": ""
+      }
+    },
+    "partner": {
+      "80c84b2701126669966f46c1159cae89c58fb088e8bf94b318358fa4ca33ee56d8948511a397e5aba6aa5b88fff36f2541a91b133cde0fb816e8592b695c04c3": {
+        "mode": "all",
+        "description": ""
+      }
+    }
+  }
+}
+```
+
+#### Enabling and Disabling Outbound Traffic
+
+You can enable or disable the entire outbound traffic regardless of other rules settings by using the following commands:
+
+```
+$ ya-provider rule set outbound disable
+```
+
+```
+$ ya-provider rule set outbound enable
+```
+
+#### Modifying Outbound Rules
+
+##### Modifying the Everyone Rule
+
+The Everyone rule defines the default outbound access for all requestors.
+
+To set the Everyone rule:
+
+```
+$ ya-provider rule set outbound everyone --mode <mode>
+```
+
+Replace `<mode>` with desired one (`all`, `whitelist`, or `none`).
+
+Like so:
+
+```
+$ ya-provider rule set outbound everyone --mode none
+```
+
+##### Modifying the AuditedPayload Rule
+
+The AuditedPayload rule is set per root certificate. It controls the outbound access for payloads that have been audited and signed by a trusted party. The rule can operate in the same modes as the Everyone rule: `all`, `whitelist`, or `none`.
+
+To set the AuditedPayload rule for a specific certificate by importing a certificate file:
+
+To set the AuditedPayload rule for a specific certificate by importing a certificate file, you can use the following command:
+
+```
+$ ya-provider rule set outbound audited-payload import-cert <path/to/certificate/file> --mode <mode>
+```
+
+Replace `<path/to/certificate/file>` with the path to the certificate file you want to import, and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
+
+For example:
+
+```
+$ ya-provider rule set outbound audited-payload import-cert ~/.local/share/ya-provider/cert_dir/foo_ca-chain.cert.pem --mode all
+```
+
+This command imports the certificate located at `~/.local/share/ya-provider/cert_dir/foo_ca-chain.cert.pem` and sets the AuditedPayload rule for that certificate to allow access to all domains.
+
+You can also specify the certificate ID instead of importing the certificate file. If the certificate is already present in the keystore, you can use the following command:
+
+```
+$ ya-provider rule set outbound audited-payload cert-id <certificate-id> --mode <mode>
+```
+
+Replace `<certificate-id>` with the ID of the certificate you want to set the rule for, and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
+
+For example:
+
+```
+$ ya-provider rule set outbound audited-payload cert-id 80c84b27 --mode whitelist
+```
+
+This command sets the AuditedPayload rule for the certificate with ID `80c84b27` to allow access to whitelisted domains.
+
+##### Modifying the Partner Rule
+
+The Partner rule is set per root certificate and allows outbound access for partner entities that have a legal contract with the provider. The rule operates in the same modes as the Everyone rule: `all`, `whitelist`, or `none`.
+
+To set the Partner rule for a specific certificate, you can use the following command:
+
+```
+$ ya-provider rule set outbound partner cert-id <certificate-id> --mode <mode>
+```
+
+Replace `<certificate-id>` with the ID of the certificate you want to set the rule for, and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
+
+For example:
+
+```
+$ ya-provider rule set outbound partner cert-id 80c84b27 --mode all
+```
+
+This command sets the Partner rule for the certificate with ID `80c84b27` to allow access to all domains.
 
 ## Advanced Settings
 
