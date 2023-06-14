@@ -227,32 +227,24 @@ For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-ad
 
 ### Rules and Modes Overview
 
-The outbound feature provides three rules that can operate in three different modes:
+The outbound feature provides three rules that can operate in three different modes.
 
 Modes:
 
-- `all`: All domains listed in the manifest can be accessed for outbound traffic.
-- `none`: The rule is disabled, and no outbound traffic is allowed.
-- `whitelist`: Only whitelisted domains can be accessed for outbound traffic.
+1. `all`: all domains listed in the manifest can be accessed for outbound traffic.
+2. `whitelist`: only whitelisted domains can be accessed for outbound traffic.
+3. `none`: no outbound traffic is allowed.
 
 Rules:
 
 1. Everyone: This rule defines the default outbound access for all requestors.
-
-   - `all`: Every requestor can access any URL.
-   - `none`: The rule is disabled.
-   - `whitelist`: Every requestor can access any whitelisted domain.
-
-2. AuditedPayload: This rule is set per root certificate and controls outbound access for manifests audited and signed by a trusted party.
-
-   - `all`: The certificate is trusted, and the payload can access all domains.
-   - `none`: The rule is disabled for the specific certificate.
-   - `whitelist`: The certificate is trusted, and the payload can access whitelisted domains.
-
-3. Partner: This rule is set per root certificate and allows outbound access for partner entities.
-   - `all`: The certificate is trusted, and the partner can access all domains.
-   - `none`: The rule is disabled for the specific certificate.
-   - `whitelist`: The certificate is trusted, and the partner can access whitelisted domains.
+   Any requestor can match this rule.
+2. AuditedPayload: This rule is set per certificate and controls outbound access for manifests audited and signed by a trusted party.
+   To match this rule, requestor should get his manifest signed by party which is trusted by provider.
+   Trust is gained when provider sets AuditedPayload rule for specific certificate to `all` or `whitelist`.
+3. Partner: This rule is set per certificate and allows outbound access for partner entities.
+   To match this rule, requestor should get his node descriptor signed by party which trusted by provider.
+   Trust is gained when provider sets Partner rule for specific certificate in the chain to `all` or `whitelist`.
 
 These rules and modes are designed to protect the provider against malicious use of outbound traffic. It gives you control over which entities are trusted and what level of outbound access they have. By default, the following rules and modes are set during installation:
 
@@ -262,7 +254,7 @@ These rules and modes are designed to protect the provider against malicious use
 
 The purpose of these rules and modes is to maintain the security and integrity of the outbound traffic in the Golem network. You can customize and modify these rules based on your trust in specific certificates and entities.
 
-> **_NOTE_** Remember, it is your responsibility as a provider to decide which entities you trust and the level of outbound access you want to enable for them.
+> **_WARNING_** Remember, it is your responsibility as a provider to decide which entities you trust and the level of outbound access you want to enable for them.
 
 ### Outbound CLI
 
