@@ -248,7 +248,7 @@ Rules:
 
 These rules and modes are designed to protect the provider against malicious use of outbound traffic. It gives you control over which entities are trusted and what level of outbound access they have. By default, the following rules and modes are set during installation:
 
-- Everyone: Whitelist mode (every requestor can access any whitelisted domain).
+- Everyone: Whitelist mode (every requestor can access outbound until domain is whitelisted).
 - AuditedPayload: All mode (Golem root certificate is trusted).
 - Partner: All mode (another Golem root certificate is trusted).
 
@@ -260,7 +260,7 @@ The purpose of these rules and modes is to maintain the security and integrity o
 
 #### Listing Outbound Rules
 
-To list the outbound rules, you can use the `ya-provider rule list` command. By default, it displays the rules in a table format:
+To list currently set outbound rules, you can use the `ya-provider rule list` command. By default, it displays the rules in a table format:
 
 ```
 $ ya-provider rule list
@@ -314,8 +314,6 @@ $ ya-provider rule set outbound enable
 
 ##### Modifying the Everyone Rule
 
-The Everyone rule defines the default outbound access for all requestors.
-
 To set the Everyone rule:
 
 ```
@@ -332,10 +330,6 @@ $ ya-provider rule set outbound everyone --mode none
 
 ##### Modifying the AuditedPayload Rule
 
-The AuditedPayload rule is set per root certificate. It controls the outbound access for payloads that have been audited and signed by a trusted party. The rule can operate in the same modes as the Everyone rule: `all`, `whitelist`, or `none`.
-
-To set the AuditedPayload rule for a specific certificate by importing a certificate file:
-
 To set the AuditedPayload rule for a specific certificate by importing a certificate file, you can use the following command:
 
 ```
@@ -349,8 +343,6 @@ For example:
 ```
 $ ya-provider rule set outbound audited-payload import-cert ~/.local/share/ya-provider/cert_dir/foo_ca-chain.cert.pem --mode all
 ```
-
-This command imports the certificate located at `~/.local/share/ya-provider/cert_dir/foo_ca-chain.cert.pem` and sets the AuditedPayload rule for that certificate to allow access to all domains.
 
 You can also specify the certificate ID instead of importing the certificate file. If the certificate is already present in the keystore, you can use the following command:
 
@@ -366,11 +358,7 @@ For example:
 $ ya-provider rule set outbound audited-payload cert-id 80c84b27 --mode whitelist
 ```
 
-This command sets the AuditedPayload rule for the certificate with ID `80c84b27` to allow access to whitelisted domains.
-
 ##### Modifying the Partner Rule
-
-The Partner rule is set per root certificate and allows outbound access for partner entities that have a legal contract with the provider. The rule operates in the same modes as the Everyone rule: `all`, `whitelist`, or `none`.
 
 To set the Partner rule for a specific certificate, you can use the following command:
 
@@ -385,8 +373,6 @@ For example:
 ```
 $ ya-provider rule set outbound partner cert-id 80c84b27 --mode all
 ```
-
-This command sets the Partner rule for the certificate with ID `80c84b27` to allow access to all domains.
 
 ## Advanced Settings
 
