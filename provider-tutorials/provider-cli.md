@@ -385,9 +385,10 @@ Additionally, it enables configuration of the certificate keystore and of the do
 
 ### Keystore
 
-The provider has an embedded certificate keystore which is used to validate any additional permissions for the payload launched by the requestors.
+The provider has an embedded certificate keystore which is used to keep certificates which then can be used by specific Rules.
 
-By default it contains only Golem public certificate which allows to execute [example app](../requestor-tutorials/service-development/service-example-6-external-api-request.md) and apps from trusted by Golem creators (certificates allow to verify incoming _Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md)).
+By default it contains only Golem public certificates for `AuditedPayload` and `Partner` rules.
+They allow to execute [example app](../requestor-tutorials/service-development/service-example-6-external-api-request.md) and apps from trusted by Golem creators (certificates allow to verify incoming _Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md)).
 
 Run `ya-provider keystore --help` to see possible subcommands
 
