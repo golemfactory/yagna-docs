@@ -231,7 +231,8 @@ It gives provider control over which entities are trusted and what level of outb
 The purpose of rules and modes is to maintain the security and integrity of the outbound traffic in the Golem network.
 You can customize and modify these rules based on your trust in specific certificates and entities.
 
-> **WARNING** Remember, it is your responsibility as a provider to decide which entities you trust and the level of outbound access you want to enable for them.
+> **Warning**
+> Remember, it is your responsibility as a provider to decide which entities you trust and the level of outbound access you want to enable for them.
 
 ### Modes
 
