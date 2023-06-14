@@ -237,12 +237,12 @@ Modes:
 
 Rules:
 
-1. Everyone: This rule defines the default outbound access for all requestors.
+1. `Everyone`: This rule defines the default outbound access for all requestors.
    Any requestor can match this rule- nothing additional is needed.
-2. AuditedPayload: This rule is set per certificate and controls outbound access for manifests which are audited and signed by a trusted party.
+2. `AuditedPayload`: This rule is set per certificate and controls outbound access for manifests which are audited and signed by a trusted party.
    Trust is gained when provider sets AuditedPayload rule for root certificate of auditing organisation.
    To match this rule, requestor should get his manifest audited and signed by organisation which is trusted by provider.
-3. Partner: This rule is set per certificate and allows outbound access for any manifests, as long as requestor is a partner to trusted organisation.
+3. `Partner`: This rule is set per certificate and allows outbound access for any manifests, as long as requestor is a partner to trusted organisation.
    Trust is gained when provider sets Partner rule for root certificate of trusted organisation.
    To match this rule, requestor should get his node descriptor signed by partner to trusted organisation.
 
