@@ -223,9 +223,9 @@ For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-ad
 
 ## Outbound
 
-`ya-provider` offers an outbound feature that allows to control the outbound traffic from the VM containers running on provider machine.
+`ya-provider` offers a mechanism that allows to control the outbound traffic from the VM containers running on provider machine.
 
-This feature defines rules and modes for outbound access, protecting provider against malicious use of outbound traffic.
+Outbound defines rules and modes for outbound access, protecting provider against malicious use of outbound traffic.
 It gives provider control over which entities are trusted and what level of outbound access they have.
 
 The purpose of rules and modes is to maintain the security and integrity of the outbound traffic in the Golem network.
