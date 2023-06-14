@@ -221,12 +221,12 @@ For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-ad
 
 **Note that if you decided to use an external wallet during your setup process, you can connect to ZkSync's wallet at** [**https://wallet.zksync.io/**](https://wallet.zksync.io/) **and exit that way. In the scenario that a different payment driver is being used, you will need to use the relevant available options to connect and access your tokens.**
 
-## Outbound
+## Outbound Network
 
 `ya-provider` offers a mechanism that allows to control the outbound traffic from the VM containers running on provider machine.
 
 This mechanism defines rules and modes for outbound access, protecting provider against malicious use of outbound traffic.
-It gives provider control over which entities are trusted and what level of outbound access they have.
+It gives provider control over which entities are trusted and what level of Outbound Network access they have.
 
 The purpose of rules and modes is to maintain the security and integrity of the outbound traffic in the Golem network.
 You can customize and modify these rules based on your trust in specific certificates and entities.
