@@ -223,42 +223,108 @@ For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-ad
 
 ## Outbound
 
-`ya-provider` offers an outbound feature that allows to control the outbound traffic from the VM containers running on provider machine. This feature defines rules and modes for outbound access, ensuring the security and integrity for provider.
+`ya-provider` offers an outbound feature that allows to control the outbound traffic from the VM containers running on provider machine.
 
-### Rules and Modes Overview
+This feature defines rules and modes for outbound access, protecting provider against malicious use of outbound traffic.
+It gives provider control over which entities are trusted and what level of outbound access they have.
 
-The outbound feature provides three rules that can operate in three different modes.
+The purpose of rules and modes is to maintain the security and integrity of the outbound traffic in the Golem network.
+You can customize and modify these rules based on your trust in specific certificates and entities.
 
-Modes:
+> **_WARNING_** Remember, it is your responsibility as a provider to decide which entities you trust and the level of outbound access you want to enable for them.
+
+### Modes
+
+Outbound provides rules that can operate in three different modes:
 
 1. `all`: all domains listed in the manifest can be accessed for outbound traffic.
 2. `whitelist`: only whitelisted domains can be accessed for outbound traffic.
 3. `none`: no outbound traffic is allowed.
 
-Rules:
+### Rules
 
-1. `Everyone`: This rule defines the default outbound access for all requestors.
-   Any requestor can match this rule- nothing additional is needed.
-2. `AuditedPayload`: This rule is set per certificate and controls outbound access for manifests which are audited and signed by a trusted party.
-   Trust is gained when provider sets AuditedPayload rule for root certificate of auditing organisation.
-   To match this rule, requestor should get his manifest audited and signed by organisation which is trusted by provider.
-3. `Partner`: This rule is set per certificate and allows outbound access for any manifests, as long as requestor is a partner to trusted organisation.
-   Trust is gained when provider sets Partner rule for root certificate of trusted organisation.
-   To match this rule, requestor should get his node descriptor signed by partner to trusted organisation.
+#### Everyone rule
 
-These rules and modes are designed to protect the provider against malicious use of outbound traffic. It gives you control over which entities are trusted and what level of outbound access they have. By default, the following rules and modes are set during installation:
+This rule defines the default outbound access for all requestors.
+Any requestor can match this rule- nothing additional is needed.
+
+To set the Everyone rule, use following command:
+
+```
+$ ya-provider rule set outbound everyone --mode <mode>
+```
+
+Replace `<mode>` with desired one (`all`, `whitelist`, or `none`).
+
+Like so:
+
+```
+$ ya-provider rule set outbound everyone --mode none
+```
+
+#### AuditedPayload rule
+
+This rule is set per certificate and controls outbound access for manifests which are audited and signed by a trusted party.
+Trust is gained when provider sets AuditedPayload rule for root certificate of auditing organisation.
+To match this rule, requestor should get his manifest audited and signed by organisation which is trusted by provider.
+
+To set the AuditedPayload rule for a specific certificate by importing a certificate file, you can use the following command:
+
+```
+$ ya-provider rule set outbound audited-payload import-cert <path/to/certificate/file> --mode <mode>
+```
+
+Replace `<path/to/certificate/file>` with the path to the certificate file you want to import, and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
+
+For example:
+
+```
+$ ya-provider rule set outbound audited-payload import-cert ~/.local/share/ya-provider/cert_dir/foo_ca-chain.cert.pem --mode all
+```
+
+You can also specify the certificate ID instead of importing the certificate file. If the certificate is already present in the keystore, you can use the following command:
+
+```
+$ ya-provider rule set outbound audited-payload cert-id <certificate-id> --mode <mode>
+```
+
+Replace `<certificate-id>` with the ID of the certificate you want to set the rule for, and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
+
+For example:
+
+```
+$ ya-provider rule set outbound audited-payload cert-id 80c84b27 --mode whitelist
+```
+
+#### Partner rule
+
+This rule is set per certificate and allows outbound access for any manifests, as long as requestor is a partner to trusted organisation.
+Trust is gained when provider sets Partner rule for root certificate of trusted organisation.
+To match this rule, requestor should get his node descriptor signed by partner to trusted organisation.
+
+To set the Partner rule for a specific certificate, you can use the following command:
+
+```
+$ ya-provider rule set outbound partner cert-id <certificate-id> --mode <mode>
+```
+
+Replace `<certificate-id>` with the ID of the certificate you want to set the rule for, and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
+
+For example:
+
+```
+$ ya-provider rule set outbound partner cert-id 80c84b27 --mode all
+```
+
+### Default installation
+
+By default, the following rules and modes are set during installation:
 
 - Everyone: Whitelist mode (every requestor can access outbound until domain is whitelisted).
 - AuditedPayload: All mode (Golem root certificate is trusted).
 - Partner: All mode (another Golem root certificate is trusted).
 
-The purpose of these rules and modes is to maintain the security and integrity of the outbound traffic in the Golem network. You can customize and modify these rules based on your trust in specific certificates and entities.
-
-> **_WARNING_** Remember, it is your responsibility as a provider to decide which entities you trust and the level of outbound access you want to enable for them.
-
-### Outbound CLI
-
-#### Listing Outbound Rules
+### Listing Outbound Rules
 
 To list currently set outbound rules, you can use the `ya-provider rule list` command. By default, it displays the rules in a table format:
 
@@ -298,7 +364,7 @@ $ ya-provider rule list --json
 }
 ```
 
-#### Enabling and Disabling Outbound Traffic
+### Enabling and Disabling Outbound Traffic
 
 You can enable or disable the entire outbound traffic regardless of other rules settings by using the following commands:
 
@@ -308,70 +374,6 @@ $ ya-provider rule set outbound disable
 
 ```
 $ ya-provider rule set outbound enable
-```
-
-#### Modifying Outbound Rules
-
-##### Modifying the Everyone Rule
-
-To set the Everyone rule:
-
-```
-$ ya-provider rule set outbound everyone --mode <mode>
-```
-
-Replace `<mode>` with desired one (`all`, `whitelist`, or `none`).
-
-Like so:
-
-```
-$ ya-provider rule set outbound everyone --mode none
-```
-
-##### Modifying the AuditedPayload Rule
-
-To set the AuditedPayload rule for a specific certificate by importing a certificate file, you can use the following command:
-
-```
-$ ya-provider rule set outbound audited-payload import-cert <path/to/certificate/file> --mode <mode>
-```
-
-Replace `<path/to/certificate/file>` with the path to the certificate file you want to import, and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
-
-For example:
-
-```
-$ ya-provider rule set outbound audited-payload import-cert ~/.local/share/ya-provider/cert_dir/foo_ca-chain.cert.pem --mode all
-```
-
-You can also specify the certificate ID instead of importing the certificate file. If the certificate is already present in the keystore, you can use the following command:
-
-```
-$ ya-provider rule set outbound audited-payload cert-id <certificate-id> --mode <mode>
-```
-
-Replace `<certificate-id>` with the ID of the certificate you want to set the rule for, and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
-
-For example:
-
-```
-$ ya-provider rule set outbound audited-payload cert-id 80c84b27 --mode whitelist
-```
-
-##### Modifying the Partner Rule
-
-To set the Partner rule for a specific certificate, you can use the following command:
-
-```
-$ ya-provider rule set outbound partner cert-id <certificate-id> --mode <mode>
-```
-
-Replace `<certificate-id>` with the ID of the certificate you want to set the rule for, and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
-
-For example:
-
-```
-$ ya-provider rule set outbound partner cert-id 80c84b27 --mode all
 ```
 
 ## Advanced Settings
