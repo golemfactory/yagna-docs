@@ -77,7 +77,7 @@ FLAGS:
     -V, --version    Prints version information
 
 OPTIONS:
-        --node-name <node-name>             
+        --node-name <node-name>
         --cores <num>                       Number of shared CPU cores
         --memory <bytes (like "1.5GiB")>    Size of shared RAM
         --disk <bytes (like "1.5GiB")>      Size of shared disk space
@@ -172,31 +172,31 @@ In the three columns, you can check the basic information regarding the status o
 
 #### Status
 
-* Whether your node is running
-* Version of your node \(with commit, build date and build number\)
-* Name of your node
-* Subnet in which your node is currently running
-* VM status
+- Whether your node is running
+- Version of your node \(with commit, build date and build number\)
+- Name of your node
+- Subnet in which your node is currently running
+- VM status
 
 #### Wallet
 
-* Account address
-* Payment network: `mainnet` or `rinkeby`
-* Amount of tokens that you have earned for successful computation
-* On-chain amount of tokens that you have earned \(explorer [etherscan.io](https://etherscan.io/) or [rinkeby.etherscan.io](https://rinkeby.etherscan.io/)\)
-* Zk-sync amount of tokens that you have earned \(explorer [zkscan.io](https://zkscan.io) or [rinkeby.zkscan.io](https://rinkeby.zkscan.io/)\)
-* Pending payments that you should receive for computation
-* Amount of tokens that is still unconfirmed and may not show on your account 
+- Account address
+- Payment network: `mainnet` or `rinkeby`
+- Amount of tokens that you have earned for successful computation
+- On-chain amount of tokens that you have earned \(explorer [etherscan.io](https://etherscan.io/) or [rinkeby.etherscan.io](https://rinkeby.etherscan.io/)\)
+- Zk-sync amount of tokens that you have earned \(explorer [zkscan.io](https://zkscan.io) or [rinkeby.zkscan.io](https://rinkeby.zkscan.io/)\)
+- Pending payments that you should receive for computation
+- Amount of tokens that is still unconfirmed and may not show on your account
 
 #### Tasks
 
-* Number of tasks that you were computing in last hour
-* Number of tasks that were in progress during the last hour
-* Total task that you were trying to compute - including those that were not computed
+- Number of tasks that you were computing in last hour
+- Number of tasks that were in progress during the last hour
+- Total task that you were trying to compute - including those that were not computed
 
 ### Exit GLM tokens to Ethereum
 
-While not specific to the provider CLI, at some point you may want to move your tokens. By default, mainnet tasks are paid on Layer 2. Assuming you have a local wallet, you can interact with the payment driver to exit your tokens from Layer 2 to Layer 1. This is done using the`yagna payment exit` command. With this command there are two main flags to keep in mind; `--network`and `--to-address`. 
+While not specific to the provider CLI, at some point you may want to move your tokens. By default, mainnet tasks are paid on Layer 2. Assuming you have a local wallet, you can interact with the payment driver to exit your tokens from Layer 2 to Layer 1. This is done using the`yagna payment exit` command. With this command there are two main flags to keep in mind; `--network`and `--to-address`.
 
 For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-address`you can specify a destination address other than the local wallet address.
 
@@ -214,13 +214,114 @@ For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-ad
 
 `ya-provider` allows to fine-tune the config created with `golemsp settings` using commands `config`, `preset`, `profile`, and `exe-unit`.
 
-Additionally, it enables configuration of the certificate keystore and of the domain whitelist, which are used to control what kind of outbound traffic is allowed out of the VM containers run by the requestors on your machine.
+Additionally, it enables configuration of the rules, certificate keystore and of the domain whitelist, which are used to control what kind of outbound traffic is allowed out of the VM containers run by the requestors on your machine.
+
+### Rules
+
+#### Listing Rules
+
+To list currently set rules, you can use the `ya-provider rule list` command. By default, it displays the rules in a table format:
+
+```
+$ ya-provider rule list
+Outbound status: enabled
+┌──────────────────┬─────────────┬───────────────┬───────────────┐
+│  rule            │  mode       │  certificate  │  description  │
+├──────────────────┼─────────────┼───────────────┼───────────────┤
+│  Everyone        │  whitelist  │               │               │
+│  AuditedPayload  │  all        │  55e451bd     │               │
+│  Partner         │  all        │  80c84b27     │               │
+└──────────────────┴─────────────┴───────────────┴───────────────┘
+```
+
+You can also retrieve the rules in JSON format by adding the `--json` flag:
+
+```
+$ ya-provider rule list --json
+{
+  "outbound": {
+    "enabled": true,
+    "everyone": "whitelist",
+    "audited-payload": {
+      "55e451bd1a2f43570a25052b863af1d527fe6fd4bfd1482fdb241596432477f20eb2b2f3801fb5c6cd785f1a03c43ccf71fd8cdf0a974d1296be2326b0824673": {
+        "mode": "all",
+        "description": ""
+      }
+    },
+    "partner": {
+      "80c84b2701126669966f46c1159cae89c58fb088e8bf94b318358fa4ca33ee56d8948511a397e5aba6aa5b88fff36f2541a91b133cde0fb816e8592b695c04c3": {
+        "mode": "all",
+        "description": ""
+      }
+    }
+  }
+}
+```
+
+#### Enabling and Disabling Outbound Traffic
+
+You can enable or disable the entire outbound traffic regardless of other rules settings by using the following commands:
+
+```
+$ ya-provider rule set outbound disable
+```
+
+```
+$ ya-provider rule set outbound enable
+```
+
+#### Setting Everyone Rule
+
+To set the Everyone rule, use following command:
+
+```
+$ ya-provider rule set outbound everyone --mode <mode>
+```
+
+Replace `<mode>` with desired one (`all`, `whitelist`, or `none`).
+Like so:
+
+```
+$ ya-provider rule set outbound everyone --mode none
+```
+
+#### Setting per-certificate Rules
+
+`audited-payload` and `partner` rules, can be set only per-certificate.
+
+To set these rules for a specific certificate by importing a certificate file directly, you can use the following command:
+
+```
+$ ya-provider rule set outbound <rule> import-cert <path/to/certificate/file> --mode <mode>
+```
+
+Replace `<path/to/certificate/file>` with the path to the certificate file you want to import, `<rule>` with desired per-certificate rule (`audited-payload` or `partner`) and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
+For example:
+
+```
+$ ya-provider rule set outbound audited-payload import-cert ~/.local/share/ya-provider/cert_dir/foo_ca-chain.cert.pem --mode all
+```
+
+You can also specify the certificate ID instead of importing the certificate file. If the certificate is already present in the keystore, you can use the following command:
+
+```
+$ ya-provider rule set outbound <rule> cert-id <certificate-id> --mode <mode>
+```
+
+Replace `<certificate-id>` with the ID of the certificate you want to set the rule for, `<rule>` with desired per-certificate rule (`audited-payload` or `partner`) and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
+For example:
+
+```
+$ ya-provider rule set outbound partner cert-id 80c84b27 --mode whitelist
+```
 
 ### Keystore
 
-The provider has an embedded certificate keystore which is used to validate any additional permissions for the payload launched by the requestors.
+The provider has an embedded certificate keystore which is used to keep certificates which then can be used by specific Rules.
 
-By default it contains only Golem public certificate which allows to execute [example app](../requestor-tutorials/service-development/service-example-6-external-api-request.md) and apps from trusted by Golem creators (certificates allow to verify incoming _Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md)).
+By default it contains only Golem public certificates for `AuditedPayload` and `Partner` rules.
+
+They allow to execute [example app](../requestor-tutorials/service-development/service-example-6-external-api-request.md) and apps from trusted by Golem creators (certificates allow to verify incoming _Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md)).y default it contains only Golem public certificate which allows to execute [example app](../requestor-tutorials/service-development/service-example-6-external-api-request.md) and apps from trusted by Golem creators (certificates allow to verify incoming _Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md)).
 
 Run `ya-provider keystore --help` to see possible subcommands
 
