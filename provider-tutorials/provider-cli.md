@@ -218,6 +218,16 @@ Additionally, it enables configuration of the rules, certificate keystore and of
 
 ### Rules
 
+Provider offers a mechanism that allows to control specific Rules for Outbound Network.
+
+> **Warning**
+> Remember, it is your responsibility as a provider to decide which entities you trust and the level of outbound access you want to enable for them.
+> By default, the following rules and modes are set during installation:
+>
+> - Everyone: Whitelist mode (every requestor can access outbound until domain is whitelisted).
+> - AuditedPayload: All mode (Golem root certificate is trusted).
+> - Partner: All mode (another Golem root certificate is trusted).
+
 #### Listing Rules
 
 To list currently set rules, you can use the `ya-provider rule list` command. By default, it displays the rules in a table format:
