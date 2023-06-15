@@ -309,7 +309,7 @@ Replace `<path/to/certificate/file>` with the path to the certificate file you w
 For example:
 
 ```
-$ ya-provider rule set outbound audited-payload import-cert ~/.local/share/ya-provider/cert_dir/foo_ca-chain.cert.pem --mode all
+$ ya-provider rule set outbound audited-payload import-cert ~/certs/foo_ca-chain.cert.pem --mode all
 ```
 
 You can also specify the certificate ID instead of importing the certificate file. If the certificate is already present in the keystore, you can use the following command:
