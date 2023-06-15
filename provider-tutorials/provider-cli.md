@@ -214,7 +214,7 @@ For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-ad
 
 `ya-provider` allows to fine-tune the config created with `golemsp settings` using commands `config`, `preset`, `profile`, and `exe-unit`.
 
-Additionally, it enables configuration of the rules, certificate keystore and of the domain whitelist, which are used to control what kind of outbound traffic is allowed out of the VM containers run by the requestors on your machine.
+Additionally, it enables configuration of the rules, certificate keystore and domain whitelist, which are used to control what kind of outbound traffic is allowed out of the VM containers run by the requestors on your machine.
 
 ### Rules
 
