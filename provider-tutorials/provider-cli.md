@@ -299,7 +299,7 @@ $ ya-provider rule set outbound everyone --mode none
 
 `audited-payload` and `partner` rules, can be set only per-certificate.
 
-To set these rules for a specific certificate by importing a certificate file directly, you can use the following command:
+To set these rules by importing a certificate file directly, you can use the following command:
 
 ```
 $ ya-provider rule set outbound <rule> import-cert <path/to/certificate/file> --mode <mode>
