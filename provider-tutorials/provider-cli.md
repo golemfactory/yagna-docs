@@ -218,15 +218,33 @@ Additionally, it enables configuration of the rules, certificate keystore and do
 
 ### Rules
 
-Provider offers a mechanism that allows to control specific Rules for Outbound Network.
+`ya-provider` offers a mechanism that allows to control the Rules for specific features i.e. Outbound Network.
+
+#### Outbound Network feature
+
+This feature defines rules and modes for Outbound Network access.
+It gives provider control over which entities are trusted and what level of Outbound Network access they have.
+
+Outbound feature provides three rules:
+
+1. `everyone`: defines the default outbound access for all requestors.
+2. `audited-payload`: controls outbound access for manifests which are audited and signed by a trusted party. It can be set per certificate.
+3. `partner`: allows outbound access for any manifests, as long as requestor node-id is a partner to trusted organisation. It can be set per certificate.
+
+Every rule can operate in three different modes:
+
+1. `all`: all domains listed in the manifest can be accessed for outbound traffic.
+2. `whitelist`: only whitelisted domains can be accessed for outbound traffic.
+3. `none`: no outbound traffic is allowed.
 
 > **Warning**
-> Remember, it is your responsibility as a provider to decide which entities you trust and the level of outbound access you want to enable for them.
-> By default, the following rules and modes are set during installation:
->
-> - Everyone: Whitelist mode (every requestor can access outbound until domain is whitelisted).
-> - AuditedPayload: All mode (Golem root certificate is trusted).
-> - Partner: All mode (another Golem root certificate is trusted).
+> Remember, it is your responsibility as a provider to decide which entities you trust and the level of Outbound Network access you want to enable for them.
+
+By default, the following rules and modes are set during installation:
+
+- Everyone: Whitelist mode (every requestor can access outbound until domain is whitelisted).
+- AuditedPayload: All mode (Golem root certificate is trusted).
+- Partner: All mode (another Golem root certificate is trusted).
 
 #### Listing Rules
 
@@ -280,7 +298,7 @@ $ ya-provider rule set outbound disable
 $ ya-provider rule set outbound enable
 ```
 
-#### Setting Everyone Rule
+#### Setting Outbound Everyone Rule
 
 To set the Everyone rule, use following command:
 
@@ -295,17 +313,17 @@ Like so:
 $ ya-provider rule set outbound everyone --mode none
 ```
 
-#### Setting per-certificate Rules
+#### Setting Outbound per-certificate Rules
 
 `audited-payload` and `partner` rules, can be set only per-certificate.
 
 To set these rules by importing a certificate file directly, you can use the following command:
 
 ```
-$ ya-provider rule set outbound <rule> import-cert <path/to/certificate/file> --mode <mode>
+$ ya-provider rule set outbound <cert-rule> import-cert <path/to/certificate/file> --mode <mode>
 ```
 
-Replace `<path/to/certificate/file>` with the path to the certificate file you want to import, `<rule>` with desired per-certificate rule (`audited-payload` or `partner`) and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
+Replace `<path/to/certificate/file>` with the path to the certificate file you want to import, `<cert-rule>` with desired per-certificate rule (`audited-payload` or `partner`) and `<mode>` with the desired mode (`all`, `whitelist`, or `none`).
 For example:
 
 ```
