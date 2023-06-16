@@ -222,7 +222,7 @@ Additionally, it enables configuration of the rules, certificate keystore and do
 
 #### Outbound Network feature
 
-This feature defines rules and modes for Outbound Network access.
+This feature defines rules and modes for Outbound Network.
 It gives provider control over which entities are trusted and what level of Outbound Network access they have.
 
 Outbound feature provides three rules:
