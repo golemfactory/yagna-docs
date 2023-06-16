@@ -172,31 +172,31 @@ In the three columns, you can check the basic information regarding the status o
 
 #### Status
 
-- Whether your node is running
-- Version of your node \(with commit, build date and build number\)
-- Name of your node
-- Subnet in which your node is currently running
-- VM status
+* Whether your node is running
+* Version of your node \(with commit, build date and build number\)
+* Name of your node
+* Subnet in which your node is currently running
+* VM status
 
 #### Wallet
 
-- Account address
-- Payment network: `mainnet` or `rinkeby`
-- Amount of tokens that you have earned for successful computation
-- On-chain amount of tokens that you have earned \(explorer [etherscan.io](https://etherscan.io/) or [rinkeby.etherscan.io](https://rinkeby.etherscan.io/)\)
-- Zk-sync amount of tokens that you have earned \(explorer [zkscan.io](https://zkscan.io) or [rinkeby.zkscan.io](https://rinkeby.zkscan.io/)\)
-- Pending payments that you should receive for computation
-- Amount of tokens that is still unconfirmed and may not show on your account
+* Account address
+* Payment network: `mainnet` or `rinkeby`
+* Amount of tokens that you have earned for successful computation
+* On-chain amount of tokens that you have earned \(explorer [etherscan.io](https://etherscan.io/) or [rinkeby.etherscan.io](https://rinkeby.etherscan.io/)\)
+* Zk-sync amount of tokens that you have earned \(explorer [zkscan.io](https://zkscan.io) or [rinkeby.zkscan.io](https://rinkeby.zkscan.io/)\)
+* Pending payments that you should receive for computation
+* Amount of tokens that is still unconfirmed and may not show on your account
 
 #### Tasks
 
-- Number of tasks that you were computing in last hour
-- Number of tasks that were in progress during the last hour
-- Total task that you were trying to compute - including those that were not computed
+* Number of tasks that you were computing in last hour
+* Number of tasks that were in progress during the last hour
+* Total task that you were trying to compute - including those that were not computed
 
 ### Exit GLM tokens to Ethereum
 
-While not specific to the provider CLI, at some point you may want to move your tokens. By default, mainnet tasks are paid on Layer 2. Assuming you have a local wallet, you can interact with the payment driver to exit your tokens from Layer 2 to Layer 1. This is done using the`yagna payment exit` command. With this command there are two main flags to keep in mind; `--network`and `--to-address`.
+While not specific to the provider CLI, at some point you may want to move your tokens. By default, mainnet tasks are paid on Layer 2. Assuming you have a local wallet, you can interact with the payment driver to exit your tokens from Layer 2 to Layer 1. This is done using the`yagna payment exit` command. With this command there are two main flags to keep in mind; `--network`and `--to-address`. 
 
 For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-address`you can specify a destination address other than the local wallet address.
 
