@@ -216,6 +216,22 @@ For `--network`you have two options, either `mainnet` or `rinkeby`. For `--to-ad
 
 Additionally, it enables configuration of the rules, certificate keystore and domain whitelist, which are used to control what kind of outbound traffic is allowed out of the VM containers run by the requestors on your machine.
 
+### Keystore
+
+The provider has an embedded certificate keystore which is used to keep certificates which then can be used by specific Rules.
+
+By default it contains only Golem public certificates for `AuditedPayload` and `Partner` rules.
+
+They allow to execute [example app](../requestor-tutorials/service-development/service-example-6-external-api-request.md) and apps from trusted by Golem creators (certificates allow to verify incoming _Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md)).y default it contains only Golem public certificate which allows to execute [example app](../requestor-tutorials/service-development/service-example-6-external-api-request.md) and apps from trusted by Golem creators (certificates allow to verify incoming _Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md)).
+
+Run `ya-provider keystore --help` to see possible subcommands
+
+### Domain whitelist
+
+The [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md) embedded in the Demands can specify a list of URLs which may get called by the services running on a Provider. If the manifest declares requests to URLs in domains that are not whitelisted, it must come with a [signature and app author's public certificate](../requestor-tutorials/vm-runtime/computation-payload-manifest.md). By default, the domains `whitelist` consists of a curated set of public websites and APIs like github, dockerhub or public Ethereum nodes.
+
+Run `ya-provider whitelist --help` to see possible subcommands
+
 ### Rules
 
 `ya-provider` offers a mechanism that allows to control the Rules for specific features i.e. Outbound Network.
@@ -351,18 +367,3 @@ For example:
 $ ya-provider rule set outbound partner cert-id 80c84b27 --mode whitelist
 ```
 
-### Keystore
-
-The provider has an embedded certificate keystore which is used to keep certificates which then can be used by specific Rules.
-
-By default it contains only Golem public certificates for `AuditedPayload` and `Partner` rules.
-
-They allow to execute [example app](../requestor-tutorials/service-development/service-example-6-external-api-request.md) and apps from trusted by Golem creators (certificates allow to verify incoming _Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md)).y default it contains only Golem public certificate which allows to execute [example app](../requestor-tutorials/service-development/service-example-6-external-api-request.md) and apps from trusted by Golem creators (certificates allow to verify incoming _Demand_'s [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md)).
-
-Run `ya-provider keystore --help` to see possible subcommands
-
-### Domain whitelist
-
-The [Computational Payload Manifests](../requestor-tutorials/vm-runtime/computation-payload-manifest.md) embedded in the Demands can specify a list of URLs which may get called by the services running on a Provider. If the manifest declares requests to URLs in domains that are not whitelisted, it must come with a [signature and app author's public certificate](../requestor-tutorials/vm-runtime/computation-payload-manifest.md). By default, the domains `whitelist` consists of a curated set of public websites and APIs like github, dockerhub or public Ethereum nodes.
-
-Run `ya-provider whitelist --help` to see possible subcommands
