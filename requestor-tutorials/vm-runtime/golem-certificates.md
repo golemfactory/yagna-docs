@@ -20,8 +20,7 @@ golem-certificate-cli ui
 
 ## Generating key-pair
 
-Enter UI tool:
-Create new key-pair in `Create key pair` option in main menu and name files
+Create new key-pair in `Create key pair` option in main menu and name files appropriately.
 
 ## Generating root certificate
 
