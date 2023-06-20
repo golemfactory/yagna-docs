@@ -53,7 +53,7 @@ Then you should save your certificate as template, and send it to root certifica
 Prerequisites:
 
 - key-pair for your certificate which will sign other certificate
-- your certificate with appropriate `key-usage`
+- your certificate with appropriate `Key usage` allowing it to sign certificates (`Sign certificate` field or `All`)
 - template of certificate which you want to sign
 
 Navigate to `Create certificate` option and load from desired template.
