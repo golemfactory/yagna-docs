@@ -56,6 +56,8 @@ Prerequisites:
 - your certificate with appropriate `Key usage` allowing it to sign certificates (`Sign certificate` field or `All`)
 - template of certificate which you want to sign
 
+Firstly, check if certificate template which you got does not request more `Permissions`, `Key usage` or `Validity Period` than your certificate has.
+If template requests more, error will be returned in signing process.
 Navigate to `Create certificate` option and load from desired template.
 Enter your **private** key to "Signing key" field and then `Load signing certificate` from file in the "Signing certificate" field.
 
