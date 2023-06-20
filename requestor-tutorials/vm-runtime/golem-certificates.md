@@ -30,6 +30,8 @@ Prerequisites:
 
 Navigate to `Create certificate` option.
 After that, put your propertiies as needed (Key usage, Validity period, Permissions and subject information) and enter your generated **public** key.
+If your generated root certificate will be used to sign other certificates, be sure that you set `Key usage` to `All` or at least `Sign certificate` (or `Sign node` if you will use this certificate for signing node-descriptors).
+In general, it is advised that root certificates should have `Permissions` and `Key usage` set to `All`.
 
 Now you are able to sign your certificate.
 Enter your **private** key to "Signing key" field and set "Signing certificate" as `Self-signed`.
