@@ -12,7 +12,7 @@ git clone https://github.com/golemfactory/golem-certificate
 cargo install --path golem-certificate/cli
 ```
 
-To enter UI tool, type:
+After that, in other terminal enter UI tool by typing:
 
 ```bash
 golem-certificate-cli ui
