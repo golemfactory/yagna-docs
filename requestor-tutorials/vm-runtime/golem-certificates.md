@@ -77,8 +77,10 @@ Then you should save your certificate as template, and send it to certificate en
 Prerequisites:
 
 - key-pair for your certificate which will sign node-descriptor
-- your certificate with appropriate `key-usage`
+- your certificate with appropriate `Key usage` allowing it to sign nodes (`Sign node` field or `All`)
 - node-descriptor template
 
+Firstly, check if node-descriptor template which you got does not request more `Permissions` or `Validity Period` than your certificate has.
+If template requests more, error will be returned in signing process.
 Navigate to `Create node descriptor` option and load from desired template.
 Enter your **private** key to "Signing key" field and then `Load signing certificate` from file in the "Signing certificate" field.
