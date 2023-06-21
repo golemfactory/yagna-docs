@@ -251,8 +251,8 @@ Outbound feature provides three rules:
    It doesn't matter from which requestor node request is made.
 3. `partner`: allows outbound access for any manifests, as long as requestor node is a partner to trusted organisation.
    Trust is gained when provider sets Partner rule for root certificate of trusted organisation.
-   Provider can have multiple `partner` rules for different [golem certificates](https://github.com/golemfactory/golem-architecture/blob/master/gaps/gap-25_golem_certificates/gap-25_golem_certificates.md).
-   To match this rule, requestor should get his [node descriptor](https://github.com/golemfactory/golem-architecture/blob/master/gaps/gap-31_node_descriptor/gap-31_node_descriptor.md) signed by partner to trusted organisation.
+   Provider can have multiple `partner` rules for different [golem certificates](../requestor-tutorials/vm-runtime/golem-certificates.md).
+   To match this rule, requestor should get his [node descriptor signed](../requestor-tutorials/vm-runtime/golem-certificates.md) by partner to trusted organisation.
    It doesn't matter which payload is being requested.
 
 Every rule can operate in three different modes:
@@ -366,4 +366,3 @@ For example:
 ```
 $ ya-provider rule set outbound partner cert-id 80c84b27 --mode whitelist
 ```
-
