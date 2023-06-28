@@ -82,7 +82,7 @@ git --version
 #### No crypto assets are needed (for now)
 
 {% hint style="info" %}
-During development, you'll most likely want to run your tasks on the Rinkeby Testnet. In that case, you won't need any real ETH or GLM tokens to start this tutorial. These test assets are acquired by the daemon in one of the steps below.
+During development, you'll most likely want to run your tasks on the Goerli Testnet. In that case, you won't need any real ETH or GLM tokens to start this tutorial. The test assets needed to transact on the Goerli Testnet and use the Golem testnet are acquired by the daemon in one of the steps below.
 
 Should you later want to run your tasks on the mainnet, to leverage the potential of all Golem's provider nodes, please have a look at: ["Using Golem on Mainnet"](../../payments/using-golem-on-mainnet/)
 {% endhint %}
@@ -187,7 +187,7 @@ the value in the `key` column is the key you need.
 
 ### Get some test GLM tokens
 
-In order to be able to request tasks on Golem, you'll need some GLM tokens (called tGLM on the rinkeby testnet) to pay the providers with. Even on the testnet, those tokens are still required but of course, you can easily get them issued to you using our tGLM faucet.
+In order to be able to request tasks on Golem, you'll need some GLM tokens to pay the providers with. While they don't have real value on the testnet, the tokens are still required. You can easily get them issued to you using our testnet GLM faucet.
 
 That's done using:
 
@@ -195,7 +195,7 @@ That's done using:
 yagna payment fund
 ```
 
-It tells yagna to check for funds on your node and if needed, contacts the faucet which, in turn, issues some test GLM and test ETH tokens to the node on the Rinkeby testnet.
+It tells yagna to check for funds on your node and if needed, contacts the faucet which, in turn, issues some test GLM and test ETH tokens to the node on the Goerli testnet.
 
 Once you issue the command, allow some time until it completes its job. You can verify whether you already have the funds with:
 
