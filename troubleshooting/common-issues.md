@@ -52,7 +52,7 @@ _**Os:**_ All, requestor only
 
 _**Description:**_ Since our newest addition to Golem - the integration with zkSync, layer 2 payment solution - is, so far, a highly experimental feature, it may still sometimes happen that the yagna daemon fails to initialize itself correctly.
 
-This will manifest itself either by a failure of the regular initialization with`yagna payment fund` or through an error you'll receive when running `yagna payment status`.
+This will manifest itself either by a failure of the regular initialization with `yagna payment fund` or through an error you'll receive when running `yagna payment status`.
 
 _**Solution:**_ In such a case, we're providing you with a fallback to normal payments, i.e. regular GLM token transfer on the Ethereum chain.
 
@@ -66,7 +66,7 @@ yagna payment init --sender --driver erc20
 
 After you confirm you have the funds, proceed with running the examples or your own requestor agent code normally. The providers are configured to accept both zkSync and the regular tokens and will adjust accordingly.
 
-Just remember to use [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io) instead of the zkSync explorer, should you wish to verify that the payment went through.
+Just remember to use [https://goerli.etherscan.io/](https://goerli.etherscan.io/) instead of the zkSync explorer, should you wish to verify that the payment went through.
 
 ## Bind error: already registered
 
