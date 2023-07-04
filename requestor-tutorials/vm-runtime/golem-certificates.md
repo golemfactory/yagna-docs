@@ -1,6 +1,6 @@
 # Golem-certificates
 
-## Installing cli tool
+## Installing the cli tool
 
 Prerequisites:
 
@@ -12,75 +12,75 @@ git clone https://github.com/golemfactory/golem-certificate
 cargo install --path golem-certificate/cli
 ```
 
-After that, in other terminal enter UI tool by typing:
+After that, in another terminal, enter the UI tool by typing:
 
 ```bash
 golem-certificate-cli ui
 ```
 
-## Generating key-pair
+## Generating a key-pair
 
-Create new key-pair in `Create key pair` option in main menu and name files appropriately.
+Create a new key-pair using the `Create key pair` option in the main menu and name the files appropriately.
 
-## Generating root certificate
+## Generating a root certificate
 
 Prerequisites:
 
 - key-pair for your root certificate
 
-Navigate to `Create certificate` option.
+Navigate to the `Create certificate` option.
 After that, put your propertiies as needed (Key usage, Validity period, Permissions and subject information) and enter your generated **public** key.
-If your generated root certificate will be used to sign other certificates, be sure that you set `Key usage` to `All` or at least `Sign certificate` (or `Sign node` if you will use this certificate for signing node-descriptors).
+If your generated root certificate will be used to sign other certificates, be sure that you set `Key usage` to `All` or at least `Sign certificate` (or `Sign node` if you intend to use this certificate to sign node descriptors).
 In general, it is advised that root certificates should have `Permissions` and `Key usage` set to `All`.
 
 Now you are able to sign your certificate.
-Enter your **private** key to "Signing key" field and set "Signing certificate" as `Self-signed`.
+Enter your **private** key into the "Signing key" field and set "Signing certificate" as `Self-signed`.
 
-## Generating intermediate certificate
+## Generating an intermediate certificate
 
 Prerequisites:
 
-- key-pair for your certificate certificate
-- root certificate entity which will sign your certificate template
+- a key-pair for your certificate
+- a root certificate entity which will sign your certificate template
 
-Navigate to `Create certificate` option.
+Navigate to the `Create certificate` option.
 After that, put your propertiies as needed (Key usage, Validity period, Permissions and subject information) and enter your generated **public** key.
 
-Then you should save your certificate as template, and send it to root certificate entity which will sign it for you.
+Then you should save your certificate as a template, and send it to the root certificate entity which will sign it for you.
 
-## Signing certificate
+## Signing a certificate
 
 Prerequisites:
 
-- key-pair for your certificate which will sign other certificate
-- your certificate with appropriate `Key usage` allowing it to sign certificates (`Sign certificate` field or `All`)
-- template of certificate which you want to sign
+- a key-pair for your certificate which will sign another certificate
+- your certificate with an appropriate `Key usage`, allowing it to sign other certificates (`Sign certificate` field or `All`)
+- a template of the certificate you want to sign
 
-Firstly, check if certificate template which you got does not request more `Permissions`, `Key usage` or `Validity Period` than your certificate has.
-If template requests more, error will be returned in signing process.
+First, check if the certificate template which you got does not request more `Permissions`, `Key usage` or `Validity Period` than your own certificate has.
+If the template requests more, an error will be returned in the signing process.
 Navigate to `Create certificate` option and load from desired template.
-Enter your **private** key to "Signing key" field and then `Load signing certificate` from file in the "Signing certificate" field.
+Enter your **private** key into the "Signing key" field and then `Load signing certificate` from a file in the "Signing certificate" field.
 
-## Generating node-descriptor
+## Generating a node-descriptor
 
 Prerequisites:
 
 - your node-id
 
-Navigate to `Create node descriptor` option.
-After that, put your properties as needed (your node-id, appropriate permissions and validity period).
+Navigate to the `Create node descriptor` option.
+After that, put your properties as needed (your node-id, appropriate permissions and the validity period).
 
-Then you should save your certificate as template, and send it to certificate entity which will sign it for you.
+Then you should save your certificate as a template, and send it to the certificate entity which will sign it for you.
 
-## Signing node-descriptor
+## Signing a node descriptor
 
 Prerequisites:
 
-- key-pair for your certificate which will sign node-descriptor
+- a key-pair for your certificate which will sign the node descriptor
 - your certificate with appropriate `Key usage` allowing it to sign nodes (`Sign node` field or `All`)
-- node-descriptor template
+- a node descriptor template
 
-Firstly, check if node-descriptor template which you got does not request more `Permissions` or `Validity Period` than your certificate has.
-If template requests more, error will be returned in signing process.
-Navigate to `Create node descriptor` option and load from desired template.
-Enter your **private** key to "Signing key" field and then `Load signing certificate` from file in the "Signing certificate" field.
+First, check if the node descriptor template which you got does not request more `Permissions` or `Validity Period` than your own certificate has.
+If the template requests more, an error will be returned in the signing process.
+Navigate to `Create node descriptor` option and load from the desired template.
+Enter your **private** key into the "Signing key" field and then `Load signing certificate` from the file into the "Signing certificate" field.
