@@ -56,9 +56,9 @@ Prerequisites:
 - your certificate with an appropriate `Key usage`, allowing it to sign other certificates (`Sign certificate` field or `All`)
 - a template of the certificate you want to sign
 
-First, check if the certificate template which you got does not request more `Permissions`, `Key usage` or `Validity Period` than your own certificate has.
-If the template requests more, an error will be returned in the signing process.
 Navigate to `Create certificate` option and load from desired template.
+Then check if the certificate template which you got does not request more `Permissions`, `Key usage` or `Validity Period` than your own certificate has.
+If the template requests more, an error will be returned in the signing process.
 Enter your **private** key into the "Signing key" field and then `Load signing certificate` from a file in the "Signing certificate" field.
 
 ## Generating a node-descriptor
