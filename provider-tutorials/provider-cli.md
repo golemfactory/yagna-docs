@@ -218,7 +218,7 @@ Additionally, it enables configuration of the rules, certificate keystore and do
 
 ### Keystore
 
-The provider has an embedded certificate keystore which is used to keep certificates which then can be used by specific Rules.
+The provider has an embedded keystore, used to hold certificates. Specific rules can then reference those certificates to enable certain actions.
 
 By default it contains only Golem public certificates for `AuditedPayload` and `Partner` rules.
 
