@@ -14,7 +14,7 @@ Run `golemsp help` without arguments to see top-level usage information:
 
 ```css
 $ golemsp help
-golemsp 0.12.2 (8efd8657 2023-06-06 build #296)
+golemsp 0.12.3 (9de9778d 2023-08-01 build #309)
 User friedly CLI for running Golem Provider
 
 USAGE:
@@ -147,12 +147,12 @@ $ golemsp status
 │  Status                     │
 │                             │
 │  Service    is not running  │
-│  Version    0.12.1          │
-│  Commit     5671cd3f        │
-│  Date       2023-05-23      │
-│  Build      293             │
+│  Version    0.12.3          │
+│  Commit     9de9778d        │
+│  Date       2023-08-01      │
+│  Build      309             │
 │                             │
-│  Node Name  zima            │
+│  Node Name  lato            │
 │  Subnet     public          │
 │  VM         valid           │
 └─────────────────────────────┘
@@ -167,10 +167,10 @@ $ golemsp status
 │  Status                 │  Wallet                                      │  Tasks                      │
 │                         │  0x2a14f8ae0272bd4c38ed1b40c66e88ed719dab69  │                             │
 │  Service    is running  │                                              │  last 1h processed     0    │
-│  Version    0.12.2      │  network               mainnet               │  last 1h in progress   0    │
-│  Commit     5671cd3f    │  amount (total)        0 GLM                 │  total processed       509  │
-│  Date       2023-06-06  │      (on-chain)        0 GLM                 │  (including failures)       │
-│  Build      296         │      (polygon)         0 GLM                 │                             │
+│  Version    0.12.3      │  network               mainnet               │  last 1h in progress   0    │
+│  Commit     9de9778d    │  amount (total)        0 GLM                 │  total processed       509  │
+│  Date       2023-08-01  │      (on-chain)        0 GLM                 │  (including failures)       │
+│  Build      309         │      (polygon)         0 GLM                 │                             │
 │                         │      (zksync)          0 GLM                 │                             │
 │  Node Name  lato        │                                              │                             │
 │  Subnet     public      │  pending               0 GLM (0)             │                             │

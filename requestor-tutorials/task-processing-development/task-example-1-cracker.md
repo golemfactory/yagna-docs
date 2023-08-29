@@ -21,12 +21,11 @@ Jakub's workshop during Hello Decentralization
 
 Now that we've seen how easy it is to [run a Golem requestor agent](../flash-tutorial-of-requestor-development/), then had a look at[ how this stuff works under the hood](../golem-application-fundamentals/) we can put this knowledge to the test and build a simple Golem app that is a bit more realistic than our [Hello World](task-example-0-hello.md).
 
-{% hint style="info" %}
 If you'd rather like to have a more general introduction on the idea behind Golem or would like to learn what components constitute a Golem node and the Golem network, please have a look at:
 
-{% page-ref page="../../introduction/golem-overview.md" %}
-
-{% endhint %}
+{% content-ref url="../../introduction/golem-overview.md" %}
+[golem-overview.md](../../introduction/golem-overview.md)
+{% endcontent-ref %}
 
 ## Step 0. What are we building?
 
@@ -35,7 +34,7 @@ The application we'll build and run on Golem will be a very simple, quick-and-di
 {% hint style="info" %}
 For the sake of clarity for those less versed with the terminology, a short explanation is due.
 
-A [**dictionary attack**](https://en.wikipedia.org/wiki/Dictionary_attack) involves running some (usually known) hashing function on each word from some input dictionary in the hope that one of the resulting hashes will match the one that we're matching against. Getting a match means we have found the original plain text string that's hidden behind that hash.
+A [**dictionary attack**](https://en.wikipedia.org/wiki/Dictionary\_attack) involves running some (usually known) hashing function on each word from some input dictionary in the hope that one of the resulting hashes will match the one that we're matching against. Getting a match means we have found the original plain text string that's hidden behind that hash.
 
 The string might have been a password or some other secret that's usually stored only in an encrypted (well, technically, hashed) form to prevent someone who got into possession of such a string from being able to read the secret directly.
 
@@ -59,7 +58,7 @@ We're going to be using the code from this repository later on in the course of 
 To give you a quick glimpse into what a typical Golem application looks like ([you can read about this topic at length in our more advanced tutorial](task-model-introduction.md#what-is-a-golem-application)), what you need to know for now is that it consists of two distinct components:
 
 * the **requestor agent** part that runs on your requestor node and is responsible for preparing the tasks for the providers and processing their output,
-* the **worker** part that runs within VMs on the provider nodes and performs the actual computations. 
+* the **worker** part that runs within VMs on the provider nodes and performs the actual computations.
 
 For convenience, in our example here, both pieces are written in Python but that doesn't have to be the case. For requestor agent part, you can now also utilize [JavaScript, that we support with our other high-level API](https://github.com/golemfactory/yajsapi/), and the worker itself can be written any way you like as long as it can accept input in JSON and can run within a Docker-like VM.
 
@@ -337,8 +336,8 @@ That means that at present, if you need some initialization to be done, you can 
 
 To make our image available to providers within the Golem network we need to take the following steps:
 
-1. Build a Docker image using our `Dockerfile`. 
-2. Convert the Docker image to a `.gvmi` file using `gvmkit-build`. 
+1. Build a Docker image using our `Dockerfile`.
+2. Convert the Docker image to a `.gvmi` file using `gvmkit-build`.
 3. Push the `.gvmi` file to Golem's image repository.
 
 `gvmkit-build` is included in `requirements.txt`, so it should be installed in the virtual environment used for this example.
@@ -642,7 +641,7 @@ To do that, we need to be sure that:
 
 * our app's VM image has been published and that it matches what we're referring to in `requestor.py` (in the `image_hash` parameter to `vm.repo()`),
 * our `yagna` daemon is running and is properly funded and initialized as a requestor.
-* our Python virtual environment has been properly set-up, activated and requirements of our `hash-cracker` app installed 
+* our Python virtual environment has been properly set-up, activated and requirements of our `hash-cracker` app installed
 
 Now for the big moment! Make sure you're in the directory containing the `requestor.py` script within the checked-out repo and run:
 

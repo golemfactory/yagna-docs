@@ -1,12 +1,12 @@
 # Requestor FAQ
 
-****
+
 
 **Can I run services (webservers, nodejs etc.) on Golem?**
 
-Yes but in a limited way, meaning that you could use the network as a proxy for computing the response locally on the providers and then using your requestor as a loadbalancer that takes in request, and forwards the responses from the providers to the end user. \
+Yes but in a limited way, meaning that you could use the network as a proxy for computing the response locally on the providers and then using your requestor as a loadbalancer that takes in request, and forwards the responses from the providers to the end user.\
 \
-Here's an example of such setup.  [https://github.com/golemfactory/yapapi/tree/master/examples/http-proxy](https://github.com/golemfactory/yapapi/tree/master/examples/http-proxy)
+Here's an example of such setup. [https://github.com/golemfactory/yapapi/tree/master/examples/http-proxy](https://github.com/golemfactory/yapapi/tree/master/examples/http-proxy)
 
 We're aiming to add support for simple web applications later in 2022.
 
