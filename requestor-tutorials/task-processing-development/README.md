@@ -5,7 +5,7 @@ description: Your own task on golem.
 # Task Model development
 
 {% hint style="warning" %}
-The documentation is undergoing work. For the NodeJS or dApp articles, refer to the [new creator documentation](https://docs.golem.network/creators/).
+The documentation is undergoing work. For the NodeJS or dApp articles, refer to the [new creator documentation](https://docs.golem.network/docs/creators).
 {% endhint %}
 
 ## Introduction

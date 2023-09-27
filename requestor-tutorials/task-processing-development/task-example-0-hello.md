@@ -5,16 +5,16 @@ description: A minimal example of a functional Golem requestor agent
 # Task Example 0: Hello World!
 
 {% hint style="warning" %}
-The documentation is undergoing work and this article is only here because the Python/yapapi parts have not yet been migrated. For the NodeJS or dApp articles, refer to the [new creator documentation](https://docs.golem.network/creators/).
+The documentation is undergoing work and this article is only here because the Python/yapapi parts have not yet been migrated. For the NodeJS or dApp articles, refer to the [new creator documentation](https://docs.golem.network/docs/creators/).
 {% endhint %}
 
 {% hint style="info" %}
 This example illustrates following Golem features & aspects:
 
-* VM runtime
-* Task execution
-* Retrieving command output from provider's exe unit
-{% endhint %}
+-   VM runtime
+-   Task execution
+-   Retrieving command output from provider's exe unit
+    {% endhint %}
 
 ## Prerequisites
 
@@ -26,8 +26,8 @@ The only assumption made in this article is that you have some familiarity with 
 
 Here are the prerequisites in case you'd like to follow along and/or experiment with the code presented in this article:
 
-* you have a local `yagna` node set up (instructions can be found here: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/))
-* you have the Python or JS Golem high-level API set up on your machine (instructions here: [Run first task on Golem](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md))
+-   you have a local `yagna` node set up (instructions can be found here: [Requestor development: a quick primer](../flash-tutorial-of-requestor-development/))
+-   you have the Python or JS Golem high-level API set up on your machine (instructions here: [Run first task on Golem](../flash-tutorial-of-requestor-development/run-first-task-on-golem.md))
 
 {% hint style="info" %}
 Golem's APIs rely heavily on coroutines and asynchronous execution (`async/await`). If you're unfamiliar with these concepts, chances are you'll find some parts of the code examples confusing.
@@ -47,6 +47,7 @@ This example uses the standard VM runtime.
 
 {% tabs %}
 {% tab title="Python" %}
+
 ```python
 #!/usr/bin/env python3
 import asyncio
@@ -86,6 +87,7 @@ if __name__ == "__main__":
     task = loop.create_task(main())
     loop.run_until_complete(task)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -120,11 +122,13 @@ This function is our program's entry point and it performs three steps:
 
 {% tabs %}
 {% tab title="Python" %}
+
 ```python
 package = vm.repo(
     image_hash="d646d7b93083d817846c2ae5c62c72ca0507782385a2e29291a3d376",
 )
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -140,9 +144,11 @@ If you'd like to learn about creating and uploading Golem images yourself, take 
 
 {% tabs %}
 {% tab title="Python" %}
+
 ```python
 tasks = [Task(data=None)]
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -158,11 +164,13 @@ To see a more involved example of this take a look at: [Task Example 1: Simple h
 
 {% tabs %}
 {% tab title="Python" %}
+
 ```javascript
 async with Golem(budget=1.0, subnet_tag="public") as golem:
     async for completed in golem.execute_tasks(worker, tasks, payload=package):
         print(completed.result.stdout)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -176,10 +184,12 @@ Let's first focus on the instantiation code:
 
 {% tabs %}
 {% tab title="Python" %}
+
 ```javascript
 async with Golem(budget=1.0, subnet_tag="public") as golem:
     ...
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -204,12 +214,13 @@ await golem.start()
 
 await golem.stop()
 ```
+
 {% endhint %}
 
 As for the parameters passed to the `Golem/Executor` constructor:
 
-* `budget` specifies our desired budget (in GLM) for the total cost of all tasks computed using this `Golem/Executor` instance.
-* `subnet_tag` specifies the name of a Golem network sub-network we'd like to use for all Golem communication performed by this `Golem/Executor` instance.
+-   `budget` specifies our desired budget (in GLM) for the total cost of all tasks computed using this `Golem/Executor` instance.
+-   `subnet_tag` specifies the name of a Golem network sub-network we'd like to use for all Golem communication performed by this `Golem/Executor` instance.
 
 {% hint style="warning" %}
 In the JavaScript API, the current implementation of `Executor` requires `task_package` to be passed in to the constructor. This is likely to change in the future. More on this parameter in the next section.
@@ -219,10 +230,12 @@ In the JavaScript API, the current implementation of `Executor` requires `task_p
 
 {% tabs %}
 {% tab title="Python" %}
+
 ```javascript
 async for completed in golem.execute_tasks(worker, tasks, payload=package):
     print(completed.result.stdout)
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -230,9 +243,9 @@ Having a `Golem/Executor` instance initialized we can now request some tasks!
 
 The function `execute_tasks/submit` is used here, it takes three parameters (two in the case of JavaScript's `submit`):
 
-* `worker` is the function which defines the steps that should happen for each provider node in order to process a `Task`
-* `tasks` is the array of `Task` objects we have created
-* `payload` is the payload definition for providers which we created using the function `vm.repo`
+-   `worker` is the function which defines the steps that should happen for each provider node in order to process a `Task`
+-   `tasks` is the array of `Task` objects we have created
+-   `payload` is the payload definition for providers which we created using the function `vm.repo`
 
 {% hint style="warning" %}
 In the case of JavaScript API we already provided the `Executor` with a payload definition through the parameter `task_package`.
@@ -246,6 +259,7 @@ Having a completed task we can inspect its result. The result's structure will d
 
 {% tabs %}
 {% tab title="Python" %}
+
 ```python
 async def worker(context: WorkContext, tasks: AsyncIterable[Task]):
     async for task in tasks:
@@ -254,6 +268,7 @@ async def worker(context: WorkContext, tasks: AsyncIterable[Task]):
         yield script
         task.accept_result(result=await future_result)
 ```
+
 {% endtab %}
 {% endtabs %}
 
